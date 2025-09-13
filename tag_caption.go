@@ -1,0 +1,39 @@
+package blox
+
+import "strings"
+
+// Caption
+type CaptionAttrs struct {
+	Global GlobalAttrs
+}
+
+type CaptionArg interface {
+	applyCaption(*CaptionAttrs, *[]Component)
+}
+
+func defaultCaptionAttrs() *CaptionAttrs {
+	return &CaptionAttrs{
+		Global: GlobalAttrs{
+			Style:  map[string]string{},
+			Aria:   map[string]string{},
+			Data:   map[string]string{},
+			Events: map[string]string{},
+		},
+	}
+}
+
+func Caption(args ...CaptionArg) Component {
+	a := defaultCaptionAttrs()
+	var kids []Component
+	for _, ar := range args {
+		ar.applyCaption(a, &kids)
+	}
+	return Node{Tag: "caption", Attrs: a, Kids: kids}
+}
+
+func (g Global) applyCaption(a *CaptionAttrs, _ *[]Component) { g.do(&a.Global) }
+func (o TxtOpt) applyCaption(_ *CaptionAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+func (o ChildOpt) applyCaption(_ *CaptionAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
+func (a *CaptionAttrs) writeAttrs(sb *strings.Builder)             { writeGlobal(sb, &a.Global) }

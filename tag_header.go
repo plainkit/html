@@ -1,0 +1,37 @@
+package blox
+
+import "strings"
+
+// Header
+type HeaderAttrs struct {
+	Global GlobalAttrs
+}
+
+type HeaderArg interface {
+	applyHeader(*HeaderAttrs, *[]Component)
+}
+
+func defaultHeaderAttrs() *HeaderAttrs {
+	return &HeaderAttrs{
+		Global: GlobalAttrs{
+			Style:  map[string]string{},
+			Aria:   map[string]string{},
+			Data:   map[string]string{},
+			Events: map[string]string{},
+		},
+	}
+}
+
+func Header(args ...HeaderArg) Component {
+	a := defaultHeaderAttrs()
+	var kids []Component
+	for _, ar := range args {
+		ar.applyHeader(a, &kids)
+	}
+	return Node{Tag: "header", Attrs: a, Kids: kids}
+}
+
+func (g Global) applyHeader(a *HeaderAttrs, _ *[]Component)      { g.do(&a.Global) }
+func (o TxtOpt) applyHeader(_ *HeaderAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
+func (o ChildOpt) applyHeader(_ *HeaderAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
+func (a *HeaderAttrs) writeAttrs(sb *strings.Builder)            { writeGlobal(sb, &a.Global) }
