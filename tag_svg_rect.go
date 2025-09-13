@@ -59,8 +59,8 @@ type RectHeightOpt struct{ v string }
 type RxOpt struct{ v string }
 type RyOpt struct{ v string }
 
-func RectX(v string) RectXOpt           { return RectXOpt{v} }
-func RectY(v string) RectYOpt           { return RectYOpt{v} }
+func X(v string) RectXOpt               { return RectXOpt{v} }
+func Y(v string) RectYOpt               { return RectYOpt{v} }
 func RectWidth(v string) RectWidthOpt   { return RectWidthOpt{v} }
 func RectHeight(v string) RectHeightOpt { return RectHeightOpt{v} }
 func Rx(v string) RxOpt                 { return RxOpt{v} }
