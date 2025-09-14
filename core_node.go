@@ -28,10 +28,13 @@ type attrWriter interface {
 }
 
 type Node struct {
-    Tag   string
-    Attrs any         // must implement attrWriter
-    Kids  []Component // empty for void tags
-    Void  bool
+	Tag       string
+	Attrs     any         // must implement attrWriter
+	Kids      []Component // empty for void tags
+	Void      bool
+	AssetCSS  string // CSS to be collected by asset system
+	AssetJS   string // JavaScript to be collected by asset system
+	AssetName string // Name for asset deduplication
 }
 
 func (n Node) render(sb *strings.Builder) {
@@ -57,6 +60,25 @@ func (n Node) render(sb *strings.Builder) {
 // them explicitly.
 func (n Node) Children() []Component { return n.Kids }
 
+// Asset interface implementations for Node
+
+func (n Node) CSS() string  { return n.AssetCSS }
+func (n Node) JS() string   { return n.AssetJS }
+func (n Node) Name() string { return n.AssetName }
+
+// WithAssets returns a copy of the Node with CSS/JS assets attached
+func (n Node) WithAssets(css, js, name string) Node {
+	return Node{
+		Tag:       n.Tag,
+		Attrs:     n.Attrs,
+		Kids:      n.Kids,
+		Void:      n.Void,
+		AssetCSS:  css,
+		AssetJS:   js,
+		AssetName: name,
+	}
+}
+
 func Render(c Component) string {
 	var sb strings.Builder
 	c.render(&sb)
@@ -78,7 +100,7 @@ func boolAttr(sb *strings.Builder, k string) {
 }
 
 func itoa(i int) string {
-    return strconv.Itoa(i)
+	return strconv.Itoa(i)
 }
 
 // Allow passing any Component (Node) directly as a child argument to content tags,
@@ -86,9 +108,9 @@ func itoa(i int) string {
 // Node implements many *Arg interfaces by appending itself to the children slice.
 
 // Common block-level containers
-func (n Node) applyHtml(_ *HtmlAttrs, kids *[]Component)   { *kids = append(*kids, n) }
-func (n Node) applyHead(_ *HeadAttrs, kids *[]Component)   { *kids = append(*kids, n) }
-func (n Node) applyBody(_ *BodyAttrs, kids *[]Component)   { *kids = append(*kids, n) }
+func (n Node) applyHtml(_ *HtmlAttrs, kids *[]Component) { *kids = append(*kids, n) }
+func (n Node) applyHead(_ *HeadAttrs, kids *[]Component) { *kids = append(*kids, n) }
+func (n Node) applyBody(_ *BodyAttrs, kids *[]Component) { *kids = append(*kids, n) }
 func (n Node) applyDiv(_ *DivAttrs, kids *[]Component)   { *kids = append(*kids, n) }
 func (n Node) applyMain(_ *MainAttrs, kids *[]Component) { *kids = append(*kids, n) }
 func (n Node) applyHeader(_ *HeaderAttrs, kids *[]Component) {
