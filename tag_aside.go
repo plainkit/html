@@ -22,7 +22,7 @@ func defaultAsideAttrs() *AsideAttrs {
 	}
 }
 
-func Aside(args ...AsideArg) Component {
+func Aside(args ...AsideArg) Node {
 	a := defaultAsideAttrs()
 	var kids []Component
 	for _, ar := range args {

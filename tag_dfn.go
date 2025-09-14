@@ -22,7 +22,7 @@ func defaultDfnAttrs() *DfnAttrs {
 	}
 }
 
-func Dfn(args ...DfnArg) Component {
+func Dfn(args ...DfnArg) Node {
 	a := defaultDfnAttrs()
 	var kids []Component
 	for _, ar := range args {

@@ -29,7 +29,7 @@ func defaultImgAttrs() *ImgAttrs {
 	}
 }
 
-func Img(args ...ImgArg) Component {
+func Img(args ...ImgArg) Node {
 	a := defaultImgAttrs()
 	for _, ar := range args {
 		ar.applyImg(a)

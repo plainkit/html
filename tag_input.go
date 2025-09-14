@@ -46,7 +46,7 @@ func defaultInputAttrs() *InputAttrs {
 	}
 }
 
-func Input(args ...InputArg) Component {
+func Input(args ...InputArg) Node {
 	a := defaultInputAttrs()
 	for _, ar := range args {
 		ar.applyInput(a)

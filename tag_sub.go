@@ -22,7 +22,7 @@ func defaultSubAttrs() *SubAttrs {
 	}
 }
 
-func Sub(args ...SubArg) Component {
+func Sub(args ...SubArg) Node {
 	a := defaultSubAttrs()
 	var kids []Component
 	for _, ar := range args {

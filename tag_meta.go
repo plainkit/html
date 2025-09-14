@@ -27,7 +27,7 @@ func defaultMetaAttrs() *MetaAttrs {
 	}
 }
 
-func Meta(args ...MetaArg) Component {
+func Meta(args ...MetaArg) Node {
 	a := defaultMetaAttrs()
 	for _, ar := range args {
 		ar.applyMeta(a)

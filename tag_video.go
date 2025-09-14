@@ -32,7 +32,7 @@ func defaultVideoAttrs() *VideoAttrs {
 	}
 }
 
-func Video(args ...VideoArg) Component {
+func Video(args ...VideoArg) Node {
 	a := defaultVideoAttrs()
 	var kids []Component
 	for _, ar := range args {

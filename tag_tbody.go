@@ -22,7 +22,7 @@ func defaultTbodyAttrs() *TbodyAttrs {
 	}
 }
 
-func Tbody(args ...TbodyArg) Component {
+func Tbody(args ...TbodyArg) Node {
 	a := defaultTbodyAttrs()
 	var kids []Component
 	for _, ar := range args {

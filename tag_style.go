@@ -24,7 +24,7 @@ func defaultStyleAttrs() *StyleAttrs {
 	}
 }
 
-func Style(args ...StyleArg) Component {
+func Style(args ...StyleArg) Node {
 	a := defaultStyleAttrs()
 	var kids []Component
 	for _, ar := range args {

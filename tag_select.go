@@ -29,7 +29,7 @@ func defaultSelectAttrs() *SelectAttrs {
 	}
 }
 
-func Select(args ...SelectArg) Component {
+func Select(args ...SelectArg) Node {
 	a := defaultSelectAttrs()
 	var kids []Component
 	for _, ar := range args {

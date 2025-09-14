@@ -22,7 +22,7 @@ func defaultIAttrs() *IAttrs {
 	}
 }
 
-func I(args ...IArg) Component {
+func I(args ...IArg) Node {
 	a := defaultIAttrs()
 	var kids []Component
 	for _, ar := range args {

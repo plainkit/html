@@ -48,7 +48,7 @@ func defaultSvgTextAttrs() *SvgTextAttrs {
 	}
 }
 
-func SvgText(args ...SvgTextArg) Component {
+func SvgText(args ...SvgTextArg) Node {
 	a := defaultSvgTextAttrs()
 	var kids []Component
 	for _, ar := range args {

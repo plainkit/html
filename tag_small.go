@@ -22,7 +22,7 @@ func defaultSmallAttrs() *SmallAttrs {
 	}
 }
 
-func Small(args ...SmallArg) Component {
+func Small(args ...SmallArg) Node {
 	a := defaultSmallAttrs()
 	var kids []Component
 	for _, ar := range args {

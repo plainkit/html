@@ -26,7 +26,7 @@ func defaultThAttrs() *ThAttrs {
 	}
 }
 
-func Th(args ...ThArg) Component {
+func Th(args ...ThArg) Node {
 	a := defaultThAttrs()
 	var kids []Component
 	for _, ar := range args {

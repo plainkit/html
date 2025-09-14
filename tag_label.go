@@ -24,7 +24,7 @@ func defaultLabelAttrs() *LabelAttrs {
 	}
 }
 
-func FormLabel(args ...LabelArg) Component {
+func FormLabel(args ...LabelArg) Node {
 	a := defaultLabelAttrs()
 	var kids []Component
 	for _, ar := range args {

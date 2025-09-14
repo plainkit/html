@@ -40,7 +40,7 @@ func defaultEllipseAttrs() *EllipseAttrs {
 	}
 }
 
-func Ellipse(args ...EllipseArg) Component {
+func Ellipse(args ...EllipseArg) Node {
 	a := defaultEllipseAttrs()
 	var kids []Component
 	for _, ar := range args {

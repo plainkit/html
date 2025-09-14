@@ -21,7 +21,7 @@ func defaultDivAttrs() *DivAttrs {
 	}
 }
 
-func Div(args ...DivArg) Component {
+func Div(args ...DivArg) Node {
 	a := defaultDivAttrs()
 	var kids []Component
 	for _, ar := range args {

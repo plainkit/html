@@ -23,7 +23,7 @@ func defaultLiAttrs() *LiAttrs {
 	}
 }
 
-func Li(args ...LiArg) Component {
+func Li(args ...LiArg) Node {
 	a := defaultLiAttrs()
 	var kids []Component
 	for _, ar := range args {

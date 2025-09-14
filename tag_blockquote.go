@@ -22,7 +22,7 @@ func defaultBlockquoteAttrs() *BlockquoteAttrs {
 	}
 }
 
-func Blockquote(args ...BlockquoteArg) Component {
+func Blockquote(args ...BlockquoteArg) Node {
 	a := defaultBlockquoteAttrs()
 	var kids []Component
 	for _, ar := range args {

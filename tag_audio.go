@@ -29,7 +29,7 @@ func defaultAudioAttrs() *AudioAttrs {
 	}
 }
 
-func Audio(args ...AudioArg) Component {
+func Audio(args ...AudioArg) Node {
 	a := defaultAudioAttrs()
 	var kids []Component
 	for _, ar := range args {

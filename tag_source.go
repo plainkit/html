@@ -27,7 +27,7 @@ func defaultSourceAttrs() *SourceAttrs {
 	}
 }
 
-func Source(args ...SourceArg) Component {
+func Source(args ...SourceArg) Node {
 	a := defaultSourceAttrs()
 	for _, ar := range args {
 		ar.applySource(a)

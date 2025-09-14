@@ -29,7 +29,7 @@ func defaultFormAttrs() *FormAttrs {
 	}
 }
 
-func Form(args ...FormArg) Component {
+func Form(args ...FormArg) Node {
 	a := defaultFormAttrs()
 	var kids []Component
 	for _, ar := range args {

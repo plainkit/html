@@ -21,7 +21,7 @@ func defaultCodeAttrs() *CodeAttrs {
 	}
 }
 
-func Code(args ...CodeArg) Component {
+func Code(args ...CodeArg) Node {
 	a := defaultCodeAttrs()
 	var kids []Component
 	for _, ar := range args {

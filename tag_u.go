@@ -22,7 +22,7 @@ func defaultUAttrs() *UAttrs {
 	}
 }
 
-func U(args ...UArg) Component {
+func U(args ...UArg) Node {
 	a := defaultUAttrs()
 	var kids []Component
 	for _, ar := range args {

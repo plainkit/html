@@ -33,7 +33,7 @@ func defaultTextareaAttrs() *TextareaAttrs {
 	}
 }
 
-func Textarea(args ...TextareaArg) Component {
+func Textarea(args ...TextareaArg) Node {
 	a := defaultTextareaAttrs()
 	var kids []Component
 	for _, ar := range args {

@@ -22,7 +22,7 @@ func defaultVarAttrs() *VarAttrs {
 	}
 }
 
-func Var(args ...VarArg) Component {
+func Var(args ...VarArg) Node {
 	a := defaultVarAttrs()
 	var kids []Component
 	for _, ar := range args {

@@ -23,7 +23,7 @@ func defaultDetailsAttrs() *DetailsAttrs {
 	}
 }
 
-func Details(args ...DetailsArg) Component {
+func Details(args ...DetailsArg) Node {
 	a := defaultDetailsAttrs()
 	var kids []Component
 	for _, ar := range args {

@@ -24,7 +24,7 @@ func defaultInsAttrs() *InsAttrs {
 	}
 }
 
-func Ins(args ...InsArg) Component {
+func Ins(args ...InsArg) Node {
 	a := defaultInsAttrs()
 	var kids []Component
 	for _, ar := range args {

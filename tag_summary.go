@@ -22,7 +22,7 @@ func defaultSummaryAttrs() *SummaryAttrs {
 	}
 }
 
-func Summary(args ...SummaryArg) Component {
+func Summary(args ...SummaryArg) Node {
 	a := defaultSummaryAttrs()
 	var kids []Component
 	for _, ar := range args {

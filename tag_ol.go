@@ -25,7 +25,7 @@ func defaultOlAttrs() *OlAttrs {
 	}
 }
 
-func Ol(args ...OlArg) Component {
+func Ol(args ...OlArg) Node {
 	a := defaultOlAttrs()
 	var kids []Component
 	for _, ar := range args {

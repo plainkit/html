@@ -26,7 +26,7 @@ func defaultOptionAttrs() *OptionAttrs {
 	}
 }
 
-func Option(args ...OptionArg) Component {
+func Option(args ...OptionArg) Node {
 	a := defaultOptionAttrs()
 	var kids []Component
 	for _, ar := range args {

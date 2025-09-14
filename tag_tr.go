@@ -22,7 +22,7 @@ func defaultTrAttrs() *TrAttrs {
 	}
 }
 
-func Tr(args ...TrArg) Component {
+func Tr(args ...TrArg) Node {
 	a := defaultTrAttrs()
 	var kids []Component
 	for _, ar := range args {

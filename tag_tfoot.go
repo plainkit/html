@@ -22,7 +22,7 @@ func defaultTfootAttrs() *TfootAttrs {
 	}
 }
 
-func Tfoot(args ...TfootArg) Component {
+func Tfoot(args ...TfootArg) Node {
 	a := defaultTfootAttrs()
 	var kids []Component
 	for _, ar := range args {

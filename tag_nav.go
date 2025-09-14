@@ -22,7 +22,7 @@ func defaultNavAttrs() *NavAttrs {
 	}
 }
 
-func Nav(args ...NavArg) Component {
+func Nav(args ...NavArg) Node {
 	a := defaultNavAttrs()
 	var kids []Component
 	for _, ar := range args {

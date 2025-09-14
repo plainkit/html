@@ -27,6 +27,3 @@ type ChildOpt struct {
 func Child(c Component) ChildOpt {
 	return ChildOpt{c}
 }
-
-// C is an alias for Child to reduce verbosity
-func C(c Component) ChildOpt { return Child(c) }

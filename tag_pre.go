@@ -21,7 +21,7 @@ func defaultPreAttrs() *PreAttrs {
 	}
 }
 
-func Pre(args ...PreArg) Component {
+func Pre(args ...PreArg) Node {
 	a := defaultPreAttrs()
 	var kids []Component
 	for _, ar := range args {

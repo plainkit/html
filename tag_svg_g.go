@@ -35,7 +35,7 @@ func defaultGAttrs() *GAttrs {
 	}
 }
 
-func G(args ...GArg) Component {
+func G(args ...GArg) Node {
 	a := defaultGAttrs()
 	var kids []Component
 	for _, ar := range args {

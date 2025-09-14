@@ -42,7 +42,7 @@ func defaultRectAttrs() *RectAttrs {
 	}
 }
 
-func Rect(args ...RectArg) Component {
+func Rect(args ...RectArg) Node {
 	a := defaultRectAttrs()
 	var kids []Component
 	for _, ar := range args {

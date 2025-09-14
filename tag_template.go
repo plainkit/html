@@ -22,7 +22,7 @@ func defaultTemplateAttrs() *TemplateAttrs {
 	}
 }
 
-func Template(args ...TemplateArg) Component {
+func Template(args ...TemplateArg) Node {
 	a := defaultTemplateAttrs()
 	var kids []Component
 	for _, ar := range args {

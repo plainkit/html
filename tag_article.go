@@ -22,7 +22,7 @@ func defaultArticleAttrs() *ArticleAttrs {
 	}
 }
 
-func Article(args ...ArticleArg) Component {
+func Article(args ...ArticleArg) Node {
 	a := defaultArticleAttrs()
 	var kids []Component
 	for _, ar := range args {

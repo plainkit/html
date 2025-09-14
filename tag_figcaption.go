@@ -22,7 +22,7 @@ func defaultFigcaptionAttrs() *FigcaptionAttrs {
 	}
 }
 
-func Figcaption(args ...FigcaptionArg) Component {
+func Figcaption(args ...FigcaptionArg) Node {
 	a := defaultFigcaptionAttrs()
 	var kids []Component
 	for _, ar := range args {

@@ -37,7 +37,7 @@ func defaultPolylineAttrs() *PolylineAttrs {
 	}
 }
 
-func Polyline(args ...PolylineArg) Component {
+func Polyline(args ...PolylineArg) Node {
 	a := defaultPolylineAttrs()
 	var kids []Component
 	for _, ar := range args {

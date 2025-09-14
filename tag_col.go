@@ -23,7 +23,7 @@ func defaultColAttrs() *ColAttrs {
 	}
 }
 
-func Col(args ...ColArg) Component {
+func Col(args ...ColArg) Node {
 	a := defaultColAttrs()
 	for _, ar := range args {
 		ar.applyCol(a)

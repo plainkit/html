@@ -21,7 +21,7 @@ func defaultHeadAttrs() *HeadAttrs {
 	}
 }
 
-func Head(args ...HeadArg) Component {
+func Head(args ...HeadArg) Node {
 	a := defaultHeadAttrs()
 	var kids []Component
 	for _, ar := range args {

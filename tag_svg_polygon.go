@@ -37,7 +37,7 @@ func defaultPolygonAttrs() *PolygonAttrs {
 	}
 }
 
-func Polygon(args ...PolygonArg) Component {
+func Polygon(args ...PolygonArg) Node {
 	a := defaultPolygonAttrs()
 	var kids []Component
 	for _, ar := range args {

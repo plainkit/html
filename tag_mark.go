@@ -22,7 +22,7 @@ func defaultMarkAttrs() *MarkAttrs {
 	}
 }
 
-func Mark(args ...MarkArg) Component {
+func Mark(args ...MarkArg) Node {
 	a := defaultMarkAttrs()
 	var kids []Component
 	for _, ar := range args {

@@ -22,7 +22,7 @@ func defaultLegendAttrs() *LegendAttrs {
 	}
 }
 
-func Legend(args ...LegendArg) Component {
+func Legend(args ...LegendArg) Node {
 	a := defaultLegendAttrs()
 	var kids []Component
 	for _, ar := range args {

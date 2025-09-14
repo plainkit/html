@@ -37,7 +37,7 @@ func defaultPathAttrs() *PathAttrs {
 	}
 }
 
-func Path(args ...PathArg) Component {
+func Path(args ...PathArg) Node {
 	a := defaultPathAttrs()
 	var kids []Component
 	for _, ar := range args {

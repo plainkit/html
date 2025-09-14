@@ -22,7 +22,7 @@ func defaultHrAttrs() *HrAttrs {
 	}
 }
 
-func Hr(args ...HrArg) Component {
+func Hr(args ...HrArg) Node {
 	a := defaultHrAttrs()
 	for _, ar := range args {
 		ar.applyHr(a)

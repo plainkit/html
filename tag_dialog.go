@@ -23,7 +23,7 @@ func defaultDialogAttrs() *DialogAttrs {
 	}
 }
 
-func Dialog(args ...DialogArg) Component {
+func Dialog(args ...DialogArg) Node {
 	a := defaultDialogAttrs()
 	var kids []Component
 	for _, ar := range args {

@@ -22,7 +22,7 @@ func defaultKbdAttrs() *KbdAttrs {
 	}
 }
 
-func Kbd(args ...KbdArg) Component {
+func Kbd(args ...KbdArg) Node {
 	a := defaultKbdAttrs()
 	var kids []Component
 	for _, ar := range args {

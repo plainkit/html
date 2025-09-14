@@ -22,7 +22,7 @@ func defaultBAttrs() *BAttrs {
 	}
 }
 
-func B(args ...BArg) Component {
+func B(args ...BArg) Node {
 	a := defaultBAttrs()
 	var kids []Component
 	for _, ar := range args {

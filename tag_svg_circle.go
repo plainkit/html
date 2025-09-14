@@ -39,7 +39,7 @@ func defaultCircleAttrs() *CircleAttrs {
 	}
 }
 
-func Circle(args ...CircleArg) Component {
+func Circle(args ...CircleArg) Node {
 	a := defaultCircleAttrs()
 	var kids []Component
 	for _, ar := range args {

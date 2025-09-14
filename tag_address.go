@@ -22,7 +22,7 @@ func defaultAddressAttrs() *AddressAttrs {
 	}
 }
 
-func Address(args ...AddressArg) Component {
+func Address(args ...AddressArg) Node {
 	a := defaultAddressAttrs()
 	var kids []Component
 	for _, ar := range args {

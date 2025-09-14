@@ -22,7 +22,7 @@ func defaultEmAttrs() *EmAttrs {
 	}
 }
 
-func Em(args ...EmArg) Component {
+func Em(args ...EmArg) Node {
 	a := defaultEmAttrs()
 	var kids []Component
 	for _, ar := range args {

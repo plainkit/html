@@ -24,7 +24,7 @@ func defaultDelAttrs() *DelAttrs {
 	}
 }
 
-func Del(args ...DelArg) Component {
+func Del(args ...DelArg) Node {
 	a := defaultDelAttrs()
 	var kids []Component
 	for _, ar := range args {

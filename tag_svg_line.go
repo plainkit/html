@@ -40,7 +40,7 @@ func defaultLineAttrs() *LineAttrs {
 	}
 }
 
-func Line(args ...LineArg) Component {
+func Line(args ...LineArg) Node {
 	a := defaultLineAttrs()
 	var kids []Component
 	for _, ar := range args {

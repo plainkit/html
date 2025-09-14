@@ -24,7 +24,7 @@ func defaultOptgroupAttrs() *OptgroupAttrs {
 	}
 }
 
-func Optgroup(args ...OptgroupArg) Component {
+func Optgroup(args ...OptgroupArg) Node {
 	a := defaultOptgroupAttrs()
 	var kids []Component
 	for _, ar := range args {

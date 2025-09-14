@@ -25,7 +25,7 @@ func defaultTdAttrs() *TdAttrs {
 	}
 }
 
-func Td(args ...TdArg) Component {
+func Td(args ...TdArg) Node {
 	a := defaultTdAttrs()
 	var kids []Component
 	for _, ar := range args {

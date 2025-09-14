@@ -22,7 +22,7 @@ func defaultTableAttrs() *TableAttrs {
 	}
 }
 
-func Table(args ...TableArg) Component {
+func Table(args ...TableArg) Node {
 	a := defaultTableAttrs()
 	var kids []Component
 	for _, ar := range args {

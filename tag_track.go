@@ -27,7 +27,7 @@ func defaultTrackAttrs() *TrackAttrs {
 	}
 }
 
-func Track(args ...TrackArg) Component {
+func Track(args ...TrackArg) Node {
 	a := defaultTrackAttrs()
 	for _, ar := range args {
 		ar.applyTrack(a)

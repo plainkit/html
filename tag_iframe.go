@@ -32,7 +32,7 @@ func defaultIframeAttrs() *IframeAttrs {
 	}
 }
 
-func Iframe(args ...IframeArg) Component {
+func Iframe(args ...IframeArg) Node {
 	a := defaultIframeAttrs()
 	var kids []Component
 	for _, ar := range args {

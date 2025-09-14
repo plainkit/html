@@ -22,7 +22,7 @@ func defaultAbbrAttrs() *AbbrAttrs {
 	}
 }
 
-func Abbr(args ...AbbrArg) Component {
+func Abbr(args ...AbbrArg) Node {
 	a := defaultAbbrAttrs()
 	var kids []Component
 	for _, ar := range args {

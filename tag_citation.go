@@ -22,7 +22,7 @@ func defaultCitationAttrs() *CitationAttrs {
 	}
 }
 
-func Citation(args ...CitationArg) Component {
+func Citation(args ...CitationArg) Node {
 	a := defaultCitationAttrs()
 	var kids []Component
 	for _, ar := range args {

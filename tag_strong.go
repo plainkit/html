@@ -22,7 +22,7 @@ func defaultStrongAttrs() *StrongAttrs {
 	}
 }
 
-func Strong(args ...StrongArg) Component {
+func Strong(args ...StrongArg) Node {
 	a := defaultStrongAttrs()
 	var kids []Component
 	for _, ar := range args {

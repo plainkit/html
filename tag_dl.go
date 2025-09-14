@@ -22,7 +22,7 @@ func defaultDlAttrs() *DlAttrs {
 	}
 }
 
-func Dl(args ...DlArg) Component {
+func Dl(args ...DlArg) Node {
 	a := defaultDlAttrs()
 	var kids []Component
 	for _, ar := range args {

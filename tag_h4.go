@@ -22,7 +22,7 @@ func defaultH4Attrs() *H4Attrs {
 	}
 }
 
-func H4(args ...H4Arg) Component {
+func H4(args ...H4Arg) Node {
 	a := defaultH4Attrs()
 	var kids []Component
 	for _, ar := range args {

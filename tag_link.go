@@ -29,7 +29,7 @@ func defaultLinkAttrs() *LinkAttrs {
 	}
 }
 
-func Link(args ...LinkArg) Component {
+func Link(args ...LinkArg) Node {
 	a := defaultLinkAttrs()
 	for _, ar := range args {
 		ar.applyLink(a)

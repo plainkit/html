@@ -22,7 +22,7 @@ func defaultMainAttrs() *MainAttrs {
 	}
 }
 
-func Main(args ...MainArg) Component {
+func Main(args ...MainArg) Node {
 	a := defaultMainAttrs()
 	var kids []Component
 	for _, ar := range args {

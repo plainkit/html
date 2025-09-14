@@ -22,7 +22,7 @@ func defaultSampAttrs() *SampAttrs {
 	}
 }
 
-func Samp(args ...SampArg) Component {
+func Samp(args ...SampArg) Node {
 	a := defaultSampAttrs()
 	var kids []Component
 	for _, ar := range args {

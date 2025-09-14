@@ -22,7 +22,7 @@ func defaultFooterAttrs() *FooterAttrs {
 	}
 }
 
-func Footer(args ...FooterArg) Component {
+func Footer(args ...FooterArg) Node {
 	a := defaultFooterAttrs()
 	var kids []Component
 	for _, ar := range args {

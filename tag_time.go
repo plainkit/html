@@ -23,7 +23,7 @@ func defaultTimeAttrs() *TimeAttrs {
 	}
 }
 
-func Time(args ...TimeArg) Component {
+func Time(args ...TimeArg) Node {
 	a := defaultTimeAttrs()
 	var kids []Component
 	for _, ar := range args {

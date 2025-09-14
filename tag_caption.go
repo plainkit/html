@@ -22,7 +22,7 @@ func defaultCaptionAttrs() *CaptionAttrs {
 	}
 }
 
-func Caption(args ...CaptionArg) Component {
+func Caption(args ...CaptionArg) Node {
 	a := defaultCaptionAttrs()
 	var kids []Component
 	for _, ar := range args {

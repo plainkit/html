@@ -81,17 +81,17 @@ func (a *Assets) collectRecursive(components []Component) {
 }
 
 // CSS returns a style component with all collected CSS
-func (a *Assets) CSS() Component {
+func (a *Assets) CSS() Node {
 	if len(a.css) == 0 {
-		return TextNode("")
+		return Node{Tag: "style", Attrs: defaultStyleAttrs(), Kids: nil}
 	}
 	return Style(Text(strings.Join(a.css, "\n\n")))
 }
 
 // JS returns a script component with all collected JavaScript
-func (a *Assets) JS() Component {
+func (a *Assets) JS() Node {
 	if len(a.js) == 0 {
-		return TextNode("")
+		return Node{Tag: "script", Attrs: defaultScriptAttrs(), Kids: nil}
 	}
 	return Script(UnsafeText(strings.Join(a.js, "\n\n")))
 }
@@ -107,3 +107,19 @@ func (a *Assets) Reset() {
 	a.js = a.js[:0]
 	a.registry = make(map[string]bool)
 }
+
+// assetHook is a no-op component that contributes CSS/JS to the asset collector.
+type assetHook struct {
+	name string
+	css  string
+	js   string
+}
+
+func (h assetHook) render(_ *strings.Builder) {}
+func (h assetHook) CSS() string               { return strings.TrimSpace(h.css) }
+func (h assetHook) JS() string                { return strings.TrimSpace(h.js) }
+func (h assetHook) Name() string              { return h.name }
+
+// AssetHook creates a component that carries CSS/JS for collection without rendering output.
+// Name is used for de-duplication across the page.
+func AssetHook(name, css, js string) Component { return assetHook{name: name, css: css, js: js} }

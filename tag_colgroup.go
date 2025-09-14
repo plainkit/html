@@ -23,7 +23,7 @@ func defaultColgroupAttrs() *ColgroupAttrs {
 	}
 }
 
-func Colgroup(args ...ColgroupArg) Component {
+func Colgroup(args ...ColgroupArg) Node {
 	a := defaultColgroupAttrs()
 	var kids []Component
 	for _, ar := range args {

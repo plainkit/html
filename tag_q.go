@@ -23,7 +23,7 @@ func defaultQAttrs() *QAttrs {
 	}
 }
 
-func Q(args ...QArg) Component {
+func Q(args ...QArg) Node {
 	a := defaultQAttrs()
 	var kids []Component
 	for _, ar := range args {

@@ -22,7 +22,7 @@ func defaultDatalistAttrs() *DatalistAttrs {
 	}
 }
 
-func Datalist(args ...DatalistArg) Component {
+func Datalist(args ...DatalistArg) Node {
 	a := defaultDatalistAttrs()
 	var kids []Component
 	for _, ar := range args {

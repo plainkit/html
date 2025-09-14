@@ -24,7 +24,7 @@ func defaultHtmlAttrs() *HtmlAttrs {
 	}
 }
 
-func Html(args ...HtmlArg) Component {
+func Html(args ...HtmlArg) Node {
 	a := defaultHtmlAttrs()
 	var kids []Component
 	for _, ar := range args {

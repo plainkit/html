@@ -21,7 +21,7 @@ func defaultTitleAttrs() *TitleAttrs {
 	}
 }
 
-func HeadTitle(args ...TitleArg) Component {
+func HeadTitle(args ...TitleArg) Node {
 	a := defaultTitleAttrs()
 	var kids []Component
 	for _, ar := range args {

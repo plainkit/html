@@ -24,7 +24,7 @@ func defaultCanvasAttrs() *CanvasAttrs {
 	}
 }
 
-func Canvas(args ...CanvasArg) Component {
+func Canvas(args ...CanvasArg) Node {
 	a := defaultCanvasAttrs()
 	var kids []Component
 	for _, ar := range args {

@@ -22,7 +22,7 @@ func defaultFigureAttrs() *FigureAttrs {
 	}
 }
 
-func Figure(args ...FigureArg) Component {
+func Figure(args ...FigureArg) Node {
 	a := defaultFigureAttrs()
 	var kids []Component
 	for _, ar := range args {

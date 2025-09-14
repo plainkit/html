@@ -32,7 +32,7 @@ func defaultAAttrs() *AAttrs {
 	}
 }
 
-func A(args ...AArg) Component {
+func A(args ...AArg) Node {
 	a := defaultAAttrs()
 	var kids []Component
 	for _, ar := range args {

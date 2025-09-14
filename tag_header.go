@@ -22,7 +22,7 @@ func defaultHeaderAttrs() *HeaderAttrs {
 	}
 }
 
-func Header(args ...HeaderArg) Component {
+func Header(args ...HeaderArg) Node {
 	a := defaultHeaderAttrs()
 	var kids []Component
 	for _, ar := range args {

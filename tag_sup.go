@@ -22,7 +22,7 @@ func defaultSupAttrs() *SupAttrs {
 	}
 }
 
-func Sup(args ...SupArg) Component {
+func Sup(args ...SupArg) Node {
 	a := defaultSupAttrs()
 	var kids []Component
 	for _, ar := range args {

@@ -22,7 +22,7 @@ func defaultBrAttrs() *BrAttrs {
 	}
 }
 
-func Br(args ...BrArg) Component {
+func Br(args ...BrArg) Node {
 	a := defaultBrAttrs()
 	for _, ar := range args {
 		ar.applyBr(a)

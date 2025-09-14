@@ -91,7 +91,7 @@ func TestButton(t *testing.T) {
 Build reusable components by composing smaller ones:
 
 ```go
-func Card(title, content string) Component {
+func Card(title, content string) Node {
     return Div(
         Class("card"),
         Child(H2(Text(title), Class("card-title"))),
@@ -99,7 +99,7 @@ func Card(title, content string) Component {
     )
 }
 
-func Page() Component {
+func Page() Node {
     return Div(
         Class("container"),
         Child(Card("Welcome", "Get started with Blox")),

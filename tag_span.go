@@ -21,7 +21,7 @@ func defaultSpanAttrs() *SpanAttrs {
 	}
 }
 
-func Span(args ...SpanArg) Component {
+func Span(args ...SpanArg) Node {
 	a := defaultSpanAttrs()
 	var kids []Component
 	for _, ar := range args {

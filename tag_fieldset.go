@@ -25,7 +25,7 @@ func defaultFieldsetAttrs() *FieldsetAttrs {
 	}
 }
 
-func Fieldset(args ...FieldsetArg) Component {
+func Fieldset(args ...FieldsetArg) Node {
 	a := defaultFieldsetAttrs()
 	var kids []Component
 	for _, ar := range args {

@@ -47,7 +47,7 @@ func defaultSvgAttrs() *SvgAttrs {
 	}
 }
 
-func Svg(args ...SvgArg) Component {
+func Svg(args ...SvgArg) Node {
 	a := defaultSvgAttrs()
 	var kids []Component
 	for _, ar := range args {

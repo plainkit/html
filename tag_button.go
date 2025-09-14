@@ -32,7 +32,7 @@ func defaultButtonAttrs() *ButtonAttrs {
 	}
 }
 
-func Button(args ...ButtonArg) Component {
+func Button(args ...ButtonArg) Node {
 	a := defaultButtonAttrs()
 	var kids []Component
 	for _, ar := range args {

@@ -22,7 +22,7 @@ func defaultSectionAttrs() *SectionAttrs {
 	}
 }
 
-func Section(args ...SectionArg) Component {
+func Section(args ...SectionArg) Node {
 	a := defaultSectionAttrs()
 	var kids []Component
 	for _, ar := range args {

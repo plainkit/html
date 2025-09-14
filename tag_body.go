@@ -21,7 +21,7 @@ func defaultBodyAttrs() *BodyAttrs {
 	}
 }
 
-func Body(args ...BodyArg) Component {
+func Body(args ...BodyArg) Node {
 	a := defaultBodyAttrs()
 	var kids []Component
 	for _, ar := range args {
