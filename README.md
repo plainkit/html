@@ -19,8 +19,8 @@ Blox solves these problems by providing compile-time HTML generation with functi
 ```go
 div := Div(
     Class("container"),
-    Child(H1(Text("Hello"), Class("title"))),
-    Child(P(Text("World"), Class("content"))),
+    H1(Text("Hello"), Class("title")),
+    P(Text("World"), Class("content")),
 )
 ```
 
@@ -94,16 +94,16 @@ Build reusable components by composing smaller ones:
 func Card(title, content string) Node {
     return Div(
         Class("card"),
-        Child(H2(Text(title), Class("card-title"))),
-        Child(P(Text(content), Class("card-content"))),
+        H2(Text(title), Class("card-title")),
+        P(Text(content), Class("card-content")),
     )
 }
 
 func Page() Node {
     return Div(
         Class("container"),
-        Child(Card("Welcome", "Get started with Blox")),
-        Child(Card("Features", "Type-safe HTML in Go")),
+        Card("Welcome", "Get started with Blox"),
+        Card("Features", "Type-safe HTML in Go"),
     )
 }
 ```
@@ -129,14 +129,14 @@ import (
 func main() {
     page := Html(
         Lang("en"),
-        Child(Head(
-            Child(HeadTitle(Text("My Page"))),
-            Child(Meta(Charset("UTF-8"))),
-        )),
-        Child(Body(
-            Child(H1(Text("Hello, World!"))),
-            Child(P(Text("Built with Blox"), Class("intro"))),
-        )),
+        Head(
+            HeadTitle(Text("My Page")),
+            Meta(Charset("UTF-8")),
+        ),
+        Body(
+            H1(Text("Hello, World!")),
+            P(Text("Built with Blox"), Class("intro")),
+        ),
     )
 
     fmt.Println("<!DOCTYPE html>")
@@ -150,28 +150,28 @@ func main() {
 loginForm := Form(
     Action("/login"),
     Method("POST"),
-    Child(Div(
-        Child(FormLabel(For("email"), Text("Email"))),
-        Child(Input(
+    Div(
+        FormLabel(For("email"), Text("Email")),
+        Input(
             InputType("email"),
             InputName("email"),
             Id("email"),
             Required(),
-        )),
-    )),
-    Child(Div(
-        Child(FormLabel(For("password"), Text("Password"))),
-        Child(Input(
+        ),
+    ),
+    Div(
+        FormLabel(For("password"), Text("Password")),
+        Input(
             InputType("password"),
             InputName("password"),
             Id("password"),
             Required(),
-        )),
-    )),
-    Child(Button(
+        ),
+    ),
+    Button(
         ButtonType("submit"),
         Text("Login"),
-    )),
+    ),
 )
 ```
 
@@ -181,11 +181,11 @@ loginForm := Form(
 func homeHandler(w http.ResponseWriter, r *http.Request) {
     page := Html(
         Lang("en"),
-        Child(Head(Child(HeadTitle(Text("Home"))))),
-        Child(Body(
-            Child(H1(Text("Welcome"))),
-            Child(P(Text("This page was built with Blox"))),
-        )),
+        Head(HeadTitle(Text("Home"))),
+        Body(
+            H1(Text("Welcome")),
+            P(Text("This page was built with Blox")),
+        ),
     )
 
     w.Header().Set("Content-Type", "text/html")
