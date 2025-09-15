@@ -170,3 +170,7 @@ func StyleKV(k, v string) Global {
 func On(ev, handler string) Global {
 	return Global{func(g *GlobalAttrs) { g.setEvent(ev, handler) }}
 }
+
+func Custom(k, v string) Global {
+	return Global{func(g *GlobalAttrs) { g.setCustom(k, v) }}
+}

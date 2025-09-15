@@ -14,6 +14,7 @@ type GlobalAttrs struct {
 	Aria   map[string]string // aria-*
 	Data   map[string]string // data-*
 	Events map[string]string // "onclick" -> "handler()"
+	Custom map[string]string // custom attributes like hx-*, x-*, etc.
 
 	// Pointers for tri-state values
 	TabIndex                                             *int
@@ -61,6 +62,13 @@ func (g *GlobalAttrs) setEvent(ev, handler string) {
 		g.Events = map[string]string{}
 	}
 	g.Events["on"+ev] = handler
+}
+
+func (g *GlobalAttrs) setCustom(k, v string) {
+	if g.Custom == nil {
+		g.Custom = map[string]string{}
+	}
+	g.Custom[k] = v
 }
 
 // Common writer reused by each tag's writeAttrs
@@ -197,6 +205,13 @@ func writeGlobal(sb *strings.Builder, g *GlobalAttrs) {
 	for evAttr, handler := range g.Events {
 		if evAttr != "" && handler != "" {
 			attr(sb, evAttr, handler)
+		}
+	}
+
+	// Custom attributes
+	for k, v := range g.Custom {
+		if k != "" && v != "" {
+			attr(sb, k, v)
 		}
 	}
 }
