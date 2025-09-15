@@ -1,3 +1,3 @@
-module github.com/plainkit/blox
+module github.com/plainkit/html
 
 go 1.18

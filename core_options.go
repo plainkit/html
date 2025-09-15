@@ -1,4 +1,4 @@
-package blox
+package html
 
 // Global option: one glue impl for all tags (methods are added in tag files)
 type Global struct {

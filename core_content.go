@@ -1,4 +1,4 @@
-package blox
+package html
 
 // Non-global content helpers (unified for all tags that accept children)
 type TxtOpt struct {
