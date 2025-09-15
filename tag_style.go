@@ -2,19 +2,19 @@ package blox
 
 import "strings"
 
-// Style
-type StyleAttrs struct {
+// HeadStyleAttrs attributes for the <style> tag
+type HeadStyleAttrs struct {
 	Global GlobalAttrs
 	Type   string
 	Media  string
 }
 
-type StyleArg interface {
-	applyStyle(*StyleAttrs, *[]Component)
+type HeadStyleArg interface {
+	applyHeadStyle(*HeadStyleAttrs, *[]Component)
 }
 
-func defaultStyleAttrs() *StyleAttrs {
-	return &StyleAttrs{
+func defaultHeadStyleAttrs() *HeadStyleAttrs {
+	return &HeadStyleAttrs{
 		Global: GlobalAttrs{
 			Style:  map[string]string{},
 			Aria:   map[string]string{},
@@ -24,26 +24,28 @@ func defaultStyleAttrs() *StyleAttrs {
 	}
 }
 
-func Style(args ...StyleArg) Node {
-	a := defaultStyleAttrs()
+func HeadStyle(args ...HeadStyleArg) Node {
+	a := defaultHeadStyleAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyStyle(a, &kids)
+		ar.applyHeadStyle(a, &kids)
 	}
 	return Node{Tag: "style", Attrs: a, Kids: kids}
 }
 
-// Style-specific options
+// MediaOpt sets the media attribute
 type MediaOpt struct{ v string }
 
 func Media(v string) MediaOpt { return MediaOpt{v} }
 
-func (g Global) applyStyle(a *StyleAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyStyle(_ *StyleAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyStyle(_ *StyleAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (o MediaOpt) applyStyle(a *StyleAttrs, _ *[]Component)    { a.Media = o.v }
+func (g Global) applyHeadStyle(a *HeadStyleAttrs, _ *[]Component) { g.do(&a.Global) }
+func (o TxtOpt) applyHeadStyle(_ *HeadStyleAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+func (o ChildOpt) applyHeadStyle(_ *HeadStyleAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
+func (o MediaOpt) applyHeadStyle(a *HeadStyleAttrs, _ *[]Component)    { a.Media = o.v }
 
-func (a *StyleAttrs) writeAttrs(sb *strings.Builder) {
+func (a *HeadStyleAttrs) writeAttrs(sb *strings.Builder) {
 	writeGlobal(sb, &a.Global)
 	if a.Type != "" {
 		attr(sb, "type", a.Type)

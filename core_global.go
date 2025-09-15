@@ -175,7 +175,7 @@ func writeGlobal(sb *strings.Builder, g *GlobalAttrs) {
 		attr(sb, "writingsuggestions", *g.WritingSuggestions)
 	}
 
-	// Style map
+	// HeadStyle map
 	if len(g.Style) > 0 {
 		var b strings.Builder
 		for k, v := range g.Style {

@@ -163,7 +163,7 @@ func Aria(k, v string) Global {
 	return Global{func(g *GlobalAttrs) { g.setAria(k, v) }}
 }
 
-func StyleKV(k, v string) Global {
+func Style(k, v string) Global {
 	return Global{func(g *GlobalAttrs) { g.setStyleKV(k, v) }}
 }
 
