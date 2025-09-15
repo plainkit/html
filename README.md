@@ -111,7 +111,7 @@ func Page() Node {
 ## Installation
 
 ```bash
-go get github.com/bloxui/blox
+go get github.com/plainkit/blox
 ```
 
 ## Usage
@@ -123,7 +123,7 @@ package main
 
 import (
     "fmt"
-    . "github.com/bloxui/blox"
+    . "github.com/plainkit/blox"
 )
 
 func main() {

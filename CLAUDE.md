@@ -29,8 +29,8 @@ Blox is a function-based HTML component library for Go that generates HTML at co
 
 ### Module Structure
 
-- Main library: `github.com/bloxui/blox` (Go 1.20+)
-- Demo app: `github.com/bloxui/blox/demo` (Go 1.21+, replaces main library locally)
+- Main library: `github.com/plainkit/blox` (Go 1.20+)
+- Demo app: `github.com/plainkit/blox/demo` (Go 1.21+, replaces main library locally)
 
 ## Core Architecture
 
@@ -160,7 +160,7 @@ When creating UI components in the `ui/` folder, follow this pattern:
 ```go
 package ui
 
-import x "github.com/bloxui/blox"
+import x "github.com/plainkit/blox"
 
 // ComponentArg interface for UI component arguments
 type ComponentArg interface {
