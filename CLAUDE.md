@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ---
 
-description: Guidelines for creating Blox idiomatic UI components
+description: Guidelines for creating Plain idiomatic UI components
 globs: "ui/\*.go"
 alwaysApply: true
 
@@ -12,7 +12,7 @@ alwaysApply: true
 
 ## Project Overview
 
-Blox is a function-based HTML component library for Go that generates HTML at compile time with zero runtime overhead. It provides type-safe HTML construction through function composition instead of template engines or struct-based builders.
+Plain is a function-based HTML component library for Go that generates HTML at compile time with zero runtime overhead. It provides type-safe HTML construction through function composition instead of template engines or struct-based builders.
 
 ## Development Commands
 
@@ -70,7 +70,7 @@ The `ui/` folder contains higher-level components following this pattern:
 #### Interface Adapter Pattern
 
 ```go
-// Accept both UI-specific and core Blox arguments
+// Accept both UI-specific and core Plain arguments
 func Component(args ...interface{}) x.Component {
     state := &componentState{}
 
@@ -134,7 +134,7 @@ func Component(args ...interface{}) x.Component {
 
 1. Create file in `ui/` directory following interface adapter pattern
 2. Use semantic CSS classes for styling
-3. Ensure compatibility with core Blox arguments via adapter system
+3. Ensure compatibility with core Plain arguments via adapter system
 4. Follow established naming conventions (`CardHeader`, `CardContent`, etc.)
 
 ## Demo Application Structure
@@ -143,7 +143,7 @@ The demo showcases practical usage patterns:
 
 - **Layout system**: Consistent navigation and footer across pages
 - **Component composition**: Cards, buttons, forms using the UI library
-- **HTTP integration**: Standard library handlers serving Blox-generated HTML
+- **HTTP integration**: Standard library handlers serving Plain-generated HTML
 - **CSS serving**: Embedded Tailwind CSS served as static asset
 
 Key demo patterns to follow when adding examples:
@@ -214,4 +214,4 @@ func Component(args ...interface{}) x.Component {
 }
 ```
 
-This pattern ensures excellent DX while maintaining Blox architectural consistency.
+This pattern ensures excellent DX while maintaining Plain architectural consistency.

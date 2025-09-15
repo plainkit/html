@@ -1,4 +1,4 @@
-# Blox
+# Plain
 
 A function-based HTML component library for Go that generates HTML at compile time with zero runtime overhead.
 
@@ -10,7 +10,7 @@ A function-based HTML component library for Go that generates HTML at compile ti
 
 **Missing type safety**: HTML attributes and structure errors only surface at runtime or in browsers, not during development.
 
-Blox solves these problems by providing compile-time HTML generation with function composition that feels natural in Go.
+Plain solves these problems by providing compile-time HTML generation with function composition that feels natural in Go.
 
 ## How it works
 
@@ -102,7 +102,7 @@ func Card(title, content string) Node {
 func Page() Node {
     return Div(
         Class("container"),
-        Card("Welcome", "Get started with Blox"),
+        Card("Welcome", "Get started with Plain"),
         Card("Features", "Type-safe HTML in Go"),
     )
 }
@@ -135,7 +135,7 @@ func main() {
         ),
         Body(
             H1(Text("Hello, World!")),
-            P(Text("Built with Blox"), Class("intro")),
+            P(Text("Built with Plain"), Class("intro")),
         ),
     )
 
@@ -184,7 +184,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
         Head(HeadTitle(Text("Home"))),
         Body(
             H1(Text("Welcome")),
-            P(Text("This page was built with Blox")),
+            P(Text("This page was built with Plain")),
         ),
     )
 
