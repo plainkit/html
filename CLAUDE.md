@@ -4,8 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ---
 
-description: Guidelines for creating Plain idiomatic UI components
-globs: "ui/\*.go"
+description: Guidelines for creating Plain idiomatic HTML components
+globs: "\*.go"
 alwaysApply: true
 
 ---
@@ -19,18 +19,10 @@ Plain is a function-based HTML component library for Go that generates HTML at c
 ### Core Library Development
 
 - **Build**: `go build` (builds the main library)
-- **Test**: `go test ./...` (run all tests, though no test files exist currently)
-- **Run demo**: `cd demo && go run main.go` (starts demo server on :3000)
-
-### Demo Application
-
-- **Start demo server**: `cd demo && go run main.go`
-- **Build CSS**: CSS is embedded in `css/embed.go` - Tailwind CSS compilation happens externally
-
-### Module Structure
-
-- Main library: `github.com/plainkit/blox` (Go 1.20+)
-- Demo app: `github.com/plainkit/blox/demo` (Go 1.21+, replaces main library locally)
+- **Test**: `go test ./...` (run all tests)
+- **Run sample**: `go run sample/main.go` (if sample exists)
+- **Format**: `go fmt ./...`
+- **Vet**: `go vet ./...`
 
 ## Core Architecture
 
@@ -44,12 +36,10 @@ Plain is a function-based HTML component library for Go that generates HTML at c
 ### File Organization Pattern
 
 ```
-core_*.go           # Core interfaces and rendering system
-options_*.go        # Option constructors (Text, Child, Class, etc.)
-tag_*.go           # HTML element implementations (one logical group per file)
-ui/*.go            # Higher-level UI components with styling
-css/               # CSS embedding and Tailwind integration
-demo/              # Example application showcasing the library
+core_*.go           # Core interfaces and rendering system (core_node.go, core_options.go, core_content.go)
+tag_*.go           # HTML element implementations (tag_div.go, tag_input.go, etc.)
+assets.go          # Asset collection and management system
+go.mod             # Module definition
 ```
 
 ### HTML Element Architecture
@@ -63,33 +53,14 @@ Each `tag_*.go` file follows this pattern:
 5. **Apply methods**: Connect options to attributes via interface satisfaction
 6. **writeAttrs method**: Generates HTML attribute strings
 
-### UI Components System
+### Asset System
 
-The `ui/` folder contains higher-level components following this pattern:
+The library includes an asset collection system that allows components to declare CSS and JavaScript dependencies:
 
-#### Interface Adapter Pattern
-
-```go
-// Accept both UI-specific and core Plain arguments
-func Component(args ...interface{}) x.Component {
-    state := &componentState{}
-
-    for _, arg := range args {
-        if adapted := adaptComponentArg(arg); adapted != nil {
-            adapted.applyUIComponent(state)
-        }
-    }
-
-    // Apply styling and build final component
-}
-```
-
-#### Key UI Principles
-
-- **No Custom Child Functions**: Always use `x.Child()`, never `ComponentChild()`
-- **No Custom Text Functions**: Always use `x.Text()`, never `ComponentText()`
-- **Interface Flexibility**: Support both `Component(x.Id("test"))` and UI-specific options
-- **Semantic CSS**: Use design system tokens (`bg-card`, `text-muted-foreground`, etc.)
+- **Node.AssetCSS**: CSS content to be collected
+- **Node.AssetJS**: JavaScript content to be collected
+- **Node.AssetName**: Name for asset deduplication
+- **WithAssets()**: Method to attach assets to components
 
 ## Type Safety System
 
@@ -105,20 +76,20 @@ func Component(args ...interface{}) x.Component {
 - Element-specific attributes are constrained by their respective `Arg` interfaces
 - Method dispatch resolves at compile time with zero runtime overhead
 
-## CSS Integration
+## Content and Text Handling
 
-### Tailwind CSS System
+### Text Content
 
-- CSS is compiled externally and embedded in `css/embed.go`
-- Demo serves CSS via `/assets/styles.css` endpoint
-- Uses CSS custom properties with `@theme inline` for design tokens
-- System dark mode detection via `@media (prefers-color-scheme: dark)`
+- **TextNode**: Automatically HTML-escapes content for security
+- **UnsafeTextNode**: Raw HTML content (use with caution)
+- **T()**: Convenience function for creating TextNode
+- **Child()**: Function for adding component children
 
-### Design System
+### Component Composition
 
-- Semantic color tokens: `bg-card`, `text-card-foreground`, `text-muted-foreground`
-- Consistent spacing and sizing through Tailwind utilities
-- Component variants follow modern UI library patterns
+- All HTML elements can accept other components as children
+- Node implements apply methods for all major HTML elements
+- Direct component passing without wrapping (e.g., `Div(myComponent)` works)
 
 ## Adding New Elements
 
@@ -130,88 +101,57 @@ func Component(args ...interface{}) x.Component {
 4. Add element-specific option constructors and apply methods
 5. Implement `writeAttrs()` method for HTML generation
 
-### UI Components
+## Global Attribute System
 
-1. Create file in `ui/` directory following interface adapter pattern
-2. Use semantic CSS classes for styling
-3. Ensure compatibility with core Plain arguments via adapter system
-4. Follow established naming conventions (`CardHeader`, `CardContent`, etc.)
+### Universal Attributes
 
-## Demo Application Structure
+The `Global` type provides attributes that work with any HTML element:
 
-The demo showcases practical usage patterns:
+- **Class()**: CSS class names
+- **Id()**: Element ID
+- **Data()**: Data attributes (data-\*)
+- **Aria()**: ARIA accessibility attributes
+- **Style()**: Inline CSS styles
+- **On()**: Event handlers
+- **Custom()**: Custom attributes (like hx-_, x-_, etc.)
 
-- **Layout system**: Consistent navigation and footer across pages
-- **Component composition**: Cards, buttons, forms using the UI library
-- **HTTP integration**: Standard library handlers serving Plain-generated HTML
-- **CSS serving**: Embedded Tailwind CSS served as static asset
+### Content Functions
 
-Key demo patterns to follow when adding examples:
+- **T()**: Create escaped text content
+- **Child()**: Add component children
+- **C()**: Shorthand for Child()
 
-- Use semantic HTML structure
-- Demonstrate type safety benefits
-- Show composition patterns
-- Include responsive design principles
+## HTML Element Coverage
 
-## UI Component Implementation Template
+The library provides comprehensive HTML5 element support:
 
-When creating UI components in the `ui/` folder, follow this pattern:
+- **Document structure**: Html, Head, Body, Title, Meta, Link, Style, Script
+- **Sectioning**: Header, Nav, Main, Section, Article, Aside, Footer
+- **Headings**: H1-H6
+- **Text content**: P, Div, Span, Pre, Blockquote, List elements (Ul, Ol, Li)
+- **Text semantics**: A, Strong, Em, Small, S, Cite, Q, Dfn, Abbr, Time, Code, Var, Samp, Kbd, Sub, Sup, I, B, U, Mark, Del, Ins
+- **Forms**: Form, Input, Textarea, Button, Select, Option, Optgroup, Label, Fieldset, Legend, Datalist
+- **Tables**: Table, Thead, Tbody, Tfoot, Tr, Th, Td, Caption, Colgroup, Col
+- **Media**: Img, Audio, Video, Source, Track, Canvas, Iframe
+- **Interactive**: Details, Summary, Dialog
+- **SVG**: Svg and common SVG elements (Circle, Rect, Path, etc.)
+
+## Writing Tests
+
+Create test files following Go conventions:
 
 ```go
-package ui
+func TestComponent(t *testing.T) {
+    component := Div(
+        Class("test"),
+        T("Hello"),
+    )
 
-import x "github.com/plainkit/blox"
+    html := Render(component)
+    expected := `<div class="test">Hello</div>`
 
-// ComponentArg interface for UI component arguments
-type ComponentArg interface {
-    applyUIComponent(*componentState)
-}
-
-// componentState holds configuration
-type componentState struct {
-    children []x.Component
-    baseArgs []x.DivArg // or appropriate tag args
-}
-
-// Universal adapter for core blox args
-type ComponentArgAdapter struct{ arg x.DivArg }
-
-func (a ComponentArgAdapter) applyUIComponent(s *componentState) {
-    s.baseArgs = append(s.baseArgs, a.arg)
-}
-
-// Interface adapter magic
-func adaptComponentArg(arg interface{}) ComponentArg {
-    if uiArg, ok := arg.(ComponentArg); ok {
-        return uiArg
+    if html != expected {
+        t.Errorf("Expected %q, got %q", expected, html)
     }
-    if coreArg, ok := arg.(x.DivArg); ok {
-        return ComponentArgAdapter{coreArg}
-    }
-    return nil
-}
-
-// Main component function
-func Component(args ...interface{}) x.Component {
-    state := &componentState{}
-
-    for _, arg := range args {
-        if adapted := adaptComponentArg(arg); adapted != nil {
-            adapted.applyUIComponent(state)
-        }
-    }
-
-    // Apply base styling classes
-    classes := "component-base-classes semantic-tokens"
-    componentArgs := append([]x.DivArg{x.Class(classes)}, state.baseArgs...)
-
-    // Add children
-    for _, child := range state.children {
-        componentArgs = append(componentArgs, x.Child(child))
-    }
-
-    return x.Div(componentArgs...)
 }
 ```
-
-This pattern ensures excellent DX while maintaining Plain architectural consistency.

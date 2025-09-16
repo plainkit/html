@@ -1,6 +1,10 @@
 # Plain
 
-A function-based HTML component library for Go that generates HTML at compile time with zero runtime overhead.
+Type‑safe HTML for Go. Server‑first, hypermedia by default, htmx as an optional extension. Compile‑time validation, zero hydration, no client runtime.
+
+## What is Plain?
+
+Plain generates HTML using pure Go functions instead of template engines. Each element is a typed function with compile‑time validation and IDE autocomplete. You build pages from links and forms, keep state on the server, and add interactivity progressively (e.g., with htmx) — no SSR/hydration/SPA machinery.
 
 ## Why
 
@@ -19,8 +23,8 @@ Plain solves these problems by providing compile-time HTML generation with funct
 ```go
 div := Div(
     Class("container"),
-    H1(Text("Hello"), Class("title")),
-    P(Text("World"), Class("content")),
+    H1(T("Hello"), Class("title")),
+    P(T("World"), Class("content")),
 )
 ```
 
@@ -29,7 +33,7 @@ div := Div(
 Each HTML element has its own option types. Input elements only accept input-specific attributes:
 
 ```go
-// This compiles
+// This compiles and works
 input := Input(
     InputType("email"),
     InputName("email"),
@@ -37,7 +41,7 @@ input := Input(
     Placeholder("Enter email"),
 )
 
-// This won't compile - Href is not valid for Input
+// This fails at compile time - Href is not valid for Input
 input := Input(Href("/invalid")) // Compile error
 ```
 
@@ -46,7 +50,7 @@ input := Input(Href("/invalid")) // Compile error
 HTML generation happens through method dispatch resolved at compile time. No reflection, no runtime parsing:
 
 ```go
-component := Div(Class("test"), Text("Hello"))
+component := Div(Class("test"), T("Hello"))
 html := Render(component) // Pure string building
 ```
 
@@ -75,7 +79,7 @@ Components are just Go values. Test them like any other Go code:
 func TestButton(t *testing.T) {
     btn := Button(
         ButtonType("submit"),
-        Text("Click me"),
+        T("Click me"),
         Class("btn"),
     )
 
@@ -111,7 +115,7 @@ func Page() Node {
 ## Installation
 
 ```bash
-go get github.com/plainkit/blox
+go get github.com/plainkit/html
 ```
 
 ## Usage
@@ -123,19 +127,20 @@ package main
 
 import (
     "fmt"
-    . "github.com/plainkit/blox"
+    . "github.com/plainkit/html"
 )
 
 func main() {
     page := Html(
         Lang("en"),
         Head(
-            HeadTitle(Text("My Page")),
+            HeadTitle(T("My Page")),
             Meta(Charset("UTF-8")),
+			HeadStyle(T(".intro { color: blue; }")),
         ),
         Body(
-            H1(Text("Hello, World!")),
-            P(Text("Built with Plain"), Class("intro")),
+            H1(T("Hello, World!")),
+            P(T("Built with Plain"), Class("intro")),
         ),
     )
 
@@ -151,7 +156,7 @@ loginForm := Form(
     Action("/login"),
     Method("POST"),
     Div(
-        FormLabel(For("email"), Text("Email")),
+        FormLabel(For("email"), T("Email")),
         Input(
             InputType("email"),
             InputName("email"),
@@ -160,7 +165,7 @@ loginForm := Form(
         ),
     ),
     Div(
-        FormLabel(For("password"), Text("Password")),
+        FormLabel(For("password"), T("Password")),
         Input(
             InputType("password"),
             InputName("password"),
@@ -170,7 +175,7 @@ loginForm := Form(
     ),
     Button(
         ButtonType("submit"),
-        Text("Login"),
+        T("Login"),
     ),
 )
 ```
@@ -181,10 +186,10 @@ loginForm := Form(
 func homeHandler(w http.ResponseWriter, r *http.Request) {
     page := Html(
         Lang("en"),
-        Head(HeadTitle(Text("Home"))),
+        Head(HeadTitle(T("Home"))),
         Body(
-            H1(Text("Welcome")),
-            P(Text("This page was built with Plain")),
+            H1(T("Welcome")),
+            P(T("This page was built with Plain")),
         ),
     )
 
