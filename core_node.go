@@ -153,3 +153,6 @@ func (n Node) applyTfoot(_ *TfootAttrs, kids *[]Component) { *kids = append(*kid
 func (n Node) applyTr(_ *TrAttrs, kids *[]Component)       { *kids = append(*kids, n) }
 func (n Node) applyTh(_ *ThAttrs, kids *[]Component)       { *kids = append(*kids, n) }
 func (n Node) applyTd(_ *TdAttrs, kids *[]Component)       { *kids = append(*kids, n) }
+
+// Templates
+func (n Node) applyTemplate(_ *TemplateAttrs, kids *[]Component) { *kids = append(*kids, n) }
