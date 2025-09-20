@@ -31,7 +31,7 @@ type CircleArg interface {
 func defaultCircleAttrs() *CircleAttrs {
 	return &CircleAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

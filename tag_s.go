@@ -14,7 +14,7 @@ type SArg interface {
 func defaultSAttrs() *SAttrs {
 	return &SAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

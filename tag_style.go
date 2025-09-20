@@ -16,7 +16,7 @@ type HeadStyleArg interface {
 func defaultHeadStyleAttrs() *HeadStyleAttrs {
 	return &HeadStyleAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

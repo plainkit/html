@@ -14,7 +14,7 @@ type MainArg interface {
 func defaultMainAttrs() *MainAttrs {
 	return &MainAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

@@ -19,7 +19,7 @@ type TrackArg interface {
 func defaultTrackAttrs() *TrackAttrs {
 	return &TrackAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

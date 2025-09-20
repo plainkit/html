@@ -28,6 +28,7 @@ type InputAttrs struct {
 	Formnovalidate bool
 	Formtarget     string
 	List           string
+	Autocomplete   string
 }
 
 type InputArg interface {
@@ -37,7 +38,7 @@ type InputArg interface {
 func defaultInputAttrs() *InputAttrs {
 	return &InputAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},
@@ -130,6 +131,7 @@ func (o FormmethodOpt) applyInput(a *InputAttrs)     { a.Formmethod = o.v }
 func (o FormnovalidateOpt) applyInput(a *InputAttrs) { a.Formnovalidate = true }
 func (o FormtargetOpt) applyInput(a *InputAttrs)     { a.Formtarget = o.v }
 func (o ListOpt) applyInput(a *InputAttrs)           { a.List = o.v }
+func (o AutocompleteOpt) applyInput(a *InputAttrs)   { a.Autocomplete = o.v }
 
 func (a *InputAttrs) writeAttrs(sb *strings.Builder) {
 	writeGlobal(sb, &a.Global)
@@ -204,5 +206,8 @@ func (a *InputAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.List != "" {
 		attr(sb, "list", a.List)
+	}
+	if a.Autocomplete != "" {
+		attr(sb, "autocomplete", a.Autocomplete)
 	}
 }

@@ -40,7 +40,7 @@ type SvgTextArg interface {
 func defaultSvgTextAttrs() *SvgTextAttrs {
 	return &SvgTextAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

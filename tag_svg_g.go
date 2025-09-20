@@ -27,7 +27,7 @@ type GArg interface {
 func defaultGAttrs() *GAttrs {
 	return &GAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

@@ -14,7 +14,7 @@ type SupArg interface {
 func defaultSupAttrs() *SupAttrs {
 	return &SupAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

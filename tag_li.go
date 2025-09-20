@@ -15,7 +15,7 @@ type LiArg interface {
 func defaultLiAttrs() *LiAttrs {
 	return &LiAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

@@ -14,7 +14,7 @@ type H2Arg interface {
 func defaultH2Attrs() *H2Attrs {
 	return &H2Attrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

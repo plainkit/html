@@ -14,7 +14,7 @@ type ArticleArg interface {
 func defaultArticleAttrs() *ArticleAttrs {
 	return &ArticleAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

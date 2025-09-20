@@ -13,7 +13,7 @@ type DivArg interface {
 func defaultDivAttrs() *DivAttrs {
 	return &DivAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

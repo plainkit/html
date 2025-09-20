@@ -14,7 +14,7 @@ type H1Arg interface {
 func defaultH1Attrs() *H1Attrs {
 	return &H1Attrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

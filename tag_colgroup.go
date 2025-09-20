@@ -15,7 +15,7 @@ type ColgroupArg interface {
 func defaultColgroupAttrs() *ColgroupAttrs {
 	return &ColgroupAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

@@ -156,3 +156,23 @@ func (n Node) applyTd(_ *TdAttrs, kids *[]Component)       { *kids = append(*kid
 
 // Templates
 func (n Node) applyTemplate(_ *TemplateAttrs, kids *[]Component) { *kids = append(*kids, n) }
+
+// SVG Elements
+func (n Node) applySvg(_ *SvgAttrs, kids *[]Component)               { *kids = append(*kids, n) }
+func (n Node) applyG(_ *GAttrs, kids *[]Component)                   { *kids = append(*kids, n) }
+func (n Node) applyPath(_ *PathAttrs, kids *[]Component)             { *kids = append(*kids, n) }
+func (n Node) applyPolyline(_ *PolylineAttrs, kids *[]Component)     { *kids = append(*kids, n) }
+func (n Node) applyCircle(_ *CircleAttrs, kids *[]Component)         { *kids = append(*kids, n) }
+func (n Node) applyRect(_ *RectAttrs, kids *[]Component)             { *kids = append(*kids, n) }
+func (n Node) applyLine(_ *LineAttrs, kids *[]Component)             { *kids = append(*kids, n) }
+func (n Node) applyEllipse(_ *EllipseAttrs, kids *[]Component)       { *kids = append(*kids, n) }
+func (n Node) applyPolygon(_ *PolygonAttrs, kids *[]Component)       { *kids = append(*kids, n) }
+func (n Node) applySvgText(_ *SvgTextAttrs, kids *[]Component)       { *kids = append(*kids, n) }
+func (n Node) applyDefs(_ *DefsAttrs, kids *[]Component)             { *kids = append(*kids, n) }
+func (n Node) applyUse(_ *UseAttrs, kids *[]Component)               { *kids = append(*kids, n) }
+func (n Node) applyPre(_ *PreAttrs, kids *[]Component)               { *kids = append(*kids, n) }
+func (n Node) applyBlockquote(_ *BlockquoteAttrs, kids *[]Component) { *kids = append(*kids, n) }
+
+// Media elements
+func (n Node) applyVideo(_ *VideoAttrs, kids *[]Component) { *kids = append(*kids, n) }
+func (n Node) applyAudio(_ *AudioAttrs, kids *[]Component) { *kids = append(*kids, n) }

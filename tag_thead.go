@@ -14,7 +14,7 @@ type TheadArg interface {
 func defaultTheadAttrs() *TheadAttrs {
 	return &TheadAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

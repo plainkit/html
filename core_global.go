@@ -9,8 +9,10 @@ type GlobalAttrs struct {
 	ItemType, ItemId, ItemProp, ItemRef                               string
 	XMLLang, XMLBase, VirtualKeyboardPolicy                           string
 
+	// Style attribute as a single string
+	Style string
+
 	// Map attributes
-	Style  map[string]string // style: value
 	Aria   map[string]string // aria-*
 	Data   map[string]string // data-*
 	Events map[string]string // "onclick" -> "handler()"
@@ -36,11 +38,8 @@ func (g *GlobalAttrs) addClass(v string) {
 	}
 }
 
-func (g *GlobalAttrs) setStyleKV(k, v string) {
-	if g.Style == nil {
-		g.Style = map[string]string{}
-	}
-	g.Style[k] = v
+func (g *GlobalAttrs) setStyle(style string) {
+	g.Style = style
 }
 
 func (g *GlobalAttrs) setAria(k, v string) {
@@ -175,16 +174,9 @@ func writeGlobal(sb *strings.Builder, g *GlobalAttrs) {
 		attr(sb, "writingsuggestions", *g.WritingSuggestions)
 	}
 
-	// HeadStyle map
-	if len(g.Style) > 0 {
-		var b strings.Builder
-		for k, v := range g.Style {
-			b.WriteString(k)
-			b.WriteString(":")
-			b.WriteString(v)
-			b.WriteString(";")
-		}
-		attr(sb, "style", b.String())
+	// Style attribute
+	if g.Style != "" {
+		attr(sb, "style", g.Style)
 	}
 
 	// Aria attributes

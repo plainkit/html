@@ -29,7 +29,7 @@ type PolylineArg interface {
 func defaultPolylineAttrs() *PolylineAttrs {
 	return &PolylineAttrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},

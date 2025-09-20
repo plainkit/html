@@ -14,7 +14,7 @@ type H5Arg interface {
 func defaultH5Attrs() *H5Attrs {
 	return &H5Attrs{
 		Global: GlobalAttrs{
-			Style:  map[string]string{},
+			Style:  "",
 			Aria:   map[string]string{},
 			Data:   map[string]string{},
 			Events: map[string]string{},
