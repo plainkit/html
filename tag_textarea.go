@@ -4,18 +4,20 @@ import "strings"
 
 // Textarea
 type TextareaAttrs struct {
-	Global      GlobalAttrs
-	Name        string
-	Rows        int
-	Cols        int
-	Placeholder string
-	Required    bool
-	Disabled    bool
-	Readonly    bool
-	Maxlength   int
-	Minlength   int
-	Wrap        string
-	Form        string
+	Global       GlobalAttrs
+	Name         string
+	Rows         int
+	Cols         int
+	Placeholder  string
+	Required     bool
+	Disabled     bool
+	Readonly     bool
+	Maxlength    int
+	Minlength    int
+	MaxlengthSet bool
+	MinlengthSet bool
+	Wrap         string
+	Form         string
 }
 
 type TextareaArg interface {
@@ -65,10 +67,16 @@ func (o PlaceholderOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)  { a.Pla
 func (o RequiredOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)     { a.Required = true }
 func (o DisabledOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)     { a.Disabled = true }
 func (o ReadonlyOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)     { a.Readonly = true }
-func (o MaxlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)    { a.Maxlength = o.v }
-func (o MinlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)    { a.Minlength = o.v }
-func (o WrapOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)         { a.Wrap = o.v }
-func (o FormOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)         { a.Form = o.v }
+func (o MaxlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Maxlength = o.v
+	a.MaxlengthSet = true
+}
+func (o MinlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Minlength = o.v
+	a.MinlengthSet = true
+}
+func (o WrapOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) { a.Wrap = o.v }
+func (o FormOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) { a.Form = o.v }
 
 func (a *TextareaAttrs) writeAttrs(sb *strings.Builder) {
 	writeGlobal(sb, &a.Global)
@@ -93,10 +101,10 @@ func (a *TextareaAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Readonly {
 		boolAttr(sb, "readonly")
 	}
-	if a.Maxlength > 0 {
+	if a.MaxlengthSet {
 		attr(sb, "maxlength", itoa(a.Maxlength))
 	}
-	if a.Minlength > 0 {
+	if a.MinlengthSet {
 		attr(sb, "minlength", itoa(a.Minlength))
 	}
 	if a.Wrap != "" {

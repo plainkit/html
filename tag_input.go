@@ -20,6 +20,8 @@ type InputAttrs struct {
 	Size           int
 	Maxlength      int
 	Minlength      int
+	MaxlengthSet   bool
+	MinlengthSet   bool
 	Accept         string
 	Form           string
 	Formaction     string
@@ -106,23 +108,29 @@ func Formnovalidate() FormnovalidateOpt   { return FormnovalidateOpt{} }
 func Formtarget(v string) FormtargetOpt   { return FormtargetOpt{v} }
 func List(v string) ListOpt               { return ListOpt{v} }
 
-func (g Global) applyInput(a *InputAttrs)            { g.do(&a.Global) }
-func (o InputTypeOpt) applyInput(a *InputAttrs)      { a.Type = o.v }
-func (o InputNameOpt) applyInput(a *InputAttrs)      { a.Name = o.v }
-func (o InputValueOpt) applyInput(a *InputAttrs)     { a.Value = o.v }
-func (o PlaceholderOpt) applyInput(a *InputAttrs)    { a.Placeholder = o.v }
-func (o RequiredOpt) applyInput(a *InputAttrs)       { a.Required = true }
-func (o DisabledOpt) applyInput(a *InputAttrs)       { a.Disabled = true }
-func (o ReadonlyOpt) applyInput(a *InputAttrs)       { a.Readonly = true }
-func (o MultipleOpt) applyInput(a *InputAttrs)       { a.Multiple = true }
-func (o CheckedOpt) applyInput(a *InputAttrs)        { a.Checked = true }
-func (o MinOpt) applyInput(a *InputAttrs)            { a.Min = o.v }
-func (o MaxOpt) applyInput(a *InputAttrs)            { a.Max = o.v }
-func (o StepOpt) applyInput(a *InputAttrs)           { a.Step = o.v }
-func (o PatternOpt) applyInput(a *InputAttrs)        { a.Pattern = o.v }
-func (o SizeOpt) applyInput(a *InputAttrs)           { a.Size = o.v }
-func (o MaxlengthOpt) applyInput(a *InputAttrs)      { a.Maxlength = o.v }
-func (o MinlengthOpt) applyInput(a *InputAttrs)      { a.Minlength = o.v }
+func (g Global) applyInput(a *InputAttrs)         { g.do(&a.Global) }
+func (o InputTypeOpt) applyInput(a *InputAttrs)   { a.Type = o.v }
+func (o InputNameOpt) applyInput(a *InputAttrs)   { a.Name = o.v }
+func (o InputValueOpt) applyInput(a *InputAttrs)  { a.Value = o.v }
+func (o PlaceholderOpt) applyInput(a *InputAttrs) { a.Placeholder = o.v }
+func (o RequiredOpt) applyInput(a *InputAttrs)    { a.Required = true }
+func (o DisabledOpt) applyInput(a *InputAttrs)    { a.Disabled = true }
+func (o ReadonlyOpt) applyInput(a *InputAttrs)    { a.Readonly = true }
+func (o MultipleOpt) applyInput(a *InputAttrs)    { a.Multiple = true }
+func (o CheckedOpt) applyInput(a *InputAttrs)     { a.Checked = true }
+func (o MinOpt) applyInput(a *InputAttrs)         { a.Min = o.v }
+func (o MaxOpt) applyInput(a *InputAttrs)         { a.Max = o.v }
+func (o StepOpt) applyInput(a *InputAttrs)        { a.Step = o.v }
+func (o PatternOpt) applyInput(a *InputAttrs)     { a.Pattern = o.v }
+func (o SizeOpt) applyInput(a *InputAttrs)        { a.Size = o.v }
+func (o MaxlengthOpt) applyInput(a *InputAttrs) {
+	a.Maxlength = o.v
+	a.MaxlengthSet = true
+}
+func (o MinlengthOpt) applyInput(a *InputAttrs) {
+	a.Minlength = o.v
+	a.MinlengthSet = true
+}
 func (o AcceptOpt) applyInput(a *InputAttrs)         { a.Accept = o.v }
 func (o FormOpt) applyInput(a *InputAttrs)           { a.Form = o.v }
 func (o FormactionOpt) applyInput(a *InputAttrs)     { a.Formaction = o.v }
@@ -177,10 +185,10 @@ func (a *InputAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Size > 0 {
 		attr(sb, "size", itoa(a.Size))
 	}
-	if a.Maxlength > 0 {
+	if a.MaxlengthSet {
 		attr(sb, "maxlength", itoa(a.Maxlength))
 	}
-	if a.Minlength > 0 {
+	if a.MinlengthSet {
 		attr(sb, "minlength", itoa(a.Minlength))
 	}
 	if a.Accept != "" {

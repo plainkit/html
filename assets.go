@@ -43,7 +43,8 @@ func (a *Assets) collectRecursive(components []Component) {
 		var compName string
 		if namedComp, ok := comp.(HasName); ok {
 			compName = namedComp.Name()
-		} else {
+		}
+		if compName == "" {
 			// Fallback: use a simple string representation for unnamed components
 			compName = "unnamed"
 		}

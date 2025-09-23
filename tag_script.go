@@ -63,8 +63,11 @@ func (o DeferOpt) applyScript(a *ScriptAttrs, _ *[]Component)      { a.Defer = t
 func (o ScriptSrcOpt) applyScript(a *ScriptAttrs, _ *[]Component)  { a.Src = o.v }
 func (o ScriptTypeOpt) applyScript(a *ScriptAttrs, _ *[]Component) { a.Type = o.v }
 
-// Compile-time type safety: Script can be added to Head
 func (script ScriptComponent) applyHead(_ *HeadAttrs, kids *[]Component) {
+	*kids = append(*kids, script)
+}
+
+func (script ScriptComponent) applyBody(_ *BodyAttrs, kids *[]Component) {
 	*kids = append(*kids, script)
 }
 

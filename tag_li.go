@@ -4,8 +4,9 @@ import "strings"
 
 // LI (List Item)
 type LiAttrs struct {
-	Global GlobalAttrs
-	Value  int
+	Global   GlobalAttrs
+	Value    int
+	valueSet bool
 }
 
 type LiArg interface {
@@ -40,7 +41,10 @@ func Value(v int) ValueOpt { return ValueOpt{v} }
 func (g Global) applyLi(a *LiAttrs, _ *[]Component)      { g.do(&a.Global) }
 func (o TxtOpt) applyLi(_ *LiAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
 func (o ChildOpt) applyLi(_ *LiAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (o ValueOpt) applyLi(a *LiAttrs, _ *[]Component)    { a.Value = o.v }
+func (o ValueOpt) applyLi(a *LiAttrs, _ *[]Component) {
+	a.Value = o.v
+	a.valueSet = true
+}
 
 // Compile-time type safety: Li can be added to Ul and Ol
 // This makes Li() return something that implements both UlArg and OlArg
@@ -60,7 +64,7 @@ func (li LiComponent) applyOl(_ *OlAttrs, kids *[]Component) {
 
 func (a *LiAttrs) writeAttrs(sb *strings.Builder) {
 	writeGlobal(sb, &a.Global)
-	if a.Value > 0 {
+	if a.valueSet {
 		attr(sb, "value", itoa(a.Value))
 	}
 }

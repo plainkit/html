@@ -24,8 +24,6 @@ func defaultImgAttrs() *ImgAttrs {
 			Data:   map[string]string{},
 			Events: map[string]string{},
 		},
-		Decoding: "auto",
-		Loading:  "lazy",
 	}
 }
 

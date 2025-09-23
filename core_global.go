@@ -1,6 +1,9 @@
 package html
 
-import "strings"
+import (
+	"sort"
+	"strings"
+)
 
 type GlobalAttrs struct {
 	// Common core
@@ -180,30 +183,41 @@ func writeGlobal(sb *strings.Builder, g *GlobalAttrs) {
 	}
 
 	// Aria attributes
-	for k, v := range g.Aria {
-		if k != "" {
-			attr(sb, "aria-"+k, v)
-		}
+	for _, k := range sortedKeys(g.Aria) {
+		attr(sb, "aria-"+k, g.Aria[k])
 	}
 
 	// Data attributes
-	for k, v := range g.Data {
-		if k != "" {
-			attr(sb, "data-"+k, v)
-		}
+	for _, k := range sortedKeys(g.Data) {
+		attr(sb, "data-"+k, g.Data[k])
 	}
 
 	// Event handlers
-	for evAttr, handler := range g.Events {
-		if evAttr != "" && handler != "" {
+	for _, evAttr := range sortedKeys(g.Events) {
+		handler := g.Events[evAttr]
+		if handler != "" {
 			attr(sb, evAttr, handler)
 		}
 	}
 
 	// Custom attributes
-	for k, v := range g.Custom {
-		if k != "" && v != "" {
+	for _, k := range sortedKeys(g.Custom) {
+		if v := g.Custom[k]; v != "" {
 			attr(sb, k, v)
 		}
 	}
+}
+
+func sortedKeys(m map[string]string) []string {
+	if len(m) == 0 {
+		return nil
+	}
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		if k != "" {
+			keys = append(keys, k)
+		}
+	}
+	sort.Strings(keys)
+	return keys
 }

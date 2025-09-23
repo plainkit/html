@@ -6,6 +6,7 @@ import "strings"
 type OlAttrs struct {
 	Global   GlobalAttrs
 	Start    int
+	startSet bool
 	Type     string
 	Reversed bool
 }
@@ -43,14 +44,17 @@ func Start(v int) StartOpt  { return StartOpt{v} }
 func Type(v string) TypeOpt { return TypeOpt{v} }
 func Reversed() ReversedOpt { return ReversedOpt{} }
 
-func (g Global) applyOl(a *OlAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o StartOpt) applyOl(a *OlAttrs, _ *[]Component)    { a.Start = o.v }
+func (g Global) applyOl(a *OlAttrs, _ *[]Component) { g.do(&a.Global) }
+func (o StartOpt) applyOl(a *OlAttrs, _ *[]Component) {
+	a.Start = o.v
+	a.startSet = true
+}
 func (o TypeOpt) applyOl(a *OlAttrs, _ *[]Component)     { a.Type = o.v }
 func (o ReversedOpt) applyOl(a *OlAttrs, _ *[]Component) { a.Reversed = true }
 
 func (a *OlAttrs) writeAttrs(sb *strings.Builder) {
 	writeGlobal(sb, &a.Global)
-	if a.Start > 0 {
+	if a.startSet {
 		attr(sb, "start", itoa(a.Start))
 	}
 	if a.Type != "" {
