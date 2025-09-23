@@ -2,9 +2,9 @@ package html
 
 import "strings"
 
-// Caption
 type CaptionAttrs struct {
 	Global GlobalAttrs
+	Align  string
 }
 
 type CaptionArg interface {
@@ -31,9 +31,25 @@ func Caption(args ...CaptionArg) Node {
 	return Node{Tag: "caption", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyCaption(a *CaptionAttrs, _ *[]Component) { g.do(&a.Global) }
+func (g Global) applyCaption(a *CaptionAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
 func (o TxtOpt) applyCaption(_ *CaptionAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o ChildOpt) applyCaption(_ *CaptionAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *CaptionAttrs) writeAttrs(sb *strings.Builder)             { writeGlobal(sb, &a.Global) }
+
+func (o ChildOpt) applyCaption(_ *CaptionAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o AlignOpt) applyCaption(a *CaptionAttrs, _ *[]Component) {
+	a.Align = o.v
+}
+
+func (a *CaptionAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+	if a.Align != "" {
+		Attr(sb, "align", a.Align)
+	}
+}

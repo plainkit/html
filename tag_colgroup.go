@@ -2,10 +2,14 @@ package html
 
 import "strings"
 
-// Colgroup
 type ColgroupAttrs struct {
-	Global GlobalAttrs
-	Span   int
+	Global  GlobalAttrs
+	Align   string
+	Char    string
+	Charoff string
+	Span    string
+	Valign  string
+	Width   string
 }
 
 type ColgroupArg interface {
@@ -32,20 +36,55 @@ func Colgroup(args ...ColgroupArg) Node {
 	return Node{Tag: "colgroup", Attrs: a, Kids: kids}
 }
 
-type SpanOpt struct{ v int }
+func (g Global) applyColgroup(a *ColgroupAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
 
-func SpanAttr(v int) SpanOpt { return SpanOpt{v} }
-
-func (g Global) applyColgroup(a *ColgroupAttrs, _ *[]Component) { g.do(&a.Global) }
 func (o TxtOpt) applyColgroup(_ *ColgroupAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o ChildOpt) applyColgroup(_ *ColgroupAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (o SpanOpt) applyColgroup(a *ColgroupAttrs, _ *[]Component)     { a.Span = o.v }
+
+func (o ChildOpt) applyColgroup(_ *ColgroupAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o AlignOpt) applyColgroup(a *ColgroupAttrs, _ *[]Component) {
+	a.Align = o.v
+}
+func (o CharOpt) applyColgroup(a *ColgroupAttrs, _ *[]Component) {
+	a.Char = o.v
+}
+func (o CharoffOpt) applyColgroup(a *ColgroupAttrs, _ *[]Component) {
+	a.Charoff = o.v
+}
+func (o SpanOpt) applyColgroup(a *ColgroupAttrs, _ *[]Component) {
+	a.Span = o.v
+}
+func (o ValignOpt) applyColgroup(a *ColgroupAttrs, _ *[]Component) {
+	a.Valign = o.v
+}
+func (o WidthOpt) applyColgroup(a *ColgroupAttrs, _ *[]Component) {
+	a.Width = o.v
+}
 
 func (a *ColgroupAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
-	if a.Span > 0 {
-		attr(sb, "span", itoa(a.Span))
+	WriteGlobal(sb, &a.Global)
+	if a.Align != "" {
+		Attr(sb, "align", a.Align)
+	}
+	if a.Char != "" {
+		Attr(sb, "char", a.Char)
+	}
+	if a.Charoff != "" {
+		Attr(sb, "charoff", a.Charoff)
+	}
+	if a.Span != "" {
+		Attr(sb, "span", a.Span)
+	}
+	if a.Valign != "" {
+		Attr(sb, "valign", a.Valign)
+	}
+	if a.Width != "" {
+		Attr(sb, "width", a.Width)
 	}
 }

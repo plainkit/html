@@ -30,12 +30,18 @@ func Head(args ...HeadArg) Node {
 	return Node{Tag: "head", Attrs: a, Kids: kids}
 }
 
-// Global option glue
 func (g Global) applyHead(a *HeadAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-// Attrs writer implementation
+func (o TxtOpt) applyHead(_ *HeadAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyHead(_ *HeadAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
 func (a *HeadAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
+	WriteGlobal(sb, &a.Global)
 }

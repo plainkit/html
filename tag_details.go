@@ -2,9 +2,9 @@ package html
 
 import "strings"
 
-// Details
 type DetailsAttrs struct {
 	Global GlobalAttrs
+	Name   string
 	Open   bool
 }
 
@@ -32,21 +32,31 @@ func Details(args ...DetailsArg) Node {
 	return Node{Tag: "details", Attrs: a, Kids: kids}
 }
 
-// Details-specific options
-type OpenOpt struct{}
+func (g Global) applyDetails(a *DetailsAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
 
-func Open() OpenOpt { return OpenOpt{} }
-
-func (g Global) applyDetails(a *DetailsAttrs, _ *[]Component) { g.do(&a.Global) }
 func (o TxtOpt) applyDetails(_ *DetailsAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o ChildOpt) applyDetails(_ *DetailsAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (o OpenOpt) applyDetails(a *DetailsAttrs, _ *[]Component)     { a.Open = true }
+
+func (o ChildOpt) applyDetails(_ *DetailsAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o NameOpt) applyDetails(a *DetailsAttrs, _ *[]Component) {
+	a.Name = o.v
+}
+func (o OpenOpt) applyDetails(a *DetailsAttrs, _ *[]Component) {
+	a.Open = true
+}
 
 func (a *DetailsAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
+	WriteGlobal(sb, &a.Global)
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
+	}
 	if a.Open {
-		boolAttr(sb, "open")
+		BoolAttr(sb, "open")
 	}
 }

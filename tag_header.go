@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Header
 type HeaderAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,7 +30,18 @@ func Header(args ...HeaderArg) Node {
 	return Node{Tag: "header", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyHeader(a *HeaderAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyHeader(_ *HeaderAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyHeader(_ *HeaderAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *HeaderAttrs) writeAttrs(sb *strings.Builder)            { writeGlobal(sb, &a.Global) }
+func (g Global) applyHeader(a *HeaderAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyHeader(_ *HeaderAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyHeader(_ *HeaderAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *HeaderAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

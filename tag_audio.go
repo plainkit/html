@@ -2,16 +2,17 @@ package html
 
 import "strings"
 
-// Audio
 type AudioAttrs struct {
-	Global      GlobalAttrs
-	Src         string
-	Preload     string
-	Autoplay    bool
-	Loop        bool
-	Muted       bool
-	Controls    bool
-	Crossorigin string
+	Global                GlobalAttrs
+	Autoplay              bool
+	Controls              bool
+	Controlslist          string
+	Crossorigin           string
+	Disableremoteplayback string
+	Loop                  bool
+	Muted                 bool
+	Preload               string
+	Src                   string
 }
 
 type AudioArg interface {
@@ -38,38 +39,73 @@ func Audio(args ...AudioArg) Node {
 	return Node{Tag: "audio", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyAudio(a *AudioAttrs, _ *[]Component)         { g.do(&a.Global) }
-func (o TxtOpt) applyAudio(_ *AudioAttrs, kids *[]Component)      { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyAudio(_ *AudioAttrs, kids *[]Component)    { *kids = append(*kids, o.c) }
-func (o SrcOpt) applyAudio(a *AudioAttrs, _ *[]Component)         { a.Src = o.v }
-func (o PreloadOpt) applyAudio(a *AudioAttrs, _ *[]Component)     { a.Preload = o.v }
-func (o AutoplayOpt) applyAudio(a *AudioAttrs, _ *[]Component)    { a.Autoplay = true }
-func (o LoopOpt) applyAudio(a *AudioAttrs, _ *[]Component)        { a.Loop = true }
-func (o MutedOpt) applyAudio(a *AudioAttrs, _ *[]Component)       { a.Muted = true }
-func (o ControlsOpt) applyAudio(a *AudioAttrs, _ *[]Component)    { a.Controls = true }
-func (o CrossoriginOpt) applyAudio(a *AudioAttrs, _ *[]Component) { a.Crossorigin = o.v }
+func (g Global) applyAudio(a *AudioAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyAudio(_ *AudioAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyAudio(_ *AudioAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o AutoplayOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+	a.Autoplay = true
+}
+func (o ControlsOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+	a.Controls = true
+}
+func (o ControlslistOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+	a.Controlslist = o.v
+}
+func (o CrossoriginOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+	a.Crossorigin = o.v
+}
+func (o DisableremoteplaybackOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+	a.Disableremoteplayback = o.v
+}
+func (o LoopOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+	a.Loop = true
+}
+func (o MutedOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+	a.Muted = true
+}
+func (o PreloadOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+	a.Preload = o.v
+}
+func (o SrcOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+	a.Src = o.v
+}
 
 func (a *AudioAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
-	if a.Src != "" {
-		attr(sb, "src", a.Src)
-	}
-	if a.Preload != "" {
-		attr(sb, "preload", a.Preload)
-	}
+	WriteGlobal(sb, &a.Global)
 	if a.Autoplay {
-		boolAttr(sb, "autoplay")
-	}
-	if a.Loop {
-		boolAttr(sb, "loop")
-	}
-	if a.Muted {
-		boolAttr(sb, "muted")
+		BoolAttr(sb, "autoplay")
 	}
 	if a.Controls {
-		boolAttr(sb, "controls")
+		BoolAttr(sb, "controls")
+	}
+	if a.Controlslist != "" {
+		Attr(sb, "controlslist", a.Controlslist)
 	}
 	if a.Crossorigin != "" {
-		attr(sb, "crossorigin", a.Crossorigin)
+		Attr(sb, "crossorigin", a.Crossorigin)
+	}
+	if a.Disableremoteplayback != "" {
+		Attr(sb, "disableremoteplayback", a.Disableremoteplayback)
+	}
+	if a.Loop {
+		BoolAttr(sb, "loop")
+	}
+	if a.Muted {
+		BoolAttr(sb, "muted")
+	}
+	if a.Preload != "" {
+		Attr(sb, "preload", a.Preload)
+	}
+	if a.Src != "" {
+		Attr(sb, "src", a.Src)
 	}
 }

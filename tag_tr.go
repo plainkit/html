@@ -2,9 +2,13 @@ package html
 
 import "strings"
 
-// Tr
 type TrAttrs struct {
-	Global GlobalAttrs
+	Global  GlobalAttrs
+	Align   string
+	Bgcolor string
+	Char    string
+	Charoff string
+	Valign  string
 }
 
 type TrArg interface {
@@ -31,7 +35,49 @@ func Tr(args ...TrArg) Node {
 	return Node{Tag: "tr", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyTr(a *TrAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyTr(_ *TrAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyTr(_ *TrAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *TrAttrs) writeAttrs(sb *strings.Builder)        { writeGlobal(sb, &a.Global) }
+func (g Global) applyTr(a *TrAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyTr(_ *TrAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyTr(_ *TrAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o AlignOpt) applyTr(a *TrAttrs, _ *[]Component) {
+	a.Align = o.v
+}
+func (o BgcolorOpt) applyTr(a *TrAttrs, _ *[]Component) {
+	a.Bgcolor = o.v
+}
+func (o CharOpt) applyTr(a *TrAttrs, _ *[]Component) {
+	a.Char = o.v
+}
+func (o CharoffOpt) applyTr(a *TrAttrs, _ *[]Component) {
+	a.Charoff = o.v
+}
+func (o ValignOpt) applyTr(a *TrAttrs, _ *[]Component) {
+	a.Valign = o.v
+}
+
+func (a *TrAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+	if a.Align != "" {
+		Attr(sb, "align", a.Align)
+	}
+	if a.Bgcolor != "" {
+		Attr(sb, "bgcolor", a.Bgcolor)
+	}
+	if a.Char != "" {
+		Attr(sb, "char", a.Char)
+	}
+	if a.Charoff != "" {
+		Attr(sb, "charoff", a.Charoff)
+	}
+	if a.Valign != "" {
+		Attr(sb, "valign", a.Valign)
+	}
+}

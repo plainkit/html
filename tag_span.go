@@ -30,12 +30,10 @@ func Span(args ...SpanArg) Node {
 	return Node{Tag: "span", Attrs: a, Kids: kids}
 }
 
-// Global option glue
 func (g Global) applySpan(a *SpanAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-// Content option glue
 func (o TxtOpt) applySpan(_ *SpanAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
@@ -44,7 +42,6 @@ func (o ChildOpt) applySpan(_ *SpanAttrs, kids *[]Component) {
 	*kids = append(*kids, o.c)
 }
 
-// Attrs writer implementation
 func (a *SpanAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
+	WriteGlobal(sb, &a.Global)
 }

@@ -2,9 +2,9 @@ package html
 
 import "strings"
 
-// H1
 type H1Attrs struct {
-	Global GlobalAttrs
+	Global                             GlobalAttrs
+	NoUaStylesInArticleAsideNavSection string
 }
 
 type H1Arg interface {
@@ -31,7 +31,25 @@ func H1(args ...H1Arg) Node {
 	return Node{Tag: "h1", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyH1(a *H1Attrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyH1(_ *H1Attrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyH1(_ *H1Attrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *H1Attrs) writeAttrs(sb *strings.Builder)        { writeGlobal(sb, &a.Global) }
+func (g Global) applyH1(a *H1Attrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyH1(_ *H1Attrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyH1(_ *H1Attrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o NoUaStylesInArticleAsideNavSectionOpt) applyH1(a *H1Attrs, _ *[]Component) {
+	a.NoUaStylesInArticleAsideNavSection = o.v
+}
+
+func (a *H1Attrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+	if a.NoUaStylesInArticleAsideNavSection != "" {
+		Attr(sb, "no_ua_styles_in_article_aside_nav_section", a.NoUaStylesInArticleAsideNavSection)
+	}
+}

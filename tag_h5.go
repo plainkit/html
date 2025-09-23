@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// H5
 type H5Attrs struct {
 	Global GlobalAttrs
 }
@@ -31,7 +30,18 @@ func H5(args ...H5Arg) Node {
 	return Node{Tag: "h5", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyH5(a *H5Attrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyH5(_ *H5Attrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyH5(_ *H5Attrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *H5Attrs) writeAttrs(sb *strings.Builder)        { writeGlobal(sb, &a.Global) }
+func (g Global) applyH5(a *H5Attrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyH5(_ *H5Attrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyH5(_ *H5Attrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *H5Attrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

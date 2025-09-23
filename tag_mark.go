@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Mark
 type MarkAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,7 +30,18 @@ func Mark(args ...MarkArg) Node {
 	return Node{Tag: "mark", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyMark(a *MarkAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyMark(_ *MarkAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyMark(_ *MarkAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *MarkAttrs) writeAttrs(sb *strings.Builder)          { writeGlobal(sb, &a.Global) }
+func (g Global) applyMark(a *MarkAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyMark(_ *MarkAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyMark(_ *MarkAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *MarkAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

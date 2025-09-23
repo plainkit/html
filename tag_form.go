@@ -4,12 +4,14 @@ import "strings"
 
 type FormAttrs struct {
 	Global        GlobalAttrs
-	Action        string
-	Method        string
-	Enctype       string
 	AcceptCharset string
+	Action        string
 	Autocomplete  string
-	Novalidate    bool
+	Enctype       string
+	Method        string
+	Name          string
+	Novalidate    string
+	Rel           string
 	Target        string
 }
 
@@ -25,7 +27,6 @@ func defaultFormAttrs() *FormAttrs {
 			Data:   map[string]string{},
 			Events: map[string]string{},
 		},
-		Method: "get",
 	}
 }
 
@@ -38,55 +39,77 @@ func Form(args ...FormArg) Node {
 	return Node{Tag: "form", Attrs: a, Kids: kids}
 }
 
-// Form-specific options
-type ActionOpt struct{ v string }
-type MethodOpt struct{ v string }
-type EnctypeOpt struct{ v string }
-type AcceptCharsetOpt struct{ v string }
-type AutocompleteOpt struct{ v string }
-type NovalidateOpt struct{}
-type FormTargetOpt struct{ v string }
+func (g Global) applyForm(a *FormAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
 
-func Action(v string) ActionOpt               { return ActionOpt{v} }
-func Method(v string) MethodOpt               { return MethodOpt{v} }
-func Enctype(v string) EnctypeOpt             { return EnctypeOpt{v} }
-func AcceptCharset(v string) AcceptCharsetOpt { return AcceptCharsetOpt{v} }
-func Autocomplete(v string) AutocompleteOpt   { return AutocompleteOpt{v} }
-func Novalidate() NovalidateOpt               { return NovalidateOpt{} }
-func FormTarget(v string) FormTargetOpt       { return FormTargetOpt{v} }
+func (o TxtOpt) applyForm(_ *FormAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
 
-func (g Global) applyForm(a *FormAttrs, _ *[]Component)           { g.do(&a.Global) }
-func (o TxtOpt) applyForm(_ *FormAttrs, kids *[]Component)        { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyForm(_ *FormAttrs, kids *[]Component)      { *kids = append(*kids, o.c) }
-func (o ActionOpt) applyForm(a *FormAttrs, _ *[]Component)        { a.Action = o.v }
-func (o MethodOpt) applyForm(a *FormAttrs, _ *[]Component)        { a.Method = o.v }
-func (o EnctypeOpt) applyForm(a *FormAttrs, _ *[]Component)       { a.Enctype = o.v }
-func (o AcceptCharsetOpt) applyForm(a *FormAttrs, _ *[]Component) { a.AcceptCharset = o.v }
-func (o AutocompleteOpt) applyForm(a *FormAttrs, _ *[]Component)  { a.Autocomplete = o.v }
-func (o NovalidateOpt) applyForm(a *FormAttrs, _ *[]Component)    { a.Novalidate = true }
-func (o FormTargetOpt) applyForm(a *FormAttrs, _ *[]Component)    { a.Target = o.v }
+func (o ChildOpt) applyForm(_ *FormAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o AcceptCharsetOpt) applyForm(a *FormAttrs, _ *[]Component) {
+	a.AcceptCharset = o.v
+}
+func (o ActionOpt) applyForm(a *FormAttrs, _ *[]Component) {
+	a.Action = o.v
+}
+func (o AutocompleteOpt) applyForm(a *FormAttrs, _ *[]Component) {
+	a.Autocomplete = o.v
+}
+func (o EnctypeOpt) applyForm(a *FormAttrs, _ *[]Component) {
+	a.Enctype = o.v
+}
+func (o MethodOpt) applyForm(a *FormAttrs, _ *[]Component) {
+	a.Method = o.v
+}
+func (o NameOpt) applyForm(a *FormAttrs, _ *[]Component) {
+	a.Name = o.v
+}
+func (o NovalidateOpt) applyForm(a *FormAttrs, _ *[]Component) {
+	a.Novalidate = o.v
+}
+func (o RelOpt) applyForm(a *FormAttrs, _ *[]Component) {
+	if a.Rel == "" {
+		a.Rel = o.v
+	} else {
+		a.Rel += " " + o.v
+	}
+}
+func (o TargetOpt) applyForm(a *FormAttrs, _ *[]Component) {
+	a.Target = o.v
+}
 
 func (a *FormAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
-	if a.Action != "" {
-		attr(sb, "action", a.Action)
-	}
-	if a.Method != "" {
-		attr(sb, "method", a.Method)
-	}
-	if a.Enctype != "" {
-		attr(sb, "enctype", a.Enctype)
-	}
+	WriteGlobal(sb, &a.Global)
 	if a.AcceptCharset != "" {
-		attr(sb, "accept-charset", a.AcceptCharset)
+		Attr(sb, "accept-charset", a.AcceptCharset)
+	}
+	if a.Action != "" {
+		Attr(sb, "action", a.Action)
 	}
 	if a.Autocomplete != "" {
-		attr(sb, "autocomplete", a.Autocomplete)
+		Attr(sb, "autocomplete", a.Autocomplete)
 	}
-	if a.Novalidate {
-		boolAttr(sb, "novalidate")
+	if a.Enctype != "" {
+		Attr(sb, "enctype", a.Enctype)
+	}
+	if a.Method != "" {
+		Attr(sb, "method", a.Method)
+	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
+	}
+	if a.Novalidate != "" {
+		Attr(sb, "novalidate", a.Novalidate)
+	}
+	if a.Rel != "" {
+		Attr(sb, "rel", a.Rel)
 	}
 	if a.Target != "" {
-		attr(sb, "target", a.Target)
+		Attr(sb, "target", a.Target)
 	}
 }

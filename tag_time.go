@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Time
 type TimeAttrs struct {
 	Global   GlobalAttrs
 	Datetime string
@@ -32,19 +31,25 @@ func Time(args ...TimeArg) Node {
 	return Node{Tag: "time", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyTime(a *TimeAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyTime(_ *TimeAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyTime(_ *TimeAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (o DatetimeOpt) applyTime(a *TimeAttrs, _ *[]Component) { a.Datetime = o.v }
-
-func (a *TimeAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
-	if a.Datetime != "" {
-		attr(sb, "datetime", a.Datetime)
-	}
+func (g Global) applyTime(a *TimeAttrs, _ *[]Component) {
+	g.do(&a.Global)
 }
 
-// Datetime option used by <time>, <del>, and <ins>
-type DatetimeOpt struct{ v string }
+func (o TxtOpt) applyTime(_ *TimeAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
 
-func Datetime(v string) DatetimeOpt { return DatetimeOpt{v} }
+func (o ChildOpt) applyTime(_ *TimeAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o DatetimeOpt) applyTime(a *TimeAttrs, _ *[]Component) {
+	a.Datetime = o.v
+}
+
+func (a *TimeAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+	if a.Datetime != "" {
+		Attr(sb, "datetime", a.Datetime)
+	}
+}

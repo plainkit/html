@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Address
 type AddressAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,9 +30,18 @@ func Address(args ...AddressArg) Node {
 	return Node{Tag: "address", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyAddress(a *AddressAttrs, _ *[]Component) { g.do(&a.Global) }
+func (g Global) applyAddress(a *AddressAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
 func (o TxtOpt) applyAddress(_ *AddressAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o ChildOpt) applyAddress(_ *AddressAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *AddressAttrs) writeAttrs(sb *strings.Builder)             { writeGlobal(sb, &a.Global) }
+
+func (o ChildOpt) applyAddress(_ *AddressAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *AddressAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

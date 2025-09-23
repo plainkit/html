@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Dfn
 type DfnAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,7 +30,18 @@ func Dfn(args ...DfnArg) Node {
 	return Node{Tag: "dfn", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyDfn(a *DfnAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyDfn(_ *DfnAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyDfn(_ *DfnAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *DfnAttrs) writeAttrs(sb *strings.Builder)         { writeGlobal(sb, &a.Global) }
+func (g Global) applyDfn(a *DfnAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyDfn(_ *DfnAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyDfn(_ *DfnAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *DfnAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

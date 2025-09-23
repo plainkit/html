@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// H3
 type H3Attrs struct {
 	Global GlobalAttrs
 }
@@ -31,7 +30,18 @@ func H3(args ...H3Arg) Node {
 	return Node{Tag: "h3", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyH3(a *H3Attrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyH3(_ *H3Attrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyH3(_ *H3Attrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *H3Attrs) writeAttrs(sb *strings.Builder)        { writeGlobal(sb, &a.Global) }
+func (g Global) applyH3(a *H3Attrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyH3(_ *H3Attrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyH3(_ *H3Attrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *H3Attrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

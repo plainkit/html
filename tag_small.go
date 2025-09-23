@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Small
 type SmallAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,7 +30,18 @@ func Small(args ...SmallArg) Node {
 	return Node{Tag: "small", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySmall(a *SmallAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applySmall(_ *SmallAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applySmall(_ *SmallAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *SmallAttrs) writeAttrs(sb *strings.Builder)           { writeGlobal(sb, &a.Global) }
+func (g Global) applySmall(a *SmallAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applySmall(_ *SmallAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applySmall(_ *SmallAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *SmallAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

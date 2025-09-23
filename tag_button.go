@@ -3,17 +3,21 @@ package html
 import "strings"
 
 type ButtonAttrs struct {
-	Global         GlobalAttrs
-	Type           string
-	Name           string
-	Value          string
-	Disabled       bool
-	Form           string
-	Formaction     string
-	Formenctype    string
-	Formmethod     string
-	Formnovalidate bool
-	Formtarget     string
+	Global              GlobalAttrs
+	Command             string
+	Commandfor          string
+	Disabled            bool
+	Form                string
+	Formaction          string
+	Formenctype         string
+	Formmethod          string
+	Formnovalidate      bool
+	Formtarget          string
+	Name                string
+	Popovertarget       string
+	Popovertargetaction string
+	Type                string
+	Value               string
 }
 
 type ButtonArg interface {
@@ -28,7 +32,6 @@ func defaultButtonAttrs() *ButtonAttrs {
 			Data:   map[string]string{},
 			Events: map[string]string{},
 		},
-		Type: "button",
 	}
 }
 
@@ -41,58 +44,103 @@ func Button(args ...ButtonArg) Node {
 	return Node{Tag: "button", Attrs: a, Kids: kids}
 }
 
-// Button-specific options
-type ButtonTypeOpt struct{ v string }
-type ButtonNameOpt struct{ v string }
-type ButtonValueOpt struct{ v string }
+func (g Global) applyButton(a *ButtonAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
 
-func ButtonType(v string) ButtonTypeOpt   { return ButtonTypeOpt{v} }
-func ButtonName(v string) ButtonNameOpt   { return ButtonNameOpt{v} }
-func ButtonValue(v string) ButtonValueOpt { return ButtonValueOpt{v} }
+func (o TxtOpt) applyButton(_ *ButtonAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
 
-func (g Global) applyButton(a *ButtonAttrs, _ *[]Component)            { g.do(&a.Global) }
-func (o TxtOpt) applyButton(_ *ButtonAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyButton(_ *ButtonAttrs, kids *[]Component)       { *kids = append(*kids, o.c) }
-func (o ButtonTypeOpt) applyButton(a *ButtonAttrs, _ *[]Component)     { a.Type = o.v }
-func (o ButtonNameOpt) applyButton(a *ButtonAttrs, _ *[]Component)     { a.Name = o.v }
-func (o ButtonValueOpt) applyButton(a *ButtonAttrs, _ *[]Component)    { a.Value = o.v }
-func (o FormactionOpt) applyButton(a *ButtonAttrs, _ *[]Component)     { a.Formaction = o.v }
-func (o FormenctypeOpt) applyButton(a *ButtonAttrs, _ *[]Component)    { a.Formenctype = o.v }
-func (o FormmethodOpt) applyButton(a *ButtonAttrs, _ *[]Component)     { a.Formmethod = o.v }
-func (o FormnovalidateOpt) applyButton(a *ButtonAttrs, _ *[]Component) { a.Formnovalidate = true }
-func (o FormtargetOpt) applyButton(a *ButtonAttrs, _ *[]Component)     { a.Formtarget = o.v }
-func (o DisabledOpt) applyButton(a *ButtonAttrs, _ *[]Component)       { a.Disabled = true }
+func (o ChildOpt) applyButton(_ *ButtonAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o CommandOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Command = o.v
+}
+func (o CommandforOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Commandfor = o.v
+}
+func (o DisabledOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Disabled = true
+}
+func (o FormOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Form = o.v
+}
+func (o FormactionOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Formaction = o.v
+}
+func (o FormenctypeOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Formenctype = o.v
+}
+func (o FormmethodOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Formmethod = o.v
+}
+func (o FormnovalidateOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Formnovalidate = true
+}
+func (o FormtargetOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Formtarget = o.v
+}
+func (o NameOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Name = o.v
+}
+func (o PopovertargetOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Popovertarget = o.v
+}
+func (o PopovertargetactionOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Popovertargetaction = o.v
+}
+func (o TypeOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Type = o.v
+}
+func (o ValueOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Value = o.v
+}
 
 func (a *ButtonAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
-	if a.Type != "" {
-		attr(sb, "type", a.Type)
+	WriteGlobal(sb, &a.Global)
+	if a.Command != "" {
+		Attr(sb, "command", a.Command)
 	}
-	if a.Name != "" {
-		attr(sb, "name", a.Name)
-	}
-	if a.Value != "" {
-		attr(sb, "value", a.Value)
+	if a.Commandfor != "" {
+		Attr(sb, "commandfor", a.Commandfor)
 	}
 	if a.Disabled {
-		boolAttr(sb, "disabled")
+		BoolAttr(sb, "disabled")
 	}
 	if a.Form != "" {
-		attr(sb, "form", a.Form)
+		Attr(sb, "form", a.Form)
 	}
 	if a.Formaction != "" {
-		attr(sb, "formaction", a.Formaction)
+		Attr(sb, "formaction", a.Formaction)
 	}
 	if a.Formenctype != "" {
-		attr(sb, "formenctype", a.Formenctype)
+		Attr(sb, "formenctype", a.Formenctype)
 	}
 	if a.Formmethod != "" {
-		attr(sb, "formmethod", a.Formmethod)
+		Attr(sb, "formmethod", a.Formmethod)
 	}
 	if a.Formnovalidate {
-		boolAttr(sb, "formnovalidate")
+		BoolAttr(sb, "formnovalidate")
 	}
 	if a.Formtarget != "" {
-		attr(sb, "formtarget", a.Formtarget)
+		Attr(sb, "formtarget", a.Formtarget)
+	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
+	}
+	if a.Popovertarget != "" {
+		Attr(sb, "popovertarget", a.Popovertarget)
+	}
+	if a.Popovertargetaction != "" {
+		Attr(sb, "popovertargetaction", a.Popovertargetaction)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
+	}
+	if a.Value != "" {
+		Attr(sb, "value", a.Value)
 	}
 }

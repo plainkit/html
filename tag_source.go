@@ -2,18 +2,19 @@ package html
 
 import "strings"
 
-// Source (void)
 type SourceAttrs struct {
 	Global GlobalAttrs
-	Src    string
-	Type   string
+	Height string
 	Media  string
 	Sizes  string
+	Src    string
 	Srcset string
+	Type   string
+	Width  string
 }
 
 type SourceArg interface {
-	applySource(*SourceAttrs)
+	applySource(*SourceAttrs, *[]Component)
 }
 
 func defaultSourceAttrs() *SourceAttrs {
@@ -29,39 +30,68 @@ func defaultSourceAttrs() *SourceAttrs {
 
 func Source(args ...SourceArg) Node {
 	a := defaultSourceAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.applySource(a)
+		ar.applySource(a, &kids)
 	}
-	return Node{Tag: "source", Attrs: a, Void: true}
+	return Node{Tag: "source", Attrs: a, Kids: kids, Void: true}
 }
 
-// Source-specific options
-type SrcsetOpt struct{ v string }
+func (g Global) applySource(a *SourceAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
 
-func Srcset(v string) SrcsetOpt { return SrcsetOpt{v} }
+func (o TxtOpt) applySource(_ *SourceAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
 
-func (g Global) applySource(a *SourceAttrs)    { g.do(&a.Global) }
-func (o SrcOpt) applySource(a *SourceAttrs)    { a.Src = o.v }
-func (o TypeOpt) applySource(a *SourceAttrs)   { a.Type = o.v }
-func (o MediaOpt) applySource(a *SourceAttrs)  { a.Media = o.v }
-func (o SizesOpt) applySource(a *SourceAttrs)  { a.Sizes = o.v }
-func (o SrcsetOpt) applySource(a *SourceAttrs) { a.Srcset = o.v }
+func (o ChildOpt) applySource(_ *SourceAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o HeightOpt) applySource(a *SourceAttrs, _ *[]Component) {
+	a.Height = o.v
+}
+func (o MediaOpt) applySource(a *SourceAttrs, _ *[]Component) {
+	a.Media = o.v
+}
+func (o SizesOpt) applySource(a *SourceAttrs, _ *[]Component) {
+	a.Sizes = o.v
+}
+func (o SrcOpt) applySource(a *SourceAttrs, _ *[]Component) {
+	a.Src = o.v
+}
+func (o SrcsetOpt) applySource(a *SourceAttrs, _ *[]Component) {
+	a.Srcset = o.v
+}
+func (o TypeOpt) applySource(a *SourceAttrs, _ *[]Component) {
+	a.Type = o.v
+}
+func (o WidthOpt) applySource(a *SourceAttrs, _ *[]Component) {
+	a.Width = o.v
+}
 
 func (a *SourceAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
-	if a.Src != "" {
-		attr(sb, "src", a.Src)
-	}
-	if a.Type != "" {
-		attr(sb, "type", a.Type)
+	WriteGlobal(sb, &a.Global)
+	if a.Height != "" {
+		Attr(sb, "height", a.Height)
 	}
 	if a.Media != "" {
-		attr(sb, "media", a.Media)
+		Attr(sb, "media", a.Media)
 	}
 	if a.Sizes != "" {
-		attr(sb, "sizes", a.Sizes)
+		Attr(sb, "sizes", a.Sizes)
+	}
+	if a.Src != "" {
+		Attr(sb, "src", a.Src)
 	}
 	if a.Srcset != "" {
-		attr(sb, "srcset", a.Srcset)
+		Attr(sb, "srcset", a.Srcset)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
+	}
+	if a.Width != "" {
+		Attr(sb, "width", a.Width)
 	}
 }

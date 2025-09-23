@@ -2,9 +2,10 @@ package html
 
 import "strings"
 
-// UL (Unordered List)
 type UlAttrs struct {
-	Global GlobalAttrs
+	Global  GlobalAttrs
+	Compact string
+	Type    string
 }
 
 type UlArg interface {
@@ -31,5 +32,31 @@ func Ul(args ...UlArg) Node {
 	return Node{Tag: "ul", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyUl(a *UlAttrs, _ *[]Component) { g.do(&a.Global) }
-func (a *UlAttrs) writeAttrs(sb *strings.Builder)   { writeGlobal(sb, &a.Global) }
+func (g Global) applyUl(a *UlAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyUl(_ *UlAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyUl(_ *UlAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o CompactOpt) applyUl(a *UlAttrs, _ *[]Component) {
+	a.Compact = o.v
+}
+func (o TypeOpt) applyUl(a *UlAttrs, _ *[]Component) {
+	a.Type = o.v
+}
+
+func (a *UlAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+	if a.Compact != "" {
+		Attr(sb, "compact", a.Compact)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
+	}
+}

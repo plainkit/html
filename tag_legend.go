@@ -2,9 +2,9 @@ package html
 
 import "strings"
 
-// Legend
 type LegendAttrs struct {
 	Global GlobalAttrs
+	Align  string
 }
 
 type LegendArg interface {
@@ -31,7 +31,25 @@ func Legend(args ...LegendArg) Node {
 	return Node{Tag: "legend", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyLegend(a *LegendAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyLegend(_ *LegendAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyLegend(_ *LegendAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *LegendAttrs) writeAttrs(sb *strings.Builder)            { writeGlobal(sb, &a.Global) }
+func (g Global) applyLegend(a *LegendAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyLegend(_ *LegendAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyLegend(_ *LegendAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o AlignOpt) applyLegend(a *LegendAttrs, _ *[]Component) {
+	a.Align = o.v
+}
+
+func (a *LegendAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+	if a.Align != "" {
+		Attr(sb, "align", a.Align)
+	}
+}

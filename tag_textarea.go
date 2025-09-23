@@ -2,20 +2,21 @@ package html
 
 import "strings"
 
-// Textarea
 type TextareaAttrs struct {
-	Global      GlobalAttrs
-	Name        string
-	Rows        int
-	Cols        int
-	Placeholder string
-	Required    bool
-	Disabled    bool
-	Readonly    bool
-	Maxlength   int
-	Minlength   int
-	Wrap        string
-	Form        string
+	Global       GlobalAttrs
+	Autocomplete string
+	Cols         string
+	Dirname      string
+	Disabled     bool
+	Form         string
+	Maxlength    string
+	Minlength    string
+	Name         string
+	Placeholder  string
+	Readonly     bool
+	Required     bool
+	Rows         string
+	Wrap         string
 }
 
 type TextareaArg interface {
@@ -42,67 +43,97 @@ func Textarea(args ...TextareaArg) Node {
 	return Node{Tag: "textarea", Attrs: a, Kids: kids}
 }
 
-// Textarea-specific options
-type TextareaNameOpt struct{ v string }
-type RowsOpt struct{ v int }
-type ColsOpt struct{ v int }
-type WrapOpt struct{ v string }
+func (g Global) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
 
-func TextareaName(v string) TextareaNameOpt { return TextareaNameOpt{v} }
-func Rows(v int) RowsOpt                    { return RowsOpt{v} }
-func Cols(v int) ColsOpt                    { return ColsOpt{v} }
-func Wrap(v string) WrapOpt                 { return WrapOpt{v} }
-
-func (g Global) applyTextarea(a *TextareaAttrs, _ *[]Component) { g.do(&a.Global) }
 func (o TxtOpt) applyTextarea(_ *TextareaAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o ChildOpt) applyTextarea(_ *TextareaAttrs, kids *[]Component)     { *kids = append(*kids, o.c) }
-func (o TextareaNameOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) { a.Name = o.v }
-func (o RowsOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)         { a.Rows = o.v }
-func (o ColsOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)         { a.Cols = o.v }
-func (o PlaceholderOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)  { a.Placeholder = o.v }
-func (o RequiredOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)     { a.Required = true }
-func (o DisabledOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)     { a.Disabled = true }
-func (o ReadonlyOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)     { a.Readonly = true }
-func (o MaxlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)    { a.Maxlength = o.v }
-func (o MinlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)    { a.Minlength = o.v }
-func (o WrapOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)         { a.Wrap = o.v }
-func (o FormOpt) applyTextarea(a *TextareaAttrs, _ *[]Component)         { a.Form = o.v }
+
+func (o ChildOpt) applyTextarea(_ *TextareaAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o AutocompleteOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Autocomplete = o.v
+}
+func (o ColsOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Cols = o.v
+}
+func (o DirnameOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Dirname = o.v
+}
+func (o DisabledOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Disabled = true
+}
+func (o FormOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Form = o.v
+}
+func (o MaxlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Maxlength = o.v
+}
+func (o MinlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Minlength = o.v
+}
+func (o NameOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Name = o.v
+}
+func (o PlaceholderOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Placeholder = o.v
+}
+func (o ReadonlyOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Readonly = true
+}
+func (o RequiredOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Required = true
+}
+func (o RowsOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Rows = o.v
+}
+func (o WrapOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Wrap = o.v
+}
 
 func (a *TextareaAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
-	if a.Name != "" {
-		attr(sb, "name", a.Name)
+	WriteGlobal(sb, &a.Global)
+	if a.Autocomplete != "" {
+		Attr(sb, "autocomplete", a.Autocomplete)
 	}
-	if a.Rows > 0 {
-		attr(sb, "rows", itoa(a.Rows))
+	if a.Cols != "" {
+		Attr(sb, "cols", a.Cols)
 	}
-	if a.Cols > 0 {
-		attr(sb, "cols", itoa(a.Cols))
-	}
-	if a.Placeholder != "" {
-		attr(sb, "placeholder", a.Placeholder)
-	}
-	if a.Required {
-		boolAttr(sb, "required")
+	if a.Dirname != "" {
+		Attr(sb, "dirname", a.Dirname)
 	}
 	if a.Disabled {
-		boolAttr(sb, "disabled")
-	}
-	if a.Readonly {
-		boolAttr(sb, "readonly")
-	}
-	if a.Maxlength > 0 {
-		attr(sb, "maxlength", itoa(a.Maxlength))
-	}
-	if a.Minlength > 0 {
-		attr(sb, "minlength", itoa(a.Minlength))
-	}
-	if a.Wrap != "" {
-		attr(sb, "wrap", a.Wrap)
+		BoolAttr(sb, "disabled")
 	}
 	if a.Form != "" {
-		attr(sb, "form", a.Form)
+		Attr(sb, "form", a.Form)
+	}
+	if a.Maxlength != "" {
+		Attr(sb, "maxlength", a.Maxlength)
+	}
+	if a.Minlength != "" {
+		Attr(sb, "minlength", a.Minlength)
+	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
+	}
+	if a.Placeholder != "" {
+		Attr(sb, "placeholder", a.Placeholder)
+	}
+	if a.Readonly {
+		BoolAttr(sb, "readonly")
+	}
+	if a.Required {
+		BoolAttr(sb, "required")
+	}
+	if a.Rows != "" {
+		Attr(sb, "rows", a.Rows)
+	}
+	if a.Wrap != "" {
+		Attr(sb, "wrap", a.Wrap)
 	}
 }

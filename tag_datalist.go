@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Datalist
 type DatalistAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,9 +30,18 @@ func Datalist(args ...DatalistArg) Node {
 	return Node{Tag: "datalist", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyDatalist(a *DatalistAttrs, _ *[]Component) { g.do(&a.Global) }
+func (g Global) applyDatalist(a *DatalistAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
 func (o TxtOpt) applyDatalist(_ *DatalistAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o ChildOpt) applyDatalist(_ *DatalistAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *DatalistAttrs) writeAttrs(sb *strings.Builder)              { writeGlobal(sb, &a.Global) }
+
+func (o ChildOpt) applyDatalist(_ *DatalistAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *DatalistAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

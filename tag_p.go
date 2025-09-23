@@ -30,12 +30,10 @@ func P(args ...PArg) Node {
 	return Node{Tag: "p", Attrs: a, Kids: kids}
 }
 
-// Global option glue
 func (g Global) applyP(a *PAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-// Content option glue
 func (o TxtOpt) applyP(_ *PAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
@@ -44,7 +42,6 @@ func (o ChildOpt) applyP(_ *PAttrs, kids *[]Component) {
 	*kids = append(*kids, o.c)
 }
 
-// Attrs writer implementation
 func (a *PAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
+	WriteGlobal(sb, &a.Global)
 }

@@ -2,12 +2,12 @@ package html
 
 import "strings"
 
-// OL (Ordered List)
 type OlAttrs struct {
 	Global   GlobalAttrs
-	Start    int
-	Type     string
+	Compact  string
 	Reversed bool
+	Start    string
+	Type     string
 }
 
 type OlArg interface {
@@ -34,29 +34,43 @@ func Ol(args ...OlArg) Node {
 	return Node{Tag: "ol", Attrs: a, Kids: kids}
 }
 
-// OL-specific options
-type StartOpt struct{ v int }
-type TypeOpt struct{ v string }
-type ReversedOpt struct{}
+func (g Global) applyOl(a *OlAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
 
-func Start(v int) StartOpt  { return StartOpt{v} }
-func Type(v string) TypeOpt { return TypeOpt{v} }
-func Reversed() ReversedOpt { return ReversedOpt{} }
+func (o TxtOpt) applyOl(_ *OlAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
 
-func (g Global) applyOl(a *OlAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o StartOpt) applyOl(a *OlAttrs, _ *[]Component)    { a.Start = o.v }
-func (o TypeOpt) applyOl(a *OlAttrs, _ *[]Component)     { a.Type = o.v }
-func (o ReversedOpt) applyOl(a *OlAttrs, _ *[]Component) { a.Reversed = true }
+func (o ChildOpt) applyOl(_ *OlAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o CompactOpt) applyOl(a *OlAttrs, _ *[]Component) {
+	a.Compact = o.v
+}
+func (o ReversedOpt) applyOl(a *OlAttrs, _ *[]Component) {
+	a.Reversed = true
+}
+func (o StartOpt) applyOl(a *OlAttrs, _ *[]Component) {
+	a.Start = o.v
+}
+func (o TypeOpt) applyOl(a *OlAttrs, _ *[]Component) {
+	a.Type = o.v
+}
 
 func (a *OlAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
-	if a.Start > 0 {
-		attr(sb, "start", itoa(a.Start))
-	}
-	if a.Type != "" {
-		attr(sb, "type", a.Type)
+	WriteGlobal(sb, &a.Global)
+	if a.Compact != "" {
+		Attr(sb, "compact", a.Compact)
 	}
 	if a.Reversed {
-		boolAttr(sb, "reversed")
+		BoolAttr(sb, "reversed")
+	}
+	if a.Start != "" {
+		Attr(sb, "start", a.Start)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
 	}
 }

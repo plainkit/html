@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Section
 type SectionAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,9 +30,18 @@ func Section(args ...SectionArg) Node {
 	return Node{Tag: "section", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySection(a *SectionAttrs, _ *[]Component) { g.do(&a.Global) }
+func (g Global) applySection(a *SectionAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
 func (o TxtOpt) applySection(_ *SectionAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o ChildOpt) applySection(_ *SectionAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *SectionAttrs) writeAttrs(sb *strings.Builder)             { writeGlobal(sb, &a.Global) }
+
+func (o ChildOpt) applySection(_ *SectionAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *SectionAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

@@ -2,11 +2,10 @@ package html
 
 import "strings"
 
-// Optgroup
 type OptgroupAttrs struct {
 	Global   GlobalAttrs
-	Label    string
 	Disabled bool
+	Label    string
 }
 
 type OptgroupArg interface {
@@ -24,36 +23,40 @@ func defaultOptgroupAttrs() *OptgroupAttrs {
 	}
 }
 
-type OptgroupComponent Node
-
-func (optg OptgroupComponent) render(sb *strings.Builder) {
-	Node(optg).render(sb)
-}
-
-func Optgroup(args ...OptgroupArg) OptgroupComponent {
+func Optgroup(args ...OptgroupArg) Node {
 	a := defaultOptgroupAttrs()
 	var kids []Component
 	for _, ar := range args {
 		ar.applyOptgroup(a, &kids)
 	}
-	return OptgroupComponent{Tag: "optgroup", Attrs: a, Kids: kids}
+	return Node{Tag: "optgroup", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyOptgroup(a *OptgroupAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o LabelOpt) applyOptgroup(a *OptgroupAttrs, _ *[]Component)    { a.Label = o.v }
-func (o DisabledOpt) applyOptgroup(a *OptgroupAttrs, _ *[]Component) { a.Disabled = true }
+func (g Global) applyOptgroup(a *OptgroupAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
 
-// Compile-time type safety: Optgroup can be added to Select
-func (optg OptgroupComponent) applySelect(_ *SelectAttrs, kids *[]Component) {
-	*kids = append(*kids, optg)
+func (o TxtOpt) applyOptgroup(_ *OptgroupAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyOptgroup(_ *OptgroupAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o DisabledOpt) applyOptgroup(a *OptgroupAttrs, _ *[]Component) {
+	a.Disabled = true
+}
+func (o LabelOpt) applyOptgroup(a *OptgroupAttrs, _ *[]Component) {
+	a.Label = o.v
 }
 
 func (a *OptgroupAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
-	if a.Label != "" {
-		attr(sb, "label", a.Label)
-	}
+	WriteGlobal(sb, &a.Global)
 	if a.Disabled {
-		boolAttr(sb, "disabled")
+		BoolAttr(sb, "disabled")
+	}
+	if a.Label != "" {
+		Attr(sb, "label", a.Label)
 	}
 }

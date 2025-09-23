@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Fieldset
 type FieldsetAttrs struct {
 	Global   GlobalAttrs
 	Disabled bool
@@ -34,23 +33,37 @@ func Fieldset(args ...FieldsetArg) Node {
 	return Node{Tag: "fieldset", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyFieldset(a *FieldsetAttrs, _ *[]Component) { g.do(&a.Global) }
+func (g Global) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
 func (o TxtOpt) applyFieldset(_ *FieldsetAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o ChildOpt) applyFieldset(_ *FieldsetAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (o DisabledOpt) applyFieldset(a *FieldsetAttrs, _ *[]Component) { a.Disabled = true }
-func (o FormOpt) applyFieldset(a *FieldsetAttrs, _ *[]Component)     { a.Form = o.v }
+
+func (o ChildOpt) applyFieldset(_ *FieldsetAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o DisabledOpt) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
+	a.Disabled = true
+}
+func (o FormOpt) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
+	a.Form = o.v
+}
+func (o NameOpt) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
+	a.Name = o.v
+}
 
 func (a *FieldsetAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
+	WriteGlobal(sb, &a.Global)
 	if a.Disabled {
-		boolAttr(sb, "disabled")
+		BoolAttr(sb, "disabled")
 	}
 	if a.Form != "" {
-		attr(sb, "form", a.Form)
+		Attr(sb, "form", a.Form)
 	}
 	if a.Name != "" {
-		attr(sb, "name", a.Name)
+		Attr(sb, "name", a.Name)
 	}
 }

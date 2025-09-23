@@ -3,7 +3,17 @@ package html
 import "strings"
 
 type BodyAttrs struct {
-	Global GlobalAttrs
+	Global       GlobalAttrs
+	Alink        string
+	Background   string
+	Bgcolor      string
+	Bottommargin string
+	Leftmargin   string
+	Link         string
+	Rightmargin  string
+	Text         string
+	Topmargin    string
+	Vlink        string
 }
 
 type BodyArg interface {
@@ -30,12 +40,10 @@ func Body(args ...BodyArg) Node {
 	return Node{Tag: "body", Attrs: a, Kids: kids}
 }
 
-// Global option glue
 func (g Global) applyBody(a *BodyAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-// Content option glue
 func (o TxtOpt) applyBody(_ *BodyAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
@@ -44,7 +52,67 @@ func (o ChildOpt) applyBody(_ *BodyAttrs, kids *[]Component) {
 	*kids = append(*kids, o.c)
 }
 
-// Attrs writer implementation
+func (o AlinkOpt) applyBody(a *BodyAttrs, _ *[]Component) {
+	a.Alink = o.v
+}
+func (o BackgroundOpt) applyBody(a *BodyAttrs, _ *[]Component) {
+	a.Background = o.v
+}
+func (o BgcolorOpt) applyBody(a *BodyAttrs, _ *[]Component) {
+	a.Bgcolor = o.v
+}
+func (o BottommarginOpt) applyBody(a *BodyAttrs, _ *[]Component) {
+	a.Bottommargin = o.v
+}
+func (o LeftmarginOpt) applyBody(a *BodyAttrs, _ *[]Component) {
+	a.Leftmargin = o.v
+}
+func (o LinkOpt) applyBody(a *BodyAttrs, _ *[]Component) {
+	a.Link = o.v
+}
+func (o RightmarginOpt) applyBody(a *BodyAttrs, _ *[]Component) {
+	a.Rightmargin = o.v
+}
+func (o TextOpt) applyBody(a *BodyAttrs, _ *[]Component) {
+	a.Text = o.v
+}
+func (o TopmarginOpt) applyBody(a *BodyAttrs, _ *[]Component) {
+	a.Topmargin = o.v
+}
+func (o VlinkOpt) applyBody(a *BodyAttrs, _ *[]Component) {
+	a.Vlink = o.v
+}
+
 func (a *BodyAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
+	WriteGlobal(sb, &a.Global)
+	if a.Alink != "" {
+		Attr(sb, "alink", a.Alink)
+	}
+	if a.Background != "" {
+		Attr(sb, "background", a.Background)
+	}
+	if a.Bgcolor != "" {
+		Attr(sb, "bgcolor", a.Bgcolor)
+	}
+	if a.Bottommargin != "" {
+		Attr(sb, "bottommargin", a.Bottommargin)
+	}
+	if a.Leftmargin != "" {
+		Attr(sb, "leftmargin", a.Leftmargin)
+	}
+	if a.Link != "" {
+		Attr(sb, "link", a.Link)
+	}
+	if a.Rightmargin != "" {
+		Attr(sb, "rightmargin", a.Rightmargin)
+	}
+	if a.Text != "" {
+		Attr(sb, "text", a.Text)
+	}
+	if a.Topmargin != "" {
+		Attr(sb, "topmargin", a.Topmargin)
+	}
+	if a.Vlink != "" {
+		Attr(sb, "vlink", a.Vlink)
+	}
 }

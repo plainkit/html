@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// DD (Description Definition)
 type DdAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,7 +30,18 @@ func Dd(args ...DdArg) Node {
 	return Node{Tag: "dd", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyDd(a *DdAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyDd(_ *DdAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyDd(_ *DdAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *DdAttrs) writeAttrs(sb *strings.Builder)        { writeGlobal(sb, &a.Global) }
+func (g Global) applyDd(a *DdAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyDd(_ *DdAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyDd(_ *DdAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *DdAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

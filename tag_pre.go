@@ -4,6 +4,7 @@ import "strings"
 
 type PreAttrs struct {
 	Global GlobalAttrs
+	Width  string
 }
 
 type PreArg interface {
@@ -30,12 +31,10 @@ func Pre(args ...PreArg) Node {
 	return Node{Tag: "pre", Attrs: a, Kids: kids}
 }
 
-// Global option glue
 func (g Global) applyPre(a *PreAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-// Content option glue
 func (o TxtOpt) applyPre(_ *PreAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
@@ -44,7 +43,13 @@ func (o ChildOpt) applyPre(_ *PreAttrs, kids *[]Component) {
 	*kids = append(*kids, o.c)
 }
 
-// Attrs writer implementation
+func (o WidthOpt) applyPre(a *PreAttrs, _ *[]Component) {
+	a.Width = o.v
+}
+
 func (a *PreAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
+	WriteGlobal(sb, &a.Global)
+	if a.Width != "" {
+		Attr(sb, "width", a.Width)
+	}
 }

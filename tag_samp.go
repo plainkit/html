@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Samp
 type SampAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,7 +30,18 @@ func Samp(args ...SampArg) Node {
 	return Node{Tag: "samp", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySamp(a *SampAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applySamp(_ *SampAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applySamp(_ *SampAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *SampAttrs) writeAttrs(sb *strings.Builder)          { writeGlobal(sb, &a.Global) }
+func (g Global) applySamp(a *SampAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applySamp(_ *SampAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applySamp(_ *SampAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *SampAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

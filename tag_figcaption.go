@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Figcaption
 type FigcaptionAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,9 +30,18 @@ func Figcaption(args ...FigcaptionArg) Node {
 	return Node{Tag: "figcaption", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyFigcaption(a *FigcaptionAttrs, _ *[]Component) { g.do(&a.Global) }
+func (g Global) applyFigcaption(a *FigcaptionAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
 func (o TxtOpt) applyFigcaption(_ *FigcaptionAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o ChildOpt) applyFigcaption(_ *FigcaptionAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *FigcaptionAttrs) writeAttrs(sb *strings.Builder)                { writeGlobal(sb, &a.Global) }
+
+func (o ChildOpt) applyFigcaption(_ *FigcaptionAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *FigcaptionAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Ins
 type InsAttrs struct {
 	Global   GlobalAttrs
 	Cite     string
@@ -33,18 +32,31 @@ func Ins(args ...InsArg) Node {
 	return Node{Tag: "ins", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyIns(a *InsAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyIns(_ *InsAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyIns(_ *InsAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (o CiteOpt) applyIns(a *InsAttrs, _ *[]Component)     { a.Cite = o.v }
-func (o DatetimeOpt) applyIns(a *InsAttrs, _ *[]Component) { a.Datetime = o.v }
+func (g Global) applyIns(a *InsAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyIns(_ *InsAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyIns(_ *InsAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o CiteOpt) applyIns(a *InsAttrs, _ *[]Component) {
+	a.Cite = o.v
+}
+func (o DatetimeOpt) applyIns(a *InsAttrs, _ *[]Component) {
+	a.Datetime = o.v
+}
 
 func (a *InsAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
+	WriteGlobal(sb, &a.Global)
 	if a.Cite != "" {
-		attr(sb, "cite", a.Cite)
+		Attr(sb, "cite", a.Cite)
 	}
 	if a.Datetime != "" {
-		attr(sb, "datetime", a.Datetime)
+		Attr(sb, "datetime", a.Datetime)
 	}
 }

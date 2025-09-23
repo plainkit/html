@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Sup
 type SupAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,7 +30,18 @@ func Sup(args ...SupArg) Node {
 	return Node{Tag: "sup", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySup(a *SupAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applySup(_ *SupAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applySup(_ *SupAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *SupAttrs) writeAttrs(sb *strings.Builder)         { writeGlobal(sb, &a.Global) }
+func (g Global) applySup(a *SupAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applySup(_ *SupAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applySup(_ *SupAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *SupAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// I
 type IAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,7 +30,18 @@ func I(args ...IArg) Node {
 	return Node{Tag: "i", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyI(a *IAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyI(_ *IAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyI(_ *IAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *IAttrs) writeAttrs(sb *strings.Builder)       { writeGlobal(sb, &a.Global) }
+func (g Global) applyI(a *IAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyI(_ *IAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyI(_ *IAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *IAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

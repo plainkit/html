@@ -2,10 +2,10 @@ package html
 
 import "strings"
 
-// Dialog
 type DialogAttrs struct {
-	Global GlobalAttrs
-	Open   bool
+	Global   GlobalAttrs
+	Closedby string
+	Open     bool
 }
 
 type DialogArg interface {
@@ -32,14 +32,31 @@ func Dialog(args ...DialogArg) Node {
 	return Node{Tag: "dialog", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyDialog(a *DialogAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyDialog(_ *DialogAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyDialog(_ *DialogAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (o OpenOpt) applyDialog(a *DialogAttrs, _ *[]Component)     { a.Open = true }
+func (g Global) applyDialog(a *DialogAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyDialog(_ *DialogAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyDialog(_ *DialogAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o ClosedbyOpt) applyDialog(a *DialogAttrs, _ *[]Component) {
+	a.Closedby = o.v
+}
+func (o OpenOpt) applyDialog(a *DialogAttrs, _ *[]Component) {
+	a.Open = true
+}
 
 func (a *DialogAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
+	WriteGlobal(sb, &a.Global)
+	if a.Closedby != "" {
+		Attr(sb, "closedby", a.Closedby)
+	}
 	if a.Open {
-		boolAttr(sb, "open")
+		BoolAttr(sb, "open")
 	}
 }

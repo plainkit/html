@@ -2,19 +2,23 @@ package html
 
 import "strings"
 
-// Video
 type VideoAttrs struct {
-	Global      GlobalAttrs
-	Src         string
-	Poster      string
-	Preload     string
-	Autoplay    bool
-	Loop        bool
-	Muted       bool
-	Controls    bool
-	Width       int
-	Height      int
-	Crossorigin string
+	Global                            GlobalAttrs
+	AspectRatioComputedFromAttributes string
+	Autoplay                          bool
+	Controls                          bool
+	Controlslist                      string
+	Crossorigin                       string
+	Disablepictureinpicture           string
+	Disableremoteplayback             string
+	Height                            string
+	Loop                              bool
+	Muted                             bool
+	Playsinline                       string
+	Poster                            string
+	Preload                           string
+	Src                               string
+	Width                             string
 }
 
 type VideoArg interface {
@@ -41,65 +45,109 @@ func Video(args ...VideoArg) Node {
 	return Node{Tag: "video", Attrs: a, Kids: kids}
 }
 
-// Video-specific options
-type PosterOpt struct{ v string }
-type PreloadOpt struct{ v string }
-type AutoplayOpt struct{}
-type LoopOpt struct{}
-type MutedOpt struct{}
-type ControlsOpt struct{}
+func (g Global) applyVideo(a *VideoAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
 
-func Poster(v string) PosterOpt   { return PosterOpt{v} }
-func Preload(v string) PreloadOpt { return PreloadOpt{v} }
-func Autoplay() AutoplayOpt       { return AutoplayOpt{} }
-func Loop() LoopOpt               { return LoopOpt{} }
-func Muted() MutedOpt             { return MutedOpt{} }
-func Controls() ControlsOpt       { return ControlsOpt{} }
+func (o TxtOpt) applyVideo(_ *VideoAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
 
-func (g Global) applyVideo(a *VideoAttrs, _ *[]Component)         { g.do(&a.Global) }
-func (o TxtOpt) applyVideo(_ *VideoAttrs, kids *[]Component)      { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyVideo(_ *VideoAttrs, kids *[]Component)    { *kids = append(*kids, o.c) }
-func (o SrcOpt) applyVideo(a *VideoAttrs, _ *[]Component)         { a.Src = o.v }
-func (o PosterOpt) applyVideo(a *VideoAttrs, _ *[]Component)      { a.Poster = o.v }
-func (o PreloadOpt) applyVideo(a *VideoAttrs, _ *[]Component)     { a.Preload = o.v }
-func (o AutoplayOpt) applyVideo(a *VideoAttrs, _ *[]Component)    { a.Autoplay = true }
-func (o LoopOpt) applyVideo(a *VideoAttrs, _ *[]Component)        { a.Loop = true }
-func (o MutedOpt) applyVideo(a *VideoAttrs, _ *[]Component)       { a.Muted = true }
-func (o ControlsOpt) applyVideo(a *VideoAttrs, _ *[]Component)    { a.Controls = true }
-func (o WidthOpt) applyVideo(a *VideoAttrs, _ *[]Component)       { a.Width = o.v }
-func (o HeightOpt) applyVideo(a *VideoAttrs, _ *[]Component)      { a.Height = o.v }
-func (o CrossoriginOpt) applyVideo(a *VideoAttrs, _ *[]Component) { a.Crossorigin = o.v }
+func (o ChildOpt) applyVideo(_ *VideoAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o AspectRatioComputedFromAttributesOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.AspectRatioComputedFromAttributes = o.v
+}
+func (o AutoplayOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Autoplay = true
+}
+func (o ControlsOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Controls = true
+}
+func (o ControlslistOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Controlslist = o.v
+}
+func (o CrossoriginOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Crossorigin = o.v
+}
+func (o DisablepictureinpictureOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Disablepictureinpicture = o.v
+}
+func (o DisableremoteplaybackOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Disableremoteplayback = o.v
+}
+func (o HeightOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Height = o.v
+}
+func (o LoopOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Loop = true
+}
+func (o MutedOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Muted = true
+}
+func (o PlaysinlineOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Playsinline = o.v
+}
+func (o PosterOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Poster = o.v
+}
+func (o PreloadOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Preload = o.v
+}
+func (o SrcOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Src = o.v
+}
+func (o WidthOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+	a.Width = o.v
+}
 
 func (a *VideoAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
-	if a.Src != "" {
-		attr(sb, "src", a.Src)
-	}
-	if a.Poster != "" {
-		attr(sb, "poster", a.Poster)
-	}
-	if a.Preload != "" {
-		attr(sb, "preload", a.Preload)
+	WriteGlobal(sb, &a.Global)
+	if a.AspectRatioComputedFromAttributes != "" {
+		Attr(sb, "aspect_ratio_computed_from_attributes", a.AspectRatioComputedFromAttributes)
 	}
 	if a.Autoplay {
-		boolAttr(sb, "autoplay")
-	}
-	if a.Loop {
-		boolAttr(sb, "loop")
-	}
-	if a.Muted {
-		boolAttr(sb, "muted")
+		BoolAttr(sb, "autoplay")
 	}
 	if a.Controls {
-		boolAttr(sb, "controls")
+		BoolAttr(sb, "controls")
 	}
-	if a.Width > 0 {
-		attr(sb, "width", itoa(a.Width))
-	}
-	if a.Height > 0 {
-		attr(sb, "height", itoa(a.Height))
+	if a.Controlslist != "" {
+		Attr(sb, "controlslist", a.Controlslist)
 	}
 	if a.Crossorigin != "" {
-		attr(sb, "crossorigin", a.Crossorigin)
+		Attr(sb, "crossorigin", a.Crossorigin)
+	}
+	if a.Disablepictureinpicture != "" {
+		Attr(sb, "disablepictureinpicture", a.Disablepictureinpicture)
+	}
+	if a.Disableremoteplayback != "" {
+		Attr(sb, "disableremoteplayback", a.Disableremoteplayback)
+	}
+	if a.Height != "" {
+		Attr(sb, "height", a.Height)
+	}
+	if a.Loop {
+		BoolAttr(sb, "loop")
+	}
+	if a.Muted {
+		BoolAttr(sb, "muted")
+	}
+	if a.Playsinline != "" {
+		Attr(sb, "playsinline", a.Playsinline)
+	}
+	if a.Poster != "" {
+		Attr(sb, "poster", a.Poster)
+	}
+	if a.Preload != "" {
+		Attr(sb, "preload", a.Preload)
+	}
+	if a.Src != "" {
+		Attr(sb, "src", a.Src)
+	}
+	if a.Width != "" {
+		Attr(sb, "width", a.Width)
 	}
 }

@@ -2,9 +2,9 @@ package html
 
 import "strings"
 
-// Summary
 type SummaryAttrs struct {
-	Global GlobalAttrs
+	Global          GlobalAttrs
+	DisplayListItem string
 }
 
 type SummaryArg interface {
@@ -31,9 +31,25 @@ func Summary(args ...SummaryArg) Node {
 	return Node{Tag: "summary", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySummary(a *SummaryAttrs, _ *[]Component) { g.do(&a.Global) }
+func (g Global) applySummary(a *SummaryAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
 func (o TxtOpt) applySummary(_ *SummaryAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o ChildOpt) applySummary(_ *SummaryAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *SummaryAttrs) writeAttrs(sb *strings.Builder)             { writeGlobal(sb, &a.Global) }
+
+func (o ChildOpt) applySummary(_ *SummaryAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o DisplayListItemOpt) applySummary(a *SummaryAttrs, _ *[]Component) {
+	a.DisplayListItem = o.v
+}
+
+func (a *SummaryAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+	if a.DisplayListItem != "" {
+		Attr(sb, "display_list_item", a.DisplayListItem)
+	}
+}

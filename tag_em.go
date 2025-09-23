@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// Em
 type EmAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,7 +30,18 @@ func Em(args ...EmArg) Node {
 	return Node{Tag: "em", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyEm(a *EmAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyEm(_ *EmAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyEm(_ *EmAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *EmAttrs) writeAttrs(sb *strings.Builder)        { writeGlobal(sb, &a.Global) }
+func (g Global) applyEm(a *EmAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyEm(_ *EmAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyEm(_ *EmAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *EmAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}

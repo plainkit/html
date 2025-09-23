@@ -2,18 +2,26 @@ package html
 
 import "strings"
 
-type ATarget string
-
-const (
-	TargetSelf  ATarget = "_self"
-	TargetBlank ATarget = "_blank"
-)
-
 type AAttrs struct {
-	Global GlobalAttrs
-	Href   string
-	Target ATarget
-	Rel    string
+	Global              GlobalAttrs
+	Attributionsourceid string
+	Attributionsrc      string
+	Charset             string
+	Coords              string
+	Download            string
+	Href                string
+	Hreflang            string
+	Hreftranslate       string
+	ImplicitNoopener    string
+	Name                string
+	Ping                string
+	Referrerpolicy      string
+	Rel                 string
+	Rev                 string
+	Shape               string
+	Target              string
+	TextFragments       string
+	Type                string
 }
 
 type AArg interface {
@@ -40,37 +48,10 @@ func A(args ...AArg) Node {
 	return Node{Tag: "a", Attrs: a, Kids: kids}
 }
 
-// Tag-specific options
-type HrefOpt struct {
-	v string
-}
-
-type TargetOpt struct {
-	v ATarget
-}
-
-type RelOpt struct {
-	v string
-}
-
-func Href(v string) HrefOpt {
-	return HrefOpt{v}
-}
-
-func Target(v ATarget) TargetOpt {
-	return TargetOpt{v}
-}
-
-func Rel(v string) RelOpt {
-	return RelOpt{v}
-}
-
-// Global option glue
 func (g Global) applyA(a *AAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-// Content option glue
 func (o TxtOpt) applyA(_ *AAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
@@ -79,15 +60,42 @@ func (o ChildOpt) applyA(_ *AAttrs, kids *[]Component) {
 	*kids = append(*kids, o.c)
 }
 
-// Tag-specific option glue
+func (o AttributionsourceidOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Attributionsourceid = o.v
+}
+func (o AttributionsrcOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Attributionsrc = o.v
+}
+func (o CharsetOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Charset = o.v
+}
+func (o CoordsOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Coords = o.v
+}
+func (o DownloadOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Download = o.v
+}
 func (o HrefOpt) applyA(a *AAttrs, _ *[]Component) {
 	a.Href = o.v
 }
-
-func (o TargetOpt) applyA(a *AAttrs, _ *[]Component) {
-	a.Target = o.v
+func (o HreflangOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Hreflang = o.v
 }
-
+func (o HreftranslateOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Hreftranslate = o.v
+}
+func (o ImplicitNoopenerOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.ImplicitNoopener = o.v
+}
+func (o NameOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Name = o.v
+}
+func (o PingOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Ping = o.v
+}
+func (o ReferrerpolicyOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Referrerpolicy = o.v
+}
 func (o RelOpt) applyA(a *AAttrs, _ *[]Component) {
 	if a.Rel == "" {
 		a.Rel = o.v
@@ -95,17 +103,76 @@ func (o RelOpt) applyA(a *AAttrs, _ *[]Component) {
 		a.Rel += " " + o.v
 	}
 }
+func (o RevOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Rev = o.v
+}
+func (o ShapeOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Shape = o.v
+}
+func (o TargetOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Target = o.v
+}
+func (o TextFragmentsOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.TextFragments = o.v
+}
+func (o TypeOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Type = o.v
+}
 
-// Attrs writer implementation
 func (a *AAttrs) writeAttrs(sb *strings.Builder) {
-	writeGlobal(sb, &a.Global)
-	if a.Href != "" {
-		attr(sb, "href", a.Href)
+	WriteGlobal(sb, &a.Global)
+	if a.Attributionsourceid != "" {
+		Attr(sb, "attributionsourceid", a.Attributionsourceid)
 	}
-	if a.Target != "" {
-		attr(sb, "target", string(a.Target))
+	if a.Attributionsrc != "" {
+		Attr(sb, "attributionsrc", a.Attributionsrc)
+	}
+	if a.Charset != "" {
+		Attr(sb, "charset", a.Charset)
+	}
+	if a.Coords != "" {
+		Attr(sb, "coords", a.Coords)
+	}
+	if a.Download != "" {
+		Attr(sb, "download", a.Download)
+	}
+	if a.Href != "" {
+		Attr(sb, "href", a.Href)
+	}
+	if a.Hreflang != "" {
+		Attr(sb, "hreflang", a.Hreflang)
+	}
+	if a.Hreftranslate != "" {
+		Attr(sb, "hreftranslate", a.Hreftranslate)
+	}
+	if a.ImplicitNoopener != "" {
+		Attr(sb, "implicit_noopener", a.ImplicitNoopener)
+	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
+	}
+	if a.Ping != "" {
+		Attr(sb, "ping", a.Ping)
+	}
+	if a.Referrerpolicy != "" {
+		Attr(sb, "referrerpolicy", a.Referrerpolicy)
 	}
 	if a.Rel != "" {
-		attr(sb, "rel", a.Rel)
+		Attr(sb, "rel", a.Rel)
+	}
+	if a.Rev != "" {
+		Attr(sb, "rev", a.Rev)
+	}
+	if a.Shape != "" {
+		Attr(sb, "shape", a.Shape)
+	}
+	if a.Target != "" {
+		Attr(sb, "target", a.Target)
+	}
+	if a.TextFragments != "" {
+		Attr(sb, "text_fragments", a.TextFragments)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
 	}
 }

@@ -2,9 +2,13 @@ package html
 
 import "strings"
 
-// Thead
 type TheadAttrs struct {
-	Global GlobalAttrs
+	Global  GlobalAttrs
+	Align   string
+	Bgcolor string
+	Char    string
+	Charoff string
+	Valign  string
 }
 
 type TheadArg interface {
@@ -31,7 +35,49 @@ func Thead(args ...TheadArg) Node {
 	return Node{Tag: "thead", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyThead(a *TheadAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyThead(_ *TheadAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyThead(_ *TheadAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *TheadAttrs) writeAttrs(sb *strings.Builder)           { writeGlobal(sb, &a.Global) }
+func (g Global) applyThead(a *TheadAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyThead(_ *TheadAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyThead(_ *TheadAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (o AlignOpt) applyThead(a *TheadAttrs, _ *[]Component) {
+	a.Align = o.v
+}
+func (o BgcolorOpt) applyThead(a *TheadAttrs, _ *[]Component) {
+	a.Bgcolor = o.v
+}
+func (o CharOpt) applyThead(a *TheadAttrs, _ *[]Component) {
+	a.Char = o.v
+}
+func (o CharoffOpt) applyThead(a *TheadAttrs, _ *[]Component) {
+	a.Charoff = o.v
+}
+func (o ValignOpt) applyThead(a *TheadAttrs, _ *[]Component) {
+	a.Valign = o.v
+}
+
+func (a *TheadAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+	if a.Align != "" {
+		Attr(sb, "align", a.Align)
+	}
+	if a.Bgcolor != "" {
+		Attr(sb, "bgcolor", a.Bgcolor)
+	}
+	if a.Char != "" {
+		Attr(sb, "char", a.Char)
+	}
+	if a.Charoff != "" {
+		Attr(sb, "charoff", a.Charoff)
+	}
+	if a.Valign != "" {
+		Attr(sb, "valign", a.Valign)
+	}
+}

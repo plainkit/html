@@ -2,7 +2,6 @@ package html
 
 import "strings"
 
-// U
 type UAttrs struct {
 	Global GlobalAttrs
 }
@@ -31,7 +30,18 @@ func U(args ...UArg) Node {
 	return Node{Tag: "u", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyU(a *UAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyU(_ *UAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyU(_ *UAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *UAttrs) writeAttrs(sb *strings.Builder)       { writeGlobal(sb, &a.Global) }
+func (g Global) applyU(a *UAttrs, _ *[]Component) {
+	g.do(&a.Global)
+}
+
+func (o TxtOpt) applyU(_ *UAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
+
+func (o ChildOpt) applyU(_ *UAttrs, kids *[]Component) {
+	*kids = append(*kids, o.c)
+}
+
+func (a *UAttrs) writeAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.Global)
+}
