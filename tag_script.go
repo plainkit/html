@@ -26,33 +26,47 @@ func defaultScriptAttrs() *ScriptAttrs {
 	}
 }
 
-func Script(args ...ScriptArg) Node {
+type ScriptComponent Node
+
+func (script ScriptComponent) render(sb *strings.Builder) {
+	Node(script).render(sb)
+}
+
+func Script(args ...ScriptArg) ScriptComponent {
 	a := defaultScriptAttrs()
 	var kids []Component
 	for _, ar := range args {
 		ar.applyScript(a, &kids)
 	}
-	return Node{Tag: "script", Attrs: a, Kids: kids}
+	return ScriptComponent{Tag: "script", Attrs: a, Kids: kids}
 }
 
 // Script-specific options
 type AsyncOpt struct{}
 type DeferOpt struct{}
 type ScriptSrcOpt struct{ v string }
+type ScriptTypeOpt struct{ v string }
 
-func Async() AsyncOpt                 { return AsyncOpt{} }
-func Defer() DeferOpt                 { return DeferOpt{} }
-func ScriptSrc(v string) ScriptSrcOpt { return ScriptSrcOpt{v} }
+func Async() AsyncOpt                   { return AsyncOpt{} }
+func Defer() DeferOpt                   { return DeferOpt{} }
+func ScriptSrc(v string) ScriptSrcOpt   { return ScriptSrcOpt{v} }
+func ScriptType(v string) ScriptTypeOpt { return ScriptTypeOpt{v} }
 
 func (g Global) applyScript(a *ScriptAttrs, _ *[]Component)    { g.do(&a.Global) }
 func (o TxtOpt) applyScript(_ *ScriptAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
 func (o UnsafeTxtOpt) applyScript(_ *ScriptAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o ChildOpt) applyScript(_ *ScriptAttrs, kids *[]Component)  { *kids = append(*kids, o.c) }
-func (o AsyncOpt) applyScript(a *ScriptAttrs, _ *[]Component)     { a.Async = true }
-func (o DeferOpt) applyScript(a *ScriptAttrs, _ *[]Component)     { a.Defer = true }
-func (o ScriptSrcOpt) applyScript(a *ScriptAttrs, _ *[]Component) { a.Src = o.v }
+func (o ChildOpt) applyScript(_ *ScriptAttrs, kids *[]Component)   { *kids = append(*kids, o.c) }
+func (o AsyncOpt) applyScript(a *ScriptAttrs, _ *[]Component)      { a.Async = true }
+func (o DeferOpt) applyScript(a *ScriptAttrs, _ *[]Component)      { a.Defer = true }
+func (o ScriptSrcOpt) applyScript(a *ScriptAttrs, _ *[]Component)  { a.Src = o.v }
+func (o ScriptTypeOpt) applyScript(a *ScriptAttrs, _ *[]Component) { a.Type = o.v }
+
+// Compile-time type safety: Script can be added to Head
+func (script ScriptComponent) applyHead(_ *HeadAttrs, kids *[]Component) {
+	*kids = append(*kids, script)
+}
 
 func (a *ScriptAttrs) writeAttrs(sb *strings.Builder) {
 	writeGlobal(sb, &a.Global)

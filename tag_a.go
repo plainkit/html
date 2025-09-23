@@ -28,7 +28,6 @@ func defaultAAttrs() *AAttrs {
 			Data:   map[string]string{},
 			Events: map[string]string{},
 		},
-		Target: TargetSelf,
 	}
 }
 

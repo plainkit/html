@@ -23,13 +23,13 @@ func defaultLiAttrs() *LiAttrs {
 	}
 }
 
-func Li(args ...LiArg) Node {
+func Li(args ...LiArg) LiComponent {
 	a := defaultLiAttrs()
 	var kids []Component
 	for _, ar := range args {
 		ar.applyLi(a, &kids)
 	}
-	return Node{Tag: "li", Attrs: a, Kids: kids}
+	return LiComponent{Tag: "li", Attrs: a, Kids: kids}
 }
 
 // LI-specific options
@@ -41,6 +41,22 @@ func (g Global) applyLi(a *LiAttrs, _ *[]Component)      { g.do(&a.Global) }
 func (o TxtOpt) applyLi(_ *LiAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
 func (o ChildOpt) applyLi(_ *LiAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
 func (o ValueOpt) applyLi(a *LiAttrs, _ *[]Component)    { a.Value = o.v }
+
+// Compile-time type safety: Li can be added to Ul and Ol
+// This makes Li() return something that implements both UlArg and OlArg
+type LiComponent Node
+
+func (li LiComponent) render(sb *strings.Builder) {
+	Node(li).render(sb)
+}
+
+func (li LiComponent) applyUl(_ *UlAttrs, kids *[]Component) {
+	*kids = append(*kids, li)
+}
+
+func (li LiComponent) applyOl(_ *OlAttrs, kids *[]Component) {
+	*kids = append(*kids, li)
+}
 
 func (a *LiAttrs) writeAttrs(sb *strings.Builder) {
 	writeGlobal(sb, &a.Global)

@@ -27,12 +27,18 @@ func defaultMetaAttrs() *MetaAttrs {
 	}
 }
 
-func Meta(args ...MetaArg) Node {
+type MetaComponent Node
+
+func (meta MetaComponent) render(sb *strings.Builder) {
+	Node(meta).render(sb)
+}
+
+func Meta(args ...MetaArg) MetaComponent {
 	a := defaultMetaAttrs()
 	for _, ar := range args {
 		ar.applyMeta(a)
 	}
-	return Node{Tag: "meta", Attrs: a, Void: true}
+	return MetaComponent{Tag: "meta", Attrs: a, Void: true}
 }
 
 // Tag-specific options
@@ -62,6 +68,11 @@ func (o HttpEquivOpt) applyMeta(a *MetaAttrs) { a.HttpEquiv = o.v }
 func (o CharsetOpt) applyMeta(a *MetaAttrs)   { a.Charset = o.v }
 func (o PropertyOpt) applyMeta(a *MetaAttrs)  { a.Property = o.v }
 func (o SchemeOpt) applyMeta(a *MetaAttrs)    { a.Scheme = o.v }
+
+// Compile-time type safety: Meta can be added to Head
+func (meta MetaComponent) applyHead(_ *HeadAttrs, kids *[]Component) {
+	*kids = append(*kids, meta)
+}
 
 // Attrs writer implementation
 func (a *MetaAttrs) writeAttrs(sb *strings.Builder) {

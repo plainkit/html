@@ -31,7 +31,5 @@ func Ul(args ...UlArg) Node {
 	return Node{Tag: "ul", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyUl(a *UlAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyUl(_ *UlAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyUl(_ *UlAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (a *UlAttrs) writeAttrs(sb *strings.Builder)        { writeGlobal(sb, &a.Global) }
+func (g Global) applyUl(a *UlAttrs, _ *[]Component) { g.do(&a.Global) }
+func (a *UlAttrs) writeAttrs(sb *strings.Builder)   { writeGlobal(sb, &a.Global) }

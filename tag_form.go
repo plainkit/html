@@ -45,6 +45,7 @@ type EnctypeOpt struct{ v string }
 type AcceptCharsetOpt struct{ v string }
 type AutocompleteOpt struct{ v string }
 type NovalidateOpt struct{}
+type FormTargetOpt struct{ v string }
 
 func Action(v string) ActionOpt               { return ActionOpt{v} }
 func Method(v string) MethodOpt               { return MethodOpt{v} }
@@ -52,6 +53,7 @@ func Enctype(v string) EnctypeOpt             { return EnctypeOpt{v} }
 func AcceptCharset(v string) AcceptCharsetOpt { return AcceptCharsetOpt{v} }
 func Autocomplete(v string) AutocompleteOpt   { return AutocompleteOpt{v} }
 func Novalidate() NovalidateOpt               { return NovalidateOpt{} }
+func FormTarget(v string) FormTargetOpt       { return FormTargetOpt{v} }
 
 func (g Global) applyForm(a *FormAttrs, _ *[]Component)           { g.do(&a.Global) }
 func (o TxtOpt) applyForm(_ *FormAttrs, kids *[]Component)        { *kids = append(*kids, TextNode(o.s)) }
@@ -62,6 +64,7 @@ func (o EnctypeOpt) applyForm(a *FormAttrs, _ *[]Component)       { a.Enctype = 
 func (o AcceptCharsetOpt) applyForm(a *FormAttrs, _ *[]Component) { a.AcceptCharset = o.v }
 func (o AutocompleteOpt) applyForm(a *FormAttrs, _ *[]Component)  { a.Autocomplete = o.v }
 func (o NovalidateOpt) applyForm(a *FormAttrs, _ *[]Component)    { a.Novalidate = true }
+func (o FormTargetOpt) applyForm(a *FormAttrs, _ *[]Component)    { a.Target = o.v }
 
 func (a *FormAttrs) writeAttrs(sb *strings.Builder) {
 	writeGlobal(sb, &a.Global)

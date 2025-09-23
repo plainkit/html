@@ -38,9 +38,13 @@ func Select(args ...SelectArg) Node {
 	return Node{Tag: "select", Attrs: a, Kids: kids}
 }
 
+// Select-specific options
+type SelectNameOpt struct{ v string }
+
+func SelectName(v string) SelectNameOpt { return SelectNameOpt{v} }
+
 func (g Global) applySelect(a *SelectAttrs, _ *[]Component)          { g.do(&a.Global) }
-func (o TxtOpt) applySelect(_ *SelectAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applySelect(_ *SelectAttrs, kids *[]Component)     { *kids = append(*kids, o.c) }
+func (o SelectNameOpt) applySelect(a *SelectAttrs, _ *[]Component)   { a.Name = o.v }
 func (o MultipleOpt) applySelect(a *SelectAttrs, _ *[]Component)     { a.Multiple = true }
 func (o RequiredOpt) applySelect(a *SelectAttrs, _ *[]Component)     { a.Required = true }
 func (o DisabledOpt) applySelect(a *SelectAttrs, _ *[]Component)     { a.Disabled = true }

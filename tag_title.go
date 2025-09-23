@@ -21,13 +21,19 @@ func defaultTitleAttrs() *TitleAttrs {
 	}
 }
 
-func HeadTitle(args ...TitleArg) Node {
+type TitleComponent Node
+
+func (title TitleComponent) render(sb *strings.Builder) {
+	Node(title).render(sb)
+}
+
+func HeadTitle(args ...TitleArg) TitleComponent {
 	a := defaultTitleAttrs()
 	var kids []Component
 	for _, ar := range args {
 		ar.applyTitle(a, &kids)
 	}
-	return Node{Tag: "title", Attrs: a, Kids: kids}
+	return TitleComponent{Tag: "title", Attrs: a, Kids: kids}
 }
 
 // Global option glue
@@ -42,6 +48,11 @@ func (o TxtOpt) applyTitle(_ *TitleAttrs, kids *[]Component) {
 
 func (o ChildOpt) applyTitle(_ *TitleAttrs, kids *[]Component) {
 	*kids = append(*kids, o.c)
+}
+
+// Compile-time type safety: Title can be added to Head
+func (title TitleComponent) applyHead(_ *HeadAttrs, kids *[]Component) {
+	*kids = append(*kids, title)
 }
 
 // Attrs writer implementation

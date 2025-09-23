@@ -81,17 +81,17 @@ func (a *Assets) collectRecursive(components []Component) {
 }
 
 // CSS returns a style component with all collected CSS
-func (a *Assets) CSS() Node {
+func (a *Assets) CSS() StyleComponent {
 	if len(a.css) == 0 {
-		return Node{Tag: "style", Attrs: defaultHeadStyleAttrs(), Kids: nil}
+		return StyleComponent{Tag: "style", Attrs: defaultHeadStyleAttrs(), Kids: nil}
 	}
-	return HeadStyle(Text(strings.Join(a.css, "\n\n")))
+	return HeadStyle(UnsafeText(strings.Join(a.css, "\n\n")))
 }
 
 // JS returns a script component with all collected JavaScript
-func (a *Assets) JS() Node {
+func (a *Assets) JS() ScriptComponent {
 	if len(a.js) == 0 {
-		return Node{Tag: "script", Attrs: defaultScriptAttrs(), Kids: nil}
+		return ScriptComponent{Tag: "script", Attrs: defaultScriptAttrs(), Kids: nil}
 	}
 	return Script(UnsafeText(strings.Join(a.js, "\n\n")))
 }

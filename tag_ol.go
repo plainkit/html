@@ -44,8 +44,6 @@ func Type(v string) TypeOpt { return TypeOpt{v} }
 func Reversed() ReversedOpt { return ReversedOpt{} }
 
 func (g Global) applyOl(a *OlAttrs, _ *[]Component)      { g.do(&a.Global) }
-func (o TxtOpt) applyOl(_ *OlAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyOl(_ *OlAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
 func (o StartOpt) applyOl(a *OlAttrs, _ *[]Component)    { a.Start = o.v }
 func (o TypeOpt) applyOl(a *OlAttrs, _ *[]Component)     { a.Type = o.v }
 func (o ReversedOpt) applyOl(a *OlAttrs, _ *[]Component) { a.Reversed = true }

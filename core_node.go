@@ -109,7 +109,6 @@ func itoa(i int) string {
 
 // Common block-level containers
 func (n Node) applyHtml(_ *HtmlAttrs, kids *[]Component) { *kids = append(*kids, n) }
-func (n Node) applyHead(_ *HeadAttrs, kids *[]Component) { *kids = append(*kids, n) }
 func (n Node) applyBody(_ *BodyAttrs, kids *[]Component) { *kids = append(*kids, n) }
 func (n Node) applyDiv(_ *DivAttrs, kids *[]Component)   { *kids = append(*kids, n) }
 func (n Node) applyMain(_ *MainAttrs, kids *[]Component) { *kids = append(*kids, n) }
@@ -134,11 +133,6 @@ func (n Node) applyH3(_ *H3Attrs, kids *[]Component) { *kids = append(*kids, n) 
 func (n Node) applyH4(_ *H4Attrs, kids *[]Component) { *kids = append(*kids, n) }
 func (n Node) applyH5(_ *H5Attrs, kids *[]Component) { *kids = append(*kids, n) }
 func (n Node) applyH6(_ *H6Attrs, kids *[]Component) { *kids = append(*kids, n) }
-
-// Lists
-func (n Node) applyUl(_ *UlAttrs, kids *[]Component) { *kids = append(*kids, n) }
-func (n Node) applyOl(_ *OlAttrs, kids *[]Component) { *kids = append(*kids, n) }
-func (n Node) applyLi(_ *LiAttrs, kids *[]Component) { *kids = append(*kids, n) }
 
 // Forms and related
 func (n Node) applyForm(_ *FormAttrs, kids *[]Component)         { *kids = append(*kids, n) }

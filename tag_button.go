@@ -50,13 +50,18 @@ func ButtonType(v string) ButtonTypeOpt   { return ButtonTypeOpt{v} }
 func ButtonName(v string) ButtonNameOpt   { return ButtonNameOpt{v} }
 func ButtonValue(v string) ButtonValueOpt { return ButtonValueOpt{v} }
 
-func (g Global) applyButton(a *ButtonAttrs, _ *[]Component)         { g.do(&a.Global) }
-func (o TxtOpt) applyButton(_ *ButtonAttrs, kids *[]Component)      { *kids = append(*kids, TextNode(o.s)) }
-func (o ChildOpt) applyButton(_ *ButtonAttrs, kids *[]Component)    { *kids = append(*kids, o.c) }
-func (o ButtonTypeOpt) applyButton(a *ButtonAttrs, _ *[]Component)  { a.Type = o.v }
-func (o ButtonNameOpt) applyButton(a *ButtonAttrs, _ *[]Component)  { a.Name = o.v }
-func (o ButtonValueOpt) applyButton(a *ButtonAttrs, _ *[]Component) { a.Value = o.v }
-func (o DisabledOpt) applyButton(a *ButtonAttrs, _ *[]Component)    { a.Disabled = true }
+func (g Global) applyButton(a *ButtonAttrs, _ *[]Component)            { g.do(&a.Global) }
+func (o TxtOpt) applyButton(_ *ButtonAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
+func (o ChildOpt) applyButton(_ *ButtonAttrs, kids *[]Component)       { *kids = append(*kids, o.c) }
+func (o ButtonTypeOpt) applyButton(a *ButtonAttrs, _ *[]Component)     { a.Type = o.v }
+func (o ButtonNameOpt) applyButton(a *ButtonAttrs, _ *[]Component)     { a.Name = o.v }
+func (o ButtonValueOpt) applyButton(a *ButtonAttrs, _ *[]Component)    { a.Value = o.v }
+func (o FormactionOpt) applyButton(a *ButtonAttrs, _ *[]Component)     { a.Formaction = o.v }
+func (o FormenctypeOpt) applyButton(a *ButtonAttrs, _ *[]Component)    { a.Formenctype = o.v }
+func (o FormmethodOpt) applyButton(a *ButtonAttrs, _ *[]Component)     { a.Formmethod = o.v }
+func (o FormnovalidateOpt) applyButton(a *ButtonAttrs, _ *[]Component) { a.Formnovalidate = true }
+func (o FormtargetOpt) applyButton(a *ButtonAttrs, _ *[]Component)     { a.Formtarget = o.v }
+func (o DisabledOpt) applyButton(a *ButtonAttrs, _ *[]Component)       { a.Disabled = true }
 
 func (a *ButtonAttrs) writeAttrs(sb *strings.Builder) {
 	writeGlobal(sb, &a.Global)
@@ -74,5 +79,20 @@ func (a *ButtonAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Form != "" {
 		attr(sb, "form", a.Form)
+	}
+	if a.Formaction != "" {
+		attr(sb, "formaction", a.Formaction)
+	}
+	if a.Formenctype != "" {
+		attr(sb, "formenctype", a.Formenctype)
+	}
+	if a.Formmethod != "" {
+		attr(sb, "formmethod", a.Formmethod)
+	}
+	if a.Formnovalidate {
+		boolAttr(sb, "formnovalidate")
+	}
+	if a.Formtarget != "" {
+		attr(sb, "formtarget", a.Formtarget)
 	}
 }
