@@ -42,6 +42,9 @@ func (g Global) applyHeadStyle(a *HeadStyleAttrs, _ *[]Component) { g.do(&a.Glob
 func (o TxtOpt) applyHeadStyle(_ *HeadStyleAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
+func (o UnsafeTxtOpt) applyHeadStyle(_ *HeadStyleAttrs, kids *[]Component) {
+	*kids = append(*kids, UnsafeTextNode(o.s))
+}
 func (o ChildOpt) applyHeadStyle(_ *HeadStyleAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
 func (o MediaOpt) applyHeadStyle(a *HeadStyleAttrs, _ *[]Component)    { a.Media = o.v }
 
