@@ -98,8 +98,8 @@ Build reusable components by composing smaller ones:
 func Card(title, content string) Node {
     return Div(
         Class("card"),
-        H2(Text(title), Class("card-title")),
-        P(Text(content), Class("card-content")),
+        H2(T(title), Class("card-title")),
+        P(T(content), Class("card-content")),
     )
 }
 
@@ -156,7 +156,7 @@ loginForm := Form(
     Action("/login"),
     Method("POST"),
     Div(
-        FormLabel(For("email"), T("Email")),
+        Label(For("email"), T("Email")),
         Input(
             InputType("email"),
             InputName("email"),
@@ -165,7 +165,7 @@ loginForm := Form(
         ),
     ),
     Div(
-        FormLabel(For("password"), T("Password")),
+        Label(For("password"), T("Password")),
         Input(
             InputType("password"),
             InputName("password"),
@@ -223,7 +223,7 @@ Each HTML element has dedicated option types:
 ├── core_node.go          # Component interface, Node struct, Render()
 ├── core_global.go        # GlobalAttrs struct, attribute helpers
 ├── core_options.go       # Global option constructors (Class, Id, etc.)
-├── options_content.go    # Text() and Child() helpers
+├── core_content.go       # Text() and Child() helpers
 ├── tag_div.go           # Div component and options
 ├── tag_input.go         # Input component and options
 ├── tag_form.go          # Form, Input, Textarea, Button, etc.
