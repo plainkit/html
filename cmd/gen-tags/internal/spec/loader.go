@@ -12,7 +12,7 @@ import (
 	"strings"
 )
 
-// VoidElements defines which HTML elements are self-closing
+// VoidElements defines HTML elements that are self-closing
 var VoidElements = map[string]bool{
 	"area": true, "base": true, "br": true, "col": true,
 	"embed": true, "hr": true, "img": true, "input": true,
@@ -20,7 +20,7 @@ var VoidElements = map[string]bool{
 	"track": true, "wbr": true,
 }
 
-// BoolAttributes defines which HTML attributes are boolean
+// BoolAttributes defines HTML attributes that are boolean
 var BoolAttributes = map[string]bool{
 	"allowfullscreen": true,
 	"async":           true,
@@ -55,16 +55,13 @@ type Loader struct {
 // WooormAttributeData represents the structure from wooorm/html-element-attributes
 type WooormAttributeData map[string][]string
 
-// StandardHTML5Elements contains all standard HTML5 elements that should be included
+// StandardHTML5Elements contains all standard HTML5 elements
 var StandardHTML5Elements = map[string]bool{
-	// Document metadata
 	"title": true,
 
-	// Sectioning root
 	"html": true,
 	"body": true,
 
-	// Content sectioning
 	"article": true,
 	"aside":   true,
 	"footer":  true,
@@ -74,7 +71,6 @@ var StandardHTML5Elements = map[string]bool{
 	"section": true,
 	"search":  true,
 
-	// Text content
 	"blockquote": true,
 	"dd":         true,
 	"div":        true,
@@ -90,7 +86,6 @@ var StandardHTML5Elements = map[string]bool{
 	"pre":        true,
 	"ul":         true,
 
-	// Inline text semantics
 	"a":      true,
 	"abbr":   true,
 	"b":      true,
@@ -121,7 +116,6 @@ var StandardHTML5Elements = map[string]bool{
 	"var":    true,
 	"wbr":    true,
 
-	// Image and multimedia
 	"area":    true,
 	"audio":   true,
 	"img":     true,
@@ -131,7 +125,6 @@ var StandardHTML5Elements = map[string]bool{
 	"track":   true,
 	"video":   true,
 
-	// Embedded content
 	"canvas": true,
 	"embed":  true,
 	"iframe": true,
@@ -139,7 +132,6 @@ var StandardHTML5Elements = map[string]bool{
 	"slot":   true,
 	"svg":    true,
 
-	// Forms
 	"button":   true,
 	"datalist": true,
 	"fieldset": true,
@@ -155,26 +147,21 @@ var StandardHTML5Elements = map[string]bool{
 	"select":   true,
 	"textarea": true,
 
-	// Interactive elements
 	"details": true,
 	"dialog":  true,
 	"summary": true,
 
-	// Web Components
 	"template": true,
 
-	// Scripting
 	"noscript": true,
 	"script":   true,
 
-	// Document metadata
 	"base":  true,
 	"head":  true,
 	"link":  true,
 	"meta":  true,
 	"style": true,
 
-	// Table content
 	"caption":  true,
 	"col":      true,
 	"colgroup": true,
@@ -186,7 +173,6 @@ var StandardHTML5Elements = map[string]bool{
 	"thead":    true,
 	"tr":       true,
 
-	// Demarcating edits
 	"del": true,
 	"ins": true,
 }
@@ -222,7 +208,6 @@ func (l *Loader) FetchWooormData() (WooormAttributeData, error) {
 	return parseWooormData(string(body))
 }
 
-// parseWooormData parses the JavaScript file content to extract HTML element attributes
 func parseWooormData(content string) (WooormAttributeData, error) {
 	startPattern := `export const htmlElementAttributes = {`
 	startIndex := strings.Index(content, startPattern)
@@ -264,7 +249,6 @@ LoopEnd:
 	return data, nil
 }
 
-// convertJSObjectToJSON converts JavaScript object notation to valid JSON
 func convertJSObjectToJSON(jsObject string) string {
 	result := strings.ReplaceAll(jsObject, "'", "\"")
 
@@ -274,6 +258,7 @@ func convertJSObjectToJSON(jsObject string) string {
 	return result
 }
 
+// LoadAllTagSpecsFromWooorm loads all tag specifications from wooorm data
 func (l *Loader) LoadAllTagSpecsFromWooorm() ([]TagSpec, error) {
 	wooormData, err := l.FetchWooormData()
 	if err != nil {
@@ -283,6 +268,7 @@ func (l *Loader) LoadAllTagSpecsFromWooorm() ([]TagSpec, error) {
 	return l.convertWooormToTagSpecs(wooormData), nil
 }
 
+// LoadGlobalAttributesFromWooorm loads global attributes from wooorm data
 func (l *Loader) LoadGlobalAttributesFromWooorm() ([]Attribute, error) {
 	wooormData, err := l.FetchWooormData()
 	if err != nil {
@@ -304,10 +290,9 @@ func (l *Loader) LoadGlobalAttributesFromWooorm() ([]Attribute, error) {
 		attr := Attribute{
 			Field: field,
 			Attr:  attrName,
-			Type:  "string", // default type
+			Type:  "string",
 		}
 
-		// Check if it's a boolean attribute
 		if BoolAttributes[attrName] {
 			attr.Type = "bool"
 		}
@@ -315,7 +300,6 @@ func (l *Loader) LoadGlobalAttributesFromWooorm() ([]Attribute, error) {
 		attributes = append(attributes, attr)
 	}
 
-	// Sort attributes by name for deterministic output
 	sort.Slice(attributes, func(i, j int) bool {
 		return attributes[i].Attr < attributes[j].Attr
 	})
@@ -323,12 +307,10 @@ func (l *Loader) LoadGlobalAttributesFromWooorm() ([]Attribute, error) {
 	return attributes, nil
 }
 
-// convertWooormToTagSpecs converts wooorm data to TagSpec format and adds missing standard HTML5 elements
 func (l *Loader) convertWooormToTagSpecs(wooormData WooormAttributeData) []TagSpec {
 	var specs []TagSpec
 	processedElements := make(map[string]bool)
 
-	// Get global attributes to exclude from element-specific attributes
 	globalAttrs := make(map[string]bool)
 	if globals, exists := wooormData["*"]; exists {
 		for _, attr := range globals {
@@ -336,10 +318,9 @@ func (l *Loader) convertWooormToTagSpecs(wooormData WooormAttributeData) []TagSp
 		}
 	}
 
-	// Convert each element from wooorm data
 	for tagName, attributes := range wooormData {
 		if tagName == "*" {
-			continue // Skip global attributes
+			continue
 		}
 
 		spec := TagSpec{
@@ -348,18 +329,17 @@ func (l *Loader) convertWooormToTagSpecs(wooormData WooormAttributeData) []TagSp
 			ParentTargets: ParentMap[tagName],
 		}
 
-		// Convert attributes, excluding global ones
 		var elemAttributes []Attribute
 		for _, attrName := range attributes {
 			if attrName == "" || globalAttrs[attrName] {
-				continue // Skip empty or global attributes
+				continue
 			}
 
 			field := camelCase(attrName)
 			attr := Attribute{
 				Field: field,
 				Attr:  attrName,
-				Type:  "string", // default type
+				Type:  "string",
 			}
 
 			if BoolAttributes[strings.ToLower(attrName)] {
@@ -369,7 +349,6 @@ func (l *Loader) convertWooormToTagSpecs(wooormData WooormAttributeData) []TagSp
 			elemAttributes = append(elemAttributes, attr)
 		}
 
-		// Sort attributes by name for deterministic output
 		sort.Slice(elemAttributes, func(i, j int) bool {
 			return elemAttributes[i].Attr < elemAttributes[j].Attr
 		})
@@ -379,21 +358,18 @@ func (l *Loader) convertWooormToTagSpecs(wooormData WooormAttributeData) []TagSp
 		processedElements[tagName] = true
 	}
 
-	// Add missing standard HTML5 elements that weren't in wooorm data
 	for elementName := range StandardHTML5Elements {
 		if !processedElements[elementName] {
-			// Create a spec for the missing element with no element-specific attributes
 			spec := TagSpec{
 				Name:          elementName,
 				Void:          VoidElements[elementName],
 				ParentTargets: ParentMap[elementName],
-				Attributes:    []Attribute{}, // No element-specific attributes
+				Attributes:    []Attribute{},
 			}
 			specs = append(specs, spec)
 		}
 	}
 
-	// Sort specs by tag name for deterministic output
 	sort.Slice(specs, func(i, j int) bool {
 		return specs[i].Name < specs[j].Name
 	})
@@ -440,7 +416,6 @@ func (l *Loader) LoadTagSpec(filename, tagName string) (TagSpec, error) {
 		return spec, nil
 	}
 
-	// Extract and sort attribute names for deterministic output
 	var keys []string
 	for k := range elemData {
 		if k == "__compat" {
@@ -450,13 +425,12 @@ func (l *Loader) LoadTagSpec(filename, tagName string) (TagSpec, error) {
 	}
 	sort.Strings(keys)
 
-	// Create attribute specs
 	for _, key := range keys {
 		field := camelCase(key)
 		attr := Attribute{
 			Field: field,
 			Attr:  key,
-			Type:  "string", // default
+			Type:  "string",
 		}
 
 		if BoolAttributes[strings.ToLower(key)] {
@@ -503,7 +477,6 @@ func (l *Loader) CollectAllAttributes(specs []TagSpec) map[string]Attribute {
 		for _, attr := range spec.Attributes {
 			key := strings.ToLower(attr.Attr)
 			if existing, exists := allAttributes[key]; exists {
-				// Keep string type if there's a conflict (more permissive)
 				if existing.Type == "bool" && attr.Type == "string" {
 					allAttributes[key] = attr
 				}
@@ -516,14 +489,12 @@ func (l *Loader) CollectAllAttributes(specs []TagSpec) map[string]Attribute {
 	return allAttributes
 }
 
-// CamelCase converts kebab-case to CamelCase (exported for use by main)
+// CamelCase converts kebab-case to CamelCase
 func CamelCase(name string) string {
 	return camelCase(name)
 }
 
-// camelCase converts kebab-case to simple CamelCase (single word approach)
 func camelCase(name string) string {
-	// Remove delimiters and join into single word, then capitalize first letter
 	cleaned := strings.ReplaceAll(strings.ReplaceAll(name, "-", ""), "_", "")
 	if len(cleaned) == 0 {
 		return ""

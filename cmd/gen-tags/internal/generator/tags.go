@@ -8,7 +8,7 @@ import (
 	"github.com/plainkit/html/cmd/gen-tags/internal/utils"
 )
 
-// TagGenerator handles generation of individual tag files
+// TagGenerator generates individual tag files
 type TagGenerator struct{}
 
 // NewTagGenerator creates a new tag generator
@@ -16,7 +16,7 @@ func NewTagGenerator() *TagGenerator {
 	return &TagGenerator{}
 }
 
-// TagTemplateData holds data for tag template
+// TagTemplateData holds data for tag template rendering
 type TagTemplateData struct {
 	Name         string
 	Title        string
@@ -26,6 +26,7 @@ type TagTemplateData struct {
 	Attributes   []TagAttributeData
 }
 
+// TagAttributeData represents attribute data for tag templates
 type TagAttributeData struct {
 	Field  string
 	Type   string
@@ -33,13 +34,11 @@ type TagAttributeData struct {
 	GoType string
 }
 
-// GenerateSource creates the source code for a tag file
 func (g *TagGenerator) GenerateSource(tagSpec spec.TagSpec) string {
 	title := utils.CamelCase(tagSpec.Name)
 	structName := title + "Attrs"
 	argInterface := title + "Arg"
 
-	// Prepare template data
 	var templateAttrs []TagAttributeData
 	for _, attr := range tagSpec.Attributes {
 		templateAttrs = append(templateAttrs, TagAttributeData{
@@ -59,7 +58,6 @@ func (g *TagGenerator) GenerateSource(tagSpec spec.TagSpec) string {
 		Attributes:   templateAttrs,
 	}
 
-	// Execute template
 	tmpl, err := template.New("tag").Parse(tagsTemplate)
 	if err != nil {
 		panic("failed to parse tags template: " + err.Error())

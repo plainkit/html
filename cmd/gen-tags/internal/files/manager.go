@@ -27,17 +27,14 @@ func (m *Manager) EnsureOutputDir() error {
 func (m *Manager) WriteFormattedFile(fileName, source string) error {
 	filePath := filepath.Join(m.outputDir, fileName)
 
-	// Format the source code
 	formatted, err := format.Source([]byte(source))
 	if err != nil {
-		// Write unformatted version for debugging
 		if debugErr := m.writeUnformattedDebugFile(fileName, source); debugErr != nil {
 			fmt.Printf("Error writing debug file: %v\n", debugErr)
 		}
 		return fmt.Errorf("format source for %s: %w", fileName, err)
 	}
 
-	// Write the formatted file
 	if err := os.WriteFile(filePath, formatted, 0o644); err != nil {
 		return fmt.Errorf("write file %s: %w", fileName, err)
 	}
@@ -46,7 +43,6 @@ func (m *Manager) WriteFormattedFile(fileName, source string) error {
 	return nil
 }
 
-// writeUnformattedDebugFile writes unformatted source for debugging
 func (m *Manager) writeUnformattedDebugFile(fileName, source string) error {
 	debugPath := filepath.Join(m.outputDir, fileName+".unformatted")
 	return os.WriteFile(debugPath, []byte(source), 0o644)
@@ -62,7 +58,7 @@ func (m *Manager) ReadFile(fileName string) (string, error) {
 	return string(data), nil
 }
 
-// WriteFile writes content to a file (without formatting)
+// WriteFile writes content to a file without formatting
 func (m *Manager) WriteFile(fileName, content string) error {
 	filePath := filepath.Join(m.outputDir, fileName)
 	if err := os.WriteFile(filePath, []byte(content), 0o644); err != nil {
@@ -101,7 +97,6 @@ func (m *Manager) CleanGeneratedFiles() error {
 	return nil
 }
 
-// isGeneratedFile determines if a file should be cleaned up
 func (m *Manager) isGeneratedFile(fileName string) bool {
 	return strings.HasPrefix(fileName, "tag_") ||
 		fileName == "attrs.go" ||
