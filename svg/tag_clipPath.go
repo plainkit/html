@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// ClipPathAttrs holds the attributes for the clipPath SVG element
 type ClipPathAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -76,10 +77,16 @@ type ClipPathAttrs struct {
 	WritingMode                string
 }
 
+// ClipPath creates an SVG clipPath element
 func ClipPath(attrs ClipPathAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "clipPath", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "clipPath",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *ClipPathAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// TitleAttrs holds the attributes for the title SVG element
 type TitleAttrs struct {
 	html.GlobalAttrs
 	RequiredExtensions string
@@ -16,10 +17,16 @@ type TitleAttrs struct {
 	SystemLanguage     string
 }
 
+// Title creates an SVG title element
 func Title(attrs TitleAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "title", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "title",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *TitleAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.RequiredExtensions != "" {

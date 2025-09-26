@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeComponentTransferAttrs holds the attributes for the feComponentTransfer SVG element
 type FeComponentTransferAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -76,10 +77,16 @@ type FeComponentTransferAttrs struct {
 	Y                          string
 }
 
+// FeComponentTransfer creates an SVG feComponentTransfer element
 func FeComponentTransfer(attrs FeComponentTransferAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feComponentTransfer", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feComponentTransfer",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeComponentTransferAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

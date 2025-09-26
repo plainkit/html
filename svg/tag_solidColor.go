@@ -7,14 +7,21 @@ import (
 	"github.com/plainkit/html"
 )
 
+// SolidColorAttrs holds the attributes for the solidColor SVG element
 type SolidColorAttrs struct {
 	html.GlobalAttrs
 }
 
+// SolidColor creates an SVG solidColor element
 func SolidColor(attrs SolidColorAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "solidColor", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "solidColor",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *SolidColorAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 }

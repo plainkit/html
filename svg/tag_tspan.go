@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// TspanAttrs holds the attributes for the tspan SVG element
 type TspanAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -95,10 +96,16 @@ type TspanAttrs struct {
 	Y                          string
 }
 
+// Tspan creates an SVG tspan element
 func Tspan(attrs TspanAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "tspan", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "tspan",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *TspanAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

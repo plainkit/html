@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeOffsetAttrs holds the attributes for the feOffset SVG element
 type FeOffsetAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -78,10 +79,16 @@ type FeOffsetAttrs struct {
 	Y                          string
 }
 
+// FeOffset creates an SVG feOffset element
 func FeOffset(attrs FeOffsetAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feOffset", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feOffset",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeOffsetAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

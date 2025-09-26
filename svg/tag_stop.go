@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// StopAttrs holds the attributes for the stop SVG element
 type StopAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -71,10 +72,16 @@ type StopAttrs struct {
 	WritingMode                string
 }
 
+// Stop creates an SVG stop element (self-closing)
 func Stop(attrs StopAttrs) html.Node {
-	return html.Node{Tag: "stop", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "stop",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *StopAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

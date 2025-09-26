@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// ImageAttrs holds the attributes for the image SVG element
 type ImageAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -97,10 +98,16 @@ type ImageAttrs struct {
 	Y                          string
 }
 
+// Image creates an SVG image element
 func Image(attrs ImageAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "image", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "image",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *ImageAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

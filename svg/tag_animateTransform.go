@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// AnimateTransformAttrs holds the attributes for the animateTransform SVG element
 type AnimateTransformAttrs struct {
 	html.GlobalAttrs
 	Accumulate                string
@@ -39,10 +40,16 @@ type AnimateTransformAttrs struct {
 	Values                    string
 }
 
+// AnimateTransform creates an SVG animateTransform element (self-closing)
 func AnimateTransform(attrs AnimateTransformAttrs) html.Node {
-	return html.Node{Tag: "animateTransform", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "animateTransform",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *AnimateTransformAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Accumulate != "" {

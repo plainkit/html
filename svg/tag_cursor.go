@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// CursorAttrs holds the attributes for the cursor SVG element
 type CursorAttrs struct {
 	html.GlobalAttrs
 	ExternalResourcesRequired string
@@ -17,10 +18,16 @@ type CursorAttrs struct {
 	Y                         string
 }
 
+// Cursor creates an SVG cursor element
 func Cursor(attrs CursorAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "cursor", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "cursor",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *CursorAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.ExternalResourcesRequired != "" {

@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// EllipseAttrs holds the attributes for the ellipse SVG element
 type EllipseAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -94,10 +95,16 @@ type EllipseAttrs struct {
 	WritingMode                string
 }
 
+// Ellipse creates an SVG ellipse element (self-closing)
 func Ellipse(attrs EllipseAttrs) html.Node {
-	return html.Node{Tag: "ellipse", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "ellipse",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *EllipseAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

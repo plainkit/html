@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// PolygonAttrs holds the attributes for the polygon SVG element
 type PolygonAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -91,10 +92,16 @@ type PolygonAttrs struct {
 	WritingMode                string
 }
 
+// Polygon creates an SVG polygon element (self-closing)
 func Polygon(attrs PolygonAttrs) html.Node {
-	return html.Node{Tag: "polygon", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "polygon",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *PolygonAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

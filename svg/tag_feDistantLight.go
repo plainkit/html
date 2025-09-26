@@ -7,16 +7,23 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeDistantLightAttrs holds the attributes for the feDistantLight SVG element
 type FeDistantLightAttrs struct {
 	html.GlobalAttrs
 	Azimuth   string
 	Elevation string
 }
 
+// FeDistantLight creates an SVG feDistantLight element (self-closing)
 func FeDistantLight(attrs FeDistantLightAttrs) html.Node {
-	return html.Node{Tag: "feDistantLight", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "feDistantLight",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeDistantLightAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Azimuth != "" {

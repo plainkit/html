@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// VideoAttrs holds the attributes for the video SVG element
 type VideoAttrs struct {
 	html.GlobalAttrs
 	Begin                     string
@@ -51,10 +52,16 @@ type VideoAttrs struct {
 	Y                         string
 }
 
+// Video creates an SVG video element
 func Video(attrs VideoAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "video", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "video",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *VideoAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Begin != "" {

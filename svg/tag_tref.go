@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// TrefAttrs holds the attributes for the tref SVG element
 type TrefAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -81,10 +82,16 @@ type TrefAttrs struct {
 	Y                          string
 }
 
+// Tref creates an SVG tref element
 func Tref(attrs TrefAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "tref", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "tref",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *TrefAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

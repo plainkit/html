@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FontAttrs holds the attributes for the font SVG element
 type FontAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -77,10 +78,16 @@ type FontAttrs struct {
 	WritingMode                string
 }
 
+// Font creates an SVG font element
 func Font(attrs FontAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "font", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "font",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FontAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

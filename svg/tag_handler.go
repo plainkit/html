@@ -7,16 +7,23 @@ import (
 	"github.com/plainkit/html"
 )
 
+// HandlerAttrs holds the attributes for the handler SVG element
 type HandlerAttrs struct {
 	html.GlobalAttrs
 	ExternalResourcesRequired string
 	Type                      string
 }
 
+// Handler creates an SVG handler element
 func Handler(attrs HandlerAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "handler", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "handler",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *HandlerAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.ExternalResourcesRequired != "" {

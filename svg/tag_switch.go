@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// SwitchAttrs holds the attributes for the switch SVG element
 type SwitchAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -89,10 +90,16 @@ type SwitchAttrs struct {
 	WritingMode                string
 }
 
+// Switch creates an SVG switch element
 func Switch(attrs SwitchAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "switch", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "switch",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *SwitchAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

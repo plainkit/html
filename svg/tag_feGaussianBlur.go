@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeGaussianBlurAttrs holds the attributes for the feGaussianBlur SVG element
 type FeGaussianBlurAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -78,10 +79,16 @@ type FeGaussianBlurAttrs struct {
 	Y                          string
 }
 
+// FeGaussianBlur creates an SVG feGaussianBlur element
 func FeGaussianBlur(attrs FeGaussianBlurAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feGaussianBlur", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feGaussianBlur",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeGaussianBlurAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

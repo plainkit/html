@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// PolylineAttrs holds the attributes for the polyline SVG element
 type PolylineAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -91,10 +92,16 @@ type PolylineAttrs struct {
 	WritingMode                string
 }
 
+// Polyline creates an SVG polyline element (self-closing)
 func Polyline(attrs PolylineAttrs) html.Node {
-	return html.Node{Tag: "polyline", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "polyline",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *PolylineAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

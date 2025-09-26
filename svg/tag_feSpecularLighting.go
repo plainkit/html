@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeSpecularLightingAttrs holds the attributes for the feSpecularLighting SVG element
 type FeSpecularLightingAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -80,10 +81,16 @@ type FeSpecularLightingAttrs struct {
 	Y                          string
 }
 
+// FeSpecularLighting creates an SVG feSpecularLighting element
 func FeSpecularLighting(attrs FeSpecularLightingAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feSpecularLighting", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feSpecularLighting",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeSpecularLightingAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

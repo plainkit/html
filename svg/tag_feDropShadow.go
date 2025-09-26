@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeDropShadowAttrs holds the attributes for the feDropShadow SVG element
 type FeDropShadowAttrs struct {
 	html.GlobalAttrs
 	Dx           string
@@ -20,10 +21,16 @@ type FeDropShadowAttrs struct {
 	Y            string
 }
 
+// FeDropShadow creates an SVG feDropShadow element (self-closing)
 func FeDropShadow(attrs FeDropShadowAttrs) html.Node {
-	return html.Node{Tag: "feDropShadow", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "feDropShadow",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeDropShadowAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Dx != "" {

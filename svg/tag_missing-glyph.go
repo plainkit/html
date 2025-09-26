@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// MissingGlyphAttrs holds the attributes for the missing-glyph SVG element
 type MissingGlyphAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -75,10 +76,16 @@ type MissingGlyphAttrs struct {
 	WritingMode                string
 }
 
+// MissingGlyph creates an SVG missing-glyph element
 func MissingGlyph(attrs MissingGlyphAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "missing-glyph", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "missing-glyph",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *MissingGlyphAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

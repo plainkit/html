@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// ForeignObjectAttrs holds the attributes for the foreignObject SVG element
 type ForeignObjectAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -93,10 +94,16 @@ type ForeignObjectAttrs struct {
 	Y                          string
 }
 
+// ForeignObject creates an SVG foreignObject element
 func ForeignObject(attrs ForeignObjectAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "foreignObject", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "foreignObject",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *ForeignObjectAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

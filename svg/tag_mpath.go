@@ -7,16 +7,23 @@ import (
 	"github.com/plainkit/html"
 )
 
+// MpathAttrs holds the attributes for the mpath SVG element
 type MpathAttrs struct {
 	html.GlobalAttrs
 	ExternalResourcesRequired string
 	Href                      string
 }
 
+// Mpath creates an SVG mpath element
 func Mpath(attrs MpathAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "mpath", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "mpath",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *MpathAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.ExternalResourcesRequired != "" {

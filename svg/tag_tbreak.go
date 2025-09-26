@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// TbreakAttrs holds the attributes for the tbreak SVG element
 type TbreakAttrs struct {
 	html.GlobalAttrs
 	RequiredExtensions string
@@ -16,10 +17,16 @@ type TbreakAttrs struct {
 	SystemLanguage     string
 }
 
+// Tbreak creates an SVG tbreak element
 func Tbreak(attrs TbreakAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "tbreak", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "tbreak",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *TbreakAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.RequiredExtensions != "" {

@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// VkernAttrs holds the attributes for the vkern SVG element
 type VkernAttrs struct {
 	html.GlobalAttrs
 	G1 string
@@ -16,10 +17,16 @@ type VkernAttrs struct {
 	U2 string
 }
 
+// Vkern creates an SVG vkern element
 func Vkern(attrs VkernAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "vkern", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "vkern",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *VkernAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.G1 != "" {

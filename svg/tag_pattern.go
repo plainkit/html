@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// PatternAttrs holds the attributes for the pattern SVG element
 type PatternAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -84,10 +85,16 @@ type PatternAttrs struct {
 	Y                          string
 }
 
+// Pattern creates an SVG pattern element
 func Pattern(attrs PatternAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "pattern", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "pattern",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *PatternAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

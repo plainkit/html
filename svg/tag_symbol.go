@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// SymbolAttrs holds the attributes for the symbol SVG element
 type SymbolAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -79,10 +80,16 @@ type SymbolAttrs struct {
 	Y                          string
 }
 
+// Symbol creates an SVG symbol element
 func Symbol(attrs SymbolAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "symbol", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "symbol",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *SymbolAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

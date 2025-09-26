@@ -7,14 +7,21 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FontFaceSrcAttrs holds the attributes for the font-face-src SVG element
 type FontFaceSrcAttrs struct {
 	html.GlobalAttrs
 }
 
+// FontFaceSrc creates an SVG font-face-src element
 func FontFaceSrc(attrs FontFaceSrcAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "font-face-src", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "font-face-src",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FontFaceSrcAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 }

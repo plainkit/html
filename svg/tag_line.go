@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// LineAttrs holds the attributes for the line SVG element
 type LineAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -94,10 +95,16 @@ type LineAttrs struct {
 	Y2                         string
 }
 
+// Line creates an SVG line element (self-closing)
 func Line(attrs LineAttrs) html.Node {
-	return html.Node{Tag: "line", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "line",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *LineAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

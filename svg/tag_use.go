@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// UseAttrs holds the attributes for the use SVG element
 type UseAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -94,10 +95,16 @@ type UseAttrs struct {
 	Y                          string
 }
 
+// Use creates an SVG use element (self-closing)
 func Use(attrs UseAttrs) html.Node {
-	return html.Node{Tag: "use", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "use",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *UseAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

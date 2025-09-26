@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// DefsAttrs holds the attributes for the defs SVG element
 type DefsAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -75,10 +76,16 @@ type DefsAttrs struct {
 	WritingMode                string
 }
 
+// Defs creates an SVG defs element
 func Defs(attrs DefsAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "defs", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "defs",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *DefsAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

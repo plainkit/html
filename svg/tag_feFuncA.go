@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeFuncAAttrs holds the attributes for the feFuncA SVG element
 type FeFuncAAttrs struct {
 	html.GlobalAttrs
 	Amplitude   string
@@ -18,10 +19,16 @@ type FeFuncAAttrs struct {
 	Type        string
 }
 
+// FeFuncA creates an SVG feFuncA element (self-closing)
 func FeFuncA(attrs FeFuncAAttrs) html.Node {
-	return html.Node{Tag: "feFuncA", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "feFuncA",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeFuncAAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Amplitude != "" {

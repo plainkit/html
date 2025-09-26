@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// RectAttrs holds the attributes for the rect SVG element
 type RectAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -96,10 +97,16 @@ type RectAttrs struct {
 	Y                          string
 }
 
+// Rect creates an SVG rect element (self-closing)
 func Rect(attrs RectAttrs) html.Node {
-	return html.Node{Tag: "rect", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "rect",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *RectAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

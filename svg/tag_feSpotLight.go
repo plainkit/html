@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeSpotLightAttrs holds the attributes for the feSpotLight SVG element
 type FeSpotLightAttrs struct {
 	html.GlobalAttrs
 	LimitingConeAngle string
@@ -19,10 +20,16 @@ type FeSpotLightAttrs struct {
 	Z                 string
 }
 
+// FeSpotLight creates an SVG feSpotLight element (self-closing)
 func FeSpotLight(attrs FeSpotLightAttrs) html.Node {
-	return html.Node{Tag: "feSpotLight", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "feSpotLight",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeSpotLightAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.LimitingConeAngle != "" {

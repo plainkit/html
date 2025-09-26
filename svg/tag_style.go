@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// StyleAttrs holds the attributes for the style SVG element
 type StyleAttrs struct {
 	html.GlobalAttrs
 	Media string
@@ -14,10 +15,16 @@ type StyleAttrs struct {
 	Type  string
 }
 
+// Style creates an SVG style element
 func Style(attrs StyleAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "style", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "style",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *StyleAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Media != "" {

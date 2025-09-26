@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// ScriptAttrs holds the attributes for the script SVG element
 type ScriptAttrs struct {
 	html.GlobalAttrs
 	Crossorigin               bool
@@ -15,10 +16,16 @@ type ScriptAttrs struct {
 	Type                      string
 }
 
+// Script creates an SVG script element
 func Script(attrs ScriptAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "script", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "script",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *ScriptAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Crossorigin {

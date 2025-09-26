@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeTurbulenceAttrs holds the attributes for the feTurbulence SVG element
 type FeTurbulenceAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -80,10 +81,16 @@ type FeTurbulenceAttrs struct {
 	Y                          string
 }
 
+// FeTurbulence creates an SVG feTurbulence element
 func FeTurbulence(attrs FeTurbulenceAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feTurbulence", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feTurbulence",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeTurbulenceAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeFloodAttrs holds the attributes for the feFlood SVG element
 type FeFloodAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -75,10 +76,16 @@ type FeFloodAttrs struct {
 	Y                          string
 }
 
+// FeFlood creates an SVG feFlood element
 func FeFlood(attrs FeFloodAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feFlood", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feFlood",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeFloodAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

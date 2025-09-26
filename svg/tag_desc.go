@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// DescAttrs holds the attributes for the desc SVG element
 type DescAttrs struct {
 	html.GlobalAttrs
 	RequiredExtensions string
@@ -16,10 +17,16 @@ type DescAttrs struct {
 	SystemLanguage     string
 }
 
+// Desc creates an SVG desc element
 func Desc(attrs DescAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "desc", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "desc",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *DescAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.RequiredExtensions != "" {

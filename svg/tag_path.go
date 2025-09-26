@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// PathAttrs holds the attributes for the path SVG element
 type PathAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -91,10 +92,16 @@ type PathAttrs struct {
 	WritingMode                string
 }
 
+// Path creates an SVG path element (self-closing)
 func Path(attrs PathAttrs) html.Node {
-	return html.Node{Tag: "path", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "path",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *PathAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

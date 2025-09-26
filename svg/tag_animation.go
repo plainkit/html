@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// AnimationAttrs holds the attributes for the animation SVG element
 type AnimationAttrs struct {
 	html.GlobalAttrs
 	Begin                     string
@@ -48,10 +49,16 @@ type AnimationAttrs struct {
 	Y                         string
 }
 
+// Animation creates an SVG animation element
 func Animation(attrs AnimationAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "animation", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "animation",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *AnimationAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Begin != "" {

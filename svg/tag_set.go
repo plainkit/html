@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// SetAttrs holds the attributes for the set SVG element
 type SetAttrs struct {
 	html.GlobalAttrs
 	AttributeName             string
@@ -30,10 +31,16 @@ type SetAttrs struct {
 	To                        string
 }
 
+// Set creates an SVG set element
 func Set(attrs SetAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "set", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "set",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *SetAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AttributeName != "" {

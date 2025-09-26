@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// TextAttrs holds the attributes for the text SVG element
 type TextAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -97,10 +98,16 @@ type TextAttrs struct {
 	Y                          string
 }
 
+// Text creates an SVG text element
 func Text(attrs TextAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "text", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "text",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *TextAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

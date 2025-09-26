@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeMergeAttrs holds the attributes for the feMerge SVG element
 type FeMergeAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -75,10 +76,16 @@ type FeMergeAttrs struct {
 	Y                          string
 }
 
+// FeMerge creates an SVG feMerge element
 func FeMerge(attrs FeMergeAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feMerge", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feMerge",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeMergeAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

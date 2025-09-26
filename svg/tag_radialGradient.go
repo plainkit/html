@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// RadialGradientAttrs holds the attributes for the radialGradient SVG element
 type RadialGradientAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -81,10 +82,16 @@ type RadialGradientAttrs struct {
 	WritingMode                string
 }
 
+// RadialGradient creates an SVG radialGradient element
 func RadialGradient(attrs RadialGradientAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "radialGradient", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "radialGradient",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *RadialGradientAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

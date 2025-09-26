@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// DiscardAttrs holds the attributes for the discard SVG element
 type DiscardAttrs struct {
 	html.GlobalAttrs
 	Begin              string
@@ -18,10 +19,16 @@ type DiscardAttrs struct {
 	SystemLanguage     string
 }
 
+// Discard creates an SVG discard element
 func Discard(attrs DiscardAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "discard", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "discard",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *DiscardAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Begin != "" {

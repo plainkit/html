@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// CircleAttrs holds the attributes for the circle SVG element
 type CircleAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -93,10 +94,16 @@ type CircleAttrs struct {
 	WritingMode                string
 }
 
+// Circle creates an SVG circle element (self-closing)
 func Circle(attrs CircleAttrs) html.Node {
-	return html.Node{Tag: "circle", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "circle",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *CircleAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FontFaceAttrs holds the attributes for the font-face SVG element
 type FontFaceAttrs struct {
 	html.GlobalAttrs
 	AccentHeight              string
@@ -45,10 +46,16 @@ type FontFaceAttrs struct {
 	XHeight                   string
 }
 
+// FontFace creates an SVG font-face element
 func FontFace(attrs FontFaceAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "font-face", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "font-face",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FontFaceAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AccentHeight != "" {

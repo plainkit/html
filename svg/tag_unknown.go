@@ -7,16 +7,23 @@ import (
 	"github.com/plainkit/html"
 )
 
+// UnknownAttrs holds the attributes for the unknown SVG element
 type UnknownAttrs struct {
 	html.GlobalAttrs
 	RequiredExtensions string
 	SystemLanguage     string
 }
 
+// Unknown creates an SVG unknown element
 func Unknown(attrs UnknownAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "unknown", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "unknown",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *UnknownAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.RequiredExtensions != "" {

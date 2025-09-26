@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// CanvasAttrs holds the attributes for the canvas SVG element
 type CanvasAttrs struct {
 	html.GlobalAttrs
 	PreserveAspectRatio string
@@ -14,10 +15,16 @@ type CanvasAttrs struct {
 	SystemLanguage      string
 }
 
+// Canvas creates an SVG canvas element
 func Canvas(attrs CanvasAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "canvas", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "canvas",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *CanvasAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.PreserveAspectRatio != "" {

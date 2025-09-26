@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// ColorProfileAttrs holds the attributes for the color-profile SVG element
 type ColorProfileAttrs struct {
 	html.GlobalAttrs
 	Local           string
@@ -14,10 +15,16 @@ type ColorProfileAttrs struct {
 	RenderingIntent string
 }
 
+// ColorProfile creates an SVG color-profile element
 func ColorProfile(attrs ColorProfileAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "color-profile", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "color-profile",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *ColorProfileAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Local != "" {

@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// MetadataAttrs holds the attributes for the metadata SVG element
 type MetadataAttrs struct {
 	html.GlobalAttrs
 	RequiredExtensions string
@@ -16,10 +17,16 @@ type MetadataAttrs struct {
 	SystemLanguage     string
 }
 
+// Metadata creates an SVG metadata element
 func Metadata(attrs MetadataAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "metadata", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "metadata",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *MetadataAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.RequiredExtensions != "" {

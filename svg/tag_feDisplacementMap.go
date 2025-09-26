@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeDisplacementMapAttrs holds the attributes for the feDisplacementMap SVG element
 type FeDisplacementMapAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -80,10 +81,16 @@ type FeDisplacementMapAttrs struct {
 	YChannelSelector           string
 }
 
+// FeDisplacementMap creates an SVG feDisplacementMap element
 func FeDisplacementMap(attrs FeDisplacementMapAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feDisplacementMap", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feDisplacementMap",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeDisplacementMapAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

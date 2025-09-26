@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeConvolveMatrixAttrs holds the attributes for the feConvolveMatrix SVG element
 type FeConvolveMatrixAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -85,10 +86,16 @@ type FeConvolveMatrixAttrs struct {
 	Y                          string
 }
 
+// FeConvolveMatrix creates an SVG feConvolveMatrix element
 func FeConvolveMatrix(attrs FeConvolveMatrixAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feConvolveMatrix", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feConvolveMatrix",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeConvolveMatrixAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

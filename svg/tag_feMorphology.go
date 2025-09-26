@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeMorphologyAttrs holds the attributes for the feMorphology SVG element
 type FeMorphologyAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -78,10 +79,16 @@ type FeMorphologyAttrs struct {
 	Y                          string
 }
 
+// FeMorphology creates an SVG feMorphology element
 func FeMorphology(attrs FeMorphologyAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feMorphology", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feMorphology",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeMorphologyAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FePointLightAttrs holds the attributes for the fePointLight SVG element
 type FePointLightAttrs struct {
 	html.GlobalAttrs
 	X string
@@ -14,10 +15,16 @@ type FePointLightAttrs struct {
 	Z string
 }
 
+// FePointLight creates an SVG fePointLight element (self-closing)
 func FePointLight(attrs FePointLightAttrs) html.Node {
-	return html.Node{Tag: "fePointLight", Attrs: &attrs, Void: true}
+	return html.Node{
+		Tag:   "fePointLight",
+		Attrs: &attrs,
+		Void:  true,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FePointLightAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.X != "" {

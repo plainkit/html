@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// TextAreaAttrs holds the attributes for the textArea SVG element
 type TextAreaAttrs struct {
 	html.GlobalAttrs
 	Editable           string
@@ -34,10 +35,16 @@ type TextAreaAttrs struct {
 	Y                  string
 }
 
+// TextArea creates an SVG textArea element
 func TextArea(attrs TextAreaAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "textArea", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "textArea",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *TextAreaAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Editable != "" {

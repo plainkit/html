@@ -1,257 +1,53 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"fmt"
-	"go/format"
 	"os"
-	"path/filepath"
-	"regexp"
-	"sort"
-	"strings"
+
+	"github.com/plainkit/html/cmd/gen-svg/internal/files"
+	"github.com/plainkit/html/cmd/gen-svg/internal/generator"
+	"github.com/plainkit/html/cmd/gen-svg/internal/spec"
 )
 
-// SVG elements that are self-closing (void)
-var voidSvgElements = map[string]bool{
-	"animateMotion":    true,
-	"animateTransform": true,
-	"circle":           true,
-	"ellipse":          true,
-	"feDistantLight":   true,
-	"feDropShadow":     true,
-	"feFuncA":          true,
-	"feFuncB":          true,
-	"feFuncG":          true,
-	"feFuncR":          true,
-	"fePointLight":     true,
-	"feSpotLight":      true,
-	"line":             true,
-	"path":             true,
-	"polygon":          true,
-	"polyline":         true,
-	"rect":             true,
-	"stop":             true,
-	"use":              true,
-}
-
-// SVG attributes that are boolean
-var boolSvgAttributes = map[string]bool{
-	"externalResourcesRequired": true,
-	"focusable":                 true,
-	"crossorigin":               true,
-}
-
-type attr struct {
-	Field string
-	Type  string
-	Attr  string
-}
-
-type tagSpec struct {
-	Name       string
-	Void       bool
-	Attributes []attr
-}
-
 func main() {
-	specsDir := flag.String("specs", "svg/specs", "path to specs directory")
 	outDir := flag.String("out", "svg", "output directory for generated tags")
 	flag.Parse()
 
-	if err := run(*specsDir, *outDir); err != nil {
+	if err := run(*outDir); err != nil {
 		_, _ = fmt.Fprintf(os.Stderr, "error: %v\n", err)
 		os.Exit(1)
 	}
 }
 
-func run(specsDir, outDir string) error {
-	if err := os.MkdirAll(outDir, 0o755); err != nil {
-		return err
+func run(outDir string) error {
+	fileManager := files.NewManager(outDir)
+	specLoader := spec.NewLoader()
+	tagGenerator := generator.NewTagGenerator()
+
+	if err := fileManager.EnsureOutputDir(); err != nil {
+		return fmt.Errorf("ensure output directory: %w", err)
 	}
 
-	deleteAllTagFiles(specsDir)
+	if err := fileManager.CleanGeneratedFiles(); err != nil {
+		return fmt.Errorf("clean generated files: %w", err)
+	}
 
-	spec, err := loadSvgSpec(filepath.Join(specsDir, "svg-element-attributes.js"))
+	allSpecs, err := specLoader.LoadAllTagSpecs()
 	if err != nil {
-		return fmt.Errorf("loading SVG spec: %w", err)
+		return fmt.Errorf("load tag specs: %w", err)
 	}
 
-	for tagName, attributes := range spec {
-		if tagName == "*" {
-			// Skip global attributes for individual tag generation
-			continue
-		}
+	fmt.Println("Generating SVG tag files...")
+	for _, tagSpec := range allSpecs {
+		fileName := fmt.Sprintf("tag_%s.go", tagSpec.Name)
+		source := tagGenerator.GenerateSource(tagSpec)
 
-		tagSpec := tagSpec{
-			Name: tagName,
-			Void: voidSvgElements[tagName],
-		}
-
-		// Skip global attributes since they're handled by GlobalAttrs embedded struct
-		globalAttrs := make(map[string]bool)
-		if globalAttrList, ok := spec["*"]; ok {
-			for _, attr := range globalAttrList {
-				globalAttrs[attr] = true
-			}
-		}
-
-		// Add element-specific attributes
-		for _, attrName := range attributes {
-			// Skip global attributes since they're handled by GlobalAttrs
-			if globalAttrs[attrName] {
-				continue
-			}
-
-			field := camelCase(attrName)
-			a := attr{Field: field, Attr: attrName}
-			if boolSvgAttributes[strings.ToLower(attrName)] {
-				a.Type = "bool"
-			} else {
-				a.Type = "string"
-			}
-			tagSpec.Attributes = append(tagSpec.Attributes, a)
-		}
-
-		// Sort attributes by field name for consistency
-		sort.Slice(tagSpec.Attributes, func(i, j int) bool {
-			return tagSpec.Attributes[i].Field < tagSpec.Attributes[j].Field
-		})
-
-		if err := writeTagFile(outDir, tagSpec); err != nil {
-			return fmt.Errorf("write %s: %w", tagName, err)
+		if err := fileManager.WriteFormattedFile(fileName, source); err != nil {
+			return fmt.Errorf("generate %s: %w", fileName, err)
 		}
 	}
 
+	fmt.Printf("✅ Successfully generated %d SVG tag files\n", len(allSpecs))
 	return nil
-}
-
-func deleteAllTagFiles(specsDir string) {
-	entries, err := os.ReadDir(specsDir)
-	if err != nil {
-		panic(err)
-	}
-
-	for _, entry := range entries {
-		name := entry.Name()
-		if strings.HasPrefix(name, "tag_") {
-			if err := os.Remove(name); err != nil {
-				panic(err)
-			}
-		}
-	}
-}
-
-func loadSvgSpec(path string) (map[string][]string, error) {
-	data, err := os.ReadFile(path)
-	if err != nil {
-		return nil, err
-	}
-
-	// Extract the JavaScript object from the file
-	content := string(data)
-
-	// Find the export statement with the object
-	re := regexp.MustCompile(`export const svgElementAttributes = ({[\s\S]*?})\s*;?\s*$`)
-	matches := re.FindStringSubmatch(content)
-	if len(matches) < 2 {
-		return nil, fmt.Errorf("could not find svgElementAttributes export in file")
-	}
-
-	jsonStr := matches[1]
-
-	// Convert JavaScript object to JSON by:
-	// 1. Replacing single quotes with double quotes
-	jsonStr = strings.ReplaceAll(jsonStr, "'", "\"")
-
-	// Add quotes around unquoted keys (handles both word keys and quoted keys)
-	keyRe := regexp.MustCompile(`(?m)^\s*([a-zA-Z_$][a-zA-Z0-9_$-]*)\s*:`)
-	jsonStr = keyRe.ReplaceAllString(jsonStr, "\"$1\":")
-
-	var spec map[string][]string
-	if err := json.Unmarshal([]byte(jsonStr), &spec); err != nil {
-		return nil, fmt.Errorf("parsing SVG attributes JSON: %w", err)
-	}
-
-	return spec, nil
-}
-
-func writeTagFile(dir string, spec tagSpec) error {
-	fileName := filepath.Join(dir, fmt.Sprintf("tag_%s.go", spec.Name))
-	src := buildTagSource(spec)
-	formatted, err := format.Source([]byte(src))
-	if err != nil {
-		return err
-	}
-	return os.WriteFile(fileName, formatted, 0o644)
-}
-
-func buildTagSource(spec tagSpec) string {
-	var sb strings.Builder
-	title := camelCase(spec.Name)
-	structName := title + "Attrs"
-
-	sb.WriteString("// Code generated by gen-svg; DO NOT EDIT.\n")
-	sb.WriteString("package svg\n\n")
-	sb.WriteString("import \"strings\"\n\n")
-	sb.WriteString("\n")
-	sb.WriteString("import \"github.com/plainkit/html\"\n")
-
-	sb.WriteString(fmt.Sprintf("type %s struct {\n\thtml.GlobalAttrs\n", structName))
-	for _, a := range spec.Attributes {
-		sb.WriteString(fmt.Sprintf("\t%s %s\n", a.Field, goType(a.Type)))
-	}
-	sb.WriteString("}\n\n")
-
-	if spec.Void {
-		sb.WriteString(fmt.Sprintf("func %s(attrs %s) html.Node {\n\treturn html.Node{Tag: \"%s\", Attrs: &attrs, Void: true}\n}\n\n", title, structName, spec.Name))
-	} else {
-		sb.WriteString(fmt.Sprintf("func %s(attrs %s, children ...html.Component) html.Node {\n\treturn html.Node{Tag: \"%s\", Attrs: &attrs, Kids: children}\n}\n\n", title, structName, spec.Name))
-	}
-
-	sb.WriteString(fmt.Sprintf("func (a *%s) writeAttrs(sb *strings.Builder) {\n\thtml.WriteGlobal(sb, &a.GlobalAttrs)\n", structName))
-	for _, a := range spec.Attributes {
-		if a.Type == "bool" {
-			sb.WriteString(fmt.Sprintf("\tif a.%s { html.BoolAttr(sb, \"%s\") }\n", a.Field, a.Attr))
-		} else {
-			sb.WriteString(fmt.Sprintf("\tif a.%s != \"\" { html.Attr(sb, \"%s\", a.%s) }\n", a.Field, a.Attr, a.Field))
-		}
-	}
-	sb.WriteString("}\n")
-
-	return sb.String()
-}
-
-func camelCase(name string) string {
-	// Handle special cases for SVG attributes with dashes and mixed case
-	delimiters := func(r rune) bool { return r == '-' || r == '_' }
-	parts := strings.FieldsFunc(name, delimiters)
-
-	if len(parts) == 0 {
-		return name
-	}
-
-	// First part stays as-is if it starts with lowercase, otherwise capitalize
-	result := parts[0]
-	if len(result) > 0 && result[0] >= 'a' && result[0] <= 'z' {
-		result = strings.ToUpper(result[:1]) + result[1:]
-	}
-
-	// Capitalize subsequent parts
-	for i := 1; i < len(parts); i++ {
-		p := parts[i]
-		if len(p) == 0 {
-			continue
-		}
-		result += strings.ToUpper(p[:1]) + p[1:]
-	}
-
-	return result
-}
-
-func goType(t string) string {
-	if t == "bool" {
-		return "bool"
-	}
-	return "string"
 }

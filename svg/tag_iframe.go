@@ -7,16 +7,23 @@ import (
 	"github.com/plainkit/html"
 )
 
+// IframeAttrs holds the attributes for the iframe SVG element
 type IframeAttrs struct {
 	html.GlobalAttrs
 	RequiredExtensions string
 	SystemLanguage     string
 }
 
+// Iframe creates an SVG iframe element
 func Iframe(attrs IframeAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "iframe", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "iframe",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *IframeAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.RequiredExtensions != "" {

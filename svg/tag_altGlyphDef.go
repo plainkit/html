@@ -7,14 +7,21 @@ import (
 	"github.com/plainkit/html"
 )
 
+// AltGlyphDefAttrs holds the attributes for the altGlyphDef SVG element
 type AltGlyphDefAttrs struct {
 	html.GlobalAttrs
 }
 
+// AltGlyphDef creates an SVG altGlyphDef element
 func AltGlyphDef(attrs AltGlyphDefAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "altGlyphDef", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "altGlyphDef",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *AltGlyphDefAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 }

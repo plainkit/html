@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeTileAttrs holds the attributes for the feTile SVG element
 type FeTileAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -76,10 +77,16 @@ type FeTileAttrs struct {
 	Y                          string
 }
 
+// FeTile creates an SVG feTile element
 func FeTile(attrs FeTileAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feTile", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feTile",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeTileAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

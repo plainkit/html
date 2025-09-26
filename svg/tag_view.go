@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// ViewAttrs holds the attributes for the view SVG element
 type ViewAttrs struct {
 	html.GlobalAttrs
 	ExternalResourcesRequired string
@@ -16,10 +17,16 @@ type ViewAttrs struct {
 	ZoomAndPan                string
 }
 
+// View creates an SVG view element
 func View(attrs ViewAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "view", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "view",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *ViewAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.ExternalResourcesRequired != "" {

@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// TextPathAttrs holds the attributes for the textPath SVG element
 type TextPathAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -82,10 +83,16 @@ type TextPathAttrs struct {
 	WritingMode                string
 }
 
+// TextPath creates an SVG textPath element
 func TextPath(attrs TextPathAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "textPath", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "textPath",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *TextPathAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

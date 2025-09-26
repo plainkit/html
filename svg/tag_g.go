@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// GAttrs holds the attributes for the g SVG element
 type GAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -89,10 +90,16 @@ type GAttrs struct {
 	WritingMode                string
 }
 
+// G creates an SVG g element
 func G(attrs GAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "g", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "g",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *GAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

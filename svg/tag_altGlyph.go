@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// AltGlyphAttrs holds the attributes for the altGlyph SVG element
 type AltGlyphAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -81,10 +82,16 @@ type AltGlyphAttrs struct {
 	Y                          string
 }
 
+// AltGlyph creates an SVG altGlyph element
 func AltGlyph(attrs AltGlyphAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "altGlyph", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "altGlyph",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *AltGlyphAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

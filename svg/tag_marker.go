@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// MarkerAttrs holds the attributes for the marker SVG element
 type MarkerAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -79,10 +80,16 @@ type MarkerAttrs struct {
 	WritingMode                string
 }
 
+// Marker creates an SVG marker element
 func Marker(attrs MarkerAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "marker", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "marker",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *MarkerAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

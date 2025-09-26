@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// MaskAttrs holds the attributes for the mask SVG element
 type MaskAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -80,10 +81,16 @@ type MaskAttrs struct {
 	Y                          string
 }
 
+// Mask creates an SVG mask element
 func Mask(attrs MaskAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "mask", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "mask",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *MaskAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

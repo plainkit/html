@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// LinearGradientAttrs holds the attributes for the linearGradient SVG element
 type LinearGradientAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -79,10 +80,16 @@ type LinearGradientAttrs struct {
 	Y2                         string
 }
 
+// LinearGradient creates an SVG linearGradient element
 func LinearGradient(attrs LinearGradientAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "linearGradient", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "linearGradient",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *LinearGradientAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

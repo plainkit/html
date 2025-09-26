@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// SvgAttrs holds the attributes for the svg SVG element
 type SvgAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -105,10 +106,16 @@ type SvgAttrs struct {
 	ZoomAndPan                 string
 }
 
+// Svg creates an SVG svg element
 func Svg(attrs SvgAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "svg", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "svg",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *SvgAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

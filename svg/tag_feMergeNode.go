@@ -7,15 +7,22 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeMergeNodeAttrs holds the attributes for the feMergeNode SVG element
 type FeMergeNodeAttrs struct {
 	html.GlobalAttrs
 	In string
 }
 
+// FeMergeNode creates an SVG feMergeNode element
 func FeMergeNode(attrs FeMergeNodeAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feMergeNode", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feMergeNode",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeMergeNodeAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.In != "" {

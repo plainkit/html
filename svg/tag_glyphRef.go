@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// GlyphRefAttrs holds the attributes for the glyphRef SVG element
 type GlyphRefAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -76,10 +77,16 @@ type GlyphRefAttrs struct {
 	Y                          string
 }
 
+// GlyphRef creates an SVG glyphRef element
 func GlyphRef(attrs GlyphRefAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "glyphRef", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "glyphRef",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *GlyphRefAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

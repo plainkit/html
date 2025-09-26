@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeColorMatrixAttrs holds the attributes for the feColorMatrix SVG element
 type FeColorMatrixAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -78,10 +79,16 @@ type FeColorMatrixAttrs struct {
 	Y                          string
 }
 
+// FeColorMatrix creates an SVG feColorMatrix element
 func FeColorMatrix(attrs FeColorMatrixAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feColorMatrix", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feColorMatrix",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeColorMatrixAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

@@ -7,6 +7,7 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FeCompositeAttrs holds the attributes for the feComposite SVG element
 type FeCompositeAttrs struct {
 	html.GlobalAttrs
 	AlignmentBaseline          string
@@ -82,10 +83,16 @@ type FeCompositeAttrs struct {
 	Y                          string
 }
 
+// FeComposite creates an SVG feComposite element
 func FeComposite(attrs FeCompositeAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "feComposite", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "feComposite",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FeCompositeAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AlignmentBaseline != "" {

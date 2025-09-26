@@ -7,15 +7,22 @@ import (
 	"github.com/plainkit/html"
 )
 
+// FontFaceUriAttrs holds the attributes for the font-face-uri SVG element
 type FontFaceUriAttrs struct {
 	html.GlobalAttrs
 	ExternalResourcesRequired string
 }
 
+// FontFaceUri creates an SVG font-face-uri element
 func FontFaceUri(attrs FontFaceUriAttrs, children ...html.Component) html.Node {
-	return html.Node{Tag: "font-face-uri", Attrs: &attrs, Kids: children}
+	return html.Node{
+		Tag:   "font-face-uri",
+		Attrs: &attrs,
+		Kids:  children,
+	}
 }
 
+// writeAttrs writes the HTML attributes to the string builder
 func (a *FontFaceUriAttrs) writeAttrs(sb *strings.Builder) {
 	html.WriteGlobal(sb, &a.GlobalAttrs)
 	if a.ExternalResourcesRequired != "" {
