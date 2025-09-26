@@ -4,14 +4,14 @@ import "strings"
 
 type FormAttrs struct {
 	Global        GlobalAttrs
-	AcceptCharset string
+	Accept        string
+	Acceptcharset string
 	Action        string
 	Autocomplete  string
 	Enctype       string
 	Method        string
 	Name          string
 	Novalidate    string
-	Rel           string
 	Target        string
 }
 
@@ -43,8 +43,11 @@ func (g Global) applyForm(a *FormAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o AcceptCharsetOpt) applyForm(a *FormAttrs, _ *[]Component) {
-	a.AcceptCharset = o.v
+func (o AcceptOpt) applyForm(a *FormAttrs, _ *[]Component) {
+	a.Accept = o.v
+}
+func (o AcceptcharsetOpt) applyForm(a *FormAttrs, _ *[]Component) {
+	a.Acceptcharset = o.v
 }
 func (o ActionOpt) applyForm(a *FormAttrs, _ *[]Component) {
 	a.Action = o.v
@@ -64,21 +67,17 @@ func (o NameOpt) applyForm(a *FormAttrs, _ *[]Component) {
 func (o NovalidateOpt) applyForm(a *FormAttrs, _ *[]Component) {
 	a.Novalidate = o.v
 }
-func (o RelOpt) applyForm(a *FormAttrs, _ *[]Component) {
-	if a.Rel == "" {
-		a.Rel = o.v
-	} else {
-		a.Rel += " " + o.v
-	}
-}
 func (o TargetOpt) applyForm(a *FormAttrs, _ *[]Component) {
 	a.Target = o.v
 }
 
 func (a *FormAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.AcceptCharset != "" {
-		Attr(sb, "accept-charset", a.AcceptCharset)
+	if a.Accept != "" {
+		Attr(sb, "accept", a.Accept)
+	}
+	if a.Acceptcharset != "" {
+		Attr(sb, "accept-charset", a.Acceptcharset)
 	}
 	if a.Action != "" {
 		Attr(sb, "action", a.Action)
@@ -97,9 +96,6 @@ func (a *FormAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Novalidate != "" {
 		Attr(sb, "novalidate", a.Novalidate)
-	}
-	if a.Rel != "" {
-		Attr(sb, "rel", a.Rel)
 	}
 	if a.Target != "" {
 		Attr(sb, "target", a.Target)

@@ -8,9 +8,7 @@ type IframeAttrs struct {
 	Allow               string
 	Allowfullscreen     bool
 	Allowpaymentrequest string
-	Browsingtopics      string
-	Credentialless      string
-	Csp                 string
+	Allowusermedia      string
 	Frameborder         string
 	Height              string
 	Loading             string
@@ -66,14 +64,8 @@ func (o AllowfullscreenOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
 func (o AllowpaymentrequestOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Allowpaymentrequest = o.v
 }
-func (o BrowsingtopicsOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
-	a.Browsingtopics = o.v
-}
-func (o CredentiallessOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
-	a.Credentialless = o.v
-}
-func (o CspOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
-	a.Csp = o.v
+func (o AllowusermediaOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
+	a.Allowusermedia = o.v
 }
 func (o FrameborderOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Frameborder = o.v
@@ -129,14 +121,8 @@ func (a *IframeAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Allowpaymentrequest != "" {
 		Attr(sb, "allowpaymentrequest", a.Allowpaymentrequest)
 	}
-	if a.Browsingtopics != "" {
-		Attr(sb, "browsingtopics", a.Browsingtopics)
-	}
-	if a.Credentialless != "" {
-		Attr(sb, "credentialless", a.Credentialless)
-	}
-	if a.Csp != "" {
-		Attr(sb, "csp", a.Csp)
+	if a.Allowusermedia != "" {
+		Attr(sb, "allowusermedia", a.Allowusermedia)
 	}
 	if a.Frameborder != "" {
 		Attr(sb, "frameborder", a.Frameborder)

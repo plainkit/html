@@ -3,11 +3,12 @@ package html
 import "strings"
 
 type TemplateAttrs struct {
-	Global                   GlobalAttrs
-	Shadowrootclonable       string
-	Shadowrootdelegatesfocus string
-	Shadowrootmode           string
-	Shadowrootserializable   string
+	Global                          GlobalAttrs
+	Shadowrootclonable              string
+	Shadowrootcustomelementregistry string
+	Shadowrootdelegatesfocus        string
+	Shadowrootmode                  string
+	Shadowrootserializable          string
 }
 
 type TemplateArg interface {
@@ -41,6 +42,9 @@ func (g Global) applyTemplate(a *TemplateAttrs, _ *[]Component) {
 func (o ShadowrootclonableOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
 	a.Shadowrootclonable = o.v
 }
+func (o ShadowrootcustomelementregistryOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
+	a.Shadowrootcustomelementregistry = o.v
+}
 func (o ShadowrootdelegatesfocusOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
 	a.Shadowrootdelegatesfocus = o.v
 }
@@ -55,6 +59,9 @@ func (a *TemplateAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Shadowrootclonable != "" {
 		Attr(sb, "shadowrootclonable", a.Shadowrootclonable)
+	}
+	if a.Shadowrootcustomelementregistry != "" {
+		Attr(sb, "shadowrootcustomelementregistry", a.Shadowrootcustomelementregistry)
 	}
 	if a.Shadowrootdelegatesfocus != "" {
 		Attr(sb, "shadowrootdelegatesfocus", a.Shadowrootdelegatesfocus)

@@ -5,6 +5,7 @@ import "strings"
 type FrameAttrs struct {
 	Global       GlobalAttrs
 	Frameborder  string
+	Longdesc     string
 	Marginheight string
 	Marginwidth  string
 	Name         string
@@ -44,6 +45,9 @@ func (g Global) applyFrame(a *FrameAttrs, _ *[]Component) {
 func (o FrameborderOpt) applyFrame(a *FrameAttrs, _ *[]Component) {
 	a.Frameborder = o.v
 }
+func (o LongdescOpt) applyFrame(a *FrameAttrs, _ *[]Component) {
+	a.Longdesc = o.v
+}
 func (o MarginheightOpt) applyFrame(a *FrameAttrs, _ *[]Component) {
 	a.Marginheight = o.v
 }
@@ -67,6 +71,9 @@ func (a *FrameAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Frameborder != "" {
 		Attr(sb, "frameborder", a.Frameborder)
+	}
+	if a.Longdesc != "" {
+		Attr(sb, "longdesc", a.Longdesc)
 	}
 	if a.Marginheight != "" {
 		Attr(sb, "marginheight", a.Marginheight)

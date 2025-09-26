@@ -3,7 +3,8 @@ package html
 import "strings"
 
 type MenuAttrs struct {
-	Global GlobalAttrs
+	Global  GlobalAttrs
+	Compact string
 }
 
 type MenuArg interface {
@@ -34,6 +35,13 @@ func (g Global) applyMenu(a *MenuAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
+func (o CompactOpt) applyMenu(a *MenuAttrs, _ *[]Component) {
+	a.Compact = o.v
+}
+
 func (a *MenuAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Compact != "" {
+		Attr(sb, "compact", a.Compact)
+	}
 }

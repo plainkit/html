@@ -12,6 +12,8 @@ type ThAttrs struct {
 	Charoff string
 	Colspan string
 	Headers string
+	Height  string
+	Nowrap  string
 	Rowspan string
 	Scope   string
 	Valign  string
@@ -70,6 +72,12 @@ func (o ColspanOpt) applyTh(a *ThAttrs, _ *[]Component) {
 func (o HeadersOpt) applyTh(a *ThAttrs, _ *[]Component) {
 	a.Headers = o.v
 }
+func (o HeightOpt) applyTh(a *ThAttrs, _ *[]Component) {
+	a.Height = o.v
+}
+func (o NowrapOpt) applyTh(a *ThAttrs, _ *[]Component) {
+	a.Nowrap = o.v
+}
 func (o RowspanOpt) applyTh(a *ThAttrs, _ *[]Component) {
 	a.Rowspan = o.v
 }
@@ -108,6 +116,12 @@ func (a *ThAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Headers != "" {
 		Attr(sb, "headers", a.Headers)
+	}
+	if a.Height != "" {
+		Attr(sb, "height", a.Height)
+	}
+	if a.Nowrap != "" {
+		Attr(sb, "nowrap", a.Nowrap)
 	}
 	if a.Rowspan != "" {
 		Attr(sb, "rowspan", a.Rowspan)

@@ -3,28 +3,26 @@ package html
 import "strings"
 
 type ImgAttrs struct {
-	Global                            GlobalAttrs
-	Align                             string
-	Alt                               string
-	AspectRatioComputedFromAttributes string
-	Attributionsrc                    string
-	Border                            string
-	Crossorigin                       string
-	Decoding                          string
-	Fetchpriority                     string
-	Height                            string
-	Hspace                            string
-	Ismap                             string
-	Loading                           string
-	Longdesc                          string
-	Name                              string
-	Referrerpolicy                    string
-	Sizes                             string
-	Src                               string
-	Srcset                            string
-	Usemap                            string
-	Vspace                            string
-	Width                             string
+	Global         GlobalAttrs
+	Align          string
+	Alt            string
+	Border         string
+	Crossorigin    string
+	Decoding       string
+	Fetchpriority  string
+	Height         string
+	Hspace         string
+	Ismap          string
+	Loading        string
+	Longdesc       string
+	Name           string
+	Referrerpolicy string
+	Sizes          string
+	Src            string
+	Srcset         string
+	Usemap         string
+	Vspace         string
+	Width          string
 }
 
 type ImgArg interface {
@@ -60,12 +58,6 @@ func (o AlignOpt) applyImg(a *ImgAttrs, _ *[]Component) {
 }
 func (o AltOpt) applyImg(a *ImgAttrs, _ *[]Component) {
 	a.Alt = o.v
-}
-func (o AspectRatioComputedFromAttributesOpt) applyImg(a *ImgAttrs, _ *[]Component) {
-	a.AspectRatioComputedFromAttributes = o.v
-}
-func (o AttributionsrcOpt) applyImg(a *ImgAttrs, _ *[]Component) {
-	a.Attributionsrc = o.v
 }
 func (o BorderOpt) applyImg(a *ImgAttrs, _ *[]Component) {
 	a.Border = o.v
@@ -126,12 +118,6 @@ func (a *ImgAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Alt != "" {
 		Attr(sb, "alt", a.Alt)
-	}
-	if a.AspectRatioComputedFromAttributes != "" {
-		Attr(sb, "aspect_ratio_computed_from_attributes", a.AspectRatioComputedFromAttributes)
-	}
-	if a.Attributionsrc != "" {
-		Attr(sb, "attributionsrc", a.Attributionsrc)
 	}
 	if a.Border != "" {
 		Attr(sb, "border", a.Border)

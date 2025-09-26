@@ -3,13 +3,11 @@ package html
 import "strings"
 
 type HrAttrs struct {
-	Global     GlobalAttrs
-	Align      string
-	Color      string
-	HrInSelect string
-	Noshade    string
-	Size       string
-	Width      string
+	Global  GlobalAttrs
+	Align   string
+	Noshade string
+	Size    string
+	Width   string
 }
 
 type HrArg interface {
@@ -43,12 +41,6 @@ func (g Global) applyHr(a *HrAttrs, _ *[]Component) {
 func (o AlignOpt) applyHr(a *HrAttrs, _ *[]Component) {
 	a.Align = o.v
 }
-func (o ColorOpt) applyHr(a *HrAttrs, _ *[]Component) {
-	a.Color = o.v
-}
-func (o HrInSelectOpt) applyHr(a *HrAttrs, _ *[]Component) {
-	a.HrInSelect = o.v
-}
 func (o NoshadeOpt) applyHr(a *HrAttrs, _ *[]Component) {
 	a.Noshade = o.v
 }
@@ -63,12 +55,6 @@ func (a *HrAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Align != "" {
 		Attr(sb, "align", a.Align)
-	}
-	if a.Color != "" {
-		Attr(sb, "color", a.Color)
-	}
-	if a.HrInSelect != "" {
-		Attr(sb, "hr_in_select", a.HrInSelect)
 	}
 	if a.Noshade != "" {
 		Attr(sb, "noshade", a.Noshade)

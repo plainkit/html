@@ -7,7 +7,6 @@ type SelectAttrs struct {
 	Autocomplete string
 	Disabled     bool
 	Form         string
-	HrInSelect   string
 	Multiple     bool
 	Name         string
 	Required     bool
@@ -51,9 +50,6 @@ func (o DisabledOpt) applySelect(a *SelectAttrs, _ *[]Component) {
 func (o FormOpt) applySelect(a *SelectAttrs, _ *[]Component) {
 	a.Form = o.v
 }
-func (o HrInSelectOpt) applySelect(a *SelectAttrs, _ *[]Component) {
-	a.HrInSelect = o.v
-}
 func (o MultipleOpt) applySelect(a *SelectAttrs, _ *[]Component) {
 	a.Multiple = true
 }
@@ -77,9 +73,6 @@ func (a *SelectAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Form != "" {
 		Attr(sb, "form", a.Form)
-	}
-	if a.HrInSelect != "" {
-		Attr(sb, "hr_in_select", a.HrInSelect)
 	}
 	if a.Multiple {
 		BoolAttr(sb, "multiple")

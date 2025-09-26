@@ -3,9 +3,9 @@ package html
 import "strings"
 
 type HtmlAttrs struct {
-	Global  GlobalAttrs
-	Version string
-	Xmlns   string
+	Global   GlobalAttrs
+	Manifest string
+	Version  string
 }
 
 type HtmlArg interface {
@@ -36,19 +36,19 @@ func (g Global) applyHtml(a *HtmlAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
+func (o ManifestOpt) applyHtml(a *HtmlAttrs, _ *[]Component) {
+	a.Manifest = o.v
+}
 func (o VersionOpt) applyHtml(a *HtmlAttrs, _ *[]Component) {
 	a.Version = o.v
-}
-func (o XmlnsOpt) applyHtml(a *HtmlAttrs, _ *[]Component) {
-	a.Xmlns = o.v
 }
 
 func (a *HtmlAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Manifest != "" {
+		Attr(sb, "manifest", a.Manifest)
+	}
 	if a.Version != "" {
 		Attr(sb, "version", a.Version)
-	}
-	if a.Xmlns != "" {
-		Attr(sb, "xmlns", a.Xmlns)
 	}
 }

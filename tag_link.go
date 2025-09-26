@@ -7,6 +7,7 @@ type LinkAttrs struct {
 	As             string
 	Blocking       string
 	Charset        string
+	Color          string
 	Crossorigin    string
 	Disabled       bool
 	Fetchpriority  string
@@ -60,6 +61,9 @@ func (o BlockingOpt) applyLink(a *LinkAttrs, _ *[]Component) {
 }
 func (o CharsetOpt) applyLink(a *LinkAttrs, _ *[]Component) {
 	a.Charset = o.v
+}
+func (o ColorOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+	a.Color = o.v
 }
 func (o CrossoriginOpt) applyLink(a *LinkAttrs, _ *[]Component) {
 	a.Crossorigin = o.v
@@ -121,6 +125,9 @@ func (a *LinkAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Charset != "" {
 		Attr(sb, "charset", a.Charset)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
 	}
 	if a.Crossorigin != "" {
 		Attr(sb, "crossorigin", a.Crossorigin)

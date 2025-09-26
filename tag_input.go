@@ -9,7 +9,6 @@ type InputAttrs struct {
 	Alpha               string
 	Alt                 string
 	Autocomplete        string
-	Capture             string
 	Checked             bool
 	Colorspace          string
 	Dirname             string
@@ -20,12 +19,13 @@ type InputAttrs struct {
 	Formmethod          string
 	Formnovalidate      bool
 	Formtarget          string
+	Height              string
+	Ismap               string
 	List                string
 	Max                 string
 	Maxlength           string
 	Min                 string
 	Minlength           string
-	Mozactionhint       string
 	Multiple            bool
 	Name                string
 	Pattern             string
@@ -37,8 +37,10 @@ type InputAttrs struct {
 	Size                string
 	Src                 string
 	Step                string
+	Type                string
 	Usemap              string
-	Webkitdirectory     string
+	Value               string
+	Width               string
 }
 
 type InputArg interface {
@@ -84,9 +86,6 @@ func (o AltOpt) applyInput(a *InputAttrs, _ *[]Component) {
 func (o AutocompleteOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Autocomplete = o.v
 }
-func (o CaptureOpt) applyInput(a *InputAttrs, _ *[]Component) {
-	a.Capture = o.v
-}
 func (o CheckedOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Checked = true
 }
@@ -117,6 +116,12 @@ func (o FormnovalidateOpt) applyInput(a *InputAttrs, _ *[]Component) {
 func (o FormtargetOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Formtarget = o.v
 }
+func (o HeightOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Height = o.v
+}
+func (o IsmapOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Ismap = o.v
+}
 func (o ListOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.List = o.v
 }
@@ -131,9 +136,6 @@ func (o MinOpt) applyInput(a *InputAttrs, _ *[]Component) {
 }
 func (o MinlengthOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Minlength = o.v
-}
-func (o MozactionhintOpt) applyInput(a *InputAttrs, _ *[]Component) {
-	a.Mozactionhint = o.v
 }
 func (o MultipleOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Multiple = true
@@ -168,11 +170,17 @@ func (o SrcOpt) applyInput(a *InputAttrs, _ *[]Component) {
 func (o StepOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Step = o.v
 }
+func (o TypeOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Type = o.v
+}
 func (o UsemapOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Usemap = o.v
 }
-func (o WebkitdirectoryOpt) applyInput(a *InputAttrs, _ *[]Component) {
-	a.Webkitdirectory = o.v
+func (o ValueOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Value = o.v
+}
+func (o WidthOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Width = o.v
 }
 
 func (a *InputAttrs) writeAttrs(sb *strings.Builder) {
@@ -191,9 +199,6 @@ func (a *InputAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Autocomplete != "" {
 		Attr(sb, "autocomplete", a.Autocomplete)
-	}
-	if a.Capture != "" {
-		Attr(sb, "capture", a.Capture)
 	}
 	if a.Checked {
 		BoolAttr(sb, "checked")
@@ -225,6 +230,12 @@ func (a *InputAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Formtarget != "" {
 		Attr(sb, "formtarget", a.Formtarget)
 	}
+	if a.Height != "" {
+		Attr(sb, "height", a.Height)
+	}
+	if a.Ismap != "" {
+		Attr(sb, "ismap", a.Ismap)
+	}
 	if a.List != "" {
 		Attr(sb, "list", a.List)
 	}
@@ -239,9 +250,6 @@ func (a *InputAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Minlength != "" {
 		Attr(sb, "minlength", a.Minlength)
-	}
-	if a.Mozactionhint != "" {
-		Attr(sb, "mozactionhint", a.Mozactionhint)
 	}
 	if a.Multiple {
 		BoolAttr(sb, "multiple")
@@ -276,10 +284,16 @@ func (a *InputAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Step != "" {
 		Attr(sb, "step", a.Step)
 	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
+	}
 	if a.Usemap != "" {
 		Attr(sb, "usemap", a.Usemap)
 	}
-	if a.Webkitdirectory != "" {
-		Attr(sb, "webkitdirectory", a.Webkitdirectory)
+	if a.Value != "" {
+		Attr(sb, "value", a.Value)
+	}
+	if a.Width != "" {
+		Attr(sb, "width", a.Width)
 	}
 }

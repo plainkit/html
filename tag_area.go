@@ -3,19 +3,19 @@ package html
 import "strings"
 
 type AreaAttrs struct {
-	Global           GlobalAttrs
-	Alt              string
-	Attributionsrc   string
-	Coords           string
-	Download         string
-	Href             string
-	ImplicitNoopener string
-	Nohref           string
-	Ping             string
-	Referrerpolicy   string
-	Rel              string
-	Shape            string
-	Target           string
+	Global         GlobalAttrs
+	Alt            string
+	Coords         string
+	Download       string
+	Href           string
+	Hreflang       string
+	Nohref         string
+	Ping           string
+	Referrerpolicy string
+	Rel            string
+	Shape          string
+	Target         string
+	Type           string
 }
 
 type AreaArg interface {
@@ -49,9 +49,6 @@ func (g Global) applyArea(a *AreaAttrs, _ *[]Component) {
 func (o AltOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 	a.Alt = o.v
 }
-func (o AttributionsrcOpt) applyArea(a *AreaAttrs, _ *[]Component) {
-	a.Attributionsrc = o.v
-}
 func (o CoordsOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 	a.Coords = o.v
 }
@@ -61,8 +58,8 @@ func (o DownloadOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 func (o HrefOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 	a.Href = o.v
 }
-func (o ImplicitNoopenerOpt) applyArea(a *AreaAttrs, _ *[]Component) {
-	a.ImplicitNoopener = o.v
+func (o HreflangOpt) applyArea(a *AreaAttrs, _ *[]Component) {
+	a.Hreflang = o.v
 }
 func (o NohrefOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 	a.Nohref = o.v
@@ -86,14 +83,14 @@ func (o ShapeOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 func (o TargetOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 	a.Target = o.v
 }
+func (o TypeOpt) applyArea(a *AreaAttrs, _ *[]Component) {
+	a.Type = o.v
+}
 
 func (a *AreaAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Alt != "" {
 		Attr(sb, "alt", a.Alt)
-	}
-	if a.Attributionsrc != "" {
-		Attr(sb, "attributionsrc", a.Attributionsrc)
 	}
 	if a.Coords != "" {
 		Attr(sb, "coords", a.Coords)
@@ -104,8 +101,8 @@ func (a *AreaAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Href != "" {
 		Attr(sb, "href", a.Href)
 	}
-	if a.ImplicitNoopener != "" {
-		Attr(sb, "implicit_noopener", a.ImplicitNoopener)
+	if a.Hreflang != "" {
+		Attr(sb, "hreflang", a.Hreflang)
 	}
 	if a.Nohref != "" {
 		Attr(sb, "nohref", a.Nohref)
@@ -124,5 +121,8 @@ func (a *AreaAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Target != "" {
 		Attr(sb, "target", a.Target)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
 	}
 }

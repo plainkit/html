@@ -12,6 +12,8 @@ type TdAttrs struct {
 	Charoff string
 	Colspan string
 	Headers string
+	Height  string
+	Nowrap  string
 	Rowspan string
 	Scope   string
 	Valign  string
@@ -70,6 +72,12 @@ func (o ColspanOpt) applyTd(a *TdAttrs, _ *[]Component) {
 func (o HeadersOpt) applyTd(a *TdAttrs, _ *[]Component) {
 	a.Headers = o.v
 }
+func (o HeightOpt) applyTd(a *TdAttrs, _ *[]Component) {
+	a.Height = o.v
+}
+func (o NowrapOpt) applyTd(a *TdAttrs, _ *[]Component) {
+	a.Nowrap = o.v
+}
 func (o RowspanOpt) applyTd(a *TdAttrs, _ *[]Component) {
 	a.Rowspan = o.v
 }
@@ -108,6 +116,12 @@ func (a *TdAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Headers != "" {
 		Attr(sb, "headers", a.Headers)
+	}
+	if a.Height != "" {
+		Attr(sb, "height", a.Height)
+	}
+	if a.Nowrap != "" {
+		Attr(sb, "nowrap", a.Nowrap)
 	}
 	if a.Rowspan != "" {
 		Attr(sb, "rowspan", a.Rowspan)

@@ -5,12 +5,13 @@ import "strings"
 type ScriptAttrs struct {
 	Global         GlobalAttrs
 	Async          bool
-	Attributionsrc string
 	Blocking       string
+	Charset        string
 	Crossorigin    string
 	Defer          bool
 	Fetchpriority  string
 	Integrity      string
+	Language       string
 	Nomodule       string
 	Referrerpolicy string
 	Src            string
@@ -48,11 +49,11 @@ func (g Global) applyScript(a *ScriptAttrs, _ *[]Component) {
 func (o AsyncOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Async = true
 }
-func (o AttributionsrcOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
-	a.Attributionsrc = o.v
-}
 func (o BlockingOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Blocking = o.v
+}
+func (o CharsetOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
+	a.Charset = o.v
 }
 func (o CrossoriginOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Crossorigin = o.v
@@ -65,6 +66,9 @@ func (o FetchpriorityOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
 }
 func (o IntegrityOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Integrity = o.v
+}
+func (o LanguageOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
+	a.Language = o.v
 }
 func (o NomoduleOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Nomodule = o.v
@@ -84,11 +88,11 @@ func (a *ScriptAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Async {
 		BoolAttr(sb, "async")
 	}
-	if a.Attributionsrc != "" {
-		Attr(sb, "attributionsrc", a.Attributionsrc)
-	}
 	if a.Blocking != "" {
 		Attr(sb, "blocking", a.Blocking)
+	}
+	if a.Charset != "" {
+		Attr(sb, "charset", a.Charset)
 	}
 	if a.Crossorigin != "" {
 		Attr(sb, "crossorigin", a.Crossorigin)
@@ -101,6 +105,9 @@ func (a *ScriptAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Integrity != "" {
 		Attr(sb, "integrity", a.Integrity)
+	}
+	if a.Language != "" {
+		Attr(sb, "language", a.Language)
 	}
 	if a.Nomodule != "" {
 		Attr(sb, "nomodule", a.Nomodule)

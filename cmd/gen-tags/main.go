@@ -36,9 +36,9 @@ func run(specsDir, outDir string) error {
 		return fmt.Errorf("clean generated files: %w", err)
 	}
 
-	// Load all specifications
-	fmt.Println("Loading HTML specifications...")
-	allSpecs, err := specLoader.LoadAllTagSpecs()
+	// Load all specifications from wooorm data
+	fmt.Println("Fetching HTML specifications from wooorm repository...")
+	allSpecs, err := specLoader.LoadAllTagSpecsFromWooorm()
 	if err != nil {
 		return fmt.Errorf("load tag specs: %w", err)
 	}
@@ -72,15 +72,11 @@ func run(specsDir, outDir string) error {
 	return nil
 }
 
-// generateCoreGlobal generates the core_global.go file with global attributes
 func generateCoreGlobal(specLoader *spec.Loader, fileManager *files.Manager) error {
-	globalSpec, err := specLoader.LoadGlobalAttributes()
+	globalAttrs, err := specLoader.LoadGlobalAttributesFromWooorm()
 	if err != nil {
 		return fmt.Errorf("load global attributes: %w", err)
 	}
-
-	// Extract global attributes from spec
-	globalAttrs := extractGlobalAttributes(globalSpec)
 
 	// Generate source code
 	globalGen := generator.NewGlobalGenerator()
@@ -90,21 +86,16 @@ func generateCoreGlobal(specLoader *spec.Loader, fileManager *files.Manager) err
 	return fileManager.WriteFormattedFile("core_global.go", source)
 }
 
-// generateAttributesFile generates the centralized attrs.go file
 func generateAttributesFile(specLoader *spec.Loader, fileManager *files.Manager, allSpecs []spec.TagSpec) error {
-	// Collect all unique attributes
 	allAttributes := specLoader.CollectAllAttributes(allSpecs)
 	fmt.Printf("Collected %d unique attributes from all specs\n", len(allAttributes))
 
-	// Generate source code
 	attrGen := generator.NewAttributesGenerator()
 	source := attrGen.GenerateSource(allAttributes)
 
-	// Write to file
 	return fileManager.WriteFormattedFile("attrs.go", source)
 }
 
-// generateTagFiles generates individual tag_*.go files
 func generateTagFiles(fileManager *files.Manager, allSpecs []spec.TagSpec) error {
 	tagGen := generator.NewTagGenerator()
 
@@ -120,44 +111,9 @@ func generateTagFiles(fileManager *files.Manager, allSpecs []spec.TagSpec) error
 	return nil
 }
 
-// generateCoreNodeFile generates the complete core_node.go file from scratch
 func generateCoreNodeFile(fileManager *files.Manager, allSpecs []spec.TagSpec) error {
-	// Generate complete file content
 	nodeGen := generator.NewNodeGenerator()
 	content := nodeGen.GenerateCompleteFile(allSpecs)
 
-	// Write to file
 	return fileManager.WriteFormattedFile("core_node.go", content)
-}
-
-// extractGlobalAttributes converts global attributes spec to attribute list
-func extractGlobalAttributes(globalSpec *spec.GlobalAttributesSpec) []spec.Attribute {
-	var globalAttrs []spec.Attribute
-
-	for attrName := range globalSpec.Html.GlobalAttributes {
-		if attrName == "__compat" {
-			continue
-		}
-
-		field := camelCase(attrName)
-		attr := spec.Attribute{
-			Field: field,
-			Attr:  attrName,
-			Type:  "string", // default type
-		}
-
-		// Check if it's a boolean attribute
-		if spec.BoolAttributes[attrName] {
-			attr.Type = "bool"
-		}
-
-		globalAttrs = append(globalAttrs, attr)
-	}
-
-	return globalAttrs
-}
-
-// camelCase converts kebab-case to CamelCase
-func camelCase(name string) string {
-	return spec.CamelCase(name)
 }

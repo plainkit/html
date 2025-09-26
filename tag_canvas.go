@@ -3,10 +3,9 @@ package html
 import "strings"
 
 type CanvasAttrs struct {
-	Global    GlobalAttrs
-	Height    string
-	MozOpaque string
-	Width     string
+	Global GlobalAttrs
+	Height string
+	Width  string
 }
 
 type CanvasArg interface {
@@ -40,9 +39,6 @@ func (g Global) applyCanvas(a *CanvasAttrs, _ *[]Component) {
 func (o HeightOpt) applyCanvas(a *CanvasAttrs, _ *[]Component) {
 	a.Height = o.v
 }
-func (o MozOpaqueOpt) applyCanvas(a *CanvasAttrs, _ *[]Component) {
-	a.MozOpaque = o.v
-}
 func (o WidthOpt) applyCanvas(a *CanvasAttrs, _ *[]Component) {
 	a.Width = o.v
 }
@@ -51,9 +47,6 @@ func (a *CanvasAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
-	}
-	if a.MozOpaque != "" {
-		Attr(sb, "moz-opaque", a.MozOpaque)
 	}
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)

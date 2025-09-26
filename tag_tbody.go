@@ -5,7 +5,6 @@ import "strings"
 type TbodyAttrs struct {
 	Global  GlobalAttrs
 	Align   string
-	Bgcolor string
 	Char    string
 	Charoff string
 	Valign  string
@@ -42,9 +41,6 @@ func (g Global) applyTbody(a *TbodyAttrs, _ *[]Component) {
 func (o AlignOpt) applyTbody(a *TbodyAttrs, _ *[]Component) {
 	a.Align = o.v
 }
-func (o BgcolorOpt) applyTbody(a *TbodyAttrs, _ *[]Component) {
-	a.Bgcolor = o.v
-}
 func (o CharOpt) applyTbody(a *TbodyAttrs, _ *[]Component) {
 	a.Char = o.v
 }
@@ -59,9 +55,6 @@ func (a *TbodyAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Align != "" {
 		Attr(sb, "align", a.Align)
-	}
-	if a.Bgcolor != "" {
-		Attr(sb, "bgcolor", a.Bgcolor)
 	}
 	if a.Char != "" {
 		Attr(sb, "char", a.Char)

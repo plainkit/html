@@ -5,7 +5,6 @@ import "strings"
 type TheadAttrs struct {
 	Global  GlobalAttrs
 	Align   string
-	Bgcolor string
 	Char    string
 	Charoff string
 	Valign  string
@@ -42,9 +41,6 @@ func (g Global) applyThead(a *TheadAttrs, _ *[]Component) {
 func (o AlignOpt) applyThead(a *TheadAttrs, _ *[]Component) {
 	a.Align = o.v
 }
-func (o BgcolorOpt) applyThead(a *TheadAttrs, _ *[]Component) {
-	a.Bgcolor = o.v
-}
 func (o CharOpt) applyThead(a *TheadAttrs, _ *[]Component) {
 	a.Char = o.v
 }
@@ -59,9 +55,6 @@ func (a *TheadAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Align != "" {
 		Attr(sb, "align", a.Align)
-	}
-	if a.Bgcolor != "" {
-		Attr(sb, "bgcolor", a.Bgcolor)
 	}
 	if a.Char != "" {
 		Attr(sb, "char", a.Char)

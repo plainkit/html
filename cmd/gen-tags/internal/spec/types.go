@@ -18,17 +18,17 @@ type GlobalBrowserCompatData struct {
 
 // Attribute represents an HTML attribute with its metadata
 type Attribute struct {
-	Field string // Go field name (camelCase)
-	Type  string // Go type ("bool" or "string")
-	Attr  string // HTML attribute name
+	Field string
+	Type  string
+	Attr  string
 }
 
 // TagSpec contains all information needed to generate a tag file
 type TagSpec struct {
 	Name          string
-	Void          bool // Whether this is a void element (self-closing)
+	Void          bool
 	Attributes    []Attribute
-	ParentTargets []string // Parent elements that can contain this tag (unused currently)
+	ParentTargets []string
 }
 
 // GlobalAttributesSpec represents the structure of global_attributes.json

@@ -3,25 +3,20 @@ package html
 import "strings"
 
 type AAttrs struct {
-	Global              GlobalAttrs
-	Attributionsourceid string
-	Attributionsrc      string
-	Charset             string
-	Coords              string
-	Download            string
-	Href                string
-	Hreflang            string
-	Hreftranslate       string
-	ImplicitNoopener    string
-	Name                string
-	Ping                string
-	Referrerpolicy      string
-	Rel                 string
-	Rev                 string
-	Shape               string
-	Target              string
-	TextFragments       string
-	Type                string
+	Global         GlobalAttrs
+	Charset        string
+	Coords         string
+	Download       string
+	Href           string
+	Hreflang       string
+	Name           string
+	Ping           string
+	Referrerpolicy string
+	Rel            string
+	Rev            string
+	Shape          string
+	Target         string
+	Type           string
 }
 
 type AArg interface {
@@ -52,12 +47,6 @@ func (g Global) applyA(a *AAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o AttributionsourceidOpt) applyA(a *AAttrs, _ *[]Component) {
-	a.Attributionsourceid = o.v
-}
-func (o AttributionsrcOpt) applyA(a *AAttrs, _ *[]Component) {
-	a.Attributionsrc = o.v
-}
 func (o CharsetOpt) applyA(a *AAttrs, _ *[]Component) {
 	a.Charset = o.v
 }
@@ -72,12 +61,6 @@ func (o HrefOpt) applyA(a *AAttrs, _ *[]Component) {
 }
 func (o HreflangOpt) applyA(a *AAttrs, _ *[]Component) {
 	a.Hreflang = o.v
-}
-func (o HreftranslateOpt) applyA(a *AAttrs, _ *[]Component) {
-	a.Hreftranslate = o.v
-}
-func (o ImplicitNoopenerOpt) applyA(a *AAttrs, _ *[]Component) {
-	a.ImplicitNoopener = o.v
 }
 func (o NameOpt) applyA(a *AAttrs, _ *[]Component) {
 	a.Name = o.v
@@ -104,21 +87,12 @@ func (o ShapeOpt) applyA(a *AAttrs, _ *[]Component) {
 func (o TargetOpt) applyA(a *AAttrs, _ *[]Component) {
 	a.Target = o.v
 }
-func (o TextFragmentsOpt) applyA(a *AAttrs, _ *[]Component) {
-	a.TextFragments = o.v
-}
 func (o TypeOpt) applyA(a *AAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 
 func (a *AAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Attributionsourceid != "" {
-		Attr(sb, "attributionsourceid", a.Attributionsourceid)
-	}
-	if a.Attributionsrc != "" {
-		Attr(sb, "attributionsrc", a.Attributionsrc)
-	}
 	if a.Charset != "" {
 		Attr(sb, "charset", a.Charset)
 	}
@@ -133,12 +107,6 @@ func (a *AAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Hreflang != "" {
 		Attr(sb, "hreflang", a.Hreflang)
-	}
-	if a.Hreftranslate != "" {
-		Attr(sb, "hreftranslate", a.Hreftranslate)
-	}
-	if a.ImplicitNoopener != "" {
-		Attr(sb, "implicit_noopener", a.ImplicitNoopener)
 	}
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
@@ -160,9 +128,6 @@ func (a *AAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Target != "" {
 		Attr(sb, "target", a.Target)
-	}
-	if a.TextFragments != "" {
-		Attr(sb, "text_fragments", a.TextFragments)
 	}
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)

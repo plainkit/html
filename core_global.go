@@ -9,27 +9,29 @@ import (
 // Global HTML attributes structure and option constructors.
 
 type GlobalAttrs struct {
-	// Generated from global_attributes.json spec
+	// Generated from wooorm global attributes
 	// Common core attributes
-	Lang                  string
-	Nonce                 string
-	Part                  string
-	ContentEditable       string
-	Title                 string
-	VirtualKeyboardPolicy string
-	AutoCapitalize        string
-	AccessKey             string
-	AutoCorrect           string
-	Class                 string
-	Slot                  string
-	Anchor                string
-	Dir                   string
-	Popover               string
-	ExportParts           string
-	Id                    string
-	InputMode             string
-	Is                    string
-	EnterKeyHint          string
+	Accesskey       string
+	Autocapitalize  string
+	Autocorrect     string
+	Class           string
+	Contenteditable string
+	Dir             string
+	Enterkeyhint    string
+	Exportparts     string
+	Id              string
+	Inputmode       string
+	Is              string
+	Itemid          string
+	Itemprop        string
+	Itemref         string
+	Itemtype        string
+	Lang            string
+	Nonce           string
+	Part            string
+	Popover         string
+	Slot            string
+	Title           string
 
 	// Style attribute as a single string
 	Style string
@@ -41,11 +43,14 @@ type GlobalAttrs struct {
 	Custom map[string]string // custom attributes like hx-*, x-*, etc.
 
 	// Pointers for tri-state values
-	TabIndex                                             *int
-	Spellcheck, Translate, Draggable, WritingSuggestions *string
+	Tabindex           *int
+	Draggable          *string
+	Spellcheck         *string
+	Translate          *string
+	Writingsuggestions *string
 
 	// Booleans
-	Autofocus, Hidden, Inert bool
+	Autofocus, Hidden, Inert, Itemscope bool
 }
 
 // Helper methods for setting attributes
@@ -92,91 +97,100 @@ func (g *GlobalAttrs) setCustom(k, v string) {
 	g.Custom[k] = v
 }
 
-// Generated WriteGlobal function based on global_attributes.json spec
+// Generated WriteGlobal function based on wooorm global attributes
 func WriteGlobal(sb *strings.Builder, g *GlobalAttrs) {
-	if g.Lang != "" {
-		Attr(sb, "lang", g.Lang)
+	if g.Accesskey != "" {
+		Attr(sb, "accesskey", g.Accesskey)
 	}
-	if g.Style != "" {
-		Attr(sb, "style", g.Style)
+	if g.Autocapitalize != "" {
+		Attr(sb, "autocapitalize", g.Autocapitalize)
 	}
-	if g.Hidden {
-		BoolAttr(sb, "hidden")
-	}
-	if g.InputMode != "" {
-		Attr(sb, "inputmode", g.InputMode)
-	}
-	if g.Is != "" {
-		Attr(sb, "is", g.Is)
-	}
-	if g.Part != "" {
-		Attr(sb, "part", g.Part)
-	}
-	if g.Translate != nil {
-		Attr(sb, "translate", *g.Translate)
-	}
-	if g.ExportParts != "" {
-		Attr(sb, "exportparts", g.ExportParts)
-	}
-	if g.Inert {
-		BoolAttr(sb, "inert")
-	}
-	if g.Nonce != "" {
-		Attr(sb, "nonce", g.Nonce)
-	}
-	if g.Slot != "" {
-		Attr(sb, "slot", g.Slot)
-	}
-	if g.VirtualKeyboardPolicy != "" {
-		Attr(sb, "virtualkeyboardpolicy", g.VirtualKeyboardPolicy)
-	}
-	if g.AccessKey != "" {
-		Attr(sb, "accesskey", g.AccessKey)
-	}
-	if g.AutoCorrect != "" {
-		Attr(sb, "autocorrect", g.AutoCorrect)
+	if g.Autocorrect != "" {
+		Attr(sb, "autocorrect", g.Autocorrect)
 	}
 	if g.Autofocus {
 		BoolAttr(sb, "autofocus")
 	}
-	if g.Draggable != nil {
-		Attr(sb, "draggable", *g.Draggable)
+	if g.Class != "" {
+		Attr(sb, "class", g.Class)
+	}
+	if g.Contenteditable != "" {
+		Attr(sb, "contenteditable", g.Contenteditable)
 	}
 	if g.Dir != "" {
 		Attr(sb, "dir", g.Dir)
 	}
+	if g.Draggable != nil {
+		Attr(sb, "draggable", *g.Draggable)
+	}
+	if g.Enterkeyhint != "" {
+		Attr(sb, "enterkeyhint", g.Enterkeyhint)
+	}
+	if g.Exportparts != "" {
+		Attr(sb, "exportparts", g.Exportparts)
+	}
+	if g.Hidden {
+		BoolAttr(sb, "hidden")
+	}
 	if g.Id != "" {
 		Attr(sb, "id", g.Id)
 	}
-	if g.WritingSuggestions != nil {
-		Attr(sb, "writingsuggestions", *g.WritingSuggestions)
+	if g.Inert {
+		BoolAttr(sb, "inert")
 	}
-	if g.Title != "" {
-		Attr(sb, "title", g.Title)
+	if g.Inputmode != "" {
+		Attr(sb, "inputmode", g.Inputmode)
 	}
-	if g.AutoCapitalize != "" {
-		Attr(sb, "autocapitalize", g.AutoCapitalize)
+	if g.Is != "" {
+		Attr(sb, "is", g.Is)
 	}
-	if g.ContentEditable != "" {
-		Attr(sb, "contenteditable", g.ContentEditable)
+	if g.Itemid != "" {
+		Attr(sb, "itemid", g.Itemid)
+	}
+	if g.Itemprop != "" {
+		Attr(sb, "itemprop", g.Itemprop)
+	}
+	if g.Itemref != "" {
+		Attr(sb, "itemref", g.Itemref)
+	}
+	if g.Itemscope {
+		BoolAttr(sb, "itemscope")
+	}
+	if g.Itemtype != "" {
+		Attr(sb, "itemtype", g.Itemtype)
+	}
+	if g.Lang != "" {
+		Attr(sb, "lang", g.Lang)
+	}
+	if g.Nonce != "" {
+		Attr(sb, "nonce", g.Nonce)
+	}
+	if g.Part != "" {
+		Attr(sb, "part", g.Part)
 	}
 	if g.Popover != "" {
 		Attr(sb, "popover", g.Popover)
 	}
+	if g.Slot != "" {
+		Attr(sb, "slot", g.Slot)
+	}
 	if g.Spellcheck != nil {
 		Attr(sb, "spellcheck", *g.Spellcheck)
 	}
-	if g.TabIndex != nil {
-		Attr(sb, "tabindex", itoa(*g.TabIndex))
+	if g.Style != "" {
+		Attr(sb, "style", g.Style)
 	}
-	if g.Class != "" {
-		Attr(sb, "class", g.Class)
+	if g.Tabindex != nil {
+		Attr(sb, "tabindex", itoa(*g.Tabindex))
 	}
-	if g.EnterKeyHint != "" {
-		Attr(sb, "enterkeyhint", g.EnterKeyHint)
+	if g.Title != "" {
+		Attr(sb, "title", g.Title)
 	}
-	if g.Anchor != "" {
-		Attr(sb, "anchor", g.Anchor)
+	if g.Translate != nil {
+		Attr(sb, "translate", *g.Translate)
+	}
+	if g.Writingsuggestions != nil {
+		Attr(sb, "writingsuggestions", *g.Writingsuggestions)
 	}
 	// Aria attributes
 	for _, k := range sortedKeys(g.Aria) {
@@ -229,7 +243,31 @@ func (g Global) do(ga *GlobalAttrs) {
 
 // Global attribute constructors
 func AAccesskey(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.AccessKey = v }}
+	return Global{func(g *GlobalAttrs) { g.Accesskey = v }}
+}
+
+func AAutocapitalize(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Autocapitalize = v }}
+}
+
+func AAutocorrect(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Autocorrect = v }}
+}
+
+func AAutofocus() Global {
+	return Global{func(g *GlobalAttrs) { g.Autofocus = true }}
+}
+
+func AClass(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.addClass(v) }}
+}
+
+func AContenteditable(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Contenteditable = v }}
+}
+
+func ADir(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Dir = v }}
 }
 
 func ADraggable(b bool) Global {
@@ -240,8 +278,72 @@ func ADraggable(b bool) Global {
 	return Global{func(g *GlobalAttrs) { g.Draggable = &val }}
 }
 
+func AEnterkeyhint(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Enterkeyhint = v }}
+}
+
+func AExportparts(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Exportparts = v }}
+}
+
+func AHidden() Global {
+	return Global{func(g *GlobalAttrs) { g.Hidden = true }}
+}
+
+func AId(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Id = v }}
+}
+
+func AInert() Global {
+	return Global{func(g *GlobalAttrs) { g.Inert = true }}
+}
+
+func AInputmode(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Inputmode = v }}
+}
+
 func AIsAttr(v string) Global {
 	return Global{func(g *GlobalAttrs) { g.Is = v }}
+}
+
+func AItemid(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Itemid = v }}
+}
+
+func AItemprop(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Itemprop = v }}
+}
+
+func AItemref(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Itemref = v }}
+}
+
+func AItemscope() Global {
+	return Global{func(g *GlobalAttrs) { g.Itemscope = true }}
+}
+
+func AItemtype(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Itemtype = v }}
+}
+
+func ALang(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Lang = v }}
+}
+
+func ANonce(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Nonce = v }}
+}
+
+func APart(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Part = v }}
+}
+
+func APopover(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Popover = v }}
+}
+
+func ASlot(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Slot = v }}
 }
 
 func ASpellcheck(b bool) Global {
@@ -250,6 +352,14 @@ func ASpellcheck(b bool) Global {
 		val = "true"
 	}
 	return Global{func(g *GlobalAttrs) { g.Spellcheck = &val }}
+}
+
+func AStyle(style string) Global {
+	return Global{func(g *GlobalAttrs) { g.setStyle(style) }}
+}
+
+func ATabindex(i int) Global {
+	return Global{func(g *GlobalAttrs) { g.Tabindex = &i }}
 }
 
 func ATitle(v string) Global {
@@ -264,96 +374,12 @@ func ATranslate(b bool) Global {
 	return Global{func(g *GlobalAttrs) { g.Translate = &val }}
 }
 
-func AAutocorrect(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.AutoCorrect = v }}
-}
-
-func AAutofocus() Global {
-	return Global{func(g *GlobalAttrs) { g.Autofocus = true }}
-}
-
-func AEnterkeyhint(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.EnterKeyHint = v }}
-}
-
-func AExportparts(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.ExportParts = v }}
-}
-
-func AInputmode(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.InputMode = v }}
-}
-
-func ASlot(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.Slot = v }}
-}
-
-func ATabindex(i int) Global {
-	return Global{func(g *GlobalAttrs) { g.TabIndex = &i }}
-}
-
-func ADir(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.Dir = v }}
-}
-
-func ALang(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.Lang = v }}
-}
-
 func AWritingsuggestions(b bool) Global {
 	val := "false"
 	if b {
 		val = "true"
 	}
-	return Global{func(g *GlobalAttrs) { g.WritingSuggestions = &val }}
-}
-
-func AAutocapitalize(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.AutoCapitalize = v }}
-}
-
-func AHidden() Global {
-	return Global{func(g *GlobalAttrs) { g.Hidden = true }}
-}
-
-func AStyle(style string) Global {
-	return Global{func(g *GlobalAttrs) { g.setStyle(style) }}
-}
-
-func AClass(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.addClass(v) }}
-}
-
-func AContenteditable(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.ContentEditable = v }}
-}
-
-func AId(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.Id = v }}
-}
-
-func AInert() Global {
-	return Global{func(g *GlobalAttrs) { g.Inert = true }}
-}
-
-func ANonce(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.Nonce = v }}
-}
-
-func APopover(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.Popover = v }}
-}
-
-func AAnchor(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.Anchor = v }}
-}
-
-func APart(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.Part = v }}
-}
-
-func AVirtualkeyboardpolicy(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.VirtualKeyboardPolicy = v }}
+	return Global{func(g *GlobalAttrs) { g.Writingsuggestions = &val }}
 }
 
 // Map-like convenience functions

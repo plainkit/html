@@ -3,8 +3,8 @@ package html
 import "strings"
 
 type H1Attrs struct {
-	Global                             GlobalAttrs
-	NoUaStylesInArticleAsideNavSection string
+	Global GlobalAttrs
+	Align  string
 }
 
 type H1Arg interface {
@@ -35,13 +35,13 @@ func (g Global) applyH1(a *H1Attrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o NoUaStylesInArticleAsideNavSectionOpt) applyH1(a *H1Attrs, _ *[]Component) {
-	a.NoUaStylesInArticleAsideNavSection = o.v
+func (o AlignOpt) applyH1(a *H1Attrs, _ *[]Component) {
+	a.Align = o.v
 }
 
 func (a *H1Attrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.NoUaStylesInArticleAsideNavSection != "" {
-		Attr(sb, "no_ua_styles_in_article_aside_nav_section", a.NoUaStylesInArticleAsideNavSection)
+	if a.Align != "" {
+		Attr(sb, "align", a.Align)
 	}
 }

@@ -3,22 +3,18 @@ package html
 import "strings"
 
 type VideoAttrs struct {
-	Global                            GlobalAttrs
-	AspectRatioComputedFromAttributes string
-	Autoplay                          bool
-	Controls                          bool
-	Controlslist                      string
-	Crossorigin                       string
-	Disablepictureinpicture           string
-	Disableremoteplayback             string
-	Height                            string
-	Loop                              bool
-	Muted                             bool
-	Playsinline                       string
-	Poster                            string
-	Preload                           string
-	Src                               string
-	Width                             string
+	Global      GlobalAttrs
+	Autoplay    bool
+	Controls    bool
+	Crossorigin string
+	Height      string
+	Loop        bool
+	Muted       bool
+	Playsinline string
+	Poster      string
+	Preload     string
+	Src         string
+	Width       string
 }
 
 type VideoArg interface {
@@ -49,26 +45,14 @@ func (g Global) applyVideo(a *VideoAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o AspectRatioComputedFromAttributesOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
-	a.AspectRatioComputedFromAttributes = o.v
-}
 func (o AutoplayOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Autoplay = true
 }
 func (o ControlsOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Controls = true
 }
-func (o ControlslistOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
-	a.Controlslist = o.v
-}
 func (o CrossoriginOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Crossorigin = o.v
-}
-func (o DisablepictureinpictureOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
-	a.Disablepictureinpicture = o.v
-}
-func (o DisableremoteplaybackOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
-	a.Disableremoteplayback = o.v
 }
 func (o HeightOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Height = o.v
@@ -97,26 +81,14 @@ func (o WidthOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
 
 func (a *VideoAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.AspectRatioComputedFromAttributes != "" {
-		Attr(sb, "aspect_ratio_computed_from_attributes", a.AspectRatioComputedFromAttributes)
-	}
 	if a.Autoplay {
 		BoolAttr(sb, "autoplay")
 	}
 	if a.Controls {
 		BoolAttr(sb, "controls")
 	}
-	if a.Controlslist != "" {
-		Attr(sb, "controlslist", a.Controlslist)
-	}
 	if a.Crossorigin != "" {
 		Attr(sb, "crossorigin", a.Crossorigin)
-	}
-	if a.Disablepictureinpicture != "" {
-		Attr(sb, "disablepictureinpicture", a.Disablepictureinpicture)
-	}
-	if a.Disableremoteplayback != "" {
-		Attr(sb, "disableremoteplayback", a.Disableremoteplayback)
 	}
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)

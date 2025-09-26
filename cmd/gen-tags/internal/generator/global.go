@@ -1,9 +1,7 @@
 package generator
 
 import (
-	"encoding/json"
 	"fmt"
-	"os"
 	"strings"
 
 	"github.com/plainkit/html/cmd/gen-tags/internal/spec"
@@ -30,7 +28,7 @@ func (g *GlobalGenerator) GenerateSource(globalAttrs []spec.Attribute) string {
 	sb.WriteString("// Global HTML attributes structure and option constructors.\n\n")
 
 	// Generate GlobalAttrs struct
-	g.generateGlobalAttrsStruct(&sb)
+	g.generateGlobalAttrsStruct(&sb, globalAttrs)
 
 	// Generate helper methods
 	g.generateHelperMethods(&sb)
@@ -53,17 +51,9 @@ func (g *GlobalGenerator) GenerateSource(globalAttrs []spec.Attribute) string {
 	return sb.String()
 }
 
-func (g *GlobalGenerator) generateGlobalAttrsStruct(sb *strings.Builder) {
-	// Load global attributes from spec file
-	globalSpec, err := g.loadGlobalAttributesSpec()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Warning: Could not load global attributes spec: %v\n", err)
-		g.generateGlobalAttrsStructFallback(sb)
-		return
-	}
-
+func (g *GlobalGenerator) generateGlobalAttrsStruct(sb *strings.Builder, globalAttrs []spec.Attribute) {
 	sb.WriteString("type GlobalAttrs struct {\n")
-	sb.WriteString("\t// Generated from global_attributes.json spec\n")
+	sb.WriteString("\t// Generated from wooorm global attributes\n")
 	sb.WriteString("\t// Common core attributes\n")
 
 	// Group attributes by type for better organization
@@ -72,23 +62,17 @@ func (g *GlobalGenerator) generateGlobalAttrsStruct(sb *strings.Builder) {
 	pointerStringAttrs := []string{"spellcheck", "translate", "draggable", "writingsuggestions"}
 	pointerIntAttrs := []string{"tabindex"}
 
-	// Process attributes from spec
-	for attrName := range globalSpec.Html.GlobalAttributes {
-		if attrName == "data_attributes" {
-			continue // Skip data attributes - handled separately
-		}
-
-		fieldName := g.getFieldNameForAttribute(attrName)
-		if fieldName == "" {
-			continue // Skip unmapped
-		}
+	// Process attributes from wooorm data
+	for _, attr := range globalAttrs {
+		attrName := attr.Attr
+		fieldName := attr.Field
 
 		// Categorize by type
 		if g.contains(pointerStringAttrs, attrName) {
 			// Handled separately
 		} else if g.contains(pointerIntAttrs, attrName) {
 			// Handled separately
-		} else if g.contains([]string{"hidden", "inert", "autofocus"}, attrName) {
+		} else if g.contains([]string{"hidden", "inert", "autofocus", "itemscope"}, attrName) {
 			boolAttrs = append(boolAttrs, fieldName)
 		} else if attrName == "style" {
 			// Style handled separately
@@ -112,8 +96,32 @@ func (g *GlobalGenerator) generateGlobalAttrsStruct(sb *strings.Builder) {
 	sb.WriteString("\tCustom map[string]string // custom attributes like hx-*, x-*, etc.\n\n")
 
 	sb.WriteString("\t// Pointers for tri-state values\n")
-	sb.WriteString("\tTabIndex *int\n")
-	sb.WriteString("\tSpellcheck, Translate, Draggable, WritingSuggestions *string\n\n")
+
+	// Find the actual field names for pointer attributes
+	var pointerIntFields []string
+	var pointerStringFields []string
+
+	for _, attr := range globalAttrs {
+		attrName := attr.Attr
+		fieldName := attr.Field
+
+		if g.contains(pointerIntAttrs, attrName) {
+			pointerIntFields = append(pointerIntFields, fieldName+" *int")
+		} else if g.contains(pointerStringAttrs, attrName) {
+			pointerStringFields = append(pointerStringFields, fieldName+" *string")
+		}
+	}
+
+	// Write pointer int fields
+	for _, field := range pointerIntFields {
+		fmt.Fprintf(sb, "\t%s\n", field)
+	}
+
+	// Write pointer string fields
+	for _, field := range pointerStringFields {
+		fmt.Fprintf(sb, "\t%s\n", field)
+	}
+	sb.WriteString("\n")
 
 	sb.WriteString("\t// Booleans\n")
 	for i, field := range boolAttrs {
@@ -127,19 +135,6 @@ func (g *GlobalGenerator) generateGlobalAttrsStruct(sb *strings.Builder) {
 		sb.WriteString(" bool\n")
 	}
 
-	sb.WriteString("}\n\n")
-}
-
-func (g *GlobalGenerator) generateGlobalAttrsStructFallback(sb *strings.Builder) {
-	sb.WriteString("type GlobalAttrs struct {\n")
-	sb.WriteString("\t// Fallback structure - could not load spec\n")
-	sb.WriteString("\tId, Class, Title string\n")
-	sb.WriteString("\tStyle string\n")
-	sb.WriteString("\tAria   map[string]string\n")
-	sb.WriteString("\tData   map[string]string\n")
-	sb.WriteString("\tEvents map[string]string\n")
-	sb.WriteString("\tCustom map[string]string\n")
-	sb.WriteString("\tHidden bool\n")
 	sb.WriteString("}\n\n")
 }
 
@@ -190,41 +185,27 @@ func (g *GlobalGenerator) generateHelperMethods(sb *strings.Builder) {
 }
 
 func (g *GlobalGenerator) generateWriteGlobalFunction(sb *strings.Builder, globalAttrs []spec.Attribute) {
-	// Load global attributes from spec file
-	globalSpec, err := g.loadGlobalAttributesSpec()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Warning: Could not load global attributes spec: %v\n", err)
-		g.generateWriteGlobalFallback(sb)
-		return
-	}
-
-	sb.WriteString("// Generated WriteGlobal function based on global_attributes.json spec\n")
+	sb.WriteString("// Generated WriteGlobal function based on wooorm global attributes\n")
 	sb.WriteString("func WriteGlobal(sb *strings.Builder, g *GlobalAttrs) {\n")
 
-	// Generate attribute checks based on spec
-	for attrName := range globalSpec.Html.GlobalAttributes {
-		if attrName == "data_attributes" {
-			continue // Handle data attributes separately
-		}
-
-		fieldName := g.getFieldNameForAttribute(attrName)
-		if fieldName == "" {
-			continue // Skip unmapped attributes
-		}
+	// Generate attribute checks based on wooorm globalAttrs
+	for _, attr := range globalAttrs {
+		attrName := attr.Attr
+		fieldName := attr.Field
 
 		// Generate the appropriate check based on field type
 		switch fieldName {
-		case "Hidden", "Inert", "Autofocus", "ItemScope":
+		case "Hidden", "Inert", "Autofocus", "Itemscope":
 			// Boolean attributes
 			fmt.Fprintf(sb, "\tif g.%s {\n", fieldName)
 			fmt.Fprintf(sb, "\t\tBoolAttr(sb, \"%s\")\n", attrName)
 			sb.WriteString("\t}\n")
-		case "TabIndex":
+		case "Tabindex":
 			// Pointer to int
 			fmt.Fprintf(sb, "\tif g.%s != nil {\n", fieldName)
 			fmt.Fprintf(sb, "\t\tAttr(sb, \"%s\", itoa(*g.%s))\n", attrName, fieldName)
 			sb.WriteString("\t}\n")
-		case "Spellcheck", "Translate", "Draggable", "WritingSuggestions":
+		case "Spellcheck", "Translate", "Draggable", "Writingsuggestions":
 			// Pointer to string
 			fmt.Fprintf(sb, "\tif g.%s != nil {\n", fieldName)
 			fmt.Fprintf(sb, "\t\tAttr(sb, \"%s\", *g.%s)\n", attrName, fieldName)
@@ -266,19 +247,6 @@ func (g *GlobalGenerator) generateWriteGlobalFunction(sb *strings.Builder, globa
 	sb.WriteString("}\n\n")
 }
 
-func (g *GlobalGenerator) generateWriteGlobalFallback(sb *strings.Builder) {
-	sb.WriteString("// Fallback WriteGlobal function - could not load spec\n")
-	sb.WriteString("func WriteGlobal(sb *strings.Builder, g *GlobalAttrs) {\n")
-	sb.WriteString("\t// Basic attributes only\n")
-	sb.WriteString("\tif g.Id != \"\" {\n")
-	sb.WriteString("\t\tAttr(sb, \"id\", g.Id)\n")
-	sb.WriteString("\t}\n")
-	sb.WriteString("\tif g.Class != \"\" {\n")
-	sb.WriteString("\t\tAttr(sb, \"class\", g.Class)\n")
-	sb.WriteString("\t}\n")
-	sb.WriteString("}\n\n")
-}
-
 func (g *GlobalGenerator) generateSortedKeysFunction(sb *strings.Builder) {
 	sb.WriteString("func sortedKeys(m map[string]string) []string {\n")
 	sb.WriteString("\tif len(m) == 0 {\n")
@@ -307,16 +275,6 @@ func (g *GlobalGenerator) generateGlobalOptionType(sb *strings.Builder) {
 }
 
 func (g *GlobalGenerator) generateGlobalConstructors(sb *strings.Builder, globalAttrs []spec.Attribute) {
-	// Map HTML attribute names to GlobalAttrs field names
-	fieldMap := g.getAttributeFieldMap()
-
-	// Special attributes that have custom types or logic
-	specialAttributes := map[string]bool{
-		"class": true, "tabindex": true, "draggable": true, "spellcheck": true,
-		"translate": true, "writingsuggestions": true, "itemscope": true,
-		"is": true, "data_attributes": true, "style": true,
-	}
-
 	// Boolean attributes
 	booleanAttributes := map[string]bool{
 		"hidden": true, "inert": true, "autofocus": true, "itemscope": true,
@@ -326,19 +284,14 @@ func (g *GlobalGenerator) generateGlobalConstructors(sb *strings.Builder, global
 	sb.WriteString("// Global attribute constructors\n")
 	for _, attr := range globalAttrs {
 		attrName := attr.Attr
-		fieldName := fieldMap[attrName]
-
-		// Skip attributes that don't map to GlobalAttrs fields
-		if fieldName == "" && !specialAttributes[attrName] {
-			continue
-		}
-
-		funcName := "A" + attr.Field // Use A prefix
+		fieldName := attr.Field
 
 		// Skip data_attributes - it's handled by AData function
 		if attrName == "data_attributes" {
 			continue
 		}
+
+		funcName := "A" + attr.Field // Use A prefix
 
 		if booleanAttributes[attrName] {
 			fmt.Fprintf(sb, "func %s() Global {\n", funcName)
@@ -359,7 +312,7 @@ func (g *GlobalGenerator) generateSpecialAttributeConstructor(sb *strings.Builde
 		sb.WriteString("}\n\n")
 	case "tabindex":
 		fmt.Fprintf(sb, "func %s(i int) Global {\n", funcName)
-		sb.WriteString("\treturn Global{func(g *GlobalAttrs) { g.TabIndex = &i }}\n")
+		sb.WriteString("\treturn Global{func(g *GlobalAttrs) { g.Tabindex = &i }}\n")
 		sb.WriteString("}\n\n")
 	case "draggable":
 		fmt.Fprintf(sb, "func %s(b bool) Global {\n", funcName)
@@ -391,11 +344,11 @@ func (g *GlobalGenerator) generateSpecialAttributeConstructor(sb *strings.Builde
 		sb.WriteString("\tif b {\n")
 		sb.WriteString("\t\tval = \"true\"\n")
 		sb.WriteString("\t}\n")
-		sb.WriteString("\treturn Global{func(g *GlobalAttrs) { g.WritingSuggestions = &val }}\n")
+		sb.WriteString("\treturn Global{func(g *GlobalAttrs) { g.Writingsuggestions = &val }}\n")
 		sb.WriteString("}\n\n")
 	case "itemscope":
 		fmt.Fprintf(sb, "func %s(b bool) Global {\n", funcName)
-		sb.WriteString("\treturn Global{func(g *GlobalAttrs) { g.ItemScope = b }}\n")
+		sb.WriteString("\treturn Global{func(g *GlobalAttrs) { g.Itemscope = true }}\n")
 		sb.WriteString("}\n\n")
 	case "is":
 		sb.WriteString("func AIsAttr(v string) Global {\n") // avoid collision with existing IsAttr
@@ -435,57 +388,6 @@ func (g *GlobalGenerator) generateConvenienceFunctions(sb *strings.Builder) {
 }
 
 // Helper methods
-func (g *GlobalGenerator) loadGlobalAttributesSpec() (*spec.GlobalAttributesSpec, error) {
-	data, err := os.ReadFile("specs/global_attributes.json")
-	if err != nil {
-		return nil, err
-	}
-
-	var spec spec.GlobalAttributesSpec
-	if err := json.Unmarshal(data, &spec); err != nil {
-		return nil, err
-	}
-
-	return &spec, nil
-}
-
-func (g *GlobalGenerator) getFieldNameForAttribute(attrName string) string {
-	return g.getAttributeFieldMap()[attrName]
-}
-
-func (g *GlobalGenerator) getAttributeFieldMap() map[string]string {
-	return map[string]string{
-		"accesskey":             "AccessKey",
-		"anchor":                "Anchor",
-		"autocapitalize":        "AutoCapitalize",
-		"autocorrect":           "AutoCorrect",
-		"autofocus":             "Autofocus",
-		"class":                 "Class",
-		"contenteditable":       "ContentEditable",
-		"dir":                   "Dir",
-		"draggable":             "Draggable",
-		"enterkeyhint":          "EnterKeyHint",
-		"exportparts":           "ExportParts",
-		"hidden":                "Hidden",
-		"id":                    "Id",
-		"inert":                 "Inert",
-		"inputmode":             "InputMode",
-		"is":                    "Is",
-		"lang":                  "Lang",
-		"nonce":                 "Nonce",
-		"part":                  "Part",
-		"popover":               "Popover",
-		"slot":                  "Slot",
-		"spellcheck":            "Spellcheck",
-		"style":                 "Style",
-		"tabindex":              "TabIndex",
-		"title":                 "Title",
-		"translate":             "Translate",
-		"virtualkeyboardpolicy": "VirtualKeyboardPolicy",
-		"writingsuggestions":    "WritingSuggestions",
-		"itemscope":             "ItemScope",
-	}
-}
 
 func (g *GlobalGenerator) contains(slice []string, item string) bool {
 	for _, s := range slice {

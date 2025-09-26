@@ -3,8 +3,7 @@ package html
 import "strings"
 
 type SummaryAttrs struct {
-	Global          GlobalAttrs
-	DisplayListItem string
+	Global GlobalAttrs
 }
 
 type SummaryArg interface {
@@ -35,13 +34,6 @@ func (g Global) applySummary(a *SummaryAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o DisplayListItemOpt) applySummary(a *SummaryAttrs, _ *[]Component) {
-	a.DisplayListItem = o.v
-}
-
 func (a *SummaryAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.DisplayListItem != "" {
-		Attr(sb, "display_list_item", a.DisplayListItem)
-	}
 }

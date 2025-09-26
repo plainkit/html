@@ -3,17 +3,13 @@ package html
 import "strings"
 
 type BodyAttrs struct {
-	Global       GlobalAttrs
-	Alink        string
-	Background   string
-	Bgcolor      string
-	Bottommargin string
-	Leftmargin   string
-	Link         string
-	Rightmargin  string
-	Text         string
-	Topmargin    string
-	Vlink        string
+	Global     GlobalAttrs
+	Alink      string
+	Background string
+	Bgcolor    string
+	Link       string
+	Text       string
+	Vlink      string
 }
 
 type BodyArg interface {
@@ -53,23 +49,11 @@ func (o BackgroundOpt) applyBody(a *BodyAttrs, _ *[]Component) {
 func (o BgcolorOpt) applyBody(a *BodyAttrs, _ *[]Component) {
 	a.Bgcolor = o.v
 }
-func (o BottommarginOpt) applyBody(a *BodyAttrs, _ *[]Component) {
-	a.Bottommargin = o.v
-}
-func (o LeftmarginOpt) applyBody(a *BodyAttrs, _ *[]Component) {
-	a.Leftmargin = o.v
-}
 func (o LinkOpt) applyBody(a *BodyAttrs, _ *[]Component) {
 	a.Link = o.v
 }
-func (o RightmarginOpt) applyBody(a *BodyAttrs, _ *[]Component) {
-	a.Rightmargin = o.v
-}
 func (o TextOpt) applyBody(a *BodyAttrs, _ *[]Component) {
 	a.Text = o.v
-}
-func (o TopmarginOpt) applyBody(a *BodyAttrs, _ *[]Component) {
-	a.Topmargin = o.v
 }
 func (o VlinkOpt) applyBody(a *BodyAttrs, _ *[]Component) {
 	a.Vlink = o.v
@@ -86,23 +70,11 @@ func (a *BodyAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Bgcolor != "" {
 		Attr(sb, "bgcolor", a.Bgcolor)
 	}
-	if a.Bottommargin != "" {
-		Attr(sb, "bottommargin", a.Bottommargin)
-	}
-	if a.Leftmargin != "" {
-		Attr(sb, "leftmargin", a.Leftmargin)
-	}
 	if a.Link != "" {
 		Attr(sb, "link", a.Link)
 	}
-	if a.Rightmargin != "" {
-		Attr(sb, "rightmargin", a.Rightmargin)
-	}
 	if a.Text != "" {
 		Attr(sb, "text", a.Text)
-	}
-	if a.Topmargin != "" {
-		Attr(sb, "topmargin", a.Topmargin)
 	}
 	if a.Vlink != "" {
 		Attr(sb, "vlink", a.Vlink)
