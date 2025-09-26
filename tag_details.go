@@ -36,14 +36,6 @@ func (g Global) applyDetails(a *DetailsAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyDetails(_ *DetailsAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyDetails(_ *DetailsAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o NameOpt) applyDetails(a *DetailsAttrs, _ *[]Component) {
 	a.Name = o.v
 }

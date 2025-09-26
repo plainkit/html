@@ -39,14 +39,6 @@ func (g Global) applyTfoot(a *TfootAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyTfoot(_ *TfootAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyTfoot(_ *TfootAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AlignOpt) applyTfoot(a *TfootAttrs, _ *[]Component) {
 	a.Align = o.v
 }

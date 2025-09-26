@@ -36,14 +36,6 @@ func (g Global) applyLi(a *LiAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyLi(_ *LiAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyLi(_ *LiAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o TypeOpt) applyLi(a *LiAttrs, _ *[]Component) {
 	a.Type = o.v
 }

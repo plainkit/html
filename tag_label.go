@@ -35,14 +35,6 @@ func (g Global) applyLabel(a *LabelAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyLabel(_ *LabelAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyLabel(_ *LabelAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o ForOpt) applyLabel(a *LabelAttrs, _ *[]Component) {
 	a.For = o.v
 }

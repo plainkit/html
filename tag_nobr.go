@@ -34,14 +34,6 @@ func (g Global) applyNobr(a *NobrAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyNobr(_ *NobrAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyNobr(_ *NobrAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *NobrAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

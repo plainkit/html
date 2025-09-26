@@ -34,14 +34,6 @@ func (g Global) applyAbbr(a *AbbrAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyAbbr(_ *AbbrAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyAbbr(_ *AbbrAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *AbbrAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

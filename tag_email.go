@@ -34,14 +34,6 @@ func (g Global) applyEmail(a *EmailAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyEmail(_ *EmailAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyEmail(_ *EmailAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *EmailAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

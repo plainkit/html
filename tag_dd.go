@@ -34,14 +34,6 @@ func (g Global) applyDd(a *DdAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyDd(_ *DdAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyDd(_ *DdAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *DdAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

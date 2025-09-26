@@ -35,14 +35,6 @@ func (g Global) applyBlockquote(a *BlockquoteAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyBlockquote(_ *BlockquoteAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyBlockquote(_ *BlockquoteAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o CiteOpt) applyBlockquote(a *BlockquoteAttrs, _ *[]Component) {
 	a.Cite = o.v
 }

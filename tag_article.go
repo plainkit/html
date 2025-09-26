@@ -34,14 +34,6 @@ func (g Global) applyArticle(a *ArticleAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyArticle(_ *ArticleAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyArticle(_ *ArticleAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *ArticleAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

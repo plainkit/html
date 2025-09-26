@@ -34,14 +34,6 @@ func (g Global) applyDatetimeLocal(a *DatetimeLocalAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyDatetimeLocal(_ *DatetimeLocalAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyDatetimeLocal(_ *DatetimeLocalAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *DatetimeLocalAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

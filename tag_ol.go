@@ -38,14 +38,6 @@ func (g Global) applyOl(a *OlAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyOl(_ *OlAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyOl(_ *OlAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o CompactOpt) applyOl(a *OlAttrs, _ *[]Component) {
 	a.Compact = o.v
 }

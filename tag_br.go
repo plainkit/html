@@ -35,14 +35,6 @@ func (g Global) applyBr(a *BrAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyBr(_ *BrAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyBr(_ *BrAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o ClearOpt) applyBr(a *BrAttrs, _ *[]Component) {
 	a.Clear = o.v
 }

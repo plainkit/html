@@ -34,14 +34,6 @@ func (g Global) applyNav(a *NavAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyNav(_ *NavAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyNav(_ *NavAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *NavAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

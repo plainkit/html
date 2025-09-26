@@ -43,14 +43,6 @@ func (g Global) applyForm(a *FormAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyForm(_ *FormAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyForm(_ *FormAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AcceptCharsetOpt) applyForm(a *FormAttrs, _ *[]Component) {
 	a.AcceptCharset = o.v
 }

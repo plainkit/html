@@ -38,14 +38,6 @@ func (g Global) applyTemplate(a *TemplateAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyTemplate(_ *TemplateAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyTemplate(_ *TemplateAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o ShadowrootclonableOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
 	a.Shadowrootclonable = o.v
 }

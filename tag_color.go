@@ -34,14 +34,6 @@ func (g Global) applyColor(a *ColorAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyColor(_ *ColorAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyColor(_ *ColorAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *ColorAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

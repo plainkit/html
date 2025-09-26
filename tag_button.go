@@ -48,14 +48,6 @@ func (g Global) applyButton(a *ButtonAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyButton(_ *ButtonAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyButton(_ *ButtonAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o CommandOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 	a.Command = o.v
 }

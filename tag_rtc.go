@@ -34,14 +34,6 @@ func (g Global) applyRtc(a *RtcAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyRtc(_ *RtcAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyRtc(_ *RtcAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *RtcAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

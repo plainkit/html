@@ -34,14 +34,6 @@ func (g Global) applyWeek(a *WeekAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyWeek(_ *WeekAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyWeek(_ *WeekAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *WeekAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

@@ -34,14 +34,6 @@ func (g Global) applyTitle(a *TitleAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyTitle(_ *TitleAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyTitle(_ *TitleAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *TitleAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

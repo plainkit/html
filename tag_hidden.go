@@ -34,14 +34,6 @@ func (g Global) applyHidden(a *HiddenAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyHidden(_ *HiddenAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyHidden(_ *HiddenAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *HiddenAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

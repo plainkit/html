@@ -34,14 +34,6 @@ func (g Global) applyRuby(a *RubyAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyRuby(_ *RubyAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyRuby(_ *RubyAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *RubyAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

@@ -35,14 +35,6 @@ func (g Global) applyPre(a *PreAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyPre(_ *PreAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyPre(_ *PreAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o WidthOpt) applyPre(a *PreAttrs, _ *[]Component) {
 	a.Width = o.v
 }

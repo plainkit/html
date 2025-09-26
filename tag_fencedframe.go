@@ -37,14 +37,6 @@ func (g Global) applyFencedframe(a *FencedframeAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyFencedframe(_ *FencedframeAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyFencedframe(_ *FencedframeAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AllowOpt) applyFencedframe(a *FencedframeAttrs, _ *[]Component) {
 	a.Allow = o.v
 }

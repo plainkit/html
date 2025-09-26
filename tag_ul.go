@@ -36,14 +36,6 @@ func (g Global) applyUl(a *UlAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyUl(_ *UlAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyUl(_ *UlAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o CompactOpt) applyUl(a *UlAttrs, _ *[]Component) {
 	a.Compact = o.v
 }

@@ -40,14 +40,6 @@ func (g Global) applyMeter(a *MeterAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyMeter(_ *MeterAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyMeter(_ *MeterAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o HighOpt) applyMeter(a *MeterAttrs, _ *[]Component) {
 	a.High = o.v
 }

@@ -36,14 +36,6 @@ func (g Global) applyHtml(a *HtmlAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyHtml(_ *HtmlAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyHtml(_ *HtmlAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o VersionOpt) applyHtml(a *HtmlAttrs, _ *[]Component) {
 	a.Version = o.v
 }

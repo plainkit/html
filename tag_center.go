@@ -34,14 +34,6 @@ func (g Global) applyCenter(a *CenterAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyCenter(_ *CenterAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyCenter(_ *CenterAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *CenterAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

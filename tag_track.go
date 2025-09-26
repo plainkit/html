@@ -39,14 +39,6 @@ func (g Global) applyTrack(a *TrackAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyTrack(_ *TrackAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyTrack(_ *TrackAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o DefaultOpt) applyTrack(a *TrackAttrs, _ *[]Component) {
 	a.Default = true
 }

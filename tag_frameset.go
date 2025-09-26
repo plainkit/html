@@ -36,14 +36,6 @@ func (g Global) applyFrameset(a *FramesetAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyFrameset(_ *FramesetAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyFrameset(_ *FramesetAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o ColsOpt) applyFrameset(a *FramesetAttrs, _ *[]Component) {
 	a.Cols = o.v
 }

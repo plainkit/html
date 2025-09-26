@@ -34,14 +34,6 @@ func (g Global) applyNumber(a *NumberAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyNumber(_ *NumberAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyNumber(_ *NumberAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *NumberAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

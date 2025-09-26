@@ -34,14 +34,6 @@ func (g Global) applySpan(a *SpanAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applySpan(_ *SpanAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applySpan(_ *SpanAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *SpanAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

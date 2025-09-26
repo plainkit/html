@@ -36,14 +36,6 @@ func {{.Title}}(args ...{{.ArgInterface}}) Node {
 func (g Global) apply{{.Title}}(a *{{.StructName}}, _ *[]Component) {
 	g.do(&a.Global)
 }
-
-func (o TxtOpt) apply{{.Title}}(_ *{{.StructName}}, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) apply{{.Title}}(_ *{{.StructName}}, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
 {{range .Attributes}}{{if ne .Attr "data"}}
 func (o {{.Field}}Opt) apply{{$.Title}}(a *{{$.StructName}}, _ *[]Component) {
 	{{if eq .Type "bool"}}a.{{.Field}} = true{{else if eq .Attr "rel"}}if a.{{.Field}} == "" {

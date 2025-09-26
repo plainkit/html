@@ -45,14 +45,6 @@ func (g Global) applyMarquee(a *MarqueeAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyMarquee(_ *MarqueeAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyMarquee(_ *MarqueeAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o BehaviorOpt) applyMarquee(a *MarqueeAttrs, _ *[]Component) {
 	a.Behavior = o.v
 }

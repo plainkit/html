@@ -40,14 +40,6 @@ func (g Global) applyEmbed(a *EmbedAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyEmbed(_ *EmbedAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyEmbed(_ *EmbedAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AlignOpt) applyEmbed(a *EmbedAttrs, _ *[]Component) {
 	a.Align = o.v
 }

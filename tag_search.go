@@ -34,14 +34,6 @@ func (g Global) applySearch(a *SearchAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applySearch(_ *SearchAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applySearch(_ *SearchAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *SearchAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

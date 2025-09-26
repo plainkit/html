@@ -34,14 +34,6 @@ func (g Global) applyNoscript(a *NoscriptAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyNoscript(_ *NoscriptAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyNoscript(_ *NoscriptAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *NoscriptAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

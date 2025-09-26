@@ -48,14 +48,6 @@ func (g Global) applyObject(a *ObjectAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyObject(_ *ObjectAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyObject(_ *ObjectAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o ArchiveOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Archive = o.v
 }

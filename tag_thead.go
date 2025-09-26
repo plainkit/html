@@ -39,14 +39,6 @@ func (g Global) applyThead(a *TheadAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyThead(_ *TheadAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyThead(_ *TheadAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AlignOpt) applyThead(a *TheadAttrs, _ *[]Component) {
 	a.Align = o.v
 }

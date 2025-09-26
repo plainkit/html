@@ -34,14 +34,6 @@ func (g Global) applyVar(a *VarAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyVar(_ *VarAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyVar(_ *VarAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *VarAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

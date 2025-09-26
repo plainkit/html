@@ -35,14 +35,6 @@ func (g Global) applyQ(a *QAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyQ(_ *QAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyQ(_ *QAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o CiteOpt) applyQ(a *QAttrs, _ *[]Component) {
 	a.Cite = o.v
 }

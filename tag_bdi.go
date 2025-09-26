@@ -34,14 +34,6 @@ func (g Global) applyBdi(a *BdiAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyBdi(_ *BdiAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyBdi(_ *BdiAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *BdiAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

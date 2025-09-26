@@ -34,14 +34,6 @@ func (g Global) applyWbr(a *WbrAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyWbr(_ *WbrAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyWbr(_ *WbrAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *WbrAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

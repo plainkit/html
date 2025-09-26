@@ -34,14 +34,6 @@ func (g Global) applyPlaintext(a *PlaintextAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyPlaintext(_ *PlaintextAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyPlaintext(_ *PlaintextAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *PlaintextAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

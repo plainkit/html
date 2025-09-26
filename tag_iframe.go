@@ -54,14 +54,6 @@ func (g Global) applyIframe(a *IframeAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyIframe(_ *IframeAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyIframe(_ *IframeAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AlignOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Align = o.v
 }

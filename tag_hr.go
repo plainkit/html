@@ -40,14 +40,6 @@ func (g Global) applyHr(a *HrAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyHr(_ *HrAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyHr(_ *HrAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AlignOpt) applyHr(a *HrAttrs, _ *[]Component) {
 	a.Align = o.v
 }

@@ -35,14 +35,6 @@ func (g Global) applySummary(a *SummaryAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applySummary(_ *SummaryAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applySummary(_ *SummaryAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o DisplayListItemOpt) applySummary(a *SummaryAttrs, _ *[]Component) {
 	a.DisplayListItem = o.v
 }

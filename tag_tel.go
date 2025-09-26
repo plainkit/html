@@ -34,14 +34,6 @@ func (g Global) applyTel(a *TelAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyTel(_ *TelAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyTel(_ *TelAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *TelAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

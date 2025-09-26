@@ -35,14 +35,6 @@ func (g Global) applyData(a *DataAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyData(_ *DataAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyData(_ *DataAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o ValueOpt) applyData(a *DataAttrs, _ *[]Component) {
 	a.Value = o.v
 }

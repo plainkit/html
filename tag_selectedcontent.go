@@ -34,14 +34,6 @@ func (g Global) applySelectedcontent(a *SelectedcontentAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applySelectedcontent(_ *SelectedcontentAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applySelectedcontent(_ *SelectedcontentAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *SelectedcontentAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

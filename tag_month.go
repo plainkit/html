@@ -34,14 +34,6 @@ func (g Global) applyMonth(a *MonthAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyMonth(_ *MonthAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyMonth(_ *MonthAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *MonthAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

@@ -35,14 +35,6 @@ func (g Global) applySlot(a *SlotAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applySlot(_ *SlotAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applySlot(_ *SlotAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o NameOpt) applySlot(a *SlotAttrs, _ *[]Component) {
 	a.Name = o.v
 }

@@ -46,14 +46,6 @@ func (g Global) applyArea(a *AreaAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyArea(_ *AreaAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyArea(_ *AreaAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AltOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 	a.Alt = o.v
 }

@@ -34,14 +34,6 @@ func (g Global) applyPassword(a *PasswordAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyPassword(_ *PasswordAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyPassword(_ *PasswordAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *PasswordAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

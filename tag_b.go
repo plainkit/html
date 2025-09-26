@@ -34,14 +34,6 @@ func (g Global) applyB(a *BAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyB(_ *BAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyB(_ *BAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *BAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

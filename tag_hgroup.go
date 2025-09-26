@@ -34,14 +34,6 @@ func (g Global) applyHgroup(a *HgroupAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyHgroup(_ *HgroupAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyHgroup(_ *HgroupAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *HgroupAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

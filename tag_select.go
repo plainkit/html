@@ -42,14 +42,6 @@ func (g Global) applySelect(a *SelectAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applySelect(_ *SelectAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applySelect(_ *SelectAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AutocompleteOpt) applySelect(a *SelectAttrs, _ *[]Component) {
 	a.Autocomplete = o.v
 }

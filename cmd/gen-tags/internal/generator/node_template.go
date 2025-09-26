@@ -111,4 +111,15 @@ func itoa(i int) string {
 // Node implements many *Arg interfaces by appending itself to the children slice.
 
 {{range .TagNames}}func (n Node) apply{{.}}(_ *{{.}}Attrs, kids *[]Component) { *kids = append(*kids, n) }
+{{end}}
+
+// TxtOpt and UnsafeTxtOpt apply methods for all HTML elements
+{{range .TagNames}}func (o TxtOpt) apply{{.}}(_ *{{.}}Attrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
+{{end}}
+
+{{range .TagNames}}func (o UnsafeTxtOpt) apply{{.}}(_ *{{.}}Attrs, kids *[]Component) { *kids = append(*kids, UnsafeTextNode(o.s)) }
+{{end}}
+
+// ChildOpt apply methods for all HTML elements
+{{range .TagNames}}func (o ChildOpt) apply{{.}}(_ *{{.}}Attrs, kids *[]Component) { *kids = append(*kids, o.c) }
 {{end}}`

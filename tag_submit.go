@@ -34,14 +34,6 @@ func (g Global) applySubmit(a *SubmitAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applySubmit(_ *SubmitAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applySubmit(_ *SubmitAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *SubmitAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

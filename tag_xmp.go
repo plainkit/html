@@ -34,14 +34,6 @@ func (g Global) applyXmp(a *XmpAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyXmp(_ *XmpAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyXmp(_ *XmpAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *XmpAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

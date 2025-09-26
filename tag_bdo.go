@@ -34,14 +34,6 @@ func (g Global) applyBdo(a *BdoAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyBdo(_ *BdoAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyBdo(_ *BdoAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *BdoAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

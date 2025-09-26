@@ -34,14 +34,6 @@ func (g Global) applyRadio(a *RadioAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyRadio(_ *RadioAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyRadio(_ *RadioAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *RadioAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

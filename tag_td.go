@@ -46,14 +46,6 @@ func (g Global) applyTd(a *TdAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyTd(_ *TdAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyTd(_ *TdAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AbbrOpt) applyTd(a *TdAttrs, _ *[]Component) {
 	a.Abbr = o.v
 }

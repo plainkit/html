@@ -36,14 +36,6 @@ func (g Global) applyProgress(a *ProgressAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyProgress(_ *ProgressAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyProgress(_ *ProgressAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o MaxOpt) applyProgress(a *ProgressAttrs, _ *[]Component) {
 	a.Max = o.v
 }

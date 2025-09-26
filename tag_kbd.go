@@ -34,14 +34,6 @@ func (g Global) applyKbd(a *KbdAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyKbd(_ *KbdAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyKbd(_ *KbdAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *KbdAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

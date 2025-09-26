@@ -41,14 +41,6 @@ func (g Global) applyFrame(a *FrameAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyFrame(_ *FrameAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyFrame(_ *FrameAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o FrameborderOpt) applyFrame(a *FrameAttrs, _ *[]Component) {
 	a.Frameborder = o.v
 }

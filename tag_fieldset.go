@@ -37,14 +37,6 @@ func (g Global) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyFieldset(_ *FieldsetAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyFieldset(_ *FieldsetAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o DisabledOpt) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
 	a.Disabled = true
 }

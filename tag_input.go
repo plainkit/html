@@ -69,14 +69,6 @@ func (g Global) applyInput(a *InputAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyInput(_ *InputAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyInput(_ *InputAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AcceptOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Accept = o.v
 }

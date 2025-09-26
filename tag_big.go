@@ -34,14 +34,6 @@ func (g Global) applyBig(a *BigAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyBig(_ *BigAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyBig(_ *BigAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *BigAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

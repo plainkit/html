@@ -38,14 +38,6 @@ func (g Global) applyOption(a *OptionAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyOption(_ *OptionAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyOption(_ *OptionAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o DisabledOpt) applyOption(a *OptionAttrs, _ *[]Component) {
 	a.Disabled = true
 }

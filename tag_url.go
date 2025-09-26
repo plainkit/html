@@ -34,14 +34,6 @@ func (g Global) applyUrl(a *UrlAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyUrl(_ *UrlAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyUrl(_ *UrlAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *UrlAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

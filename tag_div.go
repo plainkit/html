@@ -35,14 +35,6 @@ func (g Global) applyDiv(a *DivAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyDiv(_ *DivAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyDiv(_ *DivAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AlignOpt) applyDiv(a *DivAttrs, _ *[]Component) {
 	a.Align = o.v
 }

@@ -34,14 +34,6 @@ func (g Global) applyImage(a *ImageAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyImage(_ *ImageAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyImage(_ *ImageAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *ImageAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

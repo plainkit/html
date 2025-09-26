@@ -36,14 +36,6 @@ func (g Global) applyDialog(a *DialogAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyDialog(_ *DialogAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyDialog(_ *DialogAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o ClosedbyOpt) applyDialog(a *DialogAttrs, _ *[]Component) {
 	a.Closedby = o.v
 }

@@ -55,14 +55,6 @@ func (g Global) applyImg(a *ImgAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyImg(_ *ImgAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyImg(_ *ImgAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AlignOpt) applyImg(a *ImgAttrs, _ *[]Component) {
 	a.Align = o.v
 }

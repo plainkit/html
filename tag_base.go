@@ -36,14 +36,6 @@ func (g Global) applyBase(a *BaseAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyBase(_ *BaseAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyBase(_ *BaseAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o HrefOpt) applyBase(a *BaseAttrs, _ *[]Component) {
 	a.Href = o.v
 }

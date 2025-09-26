@@ -34,14 +34,6 @@ func (g Global) applyRp(a *RpAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyRp(_ *RpAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyRp(_ *RpAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *RpAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

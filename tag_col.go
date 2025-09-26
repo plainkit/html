@@ -40,14 +40,6 @@ func (g Global) applyCol(a *ColAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyCol(_ *ColAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyCol(_ *ColAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AlignOpt) applyCol(a *ColAttrs, _ *[]Component) {
 	a.Align = o.v
 }

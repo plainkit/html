@@ -34,14 +34,6 @@ func (g Global) applyCheckbox(a *CheckboxAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyCheckbox(_ *CheckboxAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyCheckbox(_ *CheckboxAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *CheckboxAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

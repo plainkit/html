@@ -45,14 +45,6 @@ func (g Global) applyScript(a *ScriptAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyScript(_ *ScriptAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyScript(_ *ScriptAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AsyncOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Async = true
 }

@@ -39,14 +39,6 @@ func (g Global) applyMeta(a *MetaAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyMeta(_ *MetaAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyMeta(_ *MetaAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o CharsetOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
 	a.Charset = o.v
 }

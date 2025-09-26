@@ -38,14 +38,6 @@ func (g Global) applyParam(a *ParamAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyParam(_ *ParamAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyParam(_ *ParamAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o NameOpt) applyParam(a *ParamAttrs, _ *[]Component) {
 	a.Name = o.v
 }

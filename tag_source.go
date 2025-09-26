@@ -41,14 +41,6 @@ func (g Global) applySource(a *SourceAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applySource(_ *SourceAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applySource(_ *SourceAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o HeightOpt) applySource(a *SourceAttrs, _ *[]Component) {
 	a.Height = o.v
 }

@@ -34,14 +34,6 @@ func (g Global) applyCite(a *CiteAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyCite(_ *CiteAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyCite(_ *CiteAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *CiteAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

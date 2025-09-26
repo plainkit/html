@@ -49,14 +49,6 @@ func (g Global) applyVideo(a *VideoAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyVideo(_ *VideoAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyVideo(_ *VideoAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AspectRatioComputedFromAttributesOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
 	a.AspectRatioComputedFromAttributes = o.v
 }

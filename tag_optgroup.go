@@ -36,14 +36,6 @@ func (g Global) applyOptgroup(a *OptgroupAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyOptgroup(_ *OptgroupAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyOptgroup(_ *OptgroupAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o DisabledOpt) applyOptgroup(a *OptgroupAttrs, _ *[]Component) {
 	a.Disabled = true
 }

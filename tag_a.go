@@ -52,14 +52,6 @@ func (g Global) applyA(a *AAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyA(_ *AAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyA(_ *AAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AttributionsourceidOpt) applyA(a *AAttrs, _ *[]Component) {
 	a.Attributionsourceid = o.v
 }

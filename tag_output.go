@@ -37,14 +37,6 @@ func (g Global) applyOutput(a *OutputAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyOutput(_ *OutputAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyOutput(_ *OutputAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o ForOpt) applyOutput(a *OutputAttrs, _ *[]Component) {
 	a.For = o.v
 }

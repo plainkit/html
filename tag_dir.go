@@ -35,14 +35,6 @@ func (g Global) applyDir(a *DirAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyDir(_ *DirAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyDir(_ *DirAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o CompactOpt) applyDir(a *DirAttrs, _ *[]Component) {
 	a.Compact = o.v
 }

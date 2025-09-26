@@ -40,14 +40,6 @@ func (g Global) applyColgroup(a *ColgroupAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyColgroup(_ *ColgroupAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyColgroup(_ *ColgroupAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AlignOpt) applyColgroup(a *ColgroupAttrs, _ *[]Component) {
 	a.Align = o.v
 }

@@ -39,14 +39,6 @@ func (g Global) applyTr(a *TrAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyTr(_ *TrAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyTr(_ *TrAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AlignOpt) applyTr(a *TrAttrs, _ *[]Component) {
 	a.Align = o.v
 }

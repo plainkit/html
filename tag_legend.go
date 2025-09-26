@@ -35,14 +35,6 @@ func (g Global) applyLegend(a *LegendAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyLegend(_ *LegendAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyLegend(_ *LegendAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AlignOpt) applyLegend(a *LegendAttrs, _ *[]Component) {
 	a.Align = o.v
 }

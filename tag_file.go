@@ -34,14 +34,6 @@ func (g Global) applyFile(a *FileAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyFile(_ *FileAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyFile(_ *FileAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *FileAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

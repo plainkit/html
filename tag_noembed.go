@@ -34,14 +34,6 @@ func (g Global) applyNoembed(a *NoembedAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyNoembed(_ *NoembedAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyNoembed(_ *NoembedAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *NoembedAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

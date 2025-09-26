@@ -34,14 +34,6 @@ func (g Global) applyH3(a *H3Attrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyH3(_ *H3Attrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyH3(_ *H3Attrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *H3Attrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

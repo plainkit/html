@@ -34,14 +34,6 @@ func (g Global) applyRange(a *RangeAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyRange(_ *RangeAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyRange(_ *RangeAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *RangeAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

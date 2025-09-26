@@ -44,14 +44,6 @@ func (g Global) applyBody(a *BodyAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyBody(_ *BodyAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyBody(_ *BodyAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o AlinkOpt) applyBody(a *BodyAttrs, _ *[]Component) {
 	a.Alink = o.v
 }

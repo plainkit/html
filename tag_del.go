@@ -36,14 +36,6 @@ func (g Global) applyDel(a *DelAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyDel(_ *DelAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyDel(_ *DelAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o CiteOpt) applyDel(a *DelAttrs, _ *[]Component) {
 	a.Cite = o.v
 }

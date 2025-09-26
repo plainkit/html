@@ -34,14 +34,6 @@ func (g Global) applyHead(a *HeadAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyHead(_ *HeadAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyHead(_ *HeadAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (a *HeadAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

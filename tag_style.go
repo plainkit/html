@@ -37,14 +37,6 @@ func (g Global) applyStyle(a *StyleAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TxtOpt) applyStyle(_ *StyleAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-
-func (o ChildOpt) applyStyle(_ *StyleAttrs, kids *[]Component) {
-	*kids = append(*kids, o.c)
-}
-
 func (o BlockingOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
 	a.Blocking = o.v
 }
