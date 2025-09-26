@@ -3,6 +3,7 @@ package html
 import "strings"
 
 // Non-global content helpers (unified for all tags that accept children)
+
 type TxtOpt struct {
 	s string
 }
@@ -30,6 +31,8 @@ func Child(c Component) ChildOpt {
 	return ChildOpt{c}
 }
 
+func C(c Component) ChildOpt { return Child(c) }
+
 // FragmentNode represents a collection of components that render without a wrapper element,
 // similar to React's <> fragment syntax. It implements Component and can be used
 // anywhere a single Component is expected, but renders as multiple sibling elements.
@@ -50,7 +53,7 @@ type FragmentNode struct {
 //
 // This renders as three sibling elements with no containing wrapper.
 func Fragment(children ...Component) ChildOpt {
-	return Child(FragmentNode{children: children})
+	return C(FragmentNode{children: children})
 }
 
 // F is an alias for Fragment to reduce verbosity
