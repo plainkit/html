@@ -6,6 +6,7 @@ type OlAttrs struct {
 	Global   GlobalAttrs
 	Reversed bool
 	Start    string
+	Type     string
 }
 
 type OlArg interface {
@@ -42,6 +43,9 @@ func (o ReversedOpt) applyOl(a *OlAttrs, _ *[]Component) {
 func (o StartOpt) applyOl(a *OlAttrs, _ *[]Component) {
 	a.Start = o.v
 }
+func (o TypeOpt) applyOl(a *OlAttrs, _ *[]Component) {
+	a.Type = o.v
+}
 
 func (a *OlAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
@@ -50,5 +54,8 @@ func (a *OlAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Start != "" {
 		Attr(sb, "start", a.Start)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
 	}
 }

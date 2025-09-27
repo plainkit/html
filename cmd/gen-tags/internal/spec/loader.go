@@ -123,6 +123,14 @@ func (l *Loader) convertGostarToTagSpecs() []TagSpec {
 			}
 		}
 
+		// Add known missing attributes that are not in gostar data
+		missingAttrs := l.getMissingAttributesForElement(element.Tag)
+		for _, attr := range missingAttrs {
+			if _, exists := attrMap[attr.Attr]; !exists {
+				attrMap[attr.Attr] = attr
+			}
+		}
+
 		// Convert map back to slice
 		var elemAttributes []Attribute
 		for _, attr := range attrMap {
@@ -144,7 +152,7 @@ func (l *Loader) convertGostarToTagSpecs() []TagSpec {
 	return specs
 }
 
-// extractGlobalAttributes identifies attributes that appear in many elements
+// extractGlobalAttributes identifies attributes that appear in ALL elements
 // and should be treated as global attributes
 func (l *Loader) extractGlobalAttributes() map[string]string {
 	attrCounts := make(map[string]int)
@@ -163,22 +171,61 @@ func (l *Loader) extractGlobalAttributes() map[string]string {
 		}
 	}
 
-	// Consider attributes that appear in at least 10% of elements as global
-	threshold := totalElements / 10
+	// Consider attributes that appear in 90%+ of elements, plus known HTML global attributes
+	threshold := totalElements * 9 / 10
 	globalAttrs := make(map[string]string)
+
+	// Add attributes that appear frequently
 	for attrName, count := range attrCounts {
 		if count >= threshold {
 			globalAttrs[attrName] = attrTypes[attrName]
 		}
 	}
 
+	// Always include known HTML global attributes (from HTML spec)
+	knownGlobals := map[string]string{
+		"class":           "string",
+		"id":              "string",
+		"style":           "string",
+		"title":           "string",
+		"contenteditable": "string",
+		"draggable":       "bool",
+		"hidden":          "bool",
+		"lang":            "string",
+		"spellcheck":      "bool",
+		"tabindex":        "string",
+		"accesskey":       "string",
+		"dir":             "string",
+	}
+
+	for attr, attrType := range knownGlobals {
+		if _, exists := globalAttrs[attr]; !exists {
+			globalAttrs[attr] = attrType
+		}
+	}
 	return globalAttrs
 }
 
+// getMissingAttributesForElement returns known missing attributes for specific elements
+// that are not present in the gostar data but should be according to HTML spec
+func (l *Loader) getMissingAttributesForElement(tagName string) []Attribute {
+	switch tagName {
+	case "html":
+		return []Attribute{
+			{Field: "Lang", Attr: "lang", Type: "string"},
+		}
+	default:
+		return []Attribute{}
+	}
+}
+
 // CollectAllAttributes collects unique attributes from all tag specs
+// This does NOT include global attributes - those go in core_global.go
 func (l *Loader) CollectAllAttributes(specs []TagSpec) map[string]Attribute {
 	allAttributes := make(map[string]Attribute)
 
+	// Add attributes from individual tag specs only
+	// Global attributes are handled separately in core_global.go
 	for _, spec := range specs {
 		for _, attr := range spec.Attributes {
 			key := strings.ToLower(attr.Attr)

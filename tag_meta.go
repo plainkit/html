@@ -7,6 +7,7 @@ type MetaAttrs struct {
 	Charset   string
 	Content   string
 	Httpequiv string
+	Name      string
 }
 
 type MetaArg interface {
@@ -46,6 +47,9 @@ func (o ContentOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
 func (o HttpequivOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
 	a.Httpequiv = o.v
 }
+func (o NameOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
+	a.Name = o.v
+}
 
 func (a *MetaAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
@@ -57,5 +61,8 @@ func (a *MetaAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Httpequiv != "" {
 		Attr(sb, "http-equiv", a.Httpequiv)
+	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
 	}
 }

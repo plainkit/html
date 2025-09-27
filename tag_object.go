@@ -7,6 +7,8 @@ type ObjectAttrs struct {
 	Data          string
 	Form          string
 	Height        string
+	Name          string
+	Type          string
 	Typemustmatch bool
 	Usemap        string
 	Width         string
@@ -46,6 +48,12 @@ func (o FormOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
 func (o HeightOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Height = o.v
 }
+func (o NameOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
+	a.Name = o.v
+}
+func (o TypeOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
+	a.Type = o.v
+}
 func (o TypemustmatchOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Typemustmatch = true
 }
@@ -63,6 +71,12 @@ func (a *ObjectAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
+	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
 	}
 	if a.Typemustmatch {
 		BoolAttr(sb, "typemustmatch")

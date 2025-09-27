@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/plainkit/html/cmd/gen-tags/internal/files"
 	"github.com/plainkit/html/cmd/gen-tags/internal/generator"
@@ -40,14 +41,15 @@ func run(specsDir, outDir string) error {
 	}
 	fmt.Printf("Loaded %d tag specifications\n", len(allSpecs))
 
-	fmt.Println("Generating core_global.go...")
-	if err := generateCoreGlobal(specLoader, fileManager); err != nil {
-		return fmt.Errorf("generate core global: %w", err)
+	fmt.Println("Generating centralized attributes file...")
+	allAttributes, err := generateAttributesFile(specLoader, fileManager, allSpecs)
+	if err != nil {
+		return fmt.Errorf("generate attributes file: %w", err)
 	}
 
-	fmt.Println("Generating centralized attributes file...")
-	if err := generateAttributesFile(specLoader, fileManager, allSpecs); err != nil {
-		return fmt.Errorf("generate attributes file: %w", err)
+	fmt.Println("Generating core_global.go...")
+	if err := generateCoreGlobal(specLoader, fileManager, allAttributes); err != nil {
+		return fmt.Errorf("generate core global: %w", err)
 	}
 
 	fmt.Println("Generating tag files...")
@@ -64,26 +66,36 @@ func run(specsDir, outDir string) error {
 	return nil
 }
 
-func generateCoreGlobal(specLoader *spec.Loader, fileManager *files.Manager) error {
+func generateCoreGlobal(specLoader *spec.Loader, fileManager *files.Manager, centralizedAttrs map[string]spec.Attribute) error {
 	globalAttrs, err := specLoader.LoadGlobalAttributesFromGostar()
 	if err != nil {
 		return fmt.Errorf("load global attributes: %w", err)
 	}
 
+	// Filter out global attributes that are already in the centralized attrs file
+	filteredGlobalAttrs := make([]spec.Attribute, 0)
+	for _, globalAttr := range globalAttrs {
+		key := strings.ToLower(globalAttr.Attr)
+		if _, exists := centralizedAttrs[key]; !exists {
+			filteredGlobalAttrs = append(filteredGlobalAttrs, globalAttr)
+		}
+	}
+
 	globalGen := generator.NewGlobalGenerator()
-	source := globalGen.GenerateSource(globalAttrs)
+	source := globalGen.GenerateSource(filteredGlobalAttrs)
 
 	return fileManager.WriteFormattedFile("core_global.go", source)
 }
 
-func generateAttributesFile(specLoader *spec.Loader, fileManager *files.Manager, allSpecs []spec.TagSpec) error {
+func generateAttributesFile(specLoader *spec.Loader, fileManager *files.Manager, allSpecs []spec.TagSpec) (map[string]spec.Attribute, error) {
 	allAttributes := specLoader.CollectAllAttributes(allSpecs)
 	fmt.Printf("Collected %d unique attributes from all specs\n", len(allAttributes))
 
 	attrGen := generator.NewAttributesGenerator()
 	source := attrGen.GenerateSource(allAttributes)
 
-	return fileManager.WriteFormattedFile("attrs.go", source)
+	err := fileManager.WriteFormattedFile("attrs.go", source)
+	return allAttributes, err
 }
 
 func generateTagFiles(fileManager *files.Manager, allSpecs []spec.TagSpec) error {

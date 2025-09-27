@@ -8,6 +8,7 @@ type IframeAttrs struct {
 	Allowfullscreen     bool
 	Allowpaymentrequest bool
 	Height              string
+	Name                string
 	Referrerpolicy      string
 	Sandbox             string
 	Src                 string
@@ -55,6 +56,9 @@ func (o AllowpaymentrequestOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
 func (o HeightOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Height = o.v
 }
+func (o NameOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
+	a.Name = o.v
+}
 func (o ReferrerpolicyOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Referrerpolicy = o.v
 }
@@ -84,6 +88,9 @@ func (a *IframeAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
+	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
 	}
 	if a.Referrerpolicy != "" {
 		Attr(sb, "referrerpolicy", a.Referrerpolicy)

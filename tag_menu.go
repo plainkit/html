@@ -4,6 +4,7 @@ import "strings"
 
 type MenuAttrs struct {
 	Global GlobalAttrs
+	Type   string
 }
 
 type MenuArg interface {
@@ -34,6 +35,13 @@ func (g Global) applyMenu(a *MenuAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
+func (o TypeOpt) applyMenu(a *MenuAttrs, _ *[]Component) {
+	a.Type = o.v
+}
+
 func (a *MenuAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
+	}
 }

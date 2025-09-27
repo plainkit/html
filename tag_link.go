@@ -13,6 +13,7 @@ type LinkAttrs struct {
 	Referrerpolicy string
 	Rel            string
 	Sizes          string
+	Type           string
 }
 
 type LinkArg interface {
@@ -74,6 +75,9 @@ func (o RelOpt) applyLink(a *LinkAttrs, _ *[]Component) {
 func (o SizesOpt) applyLink(a *LinkAttrs, _ *[]Component) {
 	a.Sizes = o.v
 }
+func (o TypeOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+	a.Type = o.v
+}
 
 func (a *LinkAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
@@ -103,5 +107,8 @@ func (a *LinkAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Sizes != "" {
 		Attr(sb, "sizes", a.Sizes)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
 	}
 }

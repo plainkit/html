@@ -12,8 +12,10 @@ type ButtonAttrs struct {
 	Formmethod          string
 	Formnovalidate      bool
 	Formtarget          string
+	Name                string
 	Popovertarget       string
 	Popovertargetaction string
+	Type                string
 	Value               string
 }
 
@@ -69,11 +71,17 @@ func (o FormnovalidateOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 func (o FormtargetOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 	a.Formtarget = o.v
 }
+func (o NameOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Name = o.v
+}
 func (o PopovertargetOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 	a.Popovertarget = o.v
 }
 func (o PopovertargetactionOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 	a.Popovertargetaction = o.v
+}
+func (o TypeOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Type = o.v
 }
 func (o ValueOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 	a.Value = o.v
@@ -105,11 +113,17 @@ func (a *ButtonAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Formtarget != "" {
 		Attr(sb, "formtarget", a.Formtarget)
 	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
+	}
 	if a.Popovertarget != "" {
 		Attr(sb, "popovertarget", a.Popovertarget)
 	}
 	if a.Popovertargetaction != "" {
 		Attr(sb, "popovertargetaction", a.Popovertargetaction)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
 	}
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)

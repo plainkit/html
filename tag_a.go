@@ -11,6 +11,7 @@ type AAttrs struct {
 	Referrerpolicy string
 	Rel            string
 	Target         string
+	Type           string
 }
 
 type AArg interface {
@@ -66,6 +67,9 @@ func (o RelOpt) applyA(a *AAttrs, _ *[]Component) {
 func (o TargetOpt) applyA(a *AAttrs, _ *[]Component) {
 	a.Target = o.v
 }
+func (o TypeOpt) applyA(a *AAttrs, _ *[]Component) {
+	a.Type = o.v
+}
 
 func (a *AAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
@@ -89,5 +93,8 @@ func (a *AAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Target != "" {
 		Attr(sb, "target", a.Target)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
 	}
 }

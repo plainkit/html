@@ -13,6 +13,7 @@ type ScriptAttrs struct {
 	Nonce          string
 	Referrerpolicy string
 	Src            string
+	Type           string
 }
 
 type ScriptArg interface {
@@ -70,6 +71,9 @@ func (o ReferrerpolicyOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
 func (o SrcOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Src = o.v
 }
+func (o TypeOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
+	a.Type = o.v
+}
 
 func (a *ScriptAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
@@ -99,5 +103,8 @@ func (a *ScriptAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Src != "" {
 		Attr(sb, "src", a.Src)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
 	}
 }

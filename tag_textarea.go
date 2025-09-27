@@ -13,11 +13,11 @@ type TextareaAttrs struct {
 	Form           string
 	Maxlength      string
 	Minlength      string
+	Name           string
 	Placeholder    string
 	Readonly       bool
 	Required       bool
 	Rows           string
-	Spellcheck     string
 	Wrap           string
 }
 
@@ -76,6 +76,9 @@ func (o MaxlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 func (o MinlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Minlength = o.v
 }
+func (o NameOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Name = o.v
+}
 func (o PlaceholderOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Placeholder = o.v
 }
@@ -87,9 +90,6 @@ func (o RequiredOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 }
 func (o RowsOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Rows = o.v
-}
-func (o SpellcheckOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
-	a.Spellcheck = o.v
 }
 func (o WrapOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Wrap = o.v
@@ -124,6 +124,9 @@ func (a *TextareaAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Minlength != "" {
 		Attr(sb, "minlength", a.Minlength)
 	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
+	}
 	if a.Placeholder != "" {
 		Attr(sb, "placeholder", a.Placeholder)
 	}
@@ -135,9 +138,6 @@ func (a *TextareaAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Rows != "" {
 		Attr(sb, "rows", a.Rows)
-	}
-	if a.Spellcheck != "" {
-		Attr(sb, "spellcheck", a.Spellcheck)
 	}
 	if a.Wrap != "" {
 		Attr(sb, "wrap", a.Wrap)

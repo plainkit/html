@@ -360,6 +360,14 @@ func ALabel(v string) LabelOpt {
 	return LabelOpt{v}
 }
 
+type LangOpt struct {
+	v string
+}
+
+func ALang(v string) LangOpt {
+	return LangOpt{v}
+}
+
 type LanguageOpt struct {
 	v string
 }
@@ -464,6 +472,14 @@ type MutedOpt struct{}
 
 func AMuted() MutedOpt {
 	return MutedOpt{}
+}
+
+type NameOpt struct {
+	v string
+}
+
+func AName(v string) NameOpt {
+	return NameOpt{v}
 }
 
 type NomoduleOpt struct{}
@@ -666,14 +682,6 @@ func ASpan(v string) SpanOpt {
 	return SpanOpt{v}
 }
 
-type SpellcheckOpt struct {
-	v string
-}
-
-func ASpellcheck(v string) SpellcheckOpt {
-	return SpellcheckOpt{v}
-}
-
 type SrcOpt struct {
 	v string
 }
@@ -730,12 +738,12 @@ func ATarget(v string) TargetOpt {
 	return TargetOpt{v}
 }
 
-type TitleOpt struct {
+type TypeOpt struct {
 	v string
 }
 
-func ATitle(v string) TitleOpt {
-	return TitleOpt{v}
+func AType(v string) TypeOpt {
+	return TypeOpt{v}
 }
 
 type TypemustmatchOpt struct{}

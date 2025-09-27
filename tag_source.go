@@ -8,6 +8,7 @@ type SourceAttrs struct {
 	Sizes  string
 	Src    string
 	Srcset string
+	Type   string
 }
 
 type SourceArg interface {
@@ -50,6 +51,9 @@ func (o SrcOpt) applySource(a *SourceAttrs, _ *[]Component) {
 func (o SrcsetOpt) applySource(a *SourceAttrs, _ *[]Component) {
 	a.Srcset = o.v
 }
+func (o TypeOpt) applySource(a *SourceAttrs, _ *[]Component) {
+	a.Type = o.v
+}
 
 func (a *SourceAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
@@ -64,5 +68,8 @@ func (a *SourceAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Srcset != "" {
 		Attr(sb, "srcset", a.Srcset)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
 	}
 }

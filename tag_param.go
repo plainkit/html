@@ -4,6 +4,7 @@ import "strings"
 
 type ParamAttrs struct {
 	Global GlobalAttrs
+	Name   string
 	Value  string
 }
 
@@ -35,12 +36,18 @@ func (g Global) applyParam(a *ParamAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
+func (o NameOpt) applyParam(a *ParamAttrs, _ *[]Component) {
+	a.Name = o.v
+}
 func (o ValueOpt) applyParam(a *ParamAttrs, _ *[]Component) {
 	a.Value = o.v
 }
 
 func (a *ParamAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
+	}
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)
 	}

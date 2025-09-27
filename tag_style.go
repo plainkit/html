@@ -6,6 +6,7 @@ type StyleAttrs struct {
 	Global GlobalAttrs
 	Media  string
 	Nonce  string
+	Type   string
 }
 
 type StyleArg interface {
@@ -42,6 +43,9 @@ func (o MediaOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
 func (o NonceOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
 	a.Nonce = o.v
 }
+func (o TypeOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
+	a.Type = o.v
+}
 
 func (a *StyleAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
@@ -50,5 +54,8 @@ func (a *StyleAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Nonce != "" {
 		Attr(sb, "nonce", a.Nonce)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
 	}
 }

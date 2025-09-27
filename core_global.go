@@ -2,6 +2,7 @@ package html
 
 import (
 	"sort"
+	"strconv"
 	"strings"
 )
 
@@ -11,9 +12,12 @@ import (
 type GlobalAttrs struct {
 	// Generated from wooorm global attributes
 	// Common core attributes
-	Class string
-	Name  string
-	Type  string
+	Class           string
+	Accesskey       string
+	Contenteditable string
+	Dir             string
+	Id              string
+	Title           string
 
 	// Style attribute as a single string
 	Style string
@@ -25,8 +29,12 @@ type GlobalAttrs struct {
 	Custom map[string]string // custom attributes like hx-*, x-*, etc.
 
 	// Pointers for tri-state values
+	Tabindex   *int
+	Draggable  *string
+	Spellcheck *string
 
 	// Booleans
+	Hidden bool
 }
 
 // Helper methods for setting attributes
@@ -74,11 +82,38 @@ func WriteGlobal(sb *strings.Builder, g *GlobalAttrs) {
 	if g.Class != "" {
 		Attr(sb, "class", g.Class)
 	}
-	if g.Name != "" {
-		Attr(sb, "name", g.Name)
+	if g.Accesskey != "" {
+		Attr(sb, "accesskey", g.Accesskey)
 	}
-	if g.Type != "" {
-		Attr(sb, "type", g.Type)
+	if g.Class != "" {
+		Attr(sb, "class", g.Class)
+	}
+	if g.Contenteditable != "" {
+		Attr(sb, "contenteditable", g.Contenteditable)
+	}
+	if g.Dir != "" {
+		Attr(sb, "dir", g.Dir)
+	}
+	if g.Draggable != nil {
+		Attr(sb, "draggable", *g.Draggable)
+	}
+	if g.Hidden {
+		BoolAttr(sb, "hidden")
+	}
+	if g.Id != "" {
+		Attr(sb, "id", g.Id)
+	}
+	if g.Spellcheck != nil {
+		Attr(sb, "spellcheck", *g.Spellcheck)
+	}
+	if g.Style != "" {
+		Attr(sb, "style", g.Style)
+	}
+	if g.Tabindex != nil {
+		Attr(sb, "tabindex", strconv.Itoa(*g.Tabindex))
+	}
+	if g.Title != "" {
+		Attr(sb, "title", g.Title)
 	}
 	// Aria attributes
 	for _, k := range sortedKeys(g.Aria) {
@@ -134,12 +169,52 @@ func AClass(v string) Global {
 	return Global{func(g *GlobalAttrs) { g.addClass(v) }}
 }
 
-func AName(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.Name = v }}
+func AAccesskey(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Accesskey = v }}
 }
 
-func AType(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.Type = v }}
+func AContenteditable(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Contenteditable = v }}
+}
+
+func ADir(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Dir = v }}
+}
+
+func ADraggable(b bool) Global {
+	val := "false"
+	if b {
+		val = "true"
+	}
+	return Global{func(g *GlobalAttrs) { g.Draggable = &val }}
+}
+
+func AHidden() Global {
+	return Global{func(g *GlobalAttrs) { g.Hidden = true }}
+}
+
+func AId(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Id = v }}
+}
+
+func ASpellcheck(b bool) Global {
+	val := "false"
+	if b {
+		val = "true"
+	}
+	return Global{func(g *GlobalAttrs) { g.Spellcheck = &val }}
+}
+
+func AStyle(style string) Global {
+	return Global{func(g *GlobalAttrs) { g.Style = style }}
+}
+
+func ATabindex(i int) Global {
+	return Global{func(g *GlobalAttrs) { g.Tabindex = &i }}
+}
+
+func ATitle(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Title = v }}
 }
 
 // Map-like convenience functions

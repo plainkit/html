@@ -4,6 +4,7 @@ import "strings"
 
 type UlAttrs struct {
 	Global GlobalAttrs
+	Type   string
 }
 
 type UlArg interface {
@@ -34,6 +35,13 @@ func (g Global) applyUl(a *UlAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
+func (o TypeOpt) applyUl(a *UlAttrs, _ *[]Component) {
+	a.Type = o.v
+}
+
 func (a *UlAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
+	}
 }

@@ -8,6 +8,7 @@ type SelectAttrs struct {
 	Disabled     bool
 	Form         string
 	Multiple     bool
+	Name         string
 	Required     bool
 	Size         string
 }
@@ -52,6 +53,9 @@ func (o FormOpt) applySelect(a *SelectAttrs, _ *[]Component) {
 func (o MultipleOpt) applySelect(a *SelectAttrs, _ *[]Component) {
 	a.Multiple = true
 }
+func (o NameOpt) applySelect(a *SelectAttrs, _ *[]Component) {
+	a.Name = o.v
+}
 func (o RequiredOpt) applySelect(a *SelectAttrs, _ *[]Component) {
 	a.Required = true
 }
@@ -72,6 +76,9 @@ func (a *SelectAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Multiple {
 		BoolAttr(sb, "multiple")
+	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
 	}
 	if a.Required {
 		BoolAttr(sb, "required")

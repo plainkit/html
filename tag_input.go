@@ -24,6 +24,7 @@ type InputAttrs struct {
 	Min            string
 	Minlength      string
 	Multiple       bool
+	Name           string
 	Pattern        string
 	Placeholder    string
 	Readonly       bool
@@ -31,6 +32,7 @@ type InputAttrs struct {
 	Size           string
 	Src            string
 	Step           string
+	Type           string
 	Value          string
 	Width          string
 }
@@ -123,6 +125,9 @@ func (o MinlengthOpt) applyInput(a *InputAttrs, _ *[]Component) {
 func (o MultipleOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Multiple = true
 }
+func (o NameOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Name = o.v
+}
 func (o PatternOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Pattern = o.v
 }
@@ -143,6 +148,9 @@ func (o SrcOpt) applyInput(a *InputAttrs, _ *[]Component) {
 }
 func (o StepOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Step = o.v
+}
+func (o TypeOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Type = o.v
 }
 func (o ValueOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Value = o.v
@@ -213,6 +221,9 @@ func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Multiple {
 		BoolAttr(sb, "multiple")
 	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
+	}
 	if a.Pattern != "" {
 		Attr(sb, "pattern", a.Pattern)
 	}
@@ -233,6 +244,9 @@ func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Step != "" {
 		Attr(sb, "step", a.Step)
+	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
 	}
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)

@@ -4,6 +4,7 @@ import "strings"
 
 type HtmlAttrs struct {
 	Global GlobalAttrs
+	Lang   string
 }
 
 type HtmlArg interface {
@@ -34,6 +35,13 @@ func (g Global) applyHtml(a *HtmlAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
+func (o LangOpt) applyHtml(a *HtmlAttrs, _ *[]Component) {
+	a.Lang = o.v
+}
+
 func (a *HtmlAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Lang != "" {
+		Attr(sb, "lang", a.Lang)
+	}
 }

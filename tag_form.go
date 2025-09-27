@@ -9,6 +9,7 @@ type FormAttrs struct {
 	Autocomplete  string
 	Enctype       string
 	Method        string
+	Name          string
 	Novalidate    bool
 	Target        string
 }
@@ -56,6 +57,9 @@ func (o EnctypeOpt) applyForm(a *FormAttrs, _ *[]Component) {
 func (o MethodOpt) applyForm(a *FormAttrs, _ *[]Component) {
 	a.Method = o.v
 }
+func (o NameOpt) applyForm(a *FormAttrs, _ *[]Component) {
+	a.Name = o.v
+}
 func (o NovalidateOpt) applyForm(a *FormAttrs, _ *[]Component) {
 	a.Novalidate = true
 }
@@ -79,6 +83,9 @@ func (a *FormAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Method != "" {
 		Attr(sb, "method", a.Method)
+	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
 	}
 	if a.Novalidate {
 		BoolAttr(sb, "novalidate")

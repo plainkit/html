@@ -4,6 +4,7 @@ import "strings"
 
 type SlotAttrs struct {
 	Global GlobalAttrs
+	Name   string
 }
 
 type SlotArg interface {
@@ -34,6 +35,13 @@ func (g Global) applySlot(a *SlotAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
+func (o NameOpt) applySlot(a *SlotAttrs, _ *[]Component) {
+	a.Name = o.v
+}
+
 func (a *SlotAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
+	}
 }
