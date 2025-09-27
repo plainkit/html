@@ -40,7 +40,7 @@ func (m *Manager) CleanGeneratedFiles() error {
 	for _, entry := range entries {
 		name := entry.Name()
 		// Remove tag_*.go files (these are generated)
-		if strings.HasPrefix(name, "tag_") && strings.HasSuffix(name, ".go") {
+		if strings.HasPrefix(name, "svg_") && strings.HasSuffix(name, ".go") {
 			path := filepath.Join(m.outDir, name)
 			if err := os.Remove(path); err != nil {
 				return fmt.Errorf("remove %s: %w", name, err)
