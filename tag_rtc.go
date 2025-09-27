@@ -34,6 +34,6 @@ func (g Global) applyRtc(a *RtcAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *RtcAttrs) writeAttrs(sb *strings.Builder) {
+func (a *RtcAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

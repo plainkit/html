@@ -55,7 +55,7 @@ func (o ScopeOpt) applyTh(a *ThAttrs, _ *[]Component) {
 	a.Scope = o.v
 }
 
-func (a *ThAttrs) writeAttrs(sb *strings.Builder) {
+func (a *ThAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Abbr != "" {
 		Attr(sb, "abbr", a.Abbr)

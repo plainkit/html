@@ -34,6 +34,6 @@ func (g Global) applyBdi(a *BdiAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *BdiAttrs) writeAttrs(sb *strings.Builder) {
+func (a *BdiAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

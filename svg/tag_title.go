@@ -44,7 +44,7 @@ func (g Global) applyTitle(a *TitleAttrs, _ *[]html.Component) {
 	g.do(&a.SvgGlobal)
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *TitleAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *TitleAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 }

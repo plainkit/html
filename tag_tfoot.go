@@ -34,6 +34,6 @@ func (g Global) applyTfoot(a *TfootAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *TfootAttrs) writeAttrs(sb *strings.Builder) {
+func (a *TfootAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

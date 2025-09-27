@@ -43,7 +43,7 @@ func (o LabelOpt) applyOptgroup(a *OptgroupAttrs, _ *[]Component) {
 	a.Label = o.v
 }
 
-func (a *OptgroupAttrs) writeAttrs(sb *strings.Builder) {
+func (a *OptgroupAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Disabled {
 		BoolAttr(sb, "disabled")

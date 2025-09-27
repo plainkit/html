@@ -39,7 +39,7 @@ func (o CiteOpt) applyQ(a *QAttrs, _ *[]Component) {
 	a.Cite = o.v
 }
 
-func (a *QAttrs) writeAttrs(sb *strings.Builder) {
+func (a *QAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Cite != "" {
 		Attr(sb, "cite", a.Cite)

@@ -62,8 +62,8 @@ func (o ValuesOpt) applyFeColorMatrix(a *FeColorMatrixAttrs, _ *[]html.Component
 	a.Values = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeColorMatrixAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeColorMatrixAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.In != "" {
 		SvgAttr(sb, "in", a.In)

@@ -34,6 +34,6 @@ func (g Global) applyCite(a *CiteAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *CiteAttrs) writeAttrs(sb *strings.Builder) {
+func (a *CiteAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

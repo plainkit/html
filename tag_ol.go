@@ -43,7 +43,7 @@ func (o StartOpt) applyOl(a *OlAttrs, _ *[]Component) {
 	a.Start = o.v
 }
 
-func (a *OlAttrs) writeAttrs(sb *strings.Builder) {
+func (a *OlAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Reversed {
 		BoolAttr(sb, "reversed")

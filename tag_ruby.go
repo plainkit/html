@@ -34,6 +34,6 @@ func (g Global) applyRuby(a *RubyAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *RubyAttrs) writeAttrs(sb *strings.Builder) {
+func (a *RubyAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

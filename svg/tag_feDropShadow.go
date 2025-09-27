@@ -74,8 +74,8 @@ func (o StdDeviationOpt) applyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Compo
 	a.StdDeviation = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeDropShadowAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeDropShadowAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Dx != "" {
 		SvgAttr(sb, "dx", a.Dx)

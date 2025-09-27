@@ -39,7 +39,7 @@ func (o OpenOpt) applyDialog(a *DialogAttrs, _ *[]Component) {
 	a.Open = true
 }
 
-func (a *DialogAttrs) writeAttrs(sb *strings.Builder) {
+func (a *DialogAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Open {
 		BoolAttr(sb, "open")

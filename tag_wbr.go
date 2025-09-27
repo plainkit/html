@@ -34,6 +34,6 @@ func (g Global) applyWbr(a *WbrAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *WbrAttrs) writeAttrs(sb *strings.Builder) {
+func (a *WbrAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

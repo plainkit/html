@@ -75,7 +75,7 @@ func (o SizesOpt) applyLink(a *LinkAttrs, _ *[]Component) {
 	a.Sizes = o.v
 }
 
-func (a *LinkAttrs) writeAttrs(sb *strings.Builder) {
+func (a *LinkAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.As != "" {
 		Attr(sb, "as", a.As)

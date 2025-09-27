@@ -56,8 +56,8 @@ func (o FloodOpacityOpt) applyFeFlood(a *FeFloodAttrs, _ *[]html.Component) {
 	a.FloodOpacity = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeFloodAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeFloodAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.FloodColor != "" {
 		SvgAttr(sb, "flood-color", a.FloodColor)

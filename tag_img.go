@@ -83,7 +83,7 @@ func (o WidthOpt) applyImg(a *ImgAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
-func (a *ImgAttrs) writeAttrs(sb *strings.Builder) {
+func (a *ImgAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Alt != "" {
 		Attr(sb, "alt", a.Alt)

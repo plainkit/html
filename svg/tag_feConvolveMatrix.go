@@ -104,8 +104,8 @@ func (o TargetYOpt) applyFeConvolveMatrix(a *FeConvolveMatrixAttrs, _ *[]html.Co
 	a.TargetY = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeConvolveMatrixAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeConvolveMatrixAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Bias != "" {
 		SvgAttr(sb, "bias", a.Bias)

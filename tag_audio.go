@@ -59,7 +59,7 @@ func (o SrcOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
 	a.Src = o.v
 }
 
-func (a *AudioAttrs) writeAttrs(sb *strings.Builder) {
+func (a *AudioAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Autoplay {
 		BoolAttr(sb, "autoplay")

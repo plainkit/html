@@ -62,8 +62,8 @@ func (o TypeOpt) applyStyle(a *StyleAttrs, _ *[]html.Component) {
 	a.Type = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *StyleAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *StyleAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Media != "" {
 		SvgAttr(sb, "media", a.Media)

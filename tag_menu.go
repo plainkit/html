@@ -34,6 +34,6 @@ func (g Global) applyMenu(a *MenuAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *MenuAttrs) writeAttrs(sb *strings.Builder) {
+func (a *MenuAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

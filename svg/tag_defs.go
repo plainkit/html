@@ -44,7 +44,7 @@ func (g Global) applyDefs(a *DefsAttrs, _ *[]html.Component) {
 	g.do(&a.SvgGlobal)
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *DefsAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *DefsAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 }

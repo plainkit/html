@@ -59,7 +59,7 @@ func (o SizeOpt) applySelect(a *SelectAttrs, _ *[]Component) {
 	a.Size = o.v
 }
 
-func (a *SelectAttrs) writeAttrs(sb *strings.Builder) {
+func (a *SelectAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Autocomplete != "" {
 		Attr(sb, "autocomplete", a.Autocomplete)

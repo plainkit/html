@@ -34,6 +34,6 @@ func (g Global) applyMap(a *MapAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *MapAttrs) writeAttrs(sb *strings.Builder) {
+func (a *MapAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

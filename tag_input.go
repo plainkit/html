@@ -151,7 +151,7 @@ func (o WidthOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
-func (a *InputAttrs) writeAttrs(sb *strings.Builder) {
+func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Accept != "" {
 		Attr(sb, "accept", a.Accept)

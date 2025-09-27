@@ -39,7 +39,7 @@ func (o TitleOpt) applyAbbr(a *AbbrAttrs, _ *[]Component) {
 	a.Title = o.v
 }
 
-func (a *AbbrAttrs) writeAttrs(sb *strings.Builder) {
+func (a *AbbrAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Title != "" {
 		Attr(sb, "title", a.Title)

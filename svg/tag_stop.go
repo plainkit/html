@@ -27,7 +27,7 @@ func defaultStopAttrs() *StopAttrs {
 	}
 }
 
-// Stop creates an SVG stop element
+// Stop creates an SVG stop element (self-closing)
 func Stop(args ...StopArg) html.Node {
 	a := defaultStopAttrs()
 	var kids []html.Component
@@ -37,7 +37,7 @@ func Stop(args ...StopArg) html.Node {
 	return html.Node{
 		Tag:   "stop",
 		Attrs: a,
-		Kids:  kids,
+		Void:  true,
 	}
 }
 
@@ -56,8 +56,8 @@ func (o StopColorOpt) applyStop(a *StopAttrs, _ *[]html.Component) {
 	a.StopColor = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *StopAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *StopAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Offset != "" {
 		SvgAttr(sb, "offset", a.Offset)

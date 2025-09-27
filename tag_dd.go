@@ -34,6 +34,6 @@ func (g Global) applyDd(a *DdAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *DdAttrs) writeAttrs(sb *strings.Builder) {
+func (a *DdAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

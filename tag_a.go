@@ -67,7 +67,7 @@ func (o TargetOpt) applyA(a *AAttrs, _ *[]Component) {
 	a.Target = o.v
 }
 
-func (a *AAttrs) writeAttrs(sb *strings.Builder) {
+func (a *AAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Download != "" {
 		Attr(sb, "download", a.Download)

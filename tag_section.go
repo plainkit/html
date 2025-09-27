@@ -34,6 +34,6 @@ func (g Global) applySection(a *SectionAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *SectionAttrs) writeAttrs(sb *strings.Builder) {
+func (a *SectionAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

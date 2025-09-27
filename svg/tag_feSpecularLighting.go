@@ -74,8 +74,8 @@ func (o SurfaceScaleOpt) applyFeSpecularLighting(a *FeSpecularLightingAttrs, _ *
 	a.SurfaceScale = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeSpecularLightingAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeSpecularLightingAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.In != "" {
 		SvgAttr(sb, "in", a.In)

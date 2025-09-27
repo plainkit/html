@@ -34,6 +34,6 @@ func (g Global) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *FieldsetAttrs) writeAttrs(sb *strings.Builder) {
+func (a *FieldsetAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

@@ -56,8 +56,8 @@ func (o StdDeviationOpt) applyFeGaussianBlur(a *FeGaussianBlurAttrs, _ *[]html.C
 	a.StdDeviation = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeGaussianBlurAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeGaussianBlurAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.In != "" {
 		SvgAttr(sb, "in", a.In)

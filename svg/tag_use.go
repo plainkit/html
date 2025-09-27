@@ -30,7 +30,7 @@ func defaultUseAttrs() *UseAttrs {
 	}
 }
 
-// Use creates an SVG use element
+// Use creates an SVG use element (self-closing)
 func Use(args ...UseArg) html.Node {
 	a := defaultUseAttrs()
 	var kids []html.Component
@@ -40,7 +40,7 @@ func Use(args ...UseArg) html.Node {
 	return html.Node{
 		Tag:   "use",
 		Attrs: a,
-		Kids:  kids,
+		Void:  true,
 	}
 }
 
@@ -74,8 +74,8 @@ func (o YOpt) applyUse(a *UseAttrs, _ *[]html.Component) {
 	a.Y = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *UseAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *UseAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Height != "" {
 		SvgAttr(sb, "height", a.Height)

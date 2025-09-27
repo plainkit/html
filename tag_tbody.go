@@ -34,6 +34,6 @@ func (g Global) applyTbody(a *TbodyAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *TbodyAttrs) writeAttrs(sb *strings.Builder) {
+func (a *TbodyAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

@@ -86,8 +86,8 @@ func (o YOpt) applyForeignObject(a *ForeignObjectAttrs, _ *[]html.Component) {
 	a.Y = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *ForeignObjectAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *ForeignObjectAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Height != "" {
 		SvgAttr(sb, "height", a.Height)

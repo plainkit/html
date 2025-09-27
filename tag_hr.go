@@ -34,6 +34,6 @@ func (g Global) applyHr(a *HrAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *HrAttrs) writeAttrs(sb *strings.Builder) {
+func (a *HrAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

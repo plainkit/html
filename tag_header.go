@@ -34,6 +34,6 @@ func (g Global) applyHeader(a *HeaderAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *HeaderAttrs) writeAttrs(sb *strings.Builder) {
+func (a *HeaderAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

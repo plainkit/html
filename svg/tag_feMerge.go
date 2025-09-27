@@ -44,7 +44,7 @@ func (g Global) applyFeMerge(a *FeMergeAttrs, _ *[]html.Component) {
 	g.do(&a.SvgGlobal)
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeMergeAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeMergeAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 }

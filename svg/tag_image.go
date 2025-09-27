@@ -80,8 +80,8 @@ func (o YOpt) applyImage(a *ImageAttrs, _ *[]html.Component) {
 	a.Y = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *ImageAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *ImageAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Height != "" {
 		SvgAttr(sb, "height", a.Height)

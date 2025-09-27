@@ -39,7 +39,7 @@ func (o SpanOpt) applyColgroup(a *ColgroupAttrs, _ *[]Component) {
 	a.Span = o.v
 }
 
-func (a *ColgroupAttrs) writeAttrs(sb *strings.Builder) {
+func (a *ColgroupAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Span != "" {
 		Attr(sb, "span", a.Span)

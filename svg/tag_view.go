@@ -50,8 +50,8 @@ func (o ViewBoxOpt) applyView(a *ViewAttrs, _ *[]html.Component) {
 	a.ViewBox = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *ViewAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *ViewAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.ViewBox != "" {
 		SvgAttr(sb, "viewBox", a.ViewBox)

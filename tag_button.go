@@ -79,7 +79,7 @@ func (o ValueOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 	a.Value = o.v
 }
 
-func (a *ButtonAttrs) writeAttrs(sb *strings.Builder) {
+func (a *ButtonAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Autofocus {
 		BoolAttr(sb, "autofocus")

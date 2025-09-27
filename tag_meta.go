@@ -47,7 +47,7 @@ func (o HttpequivOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
 	a.Httpequiv = o.v
 }
 
-func (a *MetaAttrs) writeAttrs(sb *strings.Builder) {
+func (a *MetaAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Charset != "" {
 		Attr(sb, "charset", a.Charset)

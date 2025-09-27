@@ -56,8 +56,8 @@ func (o DyOpt) applyFeOffset(a *FeOffsetAttrs, _ *[]html.Component) {
 	a.Dy = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeOffsetAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeOffsetAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Dx != "" {
 		SvgAttr(sb, "dx", a.Dx)

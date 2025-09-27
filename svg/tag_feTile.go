@@ -50,8 +50,8 @@ func (o InOpt) applyFeTile(a *FeTileAttrs, _ *[]html.Component) {
 	a.In = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeTileAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeTileAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.In != "" {
 		SvgAttr(sb, "in", a.In)

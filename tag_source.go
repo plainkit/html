@@ -51,7 +51,7 @@ func (o SrcsetOpt) applySource(a *SourceAttrs, _ *[]Component) {
 	a.Srcset = o.v
 }
 
-func (a *SourceAttrs) writeAttrs(sb *strings.Builder) {
+func (a *SourceAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Media != "" {
 		Attr(sb, "media", a.Media)

@@ -31,7 +31,7 @@ func defaultRectAttrs() *RectAttrs {
 	}
 }
 
-// Rect creates an SVG rect element
+// Rect creates an SVG rect element (self-closing)
 func Rect(args ...RectArg) html.Node {
 	a := defaultRectAttrs()
 	var kids []html.Component
@@ -41,7 +41,7 @@ func Rect(args ...RectArg) html.Node {
 	return html.Node{
 		Tag:   "rect",
 		Attrs: a,
-		Kids:  kids,
+		Void:  true,
 	}
 }
 
@@ -80,8 +80,8 @@ func (o YOpt) applyRect(a *RectAttrs, _ *[]html.Component) {
 	a.Y = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *RectAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *RectAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Height != "" {
 		SvgAttr(sb, "height", a.Height)

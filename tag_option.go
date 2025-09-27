@@ -51,7 +51,7 @@ func (o ValueOpt) applyOption(a *OptionAttrs, _ *[]Component) {
 	a.Value = o.v
 }
 
-func (a *OptionAttrs) writeAttrs(sb *strings.Builder) {
+func (a *OptionAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Disabled {
 		BoolAttr(sb, "disabled")

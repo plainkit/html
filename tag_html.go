@@ -34,6 +34,6 @@ func (g Global) applyHtml(a *HtmlAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *HtmlAttrs) writeAttrs(sb *strings.Builder) {
+func (a *HtmlAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

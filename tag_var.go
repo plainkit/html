@@ -34,6 +34,6 @@ func (g Global) applyVar(a *VarAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *VarAttrs) writeAttrs(sb *strings.Builder) {
+func (a *VarAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

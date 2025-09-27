@@ -34,6 +34,6 @@ func (g Global) applyStrike(a *StrikeAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *StrikeAttrs) writeAttrs(sb *strings.Builder) {
+func (a *StrikeAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

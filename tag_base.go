@@ -43,7 +43,7 @@ func (o TargetOpt) applyBase(a *BaseAttrs, _ *[]Component) {
 	a.Target = o.v
 }
 
-func (a *BaseAttrs) writeAttrs(sb *strings.Builder) {
+func (a *BaseAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Href != "" {
 		Attr(sb, "href", a.Href)

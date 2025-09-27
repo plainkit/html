@@ -43,7 +43,7 @@ func (o NonceOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
 	a.Nonce = o.v
 }
 
-func (a *StyleAttrs) writeAttrs(sb *strings.Builder) {
+func (a *StyleAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Media != "" {
 		Attr(sb, "media", a.Media)

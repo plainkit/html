@@ -34,6 +34,6 @@ func (g Global) applySummary(a *SummaryAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *SummaryAttrs) writeAttrs(sb *strings.Builder) {
+func (a *SummaryAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

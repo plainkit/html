@@ -56,8 +56,8 @@ func (o ElevationOpt) applyFeDistantLight(a *FeDistantLightAttrs, _ *[]html.Comp
 	a.Elevation = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeDistantLightAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeDistantLightAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Azimuth != "" {
 		SvgAttr(sb, "azimuth", a.Azimuth)

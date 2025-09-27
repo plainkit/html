@@ -34,6 +34,6 @@ func (g Global) applyDatalist(a *DatalistAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *DatalistAttrs) writeAttrs(sb *strings.Builder) {
+func (a *DatalistAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

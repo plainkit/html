@@ -28,7 +28,7 @@ func defaultCircleAttrs() *CircleAttrs {
 	}
 }
 
-// Circle creates an SVG circle element
+// Circle creates an SVG circle element (self-closing)
 func Circle(args ...CircleArg) html.Node {
 	a := defaultCircleAttrs()
 	var kids []html.Component
@@ -38,7 +38,7 @@ func Circle(args ...CircleArg) html.Node {
 	return html.Node{
 		Tag:   "circle",
 		Attrs: a,
-		Kids:  kids,
+		Void:  true,
 	}
 }
 
@@ -62,8 +62,8 @@ func (o ROpt) applyCircle(a *CircleAttrs, _ *[]html.Component) {
 	a.R = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *CircleAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *CircleAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Cx != "" {
 		SvgAttr(sb, "cx", a.Cx)

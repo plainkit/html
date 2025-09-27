@@ -62,8 +62,8 @@ func (o ZOpt) applyFePointLight(a *FePointLightAttrs, _ *[]html.Component) {
 	a.Z = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FePointLightAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FePointLightAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.X != "" {
 		SvgAttr(sb, "x", a.X)

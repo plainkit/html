@@ -95,7 +95,7 @@ func (o WrapOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Wrap = o.v
 }
 
-func (a *TextareaAttrs) writeAttrs(sb *strings.Builder) {
+func (a *TextareaAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Autocapitalize != "" {
 		Attr(sb, "autocapitalize", a.Autocapitalize)

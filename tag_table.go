@@ -39,7 +39,7 @@ func (o BorderOpt) applyTable(a *TableAttrs, _ *[]Component) {
 	a.Border = o.v
 }
 
-func (a *TableAttrs) writeAttrs(sb *strings.Builder) {
+func (a *TableAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Border != "" {
 		Attr(sb, "border", a.Border)

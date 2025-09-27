@@ -34,6 +34,6 @@ func (g Global) applyBdo(a *BdoAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *BdoAttrs) writeAttrs(sb *strings.Builder) {
+func (a *BdoAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

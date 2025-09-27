@@ -86,8 +86,8 @@ func (o TypeOpt) applyFeFuncR(a *FeFuncRAttrs, _ *[]html.Component) {
 	a.Type = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeFuncRAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeFuncRAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Amplitude != "" {
 		SvgAttr(sb, "amplitude", a.Amplitude)

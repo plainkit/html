@@ -34,6 +34,6 @@ func (g Global) applySup(a *SupAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *SupAttrs) writeAttrs(sb *strings.Builder) {
+func (a *SupAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

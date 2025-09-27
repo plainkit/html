@@ -34,6 +34,6 @@ func (g Global) applyAside(a *AsideAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *AsideAttrs) writeAttrs(sb *strings.Builder) {
+func (a *AsideAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

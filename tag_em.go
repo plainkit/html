@@ -34,6 +34,6 @@ func (g Global) applyEm(a *EmAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *EmAttrs) writeAttrs(sb *strings.Builder) {
+func (a *EmAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

@@ -43,7 +43,7 @@ func (o FormOpt) applyLabel(a *LabelAttrs, _ *[]Component) {
 	a.Form = o.v
 }
 
-func (a *LabelAttrs) writeAttrs(sb *strings.Builder) {
+func (a *LabelAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.For != "" {
 		Attr(sb, "for", a.For)

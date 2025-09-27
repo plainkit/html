@@ -34,6 +34,6 @@ func (g Global) applyMark(a *MarkAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *MarkAttrs) writeAttrs(sb *strings.Builder) {
+func (a *MarkAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

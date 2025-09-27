@@ -56,7 +56,7 @@ func (o WidthOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
-func (a *ObjectAttrs) writeAttrs(sb *strings.Builder) {
+func (a *ObjectAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Form != "" {
 		Attr(sb, "form", a.Form)

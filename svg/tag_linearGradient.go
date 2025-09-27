@@ -86,8 +86,8 @@ func (o Y2Opt) applyLinearGradient(a *LinearGradientAttrs, _ *[]html.Component) 
 	a.Y2 = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *LinearGradientAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *LinearGradientAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.GradientTransform != "" {
 		SvgAttr(sb, "gradientTransform", a.GradientTransform)

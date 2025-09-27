@@ -50,8 +50,8 @@ func (o InOpt) applyFeMergeNode(a *FeMergeNodeAttrs, _ *[]html.Component) {
 	a.In = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeMergeNodeAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeMergeNodeAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.In != "" {
 		SvgAttr(sb, "in", a.In)

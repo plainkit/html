@@ -109,10 +109,29 @@ func (l *Loader) convertGostarToTagSpecs() []TagSpec {
 
 	globalAttrs := l.extractGlobalAttributes()
 
+	// SVG elements that should always be void/self-closing
+	svgVoidElements := map[string]bool{
+		"path":             true,
+		"circle":           true,
+		"ellipse":          true,
+		"line":             true,
+		"rect":             true,
+		"polygon":          true,
+		"polyline":         true,
+		"use":              true,
+		"stop":             true,
+		"animate":          true,
+		"animateMotion":    true,
+		"animateTransform": true,
+	}
+
 	for _, element := range l.svgSpec.Elements {
+		// Use manual override for known void elements, otherwise use gostar data
+		isVoid := element.NoChildren || svgVoidElements[element.Tag]
+
 		spec := TagSpec{
 			Name: element.Tag,
-			Void: element.NoChildren,
+			Void: isVoid,
 		}
 
 		// Use a map to deduplicate attributes by key

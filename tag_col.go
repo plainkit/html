@@ -39,7 +39,7 @@ func (o SpanOpt) applyCol(a *ColAttrs, _ *[]Component) {
 	a.Span = o.v
 }
 
-func (a *ColAttrs) writeAttrs(sb *strings.Builder) {
+func (a *ColAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Span != "" {
 		Attr(sb, "span", a.Span)

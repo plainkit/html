@@ -34,6 +34,6 @@ func (g Global) applyKbd(a *KbdAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *KbdAttrs) writeAttrs(sb *strings.Builder) {
+func (a *KbdAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

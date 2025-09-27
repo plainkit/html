@@ -50,8 +50,8 @@ func (o HrefOpt) applyMpath(a *MpathAttrs, _ *[]html.Component) {
 	a.Href = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *MpathAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *MpathAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Href != "" {
 		SvgAttr(sb, "href", a.Href)

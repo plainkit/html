@@ -62,8 +62,8 @@ func (o RadiusOpt) applyFeMorphology(a *FeMorphologyAttrs, _ *[]html.Component) 
 	a.Radius = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeMorphologyAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeMorphologyAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.In != "" {
 		SvgAttr(sb, "in", a.In)

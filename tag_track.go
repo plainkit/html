@@ -55,7 +55,7 @@ func (o SrclangOpt) applyTrack(a *TrackAttrs, _ *[]Component) {
 	a.Srclang = o.v
 }
 
-func (a *TrackAttrs) writeAttrs(sb *strings.Builder) {
+func (a *TrackAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Default {
 		BoolAttr(sb, "default")

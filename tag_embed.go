@@ -47,7 +47,7 @@ func (o WidthOpt) applyEmbed(a *EmbedAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
-func (a *EmbedAttrs) writeAttrs(sb *strings.Builder) {
+func (a *EmbedAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)

@@ -29,7 +29,7 @@ func defaultEllipseAttrs() *EllipseAttrs {
 	}
 }
 
-// Ellipse creates an SVG ellipse element
+// Ellipse creates an SVG ellipse element (self-closing)
 func Ellipse(args ...EllipseArg) html.Node {
 	a := defaultEllipseAttrs()
 	var kids []html.Component
@@ -39,7 +39,7 @@ func Ellipse(args ...EllipseArg) html.Node {
 	return html.Node{
 		Tag:   "ellipse",
 		Attrs: a,
-		Kids:  kids,
+		Void:  true,
 	}
 }
 
@@ -68,8 +68,8 @@ func (o RyOpt) applyEllipse(a *EllipseAttrs, _ *[]html.Component) {
 	a.Ry = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *EllipseAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *EllipseAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Cx != "" {
 		SvgAttr(sb, "cx", a.Cx)

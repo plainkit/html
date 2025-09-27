@@ -34,6 +34,6 @@ func (g Global) applyFooter(a *FooterAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *FooterAttrs) writeAttrs(sb *strings.Builder) {
+func (a *FooterAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

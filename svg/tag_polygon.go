@@ -26,7 +26,7 @@ func defaultPolygonAttrs() *PolygonAttrs {
 	}
 }
 
-// Polygon creates an SVG polygon element
+// Polygon creates an SVG polygon element (self-closing)
 func Polygon(args ...PolygonArg) html.Node {
 	a := defaultPolygonAttrs()
 	var kids []html.Component
@@ -36,7 +36,7 @@ func Polygon(args ...PolygonArg) html.Node {
 	return html.Node{
 		Tag:   "polygon",
 		Attrs: a,
-		Kids:  kids,
+		Void:  true,
 	}
 }
 
@@ -50,8 +50,8 @@ func (o PointsOpt) applyPolygon(a *PolygonAttrs, _ *[]html.Component) {
 	a.Points = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *PolygonAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *PolygonAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Points != "" {
 		SvgAttr(sb, "points", a.Points)

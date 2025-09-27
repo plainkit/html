@@ -34,6 +34,6 @@ func (g Global) applyUl(a *UlAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *UlAttrs) writeAttrs(sb *strings.Builder) {
+func (a *UlAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

@@ -50,8 +50,8 @@ func (o ClipPathUnitsOpt) applyClipPath(a *ClipPathAttrs, _ *[]html.Component) {
 	a.ClipPathUnits = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *ClipPathAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *ClipPathAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.ClipPathUnits != "" {
 		SvgAttr(sb, "clipPathUnits", a.ClipPathUnits)

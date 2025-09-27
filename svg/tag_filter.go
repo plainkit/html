@@ -80,8 +80,8 @@ func (o YOpt) applyFilter(a *FilterAttrs, _ *[]html.Component) {
 	a.Y = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FilterAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FilterAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.FilterUnits != "" {
 		SvgAttr(sb, "filterUnits", a.FilterUnits)

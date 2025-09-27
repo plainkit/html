@@ -26,7 +26,7 @@ func defaultPolylineAttrs() *PolylineAttrs {
 	}
 }
 
-// Polyline creates an SVG polyline element
+// Polyline creates an SVG polyline element (self-closing)
 func Polyline(args ...PolylineArg) html.Node {
 	a := defaultPolylineAttrs()
 	var kids []html.Component
@@ -36,7 +36,7 @@ func Polyline(args ...PolylineArg) html.Node {
 	return html.Node{
 		Tag:   "polyline",
 		Attrs: a,
-		Kids:  kids,
+		Void:  true,
 	}
 }
 
@@ -50,8 +50,8 @@ func (o PointsOpt) applyPolyline(a *PolylineAttrs, _ *[]html.Component) {
 	a.Points = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *PolylineAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *PolylineAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Points != "" {
 		SvgAttr(sb, "points", a.Points)

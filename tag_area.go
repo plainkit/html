@@ -75,7 +75,7 @@ func (o TargetOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 	a.Target = o.v
 }
 
-func (a *AreaAttrs) writeAttrs(sb *strings.Builder) {
+func (a *AreaAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Alt != "" {
 		Attr(sb, "alt", a.Alt)

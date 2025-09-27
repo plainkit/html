@@ -45,7 +45,7 @@ func defaultAnimateTransformAttrs() *AnimateTransformAttrs {
 	}
 }
 
-// AnimateTransform creates an SVG animateTransform element
+// AnimateTransform creates an SVG animateTransform element (self-closing)
 func AnimateTransform(args ...AnimateTransformArg) html.Node {
 	a := defaultAnimateTransformAttrs()
 	var kids []html.Component
@@ -55,7 +55,7 @@ func AnimateTransform(args ...AnimateTransformArg) html.Node {
 	return html.Node{
 		Tag:   "animateTransform",
 		Attrs: a,
-		Kids:  kids,
+		Void:  true,
 	}
 }
 
@@ -164,8 +164,8 @@ func (o ValuesOpt) applyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Com
 	a.Values = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *AnimateTransformAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *AnimateTransformAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Accumulate != "" {
 		SvgAttr(sb, "accumulate", a.Accumulate)

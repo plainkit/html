@@ -34,6 +34,6 @@ func (g Global) applySmall(a *SmallAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *SmallAttrs) writeAttrs(sb *strings.Builder) {
+func (a *SmallAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

@@ -34,6 +34,6 @@ func (g Global) applyTitle(a *TitleAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *TitleAttrs) writeAttrs(sb *strings.Builder) {
+func (a *TitleAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

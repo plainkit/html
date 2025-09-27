@@ -34,6 +34,6 @@ func (g Global) applyBody(a *BodyAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *BodyAttrs) writeAttrs(sb *strings.Builder) {
+func (a *BodyAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

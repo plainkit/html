@@ -47,7 +47,7 @@ func (o RowspanOpt) applyTd(a *TdAttrs, _ *[]Component) {
 	a.Rowspan = o.v
 }
 
-func (a *TdAttrs) writeAttrs(sb *strings.Builder) {
+func (a *TdAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Colspan != "" {
 		Attr(sb, "colspan", a.Colspan)

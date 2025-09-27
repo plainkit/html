@@ -34,6 +34,6 @@ func (g Global) applyFigcaption(a *FigcaptionAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *FigcaptionAttrs) writeAttrs(sb *strings.Builder) {
+func (a *FigcaptionAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

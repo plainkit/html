@@ -34,6 +34,6 @@ func (g Global) applyPre(a *PreAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *PreAttrs) writeAttrs(sb *strings.Builder) {
+func (a *PreAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

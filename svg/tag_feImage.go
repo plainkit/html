@@ -62,8 +62,8 @@ func (o PreserveAspectRatioOpt) applyFeImage(a *FeImageAttrs, _ *[]html.Componen
 	a.PreserveAspectRatio = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeImageAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeImageAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.ExternalResourcesRequired {
 		SvgBoolAttr(sb, "externalResourcesRequired")

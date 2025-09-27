@@ -43,7 +43,7 @@ func (o FormOpt) applyOutput(a *OutputAttrs, _ *[]Component) {
 	a.Form = o.v
 }
 
-func (a *OutputAttrs) writeAttrs(sb *strings.Builder) {
+func (a *OutputAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.For != "" {
 		Attr(sb, "for", a.For)

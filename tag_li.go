@@ -39,7 +39,7 @@ func (o ValueOpt) applyLi(a *LiAttrs, _ *[]Component) {
 	a.Value = o.v
 }
 
-func (a *LiAttrs) writeAttrs(sb *strings.Builder) {
+func (a *LiAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)

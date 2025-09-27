@@ -62,8 +62,8 @@ func (o SystemLanguageOpt) applyMetadata(a *MetadataAttrs, _ *[]html.Component) 
 	a.SystemLanguage = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *MetadataAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *MetadataAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.RequiredExtensions != "" {
 		SvgAttr(sb, "requiredExtensions", a.RequiredExtensions)

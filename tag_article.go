@@ -34,6 +34,6 @@ func (g Global) applyArticle(a *ArticleAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *ArticleAttrs) writeAttrs(sb *strings.Builder) {
+func (a *ArticleAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

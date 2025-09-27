@@ -45,7 +45,7 @@ func (o {{.Field}}Opt) apply{{$.Title}}(a *{{$.StructName}}, _ *[]Component) {
 	}{{else}}a.{{.Field}} = o.v{{end}}
 }{{end}}{{end}}
 
-func (a *{{.StructName}}) writeAttrs(sb *strings.Builder) {
+func (a *{{.StructName}}) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global){{range .Attributes}}{{if ne .Attr "data"}}
 	{{if eq .Type "bool"}}if a.{{.Field}} {
 		BoolAttr(sb, "{{.Attr}}")

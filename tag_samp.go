@@ -34,6 +34,6 @@ func (g Global) applySamp(a *SampAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *SampAttrs) writeAttrs(sb *strings.Builder) {
+func (a *SampAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

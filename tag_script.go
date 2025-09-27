@@ -71,7 +71,7 @@ func (o SrcOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Src = o.v
 }
 
-func (a *ScriptAttrs) writeAttrs(sb *strings.Builder) {
+func (a *ScriptAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Async {
 		BoolAttr(sb, "async")

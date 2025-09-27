@@ -63,7 +63,7 @@ func (o TargetOpt) applyForm(a *FormAttrs, _ *[]Component) {
 	a.Target = o.v
 }
 
-func (a *FormAttrs) writeAttrs(sb *strings.Builder) {
+func (a *FormAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Acceptcharset != "" {
 		Attr(sb, "accept-charset", a.Acceptcharset)

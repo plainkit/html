@@ -29,7 +29,7 @@ func defaultLineAttrs() *LineAttrs {
 	}
 }
 
-// Line creates an SVG line element
+// Line creates an SVG line element (self-closing)
 func Line(args ...LineArg) html.Node {
 	a := defaultLineAttrs()
 	var kids []html.Component
@@ -39,7 +39,7 @@ func Line(args ...LineArg) html.Node {
 	return html.Node{
 		Tag:   "line",
 		Attrs: a,
-		Kids:  kids,
+		Void:  true,
 	}
 }
 
@@ -68,8 +68,8 @@ func (o Y2Opt) applyLine(a *LineAttrs, _ *[]html.Component) {
 	a.Y2 = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *LineAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *LineAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.X1 != "" {
 		SvgAttr(sb, "x1", a.X1)

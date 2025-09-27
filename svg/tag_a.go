@@ -92,8 +92,8 @@ func (o TypeOpt) applyA(a *AAttrs, _ *[]html.Component) {
 	a.Type = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *AAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *AAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Download != "" {
 		SvgAttr(sb, "download", a.Download)

@@ -110,8 +110,8 @@ func (o ToOpt) applySet(a *SetAttrs, _ *[]html.Component) {
 	a.To = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *SetAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *SetAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.AttributeName != "" {
 		SvgAttr(sb, "attributeName", a.AttributeName)

@@ -28,7 +28,7 @@ func defaultPathAttrs() *PathAttrs {
 	}
 }
 
-// Path creates an SVG path element
+// Path creates an SVG path element (self-closing)
 func Path(args ...PathArg) html.Node {
 	a := defaultPathAttrs()
 	var kids []html.Component
@@ -38,7 +38,7 @@ func Path(args ...PathArg) html.Node {
 	return html.Node{
 		Tag:   "path",
 		Attrs: a,
-		Kids:  kids,
+		Void:  true,
 	}
 }
 
@@ -62,8 +62,8 @@ func (o PathLengthOpt) applyPath(a *PathAttrs, _ *[]html.Component) {
 	a.PathLength = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *PathAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *PathAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.D != "" {
 		SvgAttr(sb, "d", a.D)

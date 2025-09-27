@@ -39,7 +39,7 @@ func (o OpenOpt) applyDetails(a *DetailsAttrs, _ *[]Component) {
 	a.Open = true
 }
 
-func (a *DetailsAttrs) writeAttrs(sb *strings.Builder) {
+func (a *DetailsAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Open {
 		BoolAttr(sb, "open")

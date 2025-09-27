@@ -34,6 +34,6 @@ func (g Global) applyDiv(a *DivAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *DivAttrs) writeAttrs(sb *strings.Builder) {
+func (a *DivAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

@@ -39,7 +39,7 @@ func (o CiteOpt) applyBlockquote(a *BlockquoteAttrs, _ *[]Component) {
 	a.Cite = o.v
 }
 
-func (a *BlockquoteAttrs) writeAttrs(sb *strings.Builder) {
+func (a *BlockquoteAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Cite != "" {
 		Attr(sb, "cite", a.Cite)

@@ -43,7 +43,7 @@ func (o WidthOpt) applyCanvas(a *CanvasAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
-func (a *CanvasAttrs) writeAttrs(sb *strings.Builder) {
+func (a *CanvasAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)

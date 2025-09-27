@@ -34,6 +34,6 @@ func (g Global) applyNoscript(a *NoscriptAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *NoscriptAttrs) writeAttrs(sb *strings.Builder) {
+func (a *NoscriptAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

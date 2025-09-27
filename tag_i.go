@@ -34,6 +34,6 @@ func (g Global) applyI(a *IAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *IAttrs) writeAttrs(sb *strings.Builder) {
+func (a *IAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

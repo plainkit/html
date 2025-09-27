@@ -34,6 +34,6 @@ func (g Global) applyFigure(a *FigureAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *FigureAttrs) writeAttrs(sb *strings.Builder) {
+func (a *FigureAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

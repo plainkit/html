@@ -92,8 +92,8 @@ func (o ZOpt) applyFeSpotLight(a *FeSpotLightAttrs, _ *[]html.Component) {
 	a.Z = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeSpotLightAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeSpotLightAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.LimitingConeAngle != "" {
 		SvgAttr(sb, "limitingConeAngle", a.LimitingConeAngle)

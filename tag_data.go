@@ -39,7 +39,7 @@ func (o ValueOpt) applyData(a *DataAttrs, _ *[]Component) {
 	a.Value = o.v
 }
 
-func (a *DataAttrs) writeAttrs(sb *strings.Builder) {
+func (a *DataAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)

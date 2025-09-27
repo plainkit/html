@@ -34,6 +34,6 @@ func (g Global) applyH5(a *H5Attrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *H5Attrs) writeAttrs(sb *strings.Builder) {
+func (a *H5Attrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

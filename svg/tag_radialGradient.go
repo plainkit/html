@@ -86,8 +86,8 @@ func (o ROpt) applyRadialGradient(a *RadialGradientAttrs, _ *[]html.Component) {
 	a.R = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *RadialGradientAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *RadialGradientAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Cx != "" {
 		SvgAttr(sb, "cx", a.Cx)

@@ -50,8 +50,8 @@ func (o InOpt) applyFeComponentTransfer(a *FeComponentTransferAttrs, _ *[]html.C
 	a.In = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeComponentTransferAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeComponentTransferAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.In != "" {
 		SvgAttr(sb, "in", a.In)

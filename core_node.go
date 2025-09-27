@@ -21,13 +21,13 @@ func (t UnsafeTextNode) render(sb *strings.Builder) {
 	sb.WriteString(string(t))
 }
 
-type attrWriter interface {
-	writeAttrs(*strings.Builder)
+type AttrWriter interface {
+	WriteAttrs(*strings.Builder)
 }
 
 type Node struct {
 	Tag       string
-	Attrs     any         // must implement attrWriter
+	Attrs     any         // must implement AttrWriter
 	Kids      []Component // empty for void tags
 	Void      bool
 	AssetCSS  string // CSS to be collected by asset system
@@ -38,11 +38,13 @@ type Node struct {
 func (n Node) render(sb *strings.Builder) {
 	sb.WriteString("<")
 	sb.WriteString(n.Tag)
-	if aw, ok := n.Attrs.(attrWriter); ok {
-		aw.writeAttrs(sb)
+	if aw, ok := n.Attrs.(AttrWriter); ok {
+		aw.WriteAttrs(sb)
 	}
-	sb.WriteString(">")
-	if !n.Void {
+	if n.Void {
+		sb.WriteString("/>")
+	} else {
+		sb.WriteString(">")
 		for _, k := range n.Kids {
 			k.render(sb)
 		}

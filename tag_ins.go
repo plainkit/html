@@ -43,7 +43,7 @@ func (o DatetimeOpt) applyIns(a *InsAttrs, _ *[]Component) {
 	a.Datetime = o.v
 }
 
-func (a *InsAttrs) writeAttrs(sb *strings.Builder) {
+func (a *InsAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Cite != "" {
 		Attr(sb, "cite", a.Cite)

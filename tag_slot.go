@@ -34,6 +34,6 @@ func (g Global) applySlot(a *SlotAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *SlotAttrs) writeAttrs(sb *strings.Builder) {
+func (a *SlotAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

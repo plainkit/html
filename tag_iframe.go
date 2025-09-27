@@ -71,7 +71,7 @@ func (o WidthOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
-func (a *IframeAttrs) writeAttrs(sb *strings.Builder) {
+func (a *IframeAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Allow != "" {
 		Attr(sb, "allow", a.Allow)

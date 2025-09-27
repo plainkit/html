@@ -79,7 +79,7 @@ func (o WidthOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
-func (a *VideoAttrs) writeAttrs(sb *strings.Builder) {
+func (a *VideoAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Autoplay {
 		BoolAttr(sb, "autoplay")

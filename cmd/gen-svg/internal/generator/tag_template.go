@@ -69,8 +69,8 @@ func (o {{.Field}}Opt) apply{{$.Title}}(a *{{$.StructName}}, _ *[]html.Component
 }
 
 {{end}}
-// writeAttrs writes the SVG attributes to the string builder
-func (a *{{.StructName}}) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *{{.StructName}}) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal){{range .Attributes}}
 	{{if eq .Type "bool"}}if a.{{.Field}} {
 		SvgBoolAttr(sb, "{{.Attr}}")

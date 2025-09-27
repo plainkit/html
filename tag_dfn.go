@@ -34,6 +34,6 @@ func (g Global) applyDfn(a *DfnAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *DfnAttrs) writeAttrs(sb *strings.Builder) {
+func (a *DfnAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

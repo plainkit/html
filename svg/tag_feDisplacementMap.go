@@ -74,8 +74,8 @@ func (o YChannelSelectorOpt) applyFeDisplacementMap(a *FeDisplacementMapAttrs, _
 	a.YChannelSelector = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeDisplacementMapAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeDisplacementMapAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.In != "" {
 		SvgAttr(sb, "in", a.In)

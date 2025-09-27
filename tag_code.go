@@ -34,6 +34,6 @@ func (g Global) applyCode(a *CodeAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *CodeAttrs) writeAttrs(sb *strings.Builder) {
+func (a *CodeAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

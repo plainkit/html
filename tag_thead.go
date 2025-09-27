@@ -34,6 +34,6 @@ func (g Global) applyThead(a *TheadAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *TheadAttrs) writeAttrs(sb *strings.Builder) {
+func (a *TheadAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

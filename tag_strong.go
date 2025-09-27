@@ -34,6 +34,6 @@ func (g Global) applyStrong(a *StrongAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *StrongAttrs) writeAttrs(sb *strings.Builder) {
+func (a *StrongAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

@@ -59,7 +59,7 @@ func (o ValueOpt) applyMeter(a *MeterAttrs, _ *[]Component) {
 	a.Value = o.v
 }
 
-func (a *MeterAttrs) writeAttrs(sb *strings.Builder) {
+func (a *MeterAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.High != "" {
 		Attr(sb, "high", a.High)

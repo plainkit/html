@@ -43,7 +43,7 @@ func (o DatetimeOpt) applyDel(a *DelAttrs, _ *[]Component) {
 	a.Datetime = o.v
 }
 
-func (a *DelAttrs) writeAttrs(sb *strings.Builder) {
+func (a *DelAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Cite != "" {
 		Attr(sb, "cite", a.Cite)

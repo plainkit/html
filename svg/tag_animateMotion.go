@@ -42,7 +42,7 @@ func defaultAnimateMotionAttrs() *AnimateMotionAttrs {
 	}
 }
 
-// AnimateMotion creates an SVG animateMotion element
+// AnimateMotion creates an SVG animateMotion element (self-closing)
 func AnimateMotion(args ...AnimateMotionArg) html.Node {
 	a := defaultAnimateMotionAttrs()
 	var kids []html.Component
@@ -52,7 +52,7 @@ func AnimateMotion(args ...AnimateMotionArg) html.Node {
 	return html.Node{
 		Tag:   "animateMotion",
 		Attrs: a,
-		Kids:  kids,
+		Void:  true,
 	}
 }
 
@@ -146,8 +146,8 @@ func (o ValuesOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component
 	a.Values = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *AnimateMotionAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *AnimateMotionAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.Accumulate != "" {
 		SvgAttr(sb, "accumulate", a.Accumulate)

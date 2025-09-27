@@ -74,8 +74,8 @@ func (o TypeOpt) applyFeTurbulence(a *FeTurbulenceAttrs, _ *[]html.Component) {
 	a.Type = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeTurbulenceAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeTurbulenceAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.BaseFrequency != "" {
 		SvgAttr(sb, "baseFrequency", a.BaseFrequency)

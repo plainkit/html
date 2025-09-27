@@ -39,7 +39,7 @@ func (o DatetimeOpt) applyTime(a *TimeAttrs, _ *[]Component) {
 	a.Datetime = o.v
 }
 
-func (a *TimeAttrs) writeAttrs(sb *strings.Builder) {
+func (a *TimeAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Datetime != "" {
 		Attr(sb, "datetime", a.Datetime)

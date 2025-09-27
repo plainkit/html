@@ -34,6 +34,6 @@ func (g Global) applyNav(a *NavAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *NavAttrs) writeAttrs(sb *strings.Builder) {
+func (a *NavAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

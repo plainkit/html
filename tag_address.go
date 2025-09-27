@@ -34,6 +34,6 @@ func (g Global) applyAddress(a *AddressAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *AddressAttrs) writeAttrs(sb *strings.Builder) {
+func (a *AddressAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

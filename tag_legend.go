@@ -34,6 +34,6 @@ func (g Global) applyLegend(a *LegendAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *LegendAttrs) writeAttrs(sb *strings.Builder) {
+func (a *LegendAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

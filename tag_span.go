@@ -34,6 +34,6 @@ func (g Global) applySpan(a *SpanAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *SpanAttrs) writeAttrs(sb *strings.Builder) {
+func (a *SpanAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

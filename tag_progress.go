@@ -43,7 +43,7 @@ func (o ValueOpt) applyProgress(a *ProgressAttrs, _ *[]Component) {
 	a.Value = o.v
 }
 
-func (a *ProgressAttrs) writeAttrs(sb *strings.Builder) {
+func (a *ProgressAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Max != "" {
 		Attr(sb, "max", a.Max)

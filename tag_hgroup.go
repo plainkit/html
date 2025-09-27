@@ -34,6 +34,6 @@ func (g Global) applyHgroup(a *HgroupAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (a *HgroupAttrs) writeAttrs(sb *strings.Builder) {
+func (a *HgroupAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 }

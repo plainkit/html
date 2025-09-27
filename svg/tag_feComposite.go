@@ -86,8 +86,8 @@ func (o OperatorOpt) applyFeComposite(a *FeCompositeAttrs, _ *[]html.Component) 
 	a.Operator = o.v
 }
 
-// writeAttrs writes the SVG attributes to the string builder
-func (a *FeCompositeAttrs) writeAttrs(sb *strings.Builder) {
+// WriteAttrs writes the SVG attributes to the string builder
+func (a *FeCompositeAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
 	if a.In != "" {
 		SvgAttr(sb, "in", a.In)
