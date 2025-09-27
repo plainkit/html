@@ -101,6 +101,7 @@ type SvgAttrs struct {
 	X                          string
 	Y                          string
 	ZoomAndPan                 string
+	Xmlns                      string
 }
 
 // SvgArg interface for svg element arguments
@@ -594,6 +595,11 @@ func (o ZoomAndPanOpt) apply(a *SvgAttrs, _ *[]Component) {
 	a.ZoomAndPan = o.v
 }
 
+// XmlnsOpt applies to
+func (o XmlnsOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Xmlns = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
@@ -872,5 +878,8 @@ func (a *SvgAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.ZoomAndPan != "" {
 		Attr(sb, "zoomAndPan", a.ZoomAndPan)
+	}
+	if a.Xmlns != "" {
+		Attr(sb, "xmlns", a.Xmlns)
 	}
 }

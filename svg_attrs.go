@@ -2026,6 +2026,14 @@ func AXChannelSelector(v string) XChannelSelectorOpt {
 	return XChannelSelectorOpt{v}
 }
 
+type XmlnsOpt struct {
+	v string
+}
+
+func AXmlns(v string) XmlnsOpt {
+	return XmlnsOpt{v}
+}
+
 type YOpt struct {
 	v string
 }

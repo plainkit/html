@@ -49,6 +49,13 @@ func (l *Loader) LoadAllTagSpecs() ([]TagSpec, error) {
 		}
 
 		attrs := collectAttributes(element.Attributes, globalSet)
+		if lowerName == "svg" {
+			attrs = append(attrs, Attribute{
+				Field: "Xmlns",
+				Attr:  "xmlns",
+				Type:  "string",
+			})
+		}
 		specs = append(specs, TagSpec{
 			Name:       trimmed,
 			Attributes: attrs,
