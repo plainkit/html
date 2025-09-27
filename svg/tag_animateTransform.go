@@ -10,35 +10,27 @@ import (
 
 // AnimateTransformAttrs holds the attributes for the animateTransform SVG element
 type AnimateTransformAttrs struct {
-	SvgGlobal                 SvgGlobalAttrs
-	Accumulate                string
-	Additive                  string
-	AttributeName             string
-	AttributeType             string
-	Begin                     string
-	By                        string
-	CalcMode                  string
-	Dur                       string
-	End                       string
-	ExternalResourcesRequired string
-	Fill                      string
-	From                      string
-	Href                      string
-	KeySplines                string
-	KeyTimes                  string
-	Max                       string
-	Min                       string
-	RepeatCount               string
-	RepeatDur                 string
-	RequiredExtensions        string
-	RequiredFeatures          string
-	RequiredFonts             string
-	RequiredFormats           string
-	Restart                   string
-	SystemLanguage            string
-	To                        string
-	Type                      string
-	Values                    string
+	SvgGlobal     SvgGlobalAttrs
+	Accumulate    string
+	Additive      string
+	AttributeName string
+	AttributeType string
+	Begin         string
+	By            string
+	CalcMode      string
+	Dur           string
+	End           string
+	From          string
+	KeySplines    string
+	KeyTimes      string
+	Max           string
+	Min           string
+	RepeatCount   string
+	RepeatDur     string
+	Restart       string
+	To            string
+	Type          string
+	Values        string
 }
 
 // AnimateTransformArg interface for animateTransform element arguments
@@ -53,7 +45,7 @@ func defaultAnimateTransformAttrs() *AnimateTransformAttrs {
 	}
 }
 
-// AnimateTransform creates an SVG animateTransform element (self-closing)
+// AnimateTransform creates an SVG animateTransform element
 func AnimateTransform(args ...AnimateTransformArg) html.Node {
 	a := defaultAnimateTransformAttrs()
 	var kids []html.Component
@@ -63,7 +55,7 @@ func AnimateTransform(args ...AnimateTransformArg) html.Node {
 	return html.Node{
 		Tag:   "animateTransform",
 		Attrs: a,
-		Void:  true,
+		Kids:  kids,
 	}
 }
 
@@ -117,24 +109,9 @@ func (o EndOpt) applyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Compon
 	a.End = o.v
 }
 
-// ExternalResourcesRequiredOpt applies to AnimateTransform
-func (o ExternalResourcesRequiredOpt) applyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
-	a.ExternalResourcesRequired = o.v
-}
-
-// FillOpt applies to AnimateTransform
-func (o FillOpt) applyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
-	a.Fill = o.v
-}
-
 // FromOpt applies to AnimateTransform
 func (o FromOpt) applyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
 	a.From = o.v
-}
-
-// HrefOpt applies to AnimateTransform
-func (o HrefOpt) applyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
-	a.Href = o.v
 }
 
 // KeySplinesOpt applies to AnimateTransform
@@ -167,34 +144,9 @@ func (o RepeatDurOpt) applyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.
 	a.RepeatDur = o.v
 }
 
-// RequiredExtensionsOpt applies to AnimateTransform
-func (o RequiredExtensionsOpt) applyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
-	a.RequiredExtensions = o.v
-}
-
-// RequiredFeaturesOpt applies to AnimateTransform
-func (o RequiredFeaturesOpt) applyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
-	a.RequiredFeatures = o.v
-}
-
-// RequiredFontsOpt applies to AnimateTransform
-func (o RequiredFontsOpt) applyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
-	a.RequiredFonts = o.v
-}
-
-// RequiredFormatsOpt applies to AnimateTransform
-func (o RequiredFormatsOpt) applyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
-	a.RequiredFormats = o.v
-}
-
 // RestartOpt applies to AnimateTransform
 func (o RestartOpt) applyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
 	a.Restart = o.v
-}
-
-// SystemLanguageOpt applies to AnimateTransform
-func (o SystemLanguageOpt) applyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
-	a.SystemLanguage = o.v
 }
 
 // ToOpt applies to AnimateTransform
@@ -242,17 +194,8 @@ func (a *AnimateTransformAttrs) writeAttrs(sb *strings.Builder) {
 	if a.End != "" {
 		SvgAttr(sb, "end", a.End)
 	}
-	if a.ExternalResourcesRequired != "" {
-		SvgAttr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
-	}
-	if a.Fill != "" {
-		SvgAttr(sb, "fill", a.Fill)
-	}
 	if a.From != "" {
 		SvgAttr(sb, "from", a.From)
-	}
-	if a.Href != "" {
-		SvgAttr(sb, "href", a.Href)
 	}
 	if a.KeySplines != "" {
 		SvgAttr(sb, "keySplines", a.KeySplines)
@@ -272,23 +215,8 @@ func (a *AnimateTransformAttrs) writeAttrs(sb *strings.Builder) {
 	if a.RepeatDur != "" {
 		SvgAttr(sb, "repeatDur", a.RepeatDur)
 	}
-	if a.RequiredExtensions != "" {
-		SvgAttr(sb, "requiredExtensions", a.RequiredExtensions)
-	}
-	if a.RequiredFeatures != "" {
-		SvgAttr(sb, "requiredFeatures", a.RequiredFeatures)
-	}
-	if a.RequiredFonts != "" {
-		SvgAttr(sb, "requiredFonts", a.RequiredFonts)
-	}
-	if a.RequiredFormats != "" {
-		SvgAttr(sb, "requiredFormats", a.RequiredFormats)
-	}
 	if a.Restart != "" {
 		SvgAttr(sb, "restart", a.Restart)
-	}
-	if a.SystemLanguage != "" {
-		SvgAttr(sb, "systemLanguage", a.SystemLanguage)
 	}
 	if a.To != "" {
 		SvgAttr(sb, "to", a.To)

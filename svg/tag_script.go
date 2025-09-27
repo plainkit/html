@@ -10,11 +10,10 @@ import (
 
 // ScriptAttrs holds the attributes for the script SVG element
 type ScriptAttrs struct {
-	SvgGlobal                 SvgGlobalAttrs
-	Crossorigin               bool
-	ExternalResourcesRequired string
-	Href                      string
-	Type                      string
+	SvgGlobal   SvgGlobalAttrs
+	Crossorigin string
+	Href        string
+	Type        string
 }
 
 // ScriptArg interface for script element arguments
@@ -50,12 +49,7 @@ func (g Global) applyScript(a *ScriptAttrs, _ *[]html.Component) {
 
 // CrossoriginOpt applies to Script
 func (o CrossoriginOpt) applyScript(a *ScriptAttrs, _ *[]html.Component) {
-	a.Crossorigin = true
-}
-
-// ExternalResourcesRequiredOpt applies to Script
-func (o ExternalResourcesRequiredOpt) applyScript(a *ScriptAttrs, _ *[]html.Component) {
-	a.ExternalResourcesRequired = o.v
+	a.Crossorigin = o.v
 }
 
 // HrefOpt applies to Script
@@ -71,11 +65,8 @@ func (o TypeOpt) applyScript(a *ScriptAttrs, _ *[]html.Component) {
 // writeAttrs writes the SVG attributes to the string builder
 func (a *ScriptAttrs) writeAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
-	if a.Crossorigin {
-		SvgBoolAttr(sb, "crossorigin")
-	}
-	if a.ExternalResourcesRequired != "" {
-		SvgAttr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	if a.Crossorigin != "" {
+		SvgAttr(sb, "crossorigin", a.Crossorigin)
 	}
 	if a.Href != "" {
 		SvgAttr(sb, "href", a.Href)

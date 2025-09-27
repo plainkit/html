@@ -10,12 +10,8 @@ import (
 
 // ViewAttrs holds the attributes for the view SVG element
 type ViewAttrs struct {
-	SvgGlobal                 SvgGlobalAttrs
-	ExternalResourcesRequired string
-	PreserveAspectRatio       string
-	ViewBox                   string
-	ViewTarget                string
-	ZoomAndPan                string
+	SvgGlobal SvgGlobalAttrs
+	ViewBox   string
 }
 
 // ViewArg interface for view element arguments
@@ -49,47 +45,15 @@ func (g Global) applyView(a *ViewAttrs, _ *[]html.Component) {
 	g.do(&a.SvgGlobal)
 }
 
-// ExternalResourcesRequiredOpt applies to View
-func (o ExternalResourcesRequiredOpt) applyView(a *ViewAttrs, _ *[]html.Component) {
-	a.ExternalResourcesRequired = o.v
-}
-
-// PreserveAspectRatioOpt applies to View
-func (o PreserveAspectRatioOpt) applyView(a *ViewAttrs, _ *[]html.Component) {
-	a.PreserveAspectRatio = o.v
-}
-
 // ViewBoxOpt applies to View
 func (o ViewBoxOpt) applyView(a *ViewAttrs, _ *[]html.Component) {
 	a.ViewBox = o.v
 }
 
-// ViewTargetOpt applies to View
-func (o ViewTargetOpt) applyView(a *ViewAttrs, _ *[]html.Component) {
-	a.ViewTarget = o.v
-}
-
-// ZoomAndPanOpt applies to View
-func (o ZoomAndPanOpt) applyView(a *ViewAttrs, _ *[]html.Component) {
-	a.ZoomAndPan = o.v
-}
-
 // writeAttrs writes the SVG attributes to the string builder
 func (a *ViewAttrs) writeAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
-	if a.ExternalResourcesRequired != "" {
-		SvgAttr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
-	}
-	if a.PreserveAspectRatio != "" {
-		SvgAttr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
-	}
 	if a.ViewBox != "" {
 		SvgAttr(sb, "viewBox", a.ViewBox)
-	}
-	if a.ViewTarget != "" {
-		SvgAttr(sb, "viewTarget", a.ViewTarget)
-	}
-	if a.ZoomAndPan != "" {
-		SvgAttr(sb, "zoomAndPan", a.ZoomAndPan)
 	}
 }

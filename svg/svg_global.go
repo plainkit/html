@@ -8,19 +8,12 @@ import (
 
 // SvgGlobalAttrs represents global SVG attributes that can be applied to any SVG element
 type SvgGlobalAttrs struct {
-	About    string
-	Class    string
-	Content  string
-	Datatype string
-	Id       string
-	Lang     string
-	Property string
-	Rel      string
-	Resource string
-	Rev      string
-	Style    string
-	Tabindex string
-	Typeof   string
+	Class     string
+	Fill      string
+	Id        string
+	Stroke    string
+	Style     string
+	Transform string
 }
 
 // Global represents a global SVG attribute option
@@ -33,24 +26,14 @@ func (g Global) do(attrs *SvgGlobalAttrs) {
 	g.fn(attrs)
 }
 
-// AAbout sets the about attribute
-func AAbout(v string) Global {
-	return Global{func(g *SvgGlobalAttrs) { g.About = v }}
-}
-
 // AClass sets the class attribute
 func AClass(v string) Global {
 	return Global{func(g *SvgGlobalAttrs) { g.Class = v }}
 }
 
-// AContent sets the content attribute
-func AContent(v string) Global {
-	return Global{func(g *SvgGlobalAttrs) { g.Content = v }}
-}
-
-// ADatatype sets the datatype attribute
-func ADatatype(v string) Global {
-	return Global{func(g *SvgGlobalAttrs) { g.Datatype = v }}
+// AFill sets the fill attribute
+func AFill(v string) Global {
+	return Global{func(g *SvgGlobalAttrs) { g.Fill = v }}
 }
 
 // AId sets the id attribute
@@ -58,29 +41,9 @@ func AId(v string) Global {
 	return Global{func(g *SvgGlobalAttrs) { g.Id = v }}
 }
 
-// ALang sets the lang attribute
-func ALang(v string) Global {
-	return Global{func(g *SvgGlobalAttrs) { g.Lang = v }}
-}
-
-// AProperty sets the property attribute
-func AProperty(v string) Global {
-	return Global{func(g *SvgGlobalAttrs) { g.Property = v }}
-}
-
-// ARel sets the rel attribute
-func ARel(v string) Global {
-	return Global{func(g *SvgGlobalAttrs) { g.Rel = v }}
-}
-
-// AResource sets the resource attribute
-func AResource(v string) Global {
-	return Global{func(g *SvgGlobalAttrs) { g.Resource = v }}
-}
-
-// ARev sets the rev attribute
-func ARev(v string) Global {
-	return Global{func(g *SvgGlobalAttrs) { g.Rev = v }}
+// AStroke sets the stroke attribute
+func AStroke(v string) Global {
+	return Global{func(g *SvgGlobalAttrs) { g.Stroke = v }}
 }
 
 // AStyle sets the style attribute
@@ -88,56 +51,30 @@ func AStyle(v string) Global {
 	return Global{func(g *SvgGlobalAttrs) { g.Style = v }}
 }
 
-// ATabindex sets the tabindex attribute
-func ATabindex(v string) Global {
-	return Global{func(g *SvgGlobalAttrs) { g.Tabindex = v }}
-}
-
-// ATypeof sets the typeof attribute
-func ATypeof(v string) Global {
-	return Global{func(g *SvgGlobalAttrs) { g.Typeof = v }}
+// ATransform sets the transform attribute
+func ATransform(v string) Global {
+	return Global{func(g *SvgGlobalAttrs) { g.Transform = v }}
 }
 
 // WriteSvgGlobal writes global SVG attributes to the string builder
 func WriteSvgGlobal(sb *strings.Builder, attrs *SvgGlobalAttrs) {
-	if attrs.About != "" {
-		SvgAttr(sb, "about", attrs.About)
-	}
 	if attrs.Class != "" {
 		SvgAttr(sb, "class", attrs.Class)
 	}
-	if attrs.Content != "" {
-		SvgAttr(sb, "content", attrs.Content)
-	}
-	if attrs.Datatype != "" {
-		SvgAttr(sb, "datatype", attrs.Datatype)
+	if attrs.Fill != "" {
+		SvgAttr(sb, "fill", attrs.Fill)
 	}
 	if attrs.Id != "" {
 		SvgAttr(sb, "id", attrs.Id)
 	}
-	if attrs.Lang != "" {
-		SvgAttr(sb, "lang", attrs.Lang)
-	}
-	if attrs.Property != "" {
-		SvgAttr(sb, "property", attrs.Property)
-	}
-	if attrs.Rel != "" {
-		SvgAttr(sb, "rel", attrs.Rel)
-	}
-	if attrs.Resource != "" {
-		SvgAttr(sb, "resource", attrs.Resource)
-	}
-	if attrs.Rev != "" {
-		SvgAttr(sb, "rev", attrs.Rev)
+	if attrs.Stroke != "" {
+		SvgAttr(sb, "stroke", attrs.Stroke)
 	}
 	if attrs.Style != "" {
 		SvgAttr(sb, "style", attrs.Style)
 	}
-	if attrs.Tabindex != "" {
-		SvgAttr(sb, "tabindex", attrs.Tabindex)
-	}
-	if attrs.Typeof != "" {
-		SvgAttr(sb, "typeof", attrs.Typeof)
+	if attrs.Transform != "" {
+		SvgAttr(sb, "transform", attrs.Transform)
 	}
 }
 

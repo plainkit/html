@@ -33,7 +33,7 @@ func defaultFeSpotLightAttrs() *FeSpotLightAttrs {
 	}
 }
 
-// FeSpotLight creates an SVG feSpotLight element (self-closing)
+// FeSpotLight creates an SVG feSpotLight element
 func FeSpotLight(args ...FeSpotLightArg) html.Node {
 	a := defaultFeSpotLightAttrs()
 	var kids []html.Component
@@ -43,7 +43,7 @@ func FeSpotLight(args ...FeSpotLightArg) html.Node {
 	return html.Node{
 		Tag:   "feSpotLight",
 		Attrs: a,
-		Void:  true,
+		Kids:  kids,
 	}
 }
 

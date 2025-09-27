@@ -10,9 +10,8 @@ import (
 
 // MpathAttrs holds the attributes for the mpath SVG element
 type MpathAttrs struct {
-	SvgGlobal                 SvgGlobalAttrs
-	ExternalResourcesRequired string
-	Href                      string
+	SvgGlobal SvgGlobalAttrs
+	Href      string
 }
 
 // MpathArg interface for mpath element arguments
@@ -46,11 +45,6 @@ func (g Global) applyMpath(a *MpathAttrs, _ *[]html.Component) {
 	g.do(&a.SvgGlobal)
 }
 
-// ExternalResourcesRequiredOpt applies to Mpath
-func (o ExternalResourcesRequiredOpt) applyMpath(a *MpathAttrs, _ *[]html.Component) {
-	a.ExternalResourcesRequired = o.v
-}
-
 // HrefOpt applies to Mpath
 func (o HrefOpt) applyMpath(a *MpathAttrs, _ *[]html.Component) {
 	a.Href = o.v
@@ -59,9 +53,6 @@ func (o HrefOpt) applyMpath(a *MpathAttrs, _ *[]html.Component) {
 // writeAttrs writes the SVG attributes to the string builder
 func (a *MpathAttrs) writeAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
-	if a.ExternalResourcesRequired != "" {
-		SvgAttr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
-	}
 	if a.Href != "" {
 		SvgAttr(sb, "href", a.Href)
 	}

@@ -10,36 +10,24 @@ import (
 
 // AnimateMotionAttrs holds the attributes for the animateMotion SVG element
 type AnimateMotionAttrs struct {
-	SvgGlobal                 SvgGlobalAttrs
-	Accumulate                string
-	Additive                  string
-	Begin                     string
-	By                        string
-	CalcMode                  string
-	Dur                       string
-	End                       string
-	ExternalResourcesRequired string
-	Fill                      string
-	From                      string
-	Href                      string
-	KeyPoints                 string
-	KeySplines                string
-	KeyTimes                  string
-	Max                       string
-	Min                       string
-	Origin                    string
-	Path                      string
-	RepeatCount               string
-	RepeatDur                 string
-	RequiredExtensions        string
-	RequiredFeatures          string
-	RequiredFonts             string
-	RequiredFormats           string
-	Restart                   string
-	Rotate                    string
-	SystemLanguage            string
-	To                        string
-	Values                    string
+	SvgGlobal   SvgGlobalAttrs
+	Accumulate  string
+	Additive    string
+	Begin       string
+	By          string
+	CalcMode    string
+	Dur         string
+	End         string
+	From        string
+	KeySplines  string
+	KeyTimes    string
+	Max         string
+	Min         string
+	RepeatCount string
+	RepeatDur   string
+	Restart     string
+	To          string
+	Values      string
 }
 
 // AnimateMotionArg interface for animateMotion element arguments
@@ -54,7 +42,7 @@ func defaultAnimateMotionAttrs() *AnimateMotionAttrs {
 	}
 }
 
-// AnimateMotion creates an SVG animateMotion element (self-closing)
+// AnimateMotion creates an SVG animateMotion element
 func AnimateMotion(args ...AnimateMotionArg) html.Node {
 	a := defaultAnimateMotionAttrs()
 	var kids []html.Component
@@ -64,7 +52,7 @@ func AnimateMotion(args ...AnimateMotionArg) html.Node {
 	return html.Node{
 		Tag:   "animateMotion",
 		Attrs: a,
-		Void:  true,
+		Kids:  kids,
 	}
 }
 
@@ -108,29 +96,9 @@ func (o EndOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
 	a.End = o.v
 }
 
-// ExternalResourcesRequiredOpt applies to AnimateMotion
-func (o ExternalResourcesRequiredOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
-	a.ExternalResourcesRequired = o.v
-}
-
-// FillOpt applies to AnimateMotion
-func (o FillOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
-	a.Fill = o.v
-}
-
 // FromOpt applies to AnimateMotion
 func (o FromOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
 	a.From = o.v
-}
-
-// HrefOpt applies to AnimateMotion
-func (o HrefOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
-	a.Href = o.v
-}
-
-// KeyPointsOpt applies to AnimateMotion
-func (o KeyPointsOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
-	a.KeyPoints = o.v
 }
 
 // KeySplinesOpt applies to AnimateMotion
@@ -153,16 +121,6 @@ func (o MinOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
 	a.Min = o.v
 }
 
-// OriginOpt applies to AnimateMotion
-func (o OriginOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
-	a.Origin = o.v
-}
-
-// PathOpt applies to AnimateMotion
-func (o PathOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
-	a.Path = o.v
-}
-
 // RepeatCountOpt applies to AnimateMotion
 func (o RepeatCountOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
 	a.RepeatCount = o.v
@@ -173,39 +131,9 @@ func (o RepeatDurOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Compon
 	a.RepeatDur = o.v
 }
 
-// RequiredExtensionsOpt applies to AnimateMotion
-func (o RequiredExtensionsOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
-	a.RequiredExtensions = o.v
-}
-
-// RequiredFeaturesOpt applies to AnimateMotion
-func (o RequiredFeaturesOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
-	a.RequiredFeatures = o.v
-}
-
-// RequiredFontsOpt applies to AnimateMotion
-func (o RequiredFontsOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
-	a.RequiredFonts = o.v
-}
-
-// RequiredFormatsOpt applies to AnimateMotion
-func (o RequiredFormatsOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
-	a.RequiredFormats = o.v
-}
-
 // RestartOpt applies to AnimateMotion
 func (o RestartOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
 	a.Restart = o.v
-}
-
-// RotateOpt applies to AnimateMotion
-func (o RotateOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
-	a.Rotate = o.v
-}
-
-// SystemLanguageOpt applies to AnimateMotion
-func (o SystemLanguageOpt) applyAnimateMotion(a *AnimateMotionAttrs, _ *[]html.Component) {
-	a.SystemLanguage = o.v
 }
 
 // ToOpt applies to AnimateMotion
@@ -242,20 +170,8 @@ func (a *AnimateMotionAttrs) writeAttrs(sb *strings.Builder) {
 	if a.End != "" {
 		SvgAttr(sb, "end", a.End)
 	}
-	if a.ExternalResourcesRequired != "" {
-		SvgAttr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
-	}
-	if a.Fill != "" {
-		SvgAttr(sb, "fill", a.Fill)
-	}
 	if a.From != "" {
 		SvgAttr(sb, "from", a.From)
-	}
-	if a.Href != "" {
-		SvgAttr(sb, "href", a.Href)
-	}
-	if a.KeyPoints != "" {
-		SvgAttr(sb, "keyPoints", a.KeyPoints)
 	}
 	if a.KeySplines != "" {
 		SvgAttr(sb, "keySplines", a.KeySplines)
@@ -269,38 +185,14 @@ func (a *AnimateMotionAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Min != "" {
 		SvgAttr(sb, "min", a.Min)
 	}
-	if a.Origin != "" {
-		SvgAttr(sb, "origin", a.Origin)
-	}
-	if a.Path != "" {
-		SvgAttr(sb, "path", a.Path)
-	}
 	if a.RepeatCount != "" {
 		SvgAttr(sb, "repeatCount", a.RepeatCount)
 	}
 	if a.RepeatDur != "" {
 		SvgAttr(sb, "repeatDur", a.RepeatDur)
 	}
-	if a.RequiredExtensions != "" {
-		SvgAttr(sb, "requiredExtensions", a.RequiredExtensions)
-	}
-	if a.RequiredFeatures != "" {
-		SvgAttr(sb, "requiredFeatures", a.RequiredFeatures)
-	}
-	if a.RequiredFonts != "" {
-		SvgAttr(sb, "requiredFonts", a.RequiredFonts)
-	}
-	if a.RequiredFormats != "" {
-		SvgAttr(sb, "requiredFormats", a.RequiredFormats)
-	}
 	if a.Restart != "" {
 		SvgAttr(sb, "restart", a.Restart)
-	}
-	if a.Rotate != "" {
-		SvgAttr(sb, "rotate", a.Rotate)
-	}
-	if a.SystemLanguage != "" {
-		SvgAttr(sb, "systemLanguage", a.SystemLanguage)
 	}
 	if a.To != "" {
 		SvgAttr(sb, "to", a.To)

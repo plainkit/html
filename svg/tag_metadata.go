@@ -13,8 +13,6 @@ type MetadataAttrs struct {
 	SvgGlobal          SvgGlobalAttrs
 	RequiredExtensions string
 	RequiredFeatures   string
-	RequiredFonts      string
-	RequiredFormats    string
 	SystemLanguage     string
 }
 
@@ -59,16 +57,6 @@ func (o RequiredFeaturesOpt) applyMetadata(a *MetadataAttrs, _ *[]html.Component
 	a.RequiredFeatures = o.v
 }
 
-// RequiredFontsOpt applies to Metadata
-func (o RequiredFontsOpt) applyMetadata(a *MetadataAttrs, _ *[]html.Component) {
-	a.RequiredFonts = o.v
-}
-
-// RequiredFormatsOpt applies to Metadata
-func (o RequiredFormatsOpt) applyMetadata(a *MetadataAttrs, _ *[]html.Component) {
-	a.RequiredFormats = o.v
-}
-
 // SystemLanguageOpt applies to Metadata
 func (o SystemLanguageOpt) applyMetadata(a *MetadataAttrs, _ *[]html.Component) {
 	a.SystemLanguage = o.v
@@ -82,12 +70,6 @@ func (a *MetadataAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.RequiredFeatures != "" {
 		SvgAttr(sb, "requiredFeatures", a.RequiredFeatures)
-	}
-	if a.RequiredFonts != "" {
-		SvgAttr(sb, "requiredFonts", a.RequiredFonts)
-	}
-	if a.RequiredFormats != "" {
-		SvgAttr(sb, "requiredFormats", a.RequiredFormats)
 	}
 	if a.SystemLanguage != "" {
 		SvgAttr(sb, "systemLanguage", a.SystemLanguage)

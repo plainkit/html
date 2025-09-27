@@ -10,92 +10,26 @@ import (
 
 // AnimateAttrs holds the attributes for the animate SVG element
 type AnimateAttrs struct {
-	SvgGlobal                  SvgGlobalAttrs
-	Accumulate                 string
-	Additive                   string
-	AlignmentBaseline          string
-	AttributeName              string
-	AttributeType              string
-	BaselineShift              string
-	Begin                      string
-	By                         string
-	CalcMode                   string
-	Clip                       string
-	ClipPath                   string
-	ClipRule                   string
-	Color                      string
-	ColorInterpolation         string
-	ColorInterpolationFilters  string
-	ColorProfile               string
-	ColorRendering             string
-	Cursor                     string
-	Direction                  string
-	Display                    string
-	DominantBaseline           string
-	Dur                        string
-	EnableBackground           string
-	End                        string
-	ExternalResourcesRequired  string
-	Fill                       string
-	FillOpacity                string
-	FillRule                   string
-	Filter                     string
-	FloodColor                 string
-	FloodOpacity               string
-	FontFamily                 string
-	FontSize                   string
-	FontSizeAdjust             string
-	FontStretch                string
-	FontStyle                  string
-	FontVariant                string
-	FontWeight                 string
-	From                       string
-	GlyphOrientationHorizontal string
-	GlyphOrientationVertical   string
-	Href                       string
-	ImageRendering             string
-	Kerning                    string
-	KeySplines                 string
-	KeyTimes                   string
-	LetterSpacing              string
-	LightingColor              string
-	MarkerEnd                  string
-	MarkerMid                  string
-	MarkerStart                string
-	Mask                       string
-	Max                        string
-	Min                        string
-	Opacity                    string
-	Overflow                   string
-	PointerEvents              string
-	RepeatCount                string
-	RepeatDur                  string
-	RequiredExtensions         string
-	RequiredFeatures           string
-	RequiredFonts              string
-	RequiredFormats            string
-	Restart                    string
-	ShapeRendering             string
-	StopColor                  string
-	StopOpacity                string
-	Stroke                     string
-	StrokeDasharray            string
-	StrokeDashoffset           string
-	StrokeLinecap              string
-	StrokeLinejoin             string
-	StrokeMiterlimit           string
-	StrokeOpacity              string
-	StrokeWidth                string
-	SystemLanguage             string
-	TextAnchor                 string
-	TextDecoration             string
-	TextRendering              string
-	To                         string
-	UnicodeBidi                string
-	Values                     string
-	Visibility                 string
-	WordSpacing                string
-	WritingMode                string
+	SvgGlobal     SvgGlobalAttrs
+	Accumulate    string
+	Additive      string
+	AttributeName string
+	AttributeType string
+	Begin         string
+	By            string
+	CalcMode      string
+	Dur           string
+	End           string
+	From          string
+	KeySplines    string
+	KeyTimes      string
+	Max           string
+	Min           string
+	RepeatCount   string
+	RepeatDur     string
+	Restart       string
+	To            string
+	Values        string
 }
 
 // AnimateArg interface for animate element arguments
@@ -139,11 +73,6 @@ func (o AdditiveOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.Additive = o.v
 }
 
-// AlignmentBaselineOpt applies to Animate
-func (o AlignmentBaselineOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.AlignmentBaseline = o.v
-}
-
 // AttributeNameOpt applies to Animate
 func (o AttributeNameOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.AttributeName = o.v
@@ -152,11 +81,6 @@ func (o AttributeNameOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 // AttributeTypeOpt applies to Animate
 func (o AttributeTypeOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.AttributeType = o.v
-}
-
-// BaselineShiftOpt applies to Animate
-func (o BaselineShiftOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.BaselineShift = o.v
 }
 
 // BeginOpt applies to Animate
@@ -174,74 +98,9 @@ func (o CalcModeOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.CalcMode = o.v
 }
 
-// ClipOpt applies to Animate
-func (o ClipOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Clip = o.v
-}
-
-// ClipPathOpt applies to Animate
-func (o ClipPathOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.ClipPath = o.v
-}
-
-// ClipRuleOpt applies to Animate
-func (o ClipRuleOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.ClipRule = o.v
-}
-
-// ColorOpt applies to Animate
-func (o ColorOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Color = o.v
-}
-
-// ColorInterpolationOpt applies to Animate
-func (o ColorInterpolationOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.ColorInterpolation = o.v
-}
-
-// ColorInterpolationFiltersOpt applies to Animate
-func (o ColorInterpolationFiltersOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.ColorInterpolationFilters = o.v
-}
-
-// ColorProfileOpt applies to Animate
-func (o ColorProfileOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.ColorProfile = o.v
-}
-
-// ColorRenderingOpt applies to Animate
-func (o ColorRenderingOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.ColorRendering = o.v
-}
-
-// CursorOpt applies to Animate
-func (o CursorOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Cursor = o.v
-}
-
-// DirectionOpt applies to Animate
-func (o DirectionOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Direction = o.v
-}
-
-// DisplayOpt applies to Animate
-func (o DisplayOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Display = o.v
-}
-
-// DominantBaselineOpt applies to Animate
-func (o DominantBaselineOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.DominantBaseline = o.v
-}
-
 // DurOpt applies to Animate
 func (o DurOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.Dur = o.v
-}
-
-// EnableBackgroundOpt applies to Animate
-func (o EnableBackgroundOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.EnableBackground = o.v
 }
 
 // EndOpt applies to Animate
@@ -249,104 +108,9 @@ func (o EndOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.End = o.v
 }
 
-// ExternalResourcesRequiredOpt applies to Animate
-func (o ExternalResourcesRequiredOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.ExternalResourcesRequired = o.v
-}
-
-// FillOpt applies to Animate
-func (o FillOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Fill = o.v
-}
-
-// FillOpacityOpt applies to Animate
-func (o FillOpacityOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.FillOpacity = o.v
-}
-
-// FillRuleOpt applies to Animate
-func (o FillRuleOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.FillRule = o.v
-}
-
-// FilterOpt applies to Animate
-func (o FilterOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Filter = o.v
-}
-
-// FloodColorOpt applies to Animate
-func (o FloodColorOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.FloodColor = o.v
-}
-
-// FloodOpacityOpt applies to Animate
-func (o FloodOpacityOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.FloodOpacity = o.v
-}
-
-// FontFamilyOpt applies to Animate
-func (o FontFamilyOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.FontFamily = o.v
-}
-
-// FontSizeOpt applies to Animate
-func (o FontSizeOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.FontSize = o.v
-}
-
-// FontSizeAdjustOpt applies to Animate
-func (o FontSizeAdjustOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.FontSizeAdjust = o.v
-}
-
-// FontStretchOpt applies to Animate
-func (o FontStretchOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.FontStretch = o.v
-}
-
-// FontStyleOpt applies to Animate
-func (o FontStyleOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.FontStyle = o.v
-}
-
-// FontVariantOpt applies to Animate
-func (o FontVariantOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.FontVariant = o.v
-}
-
-// FontWeightOpt applies to Animate
-func (o FontWeightOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.FontWeight = o.v
-}
-
 // FromOpt applies to Animate
 func (o FromOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.From = o.v
-}
-
-// GlyphOrientationHorizontalOpt applies to Animate
-func (o GlyphOrientationHorizontalOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.GlyphOrientationHorizontal = o.v
-}
-
-// GlyphOrientationVerticalOpt applies to Animate
-func (o GlyphOrientationVerticalOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.GlyphOrientationVertical = o.v
-}
-
-// HrefOpt applies to Animate
-func (o HrefOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Href = o.v
-}
-
-// ImageRenderingOpt applies to Animate
-func (o ImageRenderingOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.ImageRendering = o.v
-}
-
-// KerningOpt applies to Animate
-func (o KerningOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Kerning = o.v
 }
 
 // KeySplinesOpt applies to Animate
@@ -359,36 +123,6 @@ func (o KeyTimesOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.KeyTimes = o.v
 }
 
-// LetterSpacingOpt applies to Animate
-func (o LetterSpacingOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.LetterSpacing = o.v
-}
-
-// LightingColorOpt applies to Animate
-func (o LightingColorOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.LightingColor = o.v
-}
-
-// MarkerEndOpt applies to Animate
-func (o MarkerEndOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.MarkerEnd = o.v
-}
-
-// MarkerMidOpt applies to Animate
-func (o MarkerMidOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.MarkerMid = o.v
-}
-
-// MarkerStartOpt applies to Animate
-func (o MarkerStartOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.MarkerStart = o.v
-}
-
-// MaskOpt applies to Animate
-func (o MaskOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Mask = o.v
-}
-
 // MaxOpt applies to Animate
 func (o MaxOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.Max = o.v
@@ -397,21 +131,6 @@ func (o MaxOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 // MinOpt applies to Animate
 func (o MinOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.Min = o.v
-}
-
-// OpacityOpt applies to Animate
-func (o OpacityOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Opacity = o.v
-}
-
-// OverflowOpt applies to Animate
-func (o OverflowOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Overflow = o.v
-}
-
-// PointerEventsOpt applies to Animate
-func (o PointerEventsOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.PointerEvents = o.v
 }
 
 // RepeatCountOpt applies to Animate
@@ -424,104 +143,9 @@ func (o RepeatDurOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.RepeatDur = o.v
 }
 
-// RequiredExtensionsOpt applies to Animate
-func (o RequiredExtensionsOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.RequiredExtensions = o.v
-}
-
-// RequiredFeaturesOpt applies to Animate
-func (o RequiredFeaturesOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.RequiredFeatures = o.v
-}
-
-// RequiredFontsOpt applies to Animate
-func (o RequiredFontsOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.RequiredFonts = o.v
-}
-
-// RequiredFormatsOpt applies to Animate
-func (o RequiredFormatsOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.RequiredFormats = o.v
-}
-
 // RestartOpt applies to Animate
 func (o RestartOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.Restart = o.v
-}
-
-// ShapeRenderingOpt applies to Animate
-func (o ShapeRenderingOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.ShapeRendering = o.v
-}
-
-// StopColorOpt applies to Animate
-func (o StopColorOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.StopColor = o.v
-}
-
-// StopOpacityOpt applies to Animate
-func (o StopOpacityOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.StopOpacity = o.v
-}
-
-// StrokeOpt applies to Animate
-func (o StrokeOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Stroke = o.v
-}
-
-// StrokeDasharrayOpt applies to Animate
-func (o StrokeDasharrayOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.StrokeDasharray = o.v
-}
-
-// StrokeDashoffsetOpt applies to Animate
-func (o StrokeDashoffsetOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.StrokeDashoffset = o.v
-}
-
-// StrokeLinecapOpt applies to Animate
-func (o StrokeLinecapOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.StrokeLinecap = o.v
-}
-
-// StrokeLinejoinOpt applies to Animate
-func (o StrokeLinejoinOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.StrokeLinejoin = o.v
-}
-
-// StrokeMiterlimitOpt applies to Animate
-func (o StrokeMiterlimitOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.StrokeMiterlimit = o.v
-}
-
-// StrokeOpacityOpt applies to Animate
-func (o StrokeOpacityOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.StrokeOpacity = o.v
-}
-
-// StrokeWidthOpt applies to Animate
-func (o StrokeWidthOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.StrokeWidth = o.v
-}
-
-// SystemLanguageOpt applies to Animate
-func (o SystemLanguageOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.SystemLanguage = o.v
-}
-
-// TextAnchorOpt applies to Animate
-func (o TextAnchorOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.TextAnchor = o.v
-}
-
-// TextDecorationOpt applies to Animate
-func (o TextDecorationOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.TextDecoration = o.v
-}
-
-// TextRenderingOpt applies to Animate
-func (o TextRenderingOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.TextRendering = o.v
 }
 
 // ToOpt applies to Animate
@@ -529,29 +153,9 @@ func (o ToOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.To = o.v
 }
 
-// UnicodeBidiOpt applies to Animate
-func (o UnicodeBidiOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.UnicodeBidi = o.v
-}
-
 // ValuesOpt applies to Animate
 func (o ValuesOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
 	a.Values = o.v
-}
-
-// VisibilityOpt applies to Animate
-func (o VisibilityOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.Visibility = o.v
-}
-
-// WordSpacingOpt applies to Animate
-func (o WordSpacingOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.WordSpacing = o.v
-}
-
-// WritingModeOpt applies to Animate
-func (o WritingModeOpt) applyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	a.WritingMode = o.v
 }
 
 // writeAttrs writes the SVG attributes to the string builder
@@ -563,17 +167,11 @@ func (a *AnimateAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Additive != "" {
 		SvgAttr(sb, "additive", a.Additive)
 	}
-	if a.AlignmentBaseline != "" {
-		SvgAttr(sb, "alignment-baseline", a.AlignmentBaseline)
-	}
 	if a.AttributeName != "" {
 		SvgAttr(sb, "attributeName", a.AttributeName)
 	}
 	if a.AttributeType != "" {
 		SvgAttr(sb, "attributeType", a.AttributeType)
-	}
-	if a.BaselineShift != "" {
-		SvgAttr(sb, "baseline-shift", a.BaselineShift)
 	}
 	if a.Begin != "" {
 		SvgAttr(sb, "begin", a.Begin)
@@ -584,110 +182,14 @@ func (a *AnimateAttrs) writeAttrs(sb *strings.Builder) {
 	if a.CalcMode != "" {
 		SvgAttr(sb, "calcMode", a.CalcMode)
 	}
-	if a.Clip != "" {
-		SvgAttr(sb, "clip", a.Clip)
-	}
-	if a.ClipPath != "" {
-		SvgAttr(sb, "clip-path", a.ClipPath)
-	}
-	if a.ClipRule != "" {
-		SvgAttr(sb, "clip-rule", a.ClipRule)
-	}
-	if a.Color != "" {
-		SvgAttr(sb, "color", a.Color)
-	}
-	if a.ColorInterpolation != "" {
-		SvgAttr(sb, "color-interpolation", a.ColorInterpolation)
-	}
-	if a.ColorInterpolationFilters != "" {
-		SvgAttr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
-	}
-	if a.ColorProfile != "" {
-		SvgAttr(sb, "color-profile", a.ColorProfile)
-	}
-	if a.ColorRendering != "" {
-		SvgAttr(sb, "color-rendering", a.ColorRendering)
-	}
-	if a.Cursor != "" {
-		SvgAttr(sb, "cursor", a.Cursor)
-	}
-	if a.Direction != "" {
-		SvgAttr(sb, "direction", a.Direction)
-	}
-	if a.Display != "" {
-		SvgAttr(sb, "display", a.Display)
-	}
-	if a.DominantBaseline != "" {
-		SvgAttr(sb, "dominant-baseline", a.DominantBaseline)
-	}
 	if a.Dur != "" {
 		SvgAttr(sb, "dur", a.Dur)
-	}
-	if a.EnableBackground != "" {
-		SvgAttr(sb, "enable-background", a.EnableBackground)
 	}
 	if a.End != "" {
 		SvgAttr(sb, "end", a.End)
 	}
-	if a.ExternalResourcesRequired != "" {
-		SvgAttr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
-	}
-	if a.Fill != "" {
-		SvgAttr(sb, "fill", a.Fill)
-	}
-	if a.FillOpacity != "" {
-		SvgAttr(sb, "fill-opacity", a.FillOpacity)
-	}
-	if a.FillRule != "" {
-		SvgAttr(sb, "fill-rule", a.FillRule)
-	}
-	if a.Filter != "" {
-		SvgAttr(sb, "filter", a.Filter)
-	}
-	if a.FloodColor != "" {
-		SvgAttr(sb, "flood-color", a.FloodColor)
-	}
-	if a.FloodOpacity != "" {
-		SvgAttr(sb, "flood-opacity", a.FloodOpacity)
-	}
-	if a.FontFamily != "" {
-		SvgAttr(sb, "font-family", a.FontFamily)
-	}
-	if a.FontSize != "" {
-		SvgAttr(sb, "font-size", a.FontSize)
-	}
-	if a.FontSizeAdjust != "" {
-		SvgAttr(sb, "font-size-adjust", a.FontSizeAdjust)
-	}
-	if a.FontStretch != "" {
-		SvgAttr(sb, "font-stretch", a.FontStretch)
-	}
-	if a.FontStyle != "" {
-		SvgAttr(sb, "font-style", a.FontStyle)
-	}
-	if a.FontVariant != "" {
-		SvgAttr(sb, "font-variant", a.FontVariant)
-	}
-	if a.FontWeight != "" {
-		SvgAttr(sb, "font-weight", a.FontWeight)
-	}
 	if a.From != "" {
 		SvgAttr(sb, "from", a.From)
-	}
-	if a.GlyphOrientationHorizontal != "" {
-		SvgAttr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
-	}
-	if a.GlyphOrientationVertical != "" {
-		SvgAttr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
-	}
-	if a.Href != "" {
-		SvgAttr(sb, "href", a.Href)
-	}
-	if a.ImageRendering != "" {
-		SvgAttr(sb, "image-rendering", a.ImageRendering)
-	}
-	if a.Kerning != "" {
-		SvgAttr(sb, "kerning", a.Kerning)
 	}
 	if a.KeySplines != "" {
 		SvgAttr(sb, "keySplines", a.KeySplines)
@@ -695,38 +197,11 @@ func (a *AnimateAttrs) writeAttrs(sb *strings.Builder) {
 	if a.KeyTimes != "" {
 		SvgAttr(sb, "keyTimes", a.KeyTimes)
 	}
-	if a.LetterSpacing != "" {
-		SvgAttr(sb, "letter-spacing", a.LetterSpacing)
-	}
-	if a.LightingColor != "" {
-		SvgAttr(sb, "lighting-color", a.LightingColor)
-	}
-	if a.MarkerEnd != "" {
-		SvgAttr(sb, "marker-end", a.MarkerEnd)
-	}
-	if a.MarkerMid != "" {
-		SvgAttr(sb, "marker-mid", a.MarkerMid)
-	}
-	if a.MarkerStart != "" {
-		SvgAttr(sb, "marker-start", a.MarkerStart)
-	}
-	if a.Mask != "" {
-		SvgAttr(sb, "mask", a.Mask)
-	}
 	if a.Max != "" {
 		SvgAttr(sb, "max", a.Max)
 	}
 	if a.Min != "" {
 		SvgAttr(sb, "min", a.Min)
-	}
-	if a.Opacity != "" {
-		SvgAttr(sb, "opacity", a.Opacity)
-	}
-	if a.Overflow != "" {
-		SvgAttr(sb, "overflow", a.Overflow)
-	}
-	if a.PointerEvents != "" {
-		SvgAttr(sb, "pointer-events", a.PointerEvents)
 	}
 	if a.RepeatCount != "" {
 		SvgAttr(sb, "repeatCount", a.RepeatCount)
@@ -734,82 +209,13 @@ func (a *AnimateAttrs) writeAttrs(sb *strings.Builder) {
 	if a.RepeatDur != "" {
 		SvgAttr(sb, "repeatDur", a.RepeatDur)
 	}
-	if a.RequiredExtensions != "" {
-		SvgAttr(sb, "requiredExtensions", a.RequiredExtensions)
-	}
-	if a.RequiredFeatures != "" {
-		SvgAttr(sb, "requiredFeatures", a.RequiredFeatures)
-	}
-	if a.RequiredFonts != "" {
-		SvgAttr(sb, "requiredFonts", a.RequiredFonts)
-	}
-	if a.RequiredFormats != "" {
-		SvgAttr(sb, "requiredFormats", a.RequiredFormats)
-	}
 	if a.Restart != "" {
 		SvgAttr(sb, "restart", a.Restart)
-	}
-	if a.ShapeRendering != "" {
-		SvgAttr(sb, "shape-rendering", a.ShapeRendering)
-	}
-	if a.StopColor != "" {
-		SvgAttr(sb, "stop-color", a.StopColor)
-	}
-	if a.StopOpacity != "" {
-		SvgAttr(sb, "stop-opacity", a.StopOpacity)
-	}
-	if a.Stroke != "" {
-		SvgAttr(sb, "stroke", a.Stroke)
-	}
-	if a.StrokeDasharray != "" {
-		SvgAttr(sb, "stroke-dasharray", a.StrokeDasharray)
-	}
-	if a.StrokeDashoffset != "" {
-		SvgAttr(sb, "stroke-dashoffset", a.StrokeDashoffset)
-	}
-	if a.StrokeLinecap != "" {
-		SvgAttr(sb, "stroke-linecap", a.StrokeLinecap)
-	}
-	if a.StrokeLinejoin != "" {
-		SvgAttr(sb, "stroke-linejoin", a.StrokeLinejoin)
-	}
-	if a.StrokeMiterlimit != "" {
-		SvgAttr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
-	}
-	if a.StrokeOpacity != "" {
-		SvgAttr(sb, "stroke-opacity", a.StrokeOpacity)
-	}
-	if a.StrokeWidth != "" {
-		SvgAttr(sb, "stroke-width", a.StrokeWidth)
-	}
-	if a.SystemLanguage != "" {
-		SvgAttr(sb, "systemLanguage", a.SystemLanguage)
-	}
-	if a.TextAnchor != "" {
-		SvgAttr(sb, "text-anchor", a.TextAnchor)
-	}
-	if a.TextDecoration != "" {
-		SvgAttr(sb, "text-decoration", a.TextDecoration)
-	}
-	if a.TextRendering != "" {
-		SvgAttr(sb, "text-rendering", a.TextRendering)
 	}
 	if a.To != "" {
 		SvgAttr(sb, "to", a.To)
 	}
-	if a.UnicodeBidi != "" {
-		SvgAttr(sb, "unicode-bidi", a.UnicodeBidi)
-	}
 	if a.Values != "" {
 		SvgAttr(sb, "values", a.Values)
-	}
-	if a.Visibility != "" {
-		SvgAttr(sb, "visibility", a.Visibility)
-	}
-	if a.WordSpacing != "" {
-		SvgAttr(sb, "word-spacing", a.WordSpacing)
-	}
-	if a.WritingMode != "" {
-		SvgAttr(sb, "writing-mode", a.WritingMode)
 	}
 }

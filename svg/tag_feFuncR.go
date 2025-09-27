@@ -32,7 +32,7 @@ func defaultFeFuncRAttrs() *FeFuncRAttrs {
 	}
 }
 
-// FeFuncR creates an SVG feFuncR element (self-closing)
+// FeFuncR creates an SVG feFuncR element
 func FeFuncR(args ...FeFuncRArg) html.Node {
 	a := defaultFeFuncRAttrs()
 	var kids []html.Component
@@ -42,7 +42,7 @@ func FeFuncR(args ...FeFuncRArg) html.Node {
 	return html.Node{
 		Tag:   "feFuncR",
 		Attrs: a,
-		Void:  true,
+		Kids:  kids,
 	}
 }
 

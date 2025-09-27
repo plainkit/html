@@ -10,12 +10,7 @@ import (
 
 // TitleAttrs holds the attributes for the title SVG element
 type TitleAttrs struct {
-	SvgGlobal          SvgGlobalAttrs
-	RequiredExtensions string
-	RequiredFeatures   string
-	RequiredFonts      string
-	RequiredFormats    string
-	SystemLanguage     string
+	SvgGlobal SvgGlobalAttrs
 }
 
 // TitleArg interface for title element arguments
@@ -49,47 +44,7 @@ func (g Global) applyTitle(a *TitleAttrs, _ *[]html.Component) {
 	g.do(&a.SvgGlobal)
 }
 
-// RequiredExtensionsOpt applies to Title
-func (o RequiredExtensionsOpt) applyTitle(a *TitleAttrs, _ *[]html.Component) {
-	a.RequiredExtensions = o.v
-}
-
-// RequiredFeaturesOpt applies to Title
-func (o RequiredFeaturesOpt) applyTitle(a *TitleAttrs, _ *[]html.Component) {
-	a.RequiredFeatures = o.v
-}
-
-// RequiredFontsOpt applies to Title
-func (o RequiredFontsOpt) applyTitle(a *TitleAttrs, _ *[]html.Component) {
-	a.RequiredFonts = o.v
-}
-
-// RequiredFormatsOpt applies to Title
-func (o RequiredFormatsOpt) applyTitle(a *TitleAttrs, _ *[]html.Component) {
-	a.RequiredFormats = o.v
-}
-
-// SystemLanguageOpt applies to Title
-func (o SystemLanguageOpt) applyTitle(a *TitleAttrs, _ *[]html.Component) {
-	a.SystemLanguage = o.v
-}
-
 // writeAttrs writes the SVG attributes to the string builder
 func (a *TitleAttrs) writeAttrs(sb *strings.Builder) {
 	WriteSvgGlobal(sb, &a.SvgGlobal)
-	if a.RequiredExtensions != "" {
-		SvgAttr(sb, "requiredExtensions", a.RequiredExtensions)
-	}
-	if a.RequiredFeatures != "" {
-		SvgAttr(sb, "requiredFeatures", a.RequiredFeatures)
-	}
-	if a.RequiredFonts != "" {
-		SvgAttr(sb, "requiredFonts", a.RequiredFonts)
-	}
-	if a.RequiredFormats != "" {
-		SvgAttr(sb, "requiredFormats", a.RequiredFormats)
-	}
-	if a.SystemLanguage != "" {
-		SvgAttr(sb, "systemLanguage", a.SystemLanguage)
-	}
 }

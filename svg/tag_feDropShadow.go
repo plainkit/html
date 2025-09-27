@@ -13,13 +13,9 @@ type FeDropShadowAttrs struct {
 	SvgGlobal    SvgGlobalAttrs
 	Dx           string
 	Dy           string
-	Height       string
-	In           string
-	Result       string
+	FloodColor   string
+	FloodOpacity string
 	StdDeviation string
-	Width        string
-	X            string
-	Y            string
 }
 
 // FeDropShadowArg interface for feDropShadow element arguments
@@ -34,7 +30,7 @@ func defaultFeDropShadowAttrs() *FeDropShadowAttrs {
 	}
 }
 
-// FeDropShadow creates an SVG feDropShadow element (self-closing)
+// FeDropShadow creates an SVG feDropShadow element
 func FeDropShadow(args ...FeDropShadowArg) html.Node {
 	a := defaultFeDropShadowAttrs()
 	var kids []html.Component
@@ -44,7 +40,7 @@ func FeDropShadow(args ...FeDropShadowArg) html.Node {
 	return html.Node{
 		Tag:   "feDropShadow",
 		Attrs: a,
-		Void:  true,
+		Kids:  kids,
 	}
 }
 
@@ -63,39 +59,19 @@ func (o DyOpt) applyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
 	a.Dy = o.v
 }
 
-// HeightOpt applies to FeDropShadow
-func (o HeightOpt) applyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
-	a.Height = o.v
+// FloodColorOpt applies to FeDropShadow
+func (o FloodColorOpt) applyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
+	a.FloodColor = o.v
 }
 
-// InOpt applies to FeDropShadow
-func (o InOpt) applyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
-	a.In = o.v
-}
-
-// ResultOpt applies to FeDropShadow
-func (o ResultOpt) applyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
-	a.Result = o.v
+// FloodOpacityOpt applies to FeDropShadow
+func (o FloodOpacityOpt) applyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
+	a.FloodOpacity = o.v
 }
 
 // StdDeviationOpt applies to FeDropShadow
 func (o StdDeviationOpt) applyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
 	a.StdDeviation = o.v
-}
-
-// WidthOpt applies to FeDropShadow
-func (o WidthOpt) applyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
-	a.Width = o.v
-}
-
-// XOpt applies to FeDropShadow
-func (o XOpt) applyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
-	a.X = o.v
-}
-
-// YOpt applies to FeDropShadow
-func (o YOpt) applyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
-	a.Y = o.v
 }
 
 // writeAttrs writes the SVG attributes to the string builder
@@ -107,25 +83,13 @@ func (a *FeDropShadowAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Dy != "" {
 		SvgAttr(sb, "dy", a.Dy)
 	}
-	if a.Height != "" {
-		SvgAttr(sb, "height", a.Height)
+	if a.FloodColor != "" {
+		SvgAttr(sb, "flood-color", a.FloodColor)
 	}
-	if a.In != "" {
-		SvgAttr(sb, "in", a.In)
-	}
-	if a.Result != "" {
-		SvgAttr(sb, "result", a.Result)
+	if a.FloodOpacity != "" {
+		SvgAttr(sb, "flood-opacity", a.FloodOpacity)
 	}
 	if a.StdDeviation != "" {
 		SvgAttr(sb, "stdDeviation", a.StdDeviation)
-	}
-	if a.Width != "" {
-		SvgAttr(sb, "width", a.Width)
-	}
-	if a.X != "" {
-		SvgAttr(sb, "x", a.X)
-	}
-	if a.Y != "" {
-		SvgAttr(sb, "y", a.Y)
 	}
 }

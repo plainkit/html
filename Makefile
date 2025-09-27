@@ -4,7 +4,7 @@ generate:
 	@echo "Generating HTML tags from gostar..."
 	cd cmd/gen-tags && go run main.go -out ../..
 	@echo "Generating SVG tags..."
-	go run ./cmd/gen-svg
+	cd cmd/gen-svg && go run main.go -out ../../svg
 	@echo "Running goimports..."
 	goimports -w .
 	@echo "Running gofmt..."

@@ -28,7 +28,7 @@ func defaultFePointLightAttrs() *FePointLightAttrs {
 	}
 }
 
-// FePointLight creates an SVG fePointLight element (self-closing)
+// FePointLight creates an SVG fePointLight element
 func FePointLight(args ...FePointLightArg) html.Node {
 	a := defaultFePointLightAttrs()
 	var kids []html.Component
@@ -38,7 +38,7 @@ func FePointLight(args ...FePointLightArg) html.Node {
 	return html.Node{
 		Tag:   "fePointLight",
 		Attrs: a,
-		Void:  true,
+		Kids:  kids,
 	}
 }
 

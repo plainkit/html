@@ -1,153 +1,73 @@
 package spec
 
 import (
-	"encoding/json"
 	"fmt"
-	"io"
-	"net/http"
-	"os"
-	"regexp"
 	"sort"
 	"strings"
+
+	"github.com/delaneyj/gostar/cfg"
+	pb "github.com/delaneyj/gostar/cfg/gen/specs/v1"
 )
 
-// VoidElements defines SVG elements that are self-closing
-var VoidElements = map[string]bool{
-	"animateMotion":    true,
-	"animateTransform": true,
-	"circle":           true,
-	"ellipse":          true,
-	"feDistantLight":   true,
-	"feDropShadow":     true,
-	"feFuncA":          true,
-	"feFuncB":          true,
-	"feFuncG":          true,
-	"feFuncR":          true,
-	"fePointLight":     true,
-	"feSpotLight":      true,
-	"line":             true,
-	"path":             true,
-	"polygon":          true,
-	"polyline":         true,
-	"rect":             true,
-	"stop":             true,
-	"use":              true,
+// Loader handles loading and parsing of SVG specification from gostar
+type Loader struct {
+	svgSpec *pb.Namespace
 }
 
-// BoolAttributes defines SVG attributes that are boolean
-var BoolAttributes = map[string]bool{
-	"externalResourcesRequired": true,
-	"focusable":                 true,
-	"crossorigin":               true,
-}
-
-// Loader handles loading and parsing of SVG specification
-type Loader struct{}
-
-// NewLoader creates a new spec loader
+// NewLoader creates a new spec loader using gostar SVG data
 func NewLoader() *Loader {
-	return &Loader{}
+	return &Loader{svgSpec: cfg.SVG}
 }
 
-// FetchSvgElementAttributes fetches SVG element attributes from the wooorm GitHub repository
-func (l *Loader) FetchSvgElementAttributes() (SvgElementAttributes, error) {
-	url := "https://raw.githubusercontent.com/wooorm/svg-element-attributes/refs/heads/main/index.js"
+// getGostarSpec returns the gostar SVG specification
+func (l *Loader) getGostarSpec() *pb.Namespace {
+	return l.svgSpec
+}
 
-	resp, err := http.Get(url)
-	if err != nil {
-		return nil, fmt.Errorf("fetch svg-element-attributes: %w", err)
-	}
-	defer func() {
-		if closeErr := resp.Body.Close(); closeErr != nil {
-			fmt.Fprintf(os.Stderr, "Warning: failed to close response body: %v\n", closeErr)
+// isVoidElement checks if an SVG element is self-closing based on gostar data
+func (l *Loader) isVoidElement(tagName string) bool {
+	for _, element := range l.svgSpec.Elements {
+		if element.Tag == tagName {
+			return element.NoChildren
 		}
-	}()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("fetch svg-element-attributes: status %d", resp.StatusCode)
 	}
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, fmt.Errorf("read svg-element-attributes: %w", err)
-	}
-
-	return l.parseSvgElementAttributes(string(body))
+	return false
 }
 
-// parseSvgElementAttributes parses the JavaScript module content
-func (l *Loader) parseSvgElementAttributes(content string) (SvgElementAttributes, error) {
-	// Find the export statement with the object
-	re := regexp.MustCompile(`export const svgElementAttributes = ({[\s\S]*?})\s*;?\s*$`)
-	matches := re.FindStringSubmatch(content)
-	if len(matches) < 2 {
-		return nil, fmt.Errorf("could not find svgElementAttributes export in content")
+// isAttributeBoolean determines if an attribute should be treated as boolean
+func (l *Loader) isAttributeBoolean(attr *pb.Attribute) bool {
+	if attr.Type == nil {
+		return false
 	}
-
-	jsonStr := matches[1]
-
-	// Convert JavaScript object to JSON
-	jsonStr = l.convertJSObjectToJSON(jsonStr)
-
-	var data SvgElementAttributes
-	if err := json.Unmarshal([]byte(jsonStr), &data); err != nil {
-		return nil, fmt.Errorf("parse svg-element-attributes as JSON: %w", err)
-	}
-
-	return data, nil
+	// Check if the attribute type contains "bool:true" in its string representation
+	typeStr := fmt.Sprintf("%+v", attr.Type)
+	return strings.Contains(typeStr, "bool:true")
 }
 
-// convertJSObjectToJSON converts a JavaScript object literal to valid JSON
-func (l *Loader) convertJSObjectToJSON(jsObject string) string {
-	// Replace single quotes with double quotes
-	result := strings.ReplaceAll(jsObject, "'", "\"")
-
-	// Add quotes around unquoted keys
-	keyRegex := regexp.MustCompile(`(?m)^\s*([a-zA-Z_$][a-zA-Z0-9_$-]*)\s*:`)
-	result = keyRegex.ReplaceAllString(result, "\"$1\":")
-
-	return result
-}
-
-// LoadAllTagSpecs loads all SVG tag specifications from the fetched data
+// LoadAllTagSpecs loads all SVG tag specifications from gostar data
 func (l *Loader) LoadAllTagSpecs() ([]TagSpec, error) {
-	fmt.Println("Fetching SVG element attributes from wooorm repository...")
-	svgData, err := l.FetchSvgElementAttributes()
-	if err != nil {
-		return nil, fmt.Errorf("fetch svg data: %w", err)
-	}
-	fmt.Printf("Loaded %d SVG element specifications\n", len(svgData))
-
-	return l.convertToTagSpecs(svgData), nil
+	fmt.Println("Loading SVG specifications from gostar...")
+	specs := l.convertGostarToTagSpecs()
+	fmt.Printf("Loaded %d SVG element specifications\n", len(specs))
+	return specs, nil
 }
 
-// LoadGlobalAttributes loads SVG global attributes from the fetched data
+// LoadGlobalAttributes loads SVG global attributes from gostar data
 func (l *Loader) LoadGlobalAttributes() ([]Attribute, error) {
-	svgData, err := l.FetchSvgElementAttributes()
-	if err != nil {
-		return nil, fmt.Errorf("fetch svg data: %w", err)
-	}
-
-	globalAttrs, exists := svgData["*"]
-	if !exists {
-		return nil, fmt.Errorf("no global attributes found in SVG data")
-	}
+	fmt.Println("Loading SVG global attributes from gostar...")
+	globalAttrs := l.extractGlobalAttributes()
 
 	var attributes []Attribute
-	for _, attrName := range globalAttrs {
+	for attrName, attrType := range globalAttrs {
 		if attrName == "" {
 			continue
 		}
 
-		field := CamelCase(attrName)
+		field := camelCase(attrName)
 		attr := Attribute{
 			Field: field,
 			Attr:  attrName,
-			Type:  "string",
-		}
-
-		if BoolAttributes[strings.ToLower(attrName)] {
-			attr.Type = "bool"
+			Type:  attrType,
 		}
 
 		attributes = append(attributes, attr)
@@ -184,76 +104,59 @@ func (l *Loader) CollectAllAttributes(specs []TagSpec) map[string]Attribute {
 	return allAttributes
 }
 
-// convertToTagSpecs converts SvgElementAttributes to TagSpec slice
-func (l *Loader) convertToTagSpecs(svgData SvgElementAttributes) []TagSpec {
+func (l *Loader) convertGostarToTagSpecs() []TagSpec {
 	var specs []TagSpec
 
-	// Get global attributes
-	globalAttrs := make(map[string]bool)
-	if globalAttrList, exists := svgData["*"]; exists {
-		for _, attr := range globalAttrList {
-			globalAttrs[attr] = true
-		}
-	}
+	globalAttrs := l.extractGlobalAttributes()
 
-	// Process each element
-	for tagName, attributes := range svgData {
-		if tagName == "*" {
-			continue // Skip global attributes entry
-		}
-
+	for _, element := range l.svgSpec.Elements {
 		spec := TagSpec{
-			Name: tagName,
-			Void: VoidElements[tagName],
+			Name: element.Tag,
+			Void: element.NoChildren,
 		}
 
-		// Add element-specific attributes (excluding globals), deduplicating by normalized name
+		// Use a map to deduplicate attributes by key
 		attrMap := make(map[string]Attribute)
-		for _, attrName := range attributes {
-			if attrName == "" || globalAttrs[attrName] {
+		for _, attr := range element.Attributes {
+			if attr.Key == "" {
 				continue
 			}
 
-			// Normalize attribute name by removing dashes for deduplication key
-			normalizedKey := strings.ReplaceAll(strings.ToLower(attrName), "-", "")
-
-			field := CamelCase(attrName)
-			attr := Attribute{
-				Field: field,
-				Attr:  attrName,
-				Type:  "string",
+			// Skip global attributes - they'll be handled separately
+			if _, isGlobal := globalAttrs[attr.Key]; isGlobal {
+				continue
 			}
 
-			if BoolAttributes[strings.ToLower(attrName)] {
-				attr.Type = "bool"
+			field := camelCase(attr.Key)
+			attrType := "string"
+			if l.isAttributeBoolean(attr) {
+				attrType = "bool"
 			}
 
-			// If we already have this normalized attribute, prefer hyphenated version
-			if existing, exists := attrMap[normalizedKey]; exists {
-				if strings.Contains(attrName, "-") && !strings.Contains(existing.Attr, "-") {
-					attrMap[normalizedKey] = attr
-				} else if existing.Type == "bool" && attr.Type == "string" {
-					attrMap[normalizedKey] = attr
+			// Only add if not already seen (deduplication)
+			if _, exists := attrMap[attr.Key]; !exists {
+				attrMap[attr.Key] = Attribute{
+					Field: field,
+					Attr:  attr.Key,
+					Type:  attrType,
 				}
-			} else {
-				attrMap[normalizedKey] = attr
 			}
 		}
 
-		// Convert map to slice
+		// Convert map back to slice
+		var elemAttributes []Attribute
 		for _, attr := range attrMap {
-			spec.Attributes = append(spec.Attributes, attr)
+			elemAttributes = append(elemAttributes, attr)
 		}
 
-		// Sort attributes by field name for consistency
-		sort.Slice(spec.Attributes, func(i, j int) bool {
-			return spec.Attributes[i].Field < spec.Attributes[j].Field
+		sort.Slice(elemAttributes, func(i, j int) bool {
+			return elemAttributes[i].Attr < elemAttributes[j].Attr
 		})
 
+		spec.Attributes = elemAttributes
 		specs = append(specs, spec)
 	}
 
-	// Sort specs by element name
 	sort.Slice(specs, func(i, j int) bool {
 		return specs[i].Name < specs[j].Name
 	})
@@ -261,8 +164,61 @@ func (l *Loader) convertToTagSpecs(svgData SvgElementAttributes) []TagSpec {
 	return specs
 }
 
-// CamelCase converts kebab-case to CamelCase
-func CamelCase(name string) string {
+// extractGlobalAttributes identifies attributes that appear in many SVG elements
+// and should be treated as global attributes
+func (l *Loader) extractGlobalAttributes() map[string]string {
+	attrCounts := make(map[string]int)
+	attrTypes := make(map[string]string)
+
+	// Count how often each attribute appears
+	for _, element := range l.svgSpec.Elements {
+		for _, attr := range element.Attributes {
+			if attr.Key != "" {
+				attrCounts[attr.Key]++
+				if attrTypes[attr.Key] == "" {
+					if l.isAttributeBoolean(attr) {
+						attrTypes[attr.Key] = "bool"
+					} else {
+						attrTypes[attr.Key] = "string"
+					}
+				}
+			}
+		}
+	}
+
+	// Consider attributes that appear in many elements as global
+	totalElements := len(l.svgSpec.Elements)
+	threshold := totalElements / 4 // 25% threshold
+	if threshold < 3 {
+		threshold = 3
+	}
+
+	globalAttrs := make(map[string]string)
+	for attr, count := range attrCounts {
+		if count >= threshold {
+			globalAttrs[attr] = attrTypes[attr]
+		}
+	}
+
+	// Always include common SVG global attributes
+	commonGlobals := map[string]string{
+		"id":        "string",
+		"class":     "string",
+		"style":     "string",
+		"fill":      "string",
+		"stroke":    "string",
+		"transform": "string",
+	}
+
+	for attr, typ := range commonGlobals {
+		globalAttrs[attr] = typ
+	}
+
+	return globalAttrs
+}
+
+// camelCase converts kebab-case to CamelCase
+func camelCase(name string) string {
 	// Handle special cases for SVG attributes with dashes and mixed case
 	delimiters := func(r rune) bool { return r == '-' || r == '_' }
 	parts := strings.FieldsFunc(name, delimiters)

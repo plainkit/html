@@ -27,7 +27,7 @@ func defaultFeDistantLightAttrs() *FeDistantLightAttrs {
 	}
 }
 
-// FeDistantLight creates an SVG feDistantLight element (self-closing)
+// FeDistantLight creates an SVG feDistantLight element
 func FeDistantLight(args ...FeDistantLightArg) html.Node {
 	a := defaultFeDistantLightAttrs()
 	var kids []html.Component
@@ -37,7 +37,7 @@ func FeDistantLight(args ...FeDistantLightArg) html.Node {
 	return html.Node{
 		Tag:   "feDistantLight",
 		Attrs: a,
-		Void:  true,
+		Kids:  kids,
 	}
 }
 
