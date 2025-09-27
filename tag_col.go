@@ -3,13 +3,8 @@ package html
 import "strings"
 
 type ColAttrs struct {
-	Global  GlobalAttrs
-	Align   string
-	Char    string
-	Charoff string
-	Span    string
-	Valign  string
-	Width   string
+	Global GlobalAttrs
+	Span   string
 }
 
 type ColArg interface {
@@ -40,43 +35,13 @@ func (g Global) applyCol(a *ColAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AlignOpt) applyCol(a *ColAttrs, _ *[]Component) {
-	a.Align = o.v
-}
-func (o CharOpt) applyCol(a *ColAttrs, _ *[]Component) {
-	a.Char = o.v
-}
-func (o CharoffOpt) applyCol(a *ColAttrs, _ *[]Component) {
-	a.Charoff = o.v
-}
 func (o SpanOpt) applyCol(a *ColAttrs, _ *[]Component) {
 	a.Span = o.v
-}
-func (o ValignOpt) applyCol(a *ColAttrs, _ *[]Component) {
-	a.Valign = o.v
-}
-func (o WidthOpt) applyCol(a *ColAttrs, _ *[]Component) {
-	a.Width = o.v
 }
 
 func (a *ColAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Align != "" {
-		Attr(sb, "align", a.Align)
-	}
-	if a.Char != "" {
-		Attr(sb, "char", a.Char)
-	}
-	if a.Charoff != "" {
-		Attr(sb, "charoff", a.Charoff)
-	}
 	if a.Span != "" {
 		Attr(sb, "span", a.Span)
-	}
-	if a.Valign != "" {
-		Attr(sb, "valign", a.Valign)
-	}
-	if a.Width != "" {
-		Attr(sb, "width", a.Width)
 	}
 }

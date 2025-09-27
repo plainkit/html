@@ -3,8 +3,7 @@ package html
 import "strings"
 
 type DlAttrs struct {
-	Global  GlobalAttrs
-	Compact bool
+	Global GlobalAttrs
 }
 
 type DlArg interface {
@@ -35,13 +34,6 @@ func (g Global) applyDl(a *DlAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o CompactOpt) applyDl(a *DlAttrs, _ *[]Component) {
-	a.Compact = true
-}
-
 func (a *DlAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Compact {
-		BoolAttr(sb, "compact")
-	}
 }

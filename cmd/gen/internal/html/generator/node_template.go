@@ -5,7 +5,6 @@ const nodeTemplate = `package html
 
 import (
 	"html"
-	"strconv"
 	"strings"
 )
 

@@ -4,7 +4,6 @@ import "strings"
 
 type CaptionAttrs struct {
 	Global GlobalAttrs
-	Align  string
 }
 
 type CaptionArg interface {
@@ -35,13 +34,6 @@ func (g Global) applyCaption(a *CaptionAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AlignOpt) applyCaption(a *CaptionAttrs, _ *[]Component) {
-	a.Align = o.v
-}
-
 func (a *CaptionAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Align != "" {
-		Attr(sb, "align", a.Align)
-	}
 }

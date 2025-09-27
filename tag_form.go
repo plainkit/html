@@ -4,7 +4,6 @@ import "strings"
 
 type FormAttrs struct {
 	Global        GlobalAttrs
-	Accept        string
 	AcceptCharset string
 	Action        string
 	Autocomplete  string
@@ -43,9 +42,6 @@ func (g Global) applyForm(a *FormAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AcceptOpt) applyForm(a *FormAttrs, _ *[]Component) {
-	a.Accept = o.v
-}
 func (o AcceptCharsetOpt) applyForm(a *FormAttrs, _ *[]Component) {
 	a.AcceptCharset = o.v
 }
@@ -73,9 +69,6 @@ func (o TargetOpt) applyForm(a *FormAttrs, _ *[]Component) {
 
 func (a *FormAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Accept != "" {
-		Attr(sb, "accept", a.Accept)
-	}
 	if a.AcceptCharset != "" {
 		Attr(sb, "accept-charset", a.AcceptCharset)
 	}

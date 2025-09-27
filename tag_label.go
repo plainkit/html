@@ -5,7 +5,6 @@ import "strings"
 type LabelAttrs struct {
 	Global GlobalAttrs
 	For    string
-	Form   string
 }
 
 type LabelArg interface {
@@ -39,16 +38,10 @@ func (g Global) applyLabel(a *LabelAttrs, _ *[]Component) {
 func (o ForOpt) applyLabel(a *LabelAttrs, _ *[]Component) {
 	a.For = o.v
 }
-func (o FormOpt) applyLabel(a *LabelAttrs, _ *[]Component) {
-	a.Form = o.v
-}
 
 func (a *LabelAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.For != "" {
 		Attr(sb, "for", a.For)
-	}
-	if a.Form != "" {
-		Attr(sb, "form", a.Form)
 	}
 }

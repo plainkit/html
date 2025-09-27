@@ -5,8 +5,6 @@ import "strings"
 type FieldsetAttrs struct {
 	Global   GlobalAttrs
 	Disabled bool
-	Form     string
-	Name     string
 }
 
 type FieldsetArg interface {
@@ -40,22 +38,10 @@ func (g Global) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
 func (o DisabledOpt) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
 	a.Disabled = true
 }
-func (o FormOpt) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
-	a.Form = o.v
-}
-func (o NameOpt) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
-	a.Name = o.v
-}
 
 func (a *FieldsetAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.Disabled {
 		BoolAttr(sb, "disabled")
-	}
-	if a.Form != "" {
-		Attr(sb, "form", a.Form)
-	}
-	if a.Name != "" {
-		Attr(sb, "name", a.Name)
 	}
 }

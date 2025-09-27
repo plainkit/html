@@ -2,7 +2,12 @@ module github.com/plainkit/html
 
 go 1.22.1
 
-require github.com/delaneyj/gostar v0.8.0
+require (
+	github.com/delaneyj/gostar v0.8.0
+	github.com/plainkit/tags v0.1.0
+)
+
+replace github.com/plainkit/tags => ../tags
 
 require (
 	github.com/planetscale/vtprotobuf v0.6.0 // indirect

@@ -4,7 +4,6 @@ import "strings"
 
 type H5Attrs struct {
 	Global GlobalAttrs
-	Align  string
 }
 
 type H5Arg interface {
@@ -35,13 +34,6 @@ func (g Global) applyH5(a *H5Attrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AlignOpt) applyH5(a *H5Attrs, _ *[]Component) {
-	a.Align = o.v
-}
-
 func (a *H5Attrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Align != "" {
-		Attr(sb, "align", a.Align)
-	}
 }

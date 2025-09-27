@@ -5,29 +5,24 @@ import "strings"
 type InputAttrs struct {
 	Global              GlobalAttrs
 	Accept              string
-	Align               string
-	Alpha               string
+	Alpha               bool
 	Alt                 string
 	Autocomplete        string
 	Checked             bool
 	Colorspace          string
 	Dirname             string
-	Disabled            bool
-	Form                string
 	Formaction          string
 	Formenctype         string
 	Formmethod          string
 	Formnovalidate      bool
 	Formtarget          string
 	Height              string
-	Ismap               bool
 	List                string
 	Max                 string
 	Maxlength           string
 	Min                 string
 	Minlength           string
 	Multiple            bool
-	Name                string
 	Pattern             string
 	Placeholder         string
 	Popovertarget       string
@@ -38,7 +33,6 @@ type InputAttrs struct {
 	Src                 string
 	Step                string
 	Type                string
-	Usemap              string
 	Value               string
 	Width               string
 }
@@ -74,11 +68,8 @@ func (g Global) applyInput(a *InputAttrs, _ *[]Component) {
 func (o AcceptOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Accept = o.v
 }
-func (o AlignOpt) applyInput(a *InputAttrs, _ *[]Component) {
-	a.Align = o.v
-}
 func (o AlphaOpt) applyInput(a *InputAttrs, _ *[]Component) {
-	a.Alpha = o.v
+	a.Alpha = true
 }
 func (o AltOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Alt = o.v
@@ -94,12 +85,6 @@ func (o ColorspaceOpt) applyInput(a *InputAttrs, _ *[]Component) {
 }
 func (o DirnameOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Dirname = o.v
-}
-func (o DisabledOpt) applyInput(a *InputAttrs, _ *[]Component) {
-	a.Disabled = true
-}
-func (o FormOpt) applyInput(a *InputAttrs, _ *[]Component) {
-	a.Form = o.v
 }
 func (o FormactionOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Formaction = o.v
@@ -119,9 +104,6 @@ func (o FormtargetOpt) applyInput(a *InputAttrs, _ *[]Component) {
 func (o HeightOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Height = o.v
 }
-func (o IsmapOpt) applyInput(a *InputAttrs, _ *[]Component) {
-	a.Ismap = true
-}
 func (o ListOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.List = o.v
 }
@@ -139,9 +121,6 @@ func (o MinlengthOpt) applyInput(a *InputAttrs, _ *[]Component) {
 }
 func (o MultipleOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Multiple = true
-}
-func (o NameOpt) applyInput(a *InputAttrs, _ *[]Component) {
-	a.Name = o.v
 }
 func (o PatternOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Pattern = o.v
@@ -173,9 +152,6 @@ func (o StepOpt) applyInput(a *InputAttrs, _ *[]Component) {
 func (o TypeOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Type = o.v
 }
-func (o UsemapOpt) applyInput(a *InputAttrs, _ *[]Component) {
-	a.Usemap = o.v
-}
 func (o ValueOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Value = o.v
 }
@@ -188,11 +164,8 @@ func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Accept != "" {
 		Attr(sb, "accept", a.Accept)
 	}
-	if a.Align != "" {
-		Attr(sb, "align", a.Align)
-	}
-	if a.Alpha != "" {
-		Attr(sb, "alpha", a.Alpha)
+	if a.Alpha {
+		BoolAttr(sb, "alpha")
 	}
 	if a.Alt != "" {
 		Attr(sb, "alt", a.Alt)
@@ -208,12 +181,6 @@ func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Dirname != "" {
 		Attr(sb, "dirname", a.Dirname)
-	}
-	if a.Disabled {
-		BoolAttr(sb, "disabled")
-	}
-	if a.Form != "" {
-		Attr(sb, "form", a.Form)
 	}
 	if a.Formaction != "" {
 		Attr(sb, "formaction", a.Formaction)
@@ -233,9 +200,6 @@ func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
-	if a.Ismap {
-		BoolAttr(sb, "ismap")
-	}
 	if a.List != "" {
 		Attr(sb, "list", a.List)
 	}
@@ -253,9 +217,6 @@ func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Multiple {
 		BoolAttr(sb, "multiple")
-	}
-	if a.Name != "" {
-		Attr(sb, "name", a.Name)
 	}
 	if a.Pattern != "" {
 		Attr(sb, "pattern", a.Pattern)
@@ -286,9 +247,6 @@ func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)
-	}
-	if a.Usemap != "" {
-		Attr(sb, "usemap", a.Usemap)
 	}
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)

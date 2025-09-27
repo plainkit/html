@@ -4,7 +4,6 @@ import "strings"
 
 type H2Attrs struct {
 	Global GlobalAttrs
-	Align  string
 }
 
 type H2Arg interface {
@@ -35,13 +34,6 @@ func (g Global) applyH2(a *H2Attrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AlignOpt) applyH2(a *H2Attrs, _ *[]Component) {
-	a.Align = o.v
-}
-
 func (a *H2Attrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Align != "" {
-		Attr(sb, "align", a.Align)
-	}
 }

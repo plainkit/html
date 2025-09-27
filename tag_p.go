@@ -4,7 +4,6 @@ import "strings"
 
 type PAttrs struct {
 	Global GlobalAttrs
-	Align  string
 }
 
 type PArg interface {
@@ -35,13 +34,6 @@ func (g Global) applyP(a *PAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AlignOpt) applyP(a *PAttrs, _ *[]Component) {
-	a.Align = o.v
-}
-
 func (a *PAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Align != "" {
-		Attr(sb, "align", a.Align)
-	}
 }

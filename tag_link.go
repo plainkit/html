@@ -6,7 +6,6 @@ type LinkAttrs struct {
 	Global         GlobalAttrs
 	As             string
 	Blocking       string
-	Charset        string
 	Color          string
 	Crossorigin    string
 	Disabled       bool
@@ -19,9 +18,7 @@ type LinkAttrs struct {
 	Media          string
 	Referrerpolicy string
 	Rel            string
-	Rev            string
 	Sizes          string
-	Target         string
 	Type           string
 }
 
@@ -58,9 +55,6 @@ func (o AsOpt) applyLink(a *LinkAttrs, _ *[]Component) {
 }
 func (o BlockingOpt) applyLink(a *LinkAttrs, _ *[]Component) {
 	a.Blocking = o.v
-}
-func (o CharsetOpt) applyLink(a *LinkAttrs, _ *[]Component) {
-	a.Charset = o.v
 }
 func (o ColorOpt) applyLink(a *LinkAttrs, _ *[]Component) {
 	a.Color = o.v
@@ -102,14 +96,8 @@ func (o RelOpt) applyLink(a *LinkAttrs, _ *[]Component) {
 		a.Rel += " " + o.v
 	}
 }
-func (o RevOpt) applyLink(a *LinkAttrs, _ *[]Component) {
-	a.Rev = o.v
-}
 func (o SizesOpt) applyLink(a *LinkAttrs, _ *[]Component) {
 	a.Sizes = o.v
-}
-func (o TargetOpt) applyLink(a *LinkAttrs, _ *[]Component) {
-	a.Target = o.v
 }
 func (o TypeOpt) applyLink(a *LinkAttrs, _ *[]Component) {
 	a.Type = o.v
@@ -122,9 +110,6 @@ func (a *LinkAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Blocking != "" {
 		Attr(sb, "blocking", a.Blocking)
-	}
-	if a.Charset != "" {
-		Attr(sb, "charset", a.Charset)
 	}
 	if a.Color != "" {
 		Attr(sb, "color", a.Color)
@@ -162,14 +147,8 @@ func (a *LinkAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Rel != "" {
 		Attr(sb, "rel", a.Rel)
 	}
-	if a.Rev != "" {
-		Attr(sb, "rev", a.Rev)
-	}
 	if a.Sizes != "" {
 		Attr(sb, "sizes", a.Sizes)
-	}
-	if a.Target != "" {
-		Attr(sb, "target", a.Target)
 	}
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)

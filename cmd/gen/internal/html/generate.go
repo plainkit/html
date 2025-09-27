@@ -21,7 +21,7 @@ func Generate(outDir string) error {
 
 	specLoader := spec.NewLoader()
 
-	fmt.Println("Loading HTML element attributes from wooorm/html-element-attributes...")
+	fmt.Println("Loading HTML element definitions from github.com/plainkit/tags...")
 	allSpecs, err := specLoader.LoadAllTagSpecs()
 	if err != nil {
 		return fmt.Errorf("load tag specs: %w", err)

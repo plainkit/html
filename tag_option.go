@@ -4,7 +4,6 @@ import "strings"
 
 type OptionAttrs struct {
 	Global   GlobalAttrs
-	Disabled bool
 	Label    string
 	Selected bool
 	Value    string
@@ -38,9 +37,6 @@ func (g Global) applyOption(a *OptionAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o DisabledOpt) applyOption(a *OptionAttrs, _ *[]Component) {
-	a.Disabled = true
-}
 func (o LabelOpt) applyOption(a *OptionAttrs, _ *[]Component) {
 	a.Label = o.v
 }
@@ -53,9 +49,6 @@ func (o ValueOpt) applyOption(a *OptionAttrs, _ *[]Component) {
 
 func (a *OptionAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Disabled {
-		BoolAttr(sb, "disabled")
-	}
 	if a.Label != "" {
 		Attr(sb, "label", a.Label)
 	}

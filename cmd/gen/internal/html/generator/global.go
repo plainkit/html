@@ -263,10 +263,6 @@ func (g *GlobalGenerator) generateGlobalOptionType(sb *strings.Builder) {
 }
 
 func (g *GlobalGenerator) generateGlobalConstructors(sb *strings.Builder, globalAttrs []spec.Attribute) {
-	booleanAttributes := map[string]bool{
-		"hidden": true, "inert": true, "autofocus": true, "itemscope": true,
-	}
-
 	sb.WriteString("// Global attribute constructors\n")
 
 	// Always include AClass constructor
@@ -284,7 +280,7 @@ func (g *GlobalGenerator) generateGlobalConstructors(sb *strings.Builder, global
 
 		funcName := "A" + attr.Field // Use A prefix
 
-		if booleanAttributes[attrName] {
+		if attr.Type == "bool" {
 			fmt.Fprintf(sb, "func %s() Global {\n", funcName)
 			fmt.Fprintf(sb, "\treturn Global{func(g *GlobalAttrs) { g.%s = true }}\n", fieldName)
 			sb.WriteString("}\n\n")

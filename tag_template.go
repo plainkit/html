@@ -4,11 +4,11 @@ import "strings"
 
 type TemplateAttrs struct {
 	Global                          GlobalAttrs
-	Shadowrootclonable              string
-	Shadowrootcustomelementregistry string
-	Shadowrootdelegatesfocus        string
+	Shadowrootclonable              bool
+	Shadowrootcustomelementregistry bool
+	Shadowrootdelegatesfocus        bool
 	Shadowrootmode                  string
-	Shadowrootserializable          string
+	Shadowrootserializable          bool
 }
 
 type TemplateArg interface {
@@ -32,7 +32,7 @@ func Template(args ...TemplateArg) Node {
 	for _, ar := range args {
 		ar.applyTemplate(a, &kids)
 	}
-	return Node{Tag: "template", Attrs: a, Kids: kids}
+	return Node{Tag: "template", Attrs: a, Kids: kids, Void: true}
 }
 
 func (g Global) applyTemplate(a *TemplateAttrs, _ *[]Component) {
@@ -40,36 +40,36 @@ func (g Global) applyTemplate(a *TemplateAttrs, _ *[]Component) {
 }
 
 func (o ShadowrootclonableOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
-	a.Shadowrootclonable = o.v
+	a.Shadowrootclonable = true
 }
 func (o ShadowrootcustomelementregistryOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
-	a.Shadowrootcustomelementregistry = o.v
+	a.Shadowrootcustomelementregistry = true
 }
 func (o ShadowrootdelegatesfocusOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
-	a.Shadowrootdelegatesfocus = o.v
+	a.Shadowrootdelegatesfocus = true
 }
 func (o ShadowrootmodeOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
 	a.Shadowrootmode = o.v
 }
 func (o ShadowrootserializableOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
-	a.Shadowrootserializable = o.v
+	a.Shadowrootserializable = true
 }
 
 func (a *TemplateAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Shadowrootclonable != "" {
-		Attr(sb, "shadowrootclonable", a.Shadowrootclonable)
+	if a.Shadowrootclonable {
+		BoolAttr(sb, "shadowrootclonable")
 	}
-	if a.Shadowrootcustomelementregistry != "" {
-		Attr(sb, "shadowrootcustomelementregistry", a.Shadowrootcustomelementregistry)
+	if a.Shadowrootcustomelementregistry {
+		BoolAttr(sb, "shadowrootcustomelementregistry")
 	}
-	if a.Shadowrootdelegatesfocus != "" {
-		Attr(sb, "shadowrootdelegatesfocus", a.Shadowrootdelegatesfocus)
+	if a.Shadowrootdelegatesfocus {
+		BoolAttr(sb, "shadowrootdelegatesfocus")
 	}
 	if a.Shadowrootmode != "" {
 		Attr(sb, "shadowrootmode", a.Shadowrootmode)
 	}
-	if a.Shadowrootserializable != "" {
-		Attr(sb, "shadowrootserializable", a.Shadowrootserializable)
+	if a.Shadowrootserializable {
+		BoolAttr(sb, "shadowrootserializable")
 	}
 }

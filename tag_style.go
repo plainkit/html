@@ -6,7 +6,6 @@ type StyleAttrs struct {
 	Global   GlobalAttrs
 	Blocking string
 	Media    string
-	Type     string
 }
 
 type StyleArg interface {
@@ -43,9 +42,6 @@ func (o BlockingOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
 func (o MediaOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
 	a.Media = o.v
 }
-func (o TypeOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
-	a.Type = o.v
-}
 
 func (a *StyleAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
@@ -54,8 +50,5 @@ func (a *StyleAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Media != "" {
 		Attr(sb, "media", a.Media)
-	}
-	if a.Type != "" {
-		Attr(sb, "type", a.Type)
 	}
 }

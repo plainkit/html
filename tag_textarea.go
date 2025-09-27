@@ -7,11 +7,8 @@ type TextareaAttrs struct {
 	Autocomplete string
 	Cols         string
 	Dirname      string
-	Disabled     bool
-	Form         string
 	Maxlength    string
 	Minlength    string
-	Name         string
 	Placeholder  string
 	Readonly     bool
 	Required     bool
@@ -56,20 +53,11 @@ func (o ColsOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 func (o DirnameOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Dirname = o.v
 }
-func (o DisabledOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
-	a.Disabled = true
-}
-func (o FormOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
-	a.Form = o.v
-}
 func (o MaxlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Maxlength = o.v
 }
 func (o MinlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Minlength = o.v
-}
-func (o NameOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
-	a.Name = o.v
 }
 func (o PlaceholderOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Placeholder = o.v
@@ -98,20 +86,11 @@ func (a *TextareaAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Dirname != "" {
 		Attr(sb, "dirname", a.Dirname)
 	}
-	if a.Disabled {
-		BoolAttr(sb, "disabled")
-	}
-	if a.Form != "" {
-		Attr(sb, "form", a.Form)
-	}
 	if a.Maxlength != "" {
 		Attr(sb, "maxlength", a.Maxlength)
 	}
 	if a.Minlength != "" {
 		Attr(sb, "minlength", a.Minlength)
-	}
-	if a.Name != "" {
-		Attr(sb, "name", a.Name)
 	}
 	if a.Placeholder != "" {
 		Attr(sb, "placeholder", a.Placeholder)

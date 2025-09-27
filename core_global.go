@@ -19,7 +19,6 @@ type GlobalAttrs struct {
 	Contenteditable string
 	Dir             string
 	Enterkeyhint    string
-	Exportparts     string
 	Id              string
 	Inputmode       string
 	Is              string
@@ -29,7 +28,6 @@ type GlobalAttrs struct {
 	Itemtype        string
 	Lang            string
 	Nonce           string
-	Part            string
 	Popover         string
 	Slot            string
 	Title           string
@@ -126,9 +124,6 @@ func WriteGlobal(sb *strings.Builder, g *GlobalAttrs) {
 	if g.Enterkeyhint != "" {
 		Attr(sb, "enterkeyhint", g.Enterkeyhint)
 	}
-	if g.Exportparts != "" {
-		Attr(sb, "exportparts", g.Exportparts)
-	}
 	if g.Hidden {
 		BoolAttr(sb, "hidden")
 	}
@@ -164,9 +159,6 @@ func WriteGlobal(sb *strings.Builder, g *GlobalAttrs) {
 	}
 	if g.Nonce != "" {
 		Attr(sb, "nonce", g.Nonce)
-	}
-	if g.Part != "" {
-		Attr(sb, "part", g.Part)
 	}
 	if g.Popover != "" {
 		Attr(sb, "popover", g.Popover)
@@ -286,10 +278,6 @@ func AEnterkeyhint(v string) Global {
 	return Global{func(g *GlobalAttrs) { g.Enterkeyhint = v }}
 }
 
-func AExportparts(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.Exportparts = v }}
-}
-
 func AHidden() Global {
 	return Global{func(g *GlobalAttrs) { g.Hidden = true }}
 }
@@ -336,10 +324,6 @@ func ALang(v string) Global {
 
 func ANonce(v string) Global {
 	return Global{func(g *GlobalAttrs) { g.Nonce = v }}
-}
-
-func APart(v string) Global {
-	return Global{func(g *GlobalAttrs) { g.Part = v }}
 }
 
 func APopover(v string) Global {

@@ -4,7 +4,6 @@ import "strings"
 
 type DivAttrs struct {
 	Global GlobalAttrs
-	Align  string
 }
 
 type DivArg interface {
@@ -35,13 +34,6 @@ func (g Global) applyDiv(a *DivAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AlignOpt) applyDiv(a *DivAttrs, _ *[]Component) {
-	a.Align = o.v
-}
-
 func (a *DivAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Align != "" {
-		Attr(sb, "align", a.Align)
-	}
 }
