@@ -37,6 +37,10 @@ type TagAttributeData struct {
 // GenerateSource generates the Go source code for a single SVG tag
 func (g *TagGenerator) GenerateSource(tagSpec spec.TagSpec) string {
 	title := utils.CamelCase(tagSpec.Name)
+	// Special case: for the "svg" element, use empty title to avoid SvgSvg duplication
+	if tagSpec.Name == "svg" {
+		title = ""
+	}
 	structName := title + "Attrs"
 
 	// Convert attributes to template data
@@ -51,11 +55,17 @@ func (g *TagGenerator) GenerateSource(tagSpec spec.TagSpec) string {
 	}
 
 	// Prepare template data
+	argInterface := title + "Arg"
+	// Special case: for the "svg" element, use "Arg" to avoid empty + "Arg" = "Arg"
+	if tagSpec.Name == "svg" {
+		argInterface = "Arg"
+	}
+
 	data := TagTemplateData{
 		Name:         tagSpec.Name,
 		Title:        title,
 		StructName:   structName,
-		ArgInterface: title + "Arg",
+		ArgInterface: argInterface,
 		Void:         tagSpec.Void,
 		Attributes:   templateAttrs,
 	}

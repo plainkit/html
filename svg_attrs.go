@@ -200,12 +200,60 @@ func AExternalResourcesRequired() ExternalResourcesRequiredOpt {
 	return ExternalResourcesRequiredOpt{}
 }
 
+type FillOpt struct {
+	v string
+}
+
+func AFill(v string) FillOpt {
+	return FillOpt{v}
+}
+
 type FillOpacityOpt struct {
 	v string
 }
 
 func AFillOpacity(v string) FillOpacityOpt {
 	return FillOpacityOpt{v}
+}
+
+type StrokeOpt struct {
+	v string
+}
+
+func AStroke(v string) StrokeOpt {
+	return StrokeOpt{v}
+}
+
+type StrokeWidthOpt struct {
+	v string
+}
+
+func AStrokeWidth(v string) StrokeWidthOpt {
+	return StrokeWidthOpt{v}
+}
+
+type StrokeLinecapOpt struct {
+	v string
+}
+
+func AStrokeLinecap(v string) StrokeLinecapOpt {
+	return StrokeLinecapOpt{v}
+}
+
+type StrokeLinejoinOpt struct {
+	v string
+}
+
+func AStrokeLinejoin(v string) StrokeLinejoinOpt {
+	return StrokeLinejoinOpt{v}
+}
+
+type XmlnsOpt struct {
+	v string
+}
+
+func AXmlns(v string) XmlnsOpt {
+	return XmlnsOpt{v}
 }
 
 type FilterUnitsOpt struct {

@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-// SvgSvgAttrs holds the attributes for the svg SVG element
-type SvgSvgAttrs struct {
+// SvgAttrs holds the attributes for the svg SVG element
+type SvgAttrs struct {
 	GlobalAttrs
 	Height              string
 	PreserveAspectRatio string
@@ -15,26 +15,32 @@ type SvgSvgAttrs struct {
 	Width               string
 	X                   string
 	Y                   string
+	Fill                string
+	Stroke              string
+	StrokeWidth         string
+	StrokeLinecap       string
+	StrokeLinejoin      string
+	Xmlns               string
 }
 
-// SvgSvgArg interface for svg element arguments
-type SvgSvgArg interface {
-	applySvg(*SvgSvgAttrs, *[]Component)
+// SvgArg interface for svg element arguments
+type SvgArg interface {
+	apply(*SvgAttrs, *[]Component)
 }
 
-// defaultSvgSvgAttrs creates default attributes for svg
-func defaultSvgSvgAttrs() *SvgSvgAttrs {
-	return &SvgSvgAttrs{
+// defaultSvgAttrs creates default attributes for svg
+func defaultSvgAttrs() *SvgAttrs {
+	return &SvgAttrs{
 		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// SvgSvg creates an SVG svg element
-func SvgSvg(args ...SvgSvgArg) Node {
-	a := defaultSvgSvgAttrs()
+// Svg creates an SVG svg element
+func Svg(args ...SvgArg) Node {
+	a := defaultSvgAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySvg(a, &kids)
+		ar.apply(a, &kids)
 	}
 	return Node{
 		Tag:   "svg",
@@ -44,42 +50,72 @@ func SvgSvg(args ...SvgSvgArg) Node {
 }
 
 // Global applies global SVG attributes to svg
-func (g Global) applySvg(a *SvgSvgAttrs, _ *[]Component) {
+func (g Global) apply(a *SvgAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
-// HeightOpt applies to Svg
-func (o HeightOpt) applySvg(a *SvgSvgAttrs, _ *[]Component) {
+// HeightOpt applies to
+func (o HeightOpt) apply(a *SvgAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
-// PreserveAspectRatioOpt applies to Svg
-func (o PreserveAspectRatioOpt) applySvg(a *SvgSvgAttrs, _ *[]Component) {
+// PreserveAspectRatioOpt applies to
+func (o PreserveAspectRatioOpt) apply(a *SvgAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
-// ViewBoxOpt applies to Svg
-func (o ViewBoxOpt) applySvg(a *SvgSvgAttrs, _ *[]Component) {
+// ViewBoxOpt applies to
+func (o ViewBoxOpt) apply(a *SvgAttrs, _ *[]Component) {
 	a.ViewBox = o.v
 }
 
-// WidthOpt applies to Svg
-func (o WidthOpt) applySvg(a *SvgSvgAttrs, _ *[]Component) {
+// WidthOpt applies to
+func (o WidthOpt) apply(a *SvgAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
-// XOpt applies to Svg
-func (o XOpt) applySvg(a *SvgSvgAttrs, _ *[]Component) {
+// XOpt applies to
+func (o XOpt) apply(a *SvgAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
-// YOpt applies to Svg
-func (o YOpt) applySvg(a *SvgSvgAttrs, _ *[]Component) {
+// YOpt applies to
+func (o YOpt) apply(a *SvgAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
+// FillOpt applies to Svg
+func (o FillOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// StrokeOpt applies to Svg
+func (o StrokeOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeWidthOpt applies to Svg
+func (o StrokeWidthOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// StrokeLinecapOpt applies to Svg
+func (o StrokeLinecapOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to Svg
+func (o StrokeLinejoinOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// XmlnsOpt applies to Svg
+func (o XmlnsOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Xmlns = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *SvgSvgAttrs) WriteAttrs(sb *strings.Builder) {
+func (a *SvgAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
@@ -98,5 +134,23 @@ func (a *SvgSvgAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Y != "" {
 		Attr(sb, "y", a.Y)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.Xmlns != "" {
+		Attr(sb, "xmlns", a.Xmlns)
 	}
 }
