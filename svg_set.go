@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// SetAttrs holds the attributes for the set SVG element
-type SetAttrs struct {
-	SvgGlobal     SvgGlobalAttrs
+// SvgSetAttrs holds the attributes for the set SVG element
+type SvgSetAttrs struct {
+	GlobalAttrs
 	AttributeName string
 	AttributeType string
 	Begin         string
@@ -22,26 +22,26 @@ type SetAttrs struct {
 	To            string
 }
 
-// SetArg interface for set element arguments
-type SetArg interface {
-	ApplySet(*SetAttrs, *[]html.Component)
+// SvgSetArg interface for set element arguments
+type SvgSetArg interface {
+	applySet(*SvgSetAttrs, *[]Component)
 }
 
-// defaultSetAttrs creates default attributes for set
-func defaultSetAttrs() *SetAttrs {
-	return &SetAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgSetAttrs creates default attributes for set
+func defaultSvgSetAttrs() *SvgSetAttrs {
+	return &SvgSetAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Set creates an SVG set element
-func Set(args ...SetArg) html.Node {
-	a := defaultSetAttrs()
-	var kids []html.Component
+// SvgSet creates an SVG set element
+func SvgSet(args ...SvgSetArg) Node {
+	a := defaultSvgSetAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplySet(a, &kids)
+		ar.applySet(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "set",
 		Attrs: a,
 		Kids:  kids,
@@ -49,99 +49,99 @@ func Set(args ...SetArg) html.Node {
 }
 
 // Global applies global SVG attributes to set
-func (g Global) ApplySet(a *SetAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applySet(a *SvgSetAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // AttributeNameOpt applies to Set
-func (o AttributeNameOpt) ApplySet(a *SetAttrs, _ *[]html.Component) {
+func (o AttributeNameOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.AttributeName = o.v
 }
 
 // AttributeTypeOpt applies to Set
-func (o AttributeTypeOpt) ApplySet(a *SetAttrs, _ *[]html.Component) {
+func (o AttributeTypeOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.AttributeType = o.v
 }
 
 // BeginOpt applies to Set
-func (o BeginOpt) ApplySet(a *SetAttrs, _ *[]html.Component) {
+func (o BeginOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Begin = o.v
 }
 
 // DurOpt applies to Set
-func (o DurOpt) ApplySet(a *SetAttrs, _ *[]html.Component) {
+func (o DurOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Dur = o.v
 }
 
 // EndOpt applies to Set
-func (o EndOpt) ApplySet(a *SetAttrs, _ *[]html.Component) {
+func (o EndOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.End = o.v
 }
 
 // MaxOpt applies to Set
-func (o MaxOpt) ApplySet(a *SetAttrs, _ *[]html.Component) {
+func (o MaxOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Max = o.v
 }
 
 // MinOpt applies to Set
-func (o MinOpt) ApplySet(a *SetAttrs, _ *[]html.Component) {
+func (o MinOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Min = o.v
 }
 
 // RepeatCountOpt applies to Set
-func (o RepeatCountOpt) ApplySet(a *SetAttrs, _ *[]html.Component) {
+func (o RepeatCountOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.RepeatCount = o.v
 }
 
 // RepeatDurOpt applies to Set
-func (o RepeatDurOpt) ApplySet(a *SetAttrs, _ *[]html.Component) {
+func (o RepeatDurOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.RepeatDur = o.v
 }
 
 // RestartOpt applies to Set
-func (o RestartOpt) ApplySet(a *SetAttrs, _ *[]html.Component) {
+func (o RestartOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Restart = o.v
 }
 
 // ToOpt applies to Set
-func (o ToOpt) ApplySet(a *SetAttrs, _ *[]html.Component) {
+func (o ToOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.To = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *SetAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgSetAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.AttributeName != "" {
-		SvgAttr(sb, "attributeName", a.AttributeName)
+		Attr(sb, "attributeName", a.AttributeName)
 	}
 	if a.AttributeType != "" {
-		SvgAttr(sb, "attributeType", a.AttributeType)
+		Attr(sb, "attributeType", a.AttributeType)
 	}
 	if a.Begin != "" {
-		SvgAttr(sb, "begin", a.Begin)
+		Attr(sb, "begin", a.Begin)
 	}
 	if a.Dur != "" {
-		SvgAttr(sb, "dur", a.Dur)
+		Attr(sb, "dur", a.Dur)
 	}
 	if a.End != "" {
-		SvgAttr(sb, "end", a.End)
+		Attr(sb, "end", a.End)
 	}
 	if a.Max != "" {
-		SvgAttr(sb, "max", a.Max)
+		Attr(sb, "max", a.Max)
 	}
 	if a.Min != "" {
-		SvgAttr(sb, "min", a.Min)
+		Attr(sb, "min", a.Min)
 	}
 	if a.RepeatCount != "" {
-		SvgAttr(sb, "repeatCount", a.RepeatCount)
+		Attr(sb, "repeatCount", a.RepeatCount)
 	}
 	if a.RepeatDur != "" {
-		SvgAttr(sb, "repeatDur", a.RepeatDur)
+		Attr(sb, "repeatDur", a.RepeatDur)
 	}
 	if a.Restart != "" {
-		SvgAttr(sb, "restart", a.Restart)
+		Attr(sb, "restart", a.Restart)
 	}
 	if a.To != "" {
-		SvgAttr(sb, "to", a.To)
+		Attr(sb, "to", a.To)
 	}
 }

@@ -6,32 +6,32 @@ import (
 	"strings"
 )
 
-// FeTileAttrs holds the attributes for the feTile SVG element
-type FeTileAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	In        string
+// SvgFeTileAttrs holds the attributes for the feTile SVG element
+type SvgFeTileAttrs struct {
+	GlobalAttrs
+	In string
 }
 
-// FeTileArg interface for feTile element arguments
-type FeTileArg interface {
-	ApplyFeTile(*FeTileAttrs, *[]html.Component)
+// SvgFeTileArg interface for feTile element arguments
+type SvgFeTileArg interface {
+	applyFeTile(*SvgFeTileAttrs, *[]Component)
 }
 
-// defaultFeTileAttrs creates default attributes for feTile
-func defaultFeTileAttrs() *FeTileAttrs {
-	return &FeTileAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeTileAttrs creates default attributes for feTile
+func defaultSvgFeTileAttrs() *SvgFeTileAttrs {
+	return &SvgFeTileAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeTile creates an SVG feTile element
-func FeTile(args ...FeTileArg) html.Node {
-	a := defaultFeTileAttrs()
-	var kids []html.Component
+// SvgFeTile creates an SVG feTile element
+func SvgFeTile(args ...SvgFeTileArg) Node {
+	a := defaultSvgFeTileAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeTile(a, &kids)
+		ar.applyFeTile(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feTile",
 		Attrs: a,
 		Kids:  kids,
@@ -39,19 +39,19 @@ func FeTile(args ...FeTileArg) html.Node {
 }
 
 // Global applies global SVG attributes to feTile
-func (g Global) ApplyFeTile(a *FeTileAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // InOpt applies to FeTile
-func (o InOpt) ApplyFeTile(a *FeTileAttrs, _ *[]html.Component) {
+func (o InOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeTileAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeTileAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.In != "" {
-		SvgAttr(sb, "in", a.In)
+		Attr(sb, "in", a.In)
 	}
 }

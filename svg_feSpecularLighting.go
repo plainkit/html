@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// FeSpecularLightingAttrs holds the attributes for the feSpecularLighting SVG element
-type FeSpecularLightingAttrs struct {
-	SvgGlobal        SvgGlobalAttrs
+// SvgFeSpecularLightingAttrs holds the attributes for the feSpecularLighting SVG element
+type SvgFeSpecularLightingAttrs struct {
+	GlobalAttrs
 	In               string
 	KernelUnitLength string
 	SpecularConstant string
@@ -16,26 +16,26 @@ type FeSpecularLightingAttrs struct {
 	SurfaceScale     string
 }
 
-// FeSpecularLightingArg interface for feSpecularLighting element arguments
-type FeSpecularLightingArg interface {
-	ApplyFeSpecularLighting(*FeSpecularLightingAttrs, *[]html.Component)
+// SvgFeSpecularLightingArg interface for feSpecularLighting element arguments
+type SvgFeSpecularLightingArg interface {
+	applyFeSpecularLighting(*SvgFeSpecularLightingAttrs, *[]Component)
 }
 
-// defaultFeSpecularLightingAttrs creates default attributes for feSpecularLighting
-func defaultFeSpecularLightingAttrs() *FeSpecularLightingAttrs {
-	return &FeSpecularLightingAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeSpecularLightingAttrs creates default attributes for feSpecularLighting
+func defaultSvgFeSpecularLightingAttrs() *SvgFeSpecularLightingAttrs {
+	return &SvgFeSpecularLightingAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeSpecularLighting creates an SVG feSpecularLighting element
-func FeSpecularLighting(args ...FeSpecularLightingArg) html.Node {
-	a := defaultFeSpecularLightingAttrs()
-	var kids []html.Component
+// SvgFeSpecularLighting creates an SVG feSpecularLighting element
+func SvgFeSpecularLighting(args ...SvgFeSpecularLightingArg) Node {
+	a := defaultSvgFeSpecularLightingAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeSpecularLighting(a, &kids)
+		ar.applyFeSpecularLighting(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feSpecularLighting",
 		Attrs: a,
 		Kids:  kids,
@@ -43,51 +43,51 @@ func FeSpecularLighting(args ...FeSpecularLightingArg) html.Node {
 }
 
 // Global applies global SVG attributes to feSpecularLighting
-func (g Global) ApplyFeSpecularLighting(a *FeSpecularLightingAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // InOpt applies to FeSpecularLighting
-func (o InOpt) ApplyFeSpecularLighting(a *FeSpecularLightingAttrs, _ *[]html.Component) {
+func (o InOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // KernelUnitLengthOpt applies to FeSpecularLighting
-func (o KernelUnitLengthOpt) ApplyFeSpecularLighting(a *FeSpecularLightingAttrs, _ *[]html.Component) {
+func (o KernelUnitLengthOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.KernelUnitLength = o.v
 }
 
 // SpecularConstantOpt applies to FeSpecularLighting
-func (o SpecularConstantOpt) ApplyFeSpecularLighting(a *FeSpecularLightingAttrs, _ *[]html.Component) {
+func (o SpecularConstantOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.SpecularConstant = o.v
 }
 
 // SpecularExponentOpt applies to FeSpecularLighting
-func (o SpecularExponentOpt) ApplyFeSpecularLighting(a *FeSpecularLightingAttrs, _ *[]html.Component) {
+func (o SpecularExponentOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.SpecularExponent = o.v
 }
 
 // SurfaceScaleOpt applies to FeSpecularLighting
-func (o SurfaceScaleOpt) ApplyFeSpecularLighting(a *FeSpecularLightingAttrs, _ *[]html.Component) {
+func (o SurfaceScaleOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.SurfaceScale = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeSpecularLightingAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeSpecularLightingAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.In != "" {
-		SvgAttr(sb, "in", a.In)
+		Attr(sb, "in", a.In)
 	}
 	if a.KernelUnitLength != "" {
-		SvgAttr(sb, "kernelUnitLength", a.KernelUnitLength)
+		Attr(sb, "kernelUnitLength", a.KernelUnitLength)
 	}
 	if a.SpecularConstant != "" {
-		SvgAttr(sb, "specularConstant", a.SpecularConstant)
+		Attr(sb, "specularConstant", a.SpecularConstant)
 	}
 	if a.SpecularExponent != "" {
-		SvgAttr(sb, "specularExponent", a.SpecularExponent)
+		Attr(sb, "specularExponent", a.SpecularExponent)
 	}
 	if a.SurfaceScale != "" {
-		SvgAttr(sb, "surfaceScale", a.SurfaceScale)
+		Attr(sb, "surfaceScale", a.SurfaceScale)
 	}
 }

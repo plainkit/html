@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// ForeignObjectAttrs holds the attributes for the foreignObject SVG element
-type ForeignObjectAttrs struct {
-	SvgGlobal          SvgGlobalAttrs
+// SvgForeignObjectAttrs holds the attributes for the foreignObject SVG element
+type SvgForeignObjectAttrs struct {
+	GlobalAttrs
 	Height             string
 	RequiredExtensions string
 	RequiredFeatures   string
@@ -18,26 +18,26 @@ type ForeignObjectAttrs struct {
 	Y                  string
 }
 
-// ForeignObjectArg interface for foreignObject element arguments
-type ForeignObjectArg interface {
-	ApplyForeignObject(*ForeignObjectAttrs, *[]html.Component)
+// SvgForeignObjectArg interface for foreignObject element arguments
+type SvgForeignObjectArg interface {
+	applyForeignObject(*SvgForeignObjectAttrs, *[]Component)
 }
 
-// defaultForeignObjectAttrs creates default attributes for foreignObject
-func defaultForeignObjectAttrs() *ForeignObjectAttrs {
-	return &ForeignObjectAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgForeignObjectAttrs creates default attributes for foreignObject
+func defaultSvgForeignObjectAttrs() *SvgForeignObjectAttrs {
+	return &SvgForeignObjectAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// ForeignObject creates an SVG foreignObject element
-func ForeignObject(args ...ForeignObjectArg) html.Node {
-	a := defaultForeignObjectAttrs()
-	var kids []html.Component
+// SvgForeignObject creates an SVG foreignObject element
+func SvgForeignObject(args ...SvgForeignObjectArg) Node {
+	a := defaultSvgForeignObjectAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyForeignObject(a, &kids)
+		ar.applyForeignObject(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "foreignObject",
 		Attrs: a,
 		Kids:  kids,
@@ -45,67 +45,67 @@ func ForeignObject(args ...ForeignObjectArg) html.Node {
 }
 
 // Global applies global SVG attributes to foreignObject
-func (g Global) ApplyForeignObject(a *ForeignObjectAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // HeightOpt applies to ForeignObject
-func (o HeightOpt) ApplyForeignObject(a *ForeignObjectAttrs, _ *[]html.Component) {
+func (o HeightOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // RequiredExtensionsOpt applies to ForeignObject
-func (o RequiredExtensionsOpt) ApplyForeignObject(a *ForeignObjectAttrs, _ *[]html.Component) {
+func (o RequiredExtensionsOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to ForeignObject
-func (o RequiredFeaturesOpt) ApplyForeignObject(a *ForeignObjectAttrs, _ *[]html.Component) {
+func (o RequiredFeaturesOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // SystemLanguageOpt applies to ForeignObject
-func (o SystemLanguageOpt) ApplyForeignObject(a *ForeignObjectAttrs, _ *[]html.Component) {
+func (o SystemLanguageOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // WidthOpt applies to ForeignObject
-func (o WidthOpt) ApplyForeignObject(a *ForeignObjectAttrs, _ *[]html.Component) {
+func (o WidthOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // XOpt applies to ForeignObject
-func (o XOpt) ApplyForeignObject(a *ForeignObjectAttrs, _ *[]html.Component) {
+func (o XOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to ForeignObject
-func (o YOpt) ApplyForeignObject(a *ForeignObjectAttrs, _ *[]html.Component) {
+func (o YOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *ForeignObjectAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgForeignObjectAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Height != "" {
-		SvgAttr(sb, "height", a.Height)
+		Attr(sb, "height", a.Height)
 	}
 	if a.RequiredExtensions != "" {
-		SvgAttr(sb, "requiredExtensions", a.RequiredExtensions)
+		Attr(sb, "requiredExtensions", a.RequiredExtensions)
 	}
 	if a.RequiredFeatures != "" {
-		SvgAttr(sb, "requiredFeatures", a.RequiredFeatures)
+		Attr(sb, "requiredFeatures", a.RequiredFeatures)
 	}
 	if a.SystemLanguage != "" {
-		SvgAttr(sb, "systemLanguage", a.SystemLanguage)
+		Attr(sb, "systemLanguage", a.SystemLanguage)
 	}
 	if a.Width != "" {
-		SvgAttr(sb, "width", a.Width)
+		Attr(sb, "width", a.Width)
 	}
 	if a.X != "" {
-		SvgAttr(sb, "x", a.X)
+		Attr(sb, "x", a.X)
 	}
 	if a.Y != "" {
-		SvgAttr(sb, "y", a.Y)
+		Attr(sb, "y", a.Y)
 	}
 }

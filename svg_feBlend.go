@@ -6,34 +6,34 @@ import (
 	"strings"
 )
 
-// FeBlendAttrs holds the attributes for the feBlend SVG element
-type FeBlendAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	In        string
-	In2       string
-	Mode      string
+// SvgFeBlendAttrs holds the attributes for the feBlend SVG element
+type SvgFeBlendAttrs struct {
+	GlobalAttrs
+	In   string
+	In2  string
+	Mode string
 }
 
-// FeBlendArg interface for feBlend element arguments
-type FeBlendArg interface {
-	ApplyFeBlend(*FeBlendAttrs, *[]html.Component)
+// SvgFeBlendArg interface for feBlend element arguments
+type SvgFeBlendArg interface {
+	applyFeBlend(*SvgFeBlendAttrs, *[]Component)
 }
 
-// defaultFeBlendAttrs creates default attributes for feBlend
-func defaultFeBlendAttrs() *FeBlendAttrs {
-	return &FeBlendAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeBlendAttrs creates default attributes for feBlend
+func defaultSvgFeBlendAttrs() *SvgFeBlendAttrs {
+	return &SvgFeBlendAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeBlend creates an SVG feBlend element
-func FeBlend(args ...FeBlendArg) html.Node {
-	a := defaultFeBlendAttrs()
-	var kids []html.Component
+// SvgFeBlend creates an SVG feBlend element
+func SvgFeBlend(args ...SvgFeBlendArg) Node {
+	a := defaultSvgFeBlendAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeBlend(a, &kids)
+		ar.applyFeBlend(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feBlend",
 		Attrs: a,
 		Kids:  kids,
@@ -41,35 +41,35 @@ func FeBlend(args ...FeBlendArg) html.Node {
 }
 
 // Global applies global SVG attributes to feBlend
-func (g Global) ApplyFeBlend(a *FeBlendAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // InOpt applies to FeBlend
-func (o InOpt) ApplyFeBlend(a *FeBlendAttrs, _ *[]html.Component) {
+func (o InOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // In2Opt applies to FeBlend
-func (o In2Opt) ApplyFeBlend(a *FeBlendAttrs, _ *[]html.Component) {
+func (o In2Opt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.In2 = o.v
 }
 
 // ModeOpt applies to FeBlend
-func (o ModeOpt) ApplyFeBlend(a *FeBlendAttrs, _ *[]html.Component) {
+func (o ModeOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Mode = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeBlendAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeBlendAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.In != "" {
-		SvgAttr(sb, "in", a.In)
+		Attr(sb, "in", a.In)
 	}
 	if a.In2 != "" {
-		SvgAttr(sb, "in2", a.In2)
+		Attr(sb, "in2", a.In2)
 	}
 	if a.Mode != "" {
-		SvgAttr(sb, "mode", a.Mode)
+		Attr(sb, "mode", a.Mode)
 	}
 }

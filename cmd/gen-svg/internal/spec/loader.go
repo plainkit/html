@@ -125,7 +125,14 @@ func (l *Loader) convertGostarToTagSpecs() []TagSpec {
 		"animateTransform": true,
 	}
 
+	// Get HTML elements to skip from HTML spec
+	htmlElements := l.getHTMLElements()
+
 	for _, element := range l.svgSpec.Elements {
+		// Skip elements that already exist in HTML
+		if htmlElements[element.Tag] {
+			continue
+		}
 		// Use manual override for known void elements, otherwise use gostar data
 		isVoid := element.NoChildren || svgVoidElements[element.Tag]
 
@@ -251,6 +258,20 @@ func (l *Loader) extractGlobalAttributes() map[string]string {
 	}
 
 	return globalAttrs
+}
+
+// getHTMLElements gets all HTML element tags from gostar to avoid conflicts
+func (l *Loader) getHTMLElements() map[string]bool {
+	htmlElements := make(map[string]bool)
+	htmlSpec := cfg.HTML
+
+	for _, element := range htmlSpec.Elements {
+		if element.Tag != "" {
+			htmlElements[element.Tag] = true
+		}
+	}
+
+	return htmlElements
 }
 
 // camelCase converts kebab-case to CamelCase

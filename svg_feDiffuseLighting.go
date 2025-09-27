@@ -6,35 +6,35 @@ import (
 	"strings"
 )
 
-// FeDiffuseLightingAttrs holds the attributes for the feDiffuseLighting SVG element
-type FeDiffuseLightingAttrs struct {
-	SvgGlobal        SvgGlobalAttrs
+// SvgFeDiffuseLightingAttrs holds the attributes for the feDiffuseLighting SVG element
+type SvgFeDiffuseLightingAttrs struct {
+	GlobalAttrs
 	DiffuseConstant  string
 	In               string
 	KernelUnitLength string
 	SurfaceScale     string
 }
 
-// FeDiffuseLightingArg interface for feDiffuseLighting element arguments
-type FeDiffuseLightingArg interface {
-	ApplyFeDiffuseLighting(*FeDiffuseLightingAttrs, *[]html.Component)
+// SvgFeDiffuseLightingArg interface for feDiffuseLighting element arguments
+type SvgFeDiffuseLightingArg interface {
+	applyFeDiffuseLighting(*SvgFeDiffuseLightingAttrs, *[]Component)
 }
 
-// defaultFeDiffuseLightingAttrs creates default attributes for feDiffuseLighting
-func defaultFeDiffuseLightingAttrs() *FeDiffuseLightingAttrs {
-	return &FeDiffuseLightingAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeDiffuseLightingAttrs creates default attributes for feDiffuseLighting
+func defaultSvgFeDiffuseLightingAttrs() *SvgFeDiffuseLightingAttrs {
+	return &SvgFeDiffuseLightingAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeDiffuseLighting creates an SVG feDiffuseLighting element
-func FeDiffuseLighting(args ...FeDiffuseLightingArg) html.Node {
-	a := defaultFeDiffuseLightingAttrs()
-	var kids []html.Component
+// SvgFeDiffuseLighting creates an SVG feDiffuseLighting element
+func SvgFeDiffuseLighting(args ...SvgFeDiffuseLightingArg) Node {
+	a := defaultSvgFeDiffuseLightingAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeDiffuseLighting(a, &kids)
+		ar.applyFeDiffuseLighting(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feDiffuseLighting",
 		Attrs: a,
 		Kids:  kids,
@@ -42,43 +42,43 @@ func FeDiffuseLighting(args ...FeDiffuseLightingArg) html.Node {
 }
 
 // Global applies global SVG attributes to feDiffuseLighting
-func (g Global) ApplyFeDiffuseLighting(a *FeDiffuseLightingAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // DiffuseConstantOpt applies to FeDiffuseLighting
-func (o DiffuseConstantOpt) ApplyFeDiffuseLighting(a *FeDiffuseLightingAttrs, _ *[]html.Component) {
+func (o DiffuseConstantOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
 	a.DiffuseConstant = o.v
 }
 
 // InOpt applies to FeDiffuseLighting
-func (o InOpt) ApplyFeDiffuseLighting(a *FeDiffuseLightingAttrs, _ *[]html.Component) {
+func (o InOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // KernelUnitLengthOpt applies to FeDiffuseLighting
-func (o KernelUnitLengthOpt) ApplyFeDiffuseLighting(a *FeDiffuseLightingAttrs, _ *[]html.Component) {
+func (o KernelUnitLengthOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
 	a.KernelUnitLength = o.v
 }
 
 // SurfaceScaleOpt applies to FeDiffuseLighting
-func (o SurfaceScaleOpt) ApplyFeDiffuseLighting(a *FeDiffuseLightingAttrs, _ *[]html.Component) {
+func (o SurfaceScaleOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
 	a.SurfaceScale = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeDiffuseLightingAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeDiffuseLightingAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.DiffuseConstant != "" {
-		SvgAttr(sb, "diffuseConstant", a.DiffuseConstant)
+		Attr(sb, "diffuseConstant", a.DiffuseConstant)
 	}
 	if a.In != "" {
-		SvgAttr(sb, "in", a.In)
+		Attr(sb, "in", a.In)
 	}
 	if a.KernelUnitLength != "" {
-		SvgAttr(sb, "kernelUnitLength", a.KernelUnitLength)
+		Attr(sb, "kernelUnitLength", a.KernelUnitLength)
 	}
 	if a.SurfaceScale != "" {
-		SvgAttr(sb, "surfaceScale", a.SurfaceScale)
+		Attr(sb, "surfaceScale", a.SurfaceScale)
 	}
 }

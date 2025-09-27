@@ -6,31 +6,31 @@ import (
 	"strings"
 )
 
-// DefsAttrs holds the attributes for the defs SVG element
-type DefsAttrs struct {
-	SvgGlobal SvgGlobalAttrs
+// SvgDefsAttrs holds the attributes for the defs SVG element
+type SvgDefsAttrs struct {
+	GlobalAttrs
 }
 
-// DefsArg interface for defs element arguments
-type DefsArg interface {
-	ApplyDefs(*DefsAttrs, *[]html.Component)
+// SvgDefsArg interface for defs element arguments
+type SvgDefsArg interface {
+	applyDefs(*SvgDefsAttrs, *[]Component)
 }
 
-// defaultDefsAttrs creates default attributes for defs
-func defaultDefsAttrs() *DefsAttrs {
-	return &DefsAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgDefsAttrs creates default attributes for defs
+func defaultSvgDefsAttrs() *SvgDefsAttrs {
+	return &SvgDefsAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Defs creates an SVG defs element
-func Defs(args ...DefsArg) html.Node {
-	a := defaultDefsAttrs()
-	var kids []html.Component
+// SvgDefs creates an SVG defs element
+func SvgDefs(args ...SvgDefsArg) Node {
+	a := defaultSvgDefsAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyDefs(a, &kids)
+		ar.applyDefs(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "defs",
 		Attrs: a,
 		Kids:  kids,
@@ -38,11 +38,11 @@ func Defs(args ...DefsArg) html.Node {
 }
 
 // Global applies global SVG attributes to defs
-func (g Global) ApplyDefs(a *DefsAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyDefs(a *SvgDefsAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *DefsAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgDefsAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 }

@@ -6,32 +6,32 @@ import (
 	"strings"
 )
 
-// FeComponentTransferAttrs holds the attributes for the feComponentTransfer SVG element
-type FeComponentTransferAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	In        string
+// SvgFeComponentTransferAttrs holds the attributes for the feComponentTransfer SVG element
+type SvgFeComponentTransferAttrs struct {
+	GlobalAttrs
+	In string
 }
 
-// FeComponentTransferArg interface for feComponentTransfer element arguments
-type FeComponentTransferArg interface {
-	ApplyFeComponentTransfer(*FeComponentTransferAttrs, *[]html.Component)
+// SvgFeComponentTransferArg interface for feComponentTransfer element arguments
+type SvgFeComponentTransferArg interface {
+	applyFeComponentTransfer(*SvgFeComponentTransferAttrs, *[]Component)
 }
 
-// defaultFeComponentTransferAttrs creates default attributes for feComponentTransfer
-func defaultFeComponentTransferAttrs() *FeComponentTransferAttrs {
-	return &FeComponentTransferAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeComponentTransferAttrs creates default attributes for feComponentTransfer
+func defaultSvgFeComponentTransferAttrs() *SvgFeComponentTransferAttrs {
+	return &SvgFeComponentTransferAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeComponentTransfer creates an SVG feComponentTransfer element
-func FeComponentTransfer(args ...FeComponentTransferArg) html.Node {
-	a := defaultFeComponentTransferAttrs()
-	var kids []html.Component
+// SvgFeComponentTransfer creates an SVG feComponentTransfer element
+func SvgFeComponentTransfer(args ...SvgFeComponentTransferArg) Node {
+	a := defaultSvgFeComponentTransferAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeComponentTransfer(a, &kids)
+		ar.applyFeComponentTransfer(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feComponentTransfer",
 		Attrs: a,
 		Kids:  kids,
@@ -39,19 +39,19 @@ func FeComponentTransfer(args ...FeComponentTransferArg) html.Node {
 }
 
 // Global applies global SVG attributes to feComponentTransfer
-func (g Global) ApplyFeComponentTransfer(a *FeComponentTransferAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // InOpt applies to FeComponentTransfer
-func (o InOpt) ApplyFeComponentTransfer(a *FeComponentTransferAttrs, _ *[]html.Component) {
+func (o InOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeComponentTransferAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeComponentTransferAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.In != "" {
-		SvgAttr(sb, "in", a.In)
+		Attr(sb, "in", a.In)
 	}
 }

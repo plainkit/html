@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// FeConvolveMatrixAttrs holds the attributes for the feConvolveMatrix SVG element
-type FeConvolveMatrixAttrs struct {
-	SvgGlobal        SvgGlobalAttrs
+// SvgFeConvolveMatrixAttrs holds the attributes for the feConvolveMatrix SVG element
+type SvgFeConvolveMatrixAttrs struct {
+	GlobalAttrs
 	Bias             string
 	Divisor          string
 	EdgeMode         string
@@ -21,26 +21,26 @@ type FeConvolveMatrixAttrs struct {
 	TargetY          string
 }
 
-// FeConvolveMatrixArg interface for feConvolveMatrix element arguments
-type FeConvolveMatrixArg interface {
-	ApplyFeConvolveMatrix(*FeConvolveMatrixAttrs, *[]html.Component)
+// SvgFeConvolveMatrixArg interface for feConvolveMatrix element arguments
+type SvgFeConvolveMatrixArg interface {
+	applyFeConvolveMatrix(*SvgFeConvolveMatrixAttrs, *[]Component)
 }
 
-// defaultFeConvolveMatrixAttrs creates default attributes for feConvolveMatrix
-func defaultFeConvolveMatrixAttrs() *FeConvolveMatrixAttrs {
-	return &FeConvolveMatrixAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeConvolveMatrixAttrs creates default attributes for feConvolveMatrix
+func defaultSvgFeConvolveMatrixAttrs() *SvgFeConvolveMatrixAttrs {
+	return &SvgFeConvolveMatrixAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeConvolveMatrix creates an SVG feConvolveMatrix element
-func FeConvolveMatrix(args ...FeConvolveMatrixArg) html.Node {
-	a := defaultFeConvolveMatrixAttrs()
-	var kids []html.Component
+// SvgFeConvolveMatrix creates an SVG feConvolveMatrix element
+func SvgFeConvolveMatrix(args ...SvgFeConvolveMatrixArg) Node {
+	a := defaultSvgFeConvolveMatrixAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeConvolveMatrix(a, &kids)
+		ar.applyFeConvolveMatrix(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feConvolveMatrix",
 		Attrs: a,
 		Kids:  kids,
@@ -48,91 +48,91 @@ func FeConvolveMatrix(args ...FeConvolveMatrixArg) html.Node {
 }
 
 // Global applies global SVG attributes to feConvolveMatrix
-func (g Global) ApplyFeConvolveMatrix(a *FeConvolveMatrixAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // BiasOpt applies to FeConvolveMatrix
-func (o BiasOpt) ApplyFeConvolveMatrix(a *FeConvolveMatrixAttrs, _ *[]html.Component) {
+func (o BiasOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Bias = o.v
 }
 
 // DivisorOpt applies to FeConvolveMatrix
-func (o DivisorOpt) ApplyFeConvolveMatrix(a *FeConvolveMatrixAttrs, _ *[]html.Component) {
+func (o DivisorOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Divisor = o.v
 }
 
 // EdgeModeOpt applies to FeConvolveMatrix
-func (o EdgeModeOpt) ApplyFeConvolveMatrix(a *FeConvolveMatrixAttrs, _ *[]html.Component) {
+func (o EdgeModeOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.EdgeMode = o.v
 }
 
 // InOpt applies to FeConvolveMatrix
-func (o InOpt) ApplyFeConvolveMatrix(a *FeConvolveMatrixAttrs, _ *[]html.Component) {
+func (o InOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // KernelMatrixOpt applies to FeConvolveMatrix
-func (o KernelMatrixOpt) ApplyFeConvolveMatrix(a *FeConvolveMatrixAttrs, _ *[]html.Component) {
+func (o KernelMatrixOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.KernelMatrix = o.v
 }
 
 // KernelUnitLengthOpt applies to FeConvolveMatrix
-func (o KernelUnitLengthOpt) ApplyFeConvolveMatrix(a *FeConvolveMatrixAttrs, _ *[]html.Component) {
+func (o KernelUnitLengthOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.KernelUnitLength = o.v
 }
 
 // OrderOpt applies to FeConvolveMatrix
-func (o OrderOpt) ApplyFeConvolveMatrix(a *FeConvolveMatrixAttrs, _ *[]html.Component) {
+func (o OrderOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Order = o.v
 }
 
 // PreserveAlphaOpt applies to FeConvolveMatrix
-func (o PreserveAlphaOpt) ApplyFeConvolveMatrix(a *FeConvolveMatrixAttrs, _ *[]html.Component) {
+func (o PreserveAlphaOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.PreserveAlpha = true
 }
 
 // TargetXOpt applies to FeConvolveMatrix
-func (o TargetXOpt) ApplyFeConvolveMatrix(a *FeConvolveMatrixAttrs, _ *[]html.Component) {
+func (o TargetXOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.TargetX = o.v
 }
 
 // TargetYOpt applies to FeConvolveMatrix
-func (o TargetYOpt) ApplyFeConvolveMatrix(a *FeConvolveMatrixAttrs, _ *[]html.Component) {
+func (o TargetYOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.TargetY = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeConvolveMatrixAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeConvolveMatrixAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Bias != "" {
-		SvgAttr(sb, "bias", a.Bias)
+		Attr(sb, "bias", a.Bias)
 	}
 	if a.Divisor != "" {
-		SvgAttr(sb, "divisor", a.Divisor)
+		Attr(sb, "divisor", a.Divisor)
 	}
 	if a.EdgeMode != "" {
-		SvgAttr(sb, "edgeMode", a.EdgeMode)
+		Attr(sb, "edgeMode", a.EdgeMode)
 	}
 	if a.In != "" {
-		SvgAttr(sb, "in", a.In)
+		Attr(sb, "in", a.In)
 	}
 	if a.KernelMatrix != "" {
-		SvgAttr(sb, "kernelMatrix", a.KernelMatrix)
+		Attr(sb, "kernelMatrix", a.KernelMatrix)
 	}
 	if a.KernelUnitLength != "" {
-		SvgAttr(sb, "kernelUnitLength", a.KernelUnitLength)
+		Attr(sb, "kernelUnitLength", a.KernelUnitLength)
 	}
 	if a.Order != "" {
-		SvgAttr(sb, "order", a.Order)
+		Attr(sb, "order", a.Order)
 	}
 	if a.PreserveAlpha {
-		SvgBoolAttr(sb, "preserveAlpha")
+		BoolAttr(sb, "preserveAlpha")
 	}
 	if a.TargetX != "" {
-		SvgAttr(sb, "targetX", a.TargetX)
+		Attr(sb, "targetX", a.TargetX)
 	}
 	if a.TargetY != "" {
-		SvgAttr(sb, "targetY", a.TargetY)
+		Attr(sb, "targetY", a.TargetY)
 	}
 }

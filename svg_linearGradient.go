@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// LinearGradientAttrs holds the attributes for the linearGradient SVG element
-type LinearGradientAttrs struct {
-	SvgGlobal         SvgGlobalAttrs
+// SvgLinearGradientAttrs holds the attributes for the linearGradient SVG element
+type SvgLinearGradientAttrs struct {
+	GlobalAttrs
 	GradientTransform string
 	GradientUnits     string
 	SpreadMethod      string
@@ -18,26 +18,26 @@ type LinearGradientAttrs struct {
 	Y2                string
 }
 
-// LinearGradientArg interface for linearGradient element arguments
-type LinearGradientArg interface {
-	ApplyLinearGradient(*LinearGradientAttrs, *[]html.Component)
+// SvgLinearGradientArg interface for linearGradient element arguments
+type SvgLinearGradientArg interface {
+	applyLinearGradient(*SvgLinearGradientAttrs, *[]Component)
 }
 
-// defaultLinearGradientAttrs creates default attributes for linearGradient
-func defaultLinearGradientAttrs() *LinearGradientAttrs {
-	return &LinearGradientAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgLinearGradientAttrs creates default attributes for linearGradient
+func defaultSvgLinearGradientAttrs() *SvgLinearGradientAttrs {
+	return &SvgLinearGradientAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// LinearGradient creates an SVG linearGradient element
-func LinearGradient(args ...LinearGradientArg) html.Node {
-	a := defaultLinearGradientAttrs()
-	var kids []html.Component
+// SvgLinearGradient creates an SVG linearGradient element
+func SvgLinearGradient(args ...SvgLinearGradientArg) Node {
+	a := defaultSvgLinearGradientAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyLinearGradient(a, &kids)
+		ar.applyLinearGradient(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "linearGradient",
 		Attrs: a,
 		Kids:  kids,
@@ -45,67 +45,67 @@ func LinearGradient(args ...LinearGradientArg) html.Node {
 }
 
 // Global applies global SVG attributes to linearGradient
-func (g Global) ApplyLinearGradient(a *LinearGradientAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // GradientTransformOpt applies to LinearGradient
-func (o GradientTransformOpt) ApplyLinearGradient(a *LinearGradientAttrs, _ *[]html.Component) {
+func (o GradientTransformOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
 	a.GradientTransform = o.v
 }
 
 // GradientUnitsOpt applies to LinearGradient
-func (o GradientUnitsOpt) ApplyLinearGradient(a *LinearGradientAttrs, _ *[]html.Component) {
+func (o GradientUnitsOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
 	a.GradientUnits = o.v
 }
 
 // SpreadMethodOpt applies to LinearGradient
-func (o SpreadMethodOpt) ApplyLinearGradient(a *LinearGradientAttrs, _ *[]html.Component) {
+func (o SpreadMethodOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
 	a.SpreadMethod = o.v
 }
 
 // X1Opt applies to LinearGradient
-func (o X1Opt) ApplyLinearGradient(a *LinearGradientAttrs, _ *[]html.Component) {
+func (o X1Opt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
 	a.X1 = o.v
 }
 
 // X2Opt applies to LinearGradient
-func (o X2Opt) ApplyLinearGradient(a *LinearGradientAttrs, _ *[]html.Component) {
+func (o X2Opt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
 	a.X2 = o.v
 }
 
 // Y1Opt applies to LinearGradient
-func (o Y1Opt) ApplyLinearGradient(a *LinearGradientAttrs, _ *[]html.Component) {
+func (o Y1Opt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
 	a.Y1 = o.v
 }
 
 // Y2Opt applies to LinearGradient
-func (o Y2Opt) ApplyLinearGradient(a *LinearGradientAttrs, _ *[]html.Component) {
+func (o Y2Opt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
 	a.Y2 = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *LinearGradientAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgLinearGradientAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.GradientTransform != "" {
-		SvgAttr(sb, "gradientTransform", a.GradientTransform)
+		Attr(sb, "gradientTransform", a.GradientTransform)
 	}
 	if a.GradientUnits != "" {
-		SvgAttr(sb, "gradientUnits", a.GradientUnits)
+		Attr(sb, "gradientUnits", a.GradientUnits)
 	}
 	if a.SpreadMethod != "" {
-		SvgAttr(sb, "spreadMethod", a.SpreadMethod)
+		Attr(sb, "spreadMethod", a.SpreadMethod)
 	}
 	if a.X1 != "" {
-		SvgAttr(sb, "x1", a.X1)
+		Attr(sb, "x1", a.X1)
 	}
 	if a.X2 != "" {
-		SvgAttr(sb, "x2", a.X2)
+		Attr(sb, "x2", a.X2)
 	}
 	if a.Y1 != "" {
-		SvgAttr(sb, "y1", a.Y1)
+		Attr(sb, "y1", a.Y1)
 	}
 	if a.Y2 != "" {
-		SvgAttr(sb, "y2", a.Y2)
+		Attr(sb, "y2", a.Y2)
 	}
 }

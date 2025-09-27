@@ -98,14 +98,6 @@ func AClipPathUnits(v string) ClipPathUnitsOpt {
 	return ClipPathUnitsOpt{v}
 }
 
-type CrossoriginOpt struct {
-	v string
-}
-
-func ACrossorigin(v string) CrossoriginOpt {
-	return CrossoriginOpt{v}
-}
-
 type CxOpt struct {
 	v string
 }
@@ -144,14 +136,6 @@ type DivisorOpt struct {
 
 func ADivisor(v string) DivisorOpt {
 	return DivisorOpt{v}
-}
-
-type DownloadOpt struct {
-	v string
-}
-
-func ADownload(v string) DownloadOpt {
-	return DownloadOpt{v}
 }
 
 type DurOpt struct {
@@ -286,30 +270,6 @@ type GradientUnitsOpt struct {
 
 func AGradientUnits(v string) GradientUnitsOpt {
 	return GradientUnitsOpt{v}
-}
-
-type HeightOpt struct {
-	v string
-}
-
-func AHeight(v string) HeightOpt {
-	return HeightOpt{v}
-}
-
-type HrefOpt struct {
-	v string
-}
-
-func AHref(v string) HrefOpt {
-	return HrefOpt{v}
-}
-
-type HreflangOpt struct {
-	v string
-}
-
-func AHreflang(v string) HreflangOpt {
-	return HreflangOpt{v}
 }
 
 type InOpt struct {
@@ -456,38 +416,6 @@ func AMaskUnits(v string) MaskUnitsOpt {
 	return MaskUnitsOpt{v}
 }
 
-type MaxOpt struct {
-	v string
-}
-
-func AMax(v string) MaxOpt {
-	return MaxOpt{v}
-}
-
-type MediaOpt struct {
-	v string
-}
-
-func AMedia(v string) MediaOpt {
-	return MediaOpt{v}
-}
-
-type MethodOpt struct {
-	v string
-}
-
-func AMethod(v string) MethodOpt {
-	return MethodOpt{v}
-}
-
-type MinOpt struct {
-	v string
-}
-
-func AMin(v string) MinOpt {
-	return MinOpt{v}
-}
-
 type ModeOpt struct {
 	v string
 }
@@ -568,14 +496,6 @@ func APatternUnits(v string) PatternUnitsOpt {
 	return PatternUnitsOpt{v}
 }
 
-type PingOpt struct {
-	v string
-}
-
-func APing(v string) PingOpt {
-	return PingOpt{v}
-}
-
 type PointsOpt struct {
 	v string
 }
@@ -646,14 +566,6 @@ func ARadius(v string) RadiusOpt {
 	return RadiusOpt{v}
 }
 
-type ReferrerpolicyOpt struct {
-	v string
-}
-
-func AReferrerpolicy(v string) ReferrerpolicyOpt {
-	return ReferrerpolicyOpt{v}
-}
-
 type RefXOpt struct {
 	v string
 }
@@ -668,14 +580,6 @@ type RefYOpt struct {
 
 func ARefY(v string) RefYOpt {
 	return RefYOpt{v}
-}
-
-type RelOpt struct {
-	v string
-}
-
-func ARel(v string) RelOpt {
-	return RelOpt{v}
 }
 
 type RepeatCountOpt struct {
@@ -854,14 +758,6 @@ func ATableValues(v string) TableValuesOpt {
 	return TableValuesOpt{v}
 }
 
-type TargetOpt struct {
-	v string
-}
-
-func ATarget(v string) TargetOpt {
-	return TargetOpt{v}
-}
-
 type TargetXOpt struct {
 	v string
 }
@@ -886,28 +782,12 @@ func ATextLength(v string) TextLengthOpt {
 	return TextLengthOpt{v}
 }
 
-type TitleOpt struct {
-	v string
-}
-
-func ATitle(v string) TitleOpt {
-	return TitleOpt{v}
-}
-
 type ToOpt struct {
 	v string
 }
 
 func ATo(v string) ToOpt {
 	return ToOpt{v}
-}
-
-type TypeOpt struct {
-	v string
-}
-
-func AType(v string) TypeOpt {
-	return TypeOpt{v}
 }
 
 type ValuesOpt struct {
@@ -924,14 +804,6 @@ type ViewBoxOpt struct {
 
 func AViewBox(v string) ViewBoxOpt {
 	return ViewBoxOpt{v}
-}
-
-type WidthOpt struct {
-	v string
-}
-
-func AWidth(v string) WidthOpt {
-	return WidthOpt{v}
 }
 
 type XOpt struct {

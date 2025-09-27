@@ -6,32 +6,32 @@ import (
 	"strings"
 )
 
-// ViewAttrs holds the attributes for the view SVG element
-type ViewAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	ViewBox   string
+// SvgViewAttrs holds the attributes for the view SVG element
+type SvgViewAttrs struct {
+	GlobalAttrs
+	ViewBox string
 }
 
-// ViewArg interface for view element arguments
-type ViewArg interface {
-	ApplyView(*ViewAttrs, *[]html.Component)
+// SvgViewArg interface for view element arguments
+type SvgViewArg interface {
+	applyView(*SvgViewAttrs, *[]Component)
 }
 
-// defaultViewAttrs creates default attributes for view
-func defaultViewAttrs() *ViewAttrs {
-	return &ViewAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgViewAttrs creates default attributes for view
+func defaultSvgViewAttrs() *SvgViewAttrs {
+	return &SvgViewAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// View creates an SVG view element
-func View(args ...ViewArg) html.Node {
-	a := defaultViewAttrs()
-	var kids []html.Component
+// SvgView creates an SVG view element
+func SvgView(args ...SvgViewArg) Node {
+	a := defaultSvgViewAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyView(a, &kids)
+		ar.applyView(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "view",
 		Attrs: a,
 		Kids:  kids,
@@ -39,19 +39,19 @@ func View(args ...ViewArg) html.Node {
 }
 
 // Global applies global SVG attributes to view
-func (g Global) ApplyView(a *ViewAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyView(a *SvgViewAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // ViewBoxOpt applies to View
-func (o ViewBoxOpt) ApplyView(a *ViewAttrs, _ *[]html.Component) {
+func (o ViewBoxOpt) applyView(a *SvgViewAttrs, _ *[]Component) {
 	a.ViewBox = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *ViewAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgViewAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.ViewBox != "" {
-		SvgAttr(sb, "viewBox", a.ViewBox)
+		Attr(sb, "viewBox", a.ViewBox)
 	}
 }

@@ -6,32 +6,32 @@ import (
 	"strings"
 )
 
-// SymbolAttrs holds the attributes for the symbol SVG element
-type SymbolAttrs struct {
-	SvgGlobal           SvgGlobalAttrs
+// SvgSymbolAttrs holds the attributes for the symbol SVG element
+type SvgSymbolAttrs struct {
+	GlobalAttrs
 	PreserveAspectRatio string
 }
 
-// SymbolArg interface for symbol element arguments
-type SymbolArg interface {
-	ApplySymbol(*SymbolAttrs, *[]html.Component)
+// SvgSymbolArg interface for symbol element arguments
+type SvgSymbolArg interface {
+	applySymbol(*SvgSymbolAttrs, *[]Component)
 }
 
-// defaultSymbolAttrs creates default attributes for symbol
-func defaultSymbolAttrs() *SymbolAttrs {
-	return &SymbolAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgSymbolAttrs creates default attributes for symbol
+func defaultSvgSymbolAttrs() *SvgSymbolAttrs {
+	return &SvgSymbolAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Symbol creates an SVG symbol element
-func Symbol(args ...SymbolArg) html.Node {
-	a := defaultSymbolAttrs()
-	var kids []html.Component
+// SvgSymbol creates an SVG symbol element
+func SvgSymbol(args ...SvgSymbolArg) Node {
+	a := defaultSvgSymbolAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplySymbol(a, &kids)
+		ar.applySymbol(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "symbol",
 		Attrs: a,
 		Kids:  kids,
@@ -39,19 +39,19 @@ func Symbol(args ...SymbolArg) html.Node {
 }
 
 // Global applies global SVG attributes to symbol
-func (g Global) ApplySymbol(a *SymbolAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // PreserveAspectRatioOpt applies to Symbol
-func (o PreserveAspectRatioOpt) ApplySymbol(a *SymbolAttrs, _ *[]html.Component) {
+func (o PreserveAspectRatioOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *SymbolAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgSymbolAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.PreserveAspectRatio != "" {
-		SvgAttr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
+		Attr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
 	}
 }

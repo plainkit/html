@@ -6,34 +6,34 @@ import (
 	"strings"
 )
 
-// CircleAttrs holds the attributes for the circle SVG element
-type CircleAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	Cx        string
-	Cy        string
-	R         string
+// SvgCircleAttrs holds the attributes for the circle SVG element
+type SvgCircleAttrs struct {
+	GlobalAttrs
+	Cx string
+	Cy string
+	R  string
 }
 
-// CircleArg interface for circle element arguments
-type CircleArg interface {
-	ApplyCircle(*CircleAttrs, *[]html.Component)
+// SvgCircleArg interface for circle element arguments
+type SvgCircleArg interface {
+	applyCircle(*SvgCircleAttrs, *[]Component)
 }
 
-// defaultCircleAttrs creates default attributes for circle
-func defaultCircleAttrs() *CircleAttrs {
-	return &CircleAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgCircleAttrs creates default attributes for circle
+func defaultSvgCircleAttrs() *SvgCircleAttrs {
+	return &SvgCircleAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Circle creates an SVG circle element (self-closing)
-func Circle(args ...CircleArg) html.Node {
-	a := defaultCircleAttrs()
-	var kids []html.Component
+// SvgCircle creates an SVG circle element (self-closing)
+func SvgCircle(args ...SvgCircleArg) Node {
+	a := defaultSvgCircleAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyCircle(a, &kids)
+		ar.applyCircle(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "circle",
 		Attrs: a,
 		Void:  true,
@@ -41,35 +41,35 @@ func Circle(args ...CircleArg) html.Node {
 }
 
 // Global applies global SVG attributes to circle
-func (g Global) ApplyCircle(a *CircleAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // CxOpt applies to Circle
-func (o CxOpt) ApplyCircle(a *CircleAttrs, _ *[]html.Component) {
+func (o CxOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Cx = o.v
 }
 
 // CyOpt applies to Circle
-func (o CyOpt) ApplyCircle(a *CircleAttrs, _ *[]html.Component) {
+func (o CyOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Cy = o.v
 }
 
 // ROpt applies to Circle
-func (o ROpt) ApplyCircle(a *CircleAttrs, _ *[]html.Component) {
+func (o ROpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.R = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *CircleAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgCircleAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Cx != "" {
-		SvgAttr(sb, "cx", a.Cx)
+		Attr(sb, "cx", a.Cx)
 	}
 	if a.Cy != "" {
-		SvgAttr(sb, "cy", a.Cy)
+		Attr(sb, "cy", a.Cy)
 	}
 	if a.R != "" {
-		SvgAttr(sb, "r", a.R)
+		Attr(sb, "r", a.R)
 	}
 }

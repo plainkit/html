@@ -8,47 +8,47 @@ import (
 	"strings"
 )
 
-// {{.StructName}} holds the attributes for the {{.Name}} SVG element
-type {{.StructName}} struct {
-	SvgGlobal SvgGlobalAttrs{{range .Attributes}}
+// Svg{{.StructName}} holds the attributes for the {{.Name}} SVG element
+type Svg{{.StructName}} struct {
+	GlobalAttrs{{range .Attributes}}
 	{{.Field}} {{.GoType}}{{end}}
 }
 
-// {{.ArgInterface}} interface for {{.Name}} element arguments
-type {{.ArgInterface}} interface {
-	Apply{{.Title}}(*{{.StructName}}, *[]html.Component)
+// Svg{{.ArgInterface}} interface for {{.Name}} element arguments
+type Svg{{.ArgInterface}} interface {
+	apply{{.Title}}(*Svg{{.StructName}}, *[]Component)
 }
 
-// default{{.StructName}} creates default attributes for {{.Name}}
-func default{{.StructName}}() *{{.StructName}} {
-	return &{{.StructName}}{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvg{{.StructName}} creates default attributes for {{.Name}}
+func defaultSvg{{.StructName}}() *Svg{{.StructName}} {
+	return &Svg{{.StructName}}{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
 {{if .Void}}
-// {{.Title}} creates an SVG {{.Name}} element (self-closing)
-func {{.Title}}(args ...{{.ArgInterface}}) html.Node {
-	a := default{{.StructName}}()
-	var kids []html.Component
+// Svg{{.Title}} creates an SVG {{.Name}} element (self-closing)
+func Svg{{.Title}}(args ...Svg{{.ArgInterface}}) Node {
+	a := defaultSvg{{.StructName}}()
+	var kids []Component
 	for _, ar := range args {
-		ar.Apply{{.Title}}(a, &kids)
+		ar.apply{{.Title}}(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "{{.Name}}",
 		Attrs: a,
 		Void:  true,
 	}
 }
 {{else}}
-// {{.Title}} creates an SVG {{.Name}} element
-func {{.Title}}(args ...{{.ArgInterface}}) html.Node {
-	a := default{{.StructName}}()
-	var kids []html.Component
+// Svg{{.Title}} creates an SVG {{.Name}} element
+func Svg{{.Title}}(args ...Svg{{.ArgInterface}}) Node {
+	a := defaultSvg{{.StructName}}()
+	var kids []Component
 	for _, ar := range args {
-		ar.Apply{{.Title}}(a, &kids)
+		ar.apply{{.Title}}(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "{{.Name}}",
 		Attrs: a,
 		Kids:  kids,
@@ -57,23 +57,23 @@ func {{.Title}}(args ...{{.ArgInterface}}) html.Node {
 {{end}}
 
 // Global applies global SVG attributes to {{.Name}}
-func (g Global) Apply{{.Title}}(a *{{.StructName}}, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) apply{{.Title}}(a *Svg{{.StructName}}, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 {{range .Attributes}}// {{.Field}}Opt applies to {{$.Title}}
-func (o {{.Field}}Opt) Apply{{$.Title}}(a *{{$.StructName}}, _ *[]html.Component) {
+func (o {{.Field}}Opt) apply{{$.Title}}(a *Svg{{$.StructName}}, _ *[]Component) {
 	{{if eq .Type "bool"}}a.{{.Field}} = true{{else}}a.{{.Field}} = o.v{{end}}
 }
 
 {{end}}
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *{{.StructName}}) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal){{range .Attributes}}
+func (a *Svg{{.StructName}}) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs){{range .Attributes}}
 	{{if eq .Type "bool"}}if a.{{.Field}} {
-		SvgBoolAttr(sb, "{{.Attr}}")
+		BoolAttr(sb, "{{.Attr}}")
 	}{{else}}if a.{{.Field}} != "" {
-		SvgAttr(sb, "{{.Attr}}", a.{{.Field}})
+		Attr(sb, "{{.Attr}}", a.{{.Field}})
 	}{{end}}{{end}}
 }
 `

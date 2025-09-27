@@ -6,34 +6,34 @@ import (
 	"strings"
 )
 
-// PathAttrs holds the attributes for the path SVG element
-type PathAttrs struct {
-	SvgGlobal   SvgGlobalAttrs
+// SvgPathAttrs holds the attributes for the path SVG element
+type SvgPathAttrs struct {
+	GlobalAttrs
 	D           string
 	FillOpacity string
 	PathLength  string
 }
 
-// PathArg interface for path element arguments
-type PathArg interface {
-	ApplyPath(*PathAttrs, *[]html.Component)
+// SvgPathArg interface for path element arguments
+type SvgPathArg interface {
+	applyPath(*SvgPathAttrs, *[]Component)
 }
 
-// defaultPathAttrs creates default attributes for path
-func defaultPathAttrs() *PathAttrs {
-	return &PathAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgPathAttrs creates default attributes for path
+func defaultSvgPathAttrs() *SvgPathAttrs {
+	return &SvgPathAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Path creates an SVG path element (self-closing)
-func Path(args ...PathArg) html.Node {
-	a := defaultPathAttrs()
-	var kids []html.Component
+// SvgPath creates an SVG path element (self-closing)
+func SvgPath(args ...SvgPathArg) Node {
+	a := defaultSvgPathAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyPath(a, &kids)
+		ar.applyPath(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "path",
 		Attrs: a,
 		Void:  true,
@@ -41,35 +41,35 @@ func Path(args ...PathArg) html.Node {
 }
 
 // Global applies global SVG attributes to path
-func (g Global) ApplyPath(a *PathAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyPath(a *SvgPathAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // DOpt applies to Path
-func (o DOpt) ApplyPath(a *PathAttrs, _ *[]html.Component) {
+func (o DOpt) applyPath(a *SvgPathAttrs, _ *[]Component) {
 	a.D = o.v
 }
 
 // FillOpacityOpt applies to Path
-func (o FillOpacityOpt) ApplyPath(a *PathAttrs, _ *[]html.Component) {
+func (o FillOpacityOpt) applyPath(a *SvgPathAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // PathLengthOpt applies to Path
-func (o PathLengthOpt) ApplyPath(a *PathAttrs, _ *[]html.Component) {
+func (o PathLengthOpt) applyPath(a *SvgPathAttrs, _ *[]Component) {
 	a.PathLength = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *PathAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgPathAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.D != "" {
-		SvgAttr(sb, "d", a.D)
+		Attr(sb, "d", a.D)
 	}
 	if a.FillOpacity != "" {
-		SvgAttr(sb, "fill-opacity", a.FillOpacity)
+		Attr(sb, "fill-opacity", a.FillOpacity)
 	}
 	if a.PathLength != "" {
-		SvgAttr(sb, "pathLength", a.PathLength)
+		Attr(sb, "pathLength", a.PathLength)
 	}
 }

@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// AnimateAttrs holds the attributes for the animate SVG element
-type AnimateAttrs struct {
-	SvgGlobal     SvgGlobalAttrs
+// SvgAnimateAttrs holds the attributes for the animate SVG element
+type SvgAnimateAttrs struct {
+	GlobalAttrs
 	Accumulate    string
 	Additive      string
 	AttributeName string
@@ -30,26 +30,26 @@ type AnimateAttrs struct {
 	Values        string
 }
 
-// AnimateArg interface for animate element arguments
-type AnimateArg interface {
-	ApplyAnimate(*AnimateAttrs, *[]html.Component)
+// SvgAnimateArg interface for animate element arguments
+type SvgAnimateArg interface {
+	applyAnimate(*SvgAnimateAttrs, *[]Component)
 }
 
-// defaultAnimateAttrs creates default attributes for animate
-func defaultAnimateAttrs() *AnimateAttrs {
-	return &AnimateAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgAnimateAttrs creates default attributes for animate
+func defaultSvgAnimateAttrs() *SvgAnimateAttrs {
+	return &SvgAnimateAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Animate creates an SVG animate element (self-closing)
-func Animate(args ...AnimateArg) html.Node {
-	a := defaultAnimateAttrs()
-	var kids []html.Component
+// SvgAnimate creates an SVG animate element (self-closing)
+func SvgAnimate(args ...SvgAnimateArg) Node {
+	a := defaultSvgAnimateAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyAnimate(a, &kids)
+		ar.applyAnimate(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "animate",
 		Attrs: a,
 		Void:  true,
@@ -57,163 +57,163 @@ func Animate(args ...AnimateArg) html.Node {
 }
 
 // Global applies global SVG attributes to animate
-func (g Global) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // AccumulateOpt applies to Animate
-func (o AccumulateOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o AccumulateOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Accumulate = o.v
 }
 
 // AdditiveOpt applies to Animate
-func (o AdditiveOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o AdditiveOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Additive = o.v
 }
 
 // AttributeNameOpt applies to Animate
-func (o AttributeNameOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o AttributeNameOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.AttributeName = o.v
 }
 
 // AttributeTypeOpt applies to Animate
-func (o AttributeTypeOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o AttributeTypeOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.AttributeType = o.v
 }
 
 // BeginOpt applies to Animate
-func (o BeginOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o BeginOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Begin = o.v
 }
 
 // ByOpt applies to Animate
-func (o ByOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o ByOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.By = o.v
 }
 
 // CalcModeOpt applies to Animate
-func (o CalcModeOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o CalcModeOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.CalcMode = o.v
 }
 
 // DurOpt applies to Animate
-func (o DurOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o DurOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Dur = o.v
 }
 
 // EndOpt applies to Animate
-func (o EndOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o EndOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.End = o.v
 }
 
 // FromOpt applies to Animate
-func (o FromOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o FromOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.From = o.v
 }
 
 // KeySplinesOpt applies to Animate
-func (o KeySplinesOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o KeySplinesOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.KeySplines = o.v
 }
 
 // KeyTimesOpt applies to Animate
-func (o KeyTimesOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o KeyTimesOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.KeyTimes = o.v
 }
 
 // MaxOpt applies to Animate
-func (o MaxOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o MaxOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Max = o.v
 }
 
 // MinOpt applies to Animate
-func (o MinOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o MinOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Min = o.v
 }
 
 // RepeatCountOpt applies to Animate
-func (o RepeatCountOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o RepeatCountOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.RepeatCount = o.v
 }
 
 // RepeatDurOpt applies to Animate
-func (o RepeatDurOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o RepeatDurOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.RepeatDur = o.v
 }
 
 // RestartOpt applies to Animate
-func (o RestartOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o RestartOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Restart = o.v
 }
 
 // ToOpt applies to Animate
-func (o ToOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o ToOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.To = o.v
 }
 
 // ValuesOpt applies to Animate
-func (o ValuesOpt) ApplyAnimate(a *AnimateAttrs, _ *[]html.Component) {
+func (o ValuesOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Values = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *AnimateAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgAnimateAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Accumulate != "" {
-		SvgAttr(sb, "accumulate", a.Accumulate)
+		Attr(sb, "accumulate", a.Accumulate)
 	}
 	if a.Additive != "" {
-		SvgAttr(sb, "additive", a.Additive)
+		Attr(sb, "additive", a.Additive)
 	}
 	if a.AttributeName != "" {
-		SvgAttr(sb, "attributeName", a.AttributeName)
+		Attr(sb, "attributeName", a.AttributeName)
 	}
 	if a.AttributeType != "" {
-		SvgAttr(sb, "attributeType", a.AttributeType)
+		Attr(sb, "attributeType", a.AttributeType)
 	}
 	if a.Begin != "" {
-		SvgAttr(sb, "begin", a.Begin)
+		Attr(sb, "begin", a.Begin)
 	}
 	if a.By != "" {
-		SvgAttr(sb, "by", a.By)
+		Attr(sb, "by", a.By)
 	}
 	if a.CalcMode != "" {
-		SvgAttr(sb, "calcMode", a.CalcMode)
+		Attr(sb, "calcMode", a.CalcMode)
 	}
 	if a.Dur != "" {
-		SvgAttr(sb, "dur", a.Dur)
+		Attr(sb, "dur", a.Dur)
 	}
 	if a.End != "" {
-		SvgAttr(sb, "end", a.End)
+		Attr(sb, "end", a.End)
 	}
 	if a.From != "" {
-		SvgAttr(sb, "from", a.From)
+		Attr(sb, "from", a.From)
 	}
 	if a.KeySplines != "" {
-		SvgAttr(sb, "keySplines", a.KeySplines)
+		Attr(sb, "keySplines", a.KeySplines)
 	}
 	if a.KeyTimes != "" {
-		SvgAttr(sb, "keyTimes", a.KeyTimes)
+		Attr(sb, "keyTimes", a.KeyTimes)
 	}
 	if a.Max != "" {
-		SvgAttr(sb, "max", a.Max)
+		Attr(sb, "max", a.Max)
 	}
 	if a.Min != "" {
-		SvgAttr(sb, "min", a.Min)
+		Attr(sb, "min", a.Min)
 	}
 	if a.RepeatCount != "" {
-		SvgAttr(sb, "repeatCount", a.RepeatCount)
+		Attr(sb, "repeatCount", a.RepeatCount)
 	}
 	if a.RepeatDur != "" {
-		SvgAttr(sb, "repeatDur", a.RepeatDur)
+		Attr(sb, "repeatDur", a.RepeatDur)
 	}
 	if a.Restart != "" {
-		SvgAttr(sb, "restart", a.Restart)
+		Attr(sb, "restart", a.Restart)
 	}
 	if a.To != "" {
-		SvgAttr(sb, "to", a.To)
+		Attr(sb, "to", a.To)
 	}
 	if a.Values != "" {
-		SvgAttr(sb, "values", a.Values)
+		Attr(sb, "values", a.Values)
 	}
 }

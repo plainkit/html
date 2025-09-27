@@ -6,35 +6,35 @@ import (
 	"strings"
 )
 
-// LineAttrs holds the attributes for the line SVG element
-type LineAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	X1        string
-	X2        string
-	Y1        string
-	Y2        string
+// SvgLineAttrs holds the attributes for the line SVG element
+type SvgLineAttrs struct {
+	GlobalAttrs
+	X1 string
+	X2 string
+	Y1 string
+	Y2 string
 }
 
-// LineArg interface for line element arguments
-type LineArg interface {
-	ApplyLine(*LineAttrs, *[]html.Component)
+// SvgLineArg interface for line element arguments
+type SvgLineArg interface {
+	applyLine(*SvgLineAttrs, *[]Component)
 }
 
-// defaultLineAttrs creates default attributes for line
-func defaultLineAttrs() *LineAttrs {
-	return &LineAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgLineAttrs creates default attributes for line
+func defaultSvgLineAttrs() *SvgLineAttrs {
+	return &SvgLineAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Line creates an SVG line element (self-closing)
-func Line(args ...LineArg) html.Node {
-	a := defaultLineAttrs()
-	var kids []html.Component
+// SvgLine creates an SVG line element (self-closing)
+func SvgLine(args ...SvgLineArg) Node {
+	a := defaultSvgLineAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyLine(a, &kids)
+		ar.applyLine(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "line",
 		Attrs: a,
 		Void:  true,
@@ -42,43 +42,43 @@ func Line(args ...LineArg) html.Node {
 }
 
 // Global applies global SVG attributes to line
-func (g Global) ApplyLine(a *LineAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // X1Opt applies to Line
-func (o X1Opt) ApplyLine(a *LineAttrs, _ *[]html.Component) {
+func (o X1Opt) applyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.X1 = o.v
 }
 
 // X2Opt applies to Line
-func (o X2Opt) ApplyLine(a *LineAttrs, _ *[]html.Component) {
+func (o X2Opt) applyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.X2 = o.v
 }
 
 // Y1Opt applies to Line
-func (o Y1Opt) ApplyLine(a *LineAttrs, _ *[]html.Component) {
+func (o Y1Opt) applyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Y1 = o.v
 }
 
 // Y2Opt applies to Line
-func (o Y2Opt) ApplyLine(a *LineAttrs, _ *[]html.Component) {
+func (o Y2Opt) applyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Y2 = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *LineAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgLineAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.X1 != "" {
-		SvgAttr(sb, "x1", a.X1)
+		Attr(sb, "x1", a.X1)
 	}
 	if a.X2 != "" {
-		SvgAttr(sb, "x2", a.X2)
+		Attr(sb, "x2", a.X2)
 	}
 	if a.Y1 != "" {
-		SvgAttr(sb, "y1", a.Y1)
+		Attr(sb, "y1", a.Y1)
 	}
 	if a.Y2 != "" {
-		SvgAttr(sb, "y2", a.Y2)
+		Attr(sb, "y2", a.Y2)
 	}
 }

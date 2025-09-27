@@ -6,34 +6,34 @@ import (
 	"strings"
 )
 
-// GAttrs holds the attributes for the g SVG element
-type GAttrs struct {
-	SvgGlobal          SvgGlobalAttrs
+// SvgGAttrs holds the attributes for the g SVG element
+type SvgGAttrs struct {
+	GlobalAttrs
 	RequiredExtensions string
 	RequiredFeatures   string
 	SystemLanguage     string
 }
 
-// GArg interface for g element arguments
-type GArg interface {
-	ApplyG(*GAttrs, *[]html.Component)
+// SvgGArg interface for g element arguments
+type SvgGArg interface {
+	applyG(*SvgGAttrs, *[]Component)
 }
 
-// defaultGAttrs creates default attributes for g
-func defaultGAttrs() *GAttrs {
-	return &GAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgGAttrs creates default attributes for g
+func defaultSvgGAttrs() *SvgGAttrs {
+	return &SvgGAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// G creates an SVG g element
-func G(args ...GArg) html.Node {
-	a := defaultGAttrs()
-	var kids []html.Component
+// SvgG creates an SVG g element
+func SvgG(args ...SvgGArg) Node {
+	a := defaultSvgGAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyG(a, &kids)
+		ar.applyG(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "g",
 		Attrs: a,
 		Kids:  kids,
@@ -41,35 +41,35 @@ func G(args ...GArg) html.Node {
 }
 
 // Global applies global SVG attributes to g
-func (g Global) ApplyG(a *GAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyG(a *SvgGAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // RequiredExtensionsOpt applies to G
-func (o RequiredExtensionsOpt) ApplyG(a *GAttrs, _ *[]html.Component) {
+func (o RequiredExtensionsOpt) applyG(a *SvgGAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to G
-func (o RequiredFeaturesOpt) ApplyG(a *GAttrs, _ *[]html.Component) {
+func (o RequiredFeaturesOpt) applyG(a *SvgGAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // SystemLanguageOpt applies to G
-func (o SystemLanguageOpt) ApplyG(a *GAttrs, _ *[]html.Component) {
+func (o SystemLanguageOpt) applyG(a *SvgGAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *GAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgGAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.RequiredExtensions != "" {
-		SvgAttr(sb, "requiredExtensions", a.RequiredExtensions)
+		Attr(sb, "requiredExtensions", a.RequiredExtensions)
 	}
 	if a.RequiredFeatures != "" {
-		SvgAttr(sb, "requiredFeatures", a.RequiredFeatures)
+		Attr(sb, "requiredFeatures", a.RequiredFeatures)
 	}
 	if a.SystemLanguage != "" {
-		SvgAttr(sb, "systemLanguage", a.SystemLanguage)
+		Attr(sb, "systemLanguage", a.SystemLanguage)
 	}
 }

@@ -6,36 +6,36 @@ import (
 	"strings"
 )
 
-// UseAttrs holds the attributes for the use SVG element
-type UseAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	Height    string
-	Href      string
-	Width     string
-	X         string
-	Y         string
+// SvgUseAttrs holds the attributes for the use SVG element
+type SvgUseAttrs struct {
+	GlobalAttrs
+	Height string
+	Href   string
+	Width  string
+	X      string
+	Y      string
 }
 
-// UseArg interface for use element arguments
-type UseArg interface {
-	ApplyUse(*UseAttrs, *[]html.Component)
+// SvgUseArg interface for use element arguments
+type SvgUseArg interface {
+	applyUse(*SvgUseAttrs, *[]Component)
 }
 
-// defaultUseAttrs creates default attributes for use
-func defaultUseAttrs() *UseAttrs {
-	return &UseAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgUseAttrs creates default attributes for use
+func defaultSvgUseAttrs() *SvgUseAttrs {
+	return &SvgUseAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Use creates an SVG use element (self-closing)
-func Use(args ...UseArg) html.Node {
-	a := defaultUseAttrs()
-	var kids []html.Component
+// SvgUse creates an SVG use element (self-closing)
+func SvgUse(args ...SvgUseArg) Node {
+	a := defaultSvgUseAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyUse(a, &kids)
+		ar.applyUse(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "use",
 		Attrs: a,
 		Void:  true,
@@ -43,51 +43,51 @@ func Use(args ...UseArg) html.Node {
 }
 
 // Global applies global SVG attributes to use
-func (g Global) ApplyUse(a *UseAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyUse(a *SvgUseAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // HeightOpt applies to Use
-func (o HeightOpt) ApplyUse(a *UseAttrs, _ *[]html.Component) {
+func (o HeightOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // HrefOpt applies to Use
-func (o HrefOpt) ApplyUse(a *UseAttrs, _ *[]html.Component) {
+func (o HrefOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // WidthOpt applies to Use
-func (o WidthOpt) ApplyUse(a *UseAttrs, _ *[]html.Component) {
+func (o WidthOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // XOpt applies to Use
-func (o XOpt) ApplyUse(a *UseAttrs, _ *[]html.Component) {
+func (o XOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Use
-func (o YOpt) ApplyUse(a *UseAttrs, _ *[]html.Component) {
+func (o YOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *UseAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgUseAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Height != "" {
-		SvgAttr(sb, "height", a.Height)
+		Attr(sb, "height", a.Height)
 	}
 	if a.Href != "" {
-		SvgAttr(sb, "href", a.Href)
+		Attr(sb, "href", a.Href)
 	}
 	if a.Width != "" {
-		SvgAttr(sb, "width", a.Width)
+		Attr(sb, "width", a.Width)
 	}
 	if a.X != "" {
-		SvgAttr(sb, "x", a.X)
+		Attr(sb, "x", a.X)
 	}
 	if a.Y != "" {
-		SvgAttr(sb, "y", a.Y)
+		Attr(sb, "y", a.Y)
 	}
 }

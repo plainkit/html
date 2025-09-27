@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// FilterAttrs holds the attributes for the filter SVG element
-type FilterAttrs struct {
-	SvgGlobal      SvgGlobalAttrs
+// SvgFilterAttrs holds the attributes for the filter SVG element
+type SvgFilterAttrs struct {
+	GlobalAttrs
 	FilterUnits    string
 	Height         string
 	PrimitiveUnits string
@@ -17,26 +17,26 @@ type FilterAttrs struct {
 	Y              string
 }
 
-// FilterArg interface for filter element arguments
-type FilterArg interface {
-	ApplyFilter(*FilterAttrs, *[]html.Component)
+// SvgFilterArg interface for filter element arguments
+type SvgFilterArg interface {
+	applyFilter(*SvgFilterAttrs, *[]Component)
 }
 
-// defaultFilterAttrs creates default attributes for filter
-func defaultFilterAttrs() *FilterAttrs {
-	return &FilterAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFilterAttrs creates default attributes for filter
+func defaultSvgFilterAttrs() *SvgFilterAttrs {
+	return &SvgFilterAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Filter creates an SVG filter element
-func Filter(args ...FilterArg) html.Node {
-	a := defaultFilterAttrs()
-	var kids []html.Component
+// SvgFilter creates an SVG filter element
+func SvgFilter(args ...SvgFilterArg) Node {
+	a := defaultSvgFilterAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFilter(a, &kids)
+		ar.applyFilter(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "filter",
 		Attrs: a,
 		Kids:  kids,
@@ -44,59 +44,59 @@ func Filter(args ...FilterArg) html.Node {
 }
 
 // Global applies global SVG attributes to filter
-func (g Global) ApplyFilter(a *FilterAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // FilterUnitsOpt applies to Filter
-func (o FilterUnitsOpt) ApplyFilter(a *FilterAttrs, _ *[]html.Component) {
+func (o FilterUnitsOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FilterUnits = o.v
 }
 
 // HeightOpt applies to Filter
-func (o HeightOpt) ApplyFilter(a *FilterAttrs, _ *[]html.Component) {
+func (o HeightOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // PrimitiveUnitsOpt applies to Filter
-func (o PrimitiveUnitsOpt) ApplyFilter(a *FilterAttrs, _ *[]html.Component) {
+func (o PrimitiveUnitsOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.PrimitiveUnits = o.v
 }
 
 // WidthOpt applies to Filter
-func (o WidthOpt) ApplyFilter(a *FilterAttrs, _ *[]html.Component) {
+func (o WidthOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // XOpt applies to Filter
-func (o XOpt) ApplyFilter(a *FilterAttrs, _ *[]html.Component) {
+func (o XOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Filter
-func (o YOpt) ApplyFilter(a *FilterAttrs, _ *[]html.Component) {
+func (o YOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FilterAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFilterAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.FilterUnits != "" {
-		SvgAttr(sb, "filterUnits", a.FilterUnits)
+		Attr(sb, "filterUnits", a.FilterUnits)
 	}
 	if a.Height != "" {
-		SvgAttr(sb, "height", a.Height)
+		Attr(sb, "height", a.Height)
 	}
 	if a.PrimitiveUnits != "" {
-		SvgAttr(sb, "primitiveUnits", a.PrimitiveUnits)
+		Attr(sb, "primitiveUnits", a.PrimitiveUnits)
 	}
 	if a.Width != "" {
-		SvgAttr(sb, "width", a.Width)
+		Attr(sb, "width", a.Width)
 	}
 	if a.X != "" {
-		SvgAttr(sb, "x", a.X)
+		Attr(sb, "x", a.X)
 	}
 	if a.Y != "" {
-		SvgAttr(sb, "y", a.Y)
+		Attr(sb, "y", a.Y)
 	}
 }

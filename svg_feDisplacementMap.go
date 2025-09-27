@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// FeDisplacementMapAttrs holds the attributes for the feDisplacementMap SVG element
-type FeDisplacementMapAttrs struct {
-	SvgGlobal        SvgGlobalAttrs
+// SvgFeDisplacementMapAttrs holds the attributes for the feDisplacementMap SVG element
+type SvgFeDisplacementMapAttrs struct {
+	GlobalAttrs
 	In               string
 	In2              string
 	Scale            string
@@ -16,26 +16,26 @@ type FeDisplacementMapAttrs struct {
 	YChannelSelector string
 }
 
-// FeDisplacementMapArg interface for feDisplacementMap element arguments
-type FeDisplacementMapArg interface {
-	ApplyFeDisplacementMap(*FeDisplacementMapAttrs, *[]html.Component)
+// SvgFeDisplacementMapArg interface for feDisplacementMap element arguments
+type SvgFeDisplacementMapArg interface {
+	applyFeDisplacementMap(*SvgFeDisplacementMapAttrs, *[]Component)
 }
 
-// defaultFeDisplacementMapAttrs creates default attributes for feDisplacementMap
-func defaultFeDisplacementMapAttrs() *FeDisplacementMapAttrs {
-	return &FeDisplacementMapAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeDisplacementMapAttrs creates default attributes for feDisplacementMap
+func defaultSvgFeDisplacementMapAttrs() *SvgFeDisplacementMapAttrs {
+	return &SvgFeDisplacementMapAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeDisplacementMap creates an SVG feDisplacementMap element
-func FeDisplacementMap(args ...FeDisplacementMapArg) html.Node {
-	a := defaultFeDisplacementMapAttrs()
-	var kids []html.Component
+// SvgFeDisplacementMap creates an SVG feDisplacementMap element
+func SvgFeDisplacementMap(args ...SvgFeDisplacementMapArg) Node {
+	a := defaultSvgFeDisplacementMapAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeDisplacementMap(a, &kids)
+		ar.applyFeDisplacementMap(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feDisplacementMap",
 		Attrs: a,
 		Kids:  kids,
@@ -43,51 +43,51 @@ func FeDisplacementMap(args ...FeDisplacementMapArg) html.Node {
 }
 
 // Global applies global SVG attributes to feDisplacementMap
-func (g Global) ApplyFeDisplacementMap(a *FeDisplacementMapAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // InOpt applies to FeDisplacementMap
-func (o InOpt) ApplyFeDisplacementMap(a *FeDisplacementMapAttrs, _ *[]html.Component) {
+func (o InOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // In2Opt applies to FeDisplacementMap
-func (o In2Opt) ApplyFeDisplacementMap(a *FeDisplacementMapAttrs, _ *[]html.Component) {
+func (o In2Opt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
 	a.In2 = o.v
 }
 
 // ScaleOpt applies to FeDisplacementMap
-func (o ScaleOpt) ApplyFeDisplacementMap(a *FeDisplacementMapAttrs, _ *[]html.Component) {
+func (o ScaleOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
 	a.Scale = o.v
 }
 
 // XChannelSelectorOpt applies to FeDisplacementMap
-func (o XChannelSelectorOpt) ApplyFeDisplacementMap(a *FeDisplacementMapAttrs, _ *[]html.Component) {
+func (o XChannelSelectorOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
 	a.XChannelSelector = o.v
 }
 
 // YChannelSelectorOpt applies to FeDisplacementMap
-func (o YChannelSelectorOpt) ApplyFeDisplacementMap(a *FeDisplacementMapAttrs, _ *[]html.Component) {
+func (o YChannelSelectorOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
 	a.YChannelSelector = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeDisplacementMapAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeDisplacementMapAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.In != "" {
-		SvgAttr(sb, "in", a.In)
+		Attr(sb, "in", a.In)
 	}
 	if a.In2 != "" {
-		SvgAttr(sb, "in2", a.In2)
+		Attr(sb, "in2", a.In2)
 	}
 	if a.Scale != "" {
-		SvgAttr(sb, "scale", a.Scale)
+		Attr(sb, "scale", a.Scale)
 	}
 	if a.XChannelSelector != "" {
-		SvgAttr(sb, "xChannelSelector", a.XChannelSelector)
+		Attr(sb, "xChannelSelector", a.XChannelSelector)
 	}
 	if a.YChannelSelector != "" {
-		SvgAttr(sb, "yChannelSelector", a.YChannelSelector)
+		Attr(sb, "yChannelSelector", a.YChannelSelector)
 	}
 }

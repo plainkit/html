@@ -6,34 +6,34 @@ import (
 	"strings"
 )
 
-// SwitchAttrs holds the attributes for the switch SVG element
-type SwitchAttrs struct {
-	SvgGlobal          SvgGlobalAttrs
+// SvgSwitchAttrs holds the attributes for the switch SVG element
+type SvgSwitchAttrs struct {
+	GlobalAttrs
 	RequiredExtensions string
 	RequiredFeatures   string
 	SystemLanguage     string
 }
 
-// SwitchArg interface for switch element arguments
-type SwitchArg interface {
-	ApplySwitch(*SwitchAttrs, *[]html.Component)
+// SvgSwitchArg interface for switch element arguments
+type SvgSwitchArg interface {
+	applySwitch(*SvgSwitchAttrs, *[]Component)
 }
 
-// defaultSwitchAttrs creates default attributes for switch
-func defaultSwitchAttrs() *SwitchAttrs {
-	return &SwitchAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgSwitchAttrs creates default attributes for switch
+func defaultSvgSwitchAttrs() *SvgSwitchAttrs {
+	return &SvgSwitchAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Switch creates an SVG switch element
-func Switch(args ...SwitchArg) html.Node {
-	a := defaultSwitchAttrs()
-	var kids []html.Component
+// SvgSwitch creates an SVG switch element
+func SvgSwitch(args ...SvgSwitchArg) Node {
+	a := defaultSvgSwitchAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplySwitch(a, &kids)
+		ar.applySwitch(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "switch",
 		Attrs: a,
 		Kids:  kids,
@@ -41,35 +41,35 @@ func Switch(args ...SwitchArg) html.Node {
 }
 
 // Global applies global SVG attributes to switch
-func (g Global) ApplySwitch(a *SwitchAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // RequiredExtensionsOpt applies to Switch
-func (o RequiredExtensionsOpt) ApplySwitch(a *SwitchAttrs, _ *[]html.Component) {
+func (o RequiredExtensionsOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Switch
-func (o RequiredFeaturesOpt) ApplySwitch(a *SwitchAttrs, _ *[]html.Component) {
+func (o RequiredFeaturesOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // SystemLanguageOpt applies to Switch
-func (o SystemLanguageOpt) ApplySwitch(a *SwitchAttrs, _ *[]html.Component) {
+func (o SystemLanguageOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *SwitchAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgSwitchAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.RequiredExtensions != "" {
-		SvgAttr(sb, "requiredExtensions", a.RequiredExtensions)
+		Attr(sb, "requiredExtensions", a.RequiredExtensions)
 	}
 	if a.RequiredFeatures != "" {
-		SvgAttr(sb, "requiredFeatures", a.RequiredFeatures)
+		Attr(sb, "requiredFeatures", a.RequiredFeatures)
 	}
 	if a.SystemLanguage != "" {
-		SvgAttr(sb, "systemLanguage", a.SystemLanguage)
+		Attr(sb, "systemLanguage", a.SystemLanguage)
 	}
 }

@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// FeSpotLightAttrs holds the attributes for the feSpotLight SVG element
-type FeSpotLightAttrs struct {
-	SvgGlobal         SvgGlobalAttrs
+// SvgFeSpotLightAttrs holds the attributes for the feSpotLight SVG element
+type SvgFeSpotLightAttrs struct {
+	GlobalAttrs
 	LimitingConeAngle string
 	PointsAtX         string
 	PointsAtY         string
@@ -19,26 +19,26 @@ type FeSpotLightAttrs struct {
 	Z                 string
 }
 
-// FeSpotLightArg interface for feSpotLight element arguments
-type FeSpotLightArg interface {
-	ApplyFeSpotLight(*FeSpotLightAttrs, *[]html.Component)
+// SvgFeSpotLightArg interface for feSpotLight element arguments
+type SvgFeSpotLightArg interface {
+	applyFeSpotLight(*SvgFeSpotLightAttrs, *[]Component)
 }
 
-// defaultFeSpotLightAttrs creates default attributes for feSpotLight
-func defaultFeSpotLightAttrs() *FeSpotLightAttrs {
-	return &FeSpotLightAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeSpotLightAttrs creates default attributes for feSpotLight
+func defaultSvgFeSpotLightAttrs() *SvgFeSpotLightAttrs {
+	return &SvgFeSpotLightAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeSpotLight creates an SVG feSpotLight element
-func FeSpotLight(args ...FeSpotLightArg) html.Node {
-	a := defaultFeSpotLightAttrs()
-	var kids []html.Component
+// SvgFeSpotLight creates an SVG feSpotLight element
+func SvgFeSpotLight(args ...SvgFeSpotLightArg) Node {
+	a := defaultSvgFeSpotLightAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeSpotLight(a, &kids)
+		ar.applyFeSpotLight(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feSpotLight",
 		Attrs: a,
 		Kids:  kids,
@@ -46,75 +46,75 @@ func FeSpotLight(args ...FeSpotLightArg) html.Node {
 }
 
 // Global applies global SVG attributes to feSpotLight
-func (g Global) ApplyFeSpotLight(a *FeSpotLightAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // LimitingConeAngleOpt applies to FeSpotLight
-func (o LimitingConeAngleOpt) ApplyFeSpotLight(a *FeSpotLightAttrs, _ *[]html.Component) {
+func (o LimitingConeAngleOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.LimitingConeAngle = o.v
 }
 
 // PointsAtXOpt applies to FeSpotLight
-func (o PointsAtXOpt) ApplyFeSpotLight(a *FeSpotLightAttrs, _ *[]html.Component) {
+func (o PointsAtXOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.PointsAtX = o.v
 }
 
 // PointsAtYOpt applies to FeSpotLight
-func (o PointsAtYOpt) ApplyFeSpotLight(a *FeSpotLightAttrs, _ *[]html.Component) {
+func (o PointsAtYOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.PointsAtY = o.v
 }
 
 // PointsAtZOpt applies to FeSpotLight
-func (o PointsAtZOpt) ApplyFeSpotLight(a *FeSpotLightAttrs, _ *[]html.Component) {
+func (o PointsAtZOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.PointsAtZ = o.v
 }
 
 // SpecularExponentOpt applies to FeSpotLight
-func (o SpecularExponentOpt) ApplyFeSpotLight(a *FeSpotLightAttrs, _ *[]html.Component) {
+func (o SpecularExponentOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.SpecularExponent = o.v
 }
 
 // XOpt applies to FeSpotLight
-func (o XOpt) ApplyFeSpotLight(a *FeSpotLightAttrs, _ *[]html.Component) {
+func (o XOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeSpotLight
-func (o YOpt) ApplyFeSpotLight(a *FeSpotLightAttrs, _ *[]html.Component) {
+func (o YOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // ZOpt applies to FeSpotLight
-func (o ZOpt) ApplyFeSpotLight(a *FeSpotLightAttrs, _ *[]html.Component) {
+func (o ZOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.Z = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeSpotLightAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeSpotLightAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.LimitingConeAngle != "" {
-		SvgAttr(sb, "limitingConeAngle", a.LimitingConeAngle)
+		Attr(sb, "limitingConeAngle", a.LimitingConeAngle)
 	}
 	if a.PointsAtX != "" {
-		SvgAttr(sb, "pointsAtX", a.PointsAtX)
+		Attr(sb, "pointsAtX", a.PointsAtX)
 	}
 	if a.PointsAtY != "" {
-		SvgAttr(sb, "pointsAtY", a.PointsAtY)
+		Attr(sb, "pointsAtY", a.PointsAtY)
 	}
 	if a.PointsAtZ != "" {
-		SvgAttr(sb, "pointsAtZ", a.PointsAtZ)
+		Attr(sb, "pointsAtZ", a.PointsAtZ)
 	}
 	if a.SpecularExponent != "" {
-		SvgAttr(sb, "specularExponent", a.SpecularExponent)
+		Attr(sb, "specularExponent", a.SpecularExponent)
 	}
 	if a.X != "" {
-		SvgAttr(sb, "x", a.X)
+		Attr(sb, "x", a.X)
 	}
 	if a.Y != "" {
-		SvgAttr(sb, "y", a.Y)
+		Attr(sb, "y", a.Y)
 	}
 	if a.Z != "" {
-		SvgAttr(sb, "z", a.Z)
+		Attr(sb, "z", a.Z)
 	}
 }

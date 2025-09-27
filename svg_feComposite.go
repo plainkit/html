@@ -6,38 +6,38 @@ import (
 	"strings"
 )
 
-// FeCompositeAttrs holds the attributes for the feComposite SVG element
-type FeCompositeAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	In        string
-	In2       string
-	K1        string
-	K2        string
-	K3        string
-	K4        string
-	Operator  string
+// SvgFeCompositeAttrs holds the attributes for the feComposite SVG element
+type SvgFeCompositeAttrs struct {
+	GlobalAttrs
+	In       string
+	In2      string
+	K1       string
+	K2       string
+	K3       string
+	K4       string
+	Operator string
 }
 
-// FeCompositeArg interface for feComposite element arguments
-type FeCompositeArg interface {
-	ApplyFeComposite(*FeCompositeAttrs, *[]html.Component)
+// SvgFeCompositeArg interface for feComposite element arguments
+type SvgFeCompositeArg interface {
+	applyFeComposite(*SvgFeCompositeAttrs, *[]Component)
 }
 
-// defaultFeCompositeAttrs creates default attributes for feComposite
-func defaultFeCompositeAttrs() *FeCompositeAttrs {
-	return &FeCompositeAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeCompositeAttrs creates default attributes for feComposite
+func defaultSvgFeCompositeAttrs() *SvgFeCompositeAttrs {
+	return &SvgFeCompositeAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeComposite creates an SVG feComposite element
-func FeComposite(args ...FeCompositeArg) html.Node {
-	a := defaultFeCompositeAttrs()
-	var kids []html.Component
+// SvgFeComposite creates an SVG feComposite element
+func SvgFeComposite(args ...SvgFeCompositeArg) Node {
+	a := defaultSvgFeCompositeAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeComposite(a, &kids)
+		ar.applyFeComposite(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feComposite",
 		Attrs: a,
 		Kids:  kids,
@@ -45,67 +45,67 @@ func FeComposite(args ...FeCompositeArg) html.Node {
 }
 
 // Global applies global SVG attributes to feComposite
-func (g Global) ApplyFeComposite(a *FeCompositeAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeComposite(a *SvgFeCompositeAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // InOpt applies to FeComposite
-func (o InOpt) ApplyFeComposite(a *FeCompositeAttrs, _ *[]html.Component) {
+func (o InOpt) applyFeComposite(a *SvgFeCompositeAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // In2Opt applies to FeComposite
-func (o In2Opt) ApplyFeComposite(a *FeCompositeAttrs, _ *[]html.Component) {
+func (o In2Opt) applyFeComposite(a *SvgFeCompositeAttrs, _ *[]Component) {
 	a.In2 = o.v
 }
 
 // K1Opt applies to FeComposite
-func (o K1Opt) ApplyFeComposite(a *FeCompositeAttrs, _ *[]html.Component) {
+func (o K1Opt) applyFeComposite(a *SvgFeCompositeAttrs, _ *[]Component) {
 	a.K1 = o.v
 }
 
 // K2Opt applies to FeComposite
-func (o K2Opt) ApplyFeComposite(a *FeCompositeAttrs, _ *[]html.Component) {
+func (o K2Opt) applyFeComposite(a *SvgFeCompositeAttrs, _ *[]Component) {
 	a.K2 = o.v
 }
 
 // K3Opt applies to FeComposite
-func (o K3Opt) ApplyFeComposite(a *FeCompositeAttrs, _ *[]html.Component) {
+func (o K3Opt) applyFeComposite(a *SvgFeCompositeAttrs, _ *[]Component) {
 	a.K3 = o.v
 }
 
 // K4Opt applies to FeComposite
-func (o K4Opt) ApplyFeComposite(a *FeCompositeAttrs, _ *[]html.Component) {
+func (o K4Opt) applyFeComposite(a *SvgFeCompositeAttrs, _ *[]Component) {
 	a.K4 = o.v
 }
 
 // OperatorOpt applies to FeComposite
-func (o OperatorOpt) ApplyFeComposite(a *FeCompositeAttrs, _ *[]html.Component) {
+func (o OperatorOpt) applyFeComposite(a *SvgFeCompositeAttrs, _ *[]Component) {
 	a.Operator = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeCompositeAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeCompositeAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.In != "" {
-		SvgAttr(sb, "in", a.In)
+		Attr(sb, "in", a.In)
 	}
 	if a.In2 != "" {
-		SvgAttr(sb, "in2", a.In2)
+		Attr(sb, "in2", a.In2)
 	}
 	if a.K1 != "" {
-		SvgAttr(sb, "k1", a.K1)
+		Attr(sb, "k1", a.K1)
 	}
 	if a.K2 != "" {
-		SvgAttr(sb, "k2", a.K2)
+		Attr(sb, "k2", a.K2)
 	}
 	if a.K3 != "" {
-		SvgAttr(sb, "k3", a.K3)
+		Attr(sb, "k3", a.K3)
 	}
 	if a.K4 != "" {
-		SvgAttr(sb, "k4", a.K4)
+		Attr(sb, "k4", a.K4)
 	}
 	if a.Operator != "" {
-		SvgAttr(sb, "operator", a.Operator)
+		Attr(sb, "operator", a.Operator)
 	}
 }

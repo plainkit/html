@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// MarkerAttrs holds the attributes for the marker SVG element
-type MarkerAttrs struct {
-	SvgGlobal    SvgGlobalAttrs
+// SvgMarkerAttrs holds the attributes for the marker SVG element
+type SvgMarkerAttrs struct {
+	GlobalAttrs
 	MarkerHeight string
 	MarkerUnits  string
 	MarkerWidth  string
@@ -18,26 +18,26 @@ type MarkerAttrs struct {
 	ViewBox      string
 }
 
-// MarkerArg interface for marker element arguments
-type MarkerArg interface {
-	ApplyMarker(*MarkerAttrs, *[]html.Component)
+// SvgMarkerArg interface for marker element arguments
+type SvgMarkerArg interface {
+	applyMarker(*SvgMarkerAttrs, *[]Component)
 }
 
-// defaultMarkerAttrs creates default attributes for marker
-func defaultMarkerAttrs() *MarkerAttrs {
-	return &MarkerAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgMarkerAttrs creates default attributes for marker
+func defaultSvgMarkerAttrs() *SvgMarkerAttrs {
+	return &SvgMarkerAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Marker creates an SVG marker element
-func Marker(args ...MarkerArg) html.Node {
-	a := defaultMarkerAttrs()
-	var kids []html.Component
+// SvgMarker creates an SVG marker element
+func SvgMarker(args ...SvgMarkerArg) Node {
+	a := defaultSvgMarkerAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyMarker(a, &kids)
+		ar.applyMarker(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "marker",
 		Attrs: a,
 		Kids:  kids,
@@ -45,67 +45,67 @@ func Marker(args ...MarkerArg) html.Node {
 }
 
 // Global applies global SVG attributes to marker
-func (g Global) ApplyMarker(a *MarkerAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // MarkerHeightOpt applies to Marker
-func (o MarkerHeightOpt) ApplyMarker(a *MarkerAttrs, _ *[]html.Component) {
+func (o MarkerHeightOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.MarkerHeight = o.v
 }
 
 // MarkerUnitsOpt applies to Marker
-func (o MarkerUnitsOpt) ApplyMarker(a *MarkerAttrs, _ *[]html.Component) {
+func (o MarkerUnitsOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.MarkerUnits = o.v
 }
 
 // MarkerWidthOpt applies to Marker
-func (o MarkerWidthOpt) ApplyMarker(a *MarkerAttrs, _ *[]html.Component) {
+func (o MarkerWidthOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.MarkerWidth = o.v
 }
 
 // OrientOpt applies to Marker
-func (o OrientOpt) ApplyMarker(a *MarkerAttrs, _ *[]html.Component) {
+func (o OrientOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Orient = o.v
 }
 
 // RefXOpt applies to Marker
-func (o RefXOpt) ApplyMarker(a *MarkerAttrs, _ *[]html.Component) {
+func (o RefXOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.RefX = o.v
 }
 
 // RefYOpt applies to Marker
-func (o RefYOpt) ApplyMarker(a *MarkerAttrs, _ *[]html.Component) {
+func (o RefYOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.RefY = o.v
 }
 
 // ViewBoxOpt applies to Marker
-func (o ViewBoxOpt) ApplyMarker(a *MarkerAttrs, _ *[]html.Component) {
+func (o ViewBoxOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.ViewBox = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *MarkerAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgMarkerAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.MarkerHeight != "" {
-		SvgAttr(sb, "markerHeight", a.MarkerHeight)
+		Attr(sb, "markerHeight", a.MarkerHeight)
 	}
 	if a.MarkerUnits != "" {
-		SvgAttr(sb, "markerUnits", a.MarkerUnits)
+		Attr(sb, "markerUnits", a.MarkerUnits)
 	}
 	if a.MarkerWidth != "" {
-		SvgAttr(sb, "markerWidth", a.MarkerWidth)
+		Attr(sb, "markerWidth", a.MarkerWidth)
 	}
 	if a.Orient != "" {
-		SvgAttr(sb, "orient", a.Orient)
+		Attr(sb, "orient", a.Orient)
 	}
 	if a.RefX != "" {
-		SvgAttr(sb, "refX", a.RefX)
+		Attr(sb, "refX", a.RefX)
 	}
 	if a.RefY != "" {
-		SvgAttr(sb, "refY", a.RefY)
+		Attr(sb, "refY", a.RefY)
 	}
 	if a.ViewBox != "" {
-		SvgAttr(sb, "viewBox", a.ViewBox)
+		Attr(sb, "viewBox", a.ViewBox)
 	}
 }

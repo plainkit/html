@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// AnimateTransformAttrs holds the attributes for the animateTransform SVG element
-type AnimateTransformAttrs struct {
-	SvgGlobal     SvgGlobalAttrs
+// SvgAnimateTransformAttrs holds the attributes for the animateTransform SVG element
+type SvgAnimateTransformAttrs struct {
+	GlobalAttrs
 	Accumulate    string
 	Additive      string
 	AttributeName string
@@ -31,26 +31,26 @@ type AnimateTransformAttrs struct {
 	Values        string
 }
 
-// AnimateTransformArg interface for animateTransform element arguments
-type AnimateTransformArg interface {
-	ApplyAnimateTransform(*AnimateTransformAttrs, *[]html.Component)
+// SvgAnimateTransformArg interface for animateTransform element arguments
+type SvgAnimateTransformArg interface {
+	applyAnimateTransform(*SvgAnimateTransformAttrs, *[]Component)
 }
 
-// defaultAnimateTransformAttrs creates default attributes for animateTransform
-func defaultAnimateTransformAttrs() *AnimateTransformAttrs {
-	return &AnimateTransformAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgAnimateTransformAttrs creates default attributes for animateTransform
+func defaultSvgAnimateTransformAttrs() *SvgAnimateTransformAttrs {
+	return &SvgAnimateTransformAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// AnimateTransform creates an SVG animateTransform element (self-closing)
-func AnimateTransform(args ...AnimateTransformArg) html.Node {
-	a := defaultAnimateTransformAttrs()
-	var kids []html.Component
+// SvgAnimateTransform creates an SVG animateTransform element (self-closing)
+func SvgAnimateTransform(args ...SvgAnimateTransformArg) Node {
+	a := defaultSvgAnimateTransformAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyAnimateTransform(a, &kids)
+		ar.applyAnimateTransform(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "animateTransform",
 		Attrs: a,
 		Void:  true,
@@ -58,171 +58,171 @@ func AnimateTransform(args ...AnimateTransformArg) html.Node {
 }
 
 // Global applies global SVG attributes to animateTransform
-func (g Global) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // AccumulateOpt applies to AnimateTransform
-func (o AccumulateOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o AccumulateOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Accumulate = o.v
 }
 
 // AdditiveOpt applies to AnimateTransform
-func (o AdditiveOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o AdditiveOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Additive = o.v
 }
 
 // AttributeNameOpt applies to AnimateTransform
-func (o AttributeNameOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o AttributeNameOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.AttributeName = o.v
 }
 
 // AttributeTypeOpt applies to AnimateTransform
-func (o AttributeTypeOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o AttributeTypeOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.AttributeType = o.v
 }
 
 // BeginOpt applies to AnimateTransform
-func (o BeginOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o BeginOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Begin = o.v
 }
 
 // ByOpt applies to AnimateTransform
-func (o ByOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o ByOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.By = o.v
 }
 
 // CalcModeOpt applies to AnimateTransform
-func (o CalcModeOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o CalcModeOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.CalcMode = o.v
 }
 
 // DurOpt applies to AnimateTransform
-func (o DurOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o DurOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Dur = o.v
 }
 
 // EndOpt applies to AnimateTransform
-func (o EndOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o EndOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.End = o.v
 }
 
 // FromOpt applies to AnimateTransform
-func (o FromOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o FromOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.From = o.v
 }
 
 // KeySplinesOpt applies to AnimateTransform
-func (o KeySplinesOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o KeySplinesOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.KeySplines = o.v
 }
 
 // KeyTimesOpt applies to AnimateTransform
-func (o KeyTimesOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o KeyTimesOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.KeyTimes = o.v
 }
 
 // MaxOpt applies to AnimateTransform
-func (o MaxOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o MaxOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Max = o.v
 }
 
 // MinOpt applies to AnimateTransform
-func (o MinOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o MinOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Min = o.v
 }
 
 // RepeatCountOpt applies to AnimateTransform
-func (o RepeatCountOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o RepeatCountOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.RepeatCount = o.v
 }
 
 // RepeatDurOpt applies to AnimateTransform
-func (o RepeatDurOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o RepeatDurOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.RepeatDur = o.v
 }
 
 // RestartOpt applies to AnimateTransform
-func (o RestartOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o RestartOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Restart = o.v
 }
 
 // ToOpt applies to AnimateTransform
-func (o ToOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o ToOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.To = o.v
 }
 
 // TypeOpt applies to AnimateTransform
-func (o TypeOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o TypeOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 
 // ValuesOpt applies to AnimateTransform
-func (o ValuesOpt) ApplyAnimateTransform(a *AnimateTransformAttrs, _ *[]html.Component) {
+func (o ValuesOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Values = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *AnimateTransformAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgAnimateTransformAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Accumulate != "" {
-		SvgAttr(sb, "accumulate", a.Accumulate)
+		Attr(sb, "accumulate", a.Accumulate)
 	}
 	if a.Additive != "" {
-		SvgAttr(sb, "additive", a.Additive)
+		Attr(sb, "additive", a.Additive)
 	}
 	if a.AttributeName != "" {
-		SvgAttr(sb, "attributeName", a.AttributeName)
+		Attr(sb, "attributeName", a.AttributeName)
 	}
 	if a.AttributeType != "" {
-		SvgAttr(sb, "attributeType", a.AttributeType)
+		Attr(sb, "attributeType", a.AttributeType)
 	}
 	if a.Begin != "" {
-		SvgAttr(sb, "begin", a.Begin)
+		Attr(sb, "begin", a.Begin)
 	}
 	if a.By != "" {
-		SvgAttr(sb, "by", a.By)
+		Attr(sb, "by", a.By)
 	}
 	if a.CalcMode != "" {
-		SvgAttr(sb, "calcMode", a.CalcMode)
+		Attr(sb, "calcMode", a.CalcMode)
 	}
 	if a.Dur != "" {
-		SvgAttr(sb, "dur", a.Dur)
+		Attr(sb, "dur", a.Dur)
 	}
 	if a.End != "" {
-		SvgAttr(sb, "end", a.End)
+		Attr(sb, "end", a.End)
 	}
 	if a.From != "" {
-		SvgAttr(sb, "from", a.From)
+		Attr(sb, "from", a.From)
 	}
 	if a.KeySplines != "" {
-		SvgAttr(sb, "keySplines", a.KeySplines)
+		Attr(sb, "keySplines", a.KeySplines)
 	}
 	if a.KeyTimes != "" {
-		SvgAttr(sb, "keyTimes", a.KeyTimes)
+		Attr(sb, "keyTimes", a.KeyTimes)
 	}
 	if a.Max != "" {
-		SvgAttr(sb, "max", a.Max)
+		Attr(sb, "max", a.Max)
 	}
 	if a.Min != "" {
-		SvgAttr(sb, "min", a.Min)
+		Attr(sb, "min", a.Min)
 	}
 	if a.RepeatCount != "" {
-		SvgAttr(sb, "repeatCount", a.RepeatCount)
+		Attr(sb, "repeatCount", a.RepeatCount)
 	}
 	if a.RepeatDur != "" {
-		SvgAttr(sb, "repeatDur", a.RepeatDur)
+		Attr(sb, "repeatDur", a.RepeatDur)
 	}
 	if a.Restart != "" {
-		SvgAttr(sb, "restart", a.Restart)
+		Attr(sb, "restart", a.Restart)
 	}
 	if a.To != "" {
-		SvgAttr(sb, "to", a.To)
+		Attr(sb, "to", a.To)
 	}
 	if a.Type != "" {
-		SvgAttr(sb, "type", a.Type)
+		Attr(sb, "type", a.Type)
 	}
 	if a.Values != "" {
-		SvgAttr(sb, "values", a.Values)
+		Attr(sb, "values", a.Values)
 	}
 }

@@ -6,32 +6,32 @@ import (
 	"strings"
 )
 
-// MpathAttrs holds the attributes for the mpath SVG element
-type MpathAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	Href      string
+// SvgMpathAttrs holds the attributes for the mpath SVG element
+type SvgMpathAttrs struct {
+	GlobalAttrs
+	Href string
 }
 
-// MpathArg interface for mpath element arguments
-type MpathArg interface {
-	ApplyMpath(*MpathAttrs, *[]html.Component)
+// SvgMpathArg interface for mpath element arguments
+type SvgMpathArg interface {
+	applyMpath(*SvgMpathAttrs, *[]Component)
 }
 
-// defaultMpathAttrs creates default attributes for mpath
-func defaultMpathAttrs() *MpathAttrs {
-	return &MpathAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgMpathAttrs creates default attributes for mpath
+func defaultSvgMpathAttrs() *SvgMpathAttrs {
+	return &SvgMpathAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Mpath creates an SVG mpath element
-func Mpath(args ...MpathArg) html.Node {
-	a := defaultMpathAttrs()
-	var kids []html.Component
+// SvgMpath creates an SVG mpath element
+func SvgMpath(args ...SvgMpathArg) Node {
+	a := defaultSvgMpathAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyMpath(a, &kids)
+		ar.applyMpath(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "mpath",
 		Attrs: a,
 		Kids:  kids,
@@ -39,19 +39,19 @@ func Mpath(args ...MpathArg) html.Node {
 }
 
 // Global applies global SVG attributes to mpath
-func (g Global) ApplyMpath(a *MpathAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyMpath(a *SvgMpathAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // HrefOpt applies to Mpath
-func (o HrefOpt) ApplyMpath(a *MpathAttrs, _ *[]html.Component) {
+func (o HrefOpt) applyMpath(a *SvgMpathAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *MpathAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgMpathAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Href != "" {
-		SvgAttr(sb, "href", a.Href)
+		Attr(sb, "href", a.Href)
 	}
 }

@@ -6,34 +6,34 @@ import (
 	"strings"
 )
 
-// FeColorMatrixAttrs holds the attributes for the feColorMatrix SVG element
-type FeColorMatrixAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	In        string
-	Type      string
-	Values    string
+// SvgFeColorMatrixAttrs holds the attributes for the feColorMatrix SVG element
+type SvgFeColorMatrixAttrs struct {
+	GlobalAttrs
+	In     string
+	Type   string
+	Values string
 }
 
-// FeColorMatrixArg interface for feColorMatrix element arguments
-type FeColorMatrixArg interface {
-	ApplyFeColorMatrix(*FeColorMatrixAttrs, *[]html.Component)
+// SvgFeColorMatrixArg interface for feColorMatrix element arguments
+type SvgFeColorMatrixArg interface {
+	applyFeColorMatrix(*SvgFeColorMatrixAttrs, *[]Component)
 }
 
-// defaultFeColorMatrixAttrs creates default attributes for feColorMatrix
-func defaultFeColorMatrixAttrs() *FeColorMatrixAttrs {
-	return &FeColorMatrixAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeColorMatrixAttrs creates default attributes for feColorMatrix
+func defaultSvgFeColorMatrixAttrs() *SvgFeColorMatrixAttrs {
+	return &SvgFeColorMatrixAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeColorMatrix creates an SVG feColorMatrix element
-func FeColorMatrix(args ...FeColorMatrixArg) html.Node {
-	a := defaultFeColorMatrixAttrs()
-	var kids []html.Component
+// SvgFeColorMatrix creates an SVG feColorMatrix element
+func SvgFeColorMatrix(args ...SvgFeColorMatrixArg) Node {
+	a := defaultSvgFeColorMatrixAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeColorMatrix(a, &kids)
+		ar.applyFeColorMatrix(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feColorMatrix",
 		Attrs: a,
 		Kids:  kids,
@@ -41,35 +41,35 @@ func FeColorMatrix(args ...FeColorMatrixArg) html.Node {
 }
 
 // Global applies global SVG attributes to feColorMatrix
-func (g Global) ApplyFeColorMatrix(a *FeColorMatrixAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // InOpt applies to FeColorMatrix
-func (o InOpt) ApplyFeColorMatrix(a *FeColorMatrixAttrs, _ *[]html.Component) {
+func (o InOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // TypeOpt applies to FeColorMatrix
-func (o TypeOpt) ApplyFeColorMatrix(a *FeColorMatrixAttrs, _ *[]html.Component) {
+func (o TypeOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 
 // ValuesOpt applies to FeColorMatrix
-func (o ValuesOpt) ApplyFeColorMatrix(a *FeColorMatrixAttrs, _ *[]html.Component) {
+func (o ValuesOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Values = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeColorMatrixAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeColorMatrixAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.In != "" {
-		SvgAttr(sb, "in", a.In)
+		Attr(sb, "in", a.In)
 	}
 	if a.Type != "" {
-		SvgAttr(sb, "type", a.Type)
+		Attr(sb, "type", a.Type)
 	}
 	if a.Values != "" {
-		SvgAttr(sb, "values", a.Values)
+		Attr(sb, "values", a.Values)
 	}
 }

@@ -6,32 +6,32 @@ import (
 	"strings"
 )
 
-// PolygonAttrs holds the attributes for the polygon SVG element
-type PolygonAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	Points    string
+// SvgPolygonAttrs holds the attributes for the polygon SVG element
+type SvgPolygonAttrs struct {
+	GlobalAttrs
+	Points string
 }
 
-// PolygonArg interface for polygon element arguments
-type PolygonArg interface {
-	ApplyPolygon(*PolygonAttrs, *[]html.Component)
+// SvgPolygonArg interface for polygon element arguments
+type SvgPolygonArg interface {
+	applyPolygon(*SvgPolygonAttrs, *[]Component)
 }
 
-// defaultPolygonAttrs creates default attributes for polygon
-func defaultPolygonAttrs() *PolygonAttrs {
-	return &PolygonAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgPolygonAttrs creates default attributes for polygon
+func defaultSvgPolygonAttrs() *SvgPolygonAttrs {
+	return &SvgPolygonAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Polygon creates an SVG polygon element (self-closing)
-func Polygon(args ...PolygonArg) html.Node {
-	a := defaultPolygonAttrs()
-	var kids []html.Component
+// SvgPolygon creates an SVG polygon element (self-closing)
+func SvgPolygon(args ...SvgPolygonArg) Node {
+	a := defaultSvgPolygonAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyPolygon(a, &kids)
+		ar.applyPolygon(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "polygon",
 		Attrs: a,
 		Void:  true,
@@ -39,19 +39,19 @@ func Polygon(args ...PolygonArg) html.Node {
 }
 
 // Global applies global SVG attributes to polygon
-func (g Global) ApplyPolygon(a *PolygonAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // PointsOpt applies to Polygon
-func (o PointsOpt) ApplyPolygon(a *PolygonAttrs, _ *[]html.Component) {
+func (o PointsOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Points = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *PolygonAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgPolygonAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Points != "" {
-		SvgAttr(sb, "points", a.Points)
+		Attr(sb, "points", a.Points)
 	}
 }

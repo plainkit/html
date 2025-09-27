@@ -6,33 +6,33 @@ import (
 	"strings"
 )
 
-// StopAttrs holds the attributes for the stop SVG element
-type StopAttrs struct {
-	SvgGlobal SvgGlobalAttrs
+// SvgStopAttrs holds the attributes for the stop SVG element
+type SvgStopAttrs struct {
+	GlobalAttrs
 	Offset    string
 	StopColor string
 }
 
-// StopArg interface for stop element arguments
-type StopArg interface {
-	ApplyStop(*StopAttrs, *[]html.Component)
+// SvgStopArg interface for stop element arguments
+type SvgStopArg interface {
+	applyStop(*SvgStopAttrs, *[]Component)
 }
 
-// defaultStopAttrs creates default attributes for stop
-func defaultStopAttrs() *StopAttrs {
-	return &StopAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgStopAttrs creates default attributes for stop
+func defaultSvgStopAttrs() *SvgStopAttrs {
+	return &SvgStopAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Stop creates an SVG stop element (self-closing)
-func Stop(args ...StopArg) html.Node {
-	a := defaultStopAttrs()
-	var kids []html.Component
+// SvgStop creates an SVG stop element (self-closing)
+func SvgStop(args ...SvgStopArg) Node {
+	a := defaultSvgStopAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyStop(a, &kids)
+		ar.applyStop(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "stop",
 		Attrs: a,
 		Void:  true,
@@ -40,27 +40,27 @@ func Stop(args ...StopArg) html.Node {
 }
 
 // Global applies global SVG attributes to stop
-func (g Global) ApplyStop(a *StopAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyStop(a *SvgStopAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // OffsetOpt applies to Stop
-func (o OffsetOpt) ApplyStop(a *StopAttrs, _ *[]html.Component) {
+func (o OffsetOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Offset = o.v
 }
 
 // StopColorOpt applies to Stop
-func (o StopColorOpt) ApplyStop(a *StopAttrs, _ *[]html.Component) {
+func (o StopColorOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *StopAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgStopAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Offset != "" {
-		SvgAttr(sb, "offset", a.Offset)
+		Attr(sb, "offset", a.Offset)
 	}
 	if a.StopColor != "" {
-		SvgAttr(sb, "stop-color", a.StopColor)
+		Attr(sb, "stop-color", a.StopColor)
 	}
 }

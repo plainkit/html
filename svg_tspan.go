@@ -6,36 +6,36 @@ import (
 	"strings"
 )
 
-// TspanAttrs holds the attributes for the tspan SVG element
-type TspanAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	Dx        string
-	Dy        string
-	Rotate    string
-	X         string
-	Y         string
+// SvgTspanAttrs holds the attributes for the tspan SVG element
+type SvgTspanAttrs struct {
+	GlobalAttrs
+	Dx     string
+	Dy     string
+	Rotate string
+	X      string
+	Y      string
 }
 
-// TspanArg interface for tspan element arguments
-type TspanArg interface {
-	ApplyTspan(*TspanAttrs, *[]html.Component)
+// SvgTspanArg interface for tspan element arguments
+type SvgTspanArg interface {
+	applyTspan(*SvgTspanAttrs, *[]Component)
 }
 
-// defaultTspanAttrs creates default attributes for tspan
-func defaultTspanAttrs() *TspanAttrs {
-	return &TspanAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgTspanAttrs creates default attributes for tspan
+func defaultSvgTspanAttrs() *SvgTspanAttrs {
+	return &SvgTspanAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Tspan creates an SVG tspan element
-func Tspan(args ...TspanArg) html.Node {
-	a := defaultTspanAttrs()
-	var kids []html.Component
+// SvgTspan creates an SVG tspan element
+func SvgTspan(args ...SvgTspanArg) Node {
+	a := defaultSvgTspanAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyTspan(a, &kids)
+		ar.applyTspan(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "tspan",
 		Attrs: a,
 		Kids:  kids,
@@ -43,51 +43,51 @@ func Tspan(args ...TspanArg) html.Node {
 }
 
 // Global applies global SVG attributes to tspan
-func (g Global) ApplyTspan(a *TspanAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // DxOpt applies to Tspan
-func (o DxOpt) ApplyTspan(a *TspanAttrs, _ *[]html.Component) {
+func (o DxOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Dx = o.v
 }
 
 // DyOpt applies to Tspan
-func (o DyOpt) ApplyTspan(a *TspanAttrs, _ *[]html.Component) {
+func (o DyOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Dy = o.v
 }
 
 // RotateOpt applies to Tspan
-func (o RotateOpt) ApplyTspan(a *TspanAttrs, _ *[]html.Component) {
+func (o RotateOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Rotate = o.v
 }
 
 // XOpt applies to Tspan
-func (o XOpt) ApplyTspan(a *TspanAttrs, _ *[]html.Component) {
+func (o XOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Tspan
-func (o YOpt) ApplyTspan(a *TspanAttrs, _ *[]html.Component) {
+func (o YOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *TspanAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgTspanAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Dx != "" {
-		SvgAttr(sb, "dx", a.Dx)
+		Attr(sb, "dx", a.Dx)
 	}
 	if a.Dy != "" {
-		SvgAttr(sb, "dy", a.Dy)
+		Attr(sb, "dy", a.Dy)
 	}
 	if a.Rotate != "" {
-		SvgAttr(sb, "rotate", a.Rotate)
+		Attr(sb, "rotate", a.Rotate)
 	}
 	if a.X != "" {
-		SvgAttr(sb, "x", a.X)
+		Attr(sb, "x", a.X)
 	}
 	if a.Y != "" {
-		SvgAttr(sb, "y", a.Y)
+		Attr(sb, "y", a.Y)
 	}
 }

@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// FeDropShadowAttrs holds the attributes for the feDropShadow SVG element
-type FeDropShadowAttrs struct {
-	SvgGlobal    SvgGlobalAttrs
+// SvgFeDropShadowAttrs holds the attributes for the feDropShadow SVG element
+type SvgFeDropShadowAttrs struct {
+	GlobalAttrs
 	Dx           string
 	Dy           string
 	FloodColor   string
@@ -16,26 +16,26 @@ type FeDropShadowAttrs struct {
 	StdDeviation string
 }
 
-// FeDropShadowArg interface for feDropShadow element arguments
-type FeDropShadowArg interface {
-	ApplyFeDropShadow(*FeDropShadowAttrs, *[]html.Component)
+// SvgFeDropShadowArg interface for feDropShadow element arguments
+type SvgFeDropShadowArg interface {
+	applyFeDropShadow(*SvgFeDropShadowAttrs, *[]Component)
 }
 
-// defaultFeDropShadowAttrs creates default attributes for feDropShadow
-func defaultFeDropShadowAttrs() *FeDropShadowAttrs {
-	return &FeDropShadowAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeDropShadowAttrs creates default attributes for feDropShadow
+func defaultSvgFeDropShadowAttrs() *SvgFeDropShadowAttrs {
+	return &SvgFeDropShadowAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeDropShadow creates an SVG feDropShadow element
-func FeDropShadow(args ...FeDropShadowArg) html.Node {
-	a := defaultFeDropShadowAttrs()
-	var kids []html.Component
+// SvgFeDropShadow creates an SVG feDropShadow element
+func SvgFeDropShadow(args ...SvgFeDropShadowArg) Node {
+	a := defaultSvgFeDropShadowAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeDropShadow(a, &kids)
+		ar.applyFeDropShadow(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feDropShadow",
 		Attrs: a,
 		Kids:  kids,
@@ -43,51 +43,51 @@ func FeDropShadow(args ...FeDropShadowArg) html.Node {
 }
 
 // Global applies global SVG attributes to feDropShadow
-func (g Global) ApplyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // DxOpt applies to FeDropShadow
-func (o DxOpt) ApplyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
+func (o DxOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.Dx = o.v
 }
 
 // DyOpt applies to FeDropShadow
-func (o DyOpt) ApplyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
+func (o DyOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.Dy = o.v
 }
 
 // FloodColorOpt applies to FeDropShadow
-func (o FloodColorOpt) ApplyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
+func (o FloodColorOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeDropShadow
-func (o FloodOpacityOpt) ApplyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
+func (o FloodOpacityOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // StdDeviationOpt applies to FeDropShadow
-func (o StdDeviationOpt) ApplyFeDropShadow(a *FeDropShadowAttrs, _ *[]html.Component) {
+func (o StdDeviationOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.StdDeviation = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeDropShadowAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeDropShadowAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Dx != "" {
-		SvgAttr(sb, "dx", a.Dx)
+		Attr(sb, "dx", a.Dx)
 	}
 	if a.Dy != "" {
-		SvgAttr(sb, "dy", a.Dy)
+		Attr(sb, "dy", a.Dy)
 	}
 	if a.FloodColor != "" {
-		SvgAttr(sb, "flood-color", a.FloodColor)
+		Attr(sb, "flood-color", a.FloodColor)
 	}
 	if a.FloodOpacity != "" {
-		SvgAttr(sb, "flood-opacity", a.FloodOpacity)
+		Attr(sb, "flood-opacity", a.FloodOpacity)
 	}
 	if a.StdDeviation != "" {
-		SvgAttr(sb, "stdDeviation", a.StdDeviation)
+		Attr(sb, "stdDeviation", a.StdDeviation)
 	}
 }

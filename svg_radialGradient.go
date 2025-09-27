@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// RadialGradientAttrs holds the attributes for the radialGradient SVG element
-type RadialGradientAttrs struct {
-	SvgGlobal         SvgGlobalAttrs
+// SvgRadialGradientAttrs holds the attributes for the radialGradient SVG element
+type SvgRadialGradientAttrs struct {
+	GlobalAttrs
 	Cx                string
 	Cy                string
 	Fx                string
@@ -18,26 +18,26 @@ type RadialGradientAttrs struct {
 	R                 string
 }
 
-// RadialGradientArg interface for radialGradient element arguments
-type RadialGradientArg interface {
-	ApplyRadialGradient(*RadialGradientAttrs, *[]html.Component)
+// SvgRadialGradientArg interface for radialGradient element arguments
+type SvgRadialGradientArg interface {
+	applyRadialGradient(*SvgRadialGradientAttrs, *[]Component)
 }
 
-// defaultRadialGradientAttrs creates default attributes for radialGradient
-func defaultRadialGradientAttrs() *RadialGradientAttrs {
-	return &RadialGradientAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgRadialGradientAttrs creates default attributes for radialGradient
+func defaultSvgRadialGradientAttrs() *SvgRadialGradientAttrs {
+	return &SvgRadialGradientAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// RadialGradient creates an SVG radialGradient element
-func RadialGradient(args ...RadialGradientArg) html.Node {
-	a := defaultRadialGradientAttrs()
-	var kids []html.Component
+// SvgRadialGradient creates an SVG radialGradient element
+func SvgRadialGradient(args ...SvgRadialGradientArg) Node {
+	a := defaultSvgRadialGradientAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyRadialGradient(a, &kids)
+		ar.applyRadialGradient(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "radialGradient",
 		Attrs: a,
 		Kids:  kids,
@@ -45,67 +45,67 @@ func RadialGradient(args ...RadialGradientArg) html.Node {
 }
 
 // Global applies global SVG attributes to radialGradient
-func (g Global) ApplyRadialGradient(a *RadialGradientAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // CxOpt applies to RadialGradient
-func (o CxOpt) ApplyRadialGradient(a *RadialGradientAttrs, _ *[]html.Component) {
+func (o CxOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 	a.Cx = o.v
 }
 
 // CyOpt applies to RadialGradient
-func (o CyOpt) ApplyRadialGradient(a *RadialGradientAttrs, _ *[]html.Component) {
+func (o CyOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 	a.Cy = o.v
 }
 
 // FxOpt applies to RadialGradient
-func (o FxOpt) ApplyRadialGradient(a *RadialGradientAttrs, _ *[]html.Component) {
+func (o FxOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 	a.Fx = o.v
 }
 
 // FyOpt applies to RadialGradient
-func (o FyOpt) ApplyRadialGradient(a *RadialGradientAttrs, _ *[]html.Component) {
+func (o FyOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 	a.Fy = o.v
 }
 
 // GradientTransformOpt applies to RadialGradient
-func (o GradientTransformOpt) ApplyRadialGradient(a *RadialGradientAttrs, _ *[]html.Component) {
+func (o GradientTransformOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 	a.GradientTransform = o.v
 }
 
 // GradientUnitsOpt applies to RadialGradient
-func (o GradientUnitsOpt) ApplyRadialGradient(a *RadialGradientAttrs, _ *[]html.Component) {
+func (o GradientUnitsOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 	a.GradientUnits = o.v
 }
 
 // ROpt applies to RadialGradient
-func (o ROpt) ApplyRadialGradient(a *RadialGradientAttrs, _ *[]html.Component) {
+func (o ROpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 	a.R = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *RadialGradientAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgRadialGradientAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Cx != "" {
-		SvgAttr(sb, "cx", a.Cx)
+		Attr(sb, "cx", a.Cx)
 	}
 	if a.Cy != "" {
-		SvgAttr(sb, "cy", a.Cy)
+		Attr(sb, "cy", a.Cy)
 	}
 	if a.Fx != "" {
-		SvgAttr(sb, "fx", a.Fx)
+		Attr(sb, "fx", a.Fx)
 	}
 	if a.Fy != "" {
-		SvgAttr(sb, "fy", a.Fy)
+		Attr(sb, "fy", a.Fy)
 	}
 	if a.GradientTransform != "" {
-		SvgAttr(sb, "gradientTransform", a.GradientTransform)
+		Attr(sb, "gradientTransform", a.GradientTransform)
 	}
 	if a.GradientUnits != "" {
-		SvgAttr(sb, "gradientUnits", a.GradientUnits)
+		Attr(sb, "gradientUnits", a.GradientUnits)
 	}
 	if a.R != "" {
-		SvgAttr(sb, "r", a.R)
+		Attr(sb, "r", a.R)
 	}
 }

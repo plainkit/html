@@ -6,32 +6,32 @@ import (
 	"strings"
 )
 
-// PolylineAttrs holds the attributes for the polyline SVG element
-type PolylineAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	Points    string
+// SvgPolylineAttrs holds the attributes for the polyline SVG element
+type SvgPolylineAttrs struct {
+	GlobalAttrs
+	Points string
 }
 
-// PolylineArg interface for polyline element arguments
-type PolylineArg interface {
-	ApplyPolyline(*PolylineAttrs, *[]html.Component)
+// SvgPolylineArg interface for polyline element arguments
+type SvgPolylineArg interface {
+	applyPolyline(*SvgPolylineAttrs, *[]Component)
 }
 
-// defaultPolylineAttrs creates default attributes for polyline
-func defaultPolylineAttrs() *PolylineAttrs {
-	return &PolylineAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgPolylineAttrs creates default attributes for polyline
+func defaultSvgPolylineAttrs() *SvgPolylineAttrs {
+	return &SvgPolylineAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Polyline creates an SVG polyline element (self-closing)
-func Polyline(args ...PolylineArg) html.Node {
-	a := defaultPolylineAttrs()
-	var kids []html.Component
+// SvgPolyline creates an SVG polyline element (self-closing)
+func SvgPolyline(args ...SvgPolylineArg) Node {
+	a := defaultSvgPolylineAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyPolyline(a, &kids)
+		ar.applyPolyline(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "polyline",
 		Attrs: a,
 		Void:  true,
@@ -39,19 +39,19 @@ func Polyline(args ...PolylineArg) html.Node {
 }
 
 // Global applies global SVG attributes to polyline
-func (g Global) ApplyPolyline(a *PolylineAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // PointsOpt applies to Polyline
-func (o PointsOpt) ApplyPolyline(a *PolylineAttrs, _ *[]html.Component) {
+func (o PointsOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Points = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *PolylineAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgPolylineAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Points != "" {
-		SvgAttr(sb, "points", a.Points)
+		Attr(sb, "points", a.Points)
 	}
 }

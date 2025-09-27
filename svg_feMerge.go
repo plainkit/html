@@ -6,31 +6,31 @@ import (
 	"strings"
 )
 
-// FeMergeAttrs holds the attributes for the feMerge SVG element
-type FeMergeAttrs struct {
-	SvgGlobal SvgGlobalAttrs
+// SvgFeMergeAttrs holds the attributes for the feMerge SVG element
+type SvgFeMergeAttrs struct {
+	GlobalAttrs
 }
 
-// FeMergeArg interface for feMerge element arguments
-type FeMergeArg interface {
-	ApplyFeMerge(*FeMergeAttrs, *[]html.Component)
+// SvgFeMergeArg interface for feMerge element arguments
+type SvgFeMergeArg interface {
+	applyFeMerge(*SvgFeMergeAttrs, *[]Component)
 }
 
-// defaultFeMergeAttrs creates default attributes for feMerge
-func defaultFeMergeAttrs() *FeMergeAttrs {
-	return &FeMergeAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeMergeAttrs creates default attributes for feMerge
+func defaultSvgFeMergeAttrs() *SvgFeMergeAttrs {
+	return &SvgFeMergeAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeMerge creates an SVG feMerge element
-func FeMerge(args ...FeMergeArg) html.Node {
-	a := defaultFeMergeAttrs()
-	var kids []html.Component
+// SvgFeMerge creates an SVG feMerge element
+func SvgFeMerge(args ...SvgFeMergeArg) Node {
+	a := defaultSvgFeMergeAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeMerge(a, &kids)
+		ar.applyFeMerge(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feMerge",
 		Attrs: a,
 		Kids:  kids,
@@ -38,11 +38,11 @@ func FeMerge(args ...FeMergeArg) html.Node {
 }
 
 // Global applies global SVG attributes to feMerge
-func (g Global) ApplyFeMerge(a *FeMergeAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeMergeAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeMergeAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 }

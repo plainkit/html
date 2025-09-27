@@ -6,33 +6,33 @@ import (
 	"strings"
 )
 
-// FeFloodAttrs holds the attributes for the feFlood SVG element
-type FeFloodAttrs struct {
-	SvgGlobal    SvgGlobalAttrs
+// SvgFeFloodAttrs holds the attributes for the feFlood SVG element
+type SvgFeFloodAttrs struct {
+	GlobalAttrs
 	FloodColor   string
 	FloodOpacity string
 }
 
-// FeFloodArg interface for feFlood element arguments
-type FeFloodArg interface {
-	ApplyFeFlood(*FeFloodAttrs, *[]html.Component)
+// SvgFeFloodArg interface for feFlood element arguments
+type SvgFeFloodArg interface {
+	applyFeFlood(*SvgFeFloodAttrs, *[]Component)
 }
 
-// defaultFeFloodAttrs creates default attributes for feFlood
-func defaultFeFloodAttrs() *FeFloodAttrs {
-	return &FeFloodAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeFloodAttrs creates default attributes for feFlood
+func defaultSvgFeFloodAttrs() *SvgFeFloodAttrs {
+	return &SvgFeFloodAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeFlood creates an SVG feFlood element
-func FeFlood(args ...FeFloodArg) html.Node {
-	a := defaultFeFloodAttrs()
-	var kids []html.Component
+// SvgFeFlood creates an SVG feFlood element
+func SvgFeFlood(args ...SvgFeFloodArg) Node {
+	a := defaultSvgFeFloodAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeFlood(a, &kids)
+		ar.applyFeFlood(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feFlood",
 		Attrs: a,
 		Kids:  kids,
@@ -40,27 +40,27 @@ func FeFlood(args ...FeFloodArg) html.Node {
 }
 
 // Global applies global SVG attributes to feFlood
-func (g Global) ApplyFeFlood(a *FeFloodAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // FloodColorOpt applies to FeFlood
-func (o FloodColorOpt) ApplyFeFlood(a *FeFloodAttrs, _ *[]html.Component) {
+func (o FloodColorOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeFlood
-func (o FloodOpacityOpt) ApplyFeFlood(a *FeFloodAttrs, _ *[]html.Component) {
+func (o FloodOpacityOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeFloodAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeFloodAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.FloodColor != "" {
-		SvgAttr(sb, "flood-color", a.FloodColor)
+		Attr(sb, "flood-color", a.FloodColor)
 	}
 	if a.FloodOpacity != "" {
-		SvgAttr(sb, "flood-opacity", a.FloodOpacity)
+		Attr(sb, "flood-opacity", a.FloodOpacity)
 	}
 }

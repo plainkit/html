@@ -6,35 +6,35 @@ import (
 	"strings"
 )
 
-// EllipseAttrs holds the attributes for the ellipse SVG element
-type EllipseAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	Cx        string
-	Cy        string
-	Rx        string
-	Ry        string
+// SvgEllipseAttrs holds the attributes for the ellipse SVG element
+type SvgEllipseAttrs struct {
+	GlobalAttrs
+	Cx string
+	Cy string
+	Rx string
+	Ry string
 }
 
-// EllipseArg interface for ellipse element arguments
-type EllipseArg interface {
-	ApplyEllipse(*EllipseAttrs, *[]html.Component)
+// SvgEllipseArg interface for ellipse element arguments
+type SvgEllipseArg interface {
+	applyEllipse(*SvgEllipseAttrs, *[]Component)
 }
 
-// defaultEllipseAttrs creates default attributes for ellipse
-func defaultEllipseAttrs() *EllipseAttrs {
-	return &EllipseAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgEllipseAttrs creates default attributes for ellipse
+func defaultSvgEllipseAttrs() *SvgEllipseAttrs {
+	return &SvgEllipseAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Ellipse creates an SVG ellipse element (self-closing)
-func Ellipse(args ...EllipseArg) html.Node {
-	a := defaultEllipseAttrs()
-	var kids []html.Component
+// SvgEllipse creates an SVG ellipse element (self-closing)
+func SvgEllipse(args ...SvgEllipseArg) Node {
+	a := defaultSvgEllipseAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyEllipse(a, &kids)
+		ar.applyEllipse(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "ellipse",
 		Attrs: a,
 		Void:  true,
@@ -42,43 +42,43 @@ func Ellipse(args ...EllipseArg) html.Node {
 }
 
 // Global applies global SVG attributes to ellipse
-func (g Global) ApplyEllipse(a *EllipseAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // CxOpt applies to Ellipse
-func (o CxOpt) ApplyEllipse(a *EllipseAttrs, _ *[]html.Component) {
+func (o CxOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Cx = o.v
 }
 
 // CyOpt applies to Ellipse
-func (o CyOpt) ApplyEllipse(a *EllipseAttrs, _ *[]html.Component) {
+func (o CyOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Cy = o.v
 }
 
 // RxOpt applies to Ellipse
-func (o RxOpt) ApplyEllipse(a *EllipseAttrs, _ *[]html.Component) {
+func (o RxOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Rx = o.v
 }
 
 // RyOpt applies to Ellipse
-func (o RyOpt) ApplyEllipse(a *EllipseAttrs, _ *[]html.Component) {
+func (o RyOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Ry = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *EllipseAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgEllipseAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Cx != "" {
-		SvgAttr(sb, "cx", a.Cx)
+		Attr(sb, "cx", a.Cx)
 	}
 	if a.Cy != "" {
-		SvgAttr(sb, "cy", a.Cy)
+		Attr(sb, "cy", a.Cy)
 	}
 	if a.Rx != "" {
-		SvgAttr(sb, "rx", a.Rx)
+		Attr(sb, "rx", a.Rx)
 	}
 	if a.Ry != "" {
-		SvgAttr(sb, "ry", a.Ry)
+		Attr(sb, "ry", a.Ry)
 	}
 }

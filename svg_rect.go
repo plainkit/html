@@ -6,37 +6,37 @@ import (
 	"strings"
 )
 
-// RectAttrs holds the attributes for the rect SVG element
-type RectAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	Height    string
-	Rx        string
-	Ry        string
-	Width     string
-	X         string
-	Y         string
+// SvgRectAttrs holds the attributes for the rect SVG element
+type SvgRectAttrs struct {
+	GlobalAttrs
+	Height string
+	Rx     string
+	Ry     string
+	Width  string
+	X      string
+	Y      string
 }
 
-// RectArg interface for rect element arguments
-type RectArg interface {
-	ApplyRect(*RectAttrs, *[]html.Component)
+// SvgRectArg interface for rect element arguments
+type SvgRectArg interface {
+	applyRect(*SvgRectAttrs, *[]Component)
 }
 
-// defaultRectAttrs creates default attributes for rect
-func defaultRectAttrs() *RectAttrs {
-	return &RectAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgRectAttrs creates default attributes for rect
+func defaultSvgRectAttrs() *SvgRectAttrs {
+	return &SvgRectAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Rect creates an SVG rect element (self-closing)
-func Rect(args ...RectArg) html.Node {
-	a := defaultRectAttrs()
-	var kids []html.Component
+// SvgRect creates an SVG rect element (self-closing)
+func SvgRect(args ...SvgRectArg) Node {
+	a := defaultSvgRectAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyRect(a, &kids)
+		ar.applyRect(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "rect",
 		Attrs: a,
 		Void:  true,
@@ -44,59 +44,59 @@ func Rect(args ...RectArg) html.Node {
 }
 
 // Global applies global SVG attributes to rect
-func (g Global) ApplyRect(a *RectAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyRect(a *SvgRectAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // HeightOpt applies to Rect
-func (o HeightOpt) ApplyRect(a *RectAttrs, _ *[]html.Component) {
+func (o HeightOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // RxOpt applies to Rect
-func (o RxOpt) ApplyRect(a *RectAttrs, _ *[]html.Component) {
+func (o RxOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Rx = o.v
 }
 
 // RyOpt applies to Rect
-func (o RyOpt) ApplyRect(a *RectAttrs, _ *[]html.Component) {
+func (o RyOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Ry = o.v
 }
 
 // WidthOpt applies to Rect
-func (o WidthOpt) ApplyRect(a *RectAttrs, _ *[]html.Component) {
+func (o WidthOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // XOpt applies to Rect
-func (o XOpt) ApplyRect(a *RectAttrs, _ *[]html.Component) {
+func (o XOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Rect
-func (o YOpt) ApplyRect(a *RectAttrs, _ *[]html.Component) {
+func (o YOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *RectAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgRectAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Height != "" {
-		SvgAttr(sb, "height", a.Height)
+		Attr(sb, "height", a.Height)
 	}
 	if a.Rx != "" {
-		SvgAttr(sb, "rx", a.Rx)
+		Attr(sb, "rx", a.Rx)
 	}
 	if a.Ry != "" {
-		SvgAttr(sb, "ry", a.Ry)
+		Attr(sb, "ry", a.Ry)
 	}
 	if a.Width != "" {
-		SvgAttr(sb, "width", a.Width)
+		Attr(sb, "width", a.Width)
 	}
 	if a.X != "" {
-		SvgAttr(sb, "x", a.X)
+		Attr(sb, "x", a.X)
 	}
 	if a.Y != "" {
-		SvgAttr(sb, "y", a.Y)
+		Attr(sb, "y", a.Y)
 	}
 }

@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// PatternAttrs holds the attributes for the pattern SVG element
-type PatternAttrs struct {
-	SvgGlobal           SvgGlobalAttrs
+// SvgPatternAttrs holds the attributes for the pattern SVG element
+type SvgPatternAttrs struct {
+	GlobalAttrs
 	Height              string
 	Href                string
 	PatternContentUnits string
@@ -19,26 +19,26 @@ type PatternAttrs struct {
 	Y                   string
 }
 
-// PatternArg interface for pattern element arguments
-type PatternArg interface {
-	ApplyPattern(*PatternAttrs, *[]html.Component)
+// SvgPatternArg interface for pattern element arguments
+type SvgPatternArg interface {
+	applyPattern(*SvgPatternAttrs, *[]Component)
 }
 
-// defaultPatternAttrs creates default attributes for pattern
-func defaultPatternAttrs() *PatternAttrs {
-	return &PatternAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgPatternAttrs creates default attributes for pattern
+func defaultSvgPatternAttrs() *SvgPatternAttrs {
+	return &SvgPatternAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Pattern creates an SVG pattern element
-func Pattern(args ...PatternArg) html.Node {
-	a := defaultPatternAttrs()
-	var kids []html.Component
+// SvgPattern creates an SVG pattern element
+func SvgPattern(args ...SvgPatternArg) Node {
+	a := defaultSvgPatternAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyPattern(a, &kids)
+		ar.applyPattern(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "pattern",
 		Attrs: a,
 		Kids:  kids,
@@ -46,75 +46,75 @@ func Pattern(args ...PatternArg) html.Node {
 }
 
 // Global applies global SVG attributes to pattern
-func (g Global) ApplyPattern(a *PatternAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // HeightOpt applies to Pattern
-func (o HeightOpt) ApplyPattern(a *PatternAttrs, _ *[]html.Component) {
+func (o HeightOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // HrefOpt applies to Pattern
-func (o HrefOpt) ApplyPattern(a *PatternAttrs, _ *[]html.Component) {
+func (o HrefOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // PatternContentUnitsOpt applies to Pattern
-func (o PatternContentUnitsOpt) ApplyPattern(a *PatternAttrs, _ *[]html.Component) {
+func (o PatternContentUnitsOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.PatternContentUnits = o.v
 }
 
 // PatternTransformOpt applies to Pattern
-func (o PatternTransformOpt) ApplyPattern(a *PatternAttrs, _ *[]html.Component) {
+func (o PatternTransformOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.PatternTransform = o.v
 }
 
 // PatternUnitsOpt applies to Pattern
-func (o PatternUnitsOpt) ApplyPattern(a *PatternAttrs, _ *[]html.Component) {
+func (o PatternUnitsOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.PatternUnits = o.v
 }
 
 // WidthOpt applies to Pattern
-func (o WidthOpt) ApplyPattern(a *PatternAttrs, _ *[]html.Component) {
+func (o WidthOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // XOpt applies to Pattern
-func (o XOpt) ApplyPattern(a *PatternAttrs, _ *[]html.Component) {
+func (o XOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Pattern
-func (o YOpt) ApplyPattern(a *PatternAttrs, _ *[]html.Component) {
+func (o YOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *PatternAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgPatternAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Height != "" {
-		SvgAttr(sb, "height", a.Height)
+		Attr(sb, "height", a.Height)
 	}
 	if a.Href != "" {
-		SvgAttr(sb, "href", a.Href)
+		Attr(sb, "href", a.Href)
 	}
 	if a.PatternContentUnits != "" {
-		SvgAttr(sb, "patternContentUnits", a.PatternContentUnits)
+		Attr(sb, "patternContentUnits", a.PatternContentUnits)
 	}
 	if a.PatternTransform != "" {
-		SvgAttr(sb, "patternTransform", a.PatternTransform)
+		Attr(sb, "patternTransform", a.PatternTransform)
 	}
 	if a.PatternUnits != "" {
-		SvgAttr(sb, "patternUnits", a.PatternUnits)
+		Attr(sb, "patternUnits", a.PatternUnits)
 	}
 	if a.Width != "" {
-		SvgAttr(sb, "width", a.Width)
+		Attr(sb, "width", a.Width)
 	}
 	if a.X != "" {
-		SvgAttr(sb, "x", a.X)
+		Attr(sb, "x", a.X)
 	}
 	if a.Y != "" {
-		SvgAttr(sb, "y", a.Y)
+		Attr(sb, "y", a.Y)
 	}
 }

@@ -6,33 +6,33 @@ import (
 	"strings"
 )
 
-// FeGaussianBlurAttrs holds the attributes for the feGaussianBlur SVG element
-type FeGaussianBlurAttrs struct {
-	SvgGlobal    SvgGlobalAttrs
+// SvgFeGaussianBlurAttrs holds the attributes for the feGaussianBlur SVG element
+type SvgFeGaussianBlurAttrs struct {
+	GlobalAttrs
 	In           string
 	StdDeviation string
 }
 
-// FeGaussianBlurArg interface for feGaussianBlur element arguments
-type FeGaussianBlurArg interface {
-	ApplyFeGaussianBlur(*FeGaussianBlurAttrs, *[]html.Component)
+// SvgFeGaussianBlurArg interface for feGaussianBlur element arguments
+type SvgFeGaussianBlurArg interface {
+	applyFeGaussianBlur(*SvgFeGaussianBlurAttrs, *[]Component)
 }
 
-// defaultFeGaussianBlurAttrs creates default attributes for feGaussianBlur
-func defaultFeGaussianBlurAttrs() *FeGaussianBlurAttrs {
-	return &FeGaussianBlurAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeGaussianBlurAttrs creates default attributes for feGaussianBlur
+func defaultSvgFeGaussianBlurAttrs() *SvgFeGaussianBlurAttrs {
+	return &SvgFeGaussianBlurAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeGaussianBlur creates an SVG feGaussianBlur element
-func FeGaussianBlur(args ...FeGaussianBlurArg) html.Node {
-	a := defaultFeGaussianBlurAttrs()
-	var kids []html.Component
+// SvgFeGaussianBlur creates an SVG feGaussianBlur element
+func SvgFeGaussianBlur(args ...SvgFeGaussianBlurArg) Node {
+	a := defaultSvgFeGaussianBlurAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeGaussianBlur(a, &kids)
+		ar.applyFeGaussianBlur(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feGaussianBlur",
 		Attrs: a,
 		Kids:  kids,
@@ -40,27 +40,27 @@ func FeGaussianBlur(args ...FeGaussianBlurArg) html.Node {
 }
 
 // Global applies global SVG attributes to feGaussianBlur
-func (g Global) ApplyFeGaussianBlur(a *FeGaussianBlurAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // InOpt applies to FeGaussianBlur
-func (o InOpt) ApplyFeGaussianBlur(a *FeGaussianBlurAttrs, _ *[]html.Component) {
+func (o InOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // StdDeviationOpt applies to FeGaussianBlur
-func (o StdDeviationOpt) ApplyFeGaussianBlur(a *FeGaussianBlurAttrs, _ *[]html.Component) {
+func (o StdDeviationOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.StdDeviation = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeGaussianBlurAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeGaussianBlurAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.In != "" {
-		SvgAttr(sb, "in", a.In)
+		Attr(sb, "in", a.In)
 	}
 	if a.StdDeviation != "" {
-		SvgAttr(sb, "stdDeviation", a.StdDeviation)
+		Attr(sb, "stdDeviation", a.StdDeviation)
 	}
 }

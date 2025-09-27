@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// TextAttrs holds the attributes for the text SVG element
-type TextAttrs struct {
-	SvgGlobal    SvgGlobalAttrs
+// SvgTextAttrs holds the attributes for the text SVG element
+type SvgTextAttrs struct {
+	GlobalAttrs
 	Dx           string
 	Dy           string
 	LengthAdjust string
@@ -18,26 +18,26 @@ type TextAttrs struct {
 	Y            string
 }
 
-// TextArg interface for text element arguments
-type TextArg interface {
-	ApplyText(*TextAttrs, *[]html.Component)
+// SvgTextArg interface for text element arguments
+type SvgTextArg interface {
+	applyText(*SvgTextAttrs, *[]Component)
 }
 
-// defaultTextAttrs creates default attributes for text
-func defaultTextAttrs() *TextAttrs {
-	return &TextAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgTextAttrs creates default attributes for text
+func defaultSvgTextAttrs() *SvgTextAttrs {
+	return &SvgTextAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Text creates an SVG text element
-func Text(args ...TextArg) html.Node {
-	a := defaultTextAttrs()
-	var kids []html.Component
+// SvgText creates an SVG text element
+func SvgText(args ...SvgTextArg) Node {
+	a := defaultSvgTextAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyText(a, &kids)
+		ar.applyText(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "text",
 		Attrs: a,
 		Kids:  kids,
@@ -45,67 +45,67 @@ func Text(args ...TextArg) html.Node {
 }
 
 // Global applies global SVG attributes to text
-func (g Global) ApplyText(a *TextAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyText(a *SvgTextAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // DxOpt applies to Text
-func (o DxOpt) ApplyText(a *TextAttrs, _ *[]html.Component) {
+func (o DxOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
 	a.Dx = o.v
 }
 
 // DyOpt applies to Text
-func (o DyOpt) ApplyText(a *TextAttrs, _ *[]html.Component) {
+func (o DyOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
 	a.Dy = o.v
 }
 
 // LengthAdjustOpt applies to Text
-func (o LengthAdjustOpt) ApplyText(a *TextAttrs, _ *[]html.Component) {
+func (o LengthAdjustOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
 	a.LengthAdjust = o.v
 }
 
 // RotateOpt applies to Text
-func (o RotateOpt) ApplyText(a *TextAttrs, _ *[]html.Component) {
+func (o RotateOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
 	a.Rotate = o.v
 }
 
 // TextLengthOpt applies to Text
-func (o TextLengthOpt) ApplyText(a *TextAttrs, _ *[]html.Component) {
+func (o TextLengthOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
 	a.TextLength = o.v
 }
 
 // XOpt applies to Text
-func (o XOpt) ApplyText(a *TextAttrs, _ *[]html.Component) {
+func (o XOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Text
-func (o YOpt) ApplyText(a *TextAttrs, _ *[]html.Component) {
+func (o YOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *TextAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgTextAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Dx != "" {
-		SvgAttr(sb, "dx", a.Dx)
+		Attr(sb, "dx", a.Dx)
 	}
 	if a.Dy != "" {
-		SvgAttr(sb, "dy", a.Dy)
+		Attr(sb, "dy", a.Dy)
 	}
 	if a.LengthAdjust != "" {
-		SvgAttr(sb, "lengthAdjust", a.LengthAdjust)
+		Attr(sb, "lengthAdjust", a.LengthAdjust)
 	}
 	if a.Rotate != "" {
-		SvgAttr(sb, "rotate", a.Rotate)
+		Attr(sb, "rotate", a.Rotate)
 	}
 	if a.TextLength != "" {
-		SvgAttr(sb, "textLength", a.TextLength)
+		Attr(sb, "textLength", a.TextLength)
 	}
 	if a.X != "" {
-		SvgAttr(sb, "x", a.X)
+		Attr(sb, "x", a.X)
 	}
 	if a.Y != "" {
-		SvgAttr(sb, "y", a.Y)
+		Attr(sb, "y", a.Y)
 	}
 }

@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// FeTurbulenceAttrs holds the attributes for the feTurbulence SVG element
-type FeTurbulenceAttrs struct {
-	SvgGlobal     SvgGlobalAttrs
+// SvgFeTurbulenceAttrs holds the attributes for the feTurbulence SVG element
+type SvgFeTurbulenceAttrs struct {
+	GlobalAttrs
 	BaseFrequency string
 	NumOctaves    string
 	Seed          string
@@ -16,26 +16,26 @@ type FeTurbulenceAttrs struct {
 	Type          string
 }
 
-// FeTurbulenceArg interface for feTurbulence element arguments
-type FeTurbulenceArg interface {
-	ApplyFeTurbulence(*FeTurbulenceAttrs, *[]html.Component)
+// SvgFeTurbulenceArg interface for feTurbulence element arguments
+type SvgFeTurbulenceArg interface {
+	applyFeTurbulence(*SvgFeTurbulenceAttrs, *[]Component)
 }
 
-// defaultFeTurbulenceAttrs creates default attributes for feTurbulence
-func defaultFeTurbulenceAttrs() *FeTurbulenceAttrs {
-	return &FeTurbulenceAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeTurbulenceAttrs creates default attributes for feTurbulence
+func defaultSvgFeTurbulenceAttrs() *SvgFeTurbulenceAttrs {
+	return &SvgFeTurbulenceAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeTurbulence creates an SVG feTurbulence element
-func FeTurbulence(args ...FeTurbulenceArg) html.Node {
-	a := defaultFeTurbulenceAttrs()
-	var kids []html.Component
+// SvgFeTurbulence creates an SVG feTurbulence element
+func SvgFeTurbulence(args ...SvgFeTurbulenceArg) Node {
+	a := defaultSvgFeTurbulenceAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeTurbulence(a, &kids)
+		ar.applyFeTurbulence(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feTurbulence",
 		Attrs: a,
 		Kids:  kids,
@@ -43,51 +43,51 @@ func FeTurbulence(args ...FeTurbulenceArg) html.Node {
 }
 
 // Global applies global SVG attributes to feTurbulence
-func (g Global) ApplyFeTurbulence(a *FeTurbulenceAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // BaseFrequencyOpt applies to FeTurbulence
-func (o BaseFrequencyOpt) ApplyFeTurbulence(a *FeTurbulenceAttrs, _ *[]html.Component) {
+func (o BaseFrequencyOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.BaseFrequency = o.v
 }
 
 // NumOctavesOpt applies to FeTurbulence
-func (o NumOctavesOpt) ApplyFeTurbulence(a *FeTurbulenceAttrs, _ *[]html.Component) {
+func (o NumOctavesOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.NumOctaves = o.v
 }
 
 // SeedOpt applies to FeTurbulence
-func (o SeedOpt) ApplyFeTurbulence(a *FeTurbulenceAttrs, _ *[]html.Component) {
+func (o SeedOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Seed = o.v
 }
 
 // StitchTilesOpt applies to FeTurbulence
-func (o StitchTilesOpt) ApplyFeTurbulence(a *FeTurbulenceAttrs, _ *[]html.Component) {
+func (o StitchTilesOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.StitchTiles = o.v
 }
 
 // TypeOpt applies to FeTurbulence
-func (o TypeOpt) ApplyFeTurbulence(a *FeTurbulenceAttrs, _ *[]html.Component) {
+func (o TypeOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeTurbulenceAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeTurbulenceAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.BaseFrequency != "" {
-		SvgAttr(sb, "baseFrequency", a.BaseFrequency)
+		Attr(sb, "baseFrequency", a.BaseFrequency)
 	}
 	if a.NumOctaves != "" {
-		SvgAttr(sb, "numOctaves", a.NumOctaves)
+		Attr(sb, "numOctaves", a.NumOctaves)
 	}
 	if a.Seed != "" {
-		SvgAttr(sb, "seed", a.Seed)
+		Attr(sb, "seed", a.Seed)
 	}
 	if a.StitchTiles != "" {
-		SvgAttr(sb, "stitchTiles", a.StitchTiles)
+		Attr(sb, "stitchTiles", a.StitchTiles)
 	}
 	if a.Type != "" {
-		SvgAttr(sb, "type", a.Type)
+		Attr(sb, "type", a.Type)
 	}
 }

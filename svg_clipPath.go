@@ -6,32 +6,32 @@ import (
 	"strings"
 )
 
-// ClipPathAttrs holds the attributes for the clipPath SVG element
-type ClipPathAttrs struct {
-	SvgGlobal     SvgGlobalAttrs
+// SvgClipPathAttrs holds the attributes for the clipPath SVG element
+type SvgClipPathAttrs struct {
+	GlobalAttrs
 	ClipPathUnits string
 }
 
-// ClipPathArg interface for clipPath element arguments
-type ClipPathArg interface {
-	ApplyClipPath(*ClipPathAttrs, *[]html.Component)
+// SvgClipPathArg interface for clipPath element arguments
+type SvgClipPathArg interface {
+	applyClipPath(*SvgClipPathAttrs, *[]Component)
 }
 
-// defaultClipPathAttrs creates default attributes for clipPath
-func defaultClipPathAttrs() *ClipPathAttrs {
-	return &ClipPathAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgClipPathAttrs creates default attributes for clipPath
+func defaultSvgClipPathAttrs() *SvgClipPathAttrs {
+	return &SvgClipPathAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// ClipPath creates an SVG clipPath element
-func ClipPath(args ...ClipPathArg) html.Node {
-	a := defaultClipPathAttrs()
-	var kids []html.Component
+// SvgClipPath creates an SVG clipPath element
+func SvgClipPath(args ...SvgClipPathArg) Node {
+	a := defaultSvgClipPathAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyClipPath(a, &kids)
+		ar.applyClipPath(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "clipPath",
 		Attrs: a,
 		Kids:  kids,
@@ -39,19 +39,19 @@ func ClipPath(args ...ClipPathArg) html.Node {
 }
 
 // Global applies global SVG attributes to clipPath
-func (g Global) ApplyClipPath(a *ClipPathAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // ClipPathUnitsOpt applies to ClipPath
-func (o ClipPathUnitsOpt) ApplyClipPath(a *ClipPathAttrs, _ *[]html.Component) {
+func (o ClipPathUnitsOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.ClipPathUnits = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *ClipPathAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgClipPathAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.ClipPathUnits != "" {
-		SvgAttr(sb, "clipPathUnits", a.ClipPathUnits)
+		Attr(sb, "clipPathUnits", a.ClipPathUnits)
 	}
 }

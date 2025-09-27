@@ -6,34 +6,34 @@ import (
 	"strings"
 )
 
-// MetadataAttrs holds the attributes for the metadata SVG element
-type MetadataAttrs struct {
-	SvgGlobal          SvgGlobalAttrs
+// SvgMetadataAttrs holds the attributes for the metadata SVG element
+type SvgMetadataAttrs struct {
+	GlobalAttrs
 	RequiredExtensions string
 	RequiredFeatures   string
 	SystemLanguage     string
 }
 
-// MetadataArg interface for metadata element arguments
-type MetadataArg interface {
-	ApplyMetadata(*MetadataAttrs, *[]html.Component)
+// SvgMetadataArg interface for metadata element arguments
+type SvgMetadataArg interface {
+	applyMetadata(*SvgMetadataAttrs, *[]Component)
 }
 
-// defaultMetadataAttrs creates default attributes for metadata
-func defaultMetadataAttrs() *MetadataAttrs {
-	return &MetadataAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgMetadataAttrs creates default attributes for metadata
+func defaultSvgMetadataAttrs() *SvgMetadataAttrs {
+	return &SvgMetadataAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Metadata creates an SVG metadata element
-func Metadata(args ...MetadataArg) html.Node {
-	a := defaultMetadataAttrs()
-	var kids []html.Component
+// SvgMetadata creates an SVG metadata element
+func SvgMetadata(args ...SvgMetadataArg) Node {
+	a := defaultSvgMetadataAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyMetadata(a, &kids)
+		ar.applyMetadata(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "metadata",
 		Attrs: a,
 		Kids:  kids,
@@ -41,35 +41,35 @@ func Metadata(args ...MetadataArg) html.Node {
 }
 
 // Global applies global SVG attributes to metadata
-func (g Global) ApplyMetadata(a *MetadataAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // RequiredExtensionsOpt applies to Metadata
-func (o RequiredExtensionsOpt) ApplyMetadata(a *MetadataAttrs, _ *[]html.Component) {
+func (o RequiredExtensionsOpt) applyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Metadata
-func (o RequiredFeaturesOpt) ApplyMetadata(a *MetadataAttrs, _ *[]html.Component) {
+func (o RequiredFeaturesOpt) applyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // SystemLanguageOpt applies to Metadata
-func (o SystemLanguageOpt) ApplyMetadata(a *MetadataAttrs, _ *[]html.Component) {
+func (o SystemLanguageOpt) applyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *MetadataAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgMetadataAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.RequiredExtensions != "" {
-		SvgAttr(sb, "requiredExtensions", a.RequiredExtensions)
+		Attr(sb, "requiredExtensions", a.RequiredExtensions)
 	}
 	if a.RequiredFeatures != "" {
-		SvgAttr(sb, "requiredFeatures", a.RequiredFeatures)
+		Attr(sb, "requiredFeatures", a.RequiredFeatures)
 	}
 	if a.SystemLanguage != "" {
-		SvgAttr(sb, "systemLanguage", a.SystemLanguage)
+		Attr(sb, "systemLanguage", a.SystemLanguage)
 	}
 }

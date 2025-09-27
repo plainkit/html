@@ -6,33 +6,33 @@ import (
 	"strings"
 )
 
-// FeDistantLightAttrs holds the attributes for the feDistantLight SVG element
-type FeDistantLightAttrs struct {
-	SvgGlobal SvgGlobalAttrs
+// SvgFeDistantLightAttrs holds the attributes for the feDistantLight SVG element
+type SvgFeDistantLightAttrs struct {
+	GlobalAttrs
 	Azimuth   string
 	Elevation string
 }
 
-// FeDistantLightArg interface for feDistantLight element arguments
-type FeDistantLightArg interface {
-	ApplyFeDistantLight(*FeDistantLightAttrs, *[]html.Component)
+// SvgFeDistantLightArg interface for feDistantLight element arguments
+type SvgFeDistantLightArg interface {
+	applyFeDistantLight(*SvgFeDistantLightAttrs, *[]Component)
 }
 
-// defaultFeDistantLightAttrs creates default attributes for feDistantLight
-func defaultFeDistantLightAttrs() *FeDistantLightAttrs {
-	return &FeDistantLightAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeDistantLightAttrs creates default attributes for feDistantLight
+func defaultSvgFeDistantLightAttrs() *SvgFeDistantLightAttrs {
+	return &SvgFeDistantLightAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeDistantLight creates an SVG feDistantLight element
-func FeDistantLight(args ...FeDistantLightArg) html.Node {
-	a := defaultFeDistantLightAttrs()
-	var kids []html.Component
+// SvgFeDistantLight creates an SVG feDistantLight element
+func SvgFeDistantLight(args ...SvgFeDistantLightArg) Node {
+	a := defaultSvgFeDistantLightAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeDistantLight(a, &kids)
+		ar.applyFeDistantLight(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feDistantLight",
 		Attrs: a,
 		Kids:  kids,
@@ -40,27 +40,27 @@ func FeDistantLight(args ...FeDistantLightArg) html.Node {
 }
 
 // Global applies global SVG attributes to feDistantLight
-func (g Global) ApplyFeDistantLight(a *FeDistantLightAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeDistantLight(a *SvgFeDistantLightAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // AzimuthOpt applies to FeDistantLight
-func (o AzimuthOpt) ApplyFeDistantLight(a *FeDistantLightAttrs, _ *[]html.Component) {
+func (o AzimuthOpt) applyFeDistantLight(a *SvgFeDistantLightAttrs, _ *[]Component) {
 	a.Azimuth = o.v
 }
 
 // ElevationOpt applies to FeDistantLight
-func (o ElevationOpt) ApplyFeDistantLight(a *FeDistantLightAttrs, _ *[]html.Component) {
+func (o ElevationOpt) applyFeDistantLight(a *SvgFeDistantLightAttrs, _ *[]Component) {
 	a.Elevation = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeDistantLightAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeDistantLightAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Azimuth != "" {
-		SvgAttr(sb, "azimuth", a.Azimuth)
+		Attr(sb, "azimuth", a.Azimuth)
 	}
 	if a.Elevation != "" {
-		SvgAttr(sb, "elevation", a.Elevation)
+		Attr(sb, "elevation", a.Elevation)
 	}
 }

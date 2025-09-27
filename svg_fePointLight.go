@@ -6,34 +6,34 @@ import (
 	"strings"
 )
 
-// FePointLightAttrs holds the attributes for the fePointLight SVG element
-type FePointLightAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	X         string
-	Y         string
-	Z         string
+// SvgFePointLightAttrs holds the attributes for the fePointLight SVG element
+type SvgFePointLightAttrs struct {
+	GlobalAttrs
+	X string
+	Y string
+	Z string
 }
 
-// FePointLightArg interface for fePointLight element arguments
-type FePointLightArg interface {
-	ApplyFePointLight(*FePointLightAttrs, *[]html.Component)
+// SvgFePointLightArg interface for fePointLight element arguments
+type SvgFePointLightArg interface {
+	applyFePointLight(*SvgFePointLightAttrs, *[]Component)
 }
 
-// defaultFePointLightAttrs creates default attributes for fePointLight
-func defaultFePointLightAttrs() *FePointLightAttrs {
-	return &FePointLightAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFePointLightAttrs creates default attributes for fePointLight
+func defaultSvgFePointLightAttrs() *SvgFePointLightAttrs {
+	return &SvgFePointLightAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FePointLight creates an SVG fePointLight element
-func FePointLight(args ...FePointLightArg) html.Node {
-	a := defaultFePointLightAttrs()
-	var kids []html.Component
+// SvgFePointLight creates an SVG fePointLight element
+func SvgFePointLight(args ...SvgFePointLightArg) Node {
+	a := defaultSvgFePointLightAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFePointLight(a, &kids)
+		ar.applyFePointLight(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "fePointLight",
 		Attrs: a,
 		Kids:  kids,
@@ -41,35 +41,35 @@ func FePointLight(args ...FePointLightArg) html.Node {
 }
 
 // Global applies global SVG attributes to fePointLight
-func (g Global) ApplyFePointLight(a *FePointLightAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFePointLight(a *SvgFePointLightAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // XOpt applies to FePointLight
-func (o XOpt) ApplyFePointLight(a *FePointLightAttrs, _ *[]html.Component) {
+func (o XOpt) applyFePointLight(a *SvgFePointLightAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FePointLight
-func (o YOpt) ApplyFePointLight(a *FePointLightAttrs, _ *[]html.Component) {
+func (o YOpt) applyFePointLight(a *SvgFePointLightAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // ZOpt applies to FePointLight
-func (o ZOpt) ApplyFePointLight(a *FePointLightAttrs, _ *[]html.Component) {
+func (o ZOpt) applyFePointLight(a *SvgFePointLightAttrs, _ *[]Component) {
 	a.Z = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FePointLightAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFePointLightAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.X != "" {
-		SvgAttr(sb, "x", a.X)
+		Attr(sb, "x", a.X)
 	}
 	if a.Y != "" {
-		SvgAttr(sb, "y", a.Y)
+		Attr(sb, "y", a.Y)
 	}
 	if a.Z != "" {
-		SvgAttr(sb, "z", a.Z)
+		Attr(sb, "z", a.Z)
 	}
 }

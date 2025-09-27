@@ -6,34 +6,34 @@ import (
 	"strings"
 )
 
-// FeMorphologyAttrs holds the attributes for the feMorphology SVG element
-type FeMorphologyAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	In        string
-	Operator  string
-	Radius    string
+// SvgFeMorphologyAttrs holds the attributes for the feMorphology SVG element
+type SvgFeMorphologyAttrs struct {
+	GlobalAttrs
+	In       string
+	Operator string
+	Radius   string
 }
 
-// FeMorphologyArg interface for feMorphology element arguments
-type FeMorphologyArg interface {
-	ApplyFeMorphology(*FeMorphologyAttrs, *[]html.Component)
+// SvgFeMorphologyArg interface for feMorphology element arguments
+type SvgFeMorphologyArg interface {
+	applyFeMorphology(*SvgFeMorphologyAttrs, *[]Component)
 }
 
-// defaultFeMorphologyAttrs creates default attributes for feMorphology
-func defaultFeMorphologyAttrs() *FeMorphologyAttrs {
-	return &FeMorphologyAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeMorphologyAttrs creates default attributes for feMorphology
+func defaultSvgFeMorphologyAttrs() *SvgFeMorphologyAttrs {
+	return &SvgFeMorphologyAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeMorphology creates an SVG feMorphology element
-func FeMorphology(args ...FeMorphologyArg) html.Node {
-	a := defaultFeMorphologyAttrs()
-	var kids []html.Component
+// SvgFeMorphology creates an SVG feMorphology element
+func SvgFeMorphology(args ...SvgFeMorphologyArg) Node {
+	a := defaultSvgFeMorphologyAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeMorphology(a, &kids)
+		ar.applyFeMorphology(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feMorphology",
 		Attrs: a,
 		Kids:  kids,
@@ -41,35 +41,35 @@ func FeMorphology(args ...FeMorphologyArg) html.Node {
 }
 
 // Global applies global SVG attributes to feMorphology
-func (g Global) ApplyFeMorphology(a *FeMorphologyAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // InOpt applies to FeMorphology
-func (o InOpt) ApplyFeMorphology(a *FeMorphologyAttrs, _ *[]html.Component) {
+func (o InOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // OperatorOpt applies to FeMorphology
-func (o OperatorOpt) ApplyFeMorphology(a *FeMorphologyAttrs, _ *[]html.Component) {
+func (o OperatorOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Operator = o.v
 }
 
 // RadiusOpt applies to FeMorphology
-func (o RadiusOpt) ApplyFeMorphology(a *FeMorphologyAttrs, _ *[]html.Component) {
+func (o RadiusOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Radius = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeMorphologyAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeMorphologyAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.In != "" {
-		SvgAttr(sb, "in", a.In)
+		Attr(sb, "in", a.In)
 	}
 	if a.Operator != "" {
-		SvgAttr(sb, "operator", a.Operator)
+		Attr(sb, "operator", a.Operator)
 	}
 	if a.Radius != "" {
-		SvgAttr(sb, "radius", a.Radius)
+		Attr(sb, "radius", a.Radius)
 	}
 }

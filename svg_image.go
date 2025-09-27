@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// ImageAttrs holds the attributes for the image SVG element
-type ImageAttrs struct {
-	SvgGlobal           SvgGlobalAttrs
+// SvgImageAttrs holds the attributes for the image SVG element
+type SvgImageAttrs struct {
+	GlobalAttrs
 	Height              string
 	Href                string
 	PreserveAspectRatio string
@@ -17,26 +17,26 @@ type ImageAttrs struct {
 	Y                   string
 }
 
-// ImageArg interface for image element arguments
-type ImageArg interface {
-	ApplyImage(*ImageAttrs, *[]html.Component)
+// SvgImageArg interface for image element arguments
+type SvgImageArg interface {
+	applyImage(*SvgImageAttrs, *[]Component)
 }
 
-// defaultImageAttrs creates default attributes for image
-func defaultImageAttrs() *ImageAttrs {
-	return &ImageAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgImageAttrs creates default attributes for image
+func defaultSvgImageAttrs() *SvgImageAttrs {
+	return &SvgImageAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Image creates an SVG image element
-func Image(args ...ImageArg) html.Node {
-	a := defaultImageAttrs()
-	var kids []html.Component
+// SvgImage creates an SVG image element
+func SvgImage(args ...SvgImageArg) Node {
+	a := defaultSvgImageAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyImage(a, &kids)
+		ar.applyImage(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "image",
 		Attrs: a,
 		Kids:  kids,
@@ -44,59 +44,59 @@ func Image(args ...ImageArg) html.Node {
 }
 
 // Global applies global SVG attributes to image
-func (g Global) ApplyImage(a *ImageAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyImage(a *SvgImageAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // HeightOpt applies to Image
-func (o HeightOpt) ApplyImage(a *ImageAttrs, _ *[]html.Component) {
+func (o HeightOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // HrefOpt applies to Image
-func (o HrefOpt) ApplyImage(a *ImageAttrs, _ *[]html.Component) {
+func (o HrefOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // PreserveAspectRatioOpt applies to Image
-func (o PreserveAspectRatioOpt) ApplyImage(a *ImageAttrs, _ *[]html.Component) {
+func (o PreserveAspectRatioOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
 // WidthOpt applies to Image
-func (o WidthOpt) ApplyImage(a *ImageAttrs, _ *[]html.Component) {
+func (o WidthOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // XOpt applies to Image
-func (o XOpt) ApplyImage(a *ImageAttrs, _ *[]html.Component) {
+func (o XOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Image
-func (o YOpt) ApplyImage(a *ImageAttrs, _ *[]html.Component) {
+func (o YOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *ImageAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgImageAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Height != "" {
-		SvgAttr(sb, "height", a.Height)
+		Attr(sb, "height", a.Height)
 	}
 	if a.Href != "" {
-		SvgAttr(sb, "href", a.Href)
+		Attr(sb, "href", a.Href)
 	}
 	if a.PreserveAspectRatio != "" {
-		SvgAttr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
+		Attr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
 	}
 	if a.Width != "" {
-		SvgAttr(sb, "width", a.Width)
+		Attr(sb, "width", a.Width)
 	}
 	if a.X != "" {
-		SvgAttr(sb, "x", a.X)
+		Attr(sb, "x", a.X)
 	}
 	if a.Y != "" {
-		SvgAttr(sb, "y", a.Y)
+		Attr(sb, "y", a.Y)
 	}
 }

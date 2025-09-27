@@ -6,31 +6,31 @@ import (
 	"strings"
 )
 
-// DescAttrs holds the attributes for the desc SVG element
-type DescAttrs struct {
-	SvgGlobal SvgGlobalAttrs
+// SvgDescAttrs holds the attributes for the desc SVG element
+type SvgDescAttrs struct {
+	GlobalAttrs
 }
 
-// DescArg interface for desc element arguments
-type DescArg interface {
-	ApplyDesc(*DescAttrs, *[]html.Component)
+// SvgDescArg interface for desc element arguments
+type SvgDescArg interface {
+	applyDesc(*SvgDescAttrs, *[]Component)
 }
 
-// defaultDescAttrs creates default attributes for desc
-func defaultDescAttrs() *DescAttrs {
-	return &DescAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgDescAttrs creates default attributes for desc
+func defaultSvgDescAttrs() *SvgDescAttrs {
+	return &SvgDescAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Desc creates an SVG desc element
-func Desc(args ...DescArg) html.Node {
-	a := defaultDescAttrs()
-	var kids []html.Component
+// SvgDesc creates an SVG desc element
+func SvgDesc(args ...SvgDescArg) Node {
+	a := defaultSvgDescAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyDesc(a, &kids)
+		ar.applyDesc(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "desc",
 		Attrs: a,
 		Kids:  kids,
@@ -38,11 +38,11 @@ func Desc(args ...DescArg) html.Node {
 }
 
 // Global applies global SVG attributes to desc
-func (g Global) ApplyDesc(a *DescAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyDesc(a *SvgDescAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *DescAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgDescAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 }

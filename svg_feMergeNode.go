@@ -6,32 +6,32 @@ import (
 	"strings"
 )
 
-// FeMergeNodeAttrs holds the attributes for the feMergeNode SVG element
-type FeMergeNodeAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	In        string
+// SvgFeMergeNodeAttrs holds the attributes for the feMergeNode SVG element
+type SvgFeMergeNodeAttrs struct {
+	GlobalAttrs
+	In string
 }
 
-// FeMergeNodeArg interface for feMergeNode element arguments
-type FeMergeNodeArg interface {
-	ApplyFeMergeNode(*FeMergeNodeAttrs, *[]html.Component)
+// SvgFeMergeNodeArg interface for feMergeNode element arguments
+type SvgFeMergeNodeArg interface {
+	applyFeMergeNode(*SvgFeMergeNodeAttrs, *[]Component)
 }
 
-// defaultFeMergeNodeAttrs creates default attributes for feMergeNode
-func defaultFeMergeNodeAttrs() *FeMergeNodeAttrs {
-	return &FeMergeNodeAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeMergeNodeAttrs creates default attributes for feMergeNode
+func defaultSvgFeMergeNodeAttrs() *SvgFeMergeNodeAttrs {
+	return &SvgFeMergeNodeAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeMergeNode creates an SVG feMergeNode element
-func FeMergeNode(args ...FeMergeNodeArg) html.Node {
-	a := defaultFeMergeNodeAttrs()
-	var kids []html.Component
+// SvgFeMergeNode creates an SVG feMergeNode element
+func SvgFeMergeNode(args ...SvgFeMergeNodeArg) Node {
+	a := defaultSvgFeMergeNodeAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeMergeNode(a, &kids)
+		ar.applyFeMergeNode(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feMergeNode",
 		Attrs: a,
 		Kids:  kids,
@@ -39,19 +39,19 @@ func FeMergeNode(args ...FeMergeNodeArg) html.Node {
 }
 
 // Global applies global SVG attributes to feMergeNode
-func (g Global) ApplyFeMergeNode(a *FeMergeNodeAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeMergeNode(a *SvgFeMergeNodeAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // InOpt applies to FeMergeNode
-func (o InOpt) ApplyFeMergeNode(a *FeMergeNodeAttrs, _ *[]html.Component) {
+func (o InOpt) applyFeMergeNode(a *SvgFeMergeNodeAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeMergeNodeAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeMergeNodeAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.In != "" {
-		SvgAttr(sb, "in", a.In)
+		Attr(sb, "in", a.In)
 	}
 }

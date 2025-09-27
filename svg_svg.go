@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// SvgAttrs holds the attributes for the svg SVG element
-type SvgAttrs struct {
-	SvgGlobal           SvgGlobalAttrs
+// SvgSvgAttrs holds the attributes for the svg SVG element
+type SvgSvgAttrs struct {
+	GlobalAttrs
 	Height              string
 	PreserveAspectRatio string
 	ViewBox             string
@@ -17,26 +17,26 @@ type SvgAttrs struct {
 	Y                   string
 }
 
-// SvgArg interface for svg element arguments
-type SvgArg interface {
-	ApplySvg(*SvgAttrs, *[]html.Component)
+// SvgSvgArg interface for svg element arguments
+type SvgSvgArg interface {
+	applySvg(*SvgSvgAttrs, *[]Component)
 }
 
-// defaultSvgAttrs creates default attributes for svg
-func defaultSvgAttrs() *SvgAttrs {
-	return &SvgAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgSvgAttrs creates default attributes for svg
+func defaultSvgSvgAttrs() *SvgSvgAttrs {
+	return &SvgSvgAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Svg creates an SVG svg element
-func Svg(args ...SvgArg) html.Node {
-	a := defaultSvgAttrs()
-	var kids []html.Component
+// SvgSvg creates an SVG svg element
+func SvgSvg(args ...SvgSvgArg) Node {
+	a := defaultSvgSvgAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplySvg(a, &kids)
+		ar.applySvg(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "svg",
 		Attrs: a,
 		Kids:  kids,
@@ -44,59 +44,59 @@ func Svg(args ...SvgArg) html.Node {
 }
 
 // Global applies global SVG attributes to svg
-func (g Global) ApplySvg(a *SvgAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applySvg(a *SvgSvgAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // HeightOpt applies to Svg
-func (o HeightOpt) ApplySvg(a *SvgAttrs, _ *[]html.Component) {
+func (o HeightOpt) applySvg(a *SvgSvgAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // PreserveAspectRatioOpt applies to Svg
-func (o PreserveAspectRatioOpt) ApplySvg(a *SvgAttrs, _ *[]html.Component) {
+func (o PreserveAspectRatioOpt) applySvg(a *SvgSvgAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
 // ViewBoxOpt applies to Svg
-func (o ViewBoxOpt) ApplySvg(a *SvgAttrs, _ *[]html.Component) {
+func (o ViewBoxOpt) applySvg(a *SvgSvgAttrs, _ *[]Component) {
 	a.ViewBox = o.v
 }
 
 // WidthOpt applies to Svg
-func (o WidthOpt) ApplySvg(a *SvgAttrs, _ *[]html.Component) {
+func (o WidthOpt) applySvg(a *SvgSvgAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // XOpt applies to Svg
-func (o XOpt) ApplySvg(a *SvgAttrs, _ *[]html.Component) {
+func (o XOpt) applySvg(a *SvgSvgAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Svg
-func (o YOpt) ApplySvg(a *SvgAttrs, _ *[]html.Component) {
+func (o YOpt) applySvg(a *SvgSvgAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *SvgAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgSvgAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Height != "" {
-		SvgAttr(sb, "height", a.Height)
+		Attr(sb, "height", a.Height)
 	}
 	if a.PreserveAspectRatio != "" {
-		SvgAttr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
+		Attr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
 	}
 	if a.ViewBox != "" {
-		SvgAttr(sb, "viewBox", a.ViewBox)
+		Attr(sb, "viewBox", a.ViewBox)
 	}
 	if a.Width != "" {
-		SvgAttr(sb, "width", a.Width)
+		Attr(sb, "width", a.Width)
 	}
 	if a.X != "" {
-		SvgAttr(sb, "x", a.X)
+		Attr(sb, "x", a.X)
 	}
 	if a.Y != "" {
-		SvgAttr(sb, "y", a.Y)
+		Attr(sb, "y", a.Y)
 	}
 }

@@ -6,34 +6,34 @@ import (
 	"strings"
 )
 
-// FeImageAttrs holds the attributes for the feImage SVG element
-type FeImageAttrs struct {
-	SvgGlobal                 SvgGlobalAttrs
+// SvgFeImageAttrs holds the attributes for the feImage SVG element
+type SvgFeImageAttrs struct {
+	GlobalAttrs
 	ExternalResourcesRequired bool
 	Href                      string
 	PreserveAspectRatio       string
 }
 
-// FeImageArg interface for feImage element arguments
-type FeImageArg interface {
-	ApplyFeImage(*FeImageAttrs, *[]html.Component)
+// SvgFeImageArg interface for feImage element arguments
+type SvgFeImageArg interface {
+	applyFeImage(*SvgFeImageAttrs, *[]Component)
 }
 
-// defaultFeImageAttrs creates default attributes for feImage
-func defaultFeImageAttrs() *FeImageAttrs {
-	return &FeImageAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeImageAttrs creates default attributes for feImage
+func defaultSvgFeImageAttrs() *SvgFeImageAttrs {
+	return &SvgFeImageAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeImage creates an SVG feImage element
-func FeImage(args ...FeImageArg) html.Node {
-	a := defaultFeImageAttrs()
-	var kids []html.Component
+// SvgFeImage creates an SVG feImage element
+func SvgFeImage(args ...SvgFeImageArg) Node {
+	a := defaultSvgFeImageAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeImage(a, &kids)
+		ar.applyFeImage(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feImage",
 		Attrs: a,
 		Kids:  kids,
@@ -41,35 +41,35 @@ func FeImage(args ...FeImageArg) html.Node {
 }
 
 // Global applies global SVG attributes to feImage
-func (g Global) ApplyFeImage(a *FeImageAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // ExternalResourcesRequiredOpt applies to FeImage
-func (o ExternalResourcesRequiredOpt) ApplyFeImage(a *FeImageAttrs, _ *[]html.Component) {
+func (o ExternalResourcesRequiredOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = true
 }
 
 // HrefOpt applies to FeImage
-func (o HrefOpt) ApplyFeImage(a *FeImageAttrs, _ *[]html.Component) {
+func (o HrefOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // PreserveAspectRatioOpt applies to FeImage
-func (o PreserveAspectRatioOpt) ApplyFeImage(a *FeImageAttrs, _ *[]html.Component) {
+func (o PreserveAspectRatioOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeImageAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeImageAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.ExternalResourcesRequired {
-		SvgBoolAttr(sb, "externalResourcesRequired")
+		BoolAttr(sb, "externalResourcesRequired")
 	}
 	if a.Href != "" {
-		SvgAttr(sb, "href", a.Href)
+		Attr(sb, "href", a.Href)
 	}
 	if a.PreserveAspectRatio != "" {
-		SvgAttr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
+		Attr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
 	}
 }

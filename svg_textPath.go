@@ -6,35 +6,35 @@ import (
 	"strings"
 )
 
-// TextPathAttrs holds the attributes for the textPath SVG element
-type TextPathAttrs struct {
-	SvgGlobal   SvgGlobalAttrs
+// SvgTextPathAttrs holds the attributes for the textPath SVG element
+type SvgTextPathAttrs struct {
+	GlobalAttrs
 	Href        string
 	Method      string
 	Spacing     string
 	StartOffset string
 }
 
-// TextPathArg interface for textPath element arguments
-type TextPathArg interface {
-	ApplyTextPath(*TextPathAttrs, *[]html.Component)
+// SvgTextPathArg interface for textPath element arguments
+type SvgTextPathArg interface {
+	applyTextPath(*SvgTextPathAttrs, *[]Component)
 }
 
-// defaultTextPathAttrs creates default attributes for textPath
-func defaultTextPathAttrs() *TextPathAttrs {
-	return &TextPathAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgTextPathAttrs creates default attributes for textPath
+func defaultSvgTextPathAttrs() *SvgTextPathAttrs {
+	return &SvgTextPathAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// TextPath creates an SVG textPath element
-func TextPath(args ...TextPathArg) html.Node {
-	a := defaultTextPathAttrs()
-	var kids []html.Component
+// SvgTextPath creates an SVG textPath element
+func SvgTextPath(args ...SvgTextPathArg) Node {
+	a := defaultSvgTextPathAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyTextPath(a, &kids)
+		ar.applyTextPath(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "textPath",
 		Attrs: a,
 		Kids:  kids,
@@ -42,43 +42,43 @@ func TextPath(args ...TextPathArg) html.Node {
 }
 
 // Global applies global SVG attributes to textPath
-func (g Global) ApplyTextPath(a *TextPathAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // HrefOpt applies to TextPath
-func (o HrefOpt) ApplyTextPath(a *TextPathAttrs, _ *[]html.Component) {
+func (o HrefOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // MethodOpt applies to TextPath
-func (o MethodOpt) ApplyTextPath(a *TextPathAttrs, _ *[]html.Component) {
+func (o MethodOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
 	a.Method = o.v
 }
 
 // SpacingOpt applies to TextPath
-func (o SpacingOpt) ApplyTextPath(a *TextPathAttrs, _ *[]html.Component) {
+func (o SpacingOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
 	a.Spacing = o.v
 }
 
 // StartOffsetOpt applies to TextPath
-func (o StartOffsetOpt) ApplyTextPath(a *TextPathAttrs, _ *[]html.Component) {
+func (o StartOffsetOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
 	a.StartOffset = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *TextPathAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgTextPathAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Href != "" {
-		SvgAttr(sb, "href", a.Href)
+		Attr(sb, "href", a.Href)
 	}
 	if a.Method != "" {
-		SvgAttr(sb, "method", a.Method)
+		Attr(sb, "method", a.Method)
 	}
 	if a.Spacing != "" {
-		SvgAttr(sb, "spacing", a.Spacing)
+		Attr(sb, "spacing", a.Spacing)
 	}
 	if a.StartOffset != "" {
-		SvgAttr(sb, "startOffset", a.StartOffset)
+		Attr(sb, "startOffset", a.StartOffset)
 	}
 }

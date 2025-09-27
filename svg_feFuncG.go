@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// FeFuncGAttrs holds the attributes for the feFuncG SVG element
-type FeFuncGAttrs struct {
-	SvgGlobal   SvgGlobalAttrs
+// SvgFeFuncGAttrs holds the attributes for the feFuncG SVG element
+type SvgFeFuncGAttrs struct {
+	GlobalAttrs
 	Amplitude   string
 	Exponent    string
 	Intercept   string
@@ -18,26 +18,26 @@ type FeFuncGAttrs struct {
 	Type        string
 }
 
-// FeFuncGArg interface for feFuncG element arguments
-type FeFuncGArg interface {
-	ApplyFeFuncG(*FeFuncGAttrs, *[]html.Component)
+// SvgFeFuncGArg interface for feFuncG element arguments
+type SvgFeFuncGArg interface {
+	applyFeFuncG(*SvgFeFuncGAttrs, *[]Component)
 }
 
-// defaultFeFuncGAttrs creates default attributes for feFuncG
-func defaultFeFuncGAttrs() *FeFuncGAttrs {
-	return &FeFuncGAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeFuncGAttrs creates default attributes for feFuncG
+func defaultSvgFeFuncGAttrs() *SvgFeFuncGAttrs {
+	return &SvgFeFuncGAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeFuncG creates an SVG feFuncG element
-func FeFuncG(args ...FeFuncGArg) html.Node {
-	a := defaultFeFuncGAttrs()
-	var kids []html.Component
+// SvgFeFuncG creates an SVG feFuncG element
+func SvgFeFuncG(args ...SvgFeFuncGArg) Node {
+	a := defaultSvgFeFuncGAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeFuncG(a, &kids)
+		ar.applyFeFuncG(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feFuncG",
 		Attrs: a,
 		Kids:  kids,
@@ -45,67 +45,67 @@ func FeFuncG(args ...FeFuncGArg) html.Node {
 }
 
 // Global applies global SVG attributes to feFuncG
-func (g Global) ApplyFeFuncG(a *FeFuncGAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeFuncG(a *SvgFeFuncGAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // AmplitudeOpt applies to FeFuncG
-func (o AmplitudeOpt) ApplyFeFuncG(a *FeFuncGAttrs, _ *[]html.Component) {
+func (o AmplitudeOpt) applyFeFuncG(a *SvgFeFuncGAttrs, _ *[]Component) {
 	a.Amplitude = o.v
 }
 
 // ExponentOpt applies to FeFuncG
-func (o ExponentOpt) ApplyFeFuncG(a *FeFuncGAttrs, _ *[]html.Component) {
+func (o ExponentOpt) applyFeFuncG(a *SvgFeFuncGAttrs, _ *[]Component) {
 	a.Exponent = o.v
 }
 
 // InterceptOpt applies to FeFuncG
-func (o InterceptOpt) ApplyFeFuncG(a *FeFuncGAttrs, _ *[]html.Component) {
+func (o InterceptOpt) applyFeFuncG(a *SvgFeFuncGAttrs, _ *[]Component) {
 	a.Intercept = o.v
 }
 
 // OffsetOpt applies to FeFuncG
-func (o OffsetOpt) ApplyFeFuncG(a *FeFuncGAttrs, _ *[]html.Component) {
+func (o OffsetOpt) applyFeFuncG(a *SvgFeFuncGAttrs, _ *[]Component) {
 	a.Offset = o.v
 }
 
 // SlopeOpt applies to FeFuncG
-func (o SlopeOpt) ApplyFeFuncG(a *FeFuncGAttrs, _ *[]html.Component) {
+func (o SlopeOpt) applyFeFuncG(a *SvgFeFuncGAttrs, _ *[]Component) {
 	a.Slope = o.v
 }
 
 // TableValuesOpt applies to FeFuncG
-func (o TableValuesOpt) ApplyFeFuncG(a *FeFuncGAttrs, _ *[]html.Component) {
+func (o TableValuesOpt) applyFeFuncG(a *SvgFeFuncGAttrs, _ *[]Component) {
 	a.TableValues = o.v
 }
 
 // TypeOpt applies to FeFuncG
-func (o TypeOpt) ApplyFeFuncG(a *FeFuncGAttrs, _ *[]html.Component) {
+func (o TypeOpt) applyFeFuncG(a *SvgFeFuncGAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeFuncGAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeFuncGAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Amplitude != "" {
-		SvgAttr(sb, "amplitude", a.Amplitude)
+		Attr(sb, "amplitude", a.Amplitude)
 	}
 	if a.Exponent != "" {
-		SvgAttr(sb, "exponent", a.Exponent)
+		Attr(sb, "exponent", a.Exponent)
 	}
 	if a.Intercept != "" {
-		SvgAttr(sb, "intercept", a.Intercept)
+		Attr(sb, "intercept", a.Intercept)
 	}
 	if a.Offset != "" {
-		SvgAttr(sb, "offset", a.Offset)
+		Attr(sb, "offset", a.Offset)
 	}
 	if a.Slope != "" {
-		SvgAttr(sb, "slope", a.Slope)
+		Attr(sb, "slope", a.Slope)
 	}
 	if a.TableValues != "" {
-		SvgAttr(sb, "tableValues", a.TableValues)
+		Attr(sb, "tableValues", a.TableValues)
 	}
 	if a.Type != "" {
-		SvgAttr(sb, "type", a.Type)
+		Attr(sb, "type", a.Type)
 	}
 }

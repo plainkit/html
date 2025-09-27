@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// MaskAttrs holds the attributes for the mask SVG element
-type MaskAttrs struct {
-	SvgGlobal        SvgGlobalAttrs
+// SvgMaskAttrs holds the attributes for the mask SVG element
+type SvgMaskAttrs struct {
+	GlobalAttrs
 	Height           string
 	MaskContentUnits string
 	MaskUnits        string
@@ -17,26 +17,26 @@ type MaskAttrs struct {
 	Y                string
 }
 
-// MaskArg interface for mask element arguments
-type MaskArg interface {
-	ApplyMask(*MaskAttrs, *[]html.Component)
+// SvgMaskArg interface for mask element arguments
+type SvgMaskArg interface {
+	applyMask(*SvgMaskAttrs, *[]Component)
 }
 
-// defaultMaskAttrs creates default attributes for mask
-func defaultMaskAttrs() *MaskAttrs {
-	return &MaskAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgMaskAttrs creates default attributes for mask
+func defaultSvgMaskAttrs() *SvgMaskAttrs {
+	return &SvgMaskAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// Mask creates an SVG mask element
-func Mask(args ...MaskArg) html.Node {
-	a := defaultMaskAttrs()
-	var kids []html.Component
+// SvgMask creates an SVG mask element
+func SvgMask(args ...SvgMaskArg) Node {
+	a := defaultSvgMaskAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyMask(a, &kids)
+		ar.applyMask(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "mask",
 		Attrs: a,
 		Kids:  kids,
@@ -44,59 +44,59 @@ func Mask(args ...MaskArg) html.Node {
 }
 
 // Global applies global SVG attributes to mask
-func (g Global) ApplyMask(a *MaskAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // HeightOpt applies to Mask
-func (o HeightOpt) ApplyMask(a *MaskAttrs, _ *[]html.Component) {
+func (o HeightOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // MaskContentUnitsOpt applies to Mask
-func (o MaskContentUnitsOpt) ApplyMask(a *MaskAttrs, _ *[]html.Component) {
+func (o MaskContentUnitsOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.MaskContentUnits = o.v
 }
 
 // MaskUnitsOpt applies to Mask
-func (o MaskUnitsOpt) ApplyMask(a *MaskAttrs, _ *[]html.Component) {
+func (o MaskUnitsOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.MaskUnits = o.v
 }
 
 // WidthOpt applies to Mask
-func (o WidthOpt) ApplyMask(a *MaskAttrs, _ *[]html.Component) {
+func (o WidthOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // XOpt applies to Mask
-func (o XOpt) ApplyMask(a *MaskAttrs, _ *[]html.Component) {
+func (o XOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Mask
-func (o YOpt) ApplyMask(a *MaskAttrs, _ *[]html.Component) {
+func (o YOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *MaskAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgMaskAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Height != "" {
-		SvgAttr(sb, "height", a.Height)
+		Attr(sb, "height", a.Height)
 	}
 	if a.MaskContentUnits != "" {
-		SvgAttr(sb, "maskContentUnits", a.MaskContentUnits)
+		Attr(sb, "maskContentUnits", a.MaskContentUnits)
 	}
 	if a.MaskUnits != "" {
-		SvgAttr(sb, "maskUnits", a.MaskUnits)
+		Attr(sb, "maskUnits", a.MaskUnits)
 	}
 	if a.Width != "" {
-		SvgAttr(sb, "width", a.Width)
+		Attr(sb, "width", a.Width)
 	}
 	if a.X != "" {
-		SvgAttr(sb, "x", a.X)
+		Attr(sb, "x", a.X)
 	}
 	if a.Y != "" {
-		SvgAttr(sb, "y", a.Y)
+		Attr(sb, "y", a.Y)
 	}
 }

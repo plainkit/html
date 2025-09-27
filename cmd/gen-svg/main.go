@@ -24,7 +24,7 @@ func run(outDir string) error {
 	fileManager := files.NewManager(outDir)
 	specLoader := spec.NewLoader()
 	tagGenerator := generator.NewTagGenerator()
-	globalGenerator := generator.NewGlobalGenerator()
+	// globalGenerator := generator.NewGlobalGenerator() // Disabled - using HTML global
 	attributesGenerator := generator.NewAttributesGenerator()
 
 	if err := fileManager.EnsureOutputDir(); err != nil {
@@ -40,10 +40,11 @@ func run(outDir string) error {
 		return fmt.Errorf("load tag specs: %w", err)
 	}
 
-	fmt.Println("Generating SVG global attributes...")
-	if err := generateSvgGlobal(specLoader, fileManager, globalGenerator); err != nil {
-		return fmt.Errorf("generate SVG global: %w", err)
-	}
+	// SVG global attributes generation disabled - HTML global attributes are used via html.Global
+	// fmt.Println("Generating SVG global attributes...")
+	// if err := generateSvgGlobal(specLoader, fileManager, globalGenerator); err != nil {
+	// 	return fmt.Errorf("generate SVG global: %w", err)
+	// }
 
 	fmt.Println("Generating SVG attributes file (excluding HTML ones)...")
 	if err := generateSvgAttributes(specLoader, fileManager, attributesGenerator, allSpecs); err != nil {
@@ -67,15 +68,16 @@ func run(outDir string) error {
 	return nil
 }
 
-func generateSvgGlobal(specLoader *spec.Loader, fileManager *files.Manager, globalGen *generator.GlobalGenerator) error {
-	globalAttrs, err := specLoader.LoadGlobalAttributes()
-	if err != nil {
-		return fmt.Errorf("load global attributes: %w", err)
-	}
-
-	source := globalGen.GenerateSource(globalAttrs)
-	return fileManager.WriteFormattedFile("svg_global.go", source)
-}
+// generateSvgGlobal is disabled - HTML global attributes are used instead
+// func generateSvgGlobal(specLoader *spec.Loader, fileManager *files.Manager, globalGen *generator.GlobalGenerator) error {
+// 	globalAttrs, err := specLoader.LoadGlobalAttributes()
+// 	if err != nil {
+// 		return fmt.Errorf("load global attributes: %w", err)
+// 	}
+//
+// 	source := globalGen.GenerateSource(globalAttrs)
+// 	return fileManager.WriteFormattedFile("svg_global.go", source)
+// }
 
 func generateSvgAttributes(specLoader *spec.Loader, fileManager *files.Manager, attrGen *generator.AttributesGenerator, allSpecs []spec.TagSpec) error {
 	allAttributes := specLoader.CollectAllAttributes(allSpecs)

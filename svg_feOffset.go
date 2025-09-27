@@ -6,33 +6,33 @@ import (
 	"strings"
 )
 
-// FeOffsetAttrs holds the attributes for the feOffset SVG element
-type FeOffsetAttrs struct {
-	SvgGlobal SvgGlobalAttrs
-	Dx        string
-	Dy        string
+// SvgFeOffsetAttrs holds the attributes for the feOffset SVG element
+type SvgFeOffsetAttrs struct {
+	GlobalAttrs
+	Dx string
+	Dy string
 }
 
-// FeOffsetArg interface for feOffset element arguments
-type FeOffsetArg interface {
-	ApplyFeOffset(*FeOffsetAttrs, *[]html.Component)
+// SvgFeOffsetArg interface for feOffset element arguments
+type SvgFeOffsetArg interface {
+	applyFeOffset(*SvgFeOffsetAttrs, *[]Component)
 }
 
-// defaultFeOffsetAttrs creates default attributes for feOffset
-func defaultFeOffsetAttrs() *FeOffsetAttrs {
-	return &FeOffsetAttrs{
-		SvgGlobal: SvgGlobalAttrs{},
+// defaultSvgFeOffsetAttrs creates default attributes for feOffset
+func defaultSvgFeOffsetAttrs() *SvgFeOffsetAttrs {
+	return &SvgFeOffsetAttrs{
+		GlobalAttrs: GlobalAttrs{},
 	}
 }
 
-// FeOffset creates an SVG feOffset element
-func FeOffset(args ...FeOffsetArg) html.Node {
-	a := defaultFeOffsetAttrs()
-	var kids []html.Component
+// SvgFeOffset creates an SVG feOffset element
+func SvgFeOffset(args ...SvgFeOffsetArg) Node {
+	a := defaultSvgFeOffsetAttrs()
+	var kids []Component
 	for _, ar := range args {
-		ar.ApplyFeOffset(a, &kids)
+		ar.applyFeOffset(a, &kids)
 	}
-	return html.Node{
+	return Node{
 		Tag:   "feOffset",
 		Attrs: a,
 		Kids:  kids,
@@ -40,27 +40,27 @@ func FeOffset(args ...FeOffsetArg) html.Node {
 }
 
 // Global applies global SVG attributes to feOffset
-func (g Global) ApplyFeOffset(a *FeOffsetAttrs, _ *[]html.Component) {
-	g.do(&a.SvgGlobal)
+func (g Global) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+	g.Do(&a.GlobalAttrs)
 }
 
 // DxOpt applies to FeOffset
-func (o DxOpt) ApplyFeOffset(a *FeOffsetAttrs, _ *[]html.Component) {
+func (o DxOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Dx = o.v
 }
 
 // DyOpt applies to FeOffset
-func (o DyOpt) ApplyFeOffset(a *FeOffsetAttrs, _ *[]html.Component) {
+func (o DyOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Dy = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
-func (a *FeOffsetAttrs) WriteAttrs(sb *strings.Builder) {
-	WriteSvgGlobal(sb, &a.SvgGlobal)
+func (a *SvgFeOffsetAttrs) WriteAttrs(sb *strings.Builder) {
+	WriteGlobal(sb, &a.GlobalAttrs)
 	if a.Dx != "" {
-		SvgAttr(sb, "dx", a.Dx)
+		Attr(sb, "dx", a.Dx)
 	}
 	if a.Dy != "" {
-		SvgAttr(sb, "dy", a.Dy)
+		Attr(sb, "dy", a.Dy)
 	}
 }
