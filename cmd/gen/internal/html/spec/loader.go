@@ -15,7 +15,7 @@ type Loader struct {
 }
 
 // NewLoader creates a new spec loader using gostar data
-func NewLoader(specsDir string) *Loader {
+func NewLoader() *Loader {
 	return &Loader{htmlSpec: cfg.HTML}
 }
 

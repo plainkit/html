@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"text/template"
 
-	"github.com/plainkit/html/cmd/gen-svg/internal/spec"
-	"github.com/plainkit/html/cmd/gen-svg/internal/utils"
+	"github.com/plainkit/html/cmd/gen/internal/svg/spec"
+	"github.com/plainkit/html/cmd/gen/internal/svg/utils"
 )
 
 // TagGenerator generates individual SVG tag files

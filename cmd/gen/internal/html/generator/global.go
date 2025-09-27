@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/plainkit/html/cmd/gen-tags/internal/spec"
+	"github.com/plainkit/html/cmd/gen/internal/html/spec"
 )
 
 // GlobalGenerator handles generation of the core_global.go file

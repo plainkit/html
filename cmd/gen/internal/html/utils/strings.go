@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/plainkit/html/cmd/gen-tags/internal/spec"
+	"github.com/plainkit/html/cmd/gen/internal/html/spec"
 )
 
 // CamelCase converts kebab-case to CamelCase

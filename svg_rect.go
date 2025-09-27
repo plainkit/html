@@ -15,7 +15,6 @@ type SvgRectAttrs struct {
 	Width  string
 	X      string
 	Y      string
-	Fill   string
 }
 
 // SvgRectArg interface for rect element arguments
@@ -79,16 +78,6 @@ func (o YOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
-// FillOpt applies to Rect
-func (o FillOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
-	a.Fill = o.v
-}
-
-// StrokeOpt applies to Rect
-func (o StrokeOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
-	a.GlobalAttrs.Style += "stroke: " + o.v + "; "
-}
-
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgRectAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
@@ -109,8 +98,5 @@ func (a *SvgRectAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Y != "" {
 		Attr(sb, "y", a.Y)
-	}
-	if a.Fill != "" {
-		Attr(sb, "fill", a.Fill)
 	}
 }

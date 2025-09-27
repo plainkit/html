@@ -6,8 +6,8 @@ import (
 	"text/template"
 
 	"github.com/delaneyj/gostar/cfg"
-	"github.com/plainkit/html/cmd/gen-svg/internal/spec"
-	"github.com/plainkit/html/cmd/gen-svg/internal/utils"
+	"github.com/plainkit/html/cmd/gen/internal/svg/spec"
+	"github.com/plainkit/html/cmd/gen/internal/svg/utils"
 )
 
 // AttributesGenerator generates centralized SVG attributes file

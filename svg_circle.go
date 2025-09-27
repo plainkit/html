@@ -9,10 +9,9 @@ import (
 // SvgCircleAttrs holds the attributes for the circle SVG element
 type SvgCircleAttrs struct {
 	GlobalAttrs
-	Cx   string
-	Cy   string
-	R    string
-	Fill string
+	Cx string
+	Cy string
+	R  string
 }
 
 // SvgCircleArg interface for circle element arguments
@@ -61,16 +60,6 @@ func (o ROpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.R = o.v
 }
 
-// FillOpt applies to Circle
-func (o FillOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
-	a.Fill = o.v
-}
-
-// StrokeOpt applies to Circle
-func (o StrokeOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
-	a.GlobalAttrs.Style += "stroke: " + o.v + "; "
-}
-
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgCircleAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
@@ -82,8 +71,5 @@ func (a *SvgCircleAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.R != "" {
 		Attr(sb, "r", a.R)
-	}
-	if a.Fill != "" {
-		Attr(sb, "fill", a.Fill)
 	}
 }

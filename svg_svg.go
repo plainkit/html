@@ -15,12 +15,6 @@ type SvgAttrs struct {
 	Width               string
 	X                   string
 	Y                   string
-	Fill                string
-	Stroke              string
-	StrokeWidth         string
-	StrokeLinecap       string
-	StrokeLinejoin      string
-	Xmlns               string
 }
 
 // SvgArg interface for svg element arguments
@@ -84,36 +78,6 @@ func (o YOpt) apply(a *SvgAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
-// FillOpt applies to Svg
-func (o FillOpt) apply(a *SvgAttrs, _ *[]Component) {
-	a.Fill = o.v
-}
-
-// StrokeOpt applies to Svg
-func (o StrokeOpt) apply(a *SvgAttrs, _ *[]Component) {
-	a.Stroke = o.v
-}
-
-// StrokeWidthOpt applies to Svg
-func (o StrokeWidthOpt) apply(a *SvgAttrs, _ *[]Component) {
-	a.StrokeWidth = o.v
-}
-
-// StrokeLinecapOpt applies to Svg
-func (o StrokeLinecapOpt) apply(a *SvgAttrs, _ *[]Component) {
-	a.StrokeLinecap = o.v
-}
-
-// StrokeLinejoinOpt applies to Svg
-func (o StrokeLinejoinOpt) apply(a *SvgAttrs, _ *[]Component) {
-	a.StrokeLinejoin = o.v
-}
-
-// XmlnsOpt applies to Svg
-func (o XmlnsOpt) apply(a *SvgAttrs, _ *[]Component) {
-	a.Xmlns = o.v
-}
-
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
@@ -134,23 +98,5 @@ func (a *SvgAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Y != "" {
 		Attr(sb, "y", a.Y)
-	}
-	if a.Fill != "" {
-		Attr(sb, "fill", a.Fill)
-	}
-	if a.Stroke != "" {
-		Attr(sb, "stroke", a.Stroke)
-	}
-	if a.StrokeWidth != "" {
-		Attr(sb, "stroke-width", a.StrokeWidth)
-	}
-	if a.StrokeLinecap != "" {
-		Attr(sb, "stroke-linecap", a.StrokeLinecap)
-	}
-	if a.StrokeLinejoin != "" {
-		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
-	}
-	if a.Xmlns != "" {
-		Attr(sb, "xmlns", a.Xmlns)
 	}
 }

@@ -1,6 +1,6 @@
-module github.com/plainkit/html/cmd/gen-svg
+module github.com/plainkit/html/cmd/gen
 
-go 1.25.1
+go 1.22.1
 
 require github.com/delaneyj/gostar v0.8.0
 

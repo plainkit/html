@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"text/template"
 
-	"github.com/plainkit/html/cmd/gen-tags/internal/spec"
-	"github.com/plainkit/html/cmd/gen-tags/internal/utils"
+	"github.com/plainkit/html/cmd/gen/internal/html/spec"
+	"github.com/plainkit/html/cmd/gen/internal/html/utils"
 )
 
 // TagGenerator generates individual tag files

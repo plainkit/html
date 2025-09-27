@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"text/template"
 
-	"github.com/plainkit/html/cmd/gen-tags/internal/spec"
-	"github.com/plainkit/html/cmd/gen-tags/internal/utils"
+	"github.com/plainkit/html/cmd/gen/internal/html/spec"
+	"github.com/plainkit/html/cmd/gen/internal/html/utils"
 )
 
 // NodeGenerator generates core_node.go file

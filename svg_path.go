@@ -12,7 +12,6 @@ type SvgPathAttrs struct {
 	D           string
 	FillOpacity string
 	PathLength  string
-	Fill        string
 }
 
 // SvgPathArg interface for path element arguments
@@ -61,16 +60,6 @@ func (o PathLengthOpt) applyPath(a *SvgPathAttrs, _ *[]Component) {
 	a.PathLength = o.v
 }
 
-// FillOpt applies to Path
-func (o FillOpt) applyPath(a *SvgPathAttrs, _ *[]Component) {
-	a.Fill = o.v
-}
-
-// StrokeOpt applies to Path
-func (o StrokeOpt) applyPath(a *SvgPathAttrs, _ *[]Component) {
-	a.GlobalAttrs.Style += "stroke: " + o.v + "; "
-}
-
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgPathAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
@@ -82,8 +71,5 @@ func (a *SvgPathAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.PathLength != "" {
 		Attr(sb, "pathLength", a.PathLength)
-	}
-	if a.Fill != "" {
-		Attr(sb, "fill", a.Fill)
 	}
 }
