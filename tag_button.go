@@ -4,7 +4,8 @@ import "strings"
 
 type ButtonAttrs struct {
 	Global              GlobalAttrs
-	Autofocus           bool
+	Command             string
+	Commandfor          string
 	Disabled            bool
 	Form                string
 	Formaction          string
@@ -47,8 +48,11 @@ func (g Global) applyButton(a *ButtonAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AutofocusOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
-	a.Autofocus = true
+func (o CommandOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Command = o.v
+}
+func (o CommandforOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Commandfor = o.v
 }
 func (o DisabledOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 	a.Disabled = true
@@ -89,8 +93,11 @@ func (o ValueOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 
 func (a *ButtonAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Autofocus {
-		BoolAttr(sb, "autofocus")
+	if a.Command != "" {
+		Attr(sb, "command", a.Command)
+	}
+	if a.Commandfor != "" {
+		Attr(sb, "commandfor", a.Commandfor)
 	}
 	if a.Disabled {
 		BoolAttr(sb, "disabled")

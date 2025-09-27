@@ -21,8 +21,8 @@ func Generate(outDir string) error {
 
 	specLoader := spec.NewLoader()
 
-	fmt.Println("Loading HTML specifications from gostar...")
-	allSpecs, err := specLoader.LoadAllTagSpecsFromGostar()
+	fmt.Println("Loading HTML element attributes from wooorm/html-element-attributes...")
+	allSpecs, err := specLoader.LoadAllTagSpecs()
 	if err != nil {
 		return fmt.Errorf("load tag specs: %w", err)
 	}
@@ -58,7 +58,7 @@ func shouldRemoveGeneratedHTML(name string) bool {
 }
 
 func generateCoreGlobal(manager files.Manager, centralizedAttrs map[string]spec.Attribute, specLoader *spec.Loader) error {
-	globalAttrs, err := specLoader.LoadGlobalAttributesFromGostar()
+	globalAttrs, err := specLoader.LoadGlobalAttributes()
 	if err != nil {
 		return fmt.Errorf("load global attributes: %w", err)
 	}

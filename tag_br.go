@@ -4,6 +4,7 @@ import "strings"
 
 type BrAttrs struct {
 	Global GlobalAttrs
+	Clear  string
 }
 
 type BrArg interface {
@@ -34,6 +35,13 @@ func (g Global) applyBr(a *BrAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
+func (o ClearOpt) applyBr(a *BrAttrs, _ *[]Component) {
+	a.Clear = o.v
+}
+
 func (a *BrAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Clear != "" {
+		Attr(sb, "clear", a.Clear)
+	}
 }

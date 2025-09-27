@@ -6,8 +6,10 @@ type MetaAttrs struct {
 	Global    GlobalAttrs
 	Charset   string
 	Content   string
-	Httpequiv string
+	HttpEquiv string
+	Media     string
 	Name      string
+	Scheme    string
 }
 
 type MetaArg interface {
@@ -44,11 +46,17 @@ func (o CharsetOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
 func (o ContentOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
 	a.Content = o.v
 }
-func (o HttpequivOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
-	a.Httpequiv = o.v
+func (o HttpEquivOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
+	a.HttpEquiv = o.v
+}
+func (o MediaOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
+	a.Media = o.v
 }
 func (o NameOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
 	a.Name = o.v
+}
+func (o SchemeOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
+	a.Scheme = o.v
 }
 
 func (a *MetaAttrs) WriteAttrs(sb *strings.Builder) {
@@ -59,10 +67,16 @@ func (a *MetaAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Content != "" {
 		Attr(sb, "content", a.Content)
 	}
-	if a.Httpequiv != "" {
-		Attr(sb, "http-equiv", a.Httpequiv)
+	if a.HttpEquiv != "" {
+		Attr(sb, "http-equiv", a.HttpEquiv)
+	}
+	if a.Media != "" {
+		Attr(sb, "media", a.Media)
 	}
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
+	}
+	if a.Scheme != "" {
+		Attr(sb, "scheme", a.Scheme)
 	}
 }

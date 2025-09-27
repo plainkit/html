@@ -1,256 +1,265 @@
 package spec
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
+	"io"
+	"net/http"
+	"regexp"
 	"sort"
 	"strings"
-
-	"github.com/delaneyj/gostar/cfg"
-	pb "github.com/delaneyj/gostar/cfg/gen/specs/v1"
+	"sync"
 )
 
-// Loader handles loading and parsing of HTML specification from gostar
+const htmlAttributesURL = "https://raw.githubusercontent.com/wooorm/html-element-attributes/refs/heads/main/index.js"
+
+// Loader fetches and parses HTML element specs from wooorm/html-element-attributes.
 type Loader struct {
-	htmlSpec *pb.Namespace
+	once     sync.Once
+	loadErr  error
+	elements map[string][]string
 }
 
-// NewLoader creates a new spec loader using gostar data
+// NewLoader creates a loader that reads data from html-element-attributes.
 func NewLoader() *Loader {
-	return &Loader{htmlSpec: cfg.HTML}
+	return &Loader{}
 }
 
-// getGostarSpec returns the gostar HTML specification
-func (l *Loader) getGostarSpec() *pb.Namespace {
-	return l.htmlSpec
-}
-
-// isVoidElement checks if an element is self-closing based on gostar data
-func (l *Loader) isVoidElement(tagName string) bool {
-	for _, element := range l.htmlSpec.Elements {
-		if element.Tag == tagName {
-			return element.NoChildren
-		}
-	}
-	return false
-}
-
-// isAttributeBoolean determines if an attribute should be treated as boolean
-func (l *Loader) isAttributeBoolean(attr *pb.Attribute) bool {
-	if attr.Type == nil {
-		return false
-	}
-	// Check if the attribute type contains "bool:true" in its string representation
-	typeStr := fmt.Sprintf("%+v", attr.Type)
-	return strings.Contains(typeStr, "bool:true")
-}
-
-// LoadAllTagSpecsFromGostar loads all tag specifications from gostar data
-func (l *Loader) LoadAllTagSpecsFromGostar() ([]TagSpec, error) {
-	return l.convertGostarToTagSpecs(), nil
-}
-
-// LoadGlobalAttributesFromGostar loads global attributes from gostar data
-func (l *Loader) LoadGlobalAttributesFromGostar() ([]Attribute, error) {
-	// Note: gostar doesn't seem to have explicit global attributes
-	// We'll collect common attributes that appear across many elements
-	globalAttrs := l.extractGlobalAttributes()
-
-	var attributes []Attribute
-	for attrName, attrType := range globalAttrs {
-		if attrName == "" {
-			continue
-		}
-
-		field := camelCase(attrName)
-		attr := Attribute{
-			Field: field,
-			Attr:  attrName,
-			Type:  attrType,
-		}
-
-		attributes = append(attributes, attr)
+// LoadAllTagSpecs parses all tag definitions except the wildcard entry.
+func (l *Loader) LoadAllTagSpecs() ([]TagSpec, error) {
+	if err := l.ensureLoaded(); err != nil {
+		return nil, err
 	}
 
-	sort.Slice(attributes, func(i, j int) bool {
-		return attributes[i].Attr < attributes[j].Attr
-	})
+	globalSet := make(map[string]struct{})
+	for _, attr := range l.elements["*"] {
+		globalSet[strings.ToLower(attr)] = struct{}{}
+	}
 
-	return attributes, nil
-}
-
-func (l *Loader) convertGostarToTagSpecs() []TagSpec {
 	var specs []TagSpec
-
-	globalAttrs := l.extractGlobalAttributes()
-
-	for _, element := range l.htmlSpec.Elements {
-		// Skip SVG tag - it's handled by the separate SVG package
-		if element.Tag == "svg" {
+	for name, attrList := range l.elements {
+		if name == "*" {
 			continue
 		}
 
-		spec := TagSpec{
-			Name:          element.Tag,
-			Void:          element.NoChildren,
-			ParentTargets: []string{}, // gostar doesn't provide parent-child constraints
+		if skipElements[name] {
+			continue
 		}
 
-		// Use a map to deduplicate attributes by key
-		attrMap := make(map[string]Attribute)
-		for _, attr := range element.Attributes {
-			if attr.Key == "" {
-				continue
-			}
-
-			// Skip global attributes - they'll be handled separately
-			if _, isGlobal := globalAttrs[attr.Key]; isGlobal {
-				continue
-			}
-
-			field := camelCase(attr.Key)
-			attrType := "string"
-			if l.isAttributeBoolean(attr) {
-				attrType = "bool"
-			}
-
-			// Only add if not already seen (deduplication)
-			if _, exists := attrMap[attr.Key]; !exists {
-				attrMap[attr.Key] = Attribute{
-					Field: field,
-					Attr:  attr.Key,
-					Type:  attrType,
-				}
-			}
-		}
-
-		// Add known missing attributes that are not in gostar data
-		missingAttrs := l.getMissingAttributesForElement(element.Tag)
-		for _, attr := range missingAttrs {
-			if _, exists := attrMap[attr.Attr]; !exists {
-				attrMap[attr.Attr] = attr
-			}
-		}
-
-		// Convert map back to slice
-		var elemAttributes []Attribute
-		for _, attr := range attrMap {
-			elemAttributes = append(elemAttributes, attr)
-		}
-
-		sort.Slice(elemAttributes, func(i, j int) bool {
-			return elemAttributes[i].Attr < elemAttributes[j].Attr
+		tagAttrs := collectAttributes(attrList, globalSet)
+		specs = append(specs, TagSpec{
+			Name:       name,
+			Void:       voidElements[name],
+			Attributes: tagAttrs,
 		})
-
-		spec.Attributes = elemAttributes
-		specs = append(specs, spec)
 	}
 
 	sort.Slice(specs, func(i, j int) bool {
 		return specs[i].Name < specs[j].Name
 	})
 
-	return specs
+	return specs, nil
 }
 
-// extractGlobalAttributes identifies attributes that appear in ALL elements
-// and should be treated as global attributes
-func (l *Loader) extractGlobalAttributes() map[string]string {
-	attrCounts := make(map[string]int)
-	attrTypes := make(map[string]string)
-	totalElements := len(l.htmlSpec.Elements)
-
-	// Count how often each attribute appears
-	for _, element := range l.htmlSpec.Elements {
-		for _, attr := range element.Attributes {
-			attrCounts[attr.Key]++
-			if l.isAttributeBoolean(attr) {
-				attrTypes[attr.Key] = "bool"
-			} else {
-				attrTypes[attr.Key] = "string"
-			}
-		}
+// LoadGlobalAttributes returns the wildcard attributes as global attributes.
+func (l *Loader) LoadGlobalAttributes() ([]Attribute, error) {
+	if err := l.ensureLoaded(); err != nil {
+		return nil, err
 	}
 
-	// Consider attributes that appear in 90%+ of elements, plus known HTML global attributes
-	threshold := totalElements * 9 / 10
-	globalAttrs := make(map[string]string)
+	attrs := collectAttributes(l.elements["*"], nil)
 
-	// Add attributes that appear frequently
-	for attrName, count := range attrCounts {
-		if count >= threshold {
-			globalAttrs[attrName] = attrTypes[attrName]
-		}
-	}
+	sort.Slice(attrs, func(i, j int) bool {
+		return attrs[i].Attr < attrs[j].Attr
+	})
 
-	// Always include known HTML global attributes (from HTML spec)
-	knownGlobals := map[string]string{
-		"class":           "string",
-		"id":              "string",
-		"style":           "string",
-		"title":           "string",
-		"contenteditable": "string",
-		"draggable":       "bool",
-		"hidden":          "bool",
-		"lang":            "string",
-		"spellcheck":      "bool",
-		"tabindex":        "string",
-		"accesskey":       "string",
-		"dir":             "string",
-	}
-
-	for attr, attrType := range knownGlobals {
-		if _, exists := globalAttrs[attr]; !exists {
-			globalAttrs[attr] = attrType
-		}
-	}
-	return globalAttrs
+	return attrs, nil
 }
 
-// getMissingAttributesForElement returns known missing attributes for specific elements
-// that are not present in the gostar data but should be according to HTML spec
-func (l *Loader) getMissingAttributesForElement(tagName string) []Attribute {
-	switch tagName {
-	case "html":
-		return []Attribute{
-			{Field: "Lang", Attr: "lang", Type: "string"},
-		}
-	default:
-		return []Attribute{}
-	}
-}
-
-// CollectAllAttributes collects unique attributes from all tag specs
-// This does NOT include global attributes - those go in core_global.go
+// CollectAllAttributes aggregates attributes from tag specs (excluding globals).
 func (l *Loader) CollectAllAttributes(specs []TagSpec) map[string]Attribute {
-	allAttributes := make(map[string]Attribute)
+	all := make(map[string]Attribute)
 
-	// Add attributes from individual tag specs only
-	// Global attributes are handled separately in core_global.go
 	for _, spec := range specs {
 		for _, attr := range spec.Attributes {
 			key := strings.ToLower(attr.Attr)
-			if existing, exists := allAttributes[key]; exists {
+			if existing, ok := all[key]; ok {
 				if existing.Type == "bool" && attr.Type == "string" {
-					allAttributes[key] = attr
+					all[key] = attr
 				}
-			} else {
-				allAttributes[key] = attr
+				continue
 			}
+			all[key] = attr
 		}
 	}
 
-	return allAttributes
+	return all
 }
 
-// CamelCase converts kebab-case to CamelCase
-func CamelCase(name string) string {
-	return camelCase(name)
+func (l *Loader) ensureLoaded() error {
+	l.once.Do(func() {
+		data, err := fetchSpec()
+		if err != nil {
+			l.loadErr = err
+			return
+		}
+
+		attrs, err := parseSpec(data)
+		if err != nil {
+			l.loadErr = err
+			return
+		}
+
+		l.elements = attrs
+	})
+
+	return l.loadErr
 }
 
-func camelCase(name string) string {
-	cleaned := strings.ReplaceAll(strings.ReplaceAll(name, "-", ""), "_", "")
-	if len(cleaned) == 0 {
-		return ""
+func fetchSpec() ([]byte, error) {
+	resp, err := http.Get(htmlAttributesURL) // #nosec G107
+	if err != nil {
+		return nil, fmt.Errorf("fetch html-element-attributes: %w", err)
 	}
-	return strings.ToUpper(cleaned[:1]) + cleaned[1:]
+	defer func() { _ = resp.Body.Close() }()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("unexpected status %s", resp.Status)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("read response body: %w", err)
+	}
+
+	return body, nil
+}
+
+func parseSpec(data []byte) (map[string][]string, error) {
+	const prefix = "export const htmlElementAttributes ="
+	idx := bytes.Index(data, []byte(prefix))
+	if idx == -1 {
+		return nil, fmt.Errorf("unexpected spec format: missing export")
+	}
+
+	slice := data[idx+len(prefix):]
+	start := bytes.IndexByte(slice, '{')
+	end := bytes.LastIndexByte(slice, '}')
+	if start == -1 || end == -1 || end <= start {
+		return nil, fmt.Errorf("unexpected spec format")
+	}
+
+	raw := string(slice[start : end+1])
+
+	reKey := regexp.MustCompile(`(?m)^\s*([A-Za-z0-9_-]+)\s*:`)
+	raw = reKey.ReplaceAllString(raw, `"$1":`)
+	raw = strings.ReplaceAll(raw, "'", "\"")
+
+	var parsed map[string][]string
+	if err := json.Unmarshal([]byte(raw), &parsed); err != nil {
+		return nil, fmt.Errorf("unmarshal spec JSON: %w", err)
+	}
+
+	return parsed, nil
+}
+
+func collectAttributes(attrNames []string, globalSet map[string]struct{}) []Attribute {
+	seen := make(map[string]struct{})
+	var attrs []Attribute
+
+	for _, name := range attrNames {
+		key := strings.ToLower(name)
+		if key == "" {
+			continue
+		}
+		if globalSet != nil {
+			if _, ok := globalSet[key]; ok {
+				continue
+			}
+		}
+		if _, ok := seen[key]; ok {
+			continue
+		}
+		seen[key] = struct{}{}
+
+		attrs = append(attrs, Attribute{
+			Field: CamelCase(key),
+			Attr:  key,
+			Type:  attributeType(key),
+		})
+	}
+
+	sort.Slice(attrs, func(i, j int) bool {
+		return attrs[i].Attr < attrs[j].Attr
+	})
+
+	return attrs
+}
+
+func attributeType(name string) string {
+	name = strings.ToLower(name)
+	if _, ok := booleanAttributes[name]; ok {
+		return "bool"
+	}
+	return "string"
+}
+
+var booleanAttributes = map[string]struct{}{
+	"allowfullscreen":     {},
+	"allowpaymentrequest": {},
+	"async":               {},
+	"autofocus":           {},
+	"autoplay":            {},
+	"compact":             {},
+	"checked":             {},
+	"controls":            {},
+	"default":             {},
+	"declare":             {},
+	"defer":               {},
+	"disabled":            {},
+	"formnovalidate":      {},
+	"hidden":              {},
+	"inert":               {},
+	"ismap":               {},
+	"itemscope":           {},
+	"loop":                {},
+	"multiple":            {},
+	"muted":               {},
+	"nohref":              {},
+	"nomodule":            {},
+	"noresize":            {},
+	"noshade":             {},
+	"novalidate":          {},
+	"open":                {},
+	"playsinline":         {},
+	"readonly":            {},
+	"required":            {},
+	"reversed":            {},
+	"selected":            {},
+	"typemustmatch":       {},
+	"nowrap":              {},
+}
+
+var voidElements = map[string]bool{
+	"area":   true,
+	"base":   true,
+	"br":     true,
+	"col":    true,
+	"embed":  true,
+	"hr":     true,
+	"img":    true,
+	"input":  true,
+	"keygen": true,
+	"link":   true,
+	"meta":   true,
+	"param":  true,
+	"source": true,
+	"track":  true,
+	"wbr":    true,
+}
+
+var skipElements = map[string]bool{
+	"":    true,
+	"svg": true,
 }

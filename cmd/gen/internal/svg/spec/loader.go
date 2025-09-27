@@ -19,21 +19,6 @@ func NewLoader() *Loader {
 	return &Loader{svgSpec: cfg.SVG}
 }
 
-// getGostarSpec returns the gostar SVG specification
-func (l *Loader) getGostarSpec() *pb.Namespace {
-	return l.svgSpec
-}
-
-// isVoidElement checks if an SVG element is self-closing based on gostar data
-func (l *Loader) isVoidElement(tagName string) bool {
-	for _, element := range l.svgSpec.Elements {
-		if element.Tag == tagName {
-			return element.NoChildren
-		}
-	}
-	return false
-}
-
 // isAttributeBoolean determines if an attribute should be treated as boolean
 func (l *Loader) isAttributeBoolean(attr *pb.Attribute) bool {
 	if attr.Type == nil {

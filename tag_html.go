@@ -3,8 +3,9 @@ package html
 import "strings"
 
 type HtmlAttrs struct {
-	Global GlobalAttrs
-	Lang   string
+	Global   GlobalAttrs
+	Manifest string
+	Version  string
 }
 
 type HtmlArg interface {
@@ -35,13 +36,19 @@ func (g Global) applyHtml(a *HtmlAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o LangOpt) applyHtml(a *HtmlAttrs, _ *[]Component) {
-	a.Lang = o.v
+func (o ManifestOpt) applyHtml(a *HtmlAttrs, _ *[]Component) {
+	a.Manifest = o.v
+}
+func (o VersionOpt) applyHtml(a *HtmlAttrs, _ *[]Component) {
+	a.Version = o.v
 }
 
 func (a *HtmlAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Lang != "" {
-		Attr(sb, "lang", a.Lang)
+	if a.Manifest != "" {
+		Attr(sb, "manifest", a.Manifest)
+	}
+	if a.Version != "" {
+		Attr(sb, "version", a.Version)
 	}
 }

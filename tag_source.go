@@ -4,11 +4,13 @@ import "strings"
 
 type SourceAttrs struct {
 	Global GlobalAttrs
+	Height string
 	Media  string
 	Sizes  string
 	Src    string
 	Srcset string
 	Type   string
+	Width  string
 }
 
 type SourceArg interface {
@@ -39,6 +41,9 @@ func (g Global) applySource(a *SourceAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
+func (o HeightOpt) applySource(a *SourceAttrs, _ *[]Component) {
+	a.Height = o.v
+}
 func (o MediaOpt) applySource(a *SourceAttrs, _ *[]Component) {
 	a.Media = o.v
 }
@@ -54,9 +59,15 @@ func (o SrcsetOpt) applySource(a *SourceAttrs, _ *[]Component) {
 func (o TypeOpt) applySource(a *SourceAttrs, _ *[]Component) {
 	a.Type = o.v
 }
+func (o WidthOpt) applySource(a *SourceAttrs, _ *[]Component) {
+	a.Width = o.v
+}
 
 func (a *SourceAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Height != "" {
+		Attr(sb, "height", a.Height)
+	}
 	if a.Media != "" {
 		Attr(sb, "media", a.Media)
 	}
@@ -71,5 +82,8 @@ func (a *SourceAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)
+	}
+	if a.Width != "" {
+		Attr(sb, "width", a.Width)
 	}
 }

@@ -3,10 +3,10 @@ package html
 import "strings"
 
 type StyleAttrs struct {
-	Global GlobalAttrs
-	Media  string
-	Nonce  string
-	Type   string
+	Global   GlobalAttrs
+	Blocking string
+	Media    string
+	Type     string
 }
 
 type StyleArg interface {
@@ -37,11 +37,11 @@ func (g Global) applyStyle(a *StyleAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
+func (o BlockingOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
+	a.Blocking = o.v
+}
 func (o MediaOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
 	a.Media = o.v
-}
-func (o NonceOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
-	a.Nonce = o.v
 }
 func (o TypeOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
 	a.Type = o.v
@@ -49,11 +49,11 @@ func (o TypeOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
 
 func (a *StyleAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Blocking != "" {
+		Attr(sb, "blocking", a.Blocking)
+	}
 	if a.Media != "" {
 		Attr(sb, "media", a.Media)
-	}
-	if a.Nonce != "" {
-		Attr(sb, "nonce", a.Nonce)
 	}
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)

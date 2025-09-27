@@ -3,22 +3,20 @@ package html
 import "strings"
 
 type TextareaAttrs struct {
-	Global         GlobalAttrs
-	Autocapitalize string
-	Autocomplete   string
-	Autofocus      bool
-	Cols           string
-	Dirname        string
-	Disabled       bool
-	Form           string
-	Maxlength      string
-	Minlength      string
-	Name           string
-	Placeholder    string
-	Readonly       bool
-	Required       bool
-	Rows           string
-	Wrap           string
+	Global       GlobalAttrs
+	Autocomplete string
+	Cols         string
+	Dirname      string
+	Disabled     bool
+	Form         string
+	Maxlength    string
+	Minlength    string
+	Name         string
+	Placeholder  string
+	Readonly     bool
+	Required     bool
+	Rows         string
+	Wrap         string
 }
 
 type TextareaArg interface {
@@ -49,14 +47,8 @@ func (g Global) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AutocapitalizeOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
-	a.Autocapitalize = o.v
-}
 func (o AutocompleteOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Autocomplete = o.v
-}
-func (o AutofocusOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
-	a.Autofocus = true
 }
 func (o ColsOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Cols = o.v
@@ -97,14 +89,8 @@ func (o WrapOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 
 func (a *TextareaAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Autocapitalize != "" {
-		Attr(sb, "autocapitalize", a.Autocapitalize)
-	}
 	if a.Autocomplete != "" {
 		Attr(sb, "autocomplete", a.Autocomplete)
-	}
-	if a.Autofocus {
-		BoolAttr(sb, "autofocus")
 	}
 	if a.Cols != "" {
 		Attr(sb, "cols", a.Cols)

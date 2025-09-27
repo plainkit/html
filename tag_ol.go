@@ -4,6 +4,7 @@ import "strings"
 
 type OlAttrs struct {
 	Global   GlobalAttrs
+	Compact  bool
 	Reversed bool
 	Start    string
 	Type     string
@@ -37,6 +38,9 @@ func (g Global) applyOl(a *OlAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
+func (o CompactOpt) applyOl(a *OlAttrs, _ *[]Component) {
+	a.Compact = true
+}
 func (o ReversedOpt) applyOl(a *OlAttrs, _ *[]Component) {
 	a.Reversed = true
 }
@@ -49,6 +53,9 @@ func (o TypeOpt) applyOl(a *OlAttrs, _ *[]Component) {
 
 func (a *OlAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Compact {
+		BoolAttr(sb, "compact")
+	}
 	if a.Reversed {
 		BoolAttr(sb, "reversed")
 	}

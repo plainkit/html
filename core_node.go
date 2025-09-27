@@ -92,43 +92,32 @@ func BoolAttr(sb *strings.Builder, k string) {
 }
 
 func (n Node) applyA(_ *AAttrs, kids *[]Component)                   { *kids = append(*kids, n) }
-func (n Node) applyAbbr(_ *AbbrAttrs, kids *[]Component)             { *kids = append(*kids, n) }
-func (n Node) applyAddress(_ *AddressAttrs, kids *[]Component)       { *kids = append(*kids, n) }
+func (n Node) applyApplet(_ *AppletAttrs, kids *[]Component)         { *kids = append(*kids, n) }
 func (n Node) applyArea(_ *AreaAttrs, kids *[]Component)             { *kids = append(*kids, n) }
-func (n Node) applyArticle(_ *ArticleAttrs, kids *[]Component)       { *kids = append(*kids, n) }
-func (n Node) applyAside(_ *AsideAttrs, kids *[]Component)           { *kids = append(*kids, n) }
 func (n Node) applyAudio(_ *AudioAttrs, kids *[]Component)           { *kids = append(*kids, n) }
-func (n Node) applyB(_ *BAttrs, kids *[]Component)                   { *kids = append(*kids, n) }
 func (n Node) applyBase(_ *BaseAttrs, kids *[]Component)             { *kids = append(*kids, n) }
-func (n Node) applyBdi(_ *BdiAttrs, kids *[]Component)               { *kids = append(*kids, n) }
-func (n Node) applyBdo(_ *BdoAttrs, kids *[]Component)               { *kids = append(*kids, n) }
+func (n Node) applyBasefont(_ *BasefontAttrs, kids *[]Component)     { *kids = append(*kids, n) }
 func (n Node) applyBlockquote(_ *BlockquoteAttrs, kids *[]Component) { *kids = append(*kids, n) }
 func (n Node) applyBody(_ *BodyAttrs, kids *[]Component)             { *kids = append(*kids, n) }
 func (n Node) applyBr(_ *BrAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
 func (n Node) applyButton(_ *ButtonAttrs, kids *[]Component)         { *kids = append(*kids, n) }
 func (n Node) applyCanvas(_ *CanvasAttrs, kids *[]Component)         { *kids = append(*kids, n) }
 func (n Node) applyCaption(_ *CaptionAttrs, kids *[]Component)       { *kids = append(*kids, n) }
-func (n Node) applyCite(_ *CiteAttrs, kids *[]Component)             { *kids = append(*kids, n) }
-func (n Node) applyCode(_ *CodeAttrs, kids *[]Component)             { *kids = append(*kids, n) }
 func (n Node) applyCol(_ *ColAttrs, kids *[]Component)               { *kids = append(*kids, n) }
 func (n Node) applyColgroup(_ *ColgroupAttrs, kids *[]Component)     { *kids = append(*kids, n) }
 func (n Node) applyData(_ *DataAttrs, kids *[]Component)             { *kids = append(*kids, n) }
-func (n Node) applyDatalist(_ *DatalistAttrs, kids *[]Component)     { *kids = append(*kids, n) }
-func (n Node) applyDd(_ *DdAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
 func (n Node) applyDel(_ *DelAttrs, kids *[]Component)               { *kids = append(*kids, n) }
 func (n Node) applyDetails(_ *DetailsAttrs, kids *[]Component)       { *kids = append(*kids, n) }
-func (n Node) applyDfn(_ *DfnAttrs, kids *[]Component)               { *kids = append(*kids, n) }
 func (n Node) applyDialog(_ *DialogAttrs, kids *[]Component)         { *kids = append(*kids, n) }
+func (n Node) applyDir(_ *DirAttrs, kids *[]Component)               { *kids = append(*kids, n) }
 func (n Node) applyDiv(_ *DivAttrs, kids *[]Component)               { *kids = append(*kids, n) }
 func (n Node) applyDl(_ *DlAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
-func (n Node) applyDt(_ *DtAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
-func (n Node) applyEm(_ *EmAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
 func (n Node) applyEmbed(_ *EmbedAttrs, kids *[]Component)           { *kids = append(*kids, n) }
 func (n Node) applyFieldset(_ *FieldsetAttrs, kids *[]Component)     { *kids = append(*kids, n) }
-func (n Node) applyFigcaption(_ *FigcaptionAttrs, kids *[]Component) { *kids = append(*kids, n) }
-func (n Node) applyFigure(_ *FigureAttrs, kids *[]Component)         { *kids = append(*kids, n) }
-func (n Node) applyFooter(_ *FooterAttrs, kids *[]Component)         { *kids = append(*kids, n) }
+func (n Node) applyFont(_ *FontAttrs, kids *[]Component)             { *kids = append(*kids, n) }
 func (n Node) applyForm(_ *FormAttrs, kids *[]Component)             { *kids = append(*kids, n) }
+func (n Node) applyFrame(_ *FrameAttrs, kids *[]Component)           { *kids = append(*kids, n) }
+func (n Node) applyFrameset(_ *FramesetAttrs, kids *[]Component)     { *kids = append(*kids, n) }
 func (n Node) applyH1(_ *H1Attrs, kids *[]Component)                 { *kids = append(*kids, n) }
 func (n Node) applyH2(_ *H2Attrs, kids *[]Component)                 { *kids = append(*kids, n) }
 func (n Node) applyH3(_ *H3Attrs, kids *[]Component)                 { *kids = append(*kids, n) }
@@ -136,28 +125,21 @@ func (n Node) applyH4(_ *H4Attrs, kids *[]Component)                 { *kids = a
 func (n Node) applyH5(_ *H5Attrs, kids *[]Component)                 { *kids = append(*kids, n) }
 func (n Node) applyH6(_ *H6Attrs, kids *[]Component)                 { *kids = append(*kids, n) }
 func (n Node) applyHead(_ *HeadAttrs, kids *[]Component)             { *kids = append(*kids, n) }
-func (n Node) applyHeader(_ *HeaderAttrs, kids *[]Component)         { *kids = append(*kids, n) }
-func (n Node) applyHgroup(_ *HgroupAttrs, kids *[]Component)         { *kids = append(*kids, n) }
 func (n Node) applyHr(_ *HrAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
 func (n Node) applyHtml(_ *HtmlAttrs, kids *[]Component)             { *kids = append(*kids, n) }
-func (n Node) applyI(_ *IAttrs, kids *[]Component)                   { *kids = append(*kids, n) }
 func (n Node) applyIframe(_ *IframeAttrs, kids *[]Component)         { *kids = append(*kids, n) }
 func (n Node) applyImg(_ *ImgAttrs, kids *[]Component)               { *kids = append(*kids, n) }
 func (n Node) applyInput(_ *InputAttrs, kids *[]Component)           { *kids = append(*kids, n) }
 func (n Node) applyIns(_ *InsAttrs, kids *[]Component)               { *kids = append(*kids, n) }
-func (n Node) applyKbd(_ *KbdAttrs, kids *[]Component)               { *kids = append(*kids, n) }
+func (n Node) applyIsindex(_ *IsindexAttrs, kids *[]Component)       { *kids = append(*kids, n) }
 func (n Node) applyLabel(_ *LabelAttrs, kids *[]Component)           { *kids = append(*kids, n) }
 func (n Node) applyLegend(_ *LegendAttrs, kids *[]Component)         { *kids = append(*kids, n) }
 func (n Node) applyLi(_ *LiAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
 func (n Node) applyLink(_ *LinkAttrs, kids *[]Component)             { *kids = append(*kids, n) }
-func (n Node) applyMain(_ *MainAttrs, kids *[]Component)             { *kids = append(*kids, n) }
 func (n Node) applyMap(_ *MapAttrs, kids *[]Component)               { *kids = append(*kids, n) }
-func (n Node) applyMark(_ *MarkAttrs, kids *[]Component)             { *kids = append(*kids, n) }
 func (n Node) applyMenu(_ *MenuAttrs, kids *[]Component)             { *kids = append(*kids, n) }
 func (n Node) applyMeta(_ *MetaAttrs, kids *[]Component)             { *kids = append(*kids, n) }
 func (n Node) applyMeter(_ *MeterAttrs, kids *[]Component)           { *kids = append(*kids, n) }
-func (n Node) applyNav(_ *NavAttrs, kids *[]Component)               { *kids = append(*kids, n) }
-func (n Node) applyNoscript(_ *NoscriptAttrs, kids *[]Component)     { *kids = append(*kids, n) }
 func (n Node) applyObject(_ *ObjectAttrs, kids *[]Component)         { *kids = append(*kids, n) }
 func (n Node) applyOl(_ *OlAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
 func (n Node) applyOptgroup(_ *OptgroupAttrs, kids *[]Component)     { *kids = append(*kids, n) }
@@ -168,58 +150,33 @@ func (n Node) applyParam(_ *ParamAttrs, kids *[]Component)           { *kids = a
 func (n Node) applyPre(_ *PreAttrs, kids *[]Component)               { *kids = append(*kids, n) }
 func (n Node) applyProgress(_ *ProgressAttrs, kids *[]Component)     { *kids = append(*kids, n) }
 func (n Node) applyQ(_ *QAttrs, kids *[]Component)                   { *kids = append(*kids, n) }
-func (n Node) applyRb(_ *RbAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
-func (n Node) applyRp(_ *RpAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
-func (n Node) applyRt(_ *RtAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
-func (n Node) applyRtc(_ *RtcAttrs, kids *[]Component)               { *kids = append(*kids, n) }
-func (n Node) applyRuby(_ *RubyAttrs, kids *[]Component)             { *kids = append(*kids, n) }
-func (n Node) applyS(_ *SAttrs, kids *[]Component)                   { *kids = append(*kids, n) }
-func (n Node) applySamp(_ *SampAttrs, kids *[]Component)             { *kids = append(*kids, n) }
 func (n Node) applyScript(_ *ScriptAttrs, kids *[]Component)         { *kids = append(*kids, n) }
-func (n Node) applySection(_ *SectionAttrs, kids *[]Component)       { *kids = append(*kids, n) }
 func (n Node) applySelect(_ *SelectAttrs, kids *[]Component)         { *kids = append(*kids, n) }
 func (n Node) applySlot(_ *SlotAttrs, kids *[]Component)             { *kids = append(*kids, n) }
-func (n Node) applySmall(_ *SmallAttrs, kids *[]Component)           { *kids = append(*kids, n) }
 func (n Node) applySource(_ *SourceAttrs, kids *[]Component)         { *kids = append(*kids, n) }
-func (n Node) applySpan(_ *SpanAttrs, kids *[]Component)             { *kids = append(*kids, n) }
-func (n Node) applyStrike(_ *StrikeAttrs, kids *[]Component)         { *kids = append(*kids, n) }
-func (n Node) applyStrong(_ *StrongAttrs, kids *[]Component)         { *kids = append(*kids, n) }
 func (n Node) applyStyle(_ *StyleAttrs, kids *[]Component)           { *kids = append(*kids, n) }
-func (n Node) applySub(_ *SubAttrs, kids *[]Component)               { *kids = append(*kids, n) }
-func (n Node) applySummary(_ *SummaryAttrs, kids *[]Component)       { *kids = append(*kids, n) }
-func (n Node) applySup(_ *SupAttrs, kids *[]Component)               { *kids = append(*kids, n) }
 func (n Node) applyTable(_ *TableAttrs, kids *[]Component)           { *kids = append(*kids, n) }
 func (n Node) applyTbody(_ *TbodyAttrs, kids *[]Component)           { *kids = append(*kids, n) }
 func (n Node) applyTd(_ *TdAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
+func (n Node) applyTemplate(_ *TemplateAttrs, kids *[]Component)     { *kids = append(*kids, n) }
 func (n Node) applyTextarea(_ *TextareaAttrs, kids *[]Component)     { *kids = append(*kids, n) }
 func (n Node) applyTfoot(_ *TfootAttrs, kids *[]Component)           { *kids = append(*kids, n) }
 func (n Node) applyTh(_ *ThAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
 func (n Node) applyThead(_ *TheadAttrs, kids *[]Component)           { *kids = append(*kids, n) }
 func (n Node) applyTime(_ *TimeAttrs, kids *[]Component)             { *kids = append(*kids, n) }
-func (n Node) applyTitle(_ *TitleAttrs, kids *[]Component)           { *kids = append(*kids, n) }
 func (n Node) applyTr(_ *TrAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
 func (n Node) applyTrack(_ *TrackAttrs, kids *[]Component)           { *kids = append(*kids, n) }
-func (n Node) applyU(_ *UAttrs, kids *[]Component)                   { *kids = append(*kids, n) }
 func (n Node) applyUl(_ *UlAttrs, kids *[]Component)                 { *kids = append(*kids, n) }
-func (n Node) applyVar(_ *VarAttrs, kids *[]Component)               { *kids = append(*kids, n) }
 func (n Node) applyVideo(_ *VideoAttrs, kids *[]Component)           { *kids = append(*kids, n) }
-func (n Node) applyWbr(_ *WbrAttrs, kids *[]Component)               { *kids = append(*kids, n) }
 
-func (o TxtOpt) applyA(_ *AAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyAbbr(_ *AbbrAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyAddress(_ *AddressAttrs, kids *[]Component) {
+func (o TxtOpt) applyA(_ *AAttrs, kids *[]Component)           { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyApplet(_ *AppletAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyArea(_ *AreaAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyAudio(_ *AudioAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyBase(_ *BaseAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyBasefont(_ *BasefontAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o TxtOpt) applyArea(_ *AreaAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyArticle(_ *ArticleAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-func (o TxtOpt) applyAside(_ *AsideAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyAudio(_ *AudioAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyB(_ *BAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyBase(_ *BaseAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyBdi(_ *BdiAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyBdo(_ *BdoAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyBlockquote(_ *BlockquoteAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
@@ -230,37 +187,29 @@ func (o TxtOpt) applyCanvas(_ *CanvasAttrs, kids *[]Component) { *kids = append(
 func (o TxtOpt) applyCaption(_ *CaptionAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o TxtOpt) applyCite(_ *CiteAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyCode(_ *CodeAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyCol(_ *ColAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyCol(_ *ColAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyColgroup(_ *ColgroupAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
 func (o TxtOpt) applyData(_ *DataAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyDatalist(_ *DatalistAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
-func (o TxtOpt) applyDd(_ *DdAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyDel(_ *DelAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyDel(_ *DelAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyDetails(_ *DetailsAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o TxtOpt) applyDfn(_ *DfnAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyDialog(_ *DialogAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyDir(_ *DirAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyDiv(_ *DivAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyDl(_ *DlAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyDt(_ *DtAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyEm(_ *EmAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyEmbed(_ *EmbedAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyFieldset(_ *FieldsetAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o TxtOpt) applyFigcaption(_ *FigcaptionAttrs, kids *[]Component) {
+func (o TxtOpt) applyFont(_ *FontAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyForm(_ *FormAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyFrame(_ *FrameAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyFrameset(_ *FramesetAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o TxtOpt) applyFigure(_ *FigureAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyFooter(_ *FooterAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyForm(_ *FormAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyH1(_ *H1Attrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyH2(_ *H2Attrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyH3(_ *H3Attrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
@@ -268,30 +217,23 @@ func (o TxtOpt) applyH4(_ *H4Attrs, kids *[]Component)         { *kids = append(
 func (o TxtOpt) applyH5(_ *H5Attrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyH6(_ *H6Attrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyHead(_ *HeadAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyHeader(_ *HeaderAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyHgroup(_ *HgroupAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyHr(_ *HrAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyHtml(_ *HtmlAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyI(_ *IAttrs, kids *[]Component)           { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyIframe(_ *IframeAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyImg(_ *ImgAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyInput(_ *InputAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyIns(_ *InsAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyKbd(_ *KbdAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyIsindex(_ *IsindexAttrs, kids *[]Component) {
+	*kids = append(*kids, TextNode(o.s))
+}
 func (o TxtOpt) applyLabel(_ *LabelAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyLegend(_ *LegendAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyLi(_ *LiAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyLink(_ *LinkAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyMain(_ *MainAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyMap(_ *MapAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyMark(_ *MarkAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyMenu(_ *MenuAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyMeta(_ *MetaAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyMeter(_ *MeterAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyNav(_ *NavAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyNoscript(_ *NoscriptAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
 func (o TxtOpt) applyObject(_ *ObjectAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyOl(_ *OlAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyOptgroup(_ *OptgroupAttrs, kids *[]Component) {
@@ -306,33 +248,17 @@ func (o TxtOpt) applyProgress(_ *ProgressAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
 func (o TxtOpt) applyQ(_ *QAttrs, kids *[]Component)           { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyRb(_ *RbAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyRp(_ *RpAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyRt(_ *RtAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyRtc(_ *RtcAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyRuby(_ *RubyAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyS(_ *SAttrs, kids *[]Component)           { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applySamp(_ *SampAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyScript(_ *ScriptAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applySection(_ *SectionAttrs, kids *[]Component) {
-	*kids = append(*kids, TextNode(o.s))
-}
 func (o TxtOpt) applySelect(_ *SelectAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applySlot(_ *SlotAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applySmall(_ *SmallAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applySource(_ *SourceAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applySpan(_ *SpanAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyStrike(_ *StrikeAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyStrong(_ *StrongAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyStyle(_ *StyleAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applySub(_ *SubAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applySummary(_ *SummaryAttrs, kids *[]Component) {
+func (o TxtOpt) applyTable(_ *TableAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyTbody(_ *TbodyAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyTd(_ *TdAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
+func (o TxtOpt) applyTemplate(_ *TemplateAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
-func (o TxtOpt) applySup(_ *SupAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyTable(_ *TableAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyTbody(_ *TbodyAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyTd(_ *TdAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyTextarea(_ *TextareaAttrs, kids *[]Component) {
 	*kids = append(*kids, TextNode(o.s))
 }
@@ -340,46 +266,27 @@ func (o TxtOpt) applyTfoot(_ *TfootAttrs, kids *[]Component) { *kids = append(*k
 func (o TxtOpt) applyTh(_ *ThAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyThead(_ *TheadAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyTime(_ *TimeAttrs, kids *[]Component)   { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyTitle(_ *TitleAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyTr(_ *TrAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyTrack(_ *TrackAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyU(_ *UAttrs, kids *[]Component)         { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyUl(_ *UlAttrs, kids *[]Component)       { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyVar(_ *VarAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
 func (o TxtOpt) applyVideo(_ *VideoAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o TxtOpt) applyWbr(_ *WbrAttrs, kids *[]Component)     { *kids = append(*kids, TextNode(o.s)) }
 
 func (o UnsafeTxtOpt) applyA(_ *AAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyAbbr(_ *AbbrAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyAddress(_ *AddressAttrs, kids *[]Component) {
+func (o UnsafeTxtOpt) applyApplet(_ *AppletAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyArea(_ *AreaAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyArticle(_ *ArticleAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyAside(_ *AsideAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
 func (o UnsafeTxtOpt) applyAudio(_ *AudioAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyB(_ *BAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyBase(_ *BaseAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyBdi(_ *BdiAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyBdo(_ *BdoAttrs, kids *[]Component) {
+func (o UnsafeTxtOpt) applyBasefont(_ *BasefontAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyBlockquote(_ *BlockquoteAttrs, kids *[]Component) {
@@ -400,12 +307,6 @@ func (o UnsafeTxtOpt) applyCanvas(_ *CanvasAttrs, kids *[]Component) {
 func (o UnsafeTxtOpt) applyCaption(_ *CaptionAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyCite(_ *CiteAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyCode(_ *CodeAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
 func (o UnsafeTxtOpt) applyCol(_ *ColAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
@@ -415,22 +316,16 @@ func (o UnsafeTxtOpt) applyColgroup(_ *ColgroupAttrs, kids *[]Component) {
 func (o UnsafeTxtOpt) applyData(_ *DataAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyDatalist(_ *DatalistAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyDd(_ *DdAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
 func (o UnsafeTxtOpt) applyDel(_ *DelAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyDetails(_ *DetailsAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyDfn(_ *DfnAttrs, kids *[]Component) {
+func (o UnsafeTxtOpt) applyDialog(_ *DialogAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyDialog(_ *DialogAttrs, kids *[]Component) {
+func (o UnsafeTxtOpt) applyDir(_ *DirAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyDiv(_ *DivAttrs, kids *[]Component) {
@@ -439,28 +334,22 @@ func (o UnsafeTxtOpt) applyDiv(_ *DivAttrs, kids *[]Component) {
 func (o UnsafeTxtOpt) applyDl(_ *DlAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyDt(_ *DtAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyEm(_ *EmAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
 func (o UnsafeTxtOpt) applyEmbed(_ *EmbedAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyFieldset(_ *FieldsetAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyFigcaption(_ *FigcaptionAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyFigure(_ *FigureAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyFooter(_ *FooterAttrs, kids *[]Component) {
+func (o UnsafeTxtOpt) applyFont(_ *FontAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyForm(_ *FormAttrs, kids *[]Component) {
+	*kids = append(*kids, UnsafeTextNode(o.s))
+}
+func (o UnsafeTxtOpt) applyFrame(_ *FrameAttrs, kids *[]Component) {
+	*kids = append(*kids, UnsafeTextNode(o.s))
+}
+func (o UnsafeTxtOpt) applyFrameset(_ *FramesetAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyH1(_ *H1Attrs, kids *[]Component) {
@@ -484,19 +373,10 @@ func (o UnsafeTxtOpt) applyH6(_ *H6Attrs, kids *[]Component) {
 func (o UnsafeTxtOpt) applyHead(_ *HeadAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyHeader(_ *HeaderAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyHgroup(_ *HgroupAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
 func (o UnsafeTxtOpt) applyHr(_ *HrAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyHtml(_ *HtmlAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyI(_ *IAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyIframe(_ *IframeAttrs, kids *[]Component) {
@@ -511,7 +391,7 @@ func (o UnsafeTxtOpt) applyInput(_ *InputAttrs, kids *[]Component) {
 func (o UnsafeTxtOpt) applyIns(_ *InsAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyKbd(_ *KbdAttrs, kids *[]Component) {
+func (o UnsafeTxtOpt) applyIsindex(_ *IsindexAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyLabel(_ *LabelAttrs, kids *[]Component) {
@@ -526,13 +406,7 @@ func (o UnsafeTxtOpt) applyLi(_ *LiAttrs, kids *[]Component) {
 func (o UnsafeTxtOpt) applyLink(_ *LinkAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyMain(_ *MainAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
 func (o UnsafeTxtOpt) applyMap(_ *MapAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyMark(_ *MarkAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyMenu(_ *MenuAttrs, kids *[]Component) {
@@ -542,12 +416,6 @@ func (o UnsafeTxtOpt) applyMeta(_ *MetaAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyMeter(_ *MeterAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyNav(_ *NavAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyNoscript(_ *NoscriptAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyObject(_ *ObjectAttrs, kids *[]Component) {
@@ -580,31 +448,7 @@ func (o UnsafeTxtOpt) applyProgress(_ *ProgressAttrs, kids *[]Component) {
 func (o UnsafeTxtOpt) applyQ(_ *QAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyRb(_ *RbAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyRp(_ *RpAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyRt(_ *RtAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyRtc(_ *RtcAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyRuby(_ *RubyAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyS(_ *SAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applySamp(_ *SampAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
 func (o UnsafeTxtOpt) applyScript(_ *ScriptAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applySection(_ *SectionAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applySelect(_ *SelectAttrs, kids *[]Component) {
@@ -613,31 +457,10 @@ func (o UnsafeTxtOpt) applySelect(_ *SelectAttrs, kids *[]Component) {
 func (o UnsafeTxtOpt) applySlot(_ *SlotAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applySmall(_ *SmallAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
 func (o UnsafeTxtOpt) applySource(_ *SourceAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applySpan(_ *SpanAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyStrike(_ *StrikeAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyStrong(_ *StrongAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
 func (o UnsafeTxtOpt) applyStyle(_ *StyleAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applySub(_ *SubAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applySummary(_ *SummaryAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applySup(_ *SupAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyTable(_ *TableAttrs, kids *[]Component) {
@@ -647,6 +470,9 @@ func (o UnsafeTxtOpt) applyTbody(_ *TbodyAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyTd(_ *TdAttrs, kids *[]Component) {
+	*kids = append(*kids, UnsafeTextNode(o.s))
+}
+func (o UnsafeTxtOpt) applyTemplate(_ *TemplateAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyTextarea(_ *TextareaAttrs, kids *[]Component) {
@@ -664,69 +490,46 @@ func (o UnsafeTxtOpt) applyThead(_ *TheadAttrs, kids *[]Component) {
 func (o UnsafeTxtOpt) applyTime(_ *TimeAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyTitle(_ *TitleAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
 func (o UnsafeTxtOpt) applyTr(_ *TrAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyTrack(_ *TrackAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyU(_ *UAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
 func (o UnsafeTxtOpt) applyUl(_ *UlAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
-func (o UnsafeTxtOpt) applyVar(_ *VarAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
 func (o UnsafeTxtOpt) applyVideo(_ *VideoAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o UnsafeTxtOpt) applyWbr(_ *WbrAttrs, kids *[]Component) {
-	*kids = append(*kids, UnsafeTextNode(o.s))
-}
 
 func (o ChildOpt) applyA(_ *AAttrs, kids *[]Component)                   { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyAbbr(_ *AbbrAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyAddress(_ *AddressAttrs, kids *[]Component)       { *kids = append(*kids, o.c) }
+func (o ChildOpt) applyApplet(_ *AppletAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyArea(_ *AreaAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyArticle(_ *ArticleAttrs, kids *[]Component)       { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyAside(_ *AsideAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyAudio(_ *AudioAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyB(_ *BAttrs, kids *[]Component)                   { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyBase(_ *BaseAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyBdi(_ *BdiAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyBdo(_ *BdoAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
+func (o ChildOpt) applyBasefont(_ *BasefontAttrs, kids *[]Component)     { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyBlockquote(_ *BlockquoteAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyBody(_ *BodyAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyBr(_ *BrAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyButton(_ *ButtonAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyCanvas(_ *CanvasAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyCaption(_ *CaptionAttrs, kids *[]Component)       { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyCite(_ *CiteAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyCode(_ *CodeAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyCol(_ *ColAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyColgroup(_ *ColgroupAttrs, kids *[]Component)     { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyData(_ *DataAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyDatalist(_ *DatalistAttrs, kids *[]Component)     { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyDd(_ *DdAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyDel(_ *DelAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyDetails(_ *DetailsAttrs, kids *[]Component)       { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyDfn(_ *DfnAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyDialog(_ *DialogAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
+func (o ChildOpt) applyDir(_ *DirAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyDiv(_ *DivAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyDl(_ *DlAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyDt(_ *DtAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyEm(_ *EmAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyEmbed(_ *EmbedAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyFieldset(_ *FieldsetAttrs, kids *[]Component)     { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyFigcaption(_ *FigcaptionAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyFigure(_ *FigureAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyFooter(_ *FooterAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
+func (o ChildOpt) applyFont(_ *FontAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyForm(_ *FormAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
+func (o ChildOpt) applyFrame(_ *FrameAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
+func (o ChildOpt) applyFrameset(_ *FramesetAttrs, kids *[]Component)     { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyH1(_ *H1Attrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyH2(_ *H2Attrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyH3(_ *H3Attrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
@@ -734,28 +537,21 @@ func (o ChildOpt) applyH4(_ *H4Attrs, kids *[]Component)                 { *kids
 func (o ChildOpt) applyH5(_ *H5Attrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyH6(_ *H6Attrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyHead(_ *HeadAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyHeader(_ *HeaderAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyHgroup(_ *HgroupAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyHr(_ *HrAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyHtml(_ *HtmlAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyI(_ *IAttrs, kids *[]Component)                   { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyIframe(_ *IframeAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyImg(_ *ImgAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyInput(_ *InputAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyIns(_ *InsAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyKbd(_ *KbdAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
+func (o ChildOpt) applyIsindex(_ *IsindexAttrs, kids *[]Component)       { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyLabel(_ *LabelAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyLegend(_ *LegendAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyLi(_ *LiAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyLink(_ *LinkAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyMain(_ *MainAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyMap(_ *MapAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyMark(_ *MarkAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyMenu(_ *MenuAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyMeta(_ *MetaAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyMeter(_ *MeterAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyNav(_ *NavAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyNoscript(_ *NoscriptAttrs, kids *[]Component)     { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyObject(_ *ObjectAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyOl(_ *OlAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyOptgroup(_ *OptgroupAttrs, kids *[]Component)     { *kids = append(*kids, o.c) }
@@ -766,39 +562,21 @@ func (o ChildOpt) applyParam(_ *ParamAttrs, kids *[]Component)           { *kids
 func (o ChildOpt) applyPre(_ *PreAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyProgress(_ *ProgressAttrs, kids *[]Component)     { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyQ(_ *QAttrs, kids *[]Component)                   { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyRb(_ *RbAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyRp(_ *RpAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyRt(_ *RtAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyRtc(_ *RtcAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyRuby(_ *RubyAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyS(_ *SAttrs, kids *[]Component)                   { *kids = append(*kids, o.c) }
-func (o ChildOpt) applySamp(_ *SampAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyScript(_ *ScriptAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
-func (o ChildOpt) applySection(_ *SectionAttrs, kids *[]Component)       { *kids = append(*kids, o.c) }
 func (o ChildOpt) applySelect(_ *SelectAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
 func (o ChildOpt) applySlot(_ *SlotAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
-func (o ChildOpt) applySmall(_ *SmallAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
 func (o ChildOpt) applySource(_ *SourceAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
-func (o ChildOpt) applySpan(_ *SpanAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyStrike(_ *StrikeAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyStrong(_ *StrongAttrs, kids *[]Component)         { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyStyle(_ *StyleAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
-func (o ChildOpt) applySub(_ *SubAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
-func (o ChildOpt) applySummary(_ *SummaryAttrs, kids *[]Component)       { *kids = append(*kids, o.c) }
-func (o ChildOpt) applySup(_ *SupAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyTable(_ *TableAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyTbody(_ *TbodyAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyTd(_ *TdAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
+func (o ChildOpt) applyTemplate(_ *TemplateAttrs, kids *[]Component)     { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyTextarea(_ *TextareaAttrs, kids *[]Component)     { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyTfoot(_ *TfootAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyTh(_ *ThAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyThead(_ *TheadAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyTime(_ *TimeAttrs, kids *[]Component)             { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyTitle(_ *TitleAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyTr(_ *TrAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyTrack(_ *TrackAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyU(_ *UAttrs, kids *[]Component)                   { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyUl(_ *UlAttrs, kids *[]Component)                 { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyVar(_ *VarAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }
 func (o ChildOpt) applyVideo(_ *VideoAttrs, kids *[]Component)           { *kids = append(*kids, o.c) }
-func (o ChildOpt) applyWbr(_ *WbrAttrs, kids *[]Component)               { *kids = append(*kids, o.c) }

@@ -3,38 +3,44 @@ package html
 import "strings"
 
 type InputAttrs struct {
-	Global         GlobalAttrs
-	Accept         string
-	Alt            string
-	Autocomplete   string
-	Autofocus      bool
-	Checked        bool
-	Dirname        string
-	Disabled       bool
-	Form           string
-	Formaction     string
-	Formenctype    string
-	Formmethod     string
-	Formnovalidate bool
-	Formtarget     string
-	Height         string
-	List           string
-	Max            string
-	Maxlength      string
-	Min            string
-	Minlength      string
-	Multiple       bool
-	Name           string
-	Pattern        string
-	Placeholder    string
-	Readonly       bool
-	Required       bool
-	Size           string
-	Src            string
-	Step           string
-	Type           string
-	Value          string
-	Width          string
+	Global              GlobalAttrs
+	Accept              string
+	Align               string
+	Alpha               string
+	Alt                 string
+	Autocomplete        string
+	Checked             bool
+	Colorspace          string
+	Dirname             string
+	Disabled            bool
+	Form                string
+	Formaction          string
+	Formenctype         string
+	Formmethod          string
+	Formnovalidate      bool
+	Formtarget          string
+	Height              string
+	Ismap               bool
+	List                string
+	Max                 string
+	Maxlength           string
+	Min                 string
+	Minlength           string
+	Multiple            bool
+	Name                string
+	Pattern             string
+	Placeholder         string
+	Popovertarget       string
+	Popovertargetaction string
+	Readonly            bool
+	Required            bool
+	Size                string
+	Src                 string
+	Step                string
+	Type                string
+	Usemap              string
+	Value               string
+	Width               string
 }
 
 type InputArg interface {
@@ -68,17 +74,23 @@ func (g Global) applyInput(a *InputAttrs, _ *[]Component) {
 func (o AcceptOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Accept = o.v
 }
+func (o AlignOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Align = o.v
+}
+func (o AlphaOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Alpha = o.v
+}
 func (o AltOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Alt = o.v
 }
 func (o AutocompleteOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Autocomplete = o.v
 }
-func (o AutofocusOpt) applyInput(a *InputAttrs, _ *[]Component) {
-	a.Autofocus = true
-}
 func (o CheckedOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Checked = true
+}
+func (o ColorspaceOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Colorspace = o.v
 }
 func (o DirnameOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Dirname = o.v
@@ -107,6 +119,9 @@ func (o FormtargetOpt) applyInput(a *InputAttrs, _ *[]Component) {
 func (o HeightOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Height = o.v
 }
+func (o IsmapOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Ismap = true
+}
 func (o ListOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.List = o.v
 }
@@ -134,6 +149,12 @@ func (o PatternOpt) applyInput(a *InputAttrs, _ *[]Component) {
 func (o PlaceholderOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Placeholder = o.v
 }
+func (o PopovertargetOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Popovertarget = o.v
+}
+func (o PopovertargetactionOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Popovertargetaction = o.v
+}
 func (o ReadonlyOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Readonly = true
 }
@@ -152,6 +173,9 @@ func (o StepOpt) applyInput(a *InputAttrs, _ *[]Component) {
 func (o TypeOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Type = o.v
 }
+func (o UsemapOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Usemap = o.v
+}
 func (o ValueOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Value = o.v
 }
@@ -164,17 +188,23 @@ func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Accept != "" {
 		Attr(sb, "accept", a.Accept)
 	}
+	if a.Align != "" {
+		Attr(sb, "align", a.Align)
+	}
+	if a.Alpha != "" {
+		Attr(sb, "alpha", a.Alpha)
+	}
 	if a.Alt != "" {
 		Attr(sb, "alt", a.Alt)
 	}
 	if a.Autocomplete != "" {
 		Attr(sb, "autocomplete", a.Autocomplete)
 	}
-	if a.Autofocus {
-		BoolAttr(sb, "autofocus")
-	}
 	if a.Checked {
 		BoolAttr(sb, "checked")
+	}
+	if a.Colorspace != "" {
+		Attr(sb, "colorspace", a.Colorspace)
 	}
 	if a.Dirname != "" {
 		Attr(sb, "dirname", a.Dirname)
@@ -203,6 +233,9 @@ func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
+	if a.Ismap {
+		BoolAttr(sb, "ismap")
+	}
 	if a.List != "" {
 		Attr(sb, "list", a.List)
 	}
@@ -230,6 +263,12 @@ func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Placeholder != "" {
 		Attr(sb, "placeholder", a.Placeholder)
 	}
+	if a.Popovertarget != "" {
+		Attr(sb, "popovertarget", a.Popovertarget)
+	}
+	if a.Popovertargetaction != "" {
+		Attr(sb, "popovertargetaction", a.Popovertargetaction)
+	}
 	if a.Readonly {
 		BoolAttr(sb, "readonly")
 	}
@@ -247,6 +286,9 @@ func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)
+	}
+	if a.Usemap != "" {
+		Attr(sb, "usemap", a.Usemap)
 	}
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)

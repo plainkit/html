@@ -3,9 +3,11 @@ package html
 import "strings"
 
 type ParamAttrs struct {
-	Global GlobalAttrs
-	Name   string
-	Value  string
+	Global    GlobalAttrs
+	Name      string
+	Type      string
+	Value     string
+	Valuetype string
 }
 
 type ParamArg interface {
@@ -39,8 +41,14 @@ func (g Global) applyParam(a *ParamAttrs, _ *[]Component) {
 func (o NameOpt) applyParam(a *ParamAttrs, _ *[]Component) {
 	a.Name = o.v
 }
+func (o TypeOpt) applyParam(a *ParamAttrs, _ *[]Component) {
+	a.Type = o.v
+}
 func (o ValueOpt) applyParam(a *ParamAttrs, _ *[]Component) {
 	a.Value = o.v
+}
+func (o ValuetypeOpt) applyParam(a *ParamAttrs, _ *[]Component) {
+	a.Valuetype = o.v
 }
 
 func (a *ParamAttrs) WriteAttrs(sb *strings.Builder) {
@@ -48,7 +56,13 @@ func (a *ParamAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
 	}
+	if a.Type != "" {
+		Attr(sb, "type", a.Type)
+	}
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)
+	}
+	if a.Valuetype != "" {
+		Attr(sb, "valuetype", a.Valuetype)
 	}
 }
