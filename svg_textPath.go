@@ -9,10 +9,77 @@ import (
 // SvgTextPathAttrs holds the attributes for the textPath SVG element
 type SvgTextPathAttrs struct {
 	GlobalAttrs
-	Href        string
-	Method      string
-	Spacing     string
-	StartOffset string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	ExternalResourcesRequired  string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	Href                       string
+	ImageRendering             string
+	Kerning                    string
+	LengthAdjust               string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	Method                     string
+	Opacity                    string
+	Overflow                   string
+	Path                       string
+	PointerEvents              string
+	RequiredExtensions         string
+	RequiredFeatures           string
+	ShapeRendering             string
+	Side                       string
+	Spacing                    string
+	StartOffset                string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	SystemLanguage             string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	TextLength                 string
+	UnicodeBidi                string
+	Visibility                 string
+	WordSpacing                string
+	WritingMode                string
 }
 
 // SvgTextPathArg interface for textPath element arguments
@@ -46,14 +113,254 @@ func (g Global) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to TextPath
+func (o AlignmentBaselineOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to TextPath
+func (o BaselineShiftOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to TextPath
+func (o ClipOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to TextPath
+func (o ClipPathOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to TextPath
+func (o ClipRuleOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to TextPath
+func (o ColorOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to TextPath
+func (o ColorInterpolationOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to TextPath
+func (o ColorInterpolationFiltersOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to TextPath
+func (o ColorProfileOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to TextPath
+func (o ColorRenderingOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to TextPath
+func (o CursorOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to TextPath
+func (o DirectionOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to TextPath
+func (o DisplayOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to TextPath
+func (o DominantBaselineOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to TextPath
+func (o EnableBackgroundOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// ExternalResourcesRequiredOpt applies to TextPath
+func (o ExternalResourcesRequiredOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to TextPath
+func (o FillOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to TextPath
+func (o FillOpacityOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to TextPath
+func (o FillRuleOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to TextPath
+func (o FilterOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to TextPath
+func (o FloodColorOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to TextPath
+func (o FloodOpacityOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FontFamilyOpt applies to TextPath
+func (o FontFamilyOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to TextPath
+func (o FontSizeOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to TextPath
+func (o FontSizeAdjustOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to TextPath
+func (o FontStretchOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to TextPath
+func (o FontStyleOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to TextPath
+func (o FontVariantOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to TextPath
+func (o FontWeightOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to TextPath
+func (o GlyphOrientationHorizontalOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to TextPath
+func (o GlyphOrientationVerticalOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
 // HrefOpt applies to TextPath
 func (o HrefOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
+// ImageRenderingOpt applies to TextPath
+func (o ImageRenderingOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
+// KerningOpt applies to TextPath
+func (o KerningOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LengthAdjustOpt applies to TextPath
+func (o LengthAdjustOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.LengthAdjust = o.v
+}
+
+// LetterSpacingOpt applies to TextPath
+func (o LetterSpacingOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to TextPath
+func (o LightingColorOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to TextPath
+func (o MarkerEndOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to TextPath
+func (o MarkerMidOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to TextPath
+func (o MarkerStartOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to TextPath
+func (o MaskOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
 // MethodOpt applies to TextPath
 func (o MethodOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
 	a.Method = o.v
+}
+
+// OpacityOpt applies to TextPath
+func (o OpacityOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to TextPath
+func (o OverflowOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PathOpt applies to TextPath
+func (o PathOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Path = o.v
+}
+
+// PointerEventsOpt applies to TextPath
+func (o PointerEventsOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
+// RequiredExtensionsOpt applies to TextPath
+func (o RequiredExtensionsOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.RequiredExtensions = o.v
+}
+
+// RequiredFeaturesOpt applies to TextPath
+func (o RequiredFeaturesOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.RequiredFeatures = o.v
+}
+
+// ShapeRenderingOpt applies to TextPath
+func (o ShapeRenderingOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// SideOpt applies to TextPath
+func (o SideOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Side = o.v
 }
 
 // SpacingOpt applies to TextPath
@@ -66,19 +373,315 @@ func (o StartOffsetOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
 	a.StartOffset = o.v
 }
 
+// StopColorOpt applies to TextPath
+func (o StopColorOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to TextPath
+func (o StopOpacityOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to TextPath
+func (o StrokeOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to TextPath
+func (o StrokeDasharrayOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to TextPath
+func (o StrokeDashoffsetOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to TextPath
+func (o StrokeLinecapOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to TextPath
+func (o StrokeLinejoinOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to TextPath
+func (o StrokeMiterlimitOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to TextPath
+func (o StrokeOpacityOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to TextPath
+func (o StrokeWidthOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// SystemLanguageOpt applies to TextPath
+func (o SystemLanguageOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.SystemLanguage = o.v
+}
+
+// TextAnchorOpt applies to TextPath
+func (o TextAnchorOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to TextPath
+func (o TextDecorationOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to TextPath
+func (o TextRenderingOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
+// TextLengthOpt applies to TextPath
+func (o TextLengthOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.TextLength = o.v
+}
+
+// UnicodeBidiOpt applies to TextPath
+func (o UnicodeBidiOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// VisibilityOpt applies to TextPath
+func (o VisibilityOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WordSpacingOpt applies to TextPath
+func (o WordSpacingOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to TextPath
+func (o WritingModeOpt) applyTextPath(a *SvgTextPathAttrs, _ *[]Component) {
+	a.WritingMode = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgTextPathAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
 	if a.Href != "" {
 		Attr(sb, "href", a.Href)
 	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LengthAdjust != "" {
+		Attr(sb, "lengthAdjust", a.LengthAdjust)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
 	if a.Method != "" {
 		Attr(sb, "method", a.Method)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.Path != "" {
+		Attr(sb, "path", a.Path)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
+	if a.RequiredExtensions != "" {
+		Attr(sb, "requiredExtensions", a.RequiredExtensions)
+	}
+	if a.RequiredFeatures != "" {
+		Attr(sb, "requiredFeatures", a.RequiredFeatures)
+	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.Side != "" {
+		Attr(sb, "side", a.Side)
 	}
 	if a.Spacing != "" {
 		Attr(sb, "spacing", a.Spacing)
 	}
 	if a.StartOffset != "" {
 		Attr(sb, "startOffset", a.StartOffset)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.SystemLanguage != "" {
+		Attr(sb, "systemLanguage", a.SystemLanguage)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
+	if a.TextLength != "" {
+		Attr(sb, "textLength", a.TextLength)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
 	}
 }

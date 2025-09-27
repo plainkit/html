@@ -9,9 +9,84 @@ import (
 // SvgSwitchAttrs holds the attributes for the switch SVG element
 type SvgSwitchAttrs struct {
 	GlobalAttrs
-	RequiredExtensions string
-	RequiredFeatures   string
-	SystemLanguage     string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	ExternalResourcesRequired  string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FocusHighlight             string
+	Focusable                  string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	ImageRendering             string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	NavDown                    string
+	NavDownLeft                string
+	NavDownRight               string
+	NavLeft                    string
+	NavNext                    string
+	NavPrev                    string
+	NavRight                   string
+	NavUp                      string
+	NavUpLeft                  string
+	NavUpRight                 string
+	Opacity                    string
+	Overflow                   string
+	PointerEvents              string
+	RequiredExtensions         string
+	RequiredFeatures           string
+	RequiredFonts              string
+	RequiredFormats            string
+	ShapeRendering             string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	SystemLanguage             string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	Transform                  string
+	UnicodeBidi                string
+	Visibility                 string
+	WordSpacing                string
+	WritingMode                string
 }
 
 // SvgSwitchArg interface for switch element arguments
@@ -45,6 +120,276 @@ func (g Global) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to Switch
+func (o AlignmentBaselineOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to Switch
+func (o BaselineShiftOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to Switch
+func (o ClipOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to Switch
+func (o ClipPathOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to Switch
+func (o ClipRuleOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to Switch
+func (o ColorOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to Switch
+func (o ColorInterpolationOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to Switch
+func (o ColorInterpolationFiltersOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to Switch
+func (o ColorProfileOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to Switch
+func (o ColorRenderingOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to Switch
+func (o CursorOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to Switch
+func (o DirectionOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to Switch
+func (o DisplayOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to Switch
+func (o DominantBaselineOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to Switch
+func (o EnableBackgroundOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// ExternalResourcesRequiredOpt applies to Switch
+func (o ExternalResourcesRequiredOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to Switch
+func (o FillOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to Switch
+func (o FillOpacityOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to Switch
+func (o FillRuleOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to Switch
+func (o FilterOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to Switch
+func (o FloodColorOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to Switch
+func (o FloodOpacityOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FocusHighlightOpt applies to Switch
+func (o FocusHighlightOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.FocusHighlight = o.v
+}
+
+// FocusableOpt applies to Switch
+func (o FocusableOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Focusable = o.v
+}
+
+// FontFamilyOpt applies to Switch
+func (o FontFamilyOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to Switch
+func (o FontSizeOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to Switch
+func (o FontSizeAdjustOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to Switch
+func (o FontStretchOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to Switch
+func (o FontStyleOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to Switch
+func (o FontVariantOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to Switch
+func (o FontWeightOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to Switch
+func (o GlyphOrientationHorizontalOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to Switch
+func (o GlyphOrientationVerticalOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
+// ImageRenderingOpt applies to Switch
+func (o ImageRenderingOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
+// KerningOpt applies to Switch
+func (o KerningOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to Switch
+func (o LetterSpacingOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to Switch
+func (o LightingColorOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to Switch
+func (o MarkerEndOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to Switch
+func (o MarkerMidOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to Switch
+func (o MarkerStartOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to Switch
+func (o MaskOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
+// NavDownOpt applies to Switch
+func (o NavDownOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.NavDown = o.v
+}
+
+// NavDownLeftOpt applies to Switch
+func (o NavDownLeftOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.NavDownLeft = o.v
+}
+
+// NavDownRightOpt applies to Switch
+func (o NavDownRightOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.NavDownRight = o.v
+}
+
+// NavLeftOpt applies to Switch
+func (o NavLeftOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.NavLeft = o.v
+}
+
+// NavNextOpt applies to Switch
+func (o NavNextOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.NavNext = o.v
+}
+
+// NavPrevOpt applies to Switch
+func (o NavPrevOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.NavPrev = o.v
+}
+
+// NavRightOpt applies to Switch
+func (o NavRightOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.NavRight = o.v
+}
+
+// NavUpOpt applies to Switch
+func (o NavUpOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.NavUp = o.v
+}
+
+// NavUpLeftOpt applies to Switch
+func (o NavUpLeftOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.NavUpLeft = o.v
+}
+
+// NavUpRightOpt applies to Switch
+func (o NavUpRightOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.NavUpRight = o.v
+}
+
+// OpacityOpt applies to Switch
+func (o OpacityOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to Switch
+func (o OverflowOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PointerEventsOpt applies to Switch
+func (o PointerEventsOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
 // RequiredExtensionsOpt applies to Switch
 func (o RequiredExtensionsOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
@@ -55,21 +400,351 @@ func (o RequiredFeaturesOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
+// RequiredFontsOpt applies to Switch
+func (o RequiredFontsOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.RequiredFonts = o.v
+}
+
+// RequiredFormatsOpt applies to Switch
+func (o RequiredFormatsOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.RequiredFormats = o.v
+}
+
+// ShapeRenderingOpt applies to Switch
+func (o ShapeRenderingOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// StopColorOpt applies to Switch
+func (o StopColorOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to Switch
+func (o StopOpacityOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to Switch
+func (o StrokeOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to Switch
+func (o StrokeDasharrayOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to Switch
+func (o StrokeDashoffsetOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to Switch
+func (o StrokeLinecapOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to Switch
+func (o StrokeLinejoinOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to Switch
+func (o StrokeMiterlimitOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to Switch
+func (o StrokeOpacityOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to Switch
+func (o StrokeWidthOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
 // SystemLanguageOpt applies to Switch
 func (o SystemLanguageOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
+// TextAnchorOpt applies to Switch
+func (o TextAnchorOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to Switch
+func (o TextDecorationOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to Switch
+func (o TextRenderingOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
+// TransformOpt applies to Switch
+func (o TransformOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Transform = o.v
+}
+
+// UnicodeBidiOpt applies to Switch
+func (o UnicodeBidiOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// VisibilityOpt applies to Switch
+func (o VisibilityOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WordSpacingOpt applies to Switch
+func (o WordSpacingOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to Switch
+func (o WritingModeOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+	a.WritingMode = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgSwitchAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FocusHighlight != "" {
+		Attr(sb, "focusHighlight", a.FocusHighlight)
+	}
+	if a.Focusable != "" {
+		Attr(sb, "focusable", a.Focusable)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
+	if a.NavDown != "" {
+		Attr(sb, "nav-down", a.NavDown)
+	}
+	if a.NavDownLeft != "" {
+		Attr(sb, "nav-down-left", a.NavDownLeft)
+	}
+	if a.NavDownRight != "" {
+		Attr(sb, "nav-down-right", a.NavDownRight)
+	}
+	if a.NavLeft != "" {
+		Attr(sb, "nav-left", a.NavLeft)
+	}
+	if a.NavNext != "" {
+		Attr(sb, "nav-next", a.NavNext)
+	}
+	if a.NavPrev != "" {
+		Attr(sb, "nav-prev", a.NavPrev)
+	}
+	if a.NavRight != "" {
+		Attr(sb, "nav-right", a.NavRight)
+	}
+	if a.NavUp != "" {
+		Attr(sb, "nav-up", a.NavUp)
+	}
+	if a.NavUpLeft != "" {
+		Attr(sb, "nav-up-left", a.NavUpLeft)
+	}
+	if a.NavUpRight != "" {
+		Attr(sb, "nav-up-right", a.NavUpRight)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
 	if a.RequiredExtensions != "" {
 		Attr(sb, "requiredExtensions", a.RequiredExtensions)
 	}
 	if a.RequiredFeatures != "" {
 		Attr(sb, "requiredFeatures", a.RequiredFeatures)
 	}
+	if a.RequiredFonts != "" {
+		Attr(sb, "requiredFonts", a.RequiredFonts)
+	}
+	if a.RequiredFormats != "" {
+		Attr(sb, "requiredFormats", a.RequiredFormats)
+	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
 	if a.SystemLanguage != "" {
 		Attr(sb, "systemLanguage", a.SystemLanguage)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
+	if a.Transform != "" {
+		Attr(sb, "transform", a.Transform)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
 	}
 }

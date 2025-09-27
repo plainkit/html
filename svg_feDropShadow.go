@@ -11,9 +11,13 @@ type SvgFeDropShadowAttrs struct {
 	GlobalAttrs
 	Dx           string
 	Dy           string
-	FloodColor   string
-	FloodOpacity string
+	Height       string
+	In           string
+	Result       string
 	StdDeviation string
+	Width        string
+	X            string
+	Y            string
 }
 
 // SvgFeDropShadowArg interface for feDropShadow element arguments
@@ -57,19 +61,39 @@ func (o DyOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.Dy = o.v
 }
 
-// FloodColorOpt applies to FeDropShadow
-func (o FloodColorOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
-	a.FloodColor = o.v
+// HeightOpt applies to FeDropShadow
+func (o HeightOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+	a.Height = o.v
 }
 
-// FloodOpacityOpt applies to FeDropShadow
-func (o FloodOpacityOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
-	a.FloodOpacity = o.v
+// InOpt applies to FeDropShadow
+func (o InOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+	a.In = o.v
+}
+
+// ResultOpt applies to FeDropShadow
+func (o ResultOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+	a.Result = o.v
 }
 
 // StdDeviationOpt applies to FeDropShadow
 func (o StdDeviationOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.StdDeviation = o.v
+}
+
+// WidthOpt applies to FeDropShadow
+func (o WidthOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+	a.Width = o.v
+}
+
+// XOpt applies to FeDropShadow
+func (o XOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+	a.X = o.v
+}
+
+// YOpt applies to FeDropShadow
+func (o YOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+	a.Y = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
@@ -81,13 +105,25 @@ func (a *SvgFeDropShadowAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Dy != "" {
 		Attr(sb, "dy", a.Dy)
 	}
-	if a.FloodColor != "" {
-		Attr(sb, "flood-color", a.FloodColor)
+	if a.Height != "" {
+		Attr(sb, "height", a.Height)
 	}
-	if a.FloodOpacity != "" {
-		Attr(sb, "flood-opacity", a.FloodOpacity)
+	if a.In != "" {
+		Attr(sb, "in", a.In)
+	}
+	if a.Result != "" {
+		Attr(sb, "result", a.Result)
 	}
 	if a.StdDeviation != "" {
 		Attr(sb, "stdDeviation", a.StdDeviation)
+	}
+	if a.Width != "" {
+		Attr(sb, "width", a.Width)
+	}
+	if a.X != "" {
+		Attr(sb, "x", a.X)
+	}
+	if a.Y != "" {
+		Attr(sb, "y", a.Y)
 	}
 }

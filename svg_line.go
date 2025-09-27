@@ -9,10 +9,89 @@ import (
 // SvgLineAttrs holds the attributes for the line SVG element
 type SvgLineAttrs struct {
 	GlobalAttrs
-	X1 string
-	X2 string
-	Y1 string
-	Y2 string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	ExternalResourcesRequired  string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FocusHighlight             string
+	Focusable                  string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	ImageRendering             string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	NavDown                    string
+	NavDownLeft                string
+	NavDownRight               string
+	NavLeft                    string
+	NavNext                    string
+	NavPrev                    string
+	NavRight                   string
+	NavUp                      string
+	NavUpLeft                  string
+	NavUpRight                 string
+	Opacity                    string
+	Overflow                   string
+	PathLength                 string
+	PointerEvents              string
+	RequiredExtensions         string
+	RequiredFeatures           string
+	RequiredFonts              string
+	RequiredFormats            string
+	ShapeRendering             string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	SystemLanguage             string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	Transform                  string
+	UnicodeBidi                string
+	Visibility                 string
+	WordSpacing                string
+	WritingMode                string
+	X1                         string
+	X2                         string
+	Y1                         string
+	Y2                         string
 }
 
 // SvgLineArg interface for line element arguments
@@ -27,7 +106,7 @@ func defaultSvgLineAttrs() *SvgLineAttrs {
 	}
 }
 
-// SvgLine creates an SVG line element (self-closing)
+// SvgLine creates an SVG line element
 func SvgLine(args ...SvgLineArg) Node {
 	a := defaultSvgLineAttrs()
 	var kids []Component
@@ -37,13 +116,408 @@ func SvgLine(args ...SvgLineArg) Node {
 	return Node{
 		Tag:   "line",
 		Attrs: a,
-		Void:  true,
+		Kids:  kids,
 	}
 }
 
 // Global applies global SVG attributes to line
 func (g Global) applyLine(a *SvgLineAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
+}
+
+// AlignmentBaselineOpt applies to Line
+func (o AlignmentBaselineOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to Line
+func (o BaselineShiftOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to Line
+func (o ClipOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to Line
+func (o ClipPathOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to Line
+func (o ClipRuleOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to Line
+func (o ColorOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to Line
+func (o ColorInterpolationOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to Line
+func (o ColorInterpolationFiltersOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to Line
+func (o ColorProfileOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to Line
+func (o ColorRenderingOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to Line
+func (o CursorOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to Line
+func (o DirectionOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to Line
+func (o DisplayOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to Line
+func (o DominantBaselineOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to Line
+func (o EnableBackgroundOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// ExternalResourcesRequiredOpt applies to Line
+func (o ExternalResourcesRequiredOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to Line
+func (o FillOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to Line
+func (o FillOpacityOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to Line
+func (o FillRuleOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to Line
+func (o FilterOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to Line
+func (o FloodColorOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to Line
+func (o FloodOpacityOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FocusHighlightOpt applies to Line
+func (o FocusHighlightOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.FocusHighlight = o.v
+}
+
+// FocusableOpt applies to Line
+func (o FocusableOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Focusable = o.v
+}
+
+// FontFamilyOpt applies to Line
+func (o FontFamilyOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to Line
+func (o FontSizeOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to Line
+func (o FontSizeAdjustOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to Line
+func (o FontStretchOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to Line
+func (o FontStyleOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to Line
+func (o FontVariantOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to Line
+func (o FontWeightOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to Line
+func (o GlyphOrientationHorizontalOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to Line
+func (o GlyphOrientationVerticalOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
+// ImageRenderingOpt applies to Line
+func (o ImageRenderingOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
+// KerningOpt applies to Line
+func (o KerningOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to Line
+func (o LetterSpacingOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to Line
+func (o LightingColorOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to Line
+func (o MarkerEndOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to Line
+func (o MarkerMidOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to Line
+func (o MarkerStartOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to Line
+func (o MaskOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
+// NavDownOpt applies to Line
+func (o NavDownOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.NavDown = o.v
+}
+
+// NavDownLeftOpt applies to Line
+func (o NavDownLeftOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.NavDownLeft = o.v
+}
+
+// NavDownRightOpt applies to Line
+func (o NavDownRightOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.NavDownRight = o.v
+}
+
+// NavLeftOpt applies to Line
+func (o NavLeftOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.NavLeft = o.v
+}
+
+// NavNextOpt applies to Line
+func (o NavNextOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.NavNext = o.v
+}
+
+// NavPrevOpt applies to Line
+func (o NavPrevOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.NavPrev = o.v
+}
+
+// NavRightOpt applies to Line
+func (o NavRightOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.NavRight = o.v
+}
+
+// NavUpOpt applies to Line
+func (o NavUpOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.NavUp = o.v
+}
+
+// NavUpLeftOpt applies to Line
+func (o NavUpLeftOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.NavUpLeft = o.v
+}
+
+// NavUpRightOpt applies to Line
+func (o NavUpRightOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.NavUpRight = o.v
+}
+
+// OpacityOpt applies to Line
+func (o OpacityOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to Line
+func (o OverflowOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PathLengthOpt applies to Line
+func (o PathLengthOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.PathLength = o.v
+}
+
+// PointerEventsOpt applies to Line
+func (o PointerEventsOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
+// RequiredExtensionsOpt applies to Line
+func (o RequiredExtensionsOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.RequiredExtensions = o.v
+}
+
+// RequiredFeaturesOpt applies to Line
+func (o RequiredFeaturesOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.RequiredFeatures = o.v
+}
+
+// RequiredFontsOpt applies to Line
+func (o RequiredFontsOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.RequiredFonts = o.v
+}
+
+// RequiredFormatsOpt applies to Line
+func (o RequiredFormatsOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.RequiredFormats = o.v
+}
+
+// ShapeRenderingOpt applies to Line
+func (o ShapeRenderingOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// StopColorOpt applies to Line
+func (o StopColorOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to Line
+func (o StopOpacityOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to Line
+func (o StrokeOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to Line
+func (o StrokeDasharrayOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to Line
+func (o StrokeDashoffsetOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to Line
+func (o StrokeLinecapOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to Line
+func (o StrokeLinejoinOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to Line
+func (o StrokeMiterlimitOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to Line
+func (o StrokeOpacityOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to Line
+func (o StrokeWidthOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// SystemLanguageOpt applies to Line
+func (o SystemLanguageOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.SystemLanguage = o.v
+}
+
+// TextAnchorOpt applies to Line
+func (o TextAnchorOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to Line
+func (o TextDecorationOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to Line
+func (o TextRenderingOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
+// TransformOpt applies to Line
+func (o TransformOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Transform = o.v
+}
+
+// UnicodeBidiOpt applies to Line
+func (o UnicodeBidiOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// VisibilityOpt applies to Line
+func (o VisibilityOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WordSpacingOpt applies to Line
+func (o WordSpacingOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to Line
+func (o WritingModeOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+	a.WritingMode = o.v
 }
 
 // X1Opt applies to Line
@@ -69,6 +543,243 @@ func (o Y2Opt) applyLine(a *SvgLineAttrs, _ *[]Component) {
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgLineAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FocusHighlight != "" {
+		Attr(sb, "focusHighlight", a.FocusHighlight)
+	}
+	if a.Focusable != "" {
+		Attr(sb, "focusable", a.Focusable)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
+	if a.NavDown != "" {
+		Attr(sb, "nav-down", a.NavDown)
+	}
+	if a.NavDownLeft != "" {
+		Attr(sb, "nav-down-left", a.NavDownLeft)
+	}
+	if a.NavDownRight != "" {
+		Attr(sb, "nav-down-right", a.NavDownRight)
+	}
+	if a.NavLeft != "" {
+		Attr(sb, "nav-left", a.NavLeft)
+	}
+	if a.NavNext != "" {
+		Attr(sb, "nav-next", a.NavNext)
+	}
+	if a.NavPrev != "" {
+		Attr(sb, "nav-prev", a.NavPrev)
+	}
+	if a.NavRight != "" {
+		Attr(sb, "nav-right", a.NavRight)
+	}
+	if a.NavUp != "" {
+		Attr(sb, "nav-up", a.NavUp)
+	}
+	if a.NavUpLeft != "" {
+		Attr(sb, "nav-up-left", a.NavUpLeft)
+	}
+	if a.NavUpRight != "" {
+		Attr(sb, "nav-up-right", a.NavUpRight)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PathLength != "" {
+		Attr(sb, "pathLength", a.PathLength)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
+	if a.RequiredExtensions != "" {
+		Attr(sb, "requiredExtensions", a.RequiredExtensions)
+	}
+	if a.RequiredFeatures != "" {
+		Attr(sb, "requiredFeatures", a.RequiredFeatures)
+	}
+	if a.RequiredFonts != "" {
+		Attr(sb, "requiredFonts", a.RequiredFonts)
+	}
+	if a.RequiredFormats != "" {
+		Attr(sb, "requiredFormats", a.RequiredFormats)
+	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.SystemLanguage != "" {
+		Attr(sb, "systemLanguage", a.SystemLanguage)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
+	if a.Transform != "" {
+		Attr(sb, "transform", a.Transform)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
+	}
 	if a.X1 != "" {
 		Attr(sb, "x1", a.X1)
 	}

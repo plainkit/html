@@ -9,11 +9,75 @@ import (
 // SvgFeTurbulenceAttrs holds the attributes for the feTurbulence SVG element
 type SvgFeTurbulenceAttrs struct {
 	GlobalAttrs
-	BaseFrequency string
-	NumOctaves    string
-	Seed          string
-	StitchTiles   string
-	Type          string
+	AlignmentBaseline          string
+	BaseFrequency              string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	Height                     string
+	ImageRendering             string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	NumOctaves                 string
+	Opacity                    string
+	Overflow                   string
+	PointerEvents              string
+	Result                     string
+	Seed                       string
+	ShapeRendering             string
+	StitchTiles                string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	Type                       string
+	UnicodeBidi                string
+	Visibility                 string
+	Width                      string
+	WordSpacing                string
+	WritingMode                string
+	X                          string
+	Y                          string
 }
 
 // SvgFeTurbulenceArg interface for feTurbulence element arguments
@@ -47,9 +111,204 @@ func (g Global) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to FeTurbulence
+func (o AlignmentBaselineOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
 // BaseFrequencyOpt applies to FeTurbulence
 func (o BaseFrequencyOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.BaseFrequency = o.v
+}
+
+// BaselineShiftOpt applies to FeTurbulence
+func (o BaselineShiftOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to FeTurbulence
+func (o ClipOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to FeTurbulence
+func (o ClipPathOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to FeTurbulence
+func (o ClipRuleOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to FeTurbulence
+func (o ColorOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to FeTurbulence
+func (o ColorInterpolationOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to FeTurbulence
+func (o ColorInterpolationFiltersOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to FeTurbulence
+func (o ColorProfileOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to FeTurbulence
+func (o ColorRenderingOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to FeTurbulence
+func (o CursorOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to FeTurbulence
+func (o DirectionOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to FeTurbulence
+func (o DisplayOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to FeTurbulence
+func (o DominantBaselineOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to FeTurbulence
+func (o EnableBackgroundOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// FillOpt applies to FeTurbulence
+func (o FillOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to FeTurbulence
+func (o FillOpacityOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to FeTurbulence
+func (o FillRuleOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to FeTurbulence
+func (o FilterOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to FeTurbulence
+func (o FloodColorOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to FeTurbulence
+func (o FloodOpacityOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FontFamilyOpt applies to FeTurbulence
+func (o FontFamilyOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to FeTurbulence
+func (o FontSizeOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to FeTurbulence
+func (o FontSizeAdjustOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to FeTurbulence
+func (o FontStretchOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to FeTurbulence
+func (o FontStyleOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to FeTurbulence
+func (o FontVariantOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to FeTurbulence
+func (o FontWeightOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to FeTurbulence
+func (o GlyphOrientationHorizontalOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to FeTurbulence
+func (o GlyphOrientationVerticalOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
+// HeightOpt applies to FeTurbulence
+func (o HeightOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Height = o.v
+}
+
+// ImageRenderingOpt applies to FeTurbulence
+func (o ImageRenderingOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
+// KerningOpt applies to FeTurbulence
+func (o KerningOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to FeTurbulence
+func (o LetterSpacingOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to FeTurbulence
+func (o LightingColorOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to FeTurbulence
+func (o MarkerEndOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to FeTurbulence
+func (o MarkerMidOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to FeTurbulence
+func (o MarkerStartOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to FeTurbulence
+func (o MaskOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Mask = o.v
 }
 
 // NumOctavesOpt applies to FeTurbulence
@@ -57,9 +316,34 @@ func (o NumOctavesOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component
 	a.NumOctaves = o.v
 }
 
+// OpacityOpt applies to FeTurbulence
+func (o OpacityOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to FeTurbulence
+func (o OverflowOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PointerEventsOpt applies to FeTurbulence
+func (o PointerEventsOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
+// ResultOpt applies to FeTurbulence
+func (o ResultOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Result = o.v
+}
+
 // SeedOpt applies to FeTurbulence
 func (o SeedOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Seed = o.v
+}
+
+// ShapeRenderingOpt applies to FeTurbulence
+func (o ShapeRenderingOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
 }
 
 // StitchTilesOpt applies to FeTurbulence
@@ -67,27 +351,319 @@ func (o StitchTilesOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Componen
 	a.StitchTiles = o.v
 }
 
+// StopColorOpt applies to FeTurbulence
+func (o StopColorOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to FeTurbulence
+func (o StopOpacityOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to FeTurbulence
+func (o StrokeOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to FeTurbulence
+func (o StrokeDasharrayOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to FeTurbulence
+func (o StrokeDashoffsetOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to FeTurbulence
+func (o StrokeLinecapOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to FeTurbulence
+func (o StrokeLinejoinOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to FeTurbulence
+func (o StrokeMiterlimitOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to FeTurbulence
+func (o StrokeOpacityOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to FeTurbulence
+func (o StrokeWidthOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// TextAnchorOpt applies to FeTurbulence
+func (o TextAnchorOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to FeTurbulence
+func (o TextDecorationOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to FeTurbulence
+func (o TextRenderingOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
 // TypeOpt applies to FeTurbulence
 func (o TypeOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 
+// UnicodeBidiOpt applies to FeTurbulence
+func (o UnicodeBidiOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// VisibilityOpt applies to FeTurbulence
+func (o VisibilityOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WidthOpt applies to FeTurbulence
+func (o WidthOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Width = o.v
+}
+
+// WordSpacingOpt applies to FeTurbulence
+func (o WordSpacingOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to FeTurbulence
+func (o WritingModeOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.WritingMode = o.v
+}
+
+// XOpt applies to FeTurbulence
+func (o XOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.X = o.v
+}
+
+// YOpt applies to FeTurbulence
+func (o YOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+	a.Y = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgFeTurbulenceAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
 	if a.BaseFrequency != "" {
 		Attr(sb, "baseFrequency", a.BaseFrequency)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
+	if a.Height != "" {
+		Attr(sb, "height", a.Height)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
 	}
 	if a.NumOctaves != "" {
 		Attr(sb, "numOctaves", a.NumOctaves)
 	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
+	if a.Result != "" {
+		Attr(sb, "result", a.Result)
+	}
 	if a.Seed != "" {
 		Attr(sb, "seed", a.Seed)
+	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
 	}
 	if a.StitchTiles != "" {
 		Attr(sb, "stitchTiles", a.StitchTiles)
 	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.Width != "" {
+		Attr(sb, "width", a.Width)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
+	}
+	if a.X != "" {
+		Attr(sb, "x", a.X)
+	}
+	if a.Y != "" {
+		Attr(sb, "y", a.Y)
 	}
 }

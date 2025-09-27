@@ -3,11 +3,12 @@ package generator
 import (
 	"bytes"
 	"sort"
+	"strings"
 	"text/template"
 
-	"github.com/delaneyj/gostar/cfg"
 	"github.com/plainkit/html/cmd/gen/internal/svg/spec"
 	"github.com/plainkit/html/cmd/gen/internal/svg/utils"
+	"github.com/plainkit/tags"
 )
 
 // AttributesGenerator generates centralized SVG attributes file
@@ -77,44 +78,22 @@ func (g *AttributesGenerator) GenerateSource(attributes map[string]spec.Attribut
 
 // getHTMLAttributes extracts HTML attributes from gostar to exclude them from SVG generation
 func (g *AttributesGenerator) getHTMLAttributes() map[string]bool {
-	htmlSpec := cfg.HTML
-	attrCounts := make(map[string]int)
-	totalElements := len(htmlSpec.Elements)
-
-	// Count how often each attribute appears in HTML
-	for _, element := range htmlSpec.Elements {
-		for _, attr := range element.Attributes {
-			if attr.Key != "" {
-				attrCounts[attr.Key]++
-			}
-		}
-	}
-
-	// Consider attributes that appear in 90%+ of elements, plus known HTML global attributes
-	threshold := totalElements * 9 / 10
 	htmlAttrs := make(map[string]bool)
 
-	// Add attributes that appear frequently in HTML
-	for attrName, count := range attrCounts {
-		if count >= threshold {
-			htmlAttrs[attrName] = true
+	for _, attr := range tags.HTML.Globals {
+		name := strings.ToLower(attr.Name)
+		if name != "" {
+			htmlAttrs[name] = true
 		}
 	}
 
-	// Always include known HTML global attributes (from HTML spec) to avoid conflicts
-	knownHTMLGlobals := []string{
-		"class", "id", "style", "title", "contenteditable", "draggable",
-		"hidden", "lang", "spellcheck", "tabindex", "accesskey", "dir",
-	}
-
-	for _, attr := range knownHTMLGlobals {
-		htmlAttrs[attr] = true
-	}
-
-	// Also add all HTML attributes that could conflict with SVG ones
-	// This includes any attribute that appears in HTML regardless of frequency
-	for attrName := range attrCounts {
-		htmlAttrs[attrName] = true
+	for _, element := range tags.HTML.Elements {
+		for _, attr := range element.Attributes {
+			name := strings.ToLower(attr.Name)
+			if name != "" {
+				htmlAttrs[name] = true
+			}
+		}
 	}
 
 	return htmlAttrs

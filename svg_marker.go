@@ -9,13 +9,74 @@ import (
 // SvgMarkerAttrs holds the attributes for the marker SVG element
 type SvgMarkerAttrs struct {
 	GlobalAttrs
-	MarkerHeight string
-	MarkerUnits  string
-	MarkerWidth  string
-	Orient       string
-	RefX         string
-	RefY         string
-	ViewBox      string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	ExternalResourcesRequired  string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	ImageRendering             string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	MarkerHeight               string
+	MarkerUnits                string
+	MarkerWidth                string
+	Mask                       string
+	Opacity                    string
+	Orient                     string
+	Overflow                   string
+	PointerEvents              string
+	PreserveAspectRatio        string
+	RefX                       string
+	RefY                       string
+	ShapeRendering             string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	UnicodeBidi                string
+	ViewBox                    string
+	Visibility                 string
+	WordSpacing                string
+	WritingMode                string
 }
 
 // SvgMarkerArg interface for marker element arguments
@@ -49,6 +110,196 @@ func (g Global) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to Marker
+func (o AlignmentBaselineOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to Marker
+func (o BaselineShiftOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to Marker
+func (o ClipOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to Marker
+func (o ClipPathOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to Marker
+func (o ClipRuleOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to Marker
+func (o ColorOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to Marker
+func (o ColorInterpolationOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to Marker
+func (o ColorInterpolationFiltersOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to Marker
+func (o ColorProfileOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to Marker
+func (o ColorRenderingOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to Marker
+func (o CursorOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to Marker
+func (o DirectionOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to Marker
+func (o DisplayOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to Marker
+func (o DominantBaselineOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to Marker
+func (o EnableBackgroundOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// ExternalResourcesRequiredOpt applies to Marker
+func (o ExternalResourcesRequiredOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to Marker
+func (o FillOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to Marker
+func (o FillOpacityOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to Marker
+func (o FillRuleOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to Marker
+func (o FilterOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to Marker
+func (o FloodColorOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to Marker
+func (o FloodOpacityOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FontFamilyOpt applies to Marker
+func (o FontFamilyOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to Marker
+func (o FontSizeOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to Marker
+func (o FontSizeAdjustOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to Marker
+func (o FontStretchOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to Marker
+func (o FontStyleOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to Marker
+func (o FontVariantOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to Marker
+func (o FontWeightOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to Marker
+func (o GlyphOrientationHorizontalOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to Marker
+func (o GlyphOrientationVerticalOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
+// ImageRenderingOpt applies to Marker
+func (o ImageRenderingOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
+// KerningOpt applies to Marker
+func (o KerningOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to Marker
+func (o LetterSpacingOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to Marker
+func (o LightingColorOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to Marker
+func (o MarkerEndOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to Marker
+func (o MarkerMidOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to Marker
+func (o MarkerStartOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
 // MarkerHeightOpt applies to Marker
 func (o MarkerHeightOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.MarkerHeight = o.v
@@ -64,9 +315,34 @@ func (o MarkerWidthOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.MarkerWidth = o.v
 }
 
+// MaskOpt applies to Marker
+func (o MaskOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
+// OpacityOpt applies to Marker
+func (o OpacityOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
 // OrientOpt applies to Marker
 func (o OrientOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Orient = o.v
+}
+
+// OverflowOpt applies to Marker
+func (o OverflowOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PointerEventsOpt applies to Marker
+func (o PointerEventsOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
+// PreserveAspectRatioOpt applies to Marker
+func (o PreserveAspectRatioOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.PreserveAspectRatio = o.v
 }
 
 // RefXOpt applies to Marker
@@ -79,14 +355,218 @@ func (o RefYOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.RefY = o.v
 }
 
+// ShapeRenderingOpt applies to Marker
+func (o ShapeRenderingOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// StopColorOpt applies to Marker
+func (o StopColorOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to Marker
+func (o StopOpacityOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to Marker
+func (o StrokeOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to Marker
+func (o StrokeDasharrayOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to Marker
+func (o StrokeDashoffsetOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to Marker
+func (o StrokeLinecapOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to Marker
+func (o StrokeLinejoinOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to Marker
+func (o StrokeMiterlimitOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to Marker
+func (o StrokeOpacityOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to Marker
+func (o StrokeWidthOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// TextAnchorOpt applies to Marker
+func (o TextAnchorOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to Marker
+func (o TextDecorationOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to Marker
+func (o TextRenderingOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
+// UnicodeBidiOpt applies to Marker
+func (o UnicodeBidiOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
 // ViewBoxOpt applies to Marker
 func (o ViewBoxOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.ViewBox = o.v
 }
 
+// VisibilityOpt applies to Marker
+func (o VisibilityOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WordSpacingOpt applies to Marker
+func (o WordSpacingOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to Marker
+func (o WritingModeOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+	a.WritingMode = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgMarkerAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
 	if a.MarkerHeight != "" {
 		Attr(sb, "markerHeight", a.MarkerHeight)
 	}
@@ -96,8 +576,23 @@ func (a *SvgMarkerAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.MarkerWidth != "" {
 		Attr(sb, "markerWidth", a.MarkerWidth)
 	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
 	if a.Orient != "" {
 		Attr(sb, "orient", a.Orient)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
+	if a.PreserveAspectRatio != "" {
+		Attr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
 	}
 	if a.RefX != "" {
 		Attr(sb, "refX", a.RefX)
@@ -105,7 +600,61 @@ func (a *SvgMarkerAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.RefY != "" {
 		Attr(sb, "refY", a.RefY)
 	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
 	if a.ViewBox != "" {
 		Attr(sb, "viewBox", a.ViewBox)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
 	}
 }

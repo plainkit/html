@@ -9,13 +9,76 @@ import (
 // SvgRadialGradientAttrs holds the attributes for the radialGradient SVG element
 type SvgRadialGradientAttrs struct {
 	GlobalAttrs
-	Cx                string
-	Cy                string
-	Fx                string
-	Fy                string
-	GradientTransform string
-	GradientUnits     string
-	R                 string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Cx                         string
+	Cy                         string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	ExternalResourcesRequired  string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	Fr                         string
+	Fx                         string
+	Fy                         string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	GradientTransform          string
+	GradientUnits              string
+	Href                       string
+	ImageRendering             string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	Opacity                    string
+	Overflow                   string
+	PointerEvents              string
+	R                          string
+	ShapeRendering             string
+	SpreadMethod               string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	UnicodeBidi                string
+	Visibility                 string
+	WordSpacing                string
+	WritingMode                string
 }
 
 // SvgRadialGradientArg interface for radialGradient element arguments
@@ -49,6 +112,61 @@ func (g Global) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to RadialGradient
+func (o AlignmentBaselineOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to RadialGradient
+func (o BaselineShiftOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to RadialGradient
+func (o ClipOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to RadialGradient
+func (o ClipPathOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to RadialGradient
+func (o ClipRuleOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to RadialGradient
+func (o ColorOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to RadialGradient
+func (o ColorInterpolationOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to RadialGradient
+func (o ColorInterpolationFiltersOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to RadialGradient
+func (o ColorProfileOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to RadialGradient
+func (o ColorRenderingOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to RadialGradient
+func (o CursorOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
 // CxOpt applies to RadialGradient
 func (o CxOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 	a.Cx = o.v
@@ -57,6 +175,101 @@ func (o CxOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 // CyOpt applies to RadialGradient
 func (o CyOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 	a.Cy = o.v
+}
+
+// DirectionOpt applies to RadialGradient
+func (o DirectionOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to RadialGradient
+func (o DisplayOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to RadialGradient
+func (o DominantBaselineOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to RadialGradient
+func (o EnableBackgroundOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// ExternalResourcesRequiredOpt applies to RadialGradient
+func (o ExternalResourcesRequiredOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to RadialGradient
+func (o FillOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to RadialGradient
+func (o FillOpacityOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to RadialGradient
+func (o FillRuleOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to RadialGradient
+func (o FilterOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to RadialGradient
+func (o FloodColorOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to RadialGradient
+func (o FloodOpacityOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FontFamilyOpt applies to RadialGradient
+func (o FontFamilyOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to RadialGradient
+func (o FontSizeOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to RadialGradient
+func (o FontSizeAdjustOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to RadialGradient
+func (o FontStretchOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to RadialGradient
+func (o FontStyleOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to RadialGradient
+func (o FontVariantOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to RadialGradient
+func (o FontWeightOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// FrOpt applies to RadialGradient
+func (o FrOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Fr = o.v
 }
 
 // FxOpt applies to RadialGradient
@@ -69,6 +282,16 @@ func (o FyOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 	a.Fy = o.v
 }
 
+// GlyphOrientationHorizontalOpt applies to RadialGradient
+func (o GlyphOrientationHorizontalOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to RadialGradient
+func (o GlyphOrientationVerticalOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
 // GradientTransformOpt applies to RadialGradient
 func (o GradientTransformOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 	a.GradientTransform = o.v
@@ -79,19 +302,264 @@ func (o GradientUnitsOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Co
 	a.GradientUnits = o.v
 }
 
+// HrefOpt applies to RadialGradient
+func (o HrefOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Href = o.v
+}
+
+// ImageRenderingOpt applies to RadialGradient
+func (o ImageRenderingOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
+// KerningOpt applies to RadialGradient
+func (o KerningOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to RadialGradient
+func (o LetterSpacingOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to RadialGradient
+func (o LightingColorOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to RadialGradient
+func (o MarkerEndOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to RadialGradient
+func (o MarkerMidOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to RadialGradient
+func (o MarkerStartOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to RadialGradient
+func (o MaskOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
+// OpacityOpt applies to RadialGradient
+func (o OpacityOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to RadialGradient
+func (o OverflowOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PointerEventsOpt applies to RadialGradient
+func (o PointerEventsOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
 // ROpt applies to RadialGradient
 func (o ROpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
 	a.R = o.v
 }
 
+// ShapeRenderingOpt applies to RadialGradient
+func (o ShapeRenderingOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// SpreadMethodOpt applies to RadialGradient
+func (o SpreadMethodOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.SpreadMethod = o.v
+}
+
+// StopColorOpt applies to RadialGradient
+func (o StopColorOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to RadialGradient
+func (o StopOpacityOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to RadialGradient
+func (o StrokeOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to RadialGradient
+func (o StrokeDasharrayOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to RadialGradient
+func (o StrokeDashoffsetOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to RadialGradient
+func (o StrokeLinecapOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to RadialGradient
+func (o StrokeLinejoinOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to RadialGradient
+func (o StrokeMiterlimitOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to RadialGradient
+func (o StrokeOpacityOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to RadialGradient
+func (o StrokeWidthOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// TextAnchorOpt applies to RadialGradient
+func (o TextAnchorOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to RadialGradient
+func (o TextDecorationOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to RadialGradient
+func (o TextRenderingOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
+// UnicodeBidiOpt applies to RadialGradient
+func (o UnicodeBidiOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// VisibilityOpt applies to RadialGradient
+func (o VisibilityOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WordSpacingOpt applies to RadialGradient
+func (o WordSpacingOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to RadialGradient
+func (o WritingModeOpt) applyRadialGradient(a *SvgRadialGradientAttrs, _ *[]Component) {
+	a.WritingMode = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgRadialGradientAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
 	if a.Cx != "" {
 		Attr(sb, "cx", a.Cx)
 	}
 	if a.Cy != "" {
 		Attr(sb, "cy", a.Cy)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.Fr != "" {
+		Attr(sb, "fr", a.Fr)
 	}
 	if a.Fx != "" {
 		Attr(sb, "fx", a.Fx)
@@ -99,13 +567,112 @@ func (a *SvgRadialGradientAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Fy != "" {
 		Attr(sb, "fy", a.Fy)
 	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
 	if a.GradientTransform != "" {
 		Attr(sb, "gradientTransform", a.GradientTransform)
 	}
 	if a.GradientUnits != "" {
 		Attr(sb, "gradientUnits", a.GradientUnits)
 	}
+	if a.Href != "" {
+		Attr(sb, "href", a.Href)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
 	if a.R != "" {
 		Attr(sb, "r", a.R)
+	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.SpreadMethod != "" {
+		Attr(sb, "spreadMethod", a.SpreadMethod)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
 	}
 }

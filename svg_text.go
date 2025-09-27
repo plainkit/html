@@ -9,13 +9,92 @@ import (
 // SvgTextAttrs holds the attributes for the text SVG element
 type SvgTextAttrs struct {
 	GlobalAttrs
-	Dx           string
-	Dy           string
-	LengthAdjust string
-	Rotate       string
-	TextLength   string
-	X            string
-	Y            string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	Dx                         string
+	Dy                         string
+	Editable                   string
+	EnableBackground           string
+	ExternalResourcesRequired  string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FocusHighlight             string
+	Focusable                  string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	ImageRendering             string
+	Kerning                    string
+	LengthAdjust               string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	NavDown                    string
+	NavDownLeft                string
+	NavDownRight               string
+	NavLeft                    string
+	NavNext                    string
+	NavPrev                    string
+	NavRight                   string
+	NavUp                      string
+	NavUpLeft                  string
+	NavUpRight                 string
+	Opacity                    string
+	Overflow                   string
+	PointerEvents              string
+	RequiredExtensions         string
+	RequiredFeatures           string
+	RequiredFonts              string
+	RequiredFormats            string
+	Rotate                     string
+	ShapeRendering             string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	SystemLanguage             string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	TextLength                 string
+	Transform                  string
+	UnicodeBidi                string
+	Visibility                 string
+	WordSpacing                string
+	WritingMode                string
+	X                          string
+	Y                          string
 }
 
 // SvgTextArg interface for text element arguments
@@ -49,6 +128,76 @@ func (g Global) applyText(a *SvgTextAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to Text
+func (o AlignmentBaselineOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to Text
+func (o BaselineShiftOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to Text
+func (o ClipOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to Text
+func (o ClipPathOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to Text
+func (o ClipRuleOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to Text
+func (o ColorOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to Text
+func (o ColorInterpolationOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to Text
+func (o ColorInterpolationFiltersOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to Text
+func (o ColorProfileOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to Text
+func (o ColorRenderingOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to Text
+func (o CursorOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to Text
+func (o DirectionOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to Text
+func (o DisplayOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to Text
+func (o DominantBaselineOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
 // DxOpt applies to Text
 func (o DxOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
 	a.Dx = o.v
@@ -59,9 +208,234 @@ func (o DyOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
 	a.Dy = o.v
 }
 
+// EditableOpt applies to Text
+func (o EditableOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Editable = o.v
+}
+
+// EnableBackgroundOpt applies to Text
+func (o EnableBackgroundOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// ExternalResourcesRequiredOpt applies to Text
+func (o ExternalResourcesRequiredOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to Text
+func (o FillOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to Text
+func (o FillOpacityOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to Text
+func (o FillRuleOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to Text
+func (o FilterOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to Text
+func (o FloodColorOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to Text
+func (o FloodOpacityOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FocusHighlightOpt applies to Text
+func (o FocusHighlightOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.FocusHighlight = o.v
+}
+
+// FocusableOpt applies to Text
+func (o FocusableOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Focusable = o.v
+}
+
+// FontFamilyOpt applies to Text
+func (o FontFamilyOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to Text
+func (o FontSizeOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to Text
+func (o FontSizeAdjustOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to Text
+func (o FontStretchOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to Text
+func (o FontStyleOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to Text
+func (o FontVariantOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to Text
+func (o FontWeightOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to Text
+func (o GlyphOrientationHorizontalOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to Text
+func (o GlyphOrientationVerticalOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
+// ImageRenderingOpt applies to Text
+func (o ImageRenderingOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
+// KerningOpt applies to Text
+func (o KerningOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
 // LengthAdjustOpt applies to Text
 func (o LengthAdjustOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
 	a.LengthAdjust = o.v
+}
+
+// LetterSpacingOpt applies to Text
+func (o LetterSpacingOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to Text
+func (o LightingColorOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to Text
+func (o MarkerEndOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to Text
+func (o MarkerMidOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to Text
+func (o MarkerStartOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to Text
+func (o MaskOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
+// NavDownOpt applies to Text
+func (o NavDownOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.NavDown = o.v
+}
+
+// NavDownLeftOpt applies to Text
+func (o NavDownLeftOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.NavDownLeft = o.v
+}
+
+// NavDownRightOpt applies to Text
+func (o NavDownRightOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.NavDownRight = o.v
+}
+
+// NavLeftOpt applies to Text
+func (o NavLeftOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.NavLeft = o.v
+}
+
+// NavNextOpt applies to Text
+func (o NavNextOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.NavNext = o.v
+}
+
+// NavPrevOpt applies to Text
+func (o NavPrevOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.NavPrev = o.v
+}
+
+// NavRightOpt applies to Text
+func (o NavRightOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.NavRight = o.v
+}
+
+// NavUpOpt applies to Text
+func (o NavUpOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.NavUp = o.v
+}
+
+// NavUpLeftOpt applies to Text
+func (o NavUpLeftOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.NavUpLeft = o.v
+}
+
+// NavUpRightOpt applies to Text
+func (o NavUpRightOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.NavUpRight = o.v
+}
+
+// OpacityOpt applies to Text
+func (o OpacityOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to Text
+func (o OverflowOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PointerEventsOpt applies to Text
+func (o PointerEventsOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
+// RequiredExtensionsOpt applies to Text
+func (o RequiredExtensionsOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.RequiredExtensions = o.v
+}
+
+// RequiredFeaturesOpt applies to Text
+func (o RequiredFeaturesOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.RequiredFeatures = o.v
+}
+
+// RequiredFontsOpt applies to Text
+func (o RequiredFontsOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.RequiredFonts = o.v
+}
+
+// RequiredFormatsOpt applies to Text
+func (o RequiredFormatsOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.RequiredFormats = o.v
 }
 
 // RotateOpt applies to Text
@@ -69,9 +443,109 @@ func (o RotateOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
 	a.Rotate = o.v
 }
 
+// ShapeRenderingOpt applies to Text
+func (o ShapeRenderingOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// StopColorOpt applies to Text
+func (o StopColorOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to Text
+func (o StopOpacityOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to Text
+func (o StrokeOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to Text
+func (o StrokeDasharrayOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to Text
+func (o StrokeDashoffsetOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to Text
+func (o StrokeLinecapOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to Text
+func (o StrokeLinejoinOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to Text
+func (o StrokeMiterlimitOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to Text
+func (o StrokeOpacityOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to Text
+func (o StrokeWidthOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// SystemLanguageOpt applies to Text
+func (o SystemLanguageOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.SystemLanguage = o.v
+}
+
+// TextAnchorOpt applies to Text
+func (o TextAnchorOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to Text
+func (o TextDecorationOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to Text
+func (o TextRenderingOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
 // TextLengthOpt applies to Text
 func (o TextLengthOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
 	a.TextLength = o.v
+}
+
+// TransformOpt applies to Text
+func (o TransformOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Transform = o.v
+}
+
+// UnicodeBidiOpt applies to Text
+func (o UnicodeBidiOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// VisibilityOpt applies to Text
+func (o VisibilityOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WordSpacingOpt applies to Text
+func (o WordSpacingOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to Text
+func (o WritingModeOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
+	a.WritingMode = o.v
 }
 
 // XOpt applies to Text
@@ -87,20 +561,257 @@ func (o YOpt) applyText(a *SvgTextAttrs, _ *[]Component) {
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgTextAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
 	if a.Dx != "" {
 		Attr(sb, "dx", a.Dx)
 	}
 	if a.Dy != "" {
 		Attr(sb, "dy", a.Dy)
 	}
+	if a.Editable != "" {
+		Attr(sb, "editable", a.Editable)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FocusHighlight != "" {
+		Attr(sb, "focusHighlight", a.FocusHighlight)
+	}
+	if a.Focusable != "" {
+		Attr(sb, "focusable", a.Focusable)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
 	if a.LengthAdjust != "" {
 		Attr(sb, "lengthAdjust", a.LengthAdjust)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
+	if a.NavDown != "" {
+		Attr(sb, "nav-down", a.NavDown)
+	}
+	if a.NavDownLeft != "" {
+		Attr(sb, "nav-down-left", a.NavDownLeft)
+	}
+	if a.NavDownRight != "" {
+		Attr(sb, "nav-down-right", a.NavDownRight)
+	}
+	if a.NavLeft != "" {
+		Attr(sb, "nav-left", a.NavLeft)
+	}
+	if a.NavNext != "" {
+		Attr(sb, "nav-next", a.NavNext)
+	}
+	if a.NavPrev != "" {
+		Attr(sb, "nav-prev", a.NavPrev)
+	}
+	if a.NavRight != "" {
+		Attr(sb, "nav-right", a.NavRight)
+	}
+	if a.NavUp != "" {
+		Attr(sb, "nav-up", a.NavUp)
+	}
+	if a.NavUpLeft != "" {
+		Attr(sb, "nav-up-left", a.NavUpLeft)
+	}
+	if a.NavUpRight != "" {
+		Attr(sb, "nav-up-right", a.NavUpRight)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
+	if a.RequiredExtensions != "" {
+		Attr(sb, "requiredExtensions", a.RequiredExtensions)
+	}
+	if a.RequiredFeatures != "" {
+		Attr(sb, "requiredFeatures", a.RequiredFeatures)
+	}
+	if a.RequiredFonts != "" {
+		Attr(sb, "requiredFonts", a.RequiredFonts)
+	}
+	if a.RequiredFormats != "" {
+		Attr(sb, "requiredFormats", a.RequiredFormats)
 	}
 	if a.Rotate != "" {
 		Attr(sb, "rotate", a.Rotate)
 	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.SystemLanguage != "" {
+		Attr(sb, "systemLanguage", a.SystemLanguage)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
 	if a.TextLength != "" {
 		Attr(sb, "textLength", a.TextLength)
+	}
+	if a.Transform != "" {
+		Attr(sb, "transform", a.Transform)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
 	}
 	if a.X != "" {
 		Attr(sb, "x", a.X)

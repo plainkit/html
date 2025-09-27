@@ -9,9 +9,73 @@ import (
 // SvgFeBlendAttrs holds the attributes for the feBlend SVG element
 type SvgFeBlendAttrs struct {
 	GlobalAttrs
-	In   string
-	In2  string
-	Mode string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	Height                     string
+	ImageRendering             string
+	In                         string
+	In2                        string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	Mode                       string
+	Opacity                    string
+	Overflow                   string
+	PointerEvents              string
+	Result                     string
+	ShapeRendering             string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	UnicodeBidi                string
+	Visibility                 string
+	Width                      string
+	WordSpacing                string
+	WritingMode                string
+	X                          string
+	Y                          string
 }
 
 // SvgFeBlendArg interface for feBlend element arguments
@@ -45,6 +109,166 @@ func (g Global) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to FeBlend
+func (o AlignmentBaselineOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to FeBlend
+func (o BaselineShiftOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to FeBlend
+func (o ClipOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to FeBlend
+func (o ClipPathOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to FeBlend
+func (o ClipRuleOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to FeBlend
+func (o ColorOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to FeBlend
+func (o ColorInterpolationOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to FeBlend
+func (o ColorInterpolationFiltersOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to FeBlend
+func (o ColorProfileOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to FeBlend
+func (o ColorRenderingOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to FeBlend
+func (o CursorOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to FeBlend
+func (o DirectionOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to FeBlend
+func (o DisplayOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to FeBlend
+func (o DominantBaselineOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to FeBlend
+func (o EnableBackgroundOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// FillOpt applies to FeBlend
+func (o FillOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to FeBlend
+func (o FillOpacityOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to FeBlend
+func (o FillRuleOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to FeBlend
+func (o FilterOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to FeBlend
+func (o FloodColorOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to FeBlend
+func (o FloodOpacityOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FontFamilyOpt applies to FeBlend
+func (o FontFamilyOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to FeBlend
+func (o FontSizeOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to FeBlend
+func (o FontSizeAdjustOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to FeBlend
+func (o FontStretchOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to FeBlend
+func (o FontStyleOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to FeBlend
+func (o FontVariantOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to FeBlend
+func (o FontWeightOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to FeBlend
+func (o GlyphOrientationHorizontalOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to FeBlend
+func (o GlyphOrientationVerticalOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
+// HeightOpt applies to FeBlend
+func (o HeightOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Height = o.v
+}
+
+// ImageRenderingOpt applies to FeBlend
+func (o ImageRenderingOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
 // InOpt applies to FeBlend
 func (o InOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.In = o.v
@@ -55,21 +279,373 @@ func (o In2Opt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.In2 = o.v
 }
 
+// KerningOpt applies to FeBlend
+func (o KerningOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to FeBlend
+func (o LetterSpacingOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to FeBlend
+func (o LightingColorOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to FeBlend
+func (o MarkerEndOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to FeBlend
+func (o MarkerMidOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to FeBlend
+func (o MarkerStartOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to FeBlend
+func (o MaskOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
 // ModeOpt applies to FeBlend
 func (o ModeOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Mode = o.v
 }
 
+// OpacityOpt applies to FeBlend
+func (o OpacityOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to FeBlend
+func (o OverflowOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PointerEventsOpt applies to FeBlend
+func (o PointerEventsOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
+// ResultOpt applies to FeBlend
+func (o ResultOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Result = o.v
+}
+
+// ShapeRenderingOpt applies to FeBlend
+func (o ShapeRenderingOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// StopColorOpt applies to FeBlend
+func (o StopColorOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to FeBlend
+func (o StopOpacityOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to FeBlend
+func (o StrokeOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to FeBlend
+func (o StrokeDasharrayOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to FeBlend
+func (o StrokeDashoffsetOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to FeBlend
+func (o StrokeLinecapOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to FeBlend
+func (o StrokeLinejoinOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to FeBlend
+func (o StrokeMiterlimitOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to FeBlend
+func (o StrokeOpacityOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to FeBlend
+func (o StrokeWidthOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// TextAnchorOpt applies to FeBlend
+func (o TextAnchorOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to FeBlend
+func (o TextDecorationOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to FeBlend
+func (o TextRenderingOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
+// UnicodeBidiOpt applies to FeBlend
+func (o UnicodeBidiOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// VisibilityOpt applies to FeBlend
+func (o VisibilityOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WidthOpt applies to FeBlend
+func (o WidthOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Width = o.v
+}
+
+// WordSpacingOpt applies to FeBlend
+func (o WordSpacingOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to FeBlend
+func (o WritingModeOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.WritingMode = o.v
+}
+
+// XOpt applies to FeBlend
+func (o XOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.X = o.v
+}
+
+// YOpt applies to FeBlend
+func (o YOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+	a.Y = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgFeBlendAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
+	if a.Height != "" {
+		Attr(sb, "height", a.Height)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
 	if a.In != "" {
 		Attr(sb, "in", a.In)
 	}
 	if a.In2 != "" {
 		Attr(sb, "in2", a.In2)
 	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
 	if a.Mode != "" {
 		Attr(sb, "mode", a.Mode)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
+	if a.Result != "" {
+		Attr(sb, "result", a.Result)
+	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.Width != "" {
+		Attr(sb, "width", a.Width)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
+	}
+	if a.X != "" {
+		Attr(sb, "x", a.X)
+	}
+	if a.Y != "" {
+		Attr(sb, "y", a.Y)
 	}
 }

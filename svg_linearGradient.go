@@ -9,13 +9,74 @@ import (
 // SvgLinearGradientAttrs holds the attributes for the linearGradient SVG element
 type SvgLinearGradientAttrs struct {
 	GlobalAttrs
-	GradientTransform string
-	GradientUnits     string
-	SpreadMethod      string
-	X1                string
-	X2                string
-	Y1                string
-	Y2                string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	ExternalResourcesRequired  string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	GradientTransform          string
+	GradientUnits              string
+	Href                       string
+	ImageRendering             string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	Opacity                    string
+	Overflow                   string
+	PointerEvents              string
+	ShapeRendering             string
+	SpreadMethod               string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	UnicodeBidi                string
+	Visibility                 string
+	WordSpacing                string
+	WritingMode                string
+	X1                         string
+	X2                         string
+	Y1                         string
+	Y2                         string
 }
 
 // SvgLinearGradientArg interface for linearGradient element arguments
@@ -49,6 +110,161 @@ func (g Global) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to LinearGradient
+func (o AlignmentBaselineOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to LinearGradient
+func (o BaselineShiftOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to LinearGradient
+func (o ClipOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to LinearGradient
+func (o ClipPathOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to LinearGradient
+func (o ClipRuleOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to LinearGradient
+func (o ColorOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to LinearGradient
+func (o ColorInterpolationOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to LinearGradient
+func (o ColorInterpolationFiltersOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to LinearGradient
+func (o ColorProfileOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to LinearGradient
+func (o ColorRenderingOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to LinearGradient
+func (o CursorOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to LinearGradient
+func (o DirectionOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to LinearGradient
+func (o DisplayOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to LinearGradient
+func (o DominantBaselineOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to LinearGradient
+func (o EnableBackgroundOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// ExternalResourcesRequiredOpt applies to LinearGradient
+func (o ExternalResourcesRequiredOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to LinearGradient
+func (o FillOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to LinearGradient
+func (o FillOpacityOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to LinearGradient
+func (o FillRuleOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to LinearGradient
+func (o FilterOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to LinearGradient
+func (o FloodColorOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to LinearGradient
+func (o FloodOpacityOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FontFamilyOpt applies to LinearGradient
+func (o FontFamilyOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to LinearGradient
+func (o FontSizeOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to LinearGradient
+func (o FontSizeAdjustOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to LinearGradient
+func (o FontStretchOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to LinearGradient
+func (o FontStyleOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to LinearGradient
+func (o FontVariantOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to LinearGradient
+func (o FontWeightOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to LinearGradient
+func (o GlyphOrientationHorizontalOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to LinearGradient
+func (o GlyphOrientationVerticalOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
 // GradientTransformOpt applies to LinearGradient
 func (o GradientTransformOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
 	a.GradientTransform = o.v
@@ -59,9 +275,159 @@ func (o GradientUnitsOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Co
 	a.GradientUnits = o.v
 }
 
+// HrefOpt applies to LinearGradient
+func (o HrefOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Href = o.v
+}
+
+// ImageRenderingOpt applies to LinearGradient
+func (o ImageRenderingOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
+// KerningOpt applies to LinearGradient
+func (o KerningOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to LinearGradient
+func (o LetterSpacingOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to LinearGradient
+func (o LightingColorOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to LinearGradient
+func (o MarkerEndOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to LinearGradient
+func (o MarkerMidOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to LinearGradient
+func (o MarkerStartOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to LinearGradient
+func (o MaskOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
+// OpacityOpt applies to LinearGradient
+func (o OpacityOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to LinearGradient
+func (o OverflowOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PointerEventsOpt applies to LinearGradient
+func (o PointerEventsOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
+// ShapeRenderingOpt applies to LinearGradient
+func (o ShapeRenderingOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
 // SpreadMethodOpt applies to LinearGradient
 func (o SpreadMethodOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
 	a.SpreadMethod = o.v
+}
+
+// StopColorOpt applies to LinearGradient
+func (o StopColorOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to LinearGradient
+func (o StopOpacityOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to LinearGradient
+func (o StrokeOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to LinearGradient
+func (o StrokeDasharrayOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to LinearGradient
+func (o StrokeDashoffsetOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to LinearGradient
+func (o StrokeLinecapOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to LinearGradient
+func (o StrokeLinejoinOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to LinearGradient
+func (o StrokeMiterlimitOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to LinearGradient
+func (o StrokeOpacityOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to LinearGradient
+func (o StrokeWidthOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// TextAnchorOpt applies to LinearGradient
+func (o TextAnchorOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to LinearGradient
+func (o TextDecorationOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to LinearGradient
+func (o TextRenderingOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
+// UnicodeBidiOpt applies to LinearGradient
+func (o UnicodeBidiOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// VisibilityOpt applies to LinearGradient
+func (o VisibilityOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WordSpacingOpt applies to LinearGradient
+func (o WordSpacingOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to LinearGradient
+func (o WritingModeOpt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
+	a.WritingMode = o.v
 }
 
 // X1Opt applies to LinearGradient
@@ -87,14 +453,197 @@ func (o Y2Opt) applyLinearGradient(a *SvgLinearGradientAttrs, _ *[]Component) {
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgLinearGradientAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
 	if a.GradientTransform != "" {
 		Attr(sb, "gradientTransform", a.GradientTransform)
 	}
 	if a.GradientUnits != "" {
 		Attr(sb, "gradientUnits", a.GradientUnits)
 	}
+	if a.Href != "" {
+		Attr(sb, "href", a.Href)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
 	if a.SpreadMethod != "" {
 		Attr(sb, "spreadMethod", a.SpreadMethod)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
 	}
 	if a.X1 != "" {
 		Attr(sb, "x1", a.X1)

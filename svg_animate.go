@@ -9,25 +9,91 @@ import (
 // SvgAnimateAttrs holds the attributes for the animate SVG element
 type SvgAnimateAttrs struct {
 	GlobalAttrs
-	Accumulate    string
-	Additive      string
-	AttributeName string
-	AttributeType string
-	Begin         string
-	By            string
-	CalcMode      string
-	Dur           string
-	End           string
-	From          string
-	KeySplines    string
-	KeyTimes      string
-	Max           string
-	Min           string
-	RepeatCount   string
-	RepeatDur     string
-	Restart       string
-	To            string
-	Values        string
+	Accumulate                 string
+	Additive                   string
+	AlignmentBaseline          string
+	AttributeName              string
+	AttributeType              string
+	BaselineShift              string
+	Begin                      string
+	By                         string
+	CalcMode                   string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	Dur                        string
+	EnableBackground           string
+	End                        string
+	ExternalResourcesRequired  string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	From                       string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	Href                       string
+	ImageRendering             string
+	Kerning                    string
+	KeySplines                 string
+	KeyTimes                   string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	Max                        string
+	Min                        string
+	Opacity                    string
+	Overflow                   string
+	PointerEvents              string
+	RepeatCount                string
+	RepeatDur                  string
+	RequiredExtensions         string
+	RequiredFeatures           string
+	RequiredFonts              string
+	RequiredFormats            string
+	Restart                    string
+	ShapeRendering             string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	SystemLanguage             string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	To                         string
+	UnicodeBidi                string
+	Values                     string
+	Visibility                 string
+	WordSpacing                string
+	WritingMode                string
 }
 
 // SvgAnimateArg interface for animate element arguments
@@ -42,7 +108,7 @@ func defaultSvgAnimateAttrs() *SvgAnimateAttrs {
 	}
 }
 
-// SvgAnimate creates an SVG animate element (self-closing)
+// SvgAnimate creates an SVG animate element
 func SvgAnimate(args ...SvgAnimateArg) Node {
 	a := defaultSvgAnimateAttrs()
 	var kids []Component
@@ -52,7 +118,7 @@ func SvgAnimate(args ...SvgAnimateArg) Node {
 	return Node{
 		Tag:   "animate",
 		Attrs: a,
-		Void:  true,
+		Kids:  kids,
 	}
 }
 
@@ -71,6 +137,11 @@ func (o AdditiveOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Additive = o.v
 }
 
+// AlignmentBaselineOpt applies to Animate
+func (o AlignmentBaselineOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
 // AttributeNameOpt applies to Animate
 func (o AttributeNameOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.AttributeName = o.v
@@ -79,6 +150,11 @@ func (o AttributeNameOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 // AttributeTypeOpt applies to Animate
 func (o AttributeTypeOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.AttributeType = o.v
+}
+
+// BaselineShiftOpt applies to Animate
+func (o BaselineShiftOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
 }
 
 // BeginOpt applies to Animate
@@ -96,9 +172,74 @@ func (o CalcModeOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.CalcMode = o.v
 }
 
+// ClipOpt applies to Animate
+func (o ClipOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to Animate
+func (o ClipPathOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to Animate
+func (o ClipRuleOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to Animate
+func (o ColorOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to Animate
+func (o ColorInterpolationOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to Animate
+func (o ColorInterpolationFiltersOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to Animate
+func (o ColorProfileOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to Animate
+func (o ColorRenderingOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to Animate
+func (o CursorOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to Animate
+func (o DirectionOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to Animate
+func (o DisplayOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to Animate
+func (o DominantBaselineOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
 // DurOpt applies to Animate
 func (o DurOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Dur = o.v
+}
+
+// EnableBackgroundOpt applies to Animate
+func (o EnableBackgroundOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
 }
 
 // EndOpt applies to Animate
@@ -106,9 +247,104 @@ func (o EndOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.End = o.v
 }
 
+// ExternalResourcesRequiredOpt applies to Animate
+func (o ExternalResourcesRequiredOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to Animate
+func (o FillOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to Animate
+func (o FillOpacityOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to Animate
+func (o FillRuleOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to Animate
+func (o FilterOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to Animate
+func (o FloodColorOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to Animate
+func (o FloodOpacityOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FontFamilyOpt applies to Animate
+func (o FontFamilyOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to Animate
+func (o FontSizeOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to Animate
+func (o FontSizeAdjustOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to Animate
+func (o FontStretchOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to Animate
+func (o FontStyleOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to Animate
+func (o FontVariantOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to Animate
+func (o FontWeightOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
 // FromOpt applies to Animate
 func (o FromOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.From = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to Animate
+func (o GlyphOrientationHorizontalOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to Animate
+func (o GlyphOrientationVerticalOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
+// HrefOpt applies to Animate
+func (o HrefOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Href = o.v
+}
+
+// ImageRenderingOpt applies to Animate
+func (o ImageRenderingOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
+// KerningOpt applies to Animate
+func (o KerningOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Kerning = o.v
 }
 
 // KeySplinesOpt applies to Animate
@@ -121,6 +357,36 @@ func (o KeyTimesOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.KeyTimes = o.v
 }
 
+// LetterSpacingOpt applies to Animate
+func (o LetterSpacingOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to Animate
+func (o LightingColorOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to Animate
+func (o MarkerEndOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to Animate
+func (o MarkerMidOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to Animate
+func (o MarkerStartOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to Animate
+func (o MaskOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
 // MaxOpt applies to Animate
 func (o MaxOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Max = o.v
@@ -129,6 +395,21 @@ func (o MaxOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 // MinOpt applies to Animate
 func (o MinOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Min = o.v
+}
+
+// OpacityOpt applies to Animate
+func (o OpacityOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to Animate
+func (o OverflowOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PointerEventsOpt applies to Animate
+func (o PointerEventsOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
 }
 
 // RepeatCountOpt applies to Animate
@@ -141,9 +422,104 @@ func (o RepeatDurOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.RepeatDur = o.v
 }
 
+// RequiredExtensionsOpt applies to Animate
+func (o RequiredExtensionsOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.RequiredExtensions = o.v
+}
+
+// RequiredFeaturesOpt applies to Animate
+func (o RequiredFeaturesOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.RequiredFeatures = o.v
+}
+
+// RequiredFontsOpt applies to Animate
+func (o RequiredFontsOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.RequiredFonts = o.v
+}
+
+// RequiredFormatsOpt applies to Animate
+func (o RequiredFormatsOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.RequiredFormats = o.v
+}
+
 // RestartOpt applies to Animate
 func (o RestartOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Restart = o.v
+}
+
+// ShapeRenderingOpt applies to Animate
+func (o ShapeRenderingOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// StopColorOpt applies to Animate
+func (o StopColorOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to Animate
+func (o StopOpacityOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to Animate
+func (o StrokeOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to Animate
+func (o StrokeDasharrayOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to Animate
+func (o StrokeDashoffsetOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to Animate
+func (o StrokeLinecapOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to Animate
+func (o StrokeLinejoinOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to Animate
+func (o StrokeMiterlimitOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to Animate
+func (o StrokeOpacityOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to Animate
+func (o StrokeWidthOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// SystemLanguageOpt applies to Animate
+func (o SystemLanguageOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.SystemLanguage = o.v
+}
+
+// TextAnchorOpt applies to Animate
+func (o TextAnchorOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to Animate
+func (o TextDecorationOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to Animate
+func (o TextRenderingOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.TextRendering = o.v
 }
 
 // ToOpt applies to Animate
@@ -151,9 +527,29 @@ func (o ToOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.To = o.v
 }
 
+// UnicodeBidiOpt applies to Animate
+func (o UnicodeBidiOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
 // ValuesOpt applies to Animate
 func (o ValuesOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
 	a.Values = o.v
+}
+
+// VisibilityOpt applies to Animate
+func (o VisibilityOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WordSpacingOpt applies to Animate
+func (o WordSpacingOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to Animate
+func (o WritingModeOpt) applyAnimate(a *SvgAnimateAttrs, _ *[]Component) {
+	a.WritingMode = o.v
 }
 
 // WriteAttrs writes the SVG attributes to the string builder
@@ -165,11 +561,17 @@ func (a *SvgAnimateAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Additive != "" {
 		Attr(sb, "additive", a.Additive)
 	}
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
 	if a.AttributeName != "" {
 		Attr(sb, "attributeName", a.AttributeName)
 	}
 	if a.AttributeType != "" {
 		Attr(sb, "attributeType", a.AttributeType)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
 	}
 	if a.Begin != "" {
 		Attr(sb, "begin", a.Begin)
@@ -180,14 +582,110 @@ func (a *SvgAnimateAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.CalcMode != "" {
 		Attr(sb, "calcMode", a.CalcMode)
 	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
 	if a.Dur != "" {
 		Attr(sb, "dur", a.Dur)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
 	}
 	if a.End != "" {
 		Attr(sb, "end", a.End)
 	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
 	if a.From != "" {
 		Attr(sb, "from", a.From)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
+	if a.Href != "" {
+		Attr(sb, "href", a.Href)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
 	}
 	if a.KeySplines != "" {
 		Attr(sb, "keySplines", a.KeySplines)
@@ -195,11 +693,38 @@ func (a *SvgAnimateAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.KeyTimes != "" {
 		Attr(sb, "keyTimes", a.KeyTimes)
 	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
 	if a.Max != "" {
 		Attr(sb, "max", a.Max)
 	}
 	if a.Min != "" {
 		Attr(sb, "min", a.Min)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
 	}
 	if a.RepeatCount != "" {
 		Attr(sb, "repeatCount", a.RepeatCount)
@@ -207,13 +732,82 @@ func (a *SvgAnimateAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.RepeatDur != "" {
 		Attr(sb, "repeatDur", a.RepeatDur)
 	}
+	if a.RequiredExtensions != "" {
+		Attr(sb, "requiredExtensions", a.RequiredExtensions)
+	}
+	if a.RequiredFeatures != "" {
+		Attr(sb, "requiredFeatures", a.RequiredFeatures)
+	}
+	if a.RequiredFonts != "" {
+		Attr(sb, "requiredFonts", a.RequiredFonts)
+	}
+	if a.RequiredFormats != "" {
+		Attr(sb, "requiredFormats", a.RequiredFormats)
+	}
 	if a.Restart != "" {
 		Attr(sb, "restart", a.Restart)
+	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.SystemLanguage != "" {
+		Attr(sb, "systemLanguage", a.SystemLanguage)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
 	}
 	if a.To != "" {
 		Attr(sb, "to", a.To)
 	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
 	if a.Values != "" {
 		Attr(sb, "values", a.Values)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
 	}
 }

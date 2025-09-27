@@ -9,9 +9,73 @@ import (
 // SvgFeColorMatrixAttrs holds the attributes for the feColorMatrix SVG element
 type SvgFeColorMatrixAttrs struct {
 	GlobalAttrs
-	In     string
-	Type   string
-	Values string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	Height                     string
+	ImageRendering             string
+	In                         string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	Opacity                    string
+	Overflow                   string
+	PointerEvents              string
+	Result                     string
+	ShapeRendering             string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	Type                       string
+	UnicodeBidi                string
+	Values                     string
+	Visibility                 string
+	Width                      string
+	WordSpacing                string
+	WritingMode                string
+	X                          string
+	Y                          string
 }
 
 // SvgFeColorMatrixArg interface for feColorMatrix element arguments
@@ -45,9 +109,294 @@ func (g Global) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to FeColorMatrix
+func (o AlignmentBaselineOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to FeColorMatrix
+func (o BaselineShiftOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to FeColorMatrix
+func (o ClipOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to FeColorMatrix
+func (o ClipPathOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to FeColorMatrix
+func (o ClipRuleOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to FeColorMatrix
+func (o ColorOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to FeColorMatrix
+func (o ColorInterpolationOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to FeColorMatrix
+func (o ColorInterpolationFiltersOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to FeColorMatrix
+func (o ColorProfileOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to FeColorMatrix
+func (o ColorRenderingOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to FeColorMatrix
+func (o CursorOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to FeColorMatrix
+func (o DirectionOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to FeColorMatrix
+func (o DisplayOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to FeColorMatrix
+func (o DominantBaselineOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to FeColorMatrix
+func (o EnableBackgroundOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// FillOpt applies to FeColorMatrix
+func (o FillOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to FeColorMatrix
+func (o FillOpacityOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to FeColorMatrix
+func (o FillRuleOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to FeColorMatrix
+func (o FilterOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to FeColorMatrix
+func (o FloodColorOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to FeColorMatrix
+func (o FloodOpacityOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FontFamilyOpt applies to FeColorMatrix
+func (o FontFamilyOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to FeColorMatrix
+func (o FontSizeOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to FeColorMatrix
+func (o FontSizeAdjustOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to FeColorMatrix
+func (o FontStretchOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to FeColorMatrix
+func (o FontStyleOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to FeColorMatrix
+func (o FontVariantOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to FeColorMatrix
+func (o FontWeightOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to FeColorMatrix
+func (o GlyphOrientationHorizontalOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to FeColorMatrix
+func (o GlyphOrientationVerticalOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
+// HeightOpt applies to FeColorMatrix
+func (o HeightOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Height = o.v
+}
+
+// ImageRenderingOpt applies to FeColorMatrix
+func (o ImageRenderingOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
 // InOpt applies to FeColorMatrix
 func (o InOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.In = o.v
+}
+
+// KerningOpt applies to FeColorMatrix
+func (o KerningOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to FeColorMatrix
+func (o LetterSpacingOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to FeColorMatrix
+func (o LightingColorOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to FeColorMatrix
+func (o MarkerEndOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to FeColorMatrix
+func (o MarkerMidOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to FeColorMatrix
+func (o MarkerStartOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to FeColorMatrix
+func (o MaskOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
+// OpacityOpt applies to FeColorMatrix
+func (o OpacityOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to FeColorMatrix
+func (o OverflowOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PointerEventsOpt applies to FeColorMatrix
+func (o PointerEventsOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
+// ResultOpt applies to FeColorMatrix
+func (o ResultOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Result = o.v
+}
+
+// ShapeRenderingOpt applies to FeColorMatrix
+func (o ShapeRenderingOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// StopColorOpt applies to FeColorMatrix
+func (o StopColorOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to FeColorMatrix
+func (o StopOpacityOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to FeColorMatrix
+func (o StrokeOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to FeColorMatrix
+func (o StrokeDasharrayOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to FeColorMatrix
+func (o StrokeDashoffsetOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to FeColorMatrix
+func (o StrokeLinecapOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to FeColorMatrix
+func (o StrokeLinejoinOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to FeColorMatrix
+func (o StrokeMiterlimitOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to FeColorMatrix
+func (o StrokeOpacityOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to FeColorMatrix
+func (o StrokeWidthOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// TextAnchorOpt applies to FeColorMatrix
+func (o TextAnchorOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to FeColorMatrix
+func (o TextDecorationOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to FeColorMatrix
+func (o TextRenderingOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.TextRendering = o.v
 }
 
 // TypeOpt applies to FeColorMatrix
@@ -55,21 +404,248 @@ func (o TypeOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 
+// UnicodeBidiOpt applies to FeColorMatrix
+func (o UnicodeBidiOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
 // ValuesOpt applies to FeColorMatrix
 func (o ValuesOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Values = o.v
 }
 
+// VisibilityOpt applies to FeColorMatrix
+func (o VisibilityOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WidthOpt applies to FeColorMatrix
+func (o WidthOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Width = o.v
+}
+
+// WordSpacingOpt applies to FeColorMatrix
+func (o WordSpacingOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to FeColorMatrix
+func (o WritingModeOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.WritingMode = o.v
+}
+
+// XOpt applies to FeColorMatrix
+func (o XOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.X = o.v
+}
+
+// YOpt applies to FeColorMatrix
+func (o YOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+	a.Y = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgFeColorMatrixAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
+	if a.Height != "" {
+		Attr(sb, "height", a.Height)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
 	if a.In != "" {
 		Attr(sb, "in", a.In)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
+	if a.Result != "" {
+		Attr(sb, "result", a.Result)
+	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
 	}
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)
 	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
 	if a.Values != "" {
 		Attr(sb, "values", a.Values)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.Width != "" {
+		Attr(sb, "width", a.Width)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
+	}
+	if a.X != "" {
+		Attr(sb, "x", a.X)
+	}
+	if a.Y != "" {
+		Attr(sb, "y", a.Y)
 	}
 }

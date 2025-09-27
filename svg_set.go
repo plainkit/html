@@ -9,17 +9,25 @@ import (
 // SvgSetAttrs holds the attributes for the set SVG element
 type SvgSetAttrs struct {
 	GlobalAttrs
-	AttributeName string
-	AttributeType string
-	Begin         string
-	Dur           string
-	End           string
-	Max           string
-	Min           string
-	RepeatCount   string
-	RepeatDur     string
-	Restart       string
-	To            string
+	AttributeName             string
+	AttributeType             string
+	Begin                     string
+	Dur                       string
+	End                       string
+	ExternalResourcesRequired string
+	Fill                      string
+	Href                      string
+	Max                       string
+	Min                       string
+	RepeatCount               string
+	RepeatDur                 string
+	RequiredExtensions        string
+	RequiredFeatures          string
+	RequiredFonts             string
+	RequiredFormats           string
+	Restart                   string
+	SystemLanguage            string
+	To                        string
 }
 
 // SvgSetArg interface for set element arguments
@@ -78,6 +86,21 @@ func (o EndOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.End = o.v
 }
 
+// ExternalResourcesRequiredOpt applies to Set
+func (o ExternalResourcesRequiredOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to Set
+func (o FillOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// HrefOpt applies to Set
+func (o HrefOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+	a.Href = o.v
+}
+
 // MaxOpt applies to Set
 func (o MaxOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Max = o.v
@@ -98,9 +121,34 @@ func (o RepeatDurOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.RepeatDur = o.v
 }
 
+// RequiredExtensionsOpt applies to Set
+func (o RequiredExtensionsOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+	a.RequiredExtensions = o.v
+}
+
+// RequiredFeaturesOpt applies to Set
+func (o RequiredFeaturesOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+	a.RequiredFeatures = o.v
+}
+
+// RequiredFontsOpt applies to Set
+func (o RequiredFontsOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+	a.RequiredFonts = o.v
+}
+
+// RequiredFormatsOpt applies to Set
+func (o RequiredFormatsOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+	a.RequiredFormats = o.v
+}
+
 // RestartOpt applies to Set
 func (o RestartOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Restart = o.v
+}
+
+// SystemLanguageOpt applies to Set
+func (o SystemLanguageOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+	a.SystemLanguage = o.v
 }
 
 // ToOpt applies to Set
@@ -126,6 +174,15 @@ func (a *SvgSetAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.End != "" {
 		Attr(sb, "end", a.End)
 	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.Href != "" {
+		Attr(sb, "href", a.Href)
+	}
 	if a.Max != "" {
 		Attr(sb, "max", a.Max)
 	}
@@ -138,8 +195,23 @@ func (a *SvgSetAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.RepeatDur != "" {
 		Attr(sb, "repeatDur", a.RepeatDur)
 	}
+	if a.RequiredExtensions != "" {
+		Attr(sb, "requiredExtensions", a.RequiredExtensions)
+	}
+	if a.RequiredFeatures != "" {
+		Attr(sb, "requiredFeatures", a.RequiredFeatures)
+	}
+	if a.RequiredFonts != "" {
+		Attr(sb, "requiredFonts", a.RequiredFonts)
+	}
+	if a.RequiredFormats != "" {
+		Attr(sb, "requiredFormats", a.RequiredFormats)
+	}
 	if a.Restart != "" {
 		Attr(sb, "restart", a.Restart)
+	}
+	if a.SystemLanguage != "" {
+		Attr(sb, "systemLanguage", a.SystemLanguage)
 	}
 	if a.To != "" {
 		Attr(sb, "to", a.To)

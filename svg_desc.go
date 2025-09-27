@@ -9,6 +9,11 @@ import (
 // SvgDescAttrs holds the attributes for the desc SVG element
 type SvgDescAttrs struct {
 	GlobalAttrs
+	RequiredExtensions string
+	RequiredFeatures   string
+	RequiredFonts      string
+	RequiredFormats    string
+	SystemLanguage     string
 }
 
 // SvgDescArg interface for desc element arguments
@@ -42,7 +47,47 @@ func (g Global) applyDesc(a *SvgDescAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// RequiredExtensionsOpt applies to Desc
+func (o RequiredExtensionsOpt) applyDesc(a *SvgDescAttrs, _ *[]Component) {
+	a.RequiredExtensions = o.v
+}
+
+// RequiredFeaturesOpt applies to Desc
+func (o RequiredFeaturesOpt) applyDesc(a *SvgDescAttrs, _ *[]Component) {
+	a.RequiredFeatures = o.v
+}
+
+// RequiredFontsOpt applies to Desc
+func (o RequiredFontsOpt) applyDesc(a *SvgDescAttrs, _ *[]Component) {
+	a.RequiredFonts = o.v
+}
+
+// RequiredFormatsOpt applies to Desc
+func (o RequiredFormatsOpt) applyDesc(a *SvgDescAttrs, _ *[]Component) {
+	a.RequiredFormats = o.v
+}
+
+// SystemLanguageOpt applies to Desc
+func (o SystemLanguageOpt) applyDesc(a *SvgDescAttrs, _ *[]Component) {
+	a.SystemLanguage = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgDescAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.RequiredExtensions != "" {
+		Attr(sb, "requiredExtensions", a.RequiredExtensions)
+	}
+	if a.RequiredFeatures != "" {
+		Attr(sb, "requiredFeatures", a.RequiredFeatures)
+	}
+	if a.RequiredFonts != "" {
+		Attr(sb, "requiredFonts", a.RequiredFonts)
+	}
+	if a.RequiredFormats != "" {
+		Attr(sb, "requiredFormats", a.RequiredFormats)
+	}
+	if a.SystemLanguage != "" {
+		Attr(sb, "systemLanguage", a.SystemLanguage)
+	}
 }

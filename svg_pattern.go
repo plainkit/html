@@ -9,14 +9,79 @@ import (
 // SvgPatternAttrs holds the attributes for the pattern SVG element
 type SvgPatternAttrs struct {
 	GlobalAttrs
-	Height              string
-	Href                string
-	PatternContentUnits string
-	PatternTransform    string
-	PatternUnits        string
-	Width               string
-	X                   string
-	Y                   string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	ExternalResourcesRequired  string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	Height                     string
+	Href                       string
+	ImageRendering             string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	Opacity                    string
+	Overflow                   string
+	PatternContentUnits        string
+	PatternTransform           string
+	PatternUnits               string
+	PointerEvents              string
+	PreserveAspectRatio        string
+	RequiredExtensions         string
+	RequiredFeatures           string
+	ShapeRendering             string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	SystemLanguage             string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	UnicodeBidi                string
+	ViewBox                    string
+	Visibility                 string
+	Width                      string
+	WordSpacing                string
+	WritingMode                string
+	X                          string
+	Y                          string
 }
 
 // SvgPatternArg interface for pattern element arguments
@@ -50,6 +115,161 @@ func (g Global) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to Pattern
+func (o AlignmentBaselineOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to Pattern
+func (o BaselineShiftOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to Pattern
+func (o ClipOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to Pattern
+func (o ClipPathOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to Pattern
+func (o ClipRuleOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to Pattern
+func (o ColorOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to Pattern
+func (o ColorInterpolationOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to Pattern
+func (o ColorInterpolationFiltersOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to Pattern
+func (o ColorProfileOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to Pattern
+func (o ColorRenderingOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to Pattern
+func (o CursorOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to Pattern
+func (o DirectionOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to Pattern
+func (o DisplayOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to Pattern
+func (o DominantBaselineOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to Pattern
+func (o EnableBackgroundOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// ExternalResourcesRequiredOpt applies to Pattern
+func (o ExternalResourcesRequiredOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to Pattern
+func (o FillOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to Pattern
+func (o FillOpacityOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to Pattern
+func (o FillRuleOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to Pattern
+func (o FilterOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to Pattern
+func (o FloodColorOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to Pattern
+func (o FloodOpacityOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FontFamilyOpt applies to Pattern
+func (o FontFamilyOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to Pattern
+func (o FontSizeOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to Pattern
+func (o FontSizeAdjustOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to Pattern
+func (o FontStretchOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to Pattern
+func (o FontStyleOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to Pattern
+func (o FontVariantOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to Pattern
+func (o FontWeightOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to Pattern
+func (o GlyphOrientationHorizontalOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to Pattern
+func (o GlyphOrientationVerticalOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
 // HeightOpt applies to Pattern
 func (o HeightOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Height = o.v
@@ -58,6 +278,56 @@ func (o HeightOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 // HrefOpt applies to Pattern
 func (o HrefOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Href = o.v
+}
+
+// ImageRenderingOpt applies to Pattern
+func (o ImageRenderingOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
+// KerningOpt applies to Pattern
+func (o KerningOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to Pattern
+func (o LetterSpacingOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to Pattern
+func (o LightingColorOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to Pattern
+func (o MarkerEndOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to Pattern
+func (o MarkerMidOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to Pattern
+func (o MarkerStartOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to Pattern
+func (o MaskOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
+// OpacityOpt applies to Pattern
+func (o OpacityOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to Pattern
+func (o OverflowOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.Overflow = o.v
 }
 
 // PatternContentUnitsOpt applies to Pattern
@@ -75,9 +345,129 @@ func (o PatternUnitsOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.PatternUnits = o.v
 }
 
+// PointerEventsOpt applies to Pattern
+func (o PointerEventsOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
+// PreserveAspectRatioOpt applies to Pattern
+func (o PreserveAspectRatioOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.PreserveAspectRatio = o.v
+}
+
+// RequiredExtensionsOpt applies to Pattern
+func (o RequiredExtensionsOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.RequiredExtensions = o.v
+}
+
+// RequiredFeaturesOpt applies to Pattern
+func (o RequiredFeaturesOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.RequiredFeatures = o.v
+}
+
+// ShapeRenderingOpt applies to Pattern
+func (o ShapeRenderingOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// StopColorOpt applies to Pattern
+func (o StopColorOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to Pattern
+func (o StopOpacityOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to Pattern
+func (o StrokeOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to Pattern
+func (o StrokeDasharrayOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to Pattern
+func (o StrokeDashoffsetOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to Pattern
+func (o StrokeLinecapOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to Pattern
+func (o StrokeLinejoinOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to Pattern
+func (o StrokeMiterlimitOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to Pattern
+func (o StrokeOpacityOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to Pattern
+func (o StrokeWidthOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// SystemLanguageOpt applies to Pattern
+func (o SystemLanguageOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.SystemLanguage = o.v
+}
+
+// TextAnchorOpt applies to Pattern
+func (o TextAnchorOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to Pattern
+func (o TextDecorationOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to Pattern
+func (o TextRenderingOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
+// UnicodeBidiOpt applies to Pattern
+func (o UnicodeBidiOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// ViewBoxOpt applies to Pattern
+func (o ViewBoxOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.ViewBox = o.v
+}
+
+// VisibilityOpt applies to Pattern
+func (o VisibilityOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
 // WidthOpt applies to Pattern
 func (o WidthOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Width = o.v
+}
+
+// WordSpacingOpt applies to Pattern
+func (o WordSpacingOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to Pattern
+func (o WritingModeOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+	a.WritingMode = o.v
 }
 
 // XOpt applies to Pattern
@@ -93,11 +483,134 @@ func (o YOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgPatternAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
 	if a.Href != "" {
 		Attr(sb, "href", a.Href)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
 	}
 	if a.PatternContentUnits != "" {
 		Attr(sb, "patternContentUnits", a.PatternContentUnits)
@@ -108,8 +621,80 @@ func (a *SvgPatternAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.PatternUnits != "" {
 		Attr(sb, "patternUnits", a.PatternUnits)
 	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
+	if a.PreserveAspectRatio != "" {
+		Attr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
+	}
+	if a.RequiredExtensions != "" {
+		Attr(sb, "requiredExtensions", a.RequiredExtensions)
+	}
+	if a.RequiredFeatures != "" {
+		Attr(sb, "requiredFeatures", a.RequiredFeatures)
+	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.SystemLanguage != "" {
+		Attr(sb, "systemLanguage", a.SystemLanguage)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.ViewBox != "" {
+		Attr(sb, "viewBox", a.ViewBox)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
 	}
 	if a.X != "" {
 		Attr(sb, "x", a.X)

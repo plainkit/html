@@ -9,11 +9,75 @@ import (
 // SvgFeDisplacementMapAttrs holds the attributes for the feDisplacementMap SVG element
 type SvgFeDisplacementMapAttrs struct {
 	GlobalAttrs
-	In               string
-	In2              string
-	Scale            string
-	XChannelSelector string
-	YChannelSelector string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	Height                     string
+	ImageRendering             string
+	In                         string
+	In2                        string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	Opacity                    string
+	Overflow                   string
+	PointerEvents              string
+	Result                     string
+	Scale                      string
+	ShapeRendering             string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	UnicodeBidi                string
+	Visibility                 string
+	Width                      string
+	WordSpacing                string
+	WritingMode                string
+	X                          string
+	XChannelSelector           string
+	Y                          string
+	YChannelSelector           string
 }
 
 // SvgFeDisplacementMapArg interface for feDisplacementMap element arguments
@@ -47,6 +111,166 @@ func (g Global) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Compon
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to FeDisplacementMap
+func (o AlignmentBaselineOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to FeDisplacementMap
+func (o BaselineShiftOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to FeDisplacementMap
+func (o ClipOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to FeDisplacementMap
+func (o ClipPathOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to FeDisplacementMap
+func (o ClipRuleOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to FeDisplacementMap
+func (o ColorOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to FeDisplacementMap
+func (o ColorInterpolationOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to FeDisplacementMap
+func (o ColorInterpolationFiltersOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to FeDisplacementMap
+func (o ColorProfileOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to FeDisplacementMap
+func (o ColorRenderingOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to FeDisplacementMap
+func (o CursorOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to FeDisplacementMap
+func (o DirectionOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to FeDisplacementMap
+func (o DisplayOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to FeDisplacementMap
+func (o DominantBaselineOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to FeDisplacementMap
+func (o EnableBackgroundOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// FillOpt applies to FeDisplacementMap
+func (o FillOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to FeDisplacementMap
+func (o FillOpacityOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to FeDisplacementMap
+func (o FillRuleOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to FeDisplacementMap
+func (o FilterOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to FeDisplacementMap
+func (o FloodColorOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to FeDisplacementMap
+func (o FloodOpacityOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FontFamilyOpt applies to FeDisplacementMap
+func (o FontFamilyOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to FeDisplacementMap
+func (o FontSizeOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to FeDisplacementMap
+func (o FontSizeAdjustOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to FeDisplacementMap
+func (o FontStretchOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to FeDisplacementMap
+func (o FontStyleOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to FeDisplacementMap
+func (o FontVariantOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to FeDisplacementMap
+func (o FontWeightOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to FeDisplacementMap
+func (o GlyphOrientationHorizontalOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to FeDisplacementMap
+func (o GlyphOrientationVerticalOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
+// HeightOpt applies to FeDisplacementMap
+func (o HeightOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Height = o.v
+}
+
+// ImageRenderingOpt applies to FeDisplacementMap
+func (o ImageRenderingOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
 // InOpt applies to FeDisplacementMap
 func (o InOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
 	a.In = o.v
@@ -57,14 +281,174 @@ func (o In2Opt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Compon
 	a.In2 = o.v
 }
 
+// KerningOpt applies to FeDisplacementMap
+func (o KerningOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to FeDisplacementMap
+func (o LetterSpacingOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to FeDisplacementMap
+func (o LightingColorOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to FeDisplacementMap
+func (o MarkerEndOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to FeDisplacementMap
+func (o MarkerMidOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to FeDisplacementMap
+func (o MarkerStartOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to FeDisplacementMap
+func (o MaskOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
+// OpacityOpt applies to FeDisplacementMap
+func (o OpacityOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to FeDisplacementMap
+func (o OverflowOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PointerEventsOpt applies to FeDisplacementMap
+func (o PointerEventsOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
+// ResultOpt applies to FeDisplacementMap
+func (o ResultOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Result = o.v
+}
+
 // ScaleOpt applies to FeDisplacementMap
 func (o ScaleOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
 	a.Scale = o.v
 }
 
+// ShapeRenderingOpt applies to FeDisplacementMap
+func (o ShapeRenderingOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// StopColorOpt applies to FeDisplacementMap
+func (o StopColorOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to FeDisplacementMap
+func (o StopOpacityOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to FeDisplacementMap
+func (o StrokeOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to FeDisplacementMap
+func (o StrokeDasharrayOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to FeDisplacementMap
+func (o StrokeDashoffsetOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to FeDisplacementMap
+func (o StrokeLinecapOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to FeDisplacementMap
+func (o StrokeLinejoinOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to FeDisplacementMap
+func (o StrokeMiterlimitOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to FeDisplacementMap
+func (o StrokeOpacityOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to FeDisplacementMap
+func (o StrokeWidthOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// TextAnchorOpt applies to FeDisplacementMap
+func (o TextAnchorOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to FeDisplacementMap
+func (o TextDecorationOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to FeDisplacementMap
+func (o TextRenderingOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
+// UnicodeBidiOpt applies to FeDisplacementMap
+func (o UnicodeBidiOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// VisibilityOpt applies to FeDisplacementMap
+func (o VisibilityOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WidthOpt applies to FeDisplacementMap
+func (o WidthOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Width = o.v
+}
+
+// WordSpacingOpt applies to FeDisplacementMap
+func (o WordSpacingOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to FeDisplacementMap
+func (o WritingModeOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.WritingMode = o.v
+}
+
+// XOpt applies to FeDisplacementMap
+func (o XOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.X = o.v
+}
+
 // XChannelSelectorOpt applies to FeDisplacementMap
 func (o XChannelSelectorOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
 	a.XChannelSelector = o.v
+}
+
+// YOpt applies to FeDisplacementMap
+func (o YOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs, _ *[]Component) {
+	a.Y = o.v
 }
 
 // YChannelSelectorOpt applies to FeDisplacementMap
@@ -75,17 +459,209 @@ func (o YChannelSelectorOpt) applyFeDisplacementMap(a *SvgFeDisplacementMapAttrs
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgFeDisplacementMapAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
+	if a.Height != "" {
+		Attr(sb, "height", a.Height)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
 	if a.In != "" {
 		Attr(sb, "in", a.In)
 	}
 	if a.In2 != "" {
 		Attr(sb, "in2", a.In2)
 	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
+	if a.Result != "" {
+		Attr(sb, "result", a.Result)
+	}
 	if a.Scale != "" {
 		Attr(sb, "scale", a.Scale)
 	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.Width != "" {
+		Attr(sb, "width", a.Width)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
+	}
+	if a.X != "" {
+		Attr(sb, "x", a.X)
+	}
 	if a.XChannelSelector != "" {
 		Attr(sb, "xChannelSelector", a.XChannelSelector)
+	}
+	if a.Y != "" {
+		Attr(sb, "y", a.Y)
 	}
 	if a.YChannelSelector != "" {
 		Attr(sb, "yChannelSelector", a.YChannelSelector)

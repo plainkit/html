@@ -9,12 +9,73 @@ import (
 // SvgFilterAttrs holds the attributes for the filter SVG element
 type SvgFilterAttrs struct {
 	GlobalAttrs
-	FilterUnits    string
-	Height         string
-	PrimitiveUnits string
-	Width          string
-	X              string
-	Y              string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	ExternalResourcesRequired  string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FilterRes                  string
+	FilterUnits                string
+	FloodColor                 string
+	FloodOpacity               string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	Height                     string
+	ImageRendering             string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	Opacity                    string
+	Overflow                   string
+	PointerEvents              string
+	PrimitiveUnits             string
+	ShapeRendering             string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	UnicodeBidi                string
+	Visibility                 string
+	Width                      string
+	WordSpacing                string
+	WritingMode                string
+	X                          string
+	Y                          string
 }
 
 // SvgFilterArg interface for filter element arguments
@@ -48,9 +109,169 @@ func (g Global) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to Filter
+func (o AlignmentBaselineOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to Filter
+func (o BaselineShiftOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to Filter
+func (o ClipOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to Filter
+func (o ClipPathOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to Filter
+func (o ClipRuleOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to Filter
+func (o ColorOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to Filter
+func (o ColorInterpolationOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to Filter
+func (o ColorInterpolationFiltersOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to Filter
+func (o ColorProfileOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to Filter
+func (o ColorRenderingOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to Filter
+func (o CursorOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to Filter
+func (o DirectionOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to Filter
+func (o DisplayOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to Filter
+func (o DominantBaselineOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to Filter
+func (o EnableBackgroundOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// ExternalResourcesRequiredOpt applies to Filter
+func (o ExternalResourcesRequiredOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to Filter
+func (o FillOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to Filter
+func (o FillOpacityOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to Filter
+func (o FillRuleOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to Filter
+func (o FilterOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FilterResOpt applies to Filter
+func (o FilterResOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.FilterRes = o.v
+}
+
 // FilterUnitsOpt applies to Filter
 func (o FilterUnitsOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FilterUnits = o.v
+}
+
+// FloodColorOpt applies to Filter
+func (o FloodColorOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to Filter
+func (o FloodOpacityOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FontFamilyOpt applies to Filter
+func (o FontFamilyOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to Filter
+func (o FontSizeOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to Filter
+func (o FontSizeAdjustOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to Filter
+func (o FontStretchOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to Filter
+func (o FontStyleOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to Filter
+func (o FontVariantOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to Filter
+func (o FontWeightOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to Filter
+func (o GlyphOrientationHorizontalOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to Filter
+func (o GlyphOrientationVerticalOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to Filter
@@ -58,14 +279,159 @@ func (o HeightOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
+// ImageRenderingOpt applies to Filter
+func (o ImageRenderingOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
+// KerningOpt applies to Filter
+func (o KerningOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to Filter
+func (o LetterSpacingOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to Filter
+func (o LightingColorOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to Filter
+func (o MarkerEndOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to Filter
+func (o MarkerMidOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to Filter
+func (o MarkerStartOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to Filter
+func (o MaskOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
+// OpacityOpt applies to Filter
+func (o OpacityOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to Filter
+func (o OverflowOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PointerEventsOpt applies to Filter
+func (o PointerEventsOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
 // PrimitiveUnitsOpt applies to Filter
 func (o PrimitiveUnitsOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.PrimitiveUnits = o.v
 }
 
+// ShapeRenderingOpt applies to Filter
+func (o ShapeRenderingOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// StopColorOpt applies to Filter
+func (o StopColorOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to Filter
+func (o StopOpacityOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to Filter
+func (o StrokeOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to Filter
+func (o StrokeDasharrayOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to Filter
+func (o StrokeDashoffsetOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to Filter
+func (o StrokeLinecapOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to Filter
+func (o StrokeLinejoinOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to Filter
+func (o StrokeMiterlimitOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to Filter
+func (o StrokeOpacityOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to Filter
+func (o StrokeWidthOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// TextAnchorOpt applies to Filter
+func (o TextAnchorOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to Filter
+func (o TextDecorationOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to Filter
+func (o TextRenderingOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
+// UnicodeBidiOpt applies to Filter
+func (o UnicodeBidiOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// VisibilityOpt applies to Filter
+func (o VisibilityOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
 // WidthOpt applies to Filter
 func (o WidthOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Width = o.v
+}
+
+// WordSpacingOpt applies to Filter
+func (o WordSpacingOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to Filter
+func (o WritingModeOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+	a.WritingMode = o.v
 }
 
 // XOpt applies to Filter
@@ -81,17 +447,200 @@ func (o YOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgFilterAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FilterRes != "" {
+		Attr(sb, "filterRes", a.FilterRes)
+	}
 	if a.FilterUnits != "" {
 		Attr(sb, "filterUnits", a.FilterUnits)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
 	}
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
 	if a.PrimitiveUnits != "" {
 		Attr(sb, "primitiveUnits", a.PrimitiveUnits)
 	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
 	}
 	if a.X != "" {
 		Attr(sb, "x", a.X)

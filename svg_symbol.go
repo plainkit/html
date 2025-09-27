@@ -9,7 +9,74 @@ import (
 // SvgSymbolAttrs holds the attributes for the symbol SVG element
 type SvgSymbolAttrs struct {
 	GlobalAttrs
-	PreserveAspectRatio string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	ExternalResourcesRequired  string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	Height                     string
+	ImageRendering             string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	Opacity                    string
+	Overflow                   string
+	PointerEvents              string
+	PreserveAspectRatio        string
+	RefX                       string
+	RefY                       string
+	ShapeRendering             string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	UnicodeBidi                string
+	ViewBox                    string
+	Visibility                 string
+	Width                      string
+	WordSpacing                string
+	WritingMode                string
+	X                          string
+	Y                          string
 }
 
 // SvgSymbolArg interface for symbol element arguments
@@ -43,15 +110,551 @@ func (g Global) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to Symbol
+func (o AlignmentBaselineOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to Symbol
+func (o BaselineShiftOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to Symbol
+func (o ClipOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to Symbol
+func (o ClipPathOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to Symbol
+func (o ClipRuleOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to Symbol
+func (o ColorOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to Symbol
+func (o ColorInterpolationOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to Symbol
+func (o ColorInterpolationFiltersOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to Symbol
+func (o ColorProfileOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to Symbol
+func (o ColorRenderingOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to Symbol
+func (o CursorOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to Symbol
+func (o DirectionOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to Symbol
+func (o DisplayOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to Symbol
+func (o DominantBaselineOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to Symbol
+func (o EnableBackgroundOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// ExternalResourcesRequiredOpt applies to Symbol
+func (o ExternalResourcesRequiredOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to Symbol
+func (o FillOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to Symbol
+func (o FillOpacityOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to Symbol
+func (o FillRuleOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to Symbol
+func (o FilterOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to Symbol
+func (o FloodColorOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to Symbol
+func (o FloodOpacityOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FontFamilyOpt applies to Symbol
+func (o FontFamilyOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to Symbol
+func (o FontSizeOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to Symbol
+func (o FontSizeAdjustOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to Symbol
+func (o FontStretchOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to Symbol
+func (o FontStyleOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to Symbol
+func (o FontVariantOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to Symbol
+func (o FontWeightOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to Symbol
+func (o GlyphOrientationHorizontalOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to Symbol
+func (o GlyphOrientationVerticalOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
+// HeightOpt applies to Symbol
+func (o HeightOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Height = o.v
+}
+
+// ImageRenderingOpt applies to Symbol
+func (o ImageRenderingOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
+// KerningOpt applies to Symbol
+func (o KerningOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to Symbol
+func (o LetterSpacingOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to Symbol
+func (o LightingColorOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to Symbol
+func (o MarkerEndOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to Symbol
+func (o MarkerMidOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to Symbol
+func (o MarkerStartOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to Symbol
+func (o MaskOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
+// OpacityOpt applies to Symbol
+func (o OpacityOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to Symbol
+func (o OverflowOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PointerEventsOpt applies to Symbol
+func (o PointerEventsOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
 // PreserveAspectRatioOpt applies to Symbol
 func (o PreserveAspectRatioOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
+// RefXOpt applies to Symbol
+func (o RefXOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.RefX = o.v
+}
+
+// RefYOpt applies to Symbol
+func (o RefYOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.RefY = o.v
+}
+
+// ShapeRenderingOpt applies to Symbol
+func (o ShapeRenderingOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// StopColorOpt applies to Symbol
+func (o StopColorOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to Symbol
+func (o StopOpacityOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to Symbol
+func (o StrokeOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to Symbol
+func (o StrokeDasharrayOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to Symbol
+func (o StrokeDashoffsetOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to Symbol
+func (o StrokeLinecapOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to Symbol
+func (o StrokeLinejoinOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to Symbol
+func (o StrokeMiterlimitOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to Symbol
+func (o StrokeOpacityOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to Symbol
+func (o StrokeWidthOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// TextAnchorOpt applies to Symbol
+func (o TextAnchorOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to Symbol
+func (o TextDecorationOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to Symbol
+func (o TextRenderingOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
+// UnicodeBidiOpt applies to Symbol
+func (o UnicodeBidiOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// ViewBoxOpt applies to Symbol
+func (o ViewBoxOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.ViewBox = o.v
+}
+
+// VisibilityOpt applies to Symbol
+func (o VisibilityOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WidthOpt applies to Symbol
+func (o WidthOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Width = o.v
+}
+
+// WordSpacingOpt applies to Symbol
+func (o WordSpacingOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to Symbol
+func (o WritingModeOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.WritingMode = o.v
+}
+
+// XOpt applies to Symbol
+func (o XOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.X = o.v
+}
+
+// YOpt applies to Symbol
+func (o YOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+	a.Y = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgSymbolAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
+	if a.Height != "" {
+		Attr(sb, "height", a.Height)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
 	if a.PreserveAspectRatio != "" {
 		Attr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
+	}
+	if a.RefX != "" {
+		Attr(sb, "refX", a.RefX)
+	}
+	if a.RefY != "" {
+		Attr(sb, "refY", a.RefY)
+	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.ViewBox != "" {
+		Attr(sb, "viewBox", a.ViewBox)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.Width != "" {
+		Attr(sb, "width", a.Width)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
+	}
+	if a.X != "" {
+		Attr(sb, "x", a.X)
+	}
+	if a.Y != "" {
+		Attr(sb, "y", a.Y)
 	}
 }

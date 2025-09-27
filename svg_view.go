@@ -9,7 +9,11 @@ import (
 // SvgViewAttrs holds the attributes for the view SVG element
 type SvgViewAttrs struct {
 	GlobalAttrs
-	ViewBox string
+	ExternalResourcesRequired string
+	PreserveAspectRatio       string
+	ViewBox                   string
+	ViewTarget                string
+	ZoomAndPan                string
 }
 
 // SvgViewArg interface for view element arguments
@@ -43,15 +47,47 @@ func (g Global) applyView(a *SvgViewAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// ExternalResourcesRequiredOpt applies to View
+func (o ExternalResourcesRequiredOpt) applyView(a *SvgViewAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// PreserveAspectRatioOpt applies to View
+func (o PreserveAspectRatioOpt) applyView(a *SvgViewAttrs, _ *[]Component) {
+	a.PreserveAspectRatio = o.v
+}
+
 // ViewBoxOpt applies to View
 func (o ViewBoxOpt) applyView(a *SvgViewAttrs, _ *[]Component) {
 	a.ViewBox = o.v
 }
 
+// ViewTargetOpt applies to View
+func (o ViewTargetOpt) applyView(a *SvgViewAttrs, _ *[]Component) {
+	a.ViewTarget = o.v
+}
+
+// ZoomAndPanOpt applies to View
+func (o ZoomAndPanOpt) applyView(a *SvgViewAttrs, _ *[]Component) {
+	a.ZoomAndPan = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgViewAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.PreserveAspectRatio != "" {
+		Attr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
+	}
 	if a.ViewBox != "" {
 		Attr(sb, "viewBox", a.ViewBox)
+	}
+	if a.ViewTarget != "" {
+		Attr(sb, "viewTarget", a.ViewTarget)
+	}
+	if a.ZoomAndPan != "" {
+		Attr(sb, "zoomAndPan", a.ZoomAndPan)
 	}
 }

@@ -9,10 +9,74 @@ import (
 // SvgFeDiffuseLightingAttrs holds the attributes for the feDiffuseLighting SVG element
 type SvgFeDiffuseLightingAttrs struct {
 	GlobalAttrs
-	DiffuseConstant  string
-	In               string
-	KernelUnitLength string
-	SurfaceScale     string
+	AlignmentBaseline          string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	Cursor                     string
+	DiffuseConstant            string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	Height                     string
+	ImageRendering             string
+	In                         string
+	KernelUnitLength           string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	Opacity                    string
+	Overflow                   string
+	PointerEvents              string
+	Result                     string
+	ShapeRendering             string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	SurfaceScale               string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	UnicodeBidi                string
+	Visibility                 string
+	Width                      string
+	WordSpacing                string
+	WritingMode                string
+	X                          string
+	Y                          string
 }
 
 // SvgFeDiffuseLightingArg interface for feDiffuseLighting element arguments
@@ -46,9 +110,169 @@ func (g Global) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Compon
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to FeDiffuseLighting
+func (o AlignmentBaselineOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaselineShiftOpt applies to FeDiffuseLighting
+func (o BaselineShiftOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to FeDiffuseLighting
+func (o ClipOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to FeDiffuseLighting
+func (o ClipPathOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to FeDiffuseLighting
+func (o ClipRuleOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to FeDiffuseLighting
+func (o ColorOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to FeDiffuseLighting
+func (o ColorInterpolationOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to FeDiffuseLighting
+func (o ColorInterpolationFiltersOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to FeDiffuseLighting
+func (o ColorProfileOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to FeDiffuseLighting
+func (o ColorRenderingOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// CursorOpt applies to FeDiffuseLighting
+func (o CursorOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
 // DiffuseConstantOpt applies to FeDiffuseLighting
 func (o DiffuseConstantOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
 	a.DiffuseConstant = o.v
+}
+
+// DirectionOpt applies to FeDiffuseLighting
+func (o DirectionOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to FeDiffuseLighting
+func (o DisplayOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to FeDiffuseLighting
+func (o DominantBaselineOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to FeDiffuseLighting
+func (o EnableBackgroundOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// FillOpt applies to FeDiffuseLighting
+func (o FillOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to FeDiffuseLighting
+func (o FillOpacityOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to FeDiffuseLighting
+func (o FillRuleOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to FeDiffuseLighting
+func (o FilterOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to FeDiffuseLighting
+func (o FloodColorOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to FeDiffuseLighting
+func (o FloodOpacityOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FontFamilyOpt applies to FeDiffuseLighting
+func (o FontFamilyOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to FeDiffuseLighting
+func (o FontSizeOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to FeDiffuseLighting
+func (o FontSizeAdjustOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to FeDiffuseLighting
+func (o FontStretchOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to FeDiffuseLighting
+func (o FontStyleOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to FeDiffuseLighting
+func (o FontVariantOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to FeDiffuseLighting
+func (o FontWeightOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to FeDiffuseLighting
+func (o GlyphOrientationHorizontalOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to FeDiffuseLighting
+func (o GlyphOrientationVerticalOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
+// HeightOpt applies to FeDiffuseLighting
+func (o HeightOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Height = o.v
+}
+
+// ImageRenderingOpt applies to FeDiffuseLighting
+func (o ImageRenderingOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
 }
 
 // InOpt applies to FeDiffuseLighting
@@ -61,16 +285,272 @@ func (o KernelUnitLengthOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs
 	a.KernelUnitLength = o.v
 }
 
+// KerningOpt applies to FeDiffuseLighting
+func (o KerningOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to FeDiffuseLighting
+func (o LetterSpacingOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to FeDiffuseLighting
+func (o LightingColorOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to FeDiffuseLighting
+func (o MarkerEndOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to FeDiffuseLighting
+func (o MarkerMidOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to FeDiffuseLighting
+func (o MarkerStartOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to FeDiffuseLighting
+func (o MaskOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
+// OpacityOpt applies to FeDiffuseLighting
+func (o OpacityOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to FeDiffuseLighting
+func (o OverflowOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PointerEventsOpt applies to FeDiffuseLighting
+func (o PointerEventsOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
+}
+
+// ResultOpt applies to FeDiffuseLighting
+func (o ResultOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Result = o.v
+}
+
+// ShapeRenderingOpt applies to FeDiffuseLighting
+func (o ShapeRenderingOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// StopColorOpt applies to FeDiffuseLighting
+func (o StopColorOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to FeDiffuseLighting
+func (o StopOpacityOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to FeDiffuseLighting
+func (o StrokeOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to FeDiffuseLighting
+func (o StrokeDasharrayOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to FeDiffuseLighting
+func (o StrokeDashoffsetOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to FeDiffuseLighting
+func (o StrokeLinecapOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to FeDiffuseLighting
+func (o StrokeLinejoinOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to FeDiffuseLighting
+func (o StrokeMiterlimitOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to FeDiffuseLighting
+func (o StrokeOpacityOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to FeDiffuseLighting
+func (o StrokeWidthOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
 // SurfaceScaleOpt applies to FeDiffuseLighting
 func (o SurfaceScaleOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
 	a.SurfaceScale = o.v
 }
 
+// TextAnchorOpt applies to FeDiffuseLighting
+func (o TextAnchorOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to FeDiffuseLighting
+func (o TextDecorationOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to FeDiffuseLighting
+func (o TextRenderingOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
+// UnicodeBidiOpt applies to FeDiffuseLighting
+func (o UnicodeBidiOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// VisibilityOpt applies to FeDiffuseLighting
+func (o VisibilityOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
+// WidthOpt applies to FeDiffuseLighting
+func (o WidthOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Width = o.v
+}
+
+// WordSpacingOpt applies to FeDiffuseLighting
+func (o WordSpacingOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to FeDiffuseLighting
+func (o WritingModeOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.WritingMode = o.v
+}
+
+// XOpt applies to FeDiffuseLighting
+func (o XOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.X = o.v
+}
+
+// YOpt applies to FeDiffuseLighting
+func (o YOpt) applyFeDiffuseLighting(a *SvgFeDiffuseLightingAttrs, _ *[]Component) {
+	a.Y = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgFeDiffuseLightingAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
 	if a.DiffuseConstant != "" {
 		Attr(sb, "diffuseConstant", a.DiffuseConstant)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
+	if a.Height != "" {
+		Attr(sb, "height", a.Height)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
 	}
 	if a.In != "" {
 		Attr(sb, "in", a.In)
@@ -78,7 +558,103 @@ func (a *SvgFeDiffuseLightingAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.KernelUnitLength != "" {
 		Attr(sb, "kernelUnitLength", a.KernelUnitLength)
 	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
+	}
+	if a.Result != "" {
+		Attr(sb, "result", a.Result)
+	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
 	if a.SurfaceScale != "" {
 		Attr(sb, "surfaceScale", a.SurfaceScale)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
+	if a.Width != "" {
+		Attr(sb, "width", a.Width)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
+	}
+	if a.X != "" {
+		Attr(sb, "x", a.X)
+	}
+	if a.Y != "" {
+		Attr(sb, "y", a.Y)
 	}
 }

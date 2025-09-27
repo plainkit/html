@@ -9,12 +9,98 @@ import (
 // SvgAttrs holds the attributes for the svg SVG element
 type SvgAttrs struct {
 	GlobalAttrs
-	Height              string
-	PreserveAspectRatio string
-	ViewBox             string
-	Width               string
-	X                   string
-	Y                   string
+	AlignmentBaseline          string
+	BaseProfile                string
+	BaselineShift              string
+	Clip                       string
+	ClipPath                   string
+	ClipRule                   string
+	Color                      string
+	ColorInterpolation         string
+	ColorInterpolationFilters  string
+	ColorProfile               string
+	ColorRendering             string
+	ContentScriptType          string
+	ContentStyleType           string
+	Cursor                     string
+	Direction                  string
+	Display                    string
+	DominantBaseline           string
+	EnableBackground           string
+	ExternalResourcesRequired  string
+	Fill                       string
+	FillOpacity                string
+	FillRule                   string
+	Filter                     string
+	FloodColor                 string
+	FloodOpacity               string
+	FocusHighlight             string
+	Focusable                  string
+	FontFamily                 string
+	FontSize                   string
+	FontSizeAdjust             string
+	FontStretch                string
+	FontStyle                  string
+	FontVariant                string
+	FontWeight                 string
+	GlyphOrientationHorizontal string
+	GlyphOrientationVertical   string
+	Height                     string
+	ImageRendering             string
+	Kerning                    string
+	LetterSpacing              string
+	LightingColor              string
+	MarkerEnd                  string
+	MarkerMid                  string
+	MarkerStart                string
+	Mask                       string
+	NavDown                    string
+	NavDownLeft                string
+	NavDownRight               string
+	NavLeft                    string
+	NavNext                    string
+	NavPrev                    string
+	NavRight                   string
+	NavUp                      string
+	NavUpLeft                  string
+	NavUpRight                 string
+	Opacity                    string
+	Overflow                   string
+	PlaybackOrder              string
+	PointerEvents              string
+	PreserveAspectRatio        string
+	RequiredExtensions         string
+	RequiredFeatures           string
+	ShapeRendering             string
+	SnapshotTime               string
+	StopColor                  string
+	StopOpacity                string
+	Stroke                     string
+	StrokeDasharray            string
+	StrokeDashoffset           string
+	StrokeLinecap              string
+	StrokeLinejoin             string
+	StrokeMiterlimit           string
+	StrokeOpacity              string
+	StrokeWidth                string
+	SyncBehaviorDefault        string
+	SyncToleranceDefault       string
+	SystemLanguage             string
+	TextAnchor                 string
+	TextDecoration             string
+	TextRendering              string
+	TimelineBegin              string
+	Transform                  string
+	UnicodeBidi                string
+	Version                    string
+	ViewBox                    string
+	Visibility                 string
+	Width                      string
+	WordSpacing                string
+	WritingMode                string
+	X                          string
+	Y                          string
+	ZoomAndPan                 string
 }
 
 // SvgArg interface for svg element arguments
@@ -48,9 +134,299 @@ func (g Global) apply(a *SvgAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
+// AlignmentBaselineOpt applies to
+func (o AlignmentBaselineOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.AlignmentBaseline = o.v
+}
+
+// BaseProfileOpt applies to
+func (o BaseProfileOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.BaseProfile = o.v
+}
+
+// BaselineShiftOpt applies to
+func (o BaselineShiftOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.BaselineShift = o.v
+}
+
+// ClipOpt applies to
+func (o ClipOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Clip = o.v
+}
+
+// ClipPathOpt applies to
+func (o ClipPathOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.ClipPath = o.v
+}
+
+// ClipRuleOpt applies to
+func (o ClipRuleOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.ClipRule = o.v
+}
+
+// ColorOpt applies to
+func (o ColorOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Color = o.v
+}
+
+// ColorInterpolationOpt applies to
+func (o ColorInterpolationOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.ColorInterpolation = o.v
+}
+
+// ColorInterpolationFiltersOpt applies to
+func (o ColorInterpolationFiltersOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.ColorInterpolationFilters = o.v
+}
+
+// ColorProfileOpt applies to
+func (o ColorProfileOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.ColorProfile = o.v
+}
+
+// ColorRenderingOpt applies to
+func (o ColorRenderingOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.ColorRendering = o.v
+}
+
+// ContentScriptTypeOpt applies to
+func (o ContentScriptTypeOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.ContentScriptType = o.v
+}
+
+// ContentStyleTypeOpt applies to
+func (o ContentStyleTypeOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.ContentStyleType = o.v
+}
+
+// CursorOpt applies to
+func (o CursorOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Cursor = o.v
+}
+
+// DirectionOpt applies to
+func (o DirectionOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Direction = o.v
+}
+
+// DisplayOpt applies to
+func (o DisplayOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Display = o.v
+}
+
+// DominantBaselineOpt applies to
+func (o DominantBaselineOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.DominantBaseline = o.v
+}
+
+// EnableBackgroundOpt applies to
+func (o EnableBackgroundOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.EnableBackground = o.v
+}
+
+// ExternalResourcesRequiredOpt applies to
+func (o ExternalResourcesRequiredOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to
+func (o FillOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
+// FillOpacityOpt applies to
+func (o FillOpacityOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.FillOpacity = o.v
+}
+
+// FillRuleOpt applies to
+func (o FillRuleOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.FillRule = o.v
+}
+
+// FilterOpt applies to
+func (o FilterOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Filter = o.v
+}
+
+// FloodColorOpt applies to
+func (o FloodColorOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.FloodColor = o.v
+}
+
+// FloodOpacityOpt applies to
+func (o FloodOpacityOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.FloodOpacity = o.v
+}
+
+// FocusHighlightOpt applies to
+func (o FocusHighlightOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.FocusHighlight = o.v
+}
+
+// FocusableOpt applies to
+func (o FocusableOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Focusable = o.v
+}
+
+// FontFamilyOpt applies to
+func (o FontFamilyOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.FontFamily = o.v
+}
+
+// FontSizeOpt applies to
+func (o FontSizeOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.FontSize = o.v
+}
+
+// FontSizeAdjustOpt applies to
+func (o FontSizeAdjustOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.FontSizeAdjust = o.v
+}
+
+// FontStretchOpt applies to
+func (o FontStretchOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.FontStretch = o.v
+}
+
+// FontStyleOpt applies to
+func (o FontStyleOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.FontStyle = o.v
+}
+
+// FontVariantOpt applies to
+func (o FontVariantOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.FontVariant = o.v
+}
+
+// FontWeightOpt applies to
+func (o FontWeightOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.FontWeight = o.v
+}
+
+// GlyphOrientationHorizontalOpt applies to
+func (o GlyphOrientationHorizontalOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.GlyphOrientationHorizontal = o.v
+}
+
+// GlyphOrientationVerticalOpt applies to
+func (o GlyphOrientationVerticalOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.GlyphOrientationVertical = o.v
+}
+
 // HeightOpt applies to
 func (o HeightOpt) apply(a *SvgAttrs, _ *[]Component) {
 	a.Height = o.v
+}
+
+// ImageRenderingOpt applies to
+func (o ImageRenderingOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.ImageRendering = o.v
+}
+
+// KerningOpt applies to
+func (o KerningOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Kerning = o.v
+}
+
+// LetterSpacingOpt applies to
+func (o LetterSpacingOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.LetterSpacing = o.v
+}
+
+// LightingColorOpt applies to
+func (o LightingColorOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.LightingColor = o.v
+}
+
+// MarkerEndOpt applies to
+func (o MarkerEndOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.MarkerEnd = o.v
+}
+
+// MarkerMidOpt applies to
+func (o MarkerMidOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.MarkerMid = o.v
+}
+
+// MarkerStartOpt applies to
+func (o MarkerStartOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.MarkerStart = o.v
+}
+
+// MaskOpt applies to
+func (o MaskOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Mask = o.v
+}
+
+// NavDownOpt applies to
+func (o NavDownOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.NavDown = o.v
+}
+
+// NavDownLeftOpt applies to
+func (o NavDownLeftOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.NavDownLeft = o.v
+}
+
+// NavDownRightOpt applies to
+func (o NavDownRightOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.NavDownRight = o.v
+}
+
+// NavLeftOpt applies to
+func (o NavLeftOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.NavLeft = o.v
+}
+
+// NavNextOpt applies to
+func (o NavNextOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.NavNext = o.v
+}
+
+// NavPrevOpt applies to
+func (o NavPrevOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.NavPrev = o.v
+}
+
+// NavRightOpt applies to
+func (o NavRightOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.NavRight = o.v
+}
+
+// NavUpOpt applies to
+func (o NavUpOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.NavUp = o.v
+}
+
+// NavUpLeftOpt applies to
+func (o NavUpLeftOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.NavUpLeft = o.v
+}
+
+// NavUpRightOpt applies to
+func (o NavUpRightOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.NavUpRight = o.v
+}
+
+// OpacityOpt applies to
+func (o OpacityOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Opacity = o.v
+}
+
+// OverflowOpt applies to
+func (o OverflowOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Overflow = o.v
+}
+
+// PlaybackOrderOpt applies to
+func (o PlaybackOrderOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.PlaybackOrder = o.v
+}
+
+// PointerEventsOpt applies to
+func (o PointerEventsOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.PointerEvents = o.v
 }
 
 // PreserveAspectRatioOpt applies to
@@ -58,14 +434,149 @@ func (o PreserveAspectRatioOpt) apply(a *SvgAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
+// RequiredExtensionsOpt applies to
+func (o RequiredExtensionsOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.RequiredExtensions = o.v
+}
+
+// RequiredFeaturesOpt applies to
+func (o RequiredFeaturesOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.RequiredFeatures = o.v
+}
+
+// ShapeRenderingOpt applies to
+func (o ShapeRenderingOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.ShapeRendering = o.v
+}
+
+// SnapshotTimeOpt applies to
+func (o SnapshotTimeOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.SnapshotTime = o.v
+}
+
+// StopColorOpt applies to
+func (o StopColorOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.StopColor = o.v
+}
+
+// StopOpacityOpt applies to
+func (o StopOpacityOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.StopOpacity = o.v
+}
+
+// StrokeOpt applies to
+func (o StrokeOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Stroke = o.v
+}
+
+// StrokeDasharrayOpt applies to
+func (o StrokeDasharrayOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.StrokeDasharray = o.v
+}
+
+// StrokeDashoffsetOpt applies to
+func (o StrokeDashoffsetOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.StrokeDashoffset = o.v
+}
+
+// StrokeLinecapOpt applies to
+func (o StrokeLinecapOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.StrokeLinecap = o.v
+}
+
+// StrokeLinejoinOpt applies to
+func (o StrokeLinejoinOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.StrokeLinejoin = o.v
+}
+
+// StrokeMiterlimitOpt applies to
+func (o StrokeMiterlimitOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.StrokeMiterlimit = o.v
+}
+
+// StrokeOpacityOpt applies to
+func (o StrokeOpacityOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.StrokeOpacity = o.v
+}
+
+// StrokeWidthOpt applies to
+func (o StrokeWidthOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.StrokeWidth = o.v
+}
+
+// SyncBehaviorDefaultOpt applies to
+func (o SyncBehaviorDefaultOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.SyncBehaviorDefault = o.v
+}
+
+// SyncToleranceDefaultOpt applies to
+func (o SyncToleranceDefaultOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.SyncToleranceDefault = o.v
+}
+
+// SystemLanguageOpt applies to
+func (o SystemLanguageOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.SystemLanguage = o.v
+}
+
+// TextAnchorOpt applies to
+func (o TextAnchorOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.TextAnchor = o.v
+}
+
+// TextDecorationOpt applies to
+func (o TextDecorationOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.TextDecoration = o.v
+}
+
+// TextRenderingOpt applies to
+func (o TextRenderingOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.TextRendering = o.v
+}
+
+// TimelineBeginOpt applies to
+func (o TimelineBeginOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.TimelineBegin = o.v
+}
+
+// TransformOpt applies to
+func (o TransformOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Transform = o.v
+}
+
+// UnicodeBidiOpt applies to
+func (o UnicodeBidiOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.UnicodeBidi = o.v
+}
+
+// VersionOpt applies to
+func (o VersionOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Version = o.v
+}
+
 // ViewBoxOpt applies to
 func (o ViewBoxOpt) apply(a *SvgAttrs, _ *[]Component) {
 	a.ViewBox = o.v
 }
 
+// VisibilityOpt applies to
+func (o VisibilityOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.Visibility = o.v
+}
+
 // WidthOpt applies to
 func (o WidthOpt) apply(a *SvgAttrs, _ *[]Component) {
 	a.Width = o.v
+}
+
+// WordSpacingOpt applies to
+func (o WordSpacingOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.WordSpacing = o.v
+}
+
+// WritingModeOpt applies to
+func (o WritingModeOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.WritingMode = o.v
 }
 
 // XOpt applies to
@@ -78,25 +589,288 @@ func (o YOpt) apply(a *SvgAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
+// ZoomAndPanOpt applies to
+func (o ZoomAndPanOpt) apply(a *SvgAttrs, _ *[]Component) {
+	a.ZoomAndPan = o.v
+}
+
 // WriteAttrs writes the SVG attributes to the string builder
 func (a *SvgAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.GlobalAttrs)
+	if a.AlignmentBaseline != "" {
+		Attr(sb, "alignment-baseline", a.AlignmentBaseline)
+	}
+	if a.BaseProfile != "" {
+		Attr(sb, "baseProfile", a.BaseProfile)
+	}
+	if a.BaselineShift != "" {
+		Attr(sb, "baseline-shift", a.BaselineShift)
+	}
+	if a.Clip != "" {
+		Attr(sb, "clip", a.Clip)
+	}
+	if a.ClipPath != "" {
+		Attr(sb, "clip-path", a.ClipPath)
+	}
+	if a.ClipRule != "" {
+		Attr(sb, "clip-rule", a.ClipRule)
+	}
+	if a.Color != "" {
+		Attr(sb, "color", a.Color)
+	}
+	if a.ColorInterpolation != "" {
+		Attr(sb, "color-interpolation", a.ColorInterpolation)
+	}
+	if a.ColorInterpolationFilters != "" {
+		Attr(sb, "color-interpolation-filters", a.ColorInterpolationFilters)
+	}
+	if a.ColorProfile != "" {
+		Attr(sb, "color-profile", a.ColorProfile)
+	}
+	if a.ColorRendering != "" {
+		Attr(sb, "color-rendering", a.ColorRendering)
+	}
+	if a.ContentScriptType != "" {
+		Attr(sb, "contentScriptType", a.ContentScriptType)
+	}
+	if a.ContentStyleType != "" {
+		Attr(sb, "contentStyleType", a.ContentStyleType)
+	}
+	if a.Cursor != "" {
+		Attr(sb, "cursor", a.Cursor)
+	}
+	if a.Direction != "" {
+		Attr(sb, "direction", a.Direction)
+	}
+	if a.Display != "" {
+		Attr(sb, "display", a.Display)
+	}
+	if a.DominantBaseline != "" {
+		Attr(sb, "dominant-baseline", a.DominantBaseline)
+	}
+	if a.EnableBackground != "" {
+		Attr(sb, "enable-background", a.EnableBackground)
+	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
+	if a.FillOpacity != "" {
+		Attr(sb, "fill-opacity", a.FillOpacity)
+	}
+	if a.FillRule != "" {
+		Attr(sb, "fill-rule", a.FillRule)
+	}
+	if a.Filter != "" {
+		Attr(sb, "filter", a.Filter)
+	}
+	if a.FloodColor != "" {
+		Attr(sb, "flood-color", a.FloodColor)
+	}
+	if a.FloodOpacity != "" {
+		Attr(sb, "flood-opacity", a.FloodOpacity)
+	}
+	if a.FocusHighlight != "" {
+		Attr(sb, "focusHighlight", a.FocusHighlight)
+	}
+	if a.Focusable != "" {
+		Attr(sb, "focusable", a.Focusable)
+	}
+	if a.FontFamily != "" {
+		Attr(sb, "font-family", a.FontFamily)
+	}
+	if a.FontSize != "" {
+		Attr(sb, "font-size", a.FontSize)
+	}
+	if a.FontSizeAdjust != "" {
+		Attr(sb, "font-size-adjust", a.FontSizeAdjust)
+	}
+	if a.FontStretch != "" {
+		Attr(sb, "font-stretch", a.FontStretch)
+	}
+	if a.FontStyle != "" {
+		Attr(sb, "font-style", a.FontStyle)
+	}
+	if a.FontVariant != "" {
+		Attr(sb, "font-variant", a.FontVariant)
+	}
+	if a.FontWeight != "" {
+		Attr(sb, "font-weight", a.FontWeight)
+	}
+	if a.GlyphOrientationHorizontal != "" {
+		Attr(sb, "glyph-orientation-horizontal", a.GlyphOrientationHorizontal)
+	}
+	if a.GlyphOrientationVertical != "" {
+		Attr(sb, "glyph-orientation-vertical", a.GlyphOrientationVertical)
+	}
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
+	}
+	if a.ImageRendering != "" {
+		Attr(sb, "image-rendering", a.ImageRendering)
+	}
+	if a.Kerning != "" {
+		Attr(sb, "kerning", a.Kerning)
+	}
+	if a.LetterSpacing != "" {
+		Attr(sb, "letter-spacing", a.LetterSpacing)
+	}
+	if a.LightingColor != "" {
+		Attr(sb, "lighting-color", a.LightingColor)
+	}
+	if a.MarkerEnd != "" {
+		Attr(sb, "marker-end", a.MarkerEnd)
+	}
+	if a.MarkerMid != "" {
+		Attr(sb, "marker-mid", a.MarkerMid)
+	}
+	if a.MarkerStart != "" {
+		Attr(sb, "marker-start", a.MarkerStart)
+	}
+	if a.Mask != "" {
+		Attr(sb, "mask", a.Mask)
+	}
+	if a.NavDown != "" {
+		Attr(sb, "nav-down", a.NavDown)
+	}
+	if a.NavDownLeft != "" {
+		Attr(sb, "nav-down-left", a.NavDownLeft)
+	}
+	if a.NavDownRight != "" {
+		Attr(sb, "nav-down-right", a.NavDownRight)
+	}
+	if a.NavLeft != "" {
+		Attr(sb, "nav-left", a.NavLeft)
+	}
+	if a.NavNext != "" {
+		Attr(sb, "nav-next", a.NavNext)
+	}
+	if a.NavPrev != "" {
+		Attr(sb, "nav-prev", a.NavPrev)
+	}
+	if a.NavRight != "" {
+		Attr(sb, "nav-right", a.NavRight)
+	}
+	if a.NavUp != "" {
+		Attr(sb, "nav-up", a.NavUp)
+	}
+	if a.NavUpLeft != "" {
+		Attr(sb, "nav-up-left", a.NavUpLeft)
+	}
+	if a.NavUpRight != "" {
+		Attr(sb, "nav-up-right", a.NavUpRight)
+	}
+	if a.Opacity != "" {
+		Attr(sb, "opacity", a.Opacity)
+	}
+	if a.Overflow != "" {
+		Attr(sb, "overflow", a.Overflow)
+	}
+	if a.PlaybackOrder != "" {
+		Attr(sb, "playbackOrder", a.PlaybackOrder)
+	}
+	if a.PointerEvents != "" {
+		Attr(sb, "pointer-events", a.PointerEvents)
 	}
 	if a.PreserveAspectRatio != "" {
 		Attr(sb, "preserveAspectRatio", a.PreserveAspectRatio)
 	}
+	if a.RequiredExtensions != "" {
+		Attr(sb, "requiredExtensions", a.RequiredExtensions)
+	}
+	if a.RequiredFeatures != "" {
+		Attr(sb, "requiredFeatures", a.RequiredFeatures)
+	}
+	if a.ShapeRendering != "" {
+		Attr(sb, "shape-rendering", a.ShapeRendering)
+	}
+	if a.SnapshotTime != "" {
+		Attr(sb, "snapshotTime", a.SnapshotTime)
+	}
+	if a.StopColor != "" {
+		Attr(sb, "stop-color", a.StopColor)
+	}
+	if a.StopOpacity != "" {
+		Attr(sb, "stop-opacity", a.StopOpacity)
+	}
+	if a.Stroke != "" {
+		Attr(sb, "stroke", a.Stroke)
+	}
+	if a.StrokeDasharray != "" {
+		Attr(sb, "stroke-dasharray", a.StrokeDasharray)
+	}
+	if a.StrokeDashoffset != "" {
+		Attr(sb, "stroke-dashoffset", a.StrokeDashoffset)
+	}
+	if a.StrokeLinecap != "" {
+		Attr(sb, "stroke-linecap", a.StrokeLinecap)
+	}
+	if a.StrokeLinejoin != "" {
+		Attr(sb, "stroke-linejoin", a.StrokeLinejoin)
+	}
+	if a.StrokeMiterlimit != "" {
+		Attr(sb, "stroke-miterlimit", a.StrokeMiterlimit)
+	}
+	if a.StrokeOpacity != "" {
+		Attr(sb, "stroke-opacity", a.StrokeOpacity)
+	}
+	if a.StrokeWidth != "" {
+		Attr(sb, "stroke-width", a.StrokeWidth)
+	}
+	if a.SyncBehaviorDefault != "" {
+		Attr(sb, "syncBehaviorDefault", a.SyncBehaviorDefault)
+	}
+	if a.SyncToleranceDefault != "" {
+		Attr(sb, "syncToleranceDefault", a.SyncToleranceDefault)
+	}
+	if a.SystemLanguage != "" {
+		Attr(sb, "systemLanguage", a.SystemLanguage)
+	}
+	if a.TextAnchor != "" {
+		Attr(sb, "text-anchor", a.TextAnchor)
+	}
+	if a.TextDecoration != "" {
+		Attr(sb, "text-decoration", a.TextDecoration)
+	}
+	if a.TextRendering != "" {
+		Attr(sb, "text-rendering", a.TextRendering)
+	}
+	if a.TimelineBegin != "" {
+		Attr(sb, "timelineBegin", a.TimelineBegin)
+	}
+	if a.Transform != "" {
+		Attr(sb, "transform", a.Transform)
+	}
+	if a.UnicodeBidi != "" {
+		Attr(sb, "unicode-bidi", a.UnicodeBidi)
+	}
+	if a.Version != "" {
+		Attr(sb, "version", a.Version)
+	}
 	if a.ViewBox != "" {
 		Attr(sb, "viewBox", a.ViewBox)
 	}
+	if a.Visibility != "" {
+		Attr(sb, "visibility", a.Visibility)
+	}
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)
+	}
+	if a.WordSpacing != "" {
+		Attr(sb, "word-spacing", a.WordSpacing)
+	}
+	if a.WritingMode != "" {
+		Attr(sb, "writing-mode", a.WritingMode)
 	}
 	if a.X != "" {
 		Attr(sb, "x", a.X)
 	}
 	if a.Y != "" {
 		Attr(sb, "y", a.Y)
+	}
+	if a.ZoomAndPan != "" {
+		Attr(sb, "zoomAndPan", a.ZoomAndPan)
 	}
 }

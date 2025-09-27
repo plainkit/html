@@ -9,26 +9,34 @@ import (
 // SvgAnimateTransformAttrs holds the attributes for the animateTransform SVG element
 type SvgAnimateTransformAttrs struct {
 	GlobalAttrs
-	Accumulate    string
-	Additive      string
-	AttributeName string
-	AttributeType string
-	Begin         string
-	By            string
-	CalcMode      string
-	Dur           string
-	End           string
-	From          string
-	KeySplines    string
-	KeyTimes      string
-	Max           string
-	Min           string
-	RepeatCount   string
-	RepeatDur     string
-	Restart       string
-	To            string
-	Type          string
-	Values        string
+	Accumulate                string
+	Additive                  string
+	AttributeName             string
+	AttributeType             string
+	Begin                     string
+	By                        string
+	CalcMode                  string
+	Dur                       string
+	End                       string
+	ExternalResourcesRequired string
+	Fill                      string
+	From                      string
+	Href                      string
+	KeySplines                string
+	KeyTimes                  string
+	Max                       string
+	Min                       string
+	RepeatCount               string
+	RepeatDur                 string
+	RequiredExtensions        string
+	RequiredFeatures          string
+	RequiredFonts             string
+	RequiredFormats           string
+	Restart                   string
+	SystemLanguage            string
+	To                        string
+	Type                      string
+	Values                    string
 }
 
 // SvgAnimateTransformArg interface for animateTransform element arguments
@@ -43,7 +51,7 @@ func defaultSvgAnimateTransformAttrs() *SvgAnimateTransformAttrs {
 	}
 }
 
-// SvgAnimateTransform creates an SVG animateTransform element (self-closing)
+// SvgAnimateTransform creates an SVG animateTransform element
 func SvgAnimateTransform(args ...SvgAnimateTransformArg) Node {
 	a := defaultSvgAnimateTransformAttrs()
 	var kids []Component
@@ -53,7 +61,7 @@ func SvgAnimateTransform(args ...SvgAnimateTransformArg) Node {
 	return Node{
 		Tag:   "animateTransform",
 		Attrs: a,
-		Void:  true,
+		Kids:  kids,
 	}
 }
 
@@ -107,9 +115,24 @@ func (o EndOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Componen
 	a.End = o.v
 }
 
+// ExternalResourcesRequiredOpt applies to AnimateTransform
+func (o ExternalResourcesRequiredOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+	a.ExternalResourcesRequired = o.v
+}
+
+// FillOpt applies to AnimateTransform
+func (o FillOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+	a.Fill = o.v
+}
+
 // FromOpt applies to AnimateTransform
 func (o FromOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.From = o.v
+}
+
+// HrefOpt applies to AnimateTransform
+func (o HrefOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+	a.Href = o.v
 }
 
 // KeySplinesOpt applies to AnimateTransform
@@ -142,9 +165,34 @@ func (o RepeatDurOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Co
 	a.RepeatDur = o.v
 }
 
+// RequiredExtensionsOpt applies to AnimateTransform
+func (o RequiredExtensionsOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+	a.RequiredExtensions = o.v
+}
+
+// RequiredFeaturesOpt applies to AnimateTransform
+func (o RequiredFeaturesOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+	a.RequiredFeatures = o.v
+}
+
+// RequiredFontsOpt applies to AnimateTransform
+func (o RequiredFontsOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+	a.RequiredFonts = o.v
+}
+
+// RequiredFormatsOpt applies to AnimateTransform
+func (o RequiredFormatsOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+	a.RequiredFormats = o.v
+}
+
 // RestartOpt applies to AnimateTransform
 func (o RestartOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Restart = o.v
+}
+
+// SystemLanguageOpt applies to AnimateTransform
+func (o SystemLanguageOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+	a.SystemLanguage = o.v
 }
 
 // ToOpt applies to AnimateTransform
@@ -192,8 +240,17 @@ func (a *SvgAnimateTransformAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.End != "" {
 		Attr(sb, "end", a.End)
 	}
+	if a.ExternalResourcesRequired != "" {
+		Attr(sb, "externalResourcesRequired", a.ExternalResourcesRequired)
+	}
+	if a.Fill != "" {
+		Attr(sb, "fill", a.Fill)
+	}
 	if a.From != "" {
 		Attr(sb, "from", a.From)
+	}
+	if a.Href != "" {
+		Attr(sb, "href", a.Href)
 	}
 	if a.KeySplines != "" {
 		Attr(sb, "keySplines", a.KeySplines)
@@ -213,8 +270,23 @@ func (a *SvgAnimateTransformAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.RepeatDur != "" {
 		Attr(sb, "repeatDur", a.RepeatDur)
 	}
+	if a.RequiredExtensions != "" {
+		Attr(sb, "requiredExtensions", a.RequiredExtensions)
+	}
+	if a.RequiredFeatures != "" {
+		Attr(sb, "requiredFeatures", a.RequiredFeatures)
+	}
+	if a.RequiredFonts != "" {
+		Attr(sb, "requiredFonts", a.RequiredFonts)
+	}
+	if a.RequiredFormats != "" {
+		Attr(sb, "requiredFormats", a.RequiredFormats)
+	}
 	if a.Restart != "" {
 		Attr(sb, "restart", a.Restart)
+	}
+	if a.SystemLanguage != "" {
+		Attr(sb, "systemLanguage", a.SystemLanguage)
 	}
 	if a.To != "" {
 		Attr(sb, "to", a.To)
