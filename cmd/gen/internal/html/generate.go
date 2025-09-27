@@ -91,6 +91,9 @@ func generateTagFiles(manager files.Manager, allSpecs []spec.TagSpec) error {
 
 	for _, tagSpec := range allSpecs {
 		fileName := fmt.Sprintf("tag_%s.go", tagSpec.Name)
+		if manager.FileExists(fmt.Sprintf("svg_%s.go", tagSpec.Name)) {
+			continue
+		}
 		source := tagGen.GenerateSource(tagSpec)
 
 		if err := manager.WriteGoFile(fileName, source); err != nil {
@@ -102,8 +105,16 @@ func generateTagFiles(manager files.Manager, allSpecs []spec.TagSpec) error {
 }
 
 func generateCoreNodeFile(manager files.Manager, allSpecs []spec.TagSpec) error {
+	filtered := make([]spec.TagSpec, 0, len(allSpecs))
+	for _, spec := range allSpecs {
+		if manager.FileExists(fmt.Sprintf("svg_%s.go", spec.Name)) {
+			continue
+		}
+		filtered = append(filtered, spec)
+	}
+
 	nodeGen := generator.NewNodeGenerator()
-	content := nodeGen.GenerateCompleteFile(allSpecs)
+	content := nodeGen.GenerateCompleteFile(filtered)
 
 	return manager.WriteGoFile("core_node.go", content)
 }

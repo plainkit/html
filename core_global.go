@@ -19,6 +19,7 @@ type GlobalAttrs struct {
 	Contenteditable string
 	Dir             string
 	Enterkeyhint    string
+	Hidden          string
 	Id              string
 	Inputmode       string
 	Is              string
@@ -49,7 +50,7 @@ type GlobalAttrs struct {
 	Writingsuggestions *string
 
 	// Booleans
-	Autofocus, Hidden, Inert, Itemscope bool
+	Autofocus, Inert, Itemscope bool
 }
 
 // Helper methods for setting attributes
@@ -124,8 +125,8 @@ func WriteGlobal(sb *strings.Builder, g *GlobalAttrs) {
 	if g.Enterkeyhint != "" {
 		Attr(sb, "enterkeyhint", g.Enterkeyhint)
 	}
-	if g.Hidden {
-		BoolAttr(sb, "hidden")
+	if g.Hidden != "" {
+		Attr(sb, "hidden", g.Hidden)
 	}
 	if g.Id != "" {
 		Attr(sb, "id", g.Id)
@@ -278,8 +279,8 @@ func AEnterkeyhint(v string) Global {
 	return Global{func(g *GlobalAttrs) { g.Enterkeyhint = v }}
 }
 
-func AHidden() Global {
-	return Global{func(g *GlobalAttrs) { g.Hidden = true }}
+func AHidden(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Hidden = v }}
 }
 
 func AId(v string) Global {

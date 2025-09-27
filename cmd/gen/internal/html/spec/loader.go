@@ -34,7 +34,7 @@ func (l *Loader) LoadAllTagSpecs() ([]TagSpec, error) {
 
 	specs := make([]TagSpec, 0, len(l.index.Elements))
 	for name, element := range l.index.Elements {
-		if skipElements[strings.ToLower(name)] {
+		if strings.TrimSpace(name) == "" {
 			continue
 		}
 
@@ -141,53 +141,8 @@ func collectAttributes(attrRefs []tags.AttributeRef, globalSet map[string]struct
 }
 
 func attributeTypeFromRef(ref tags.AttributeRef) string {
-	name := strings.ToLower(ref.Name)
 	if ref.Boolean {
 		return "bool"
 	}
-	if _, ok := booleanAttributeOverrides[name]; ok {
-		return "bool"
-	}
 	return "string"
-}
-
-var booleanAttributeOverrides = map[string]struct{}{
-	"allowfullscreen":     {},
-	"allowpaymentrequest": {},
-	"async":               {},
-	"autofocus":           {},
-	"autoplay":            {},
-	"compact":             {},
-	"checked":             {},
-	"controls":            {},
-	"default":             {},
-	"declare":             {},
-	"defer":               {},
-	"disabled":            {},
-	"formnovalidate":      {},
-	"hidden":              {},
-	"inert":               {},
-	"ismap":               {},
-	"itemscope":           {},
-	"loop":                {},
-	"multiple":            {},
-	"muted":               {},
-	"nohref":              {},
-	"nomodule":            {},
-	"noresize":            {},
-	"noshade":             {},
-	"novalidate":          {},
-	"open":                {},
-	"playsinline":         {},
-	"readonly":            {},
-	"required":            {},
-	"reversed":            {},
-	"selected":            {},
-	"typemustmatch":       {},
-	"nowrap":              {},
-}
-
-var skipElements = map[string]bool{
-	"":    true,
-	"svg": true,
 }

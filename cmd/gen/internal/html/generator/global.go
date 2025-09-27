@@ -59,12 +59,16 @@ func (g *GlobalGenerator) generateGlobalAttrsStruct(sb *strings.Builder, globalA
 		attrName := attr.Attr
 		fieldName := attr.Field
 
-		if g.contains(pointerStringAttrs, attrName) {
-		} else if g.contains(pointerIntAttrs, attrName) {
-		} else if g.contains([]string{"hidden", "inert", "autofocus", "itemscope"}, attrName) {
+		switch {
+		case g.contains(pointerStringAttrs, attrName):
+			// handled separately
+		case g.contains(pointerIntAttrs, attrName):
+			// handled separately
+		case attr.Type == "bool":
 			boolAttrs = append(boolAttrs, fieldName)
-		} else if attrName == "style" {
-		} else {
+		case attrName == "style":
+			// style handled explicitly below
+		default:
 			stringAttrs = append(stringAttrs, fieldName)
 		}
 	}
@@ -178,20 +182,23 @@ func (g *GlobalGenerator) generateWriteGlobalFunction(sb *strings.Builder, globa
 	sb.WriteString("\t\tAttr(sb, \"class\", g.Class)\n")
 	sb.WriteString("\t}\n")
 
+	pointerStringAttrs := []string{"spellcheck", "translate", "draggable", "writingsuggestions"}
+	pointerIntAttrs := []string{"tabindex"}
+
 	for _, attr := range globalAttrs {
 		attrName := attr.Attr
 		fieldName := attr.Field
 
-		switch fieldName {
-		case "Hidden", "Inert", "Autofocus", "Itemscope":
+		switch {
+		case attr.Type == "bool":
 			fmt.Fprintf(sb, "\tif g.%s {\n", fieldName)
 			fmt.Fprintf(sb, "\t\tBoolAttr(sb, \"%s\")\n", attrName)
 			sb.WriteString("\t}\n")
-		case "Tabindex":
+		case g.contains(pointerIntAttrs, attrName):
 			fmt.Fprintf(sb, "\tif g.%s != nil {\n", fieldName)
 			fmt.Fprintf(sb, "\t\tAttr(sb, \"%s\", strconv.Itoa(*g.%s))\n", attrName, fieldName)
 			sb.WriteString("\t}\n")
-		case "Spellcheck", "Translate", "Draggable", "Writingsuggestions":
+		case g.contains(pointerStringAttrs, attrName):
 			fmt.Fprintf(sb, "\tif g.%s != nil {\n", fieldName)
 			fmt.Fprintf(sb, "\t\tAttr(sb, \"%s\", *g.%s)\n", attrName, fieldName)
 			sb.WriteString("\t}\n")
