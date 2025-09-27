@@ -31,7 +31,7 @@ func Nav(args ...NavArg) Node {
 }
 
 func (g Global) applyNav(a *NavAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *NavAttrs) WriteAttrs(sb *strings.Builder) {

@@ -31,7 +31,7 @@ func Dt(args ...DtArg) Node {
 }
 
 func (g Global) applyDt(a *DtAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *DtAttrs) WriteAttrs(sb *strings.Builder) {

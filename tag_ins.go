@@ -33,7 +33,7 @@ func Ins(args ...InsArg) Node {
 }
 
 func (g Global) applyIns(a *InsAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o CiteOpt) applyIns(a *InsAttrs, _ *[]Component) {

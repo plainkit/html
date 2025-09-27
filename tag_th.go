@@ -36,7 +36,7 @@ func Th(args ...ThArg) Node {
 }
 
 func (g Global) applyTh(a *ThAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o AbbrOpt) applyTh(a *ThAttrs, _ *[]Component) {

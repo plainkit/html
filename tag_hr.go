@@ -31,7 +31,7 @@ func Hr(args ...HrArg) Node {
 }
 
 func (g Global) applyHr(a *HrAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *HrAttrs) WriteAttrs(sb *strings.Builder) {

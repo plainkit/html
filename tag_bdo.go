@@ -31,7 +31,7 @@ func Bdo(args ...BdoArg) Node {
 }
 
 func (g Global) applyBdo(a *BdoAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *BdoAttrs) WriteAttrs(sb *strings.Builder) {

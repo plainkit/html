@@ -31,7 +31,7 @@ func Dl(args ...DlArg) Node {
 }
 
 func (g Global) applyDl(a *DlAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *DlAttrs) WriteAttrs(sb *strings.Builder) {

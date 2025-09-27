@@ -31,7 +31,7 @@ func P(args ...PArg) Node {
 }
 
 func (g Global) applyP(a *PAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *PAttrs) WriteAttrs(sb *strings.Builder) {

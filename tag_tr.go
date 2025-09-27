@@ -31,7 +31,7 @@ func Tr(args ...TrArg) Node {
 }
 
 func (g Global) applyTr(a *TrAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *TrAttrs) WriteAttrs(sb *strings.Builder) {

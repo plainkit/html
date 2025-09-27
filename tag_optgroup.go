@@ -33,7 +33,7 @@ func Optgroup(args ...OptgroupArg) Node {
 }
 
 func (g Global) applyOptgroup(a *OptgroupAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o DisabledOpt) applyOptgroup(a *OptgroupAttrs, _ *[]Component) {

@@ -35,7 +35,7 @@ func Embed(args ...EmbedArg) Node {
 }
 
 func (g Global) applyEmbed(a *EmbedAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o HeightOpt) applyEmbed(a *EmbedAttrs, _ *[]Component) {

@@ -36,7 +36,7 @@ func Track(args ...TrackArg) Node {
 }
 
 func (g Global) applyTrack(a *TrackAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o DefaultOpt) applyTrack(a *TrackAttrs, _ *[]Component) {

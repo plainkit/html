@@ -31,7 +31,7 @@ func Tfoot(args ...TfootArg) Node {
 }
 
 func (g Global) applyTfoot(a *TfootAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *TfootAttrs) WriteAttrs(sb *strings.Builder) {

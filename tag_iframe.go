@@ -41,7 +41,7 @@ func Iframe(args ...IframeArg) Node {
 }
 
 func (g Global) applyIframe(a *IframeAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o AllowOpt) applyIframe(a *IframeAttrs, _ *[]Component) {

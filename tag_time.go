@@ -32,7 +32,7 @@ func Time(args ...TimeArg) Node {
 }
 
 func (g Global) applyTime(a *TimeAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o DatetimeOpt) applyTime(a *TimeAttrs, _ *[]Component) {

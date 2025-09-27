@@ -40,7 +40,7 @@ func Area(args ...AreaArg) Node {
 }
 
 func (g Global) applyArea(a *AreaAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o AltOpt) applyArea(a *AreaAttrs, _ *[]Component) {

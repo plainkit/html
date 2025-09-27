@@ -32,7 +32,7 @@ func Col(args ...ColArg) Node {
 }
 
 func (g Global) applyCol(a *ColAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o SpanOpt) applyCol(a *ColAttrs, _ *[]Component) {

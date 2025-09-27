@@ -34,7 +34,7 @@ func {{.Title}}(args ...{{.ArgInterface}}) Node {
 }
 
 func (g Global) apply{{.Title}}(a *{{.StructName}}, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 {{range .Attributes}}{{if ne .Attr "data"}}
 func (o {{.Field}}Opt) apply{{$.Title}}(a *{{$.StructName}}, _ *[]Component) {

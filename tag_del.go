@@ -33,7 +33,7 @@ func Del(args ...DelArg) Node {
 }
 
 func (g Global) applyDel(a *DelAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o CiteOpt) applyDel(a *DelAttrs, _ *[]Component) {

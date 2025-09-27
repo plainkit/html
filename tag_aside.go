@@ -31,7 +31,7 @@ func Aside(args ...AsideArg) Node {
 }
 
 func (g Global) applyAside(a *AsideAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *AsideAttrs) WriteAttrs(sb *strings.Builder) {

@@ -34,7 +34,7 @@ func Output(args ...OutputArg) Node {
 }
 
 func (g Global) applyOutput(a *OutputAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o ForOpt) applyOutput(a *OutputAttrs, _ *[]Component) {

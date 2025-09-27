@@ -31,7 +31,7 @@ func Noscript(args ...NoscriptArg) Node {
 }
 
 func (g Global) applyNoscript(a *NoscriptAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *NoscriptAttrs) WriteAttrs(sb *strings.Builder) {

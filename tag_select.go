@@ -38,7 +38,7 @@ func Select(args ...SelectArg) Node {
 }
 
 func (g Global) applySelect(a *SelectAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o AutocompleteOpt) applySelect(a *SelectAttrs, _ *[]Component) {

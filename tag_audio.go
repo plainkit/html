@@ -37,7 +37,7 @@ func Audio(args ...AudioArg) Node {
 }
 
 func (g Global) applyAudio(a *AudioAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o AutoplayOpt) applyAudio(a *AudioAttrs, _ *[]Component) {

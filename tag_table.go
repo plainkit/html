@@ -32,7 +32,7 @@ func Table(args ...TableArg) Node {
 }
 
 func (g Global) applyTable(a *TableAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o BorderOpt) applyTable(a *TableAttrs, _ *[]Component) {

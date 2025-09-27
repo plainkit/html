@@ -31,7 +31,7 @@ func H3(args ...H3Arg) Node {
 }
 
 func (g Global) applyH3(a *H3Attrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *H3Attrs) WriteAttrs(sb *strings.Builder) {

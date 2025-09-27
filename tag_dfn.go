@@ -31,7 +31,7 @@ func Dfn(args ...DfnArg) Node {
 }
 
 func (g Global) applyDfn(a *DfnAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *DfnAttrs) WriteAttrs(sb *strings.Builder) {

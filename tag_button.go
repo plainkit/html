@@ -44,7 +44,7 @@ func Button(args ...ButtonArg) Node {
 }
 
 func (g Global) applyButton(a *ButtonAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o AutofocusOpt) applyButton(a *ButtonAttrs, _ *[]Component) {

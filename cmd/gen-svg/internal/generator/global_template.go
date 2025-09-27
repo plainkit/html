@@ -6,10 +6,16 @@ package svg
 
 import (
 	"strings"
+
+	"github.com/plainkit/html"
 )
 
 // SvgGlobalAttrs represents global SVG attributes that can be applied to any SVG element
 type SvgGlobalAttrs struct {
+	// Embed HTML global attributes for cross-compatibility
+	html.GlobalAttrs
+
+	// SVG-specific global attributes (excluding HTML globals to prevent duplicates)
 {{range .Attributes}}	{{.Field}} {{.GoType}}
 {{end}}}
 
@@ -36,6 +42,10 @@ func A{{.Field}}(v {{.GoType}}) Global {
 {{end}}{{end}}
 // WriteSvgGlobal writes global SVG attributes to the string builder
 func WriteSvgGlobal(sb *strings.Builder, attrs *SvgGlobalAttrs) {
+	// Write embedded HTML global attributes first
+	html.WriteGlobal(sb, &attrs.GlobalAttrs)
+
+	// Write SVG-specific global attributes
 {{range .Attributes}}{{if eq .Type "bool"}}	if attrs.{{.Field}} {
 		SvgBoolAttr(sb, "{{.Attr}}")
 	}

@@ -31,7 +31,7 @@ func Footer(args ...FooterArg) Node {
 }
 
 func (g Global) applyFooter(a *FooterAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *FooterAttrs) WriteAttrs(sb *strings.Builder) {

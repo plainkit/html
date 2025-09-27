@@ -32,7 +32,7 @@ func Slot(args ...SlotArg) Node {
 }
 
 func (g Global) applySlot(a *SlotAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o NameOpt) applySlot(a *SlotAttrs, _ *[]Component) {

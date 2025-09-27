@@ -32,7 +32,7 @@ func Data(args ...DataArg) Node {
 }
 
 func (g Global) applyData(a *DataAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o ValueOpt) applyData(a *DataAttrs, _ *[]Component) {

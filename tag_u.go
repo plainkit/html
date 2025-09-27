@@ -31,7 +31,7 @@ func U(args ...UArg) Node {
 }
 
 func (g Global) applyU(a *UAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *UAttrs) WriteAttrs(sb *strings.Builder) {

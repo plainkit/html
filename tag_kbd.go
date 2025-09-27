@@ -31,7 +31,7 @@ func Kbd(args ...KbdArg) Node {
 }
 
 func (g Global) applyKbd(a *KbdAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *KbdAttrs) WriteAttrs(sb *strings.Builder) {

@@ -31,7 +31,7 @@ func Header(args ...HeaderArg) Node {
 }
 
 func (g Global) applyHeader(a *HeaderAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *HeaderAttrs) WriteAttrs(sb *strings.Builder) {

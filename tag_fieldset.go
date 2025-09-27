@@ -31,7 +31,7 @@ func Fieldset(args ...FieldsetArg) Node {
 }
 
 func (g Global) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *FieldsetAttrs) WriteAttrs(sb *strings.Builder) {

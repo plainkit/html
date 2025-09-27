@@ -31,7 +31,7 @@ func Div(args ...DivArg) Node {
 }
 
 func (g Global) applyDiv(a *DivAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *DivAttrs) WriteAttrs(sb *strings.Builder) {

@@ -31,7 +31,7 @@ func Strike(args ...StrikeArg) Node {
 }
 
 func (g Global) applyStrike(a *StrikeAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *StrikeAttrs) WriteAttrs(sb *strings.Builder) {

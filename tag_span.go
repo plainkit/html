@@ -31,7 +31,7 @@ func Span(args ...SpanArg) Node {
 }
 
 func (g Global) applySpan(a *SpanAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *SpanAttrs) WriteAttrs(sb *strings.Builder) {

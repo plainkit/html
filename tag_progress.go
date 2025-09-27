@@ -33,7 +33,7 @@ func Progress(args ...ProgressArg) Node {
 }
 
 func (g Global) applyProgress(a *ProgressAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o MaxOpt) applyProgress(a *ProgressAttrs, _ *[]Component) {

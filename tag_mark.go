@@ -31,7 +31,7 @@ func Mark(args ...MarkArg) Node {
 }
 
 func (g Global) applyMark(a *MarkAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *MarkAttrs) WriteAttrs(sb *strings.Builder) {

@@ -39,7 +39,7 @@ func Object(args ...ObjectArg) Node {
 }
 
 func (g Global) applyObject(a *ObjectAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o FormOpt) applyObject(a *ObjectAttrs, _ *[]Component) {

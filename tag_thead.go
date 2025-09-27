@@ -31,7 +31,7 @@ func Thead(args ...TheadArg) Node {
 }
 
 func (g Global) applyThead(a *TheadAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *TheadAttrs) WriteAttrs(sb *strings.Builder) {

@@ -33,7 +33,7 @@ func Canvas(args ...CanvasArg) Node {
 }
 
 func (g Global) applyCanvas(a *CanvasAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o HeightOpt) applyCanvas(a *CanvasAttrs, _ *[]Component) {

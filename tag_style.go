@@ -34,7 +34,7 @@ func Style(args ...StyleArg) Node {
 }
 
 func (g Global) applyStyle(a *StyleAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o MediaOpt) applyStyle(a *StyleAttrs, _ *[]Component) {

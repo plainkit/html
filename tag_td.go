@@ -34,7 +34,7 @@ func Td(args ...TdArg) Node {
 }
 
 func (g Global) applyTd(a *TdAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o ColspanOpt) applyTd(a *TdAttrs, _ *[]Component) {

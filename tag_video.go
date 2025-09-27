@@ -42,7 +42,7 @@ func Video(args ...VideoArg) Node {
 }
 
 func (g Global) applyVideo(a *VideoAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o AutoplayOpt) applyVideo(a *VideoAttrs, _ *[]Component) {

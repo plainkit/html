@@ -37,7 +37,7 @@ func Meter(args ...MeterArg) Node {
 }
 
 func (g Global) applyMeter(a *MeterAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o HighOpt) applyMeter(a *MeterAttrs, _ *[]Component) {

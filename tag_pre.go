@@ -31,7 +31,7 @@ func Pre(args ...PreArg) Node {
 }
 
 func (g Global) applyPre(a *PreAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *PreAttrs) WriteAttrs(sb *strings.Builder) {

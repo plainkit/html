@@ -31,7 +31,7 @@ func Ruby(args ...RubyArg) Node {
 }
 
 func (g Global) applyRuby(a *RubyAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *RubyAttrs) WriteAttrs(sb *strings.Builder) {

@@ -31,7 +31,7 @@ func Small(args ...SmallArg) Node {
 }
 
 func (g Global) applySmall(a *SmallAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *SmallAttrs) WriteAttrs(sb *strings.Builder) {

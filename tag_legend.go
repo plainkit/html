@@ -31,7 +31,7 @@ func Legend(args ...LegendArg) Node {
 }
 
 func (g Global) applyLegend(a *LegendAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *LegendAttrs) WriteAttrs(sb *strings.Builder) {

@@ -31,7 +31,7 @@ func Hgroup(args ...HgroupArg) Node {
 }
 
 func (g Global) applyHgroup(a *HgroupAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *HgroupAttrs) WriteAttrs(sb *strings.Builder) {

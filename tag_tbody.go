@@ -31,7 +31,7 @@ func Tbody(args ...TbodyArg) Node {
 }
 
 func (g Global) applyTbody(a *TbodyAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *TbodyAttrs) WriteAttrs(sb *strings.Builder) {

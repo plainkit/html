@@ -33,7 +33,7 @@ func Base(args ...BaseArg) Node {
 }
 
 func (g Global) applyBase(a *BaseAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o HrefOpt) applyBase(a *BaseAttrs, _ *[]Component) {

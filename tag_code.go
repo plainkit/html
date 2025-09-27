@@ -31,7 +31,7 @@ func Code(args ...CodeArg) Node {
 }
 
 func (g Global) applyCode(a *CodeAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *CodeAttrs) WriteAttrs(sb *strings.Builder) {

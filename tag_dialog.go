@@ -32,7 +32,7 @@ func Dialog(args ...DialogArg) Node {
 }
 
 func (g Global) applyDialog(a *DialogAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o OpenOpt) applyDialog(a *DialogAttrs, _ *[]Component) {

@@ -31,7 +31,7 @@ func B(args ...BArg) Node {
 }
 
 func (g Global) applyB(a *BAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *BAttrs) WriteAttrs(sb *strings.Builder) {

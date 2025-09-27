@@ -31,7 +31,7 @@ func Address(args ...AddressArg) Node {
 }
 
 func (g Global) applyAddress(a *AddressAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *AddressAttrs) WriteAttrs(sb *strings.Builder) {

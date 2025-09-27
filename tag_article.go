@@ -31,7 +31,7 @@ func Article(args ...ArticleArg) Node {
 }
 
 func (g Global) applyArticle(a *ArticleAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *ArticleAttrs) WriteAttrs(sb *strings.Builder) {

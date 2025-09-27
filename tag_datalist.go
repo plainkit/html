@@ -31,7 +31,7 @@ func Datalist(args ...DatalistArg) Node {
 }
 
 func (g Global) applyDatalist(a *DatalistAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *DatalistAttrs) WriteAttrs(sb *strings.Builder) {

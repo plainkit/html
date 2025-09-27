@@ -32,7 +32,7 @@ func Menu(args ...MenuArg) Node {
 }
 
 func (g Global) applyMenu(a *MenuAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o TypeOpt) applyMenu(a *MenuAttrs, _ *[]Component) {

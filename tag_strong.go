@@ -31,7 +31,7 @@ func Strong(args ...StrongArg) Node {
 }
 
 func (g Global) applyStrong(a *StrongAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *StrongAttrs) WriteAttrs(sb *strings.Builder) {

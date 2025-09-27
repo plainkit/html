@@ -62,7 +62,7 @@ func Input(args ...InputArg) Node {
 }
 
 func (g Global) applyInput(a *InputAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o AcceptOpt) applyInput(a *InputAttrs, _ *[]Component) {

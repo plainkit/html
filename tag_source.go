@@ -36,7 +36,7 @@ func Source(args ...SourceArg) Node {
 }
 
 func (g Global) applySource(a *SourceAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o MediaOpt) applySource(a *SourceAttrs, _ *[]Component) {

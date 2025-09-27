@@ -32,7 +32,7 @@ func Details(args ...DetailsArg) Node {
 }
 
 func (g Global) applyDetails(a *DetailsAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o OpenOpt) applyDetails(a *DetailsAttrs, _ *[]Component) {

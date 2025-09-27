@@ -33,7 +33,7 @@ func Param(args ...ParamArg) Node {
 }
 
 func (g Global) applyParam(a *ParamAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o NameOpt) applyParam(a *ParamAttrs, _ *[]Component) {

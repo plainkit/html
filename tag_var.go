@@ -31,7 +31,7 @@ func Var(args ...VarArg) Node {
 }
 
 func (g Global) applyVar(a *VarAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *VarAttrs) WriteAttrs(sb *strings.Builder) {

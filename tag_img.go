@@ -43,7 +43,7 @@ func Img(args ...ImgArg) Node {
 }
 
 func (g Global) applyImg(a *ImgAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o AltOpt) applyImg(a *ImgAttrs, _ *[]Component) {

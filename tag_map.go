@@ -32,7 +32,7 @@ func Map(args ...MapArg) Node {
 }
 
 func (g Global) applyMap(a *MapAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o NameOpt) applyMap(a *MapAttrs, _ *[]Component) {

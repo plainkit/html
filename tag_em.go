@@ -31,7 +31,7 @@ func Em(args ...EmArg) Node {
 }
 
 func (g Global) applyEm(a *EmAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *EmAttrs) WriteAttrs(sb *strings.Builder) {

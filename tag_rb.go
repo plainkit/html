@@ -31,7 +31,7 @@ func Rb(args ...RbArg) Node {
 }
 
 func (g Global) applyRb(a *RbAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *RbAttrs) WriteAttrs(sb *strings.Builder) {

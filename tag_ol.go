@@ -34,7 +34,7 @@ func Ol(args ...OlArg) Node {
 }
 
 func (g Global) applyOl(a *OlAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o ReversedOpt) applyOl(a *OlAttrs, _ *[]Component) {

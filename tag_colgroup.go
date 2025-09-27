@@ -32,7 +32,7 @@ func Colgroup(args ...ColgroupArg) Node {
 }
 
 func (g Global) applyColgroup(a *ColgroupAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o SpanOpt) applyColgroup(a *ColgroupAttrs, _ *[]Component) {

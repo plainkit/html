@@ -31,7 +31,7 @@ func Head(args ...HeadArg) Node {
 }
 
 func (g Global) applyHead(a *HeadAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *HeadAttrs) WriteAttrs(sb *strings.Builder) {

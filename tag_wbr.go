@@ -31,7 +31,7 @@ func Wbr(args ...WbrArg) Node {
 }
 
 func (g Global) applyWbr(a *WbrAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *WbrAttrs) WriteAttrs(sb *strings.Builder) {

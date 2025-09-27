@@ -252,9 +252,14 @@ func (g *GlobalGenerator) generateGlobalOptionType(sb *strings.Builder) {
 	sb.WriteString("\tf func(*GlobalAttrs)\n")
 	sb.WriteString("}\n\n")
 
-	sb.WriteString("func (g Global) do(ga *GlobalAttrs) {\n")
+	sb.WriteString("// Do applies the global attribute function to GlobalAttrs (public for SVG package integration)\n")
+	sb.WriteString("func (g Global) Do(ga *GlobalAttrs) {\n")
 	sb.WriteString("\tg.f(ga)\n")
 	sb.WriteString("}\n\n")
+
+	// Add import check for SVG compatibility
+	sb.WriteString("// Note: applySvg method will be added via build tags or separate file\n")
+	sb.WriteString("// to avoid circular imports between html and svg packages\n\n")
 }
 
 func (g *GlobalGenerator) generateGlobalConstructors(sb *strings.Builder, globalAttrs []spec.Attribute) {

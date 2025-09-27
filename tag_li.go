@@ -32,7 +32,7 @@ func Li(args ...LiArg) Node {
 }
 
 func (g Global) applyLi(a *LiAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o ValueOpt) applyLi(a *LiAttrs, _ *[]Component) {

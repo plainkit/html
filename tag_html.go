@@ -32,7 +32,7 @@ func Html(args ...HtmlArg) Node {
 }
 
 func (g Global) applyHtml(a *HtmlAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o LangOpt) applyHtml(a *HtmlAttrs, _ *[]Component) {

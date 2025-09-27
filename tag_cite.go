@@ -31,7 +31,7 @@ func Cite(args ...CiteArg) Node {
 }
 
 func (g Global) applyCite(a *CiteAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *CiteAttrs) WriteAttrs(sb *strings.Builder) {

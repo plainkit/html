@@ -31,7 +31,7 @@ func Title(args ...TitleArg) Node {
 }
 
 func (g Global) applyTitle(a *TitleAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *TitleAttrs) WriteAttrs(sb *strings.Builder) {

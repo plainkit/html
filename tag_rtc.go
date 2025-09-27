@@ -31,7 +31,7 @@ func Rtc(args ...RtcArg) Node {
 }
 
 func (g Global) applyRtc(a *RtcAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *RtcAttrs) WriteAttrs(sb *strings.Builder) {

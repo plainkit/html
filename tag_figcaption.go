@@ -31,7 +31,7 @@ func Figcaption(args ...FigcaptionArg) Node {
 }
 
 func (g Global) applyFigcaption(a *FigcaptionAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *FigcaptionAttrs) WriteAttrs(sb *strings.Builder) {

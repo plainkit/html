@@ -31,7 +31,7 @@ func Bdi(args ...BdiArg) Node {
 }
 
 func (g Global) applyBdi(a *BdiAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *BdiAttrs) WriteAttrs(sb *strings.Builder) {

@@ -31,7 +31,7 @@ func Sub(args ...SubArg) Node {
 }
 
 func (g Global) applySub(a *SubAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *SubAttrs) WriteAttrs(sb *strings.Builder) {

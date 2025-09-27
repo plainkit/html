@@ -31,7 +31,7 @@ func Section(args ...SectionArg) Node {
 }
 
 func (g Global) applySection(a *SectionAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *SectionAttrs) WriteAttrs(sb *strings.Builder) {

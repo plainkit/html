@@ -31,7 +31,7 @@ func Abbr(args ...AbbrArg) Node {
 }
 
 func (g Global) applyAbbr(a *AbbrAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *AbbrAttrs) WriteAttrs(sb *strings.Builder) {

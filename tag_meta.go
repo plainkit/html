@@ -35,7 +35,7 @@ func Meta(args ...MetaArg) Node {
 }
 
 func (g Global) applyMeta(a *MetaAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o CharsetOpt) applyMeta(a *MetaAttrs, _ *[]Component) {

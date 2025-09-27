@@ -31,7 +31,7 @@ func H5(args ...H5Arg) Node {
 }
 
 func (g Global) applyH5(a *H5Attrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *H5Attrs) WriteAttrs(sb *strings.Builder) {

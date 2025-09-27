@@ -32,7 +32,7 @@ func Q(args ...QArg) Node {
 }
 
 func (g Global) applyQ(a *QAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o CiteOpt) applyQ(a *QAttrs, _ *[]Component) {

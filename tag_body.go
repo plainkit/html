@@ -31,7 +31,7 @@ func Body(args ...BodyArg) Node {
 }
 
 func (g Global) applyBody(a *BodyAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *BodyAttrs) WriteAttrs(sb *strings.Builder) {

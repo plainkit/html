@@ -31,7 +31,7 @@ func Main(args ...MainArg) Node {
 }
 
 func (g Global) applyMain(a *MainAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *MainAttrs) WriteAttrs(sb *strings.Builder) {

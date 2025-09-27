@@ -32,7 +32,7 @@ func Blockquote(args ...BlockquoteArg) Node {
 }
 
 func (g Global) applyBlockquote(a *BlockquoteAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o CiteOpt) applyBlockquote(a *BlockquoteAttrs, _ *[]Component) {

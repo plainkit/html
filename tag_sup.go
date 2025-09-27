@@ -31,7 +31,7 @@ func Sup(args ...SupArg) Node {
 }
 
 func (g Global) applySup(a *SupAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *SupAttrs) WriteAttrs(sb *strings.Builder) {

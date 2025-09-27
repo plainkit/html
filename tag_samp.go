@@ -31,7 +31,7 @@ func Samp(args ...SampArg) Node {
 }
 
 func (g Global) applySamp(a *SampAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *SampAttrs) WriteAttrs(sb *strings.Builder) {

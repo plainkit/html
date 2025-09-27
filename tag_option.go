@@ -35,7 +35,7 @@ func Option(args ...OptionArg) Node {
 }
 
 func (g Global) applyOption(a *OptionAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o DisabledOpt) applyOption(a *OptionAttrs, _ *[]Component) {

@@ -39,7 +39,7 @@ func A(args ...AArg) Node {
 }
 
 func (g Global) applyA(a *AAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o DownloadOpt) applyA(a *AAttrs, _ *[]Component) {

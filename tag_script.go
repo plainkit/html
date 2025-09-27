@@ -41,7 +41,7 @@ func Script(args ...ScriptArg) Node {
 }
 
 func (g Global) applyScript(a *ScriptAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (o AsyncOpt) applyScript(a *ScriptAttrs, _ *[]Component) {

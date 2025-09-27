@@ -31,7 +31,7 @@ func Summary(args ...SummaryArg) Node {
 }
 
 func (g Global) applySummary(a *SummaryAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *SummaryAttrs) WriteAttrs(sb *strings.Builder) {

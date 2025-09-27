@@ -205,6 +205,22 @@ func (l *Loader) extractGlobalAttributes() map[string]string {
 		}
 	}
 
+	// HTML global attributes that will be provided via embedded html.GlobalAttrs
+	// We exclude these from SVG-specific globals to prevent duplicates
+	htmlGlobals := map[string]bool{
+		"class":           true,
+		"id":              true,
+		"style":           true,
+		"accesskey":       true,
+		"contenteditable": true,
+		"dir":             true,
+		"draggable":       true,
+		"hidden":          true,
+		"spellcheck":      true,
+		"tabindex":        true,
+		"title":           true,
+	}
+
 	// Consider attributes that appear in many elements as global
 	totalElements := len(l.svgSpec.Elements)
 	threshold := totalElements / 4 // 25% threshold
@@ -214,22 +230,23 @@ func (l *Loader) extractGlobalAttributes() map[string]string {
 
 	globalAttrs := make(map[string]string)
 	for attr, count := range attrCounts {
+		// Skip HTML global attributes - they'll be handled by embedded html.GlobalAttrs
+		if htmlGlobals[attr] {
+			continue
+		}
 		if count >= threshold {
 			globalAttrs[attr] = attrTypes[attr]
 		}
 	}
 
-	// Always include common SVG global attributes
-	commonGlobals := map[string]string{
-		"id":        "string",
-		"class":     "string",
-		"style":     "string",
+	// Include only SVG-specific global attributes (not covered by html.GlobalAttrs)
+	svgSpecificGlobals := map[string]string{
 		"fill":      "string",
 		"stroke":    "string",
 		"transform": "string",
 	}
 
-	for attr, typ := range commonGlobals {
+	for attr, typ := range svgSpecificGlobals {
 		globalAttrs[attr] = typ
 	}
 

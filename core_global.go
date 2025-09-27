@@ -160,9 +160,13 @@ type Global struct {
 	f func(*GlobalAttrs)
 }
 
-func (g Global) do(ga *GlobalAttrs) {
+// Do applies the global attribute function to GlobalAttrs (public for SVG package integration)
+func (g Global) Do(ga *GlobalAttrs) {
 	g.f(ga)
 }
+
+// Note: applySvg method will be added via build tags or separate file
+// to avoid circular imports between html and svg packages
 
 // Global attribute constructors
 func AClass(v string) Global {

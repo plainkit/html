@@ -31,7 +31,7 @@ func Figure(args ...FigureArg) Node {
 }
 
 func (g Global) applyFigure(a *FigureAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *FigureAttrs) WriteAttrs(sb *strings.Builder) {

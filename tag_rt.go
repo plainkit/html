@@ -31,7 +31,7 @@ func Rt(args ...RtArg) Node {
 }
 
 func (g Global) applyRt(a *RtAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *RtAttrs) WriteAttrs(sb *strings.Builder) {

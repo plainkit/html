@@ -31,7 +31,7 @@ func Caption(args ...CaptionArg) Node {
 }
 
 func (g Global) applyCaption(a *CaptionAttrs, _ *[]Component) {
-	g.do(&a.Global)
+	g.Do(&a.Global)
 }
 
 func (a *CaptionAttrs) WriteAttrs(sb *strings.Builder) {
