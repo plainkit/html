@@ -3,8 +3,7 @@ package html
 import "strings"
 
 type HeadAttrs struct {
-	Global  GlobalAttrs
-	Profile string
+	Global GlobalAttrs
 }
 
 type HeadArg interface {
@@ -35,13 +34,6 @@ func (g Global) applyHead(a *HeadAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o ProfileOpt) applyHead(a *HeadAttrs, _ *[]Component) {
-	a.Profile = o.v
-}
-
 func (a *HeadAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Profile != "" {
-		Attr(sb, "profile", a.Profile)
-	}
 }

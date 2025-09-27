@@ -6,7 +6,6 @@ type EmbedAttrs struct {
 	Global GlobalAttrs
 	Height string
 	Src    string
-	Type   string
 	Width  string
 }
 
@@ -44,9 +43,6 @@ func (o HeightOpt) applyEmbed(a *EmbedAttrs, _ *[]Component) {
 func (o SrcOpt) applyEmbed(a *EmbedAttrs, _ *[]Component) {
 	a.Src = o.v
 }
-func (o TypeOpt) applyEmbed(a *EmbedAttrs, _ *[]Component) {
-	a.Type = o.v
-}
 func (o WidthOpt) applyEmbed(a *EmbedAttrs, _ *[]Component) {
 	a.Width = o.v
 }
@@ -58,9 +54,6 @@ func (a *EmbedAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Src != "" {
 		Attr(sb, "src", a.Src)
-	}
-	if a.Type != "" {
-		Attr(sb, "type", a.Type)
 	}
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)

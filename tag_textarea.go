@@ -3,20 +3,22 @@ package html
 import "strings"
 
 type TextareaAttrs struct {
-	Global       GlobalAttrs
-	Autocomplete string
-	Cols         string
-	Dirname      string
-	Disabled     bool
-	Form         string
-	Maxlength    string
-	Minlength    string
-	Name         string
-	Placeholder  string
-	Readonly     bool
-	Required     bool
-	Rows         string
-	Wrap         string
+	Global         GlobalAttrs
+	Autocapitalize string
+	Autocomplete   string
+	Autofocus      bool
+	Cols           string
+	Dirname        string
+	Disabled       bool
+	Form           string
+	Maxlength      string
+	Minlength      string
+	Placeholder    string
+	Readonly       bool
+	Required       bool
+	Rows           string
+	Spellcheck     string
+	Wrap           string
 }
 
 type TextareaArg interface {
@@ -47,8 +49,14 @@ func (g Global) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
+func (o AutocapitalizeOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Autocapitalize = o.v
+}
 func (o AutocompleteOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Autocomplete = o.v
+}
+func (o AutofocusOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Autofocus = true
 }
 func (o ColsOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Cols = o.v
@@ -68,9 +76,6 @@ func (o MaxlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 func (o MinlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Minlength = o.v
 }
-func (o NameOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
-	a.Name = o.v
-}
 func (o PlaceholderOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Placeholder = o.v
 }
@@ -83,14 +88,23 @@ func (o RequiredOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 func (o RowsOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Rows = o.v
 }
+func (o SpellcheckOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+	a.Spellcheck = o.v
+}
 func (o WrapOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Wrap = o.v
 }
 
 func (a *TextareaAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Autocapitalize != "" {
+		Attr(sb, "autocapitalize", a.Autocapitalize)
+	}
 	if a.Autocomplete != "" {
 		Attr(sb, "autocomplete", a.Autocomplete)
+	}
+	if a.Autofocus {
+		BoolAttr(sb, "autofocus")
 	}
 	if a.Cols != "" {
 		Attr(sb, "cols", a.Cols)
@@ -110,9 +124,6 @@ func (a *TextareaAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Minlength != "" {
 		Attr(sb, "minlength", a.Minlength)
 	}
-	if a.Name != "" {
-		Attr(sb, "name", a.Name)
-	}
 	if a.Placeholder != "" {
 		Attr(sb, "placeholder", a.Placeholder)
 	}
@@ -124,6 +135,9 @@ func (a *TextareaAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Rows != "" {
 		Attr(sb, "rows", a.Rows)
+	}
+	if a.Spellcheck != "" {
+		Attr(sb, "spellcheck", a.Spellcheck)
 	}
 	if a.Wrap != "" {
 		Attr(sb, "wrap", a.Wrap)

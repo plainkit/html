@@ -1,287 +1,62 @@
 package spec
 
 import (
-	"encoding/json"
 	"fmt"
-	"io"
-	"net/http"
-	"os"
-	"path/filepath"
-	"regexp"
 	"sort"
 	"strings"
+
+	"github.com/delaneyj/gostar/cfg"
+	pb "github.com/delaneyj/gostar/cfg/gen/specs/v1"
 )
 
-// VoidElements defines HTML elements that are self-closing
-var VoidElements = map[string]bool{
-	"area": true, "base": true, "br": true, "col": true,
-	"embed": true, "hr": true, "img": true, "input": true,
-	"link": true, "meta": true, "param": true, "source": true,
-	"track": true, "wbr": true,
-}
-
-// BoolAttributes defines HTML attributes that are boolean
-var BoolAttributes = map[string]bool{
-	"allowfullscreen": true,
-	"async":           true,
-	"autofocus":       true,
-	"autoplay":        true,
-	"checked":         true,
-	"contenteditable": true,
-	"controls":        true,
-	"default":         true,
-	"defer":           true,
-	"disabled":        true,
-	"formnovalidate":  true,
-	"hidden":          true,
-	"loop":            true,
-	"multiple":        true,
-	"muted":           true,
-	"open":            true,
-	"readonly":        true,
-	"required":        true,
-	"reversed":        true,
-	"selected":        true,
-}
-
-// ParentMap defines parent-child relationships
-var ParentMap = map[string][]string{}
-
-// Loader handles loading and parsing of HTML specification files
+// Loader handles loading and parsing of HTML specification from gostar
 type Loader struct {
-	specsDir string
+	htmlSpec *pb.Namespace
 }
 
-// WooormAttributeData represents the structure from wooorm/html-element-attributes
-type WooormAttributeData map[string][]string
-
-// StandardHTML5Elements contains all standard HTML5 elements
-var StandardHTML5Elements = map[string]bool{
-	"title": true,
-
-	"html": true,
-	"body": true,
-
-	"article": true,
-	"aside":   true,
-	"footer":  true,
-	"header":  true,
-	"main":    true,
-	"nav":     true,
-	"section": true,
-	"search":  true,
-
-	"blockquote": true,
-	"dd":         true,
-	"div":        true,
-	"dl":         true,
-	"dt":         true,
-	"figcaption": true,
-	"figure":     true,
-	"hr":         true,
-	"li":         true,
-	"menu":       true,
-	"ol":         true,
-	"p":          true,
-	"pre":        true,
-	"ul":         true,
-
-	"a":      true,
-	"abbr":   true,
-	"b":      true,
-	"bdi":    true,
-	"bdo":    true,
-	"br":     true,
-	"cite":   true,
-	"code":   true,
-	"data":   true,
-	"dfn":    true,
-	"em":     true,
-	"i":      true,
-	"kbd":    true,
-	"mark":   true,
-	"q":      true,
-	"rp":     true,
-	"rt":     true,
-	"ruby":   true,
-	"s":      true,
-	"samp":   true,
-	"small":  true,
-	"span":   true,
-	"strong": true,
-	"sub":    true,
-	"sup":    true,
-	"time":   true,
-	"u":      true,
-	"var":    true,
-	"wbr":    true,
-
-	"area":    true,
-	"audio":   true,
-	"img":     true,
-	"map":     true,
-	"picture": true,
-	"source":  true,
-	"track":   true,
-	"video":   true,
-
-	"canvas": true,
-	"embed":  true,
-	"iframe": true,
-	"object": true,
-	"slot":   true,
-	"svg":    true,
-
-	"button":   true,
-	"datalist": true,
-	"fieldset": true,
-	"form":     true,
-	"input":    true,
-	"label":    true,
-	"legend":   true,
-	"meter":    true,
-	"optgroup": true,
-	"option":   true,
-	"output":   true,
-	"progress": true,
-	"select":   true,
-	"textarea": true,
-
-	"details": true,
-	"dialog":  true,
-	"summary": true,
-
-	"template": true,
-
-	"noscript": true,
-	"script":   true,
-
-	"base":  true,
-	"head":  true,
-	"link":  true,
-	"meta":  true,
-	"style": true,
-
-	"caption":  true,
-	"col":      true,
-	"colgroup": true,
-	"table":    true,
-	"tbody":    true,
-	"td":       true,
-	"tfoot":    true,
-	"th":       true,
-	"thead":    true,
-	"tr":       true,
-
-	"del": true,
-	"ins": true,
-}
-
-// NewLoader creates a new spec loader for the given directory
+// NewLoader creates a new spec loader using gostar data
 func NewLoader(specsDir string) *Loader {
-	return &Loader{specsDir: specsDir}
+	return &Loader{htmlSpec: cfg.HTML}
 }
 
-// FetchWooormData fetches HTML element attributes from the wooorm GitHub repository
-func (l *Loader) FetchWooormData() (WooormAttributeData, error) {
-	url := "https://raw.githubusercontent.com/wooorm/html-element-attributes/refs/heads/main/index.js"
-
-	resp, err := http.Get(url)
-	if err != nil {
-		return nil, fmt.Errorf("fetch wooorm data: %w", err)
-	}
-	defer func() {
-		if closeErr := resp.Body.Close(); closeErr != nil {
-			fmt.Fprintf(os.Stderr, "Warning: failed to close response body: %v\n", closeErr)
-		}
-	}()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("fetch wooorm data: status %d", resp.StatusCode)
-	}
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, fmt.Errorf("read wooorm data: %w", err)
-	}
-
-	return parseWooormData(string(body))
+// getGostarSpec returns the gostar HTML specification
+func (l *Loader) getGostarSpec() *pb.Namespace {
+	return l.htmlSpec
 }
 
-func parseWooormData(content string) (WooormAttributeData, error) {
-	startPattern := `export const htmlElementAttributes = {`
-	startIndex := strings.Index(content, startPattern)
-	if startIndex == -1 {
-		return nil, fmt.Errorf("could not find 'export const htmlElementAttributes = {' in content")
-	}
-
-	braceStart := startIndex + len(startPattern) - 1
-	braceCount := 0
-	endIndex := -1
-
-LoopEnd:
-	for i := braceStart; i < len(content); i++ {
-		switch content[i] {
-		case '{':
-			braceCount++
-		case '}':
-			braceCount--
-			if braceCount == 0 {
-				endIndex = i + 1
-				break LoopEnd
-			}
+// isVoidElement checks if an element is self-closing based on gostar data
+func (l *Loader) isVoidElement(tagName string) bool {
+	for _, element := range l.htmlSpec.Elements {
+		if element.Tag == tagName {
+			return element.NoChildren
 		}
 	}
-
-	if endIndex == -1 {
-		return nil, fmt.Errorf("could not find matching closing brace for htmlElementAttributes object")
-	}
-
-	objectStr := content[braceStart:endIndex]
-
-	jsonStr := convertJSObjectToJSON(objectStr)
-
-	var data WooormAttributeData
-	if err := json.Unmarshal([]byte(jsonStr), &data); err != nil {
-		return nil, fmt.Errorf("parse wooorm data as JSON: %w", err)
-	}
-
-	return data, nil
+	return false
 }
 
-func convertJSObjectToJSON(jsObject string) string {
-	result := strings.ReplaceAll(jsObject, "'", "\"")
-
-	keyRegex := regexp.MustCompile(`([{,]\s*)([a-zA-Z_$][a-zA-Z0-9_$]*)\s*:`)
-	result = keyRegex.ReplaceAllString(result, `${1}"${2}":`)
-
-	return result
+// isAttributeBoolean determines if an attribute should be treated as boolean
+func (l *Loader) isAttributeBoolean(attr *pb.Attribute) bool {
+	if attr.Type == nil {
+		return false
+	}
+	// Check if the attribute type contains "bool:true" in its string representation
+	typeStr := fmt.Sprintf("%+v", attr.Type)
+	return strings.Contains(typeStr, "bool:true")
 }
 
-// LoadAllTagSpecsFromWooorm loads all tag specifications from wooorm data
-func (l *Loader) LoadAllTagSpecsFromWooorm() ([]TagSpec, error) {
-	wooormData, err := l.FetchWooormData()
-	if err != nil {
-		return nil, fmt.Errorf("fetch wooorm data: %w", err)
-	}
-
-	return l.convertWooormToTagSpecs(wooormData), nil
+// LoadAllTagSpecsFromGostar loads all tag specifications from gostar data
+func (l *Loader) LoadAllTagSpecsFromGostar() ([]TagSpec, error) {
+	return l.convertGostarToTagSpecs(), nil
 }
 
-// LoadGlobalAttributesFromWooorm loads global attributes from wooorm data
-func (l *Loader) LoadGlobalAttributesFromWooorm() ([]Attribute, error) {
-	wooormData, err := l.FetchWooormData()
-	if err != nil {
-		return nil, fmt.Errorf("fetch wooorm data: %w", err)
-	}
-
-	globalAttrs, exists := wooormData["*"]
-	if !exists {
-		return nil, fmt.Errorf("no global attributes found in wooorm data")
-	}
+// LoadGlobalAttributesFromGostar loads global attributes from gostar data
+func (l *Loader) LoadGlobalAttributesFromGostar() ([]Attribute, error) {
+	// Note: gostar doesn't seem to have explicit global attributes
+	// We'll collect common attributes that appear across many elements
+	globalAttrs := l.extractGlobalAttributes()
 
 	var attributes []Attribute
-	for _, attrName := range globalAttrs {
+	for attrName, attrType := range globalAttrs {
 		if attrName == "" {
 			continue
 		}
@@ -290,11 +65,7 @@ func (l *Loader) LoadGlobalAttributesFromWooorm() ([]Attribute, error) {
 		attr := Attribute{
 			Field: field,
 			Attr:  attrName,
-			Type:  "string",
-		}
-
-		if BoolAttributes[attrName] {
-			attr.Type = "bool"
+			Type:  attrType,
 		}
 
 		attributes = append(attributes, attr)
@@ -307,45 +78,54 @@ func (l *Loader) LoadGlobalAttributesFromWooorm() ([]Attribute, error) {
 	return attributes, nil
 }
 
-func (l *Loader) convertWooormToTagSpecs(wooormData WooormAttributeData) []TagSpec {
+func (l *Loader) convertGostarToTagSpecs() []TagSpec {
 	var specs []TagSpec
-	processedElements := make(map[string]bool)
 
-	globalAttrs := make(map[string]bool)
-	if globals, exists := wooormData["*"]; exists {
-		for _, attr := range globals {
-			globalAttrs[attr] = true
-		}
-	}
+	globalAttrs := l.extractGlobalAttributes()
 
-	for tagName, attributes := range wooormData {
-		if tagName == "*" {
+	for _, element := range l.htmlSpec.Elements {
+		// Skip SVG tag - it's handled by the separate SVG package
+		if element.Tag == "svg" {
 			continue
 		}
 
 		spec := TagSpec{
-			Name:          tagName,
-			Void:          VoidElements[tagName],
-			ParentTargets: ParentMap[tagName],
+			Name:          element.Tag,
+			Void:          element.NoChildren,
+			ParentTargets: []string{}, // gostar doesn't provide parent-child constraints
 		}
 
-		var elemAttributes []Attribute
-		for _, attrName := range attributes {
-			if attrName == "" || globalAttrs[attrName] {
+		// Use a map to deduplicate attributes by key
+		attrMap := make(map[string]Attribute)
+		for _, attr := range element.Attributes {
+			if attr.Key == "" {
 				continue
 			}
 
-			field := camelCase(attrName)
-			attr := Attribute{
-				Field: field,
-				Attr:  attrName,
-				Type:  "string",
+			// Skip global attributes - they'll be handled separately
+			if _, isGlobal := globalAttrs[attr.Key]; isGlobal {
+				continue
 			}
 
-			if BoolAttributes[strings.ToLower(attrName)] {
-				attr.Type = "bool"
+			field := camelCase(attr.Key)
+			attrType := "string"
+			if l.isAttributeBoolean(attr) {
+				attrType = "bool"
 			}
 
+			// Only add if not already seen (deduplication)
+			if _, exists := attrMap[attr.Key]; !exists {
+				attrMap[attr.Key] = Attribute{
+					Field: field,
+					Attr:  attr.Key,
+					Type:  attrType,
+				}
+			}
+		}
+
+		// Convert map back to slice
+		var elemAttributes []Attribute
+		for _, attr := range attrMap {
 			elemAttributes = append(elemAttributes, attr)
 		}
 
@@ -355,19 +135,6 @@ func (l *Loader) convertWooormToTagSpecs(wooormData WooormAttributeData) []TagSp
 
 		spec.Attributes = elemAttributes
 		specs = append(specs, spec)
-		processedElements[tagName] = true
-	}
-
-	for elementName := range StandardHTML5Elements {
-		if !processedElements[elementName] {
-			spec := TagSpec{
-				Name:          elementName,
-				Void:          VoidElements[elementName],
-				ParentTargets: ParentMap[elementName],
-				Attributes:    []Attribute{},
-			}
-			specs = append(specs, spec)
-		}
 	}
 
 	sort.Slice(specs, func(i, j int) bool {
@@ -377,96 +144,35 @@ func (l *Loader) convertWooormToTagSpecs(wooormData WooormAttributeData) []TagSp
 	return specs
 }
 
-// LoadGlobalAttributes loads the global attributes specification
-func (l *Loader) LoadGlobalAttributes() (*GlobalAttributesSpec, error) {
-	globalPath := filepath.Join(l.specsDir, "global_attributes.json")
-	data, err := os.ReadFile(globalPath)
-	if err != nil {
-		return nil, fmt.Errorf("read global attributes spec: %w", err)
-	}
+// extractGlobalAttributes identifies attributes that appear in many elements
+// and should be treated as global attributes
+func (l *Loader) extractGlobalAttributes() map[string]string {
+	attrCounts := make(map[string]int)
+	attrTypes := make(map[string]string)
+	totalElements := len(l.htmlSpec.Elements)
 
-	var spec GlobalAttributesSpec
-	if err := json.Unmarshal(data, &spec); err != nil {
-		return nil, fmt.Errorf("unmarshal global attributes: %w", err)
-	}
-
-	return &spec, nil
-}
-
-// LoadTagSpec loads specification for a single HTML tag
-func (l *Loader) LoadTagSpec(filename, tagName string) (TagSpec, error) {
-	var spec TagSpec
-	spec.Name = tagName
-	spec.Void = VoidElements[tagName]
-	spec.ParentTargets = ParentMap[tagName]
-
-	path := filepath.Join(l.specsDir, filename)
-	data, err := os.ReadFile(path)
-	if err != nil {
-		return spec, fmt.Errorf("read spec file: %w", err)
-	}
-
-	var doc BrowserCompatData
-	if err := json.Unmarshal(data, &doc); err != nil {
-		return spec, fmt.Errorf("unmarshal spec: %w", err)
-	}
-
-	elemData, ok := doc.HTML.Elements[tagName]
-	if !ok {
-		return spec, nil
-	}
-
-	var keys []string
-	for k := range elemData {
-		if k == "__compat" {
-			continue
+	// Count how often each attribute appears
+	for _, element := range l.htmlSpec.Elements {
+		for _, attr := range element.Attributes {
+			attrCounts[attr.Key]++
+			if l.isAttributeBoolean(attr) {
+				attrTypes[attr.Key] = "bool"
+			} else {
+				attrTypes[attr.Key] = "string"
+			}
 		}
-		keys = append(keys, k)
-	}
-	sort.Strings(keys)
-
-	for _, key := range keys {
-		field := camelCase(key)
-		attr := Attribute{
-			Field: field,
-			Attr:  key,
-			Type:  "string",
-		}
-
-		if BoolAttributes[strings.ToLower(key)] {
-			attr.Type = "bool"
-		}
-
-		spec.Attributes = append(spec.Attributes, attr)
 	}
 
-	return spec, nil
-}
-
-// LoadAllTagSpecs loads all tag specifications from the specs directory
-func (l *Loader) LoadAllTagSpecs() ([]TagSpec, error) {
-	entries, err := os.ReadDir(l.specsDir)
-	if err != nil {
-		return nil, fmt.Errorf("read specs directory: %w", err)
+	// Consider attributes that appear in at least 10% of elements as global
+	threshold := totalElements / 10
+	globalAttrs := make(map[string]string)
+	for attrName, count := range attrCounts {
+		if count >= threshold {
+			globalAttrs[attrName] = attrTypes[attrName]
+		}
 	}
 
-	var specs []TagSpec
-	for _, entry := range entries {
-		name := entry.Name()
-		if entry.IsDir() || !strings.HasSuffix(name, ".json") || name == "global_attributes.json" {
-			continue
-		}
-
-		tagName := strings.TrimSuffix(name, ".json")
-		spec, err := l.LoadTagSpec(name, tagName)
-		if err != nil {
-			return nil, fmt.Errorf("%s: %w", name, err)
-		}
-
-		specs = append(specs, spec)
-	}
-
-	return specs, nil
+	return globalAttrs
 }
 
 // CollectAllAttributes collects unique attributes from all tag specs

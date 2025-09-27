@@ -8,14 +8,11 @@ type AreaAttrs struct {
 	Coords         string
 	Download       string
 	Href           string
-	Hreflang       string
-	Nohref         string
 	Ping           string
 	Referrerpolicy string
 	Rel            string
 	Shape          string
 	Target         string
-	Type           string
 }
 
 type AreaArg interface {
@@ -58,12 +55,6 @@ func (o DownloadOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 func (o HrefOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 	a.Href = o.v
 }
-func (o HreflangOpt) applyArea(a *AreaAttrs, _ *[]Component) {
-	a.Hreflang = o.v
-}
-func (o NohrefOpt) applyArea(a *AreaAttrs, _ *[]Component) {
-	a.Nohref = o.v
-}
 func (o PingOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 	a.Ping = o.v
 }
@@ -83,9 +74,6 @@ func (o ShapeOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 func (o TargetOpt) applyArea(a *AreaAttrs, _ *[]Component) {
 	a.Target = o.v
 }
-func (o TypeOpt) applyArea(a *AreaAttrs, _ *[]Component) {
-	a.Type = o.v
-}
 
 func (a *AreaAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
@@ -101,12 +89,6 @@ func (a *AreaAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Href != "" {
 		Attr(sb, "href", a.Href)
 	}
-	if a.Hreflang != "" {
-		Attr(sb, "hreflang", a.Hreflang)
-	}
-	if a.Nohref != "" {
-		Attr(sb, "nohref", a.Nohref)
-	}
 	if a.Ping != "" {
 		Attr(sb, "ping", a.Ping)
 	}
@@ -121,8 +103,5 @@ func (a *AreaAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Target != "" {
 		Attr(sb, "target", a.Target)
-	}
-	if a.Type != "" {
-		Attr(sb, "type", a.Type)
 	}
 }

@@ -4,7 +4,6 @@ import "strings"
 
 type LiAttrs struct {
 	Global GlobalAttrs
-	Type   string
 	Value  string
 }
 
@@ -36,18 +35,12 @@ func (g Global) applyLi(a *LiAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o TypeOpt) applyLi(a *LiAttrs, _ *[]Component) {
-	a.Type = o.v
-}
 func (o ValueOpt) applyLi(a *LiAttrs, _ *[]Component) {
 	a.Value = o.v
 }
 
 func (a *LiAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Type != "" {
-		Attr(sb, "type", a.Type)
-	}
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)
 	}

@@ -4,7 +4,6 @@ import "strings"
 
 type LegendAttrs struct {
 	Global GlobalAttrs
-	Align  string
 }
 
 type LegendArg interface {
@@ -35,13 +34,6 @@ func (g Global) applyLegend(a *LegendAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o AlignOpt) applyLegend(a *LegendAttrs, _ *[]Component) {
-	a.Align = o.v
-}
-
 func (a *LegendAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Align != "" {
-		Attr(sb, "align", a.Align)
-	}
 }

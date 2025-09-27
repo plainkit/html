@@ -4,7 +4,6 @@ import "strings"
 
 type MapAttrs struct {
 	Global GlobalAttrs
-	Name   string
 }
 
 type MapArg interface {
@@ -35,13 +34,6 @@ func (g Global) applyMap(a *MapAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o NameOpt) applyMap(a *MapAttrs, _ *[]Component) {
-	a.Name = o.v
-}
-
 func (a *MapAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Name != "" {
-		Attr(sb, "name", a.Name)
-	}
 }

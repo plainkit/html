@@ -10,7 +10,7 @@ type VideoAttrs struct {
 	Height      string
 	Loop        bool
 	Muted       bool
-	Playsinline string
+	Playsinline bool
 	Poster      string
 	Preload     string
 	Src         string
@@ -64,7 +64,7 @@ func (o MutedOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Muted = true
 }
 func (o PlaysinlineOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
-	a.Playsinline = o.v
+	a.Playsinline = true
 }
 func (o PosterOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Poster = o.v
@@ -99,8 +99,8 @@ func (a *VideoAttrs) writeAttrs(sb *strings.Builder) {
 	if a.Muted {
 		BoolAttr(sb, "muted")
 	}
-	if a.Playsinline != "" {
-		Attr(sb, "playsinline", a.Playsinline)
+	if a.Playsinline {
+		BoolAttr(sb, "playsinline")
 	}
 	if a.Poster != "" {
 		Attr(sb, "poster", a.Poster)

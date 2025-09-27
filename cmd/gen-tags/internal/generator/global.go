@@ -68,8 +68,13 @@ func (g *GlobalGenerator) generateGlobalAttrsStruct(sb *strings.Builder, globalA
 		}
 	}
 
+	// Always include essential fields
+	sb.WriteString("\tClass string\n")
+
 	for _, field := range stringAttrs {
-		fmt.Fprintf(sb, "\t%s string\n", field)
+		if field != "Class" { // Avoid duplicate
+			fmt.Fprintf(sb, "\t%s string\n", field)
+		}
 	}
 
 	sb.WriteString("\n\t// Style attribute as a single string\n")
@@ -134,10 +139,6 @@ func (g *GlobalGenerator) generateHelperMethods(sb *strings.Builder) {
 	sb.WriteString("\t}\n")
 	sb.WriteString("}\n\n")
 
-	sb.WriteString("func (g *GlobalAttrs) setStyle(style string) {\n")
-	sb.WriteString("\tg.Style = style\n")
-	sb.WriteString("}\n\n")
-
 	sb.WriteString("func (g *GlobalAttrs) setAria(k, v string) {\n")
 	sb.WriteString("\tif g.Aria == nil {\n")
 	sb.WriteString("\t\tg.Aria = map[string]string{}\n")
@@ -168,8 +169,13 @@ func (g *GlobalGenerator) generateHelperMethods(sb *strings.Builder) {
 }
 
 func (g *GlobalGenerator) generateWriteGlobalFunction(sb *strings.Builder, globalAttrs []spec.Attribute) {
-	sb.WriteString("// Generated WriteGlobal function based on wooorm global attributes\n")
+	sb.WriteString("// Generated WriteGlobal function based on gostar global attributes\n")
 	sb.WriteString("func WriteGlobal(sb *strings.Builder, g *GlobalAttrs) {\n")
+
+	// Always include class attribute
+	sb.WriteString("\tif g.Class != \"\" {\n")
+	sb.WriteString("\t\tAttr(sb, \"class\", g.Class)\n")
+	sb.WriteString("\t}\n")
 
 	for _, attr := range globalAttrs {
 		attrName := attr.Attr
@@ -256,12 +262,18 @@ func (g *GlobalGenerator) generateGlobalConstructors(sb *strings.Builder, global
 	}
 
 	sb.WriteString("// Global attribute constructors\n")
+
+	// Always include AClass constructor
+	sb.WriteString("func AClass(v string) Global {\n")
+	sb.WriteString("\treturn Global{func(g *GlobalAttrs) { g.addClass(v) }}\n")
+	sb.WriteString("}\n\n")
+
 	for _, attr := range globalAttrs {
 		attrName := attr.Attr
 		fieldName := attr.Field
 
-		if attrName == "data_attributes" {
-			continue
+		if attrName == "data_attributes" || attrName == "class" {
+			continue // Skip class - already handled above
 		}
 
 		funcName := "A" + attr.Field // Use A prefix

@@ -4,6 +4,7 @@ import "strings"
 
 type AbbrAttrs struct {
 	Global GlobalAttrs
+	Title  string
 }
 
 type AbbrArg interface {
@@ -34,6 +35,13 @@ func (g Global) applyAbbr(a *AbbrAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
+func (o TitleOpt) applyAbbr(a *AbbrAttrs, _ *[]Component) {
+	a.Title = o.v
+}
+
 func (a *AbbrAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Title != "" {
+		Attr(sb, "title", a.Title)
+	}
 }

@@ -4,23 +4,11 @@ import "strings"
 
 type ObjectAttrs struct {
 	Global        GlobalAttrs
-	Align         string
-	Archive       string
-	Border        string
-	Classid       string
-	Codebase      string
-	Codetype      string
 	Data          string
-	Declare       string
 	Form          string
 	Height        string
-	Hspace        string
-	Name          string
-	Standby       string
-	Type          string
-	Typemustmatch string
+	Typemustmatch bool
 	Usemap        string
-	Vspace        string
 	Width         string
 }
 
@@ -52,53 +40,17 @@ func (g Global) applyObject(a *ObjectAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o AlignOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
-	a.Align = o.v
-}
-func (o ArchiveOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
-	a.Archive = o.v
-}
-func (o BorderOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
-	a.Border = o.v
-}
-func (o ClassidOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
-	a.Classid = o.v
-}
-func (o CodebaseOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
-	a.Codebase = o.v
-}
-func (o CodetypeOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
-	a.Codetype = o.v
-}
-func (o DeclareOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
-	a.Declare = o.v
-}
 func (o FormOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Form = o.v
 }
 func (o HeightOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Height = o.v
 }
-func (o HspaceOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
-	a.Hspace = o.v
-}
-func (o NameOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
-	a.Name = o.v
-}
-func (o StandbyOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
-	a.Standby = o.v
-}
-func (o TypeOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
-	a.Type = o.v
-}
 func (o TypemustmatchOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
-	a.Typemustmatch = o.v
+	a.Typemustmatch = true
 }
 func (o UsemapOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Usemap = o.v
-}
-func (o VspaceOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
-	a.Vspace = o.v
 }
 func (o WidthOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Width = o.v
@@ -106,53 +58,17 @@ func (o WidthOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
 
 func (a *ObjectAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Align != "" {
-		Attr(sb, "align", a.Align)
-	}
-	if a.Archive != "" {
-		Attr(sb, "archive", a.Archive)
-	}
-	if a.Border != "" {
-		Attr(sb, "border", a.Border)
-	}
-	if a.Classid != "" {
-		Attr(sb, "classid", a.Classid)
-	}
-	if a.Codebase != "" {
-		Attr(sb, "codebase", a.Codebase)
-	}
-	if a.Codetype != "" {
-		Attr(sb, "codetype", a.Codetype)
-	}
-	if a.Declare != "" {
-		Attr(sb, "declare", a.Declare)
-	}
 	if a.Form != "" {
 		Attr(sb, "form", a.Form)
 	}
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
-	if a.Hspace != "" {
-		Attr(sb, "hspace", a.Hspace)
-	}
-	if a.Name != "" {
-		Attr(sb, "name", a.Name)
-	}
-	if a.Standby != "" {
-		Attr(sb, "standby", a.Standby)
-	}
-	if a.Type != "" {
-		Attr(sb, "type", a.Type)
-	}
-	if a.Typemustmatch != "" {
-		Attr(sb, "typemustmatch", a.Typemustmatch)
+	if a.Typemustmatch {
+		BoolAttr(sb, "typemustmatch")
 	}
 	if a.Usemap != "" {
 		Attr(sb, "usemap", a.Usemap)
-	}
-	if a.Vspace != "" {
-		Attr(sb, "vspace", a.Vspace)
 	}
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)

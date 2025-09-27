@@ -121,6 +121,69 @@ func (l *Loader) LoadAllTagSpecs() ([]TagSpec, error) {
 	return l.convertToTagSpecs(svgData), nil
 }
 
+// LoadGlobalAttributes loads SVG global attributes from the fetched data
+func (l *Loader) LoadGlobalAttributes() ([]Attribute, error) {
+	svgData, err := l.FetchSvgElementAttributes()
+	if err != nil {
+		return nil, fmt.Errorf("fetch svg data: %w", err)
+	}
+
+	globalAttrs, exists := svgData["*"]
+	if !exists {
+		return nil, fmt.Errorf("no global attributes found in SVG data")
+	}
+
+	var attributes []Attribute
+	for _, attrName := range globalAttrs {
+		if attrName == "" {
+			continue
+		}
+
+		field := CamelCase(attrName)
+		attr := Attribute{
+			Field: field,
+			Attr:  attrName,
+			Type:  "string",
+		}
+
+		if BoolAttributes[strings.ToLower(attrName)] {
+			attr.Type = "bool"
+		}
+
+		attributes = append(attributes, attr)
+	}
+
+	sort.Slice(attributes, func(i, j int) bool {
+		return attributes[i].Attr < attributes[j].Attr
+	})
+
+	return attributes, nil
+}
+
+// CollectAllAttributes collects unique attributes from all SVG tag specs
+func (l *Loader) CollectAllAttributes(specs []TagSpec) map[string]Attribute {
+	allAttributes := make(map[string]Attribute)
+
+	for _, spec := range specs {
+		for _, attr := range spec.Attributes {
+			key := strings.ToLower(attr.Attr)
+			if existing, exists := allAttributes[key]; exists {
+				// If we have a conflict, prefer hyphenated version (produces better CamelCase)
+				// or string over bool for flexibility
+				if strings.Contains(attr.Attr, "-") && !strings.Contains(existing.Attr, "-") {
+					allAttributes[key] = attr
+				} else if existing.Type == "bool" && attr.Type == "string" {
+					allAttributes[key] = attr
+				}
+			} else {
+				allAttributes[key] = attr
+			}
+		}
+	}
+
+	return allAttributes
+}
+
 // convertToTagSpecs converts SvgElementAttributes to TagSpec slice
 func (l *Loader) convertToTagSpecs(svgData SvgElementAttributes) []TagSpec {
 	var specs []TagSpec
@@ -144,11 +207,15 @@ func (l *Loader) convertToTagSpecs(svgData SvgElementAttributes) []TagSpec {
 			Void: VoidElements[tagName],
 		}
 
-		// Add element-specific attributes (excluding globals)
+		// Add element-specific attributes (excluding globals), deduplicating by normalized name
+		attrMap := make(map[string]Attribute)
 		for _, attrName := range attributes {
 			if attrName == "" || globalAttrs[attrName] {
 				continue
 			}
+
+			// Normalize attribute name by removing dashes for deduplication key
+			normalizedKey := strings.ReplaceAll(strings.ToLower(attrName), "-", "")
 
 			field := CamelCase(attrName)
 			attr := Attribute{
@@ -161,6 +228,20 @@ func (l *Loader) convertToTagSpecs(svgData SvgElementAttributes) []TagSpec {
 				attr.Type = "bool"
 			}
 
+			// If we already have this normalized attribute, prefer hyphenated version
+			if existing, exists := attrMap[normalizedKey]; exists {
+				if strings.Contains(attrName, "-") && !strings.Contains(existing.Attr, "-") {
+					attrMap[normalizedKey] = attr
+				} else if existing.Type == "bool" && attr.Type == "string" {
+					attrMap[normalizedKey] = attr
+				}
+			} else {
+				attrMap[normalizedKey] = attr
+			}
+		}
+
+		// Convert map to slice
+		for _, attr := range attrMap {
 			spec.Attributes = append(spec.Attributes, attr)
 		}
 

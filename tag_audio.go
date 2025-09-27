@@ -3,14 +3,13 @@ package html
 import "strings"
 
 type AudioAttrs struct {
-	Global      GlobalAttrs
-	Autoplay    bool
-	Controls    bool
-	Crossorigin string
-	Loop        bool
-	Muted       bool
-	Preload     string
-	Src         string
+	Global   GlobalAttrs
+	Autoplay bool
+	Controls bool
+	Loop     bool
+	Muted    bool
+	Preload  string
+	Src      string
 }
 
 type AudioArg interface {
@@ -47,9 +46,6 @@ func (o AutoplayOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
 func (o ControlsOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
 	a.Controls = true
 }
-func (o CrossoriginOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
-	a.Crossorigin = o.v
-}
 func (o LoopOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
 	a.Loop = true
 }
@@ -70,9 +66,6 @@ func (a *AudioAttrs) writeAttrs(sb *strings.Builder) {
 	}
 	if a.Controls {
 		BoolAttr(sb, "controls")
-	}
-	if a.Crossorigin != "" {
-		Attr(sb, "crossorigin", a.Crossorigin)
 	}
 	if a.Loop {
 		BoolAttr(sb, "loop")

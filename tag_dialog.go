@@ -3,9 +3,8 @@ package html
 import "strings"
 
 type DialogAttrs struct {
-	Global   GlobalAttrs
-	Closedby string
-	Open     bool
+	Global GlobalAttrs
+	Open   bool
 }
 
 type DialogArg interface {
@@ -36,18 +35,12 @@ func (g Global) applyDialog(a *DialogAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o ClosedbyOpt) applyDialog(a *DialogAttrs, _ *[]Component) {
-	a.Closedby = o.v
-}
 func (o OpenOpt) applyDialog(a *DialogAttrs, _ *[]Component) {
 	a.Open = true
 }
 
 func (a *DialogAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Closedby != "" {
-		Attr(sb, "closedby", a.Closedby)
-	}
 	if a.Open {
 		BoolAttr(sb, "open")
 	}

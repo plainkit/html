@@ -3,9 +3,7 @@ package html
 import "strings"
 
 type UlAttrs struct {
-	Global  GlobalAttrs
-	Compact string
-	Type    string
+	Global GlobalAttrs
 }
 
 type UlArg interface {
@@ -36,19 +34,6 @@ func (g Global) applyUl(a *UlAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o CompactOpt) applyUl(a *UlAttrs, _ *[]Component) {
-	a.Compact = o.v
-}
-func (o TypeOpt) applyUl(a *UlAttrs, _ *[]Component) {
-	a.Type = o.v
-}
-
 func (a *UlAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Compact != "" {
-		Attr(sb, "compact", a.Compact)
-	}
-	if a.Type != "" {
-		Attr(sb, "type", a.Type)
-	}
 }

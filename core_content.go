@@ -72,3 +72,9 @@ func (f FragmentNode) render(sb *strings.Builder) {
 func (f FragmentNode) Children() []Component {
 	return f.children
 }
+
+// String returns the text content
+func (t TxtOpt) String() string { return t.s }
+
+// String returns the unsafe text content
+func (t UnsafeTxtOpt) String() string { return t.s }

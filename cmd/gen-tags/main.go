@@ -33,8 +33,8 @@ func run(specsDir, outDir string) error {
 		return fmt.Errorf("clean generated files: %w", err)
 	}
 
-	fmt.Println("Fetching HTML specifications from wooorm repository...")
-	allSpecs, err := specLoader.LoadAllTagSpecsFromWooorm()
+	fmt.Println("Loading HTML specifications from gostar...")
+	allSpecs, err := specLoader.LoadAllTagSpecsFromGostar()
 	if err != nil {
 		return fmt.Errorf("load tag specs: %w", err)
 	}
@@ -65,7 +65,7 @@ func run(specsDir, outDir string) error {
 }
 
 func generateCoreGlobal(specLoader *spec.Loader, fileManager *files.Manager) error {
-	globalAttrs, err := specLoader.LoadGlobalAttributesFromWooorm()
+	globalAttrs, err := specLoader.LoadGlobalAttributesFromGostar()
 	if err != nil {
 		return fmt.Errorf("load global attributes: %w", err)
 	}

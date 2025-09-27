@@ -93,11 +93,6 @@ func BoolAttr(sb *strings.Builder, k string) {
 	sb.WriteString(k)
 }
 
-func itoa(i int) string {
-	return strconv.Itoa(i)
-}
-
-
 {{range .TagNames}}func (n Node) apply{{.}}(_ *{{.}}Attrs, kids *[]Component) { *kids = append(*kids, n) }
 {{end}}
 

@@ -3,8 +3,7 @@ package html
 import "strings"
 
 type DlAttrs struct {
-	Global  GlobalAttrs
-	Compact string
+	Global GlobalAttrs
 }
 
 type DlArg interface {
@@ -35,13 +34,6 @@ func (g Global) applyDl(a *DlAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o CompactOpt) applyDl(a *DlAttrs, _ *[]Component) {
-	a.Compact = o.v
-}
-
 func (a *DlAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Compact != "" {
-		Attr(sb, "compact", a.Compact)
-	}
 }

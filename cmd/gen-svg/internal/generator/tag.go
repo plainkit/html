@@ -18,11 +18,12 @@ func NewTagGenerator() *TagGenerator {
 
 // TagTemplateData holds data for tag template rendering
 type TagTemplateData struct {
-	Name       string             // SVG element name (e.g., "rect", "circle")
-	Title      string             // CamelCase version for function name (e.g., "Rect", "Circle")
-	StructName string             // Struct name (e.g., "RectAttrs")
-	Void       bool               // Whether the element is self-closing
-	Attributes []TagAttributeData // Element-specific attributes
+	Name         string             // SVG element name (e.g., "rect", "circle")
+	Title        string             // CamelCase version for function name (e.g., "Rect", "Circle")
+	StructName   string             // Struct name (e.g., "RectAttrs")
+	ArgInterface string             // Arg interface name (e.g., "RectArg")
+	Void         bool               // Whether the element is self-closing
+	Attributes   []TagAttributeData // Element-specific attributes
 }
 
 // TagAttributeData represents attribute data for tag templates
@@ -51,11 +52,12 @@ func (g *TagGenerator) GenerateSource(tagSpec spec.TagSpec) string {
 
 	// Prepare template data
 	data := TagTemplateData{
-		Name:       tagSpec.Name,
-		Title:      title,
-		StructName: structName,
-		Void:       tagSpec.Void,
-		Attributes: templateAttrs,
+		Name:         tagSpec.Name,
+		Title:        title,
+		StructName:   structName,
+		ArgInterface: title + "Arg",
+		Void:         tagSpec.Void,
+		Attributes:   templateAttrs,
 	}
 
 	// Parse and execute template

@@ -3,11 +3,7 @@ package html
 import "strings"
 
 type TheadAttrs struct {
-	Global  GlobalAttrs
-	Align   string
-	Char    string
-	Charoff string
-	Valign  string
+	Global GlobalAttrs
 }
 
 type TheadArg interface {
@@ -38,31 +34,6 @@ func (g Global) applyThead(a *TheadAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o AlignOpt) applyThead(a *TheadAttrs, _ *[]Component) {
-	a.Align = o.v
-}
-func (o CharOpt) applyThead(a *TheadAttrs, _ *[]Component) {
-	a.Char = o.v
-}
-func (o CharoffOpt) applyThead(a *TheadAttrs, _ *[]Component) {
-	a.Charoff = o.v
-}
-func (o ValignOpt) applyThead(a *TheadAttrs, _ *[]Component) {
-	a.Valign = o.v
-}
-
 func (a *TheadAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Align != "" {
-		Attr(sb, "align", a.Align)
-	}
-	if a.Char != "" {
-		Attr(sb, "char", a.Char)
-	}
-	if a.Charoff != "" {
-		Attr(sb, "charoff", a.Charoff)
-	}
-	if a.Valign != "" {
-		Attr(sb, "valign", a.Valign)
-	}
 }

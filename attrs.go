@@ -32,22 +32,6 @@ func AAction(v string) ActionOpt {
 	return ActionOpt{v}
 }
 
-type AlignOpt struct {
-	v string
-}
-
-func AAlign(v string) AlignOpt {
-	return AlignOpt{v}
-}
-
-type AlinkOpt struct {
-	v string
-}
-
-func AAlink(v string) AlinkOpt {
-	return AlinkOpt{v}
-}
-
 type AllowOpt struct {
 	v string
 }
@@ -62,28 +46,10 @@ func AAllowfullscreen() AllowfullscreenOpt {
 	return AllowfullscreenOpt{}
 }
 
-type AllowpaymentrequestOpt struct {
-	v string
-}
+type AllowpaymentrequestOpt struct{}
 
-func AAllowpaymentrequest(v string) AllowpaymentrequestOpt {
-	return AllowpaymentrequestOpt{v}
-}
-
-type AllowusermediaOpt struct {
-	v string
-}
-
-func AAllowusermedia(v string) AllowusermediaOpt {
-	return AllowusermediaOpt{v}
-}
-
-type AlphaOpt struct {
-	v string
-}
-
-func AAlpha(v string) AlphaOpt {
-	return AlphaOpt{v}
+func AAllowpaymentrequest() AllowpaymentrequestOpt {
+	return AllowpaymentrequestOpt{}
 }
 
 type AltOpt struct {
@@ -92,14 +58,6 @@ type AltOpt struct {
 
 func AAlt(v string) AltOpt {
 	return AltOpt{v}
-}
-
-type ArchiveOpt struct {
-	v string
-}
-
-func AArchive(v string) ArchiveOpt {
-	return ArchiveOpt{v}
 }
 
 type AsOpt struct {
@@ -116,6 +74,14 @@ func AAsync() AsyncOpt {
 	return AsyncOpt{}
 }
 
+type AutocapitalizeOpt struct {
+	v string
+}
+
+func AAutocapitalize(v string) AutocapitalizeOpt {
+	return AutocapitalizeOpt{v}
+}
+
 type AutocompleteOpt struct {
 	v string
 }
@@ -124,42 +90,16 @@ func AAutocomplete(v string) AutocompleteOpt {
 	return AutocompleteOpt{v}
 }
 
+type AutofocusOpt struct{}
+
+func AAutofocus() AutofocusOpt {
+	return AutofocusOpt{}
+}
+
 type AutoplayOpt struct{}
 
 func AAutoplay() AutoplayOpt {
 	return AutoplayOpt{}
-}
-
-type AxisOpt struct {
-	v string
-}
-
-func AAxis(v string) AxisOpt {
-	return AxisOpt{v}
-}
-
-type BackgroundOpt struct {
-	v string
-}
-
-func ABackground(v string) BackgroundOpt {
-	return BackgroundOpt{v}
-}
-
-type BgcolorOpt struct {
-	v string
-}
-
-func ABgcolor(v string) BgcolorOpt {
-	return BgcolorOpt{v}
-}
-
-type BlockingOpt struct {
-	v string
-}
-
-func ABlocking(v string) BlockingOpt {
-	return BlockingOpt{v}
 }
 
 type BorderOpt struct {
@@ -168,38 +108,6 @@ type BorderOpt struct {
 
 func ABorder(v string) BorderOpt {
 	return BorderOpt{v}
-}
-
-type CellpaddingOpt struct {
-	v string
-}
-
-func ACellpadding(v string) CellpaddingOpt {
-	return CellpaddingOpt{v}
-}
-
-type CellspacingOpt struct {
-	v string
-}
-
-func ACellspacing(v string) CellspacingOpt {
-	return CellspacingOpt{v}
-}
-
-type CharOpt struct {
-	v string
-}
-
-func AChar(v string) CharOpt {
-	return CharOpt{v}
-}
-
-type CharoffOpt struct {
-	v string
-}
-
-func ACharoff(v string) CharoffOpt {
-	return CharoffOpt{v}
 }
 
 type CharsetOpt struct {
@@ -224,70 +132,6 @@ func ACite(v string) CiteOpt {
 	return CiteOpt{v}
 }
 
-type ClassidOpt struct {
-	v string
-}
-
-func AClassid(v string) ClassidOpt {
-	return ClassidOpt{v}
-}
-
-type ClearOpt struct {
-	v string
-}
-
-func AClear(v string) ClearOpt {
-	return ClearOpt{v}
-}
-
-type ClosedbyOpt struct {
-	v string
-}
-
-func AClosedby(v string) ClosedbyOpt {
-	return ClosedbyOpt{v}
-}
-
-type CodeOpt struct {
-	v string
-}
-
-func ACode(v string) CodeOpt {
-	return CodeOpt{v}
-}
-
-type CodebaseOpt struct {
-	v string
-}
-
-func ACodebase(v string) CodebaseOpt {
-	return CodebaseOpt{v}
-}
-
-type CodetypeOpt struct {
-	v string
-}
-
-func ACodetype(v string) CodetypeOpt {
-	return CodetypeOpt{v}
-}
-
-type ColorOpt struct {
-	v string
-}
-
-func AColor(v string) ColorOpt {
-	return ColorOpt{v}
-}
-
-type ColorspaceOpt struct {
-	v string
-}
-
-func AColorspace(v string) ColorspaceOpt {
-	return ColorspaceOpt{v}
-}
-
 type ColsOpt struct {
 	v string
 }
@@ -302,30 +146,6 @@ type ColspanOpt struct {
 
 func AColspan(v string) ColspanOpt {
 	return ColspanOpt{v}
-}
-
-type CommandOpt struct {
-	v string
-}
-
-func ACommand(v string) CommandOpt {
-	return CommandOpt{v}
-}
-
-type CommandforOpt struct {
-	v string
-}
-
-func ACommandfor(v string) CommandforOpt {
-	return CommandforOpt{v}
-}
-
-type CompactOpt struct {
-	v string
-}
-
-func ACompact(v string) CompactOpt {
-	return CompactOpt{v}
 }
 
 type ContentOpt struct {
@@ -364,22 +184,6 @@ type DatetimeOpt struct {
 
 func ADatetime(v string) DatetimeOpt {
 	return DatetimeOpt{v}
-}
-
-type DeclareOpt struct {
-	v string
-}
-
-func ADeclare(v string) DeclareOpt {
-	return DeclareOpt{v}
-}
-
-type DecodingOpt struct {
-	v string
-}
-
-func ADecoding(v string) DecodingOpt {
-	return DecodingOpt{v}
 }
 
 type DefaultOpt struct{}
@@ -422,22 +226,6 @@ type EnctypeOpt struct {
 
 func AEnctype(v string) EnctypeOpt {
 	return EnctypeOpt{v}
-}
-
-type FaceOpt struct {
-	v string
-}
-
-func AFace(v string) FaceOpt {
-	return FaceOpt{v}
-}
-
-type FetchpriorityOpt struct {
-	v string
-}
-
-func AFetchpriority(v string) FetchpriorityOpt {
-	return FetchpriorityOpt{v}
 }
 
 type ForOpt struct {
@@ -494,22 +282,6 @@ func AFormtarget(v string) FormtargetOpt {
 	return FormtargetOpt{v}
 }
 
-type FrameOpt struct {
-	v string
-}
-
-func AFrame(v string) FrameOpt {
-	return FrameOpt{v}
-}
-
-type FrameborderOpt struct {
-	v string
-}
-
-func AFrameborder(v string) FrameborderOpt {
-	return FrameborderOpt{v}
-}
-
 type HeadersOpt struct {
 	v string
 }
@@ -550,36 +322,12 @@ func AHreflang(v string) HreflangOpt {
 	return HreflangOpt{v}
 }
 
-type HspaceOpt struct {
-	v string
-}
-
-func AHspace(v string) HspaceOpt {
-	return HspaceOpt{v}
-}
-
 type HttpequivOpt struct {
 	v string
 }
 
 func AHttpequiv(v string) HttpequivOpt {
 	return HttpequivOpt{v}
-}
-
-type ImagesizesOpt struct {
-	v string
-}
-
-func AImagesizes(v string) ImagesizesOpt {
-	return ImagesizesOpt{v}
-}
-
-type ImagesrcsetOpt struct {
-	v string
-}
-
-func AImagesrcset(v string) ImagesrcsetOpt {
-	return ImagesrcsetOpt{v}
 }
 
 type IntegrityOpt struct {
@@ -590,12 +338,10 @@ func AIntegrity(v string) IntegrityOpt {
 	return IntegrityOpt{v}
 }
 
-type IsmapOpt struct {
-	v string
-}
+type IsmapOpt struct{}
 
-func AIsmap(v string) IsmapOpt {
-	return IsmapOpt{v}
+func AIsmap() IsmapOpt {
+	return IsmapOpt{}
 }
 
 type KindOpt struct {
@@ -620,14 +366,6 @@ type LanguageOpt struct {
 
 func ALanguage(v string) LanguageOpt {
 	return LanguageOpt{v}
-}
-
-type LinkOpt struct {
-	v string
-}
-
-func ALink(v string) LinkOpt {
-	return LinkOpt{v}
 }
 
 type ListOpt struct {
@@ -666,30 +404,6 @@ type LowOpt struct {
 
 func ALow(v string) LowOpt {
 	return LowOpt{v}
-}
-
-type ManifestOpt struct {
-	v string
-}
-
-func AManifest(v string) ManifestOpt {
-	return ManifestOpt{v}
-}
-
-type MarginheightOpt struct {
-	v string
-}
-
-func AMarginheight(v string) MarginheightOpt {
-	return MarginheightOpt{v}
-}
-
-type MarginwidthOpt struct {
-	v string
-}
-
-func AMarginwidth(v string) MarginwidthOpt {
-	return MarginwidthOpt{v}
 }
 
 type MaxOpt struct {
@@ -752,68 +466,24 @@ func AMuted() MutedOpt {
 	return MutedOpt{}
 }
 
-type NameOpt struct {
+type NomoduleOpt struct{}
+
+func ANomodule() NomoduleOpt {
+	return NomoduleOpt{}
+}
+
+type NonceOpt struct {
 	v string
 }
 
-func AName(v string) NameOpt {
-	return NameOpt{v}
+func ANonce(v string) NonceOpt {
+	return NonceOpt{v}
 }
 
-type NohrefOpt struct {
-	v string
-}
+type NovalidateOpt struct{}
 
-func ANohref(v string) NohrefOpt {
-	return NohrefOpt{v}
-}
-
-type NomoduleOpt struct {
-	v string
-}
-
-func ANomodule(v string) NomoduleOpt {
-	return NomoduleOpt{v}
-}
-
-type NoresizeOpt struct {
-	v string
-}
-
-func ANoresize(v string) NoresizeOpt {
-	return NoresizeOpt{v}
-}
-
-type NoshadeOpt struct {
-	v string
-}
-
-func ANoshade(v string) NoshadeOpt {
-	return NoshadeOpt{v}
-}
-
-type NovalidateOpt struct {
-	v string
-}
-
-func ANovalidate(v string) NovalidateOpt {
-	return NovalidateOpt{v}
-}
-
-type NowrapOpt struct {
-	v string
-}
-
-func ANowrap(v string) NowrapOpt {
-	return NowrapOpt{v}
-}
-
-type ObjectOpt struct {
-	v string
-}
-
-func AObject(v string) ObjectOpt {
-	return ObjectOpt{v}
+func ANovalidate() NovalidateOpt {
+	return NovalidateOpt{}
 }
 
 type OpenOpt struct{}
@@ -854,12 +524,10 @@ func APlaceholder(v string) PlaceholderOpt {
 	return PlaceholderOpt{v}
 }
 
-type PlaysinlineOpt struct {
-	v string
-}
+type PlaysinlineOpt struct{}
 
-func APlaysinline(v string) PlaysinlineOpt {
-	return PlaysinlineOpt{v}
+func APlaysinline() PlaysinlineOpt {
+	return PlaysinlineOpt{}
 }
 
 type PopovertargetOpt struct {
@@ -894,22 +562,6 @@ func APreload(v string) PreloadOpt {
 	return PreloadOpt{v}
 }
 
-type ProfileOpt struct {
-	v string
-}
-
-func AProfile(v string) ProfileOpt {
-	return ProfileOpt{v}
-}
-
-type PromptOpt struct {
-	v string
-}
-
-func APrompt(v string) PromptOpt {
-	return PromptOpt{v}
-}
-
 type ReadonlyOpt struct{}
 
 func AReadonly() ReadonlyOpt {
@@ -938,14 +590,6 @@ func ARequired() RequiredOpt {
 	return RequiredOpt{}
 }
 
-type RevOpt struct {
-	v string
-}
-
-func ARev(v string) RevOpt {
-	return RevOpt{v}
-}
-
 type ReversedOpt struct{}
 
 func AReversed() ReversedOpt {
@@ -968,28 +612,12 @@ func ARowspan(v string) RowspanOpt {
 	return RowspanOpt{v}
 }
 
-type RulesOpt struct {
-	v string
-}
-
-func ARules(v string) RulesOpt {
-	return RulesOpt{v}
-}
-
 type SandboxOpt struct {
 	v string
 }
 
 func ASandbox(v string) SandboxOpt {
 	return SandboxOpt{v}
-}
-
-type SchemeOpt struct {
-	v string
-}
-
-func AScheme(v string) SchemeOpt {
-	return SchemeOpt{v}
 }
 
 type ScopeOpt struct {
@@ -1000,58 +628,10 @@ func AScope(v string) ScopeOpt {
 	return ScopeOpt{v}
 }
 
-type ScrollingOpt struct {
-	v string
-}
-
-func AScrolling(v string) ScrollingOpt {
-	return ScrollingOpt{v}
-}
-
 type SelectedOpt struct{}
 
 func ASelected() SelectedOpt {
 	return SelectedOpt{}
-}
-
-type ShadowrootclonableOpt struct {
-	v string
-}
-
-func AShadowrootclonable(v string) ShadowrootclonableOpt {
-	return ShadowrootclonableOpt{v}
-}
-
-type ShadowrootcustomelementregistryOpt struct {
-	v string
-}
-
-func AShadowrootcustomelementregistry(v string) ShadowrootcustomelementregistryOpt {
-	return ShadowrootcustomelementregistryOpt{v}
-}
-
-type ShadowrootdelegatesfocusOpt struct {
-	v string
-}
-
-func AShadowrootdelegatesfocus(v string) ShadowrootdelegatesfocusOpt {
-	return ShadowrootdelegatesfocusOpt{v}
-}
-
-type ShadowrootmodeOpt struct {
-	v string
-}
-
-func AShadowrootmode(v string) ShadowrootmodeOpt {
-	return ShadowrootmodeOpt{v}
-}
-
-type ShadowrootserializableOpt struct {
-	v string
-}
-
-func AShadowrootserializable(v string) ShadowrootserializableOpt {
-	return ShadowrootserializableOpt{v}
 }
 
 type ShapeOpt struct {
@@ -1086,6 +666,14 @@ func ASpan(v string) SpanOpt {
 	return SpanOpt{v}
 }
 
+type SpellcheckOpt struct {
+	v string
+}
+
+func ASpellcheck(v string) SpellcheckOpt {
+	return SpellcheckOpt{v}
+}
+
 type SrcOpt struct {
 	v string
 }
@@ -1118,14 +706,6 @@ func ASrcset(v string) SrcsetOpt {
 	return SrcsetOpt{v}
 }
 
-type StandbyOpt struct {
-	v string
-}
-
-func AStandby(v string) StandbyOpt {
-	return StandbyOpt{v}
-}
-
 type StartOpt struct {
 	v string
 }
@@ -1142,14 +722,6 @@ func AStep(v string) StepOpt {
 	return StepOpt{v}
 }
 
-type SummaryOpt struct {
-	v string
-}
-
-func ASummary(v string) SummaryOpt {
-	return SummaryOpt{v}
-}
-
 type TargetOpt struct {
 	v string
 }
@@ -1158,28 +730,18 @@ func ATarget(v string) TargetOpt {
 	return TargetOpt{v}
 }
 
-type TextOpt struct {
+type TitleOpt struct {
 	v string
 }
 
-func AText(v string) TextOpt {
-	return TextOpt{v}
+func ATitle(v string) TitleOpt {
+	return TitleOpt{v}
 }
 
-type TypeOpt struct {
-	v string
-}
+type TypemustmatchOpt struct{}
 
-func AType(v string) TypeOpt {
-	return TypeOpt{v}
-}
-
-type TypemustmatchOpt struct {
-	v string
-}
-
-func ATypemustmatch(v string) TypemustmatchOpt {
-	return TypemustmatchOpt{v}
+func ATypemustmatch() TypemustmatchOpt {
+	return TypemustmatchOpt{}
 }
 
 type UsemapOpt struct {
@@ -1190,52 +752,12 @@ func AUsemap(v string) UsemapOpt {
 	return UsemapOpt{v}
 }
 
-type ValignOpt struct {
-	v string
-}
-
-func AValign(v string) ValignOpt {
-	return ValignOpt{v}
-}
-
 type ValueOpt struct {
 	v string
 }
 
 func AValue(v string) ValueOpt {
 	return ValueOpt{v}
-}
-
-type ValuetypeOpt struct {
-	v string
-}
-
-func AValuetype(v string) ValuetypeOpt {
-	return ValuetypeOpt{v}
-}
-
-type VersionOpt struct {
-	v string
-}
-
-func AVersion(v string) VersionOpt {
-	return VersionOpt{v}
-}
-
-type VlinkOpt struct {
-	v string
-}
-
-func AVlink(v string) VlinkOpt {
-	return VlinkOpt{v}
-}
-
-type VspaceOpt struct {
-	v string
-}
-
-func AVspace(v string) VspaceOpt {
-	return VspaceOpt{v}
 }
 
 type WidthOpt struct {

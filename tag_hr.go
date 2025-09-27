@@ -3,11 +3,7 @@ package html
 import "strings"
 
 type HrAttrs struct {
-	Global  GlobalAttrs
-	Align   string
-	Noshade string
-	Size    string
-	Width   string
+	Global GlobalAttrs
 }
 
 type HrArg interface {
@@ -38,31 +34,6 @@ func (g Global) applyHr(a *HrAttrs, _ *[]Component) {
 	g.do(&a.Global)
 }
 
-func (o AlignOpt) applyHr(a *HrAttrs, _ *[]Component) {
-	a.Align = o.v
-}
-func (o NoshadeOpt) applyHr(a *HrAttrs, _ *[]Component) {
-	a.Noshade = o.v
-}
-func (o SizeOpt) applyHr(a *HrAttrs, _ *[]Component) {
-	a.Size = o.v
-}
-func (o WidthOpt) applyHr(a *HrAttrs, _ *[]Component) {
-	a.Width = o.v
-}
-
 func (a *HrAttrs) writeAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
-	if a.Align != "" {
-		Attr(sb, "align", a.Align)
-	}
-	if a.Noshade != "" {
-		Attr(sb, "noshade", a.Noshade)
-	}
-	if a.Size != "" {
-		Attr(sb, "size", a.Size)
-	}
-	if a.Width != "" {
-		Attr(sb, "width", a.Width)
-	}
 }
