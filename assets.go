@@ -86,6 +86,16 @@ func (a *Assets) HasAssets() bool {
 	return len(a.css) > 0 || len(a.js) > 0
 }
 
+// CSS returns the collected CSS snippets in insertion order.
+func (a *Assets) CSS() []string {
+	return append([]string(nil), a.css...)
+}
+
+// JS returns the collected JavaScript snippets in insertion order.
+func (a *Assets) JS() []string {
+	return append([]string(nil), a.js...)
+}
+
 // Reset clears all collected assets
 func (a *Assets) Reset() {
 	a.css = a.css[:0]
