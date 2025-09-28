@@ -7,7 +7,7 @@ type HgroupAttrs struct {
 }
 
 type HgroupArg interface {
-	applyHgroup(*HgroupAttrs, *[]Component)
+	ApplyHgroup(*HgroupAttrs, *[]Component)
 }
 
 func defaultHgroupAttrs() *HgroupAttrs {
@@ -25,12 +25,12 @@ func Hgroup(args ...HgroupArg) Node {
 	a := defaultHgroupAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyHgroup(a, &kids)
+		ar.ApplyHgroup(a, &kids)
 	}
 	return Node{Tag: "hgroup", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyHgroup(a *HgroupAttrs, _ *[]Component) {
+func (g Global) ApplyHgroup(a *HgroupAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

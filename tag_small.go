@@ -7,7 +7,7 @@ type SmallAttrs struct {
 }
 
 type SmallArg interface {
-	applySmall(*SmallAttrs, *[]Component)
+	ApplySmall(*SmallAttrs, *[]Component)
 }
 
 func defaultSmallAttrs() *SmallAttrs {
@@ -25,12 +25,12 @@ func Small(args ...SmallArg) Node {
 	a := defaultSmallAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySmall(a, &kids)
+		ar.ApplySmall(a, &kids)
 	}
 	return Node{Tag: "small", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySmall(a *SmallAttrs, _ *[]Component) {
+func (g Global) ApplySmall(a *SmallAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

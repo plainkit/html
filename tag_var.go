@@ -7,7 +7,7 @@ type VarAttrs struct {
 }
 
 type VarArg interface {
-	applyVar(*VarAttrs, *[]Component)
+	ApplyVar(*VarAttrs, *[]Component)
 }
 
 func defaultVarAttrs() *VarAttrs {
@@ -25,12 +25,12 @@ func Var(args ...VarArg) Node {
 	a := defaultVarAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyVar(a, &kids)
+		ar.ApplyVar(a, &kids)
 	}
 	return Node{Tag: "var", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyVar(a *VarAttrs, _ *[]Component) {
+func (g Global) ApplyVar(a *VarAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

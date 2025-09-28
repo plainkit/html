@@ -10,7 +10,7 @@ type TdAttrs struct {
 }
 
 type TdArg interface {
-	applyTd(*TdAttrs, *[]Component)
+	ApplyTd(*TdAttrs, *[]Component)
 }
 
 func defaultTdAttrs() *TdAttrs {
@@ -28,22 +28,22 @@ func Td(args ...TdArg) Node {
 	a := defaultTdAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTd(a, &kids)
+		ar.ApplyTd(a, &kids)
 	}
 	return Node{Tag: "td", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyTd(a *TdAttrs, _ *[]Component) {
+func (g Global) ApplyTd(a *TdAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o ColspanOpt) applyTd(a *TdAttrs, _ *[]Component) {
+func (o ColspanOpt) ApplyTd(a *TdAttrs, _ *[]Component) {
 	a.Colspan = o.v
 }
-func (o HeadersOpt) applyTd(a *TdAttrs, _ *[]Component) {
+func (o HeadersOpt) ApplyTd(a *TdAttrs, _ *[]Component) {
 	a.Headers = o.v
 }
-func (o RowspanOpt) applyTd(a *TdAttrs, _ *[]Component) {
+func (o RowspanOpt) ApplyTd(a *TdAttrs, _ *[]Component) {
 	a.Rowspan = o.v
 }
 

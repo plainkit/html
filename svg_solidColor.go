@@ -13,7 +13,7 @@ type SvgSolidColorAttrs struct {
 
 // SvgSolidColorArg interface for solidColor element arguments
 type SvgSolidColorArg interface {
-	applySolidColor(*SvgSolidColorAttrs, *[]Component)
+	ApplySolidColor(*SvgSolidColorAttrs, *[]Component)
 }
 
 // defaultSvgSolidColorAttrs creates default attributes for solidColor
@@ -28,7 +28,7 @@ func SvgSolidColor(args ...SvgSolidColorArg) Node {
 	a := defaultSvgSolidColorAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySolidColor(a, &kids)
+		ar.ApplySolidColor(a, &kids)
 	}
 	return Node{
 		Tag:   "solidColor",
@@ -38,7 +38,7 @@ func SvgSolidColor(args ...SvgSolidColorArg) Node {
 }
 
 // Global applies global SVG attributes to solidColor
-func (g Global) applySolidColor(a *SvgSolidColorAttrs, _ *[]Component) {
+func (g Global) ApplySolidColor(a *SvgSolidColorAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 

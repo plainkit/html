@@ -7,7 +7,7 @@ type IAttrs struct {
 }
 
 type IArg interface {
-	applyI(*IAttrs, *[]Component)
+	ApplyI(*IAttrs, *[]Component)
 }
 
 func defaultIAttrs() *IAttrs {
@@ -25,12 +25,12 @@ func I(args ...IArg) Node {
 	a := defaultIAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyI(a, &kids)
+		ar.ApplyI(a, &kids)
 	}
 	return Node{Tag: "i", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyI(a *IAttrs, _ *[]Component) {
+func (g Global) ApplyI(a *IAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

@@ -8,7 +8,7 @@ type TimeAttrs struct {
 }
 
 type TimeArg interface {
-	applyTime(*TimeAttrs, *[]Component)
+	ApplyTime(*TimeAttrs, *[]Component)
 }
 
 func defaultTimeAttrs() *TimeAttrs {
@@ -26,16 +26,16 @@ func Time(args ...TimeArg) Node {
 	a := defaultTimeAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTime(a, &kids)
+		ar.ApplyTime(a, &kids)
 	}
 	return Node{Tag: "time", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyTime(a *TimeAttrs, _ *[]Component) {
+func (g Global) ApplyTime(a *TimeAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o DatetimeOpt) applyTime(a *TimeAttrs, _ *[]Component) {
+func (o DatetimeOpt) ApplyTime(a *TimeAttrs, _ *[]Component) {
 	a.Datetime = o.v
 }
 

@@ -15,7 +15,7 @@ type SvgHandlerAttrs struct {
 
 // SvgHandlerArg interface for handler element arguments
 type SvgHandlerArg interface {
-	applyHandler(*SvgHandlerAttrs, *[]Component)
+	ApplyHandler(*SvgHandlerAttrs, *[]Component)
 }
 
 // defaultSvgHandlerAttrs creates default attributes for handler
@@ -30,7 +30,7 @@ func SvgHandler(args ...SvgHandlerArg) Node {
 	a := defaultSvgHandlerAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyHandler(a, &kids)
+		ar.ApplyHandler(a, &kids)
 	}
 	return Node{
 		Tag:   "handler",
@@ -40,17 +40,17 @@ func SvgHandler(args ...SvgHandlerArg) Node {
 }
 
 // Global applies global SVG attributes to handler
-func (g Global) applyHandler(a *SvgHandlerAttrs, _ *[]Component) {
+func (g Global) ApplyHandler(a *SvgHandlerAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // ExternalResourcesRequiredOpt applies to Handler
-func (o ExternalResourcesRequiredOpt) applyHandler(a *SvgHandlerAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyHandler(a *SvgHandlerAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // TypeOpt applies to Handler
-func (o TypeOpt) applyHandler(a *SvgHandlerAttrs, _ *[]Component) {
+func (o TypeOpt) ApplyHandler(a *SvgHandlerAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 

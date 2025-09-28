@@ -12,7 +12,7 @@ type MetaAttrs struct {
 }
 
 type MetaArg interface {
-	applyMeta(*MetaAttrs, *[]Component)
+	ApplyMeta(*MetaAttrs, *[]Component)
 }
 
 func defaultMetaAttrs() *MetaAttrs {
@@ -30,28 +30,28 @@ func Meta(args ...MetaArg) Node {
 	a := defaultMetaAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyMeta(a, &kids)
+		ar.ApplyMeta(a, &kids)
 	}
 	return Node{Tag: "meta", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applyMeta(a *MetaAttrs, _ *[]Component) {
+func (g Global) ApplyMeta(a *MetaAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o CharsetOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
+func (o CharsetOpt) ApplyMeta(a *MetaAttrs, _ *[]Component) {
 	a.Charset = o.v
 }
-func (o ContentOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
+func (o ContentOpt) ApplyMeta(a *MetaAttrs, _ *[]Component) {
 	a.Content = o.v
 }
-func (o HttpEquivOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
+func (o HttpEquivOpt) ApplyMeta(a *MetaAttrs, _ *[]Component) {
 	a.HttpEquiv = o.v
 }
-func (o MediaOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
+func (o MediaOpt) ApplyMeta(a *MetaAttrs, _ *[]Component) {
 	a.Media = o.v
 }
-func (o NameOpt) applyMeta(a *MetaAttrs, _ *[]Component) {
+func (o NameOpt) ApplyMeta(a *MetaAttrs, _ *[]Component) {
 	a.Name = o.v
 }
 

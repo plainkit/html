@@ -10,7 +10,7 @@ type FieldsetAttrs struct {
 }
 
 type FieldsetArg interface {
-	applyFieldset(*FieldsetAttrs, *[]Component)
+	ApplyFieldset(*FieldsetAttrs, *[]Component)
 }
 
 func defaultFieldsetAttrs() *FieldsetAttrs {
@@ -28,22 +28,22 @@ func Fieldset(args ...FieldsetArg) Node {
 	a := defaultFieldsetAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFieldset(a, &kids)
+		ar.ApplyFieldset(a, &kids)
 	}
 	return Node{Tag: "fieldset", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
+func (g Global) ApplyFieldset(a *FieldsetAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o DisabledOpt) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
+func (o DisabledOpt) ApplyFieldset(a *FieldsetAttrs, _ *[]Component) {
 	a.Disabled = true
 }
-func (o FormOpt) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
+func (o FormOpt) ApplyFieldset(a *FieldsetAttrs, _ *[]Component) {
 	a.Form = o.v
 }
-func (o NameOpt) applyFieldset(a *FieldsetAttrs, _ *[]Component) {
+func (o NameOpt) ApplyFieldset(a *FieldsetAttrs, _ *[]Component) {
 	a.Name = o.v
 }
 

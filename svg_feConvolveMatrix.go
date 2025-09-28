@@ -87,7 +87,7 @@ type SvgFeConvolveMatrixAttrs struct {
 
 // SvgFeConvolveMatrixArg interface for feConvolveMatrix element arguments
 type SvgFeConvolveMatrixArg interface {
-	applyFeConvolveMatrix(*SvgFeConvolveMatrixAttrs, *[]Component)
+	ApplyFeConvolveMatrix(*SvgFeConvolveMatrixAttrs, *[]Component)
 }
 
 // defaultSvgFeConvolveMatrixAttrs creates default attributes for feConvolveMatrix
@@ -102,7 +102,7 @@ func SvgFeConvolveMatrix(args ...SvgFeConvolveMatrixArg) Node {
 	a := defaultSvgFeConvolveMatrixAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeConvolveMatrix(a, &kids)
+		ar.ApplyFeConvolveMatrix(a, &kids)
 	}
 	return Node{
 		Tag:   "feConvolveMatrix",
@@ -112,377 +112,377 @@ func SvgFeConvolveMatrix(args ...SvgFeConvolveMatrixArg) Node {
 }
 
 // Global applies global SVG attributes to feConvolveMatrix
-func (g Global) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (g Global) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to FeConvolveMatrix
-func (o AlignmentBaselineOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to FeConvolveMatrix
-func (o BaselineShiftOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // BiasOpt applies to FeConvolveMatrix
-func (o BiasOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o BiasOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Bias = o.v
 }
 
 // ClipOpt applies to FeConvolveMatrix
-func (o ClipOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to FeConvolveMatrix
-func (o ClipPathOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to FeConvolveMatrix
-func (o ClipRuleOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to FeConvolveMatrix
-func (o ColorOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to FeConvolveMatrix
-func (o ColorInterpolationOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to FeConvolveMatrix
-func (o ColorInterpolationFiltersOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to FeConvolveMatrix
-func (o ColorProfileOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to FeConvolveMatrix
-func (o ColorRenderingOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to FeConvolveMatrix
-func (o CursorOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to FeConvolveMatrix
-func (o DirectionOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to FeConvolveMatrix
-func (o DisplayOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DivisorOpt applies to FeConvolveMatrix
-func (o DivisorOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o DivisorOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Divisor = o.v
 }
 
 // DominantBaselineOpt applies to FeConvolveMatrix
-func (o DominantBaselineOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EdgeModeOpt applies to FeConvolveMatrix
-func (o EdgeModeOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o EdgeModeOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.EdgeMode = o.v
 }
 
 // EnableBackgroundOpt applies to FeConvolveMatrix
-func (o EnableBackgroundOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to FeConvolveMatrix
-func (o FillOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to FeConvolveMatrix
-func (o FillOpacityOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to FeConvolveMatrix
-func (o FillRuleOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to FeConvolveMatrix
-func (o FilterOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to FeConvolveMatrix
-func (o FloodColorOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeConvolveMatrix
-func (o FloodOpacityOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to FeConvolveMatrix
-func (o FontFamilyOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FeConvolveMatrix
-func (o FontSizeOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to FeConvolveMatrix
-func (o FontSizeAdjustOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to FeConvolveMatrix
-func (o FontStretchOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FeConvolveMatrix
-func (o FontStyleOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FeConvolveMatrix
-func (o FontVariantOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FeConvolveMatrix
-func (o FontWeightOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to FeConvolveMatrix
-func (o GlyphOrientationHorizontalOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to FeConvolveMatrix
-func (o GlyphOrientationVerticalOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to FeConvolveMatrix
-func (o HeightOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to FeConvolveMatrix
-func (o ImageRenderingOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // InOpt applies to FeConvolveMatrix
-func (o InOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o InOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // KernelMatrixOpt applies to FeConvolveMatrix
-func (o KernelMatrixOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o KernelMatrixOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.KernelMatrix = o.v
 }
 
 // KernelUnitLengthOpt applies to FeConvolveMatrix
-func (o KernelUnitLengthOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o KernelUnitLengthOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.KernelUnitLength = o.v
 }
 
 // KerningOpt applies to FeConvolveMatrix
-func (o KerningOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to FeConvolveMatrix
-func (o LetterSpacingOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to FeConvolveMatrix
-func (o LightingColorOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to FeConvolveMatrix
-func (o MarkerEndOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to FeConvolveMatrix
-func (o MarkerMidOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to FeConvolveMatrix
-func (o MarkerStartOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to FeConvolveMatrix
-func (o MaskOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to FeConvolveMatrix
-func (o OpacityOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OrderOpt applies to FeConvolveMatrix
-func (o OrderOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o OrderOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Order = o.v
 }
 
 // OverflowOpt applies to FeConvolveMatrix
-func (o OverflowOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to FeConvolveMatrix
-func (o PointerEventsOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // PreserveAlphaOpt applies to FeConvolveMatrix
-func (o PreserveAlphaOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o PreserveAlphaOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.PreserveAlpha = o.v
 }
 
 // ResultOpt applies to FeConvolveMatrix
-func (o ResultOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // ShapeRenderingOpt applies to FeConvolveMatrix
-func (o ShapeRenderingOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to FeConvolveMatrix
-func (o StopColorOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to FeConvolveMatrix
-func (o StopOpacityOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to FeConvolveMatrix
-func (o StrokeOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to FeConvolveMatrix
-func (o StrokeDasharrayOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to FeConvolveMatrix
-func (o StrokeDashoffsetOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to FeConvolveMatrix
-func (o StrokeLinecapOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to FeConvolveMatrix
-func (o StrokeLinejoinOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to FeConvolveMatrix
-func (o StrokeMiterlimitOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to FeConvolveMatrix
-func (o StrokeOpacityOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to FeConvolveMatrix
-func (o StrokeWidthOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TargetXOpt applies to FeConvolveMatrix
-func (o TargetXOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o TargetXOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.TargetX = o.v
 }
 
 // TargetYOpt applies to FeConvolveMatrix
-func (o TargetYOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o TargetYOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.TargetY = o.v
 }
 
 // TextAnchorOpt applies to FeConvolveMatrix
-func (o TextAnchorOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to FeConvolveMatrix
-func (o TextDecorationOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to FeConvolveMatrix
-func (o TextRenderingOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to FeConvolveMatrix
-func (o UnicodeBidiOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to FeConvolveMatrix
-func (o VisibilityOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to FeConvolveMatrix
-func (o WidthOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to FeConvolveMatrix
-func (o WordSpacingOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to FeConvolveMatrix
-func (o WritingModeOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to FeConvolveMatrix
-func (o XOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeConvolveMatrix
-func (o YOpt) applyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeConvolveMatrix(a *SvgFeConvolveMatrixAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

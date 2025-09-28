@@ -7,7 +7,7 @@ type DivAttrs struct {
 }
 
 type DivArg interface {
-	applyDiv(*DivAttrs, *[]Component)
+	ApplyDiv(*DivAttrs, *[]Component)
 }
 
 func defaultDivAttrs() *DivAttrs {
@@ -25,12 +25,12 @@ func Div(args ...DivArg) Node {
 	a := defaultDivAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyDiv(a, &kids)
+		ar.ApplyDiv(a, &kids)
 	}
 	return Node{Tag: "div", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyDiv(a *DivAttrs, _ *[]Component) {
+func (g Global) ApplyDiv(a *DivAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

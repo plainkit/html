@@ -82,7 +82,7 @@ type SvgFeTurbulenceAttrs struct {
 
 // SvgFeTurbulenceArg interface for feTurbulence element arguments
 type SvgFeTurbulenceArg interface {
-	applyFeTurbulence(*SvgFeTurbulenceAttrs, *[]Component)
+	ApplyFeTurbulence(*SvgFeTurbulenceAttrs, *[]Component)
 }
 
 // defaultSvgFeTurbulenceAttrs creates default attributes for feTurbulence
@@ -97,7 +97,7 @@ func SvgFeTurbulence(args ...SvgFeTurbulenceArg) Node {
 	a := defaultSvgFeTurbulenceAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeTurbulence(a, &kids)
+		ar.ApplyFeTurbulence(a, &kids)
 	}
 	return Node{
 		Tag:   "feTurbulence",
@@ -107,352 +107,352 @@ func SvgFeTurbulence(args ...SvgFeTurbulenceArg) Node {
 }
 
 // Global applies global SVG attributes to feTurbulence
-func (g Global) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (g Global) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to FeTurbulence
-func (o AlignmentBaselineOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaseFrequencyOpt applies to FeTurbulence
-func (o BaseFrequencyOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o BaseFrequencyOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.BaseFrequency = o.v
 }
 
 // BaselineShiftOpt applies to FeTurbulence
-func (o BaselineShiftOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to FeTurbulence
-func (o ClipOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to FeTurbulence
-func (o ClipPathOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to FeTurbulence
-func (o ClipRuleOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to FeTurbulence
-func (o ColorOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to FeTurbulence
-func (o ColorInterpolationOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to FeTurbulence
-func (o ColorInterpolationFiltersOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to FeTurbulence
-func (o ColorProfileOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to FeTurbulence
-func (o ColorRenderingOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to FeTurbulence
-func (o CursorOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to FeTurbulence
-func (o DirectionOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to FeTurbulence
-func (o DisplayOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to FeTurbulence
-func (o DominantBaselineOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to FeTurbulence
-func (o EnableBackgroundOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to FeTurbulence
-func (o FillOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to FeTurbulence
-func (o FillOpacityOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to FeTurbulence
-func (o FillRuleOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to FeTurbulence
-func (o FilterOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to FeTurbulence
-func (o FloodColorOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeTurbulence
-func (o FloodOpacityOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to FeTurbulence
-func (o FontFamilyOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FeTurbulence
-func (o FontSizeOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to FeTurbulence
-func (o FontSizeAdjustOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to FeTurbulence
-func (o FontStretchOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FeTurbulence
-func (o FontStyleOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FeTurbulence
-func (o FontVariantOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FeTurbulence
-func (o FontWeightOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to FeTurbulence
-func (o GlyphOrientationHorizontalOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to FeTurbulence
-func (o GlyphOrientationVerticalOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to FeTurbulence
-func (o HeightOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to FeTurbulence
-func (o ImageRenderingOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to FeTurbulence
-func (o KerningOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to FeTurbulence
-func (o LetterSpacingOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to FeTurbulence
-func (o LightingColorOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to FeTurbulence
-func (o MarkerEndOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to FeTurbulence
-func (o MarkerMidOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to FeTurbulence
-func (o MarkerStartOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to FeTurbulence
-func (o MaskOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // NumOctavesOpt applies to FeTurbulence
-func (o NumOctavesOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o NumOctavesOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.NumOctaves = o.v
 }
 
 // OpacityOpt applies to FeTurbulence
-func (o OpacityOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to FeTurbulence
-func (o OverflowOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to FeTurbulence
-func (o PointerEventsOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ResultOpt applies to FeTurbulence
-func (o ResultOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // SeedOpt applies to FeTurbulence
-func (o SeedOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o SeedOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Seed = o.v
 }
 
 // ShapeRenderingOpt applies to FeTurbulence
-func (o ShapeRenderingOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StitchTilesOpt applies to FeTurbulence
-func (o StitchTilesOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o StitchTilesOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.StitchTiles = o.v
 }
 
 // StopColorOpt applies to FeTurbulence
-func (o StopColorOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to FeTurbulence
-func (o StopOpacityOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to FeTurbulence
-func (o StrokeOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to FeTurbulence
-func (o StrokeDasharrayOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to FeTurbulence
-func (o StrokeDashoffsetOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to FeTurbulence
-func (o StrokeLinecapOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to FeTurbulence
-func (o StrokeLinejoinOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to FeTurbulence
-func (o StrokeMiterlimitOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to FeTurbulence
-func (o StrokeOpacityOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to FeTurbulence
-func (o StrokeWidthOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to FeTurbulence
-func (o TextAnchorOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to FeTurbulence
-func (o TextDecorationOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to FeTurbulence
-func (o TextRenderingOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TypeOpt applies to FeTurbulence
-func (o TypeOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o TypeOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 
 // UnicodeBidiOpt applies to FeTurbulence
-func (o UnicodeBidiOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to FeTurbulence
-func (o VisibilityOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to FeTurbulence
-func (o WidthOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to FeTurbulence
-func (o WordSpacingOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to FeTurbulence
-func (o WritingModeOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to FeTurbulence
-func (o XOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeTurbulence
-func (o YOpt) applyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeTurbulence(a *SvgFeTurbulenceAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

@@ -7,7 +7,7 @@ type AddressAttrs struct {
 }
 
 type AddressArg interface {
-	applyAddress(*AddressAttrs, *[]Component)
+	ApplyAddress(*AddressAttrs, *[]Component)
 }
 
 func defaultAddressAttrs() *AddressAttrs {
@@ -25,12 +25,12 @@ func Address(args ...AddressArg) Node {
 	a := defaultAddressAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyAddress(a, &kids)
+		ar.ApplyAddress(a, &kids)
 	}
 	return Node{Tag: "address", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyAddress(a *AddressAttrs, _ *[]Component) {
+func (g Global) ApplyAddress(a *AddressAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

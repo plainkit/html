@@ -10,7 +10,7 @@ type OlAttrs struct {
 }
 
 type OlArg interface {
-	applyOl(*OlAttrs, *[]Component)
+	ApplyOl(*OlAttrs, *[]Component)
 }
 
 func defaultOlAttrs() *OlAttrs {
@@ -28,22 +28,22 @@ func Ol(args ...OlArg) Node {
 	a := defaultOlAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyOl(a, &kids)
+		ar.ApplyOl(a, &kids)
 	}
 	return Node{Tag: "ol", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyOl(a *OlAttrs, _ *[]Component) {
+func (g Global) ApplyOl(a *OlAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o ReversedOpt) applyOl(a *OlAttrs, _ *[]Component) {
+func (o ReversedOpt) ApplyOl(a *OlAttrs, _ *[]Component) {
 	a.Reversed = true
 }
-func (o StartOpt) applyOl(a *OlAttrs, _ *[]Component) {
+func (o StartOpt) ApplyOl(a *OlAttrs, _ *[]Component) {
 	a.Start = o.v
 }
-func (o TypeOpt) applyOl(a *OlAttrs, _ *[]Component) {
+func (o TypeOpt) ApplyOl(a *OlAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 

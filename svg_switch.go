@@ -91,7 +91,7 @@ type SvgSwitchAttrs struct {
 
 // SvgSwitchArg interface for switch element arguments
 type SvgSwitchArg interface {
-	applySwitch(*SvgSwitchAttrs, *[]Component)
+	ApplySwitch(*SvgSwitchAttrs, *[]Component)
 }
 
 // defaultSvgSwitchAttrs creates default attributes for switch
@@ -106,7 +106,7 @@ func SvgSwitch(args ...SvgSwitchArg) Node {
 	a := defaultSvgSwitchAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySwitch(a, &kids)
+		ar.ApplySwitch(a, &kids)
 	}
 	return Node{
 		Tag:   "switch",
@@ -116,397 +116,397 @@ func SvgSwitch(args ...SvgSwitchArg) Node {
 }
 
 // Global applies global SVG attributes to switch
-func (g Global) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (g Global) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Switch
-func (o AlignmentBaselineOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Switch
-func (o BaselineShiftOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Switch
-func (o ClipOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o ClipOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Switch
-func (o ClipPathOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Switch
-func (o ClipRuleOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Switch
-func (o ColorOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o ColorOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Switch
-func (o ColorInterpolationOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Switch
-func (o ColorInterpolationFiltersOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Switch
-func (o ColorProfileOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Switch
-func (o ColorRenderingOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Switch
-func (o CursorOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o CursorOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Switch
-func (o DirectionOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Switch
-func (o DisplayOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Switch
-func (o DominantBaselineOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Switch
-func (o EnableBackgroundOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Switch
-func (o ExternalResourcesRequiredOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Switch
-func (o FillOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FillOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Switch
-func (o FillOpacityOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Switch
-func (o FillRuleOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Switch
-func (o FilterOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FilterOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Switch
-func (o FloodColorOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Switch
-func (o FloodOpacityOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FocusHighlightOpt applies to Switch
-func (o FocusHighlightOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FocusHighlightOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.FocusHighlight = o.v
 }
 
 // FocusableOpt applies to Switch
-func (o FocusableOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FocusableOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Focusable = o.v
 }
 
 // FontFamilyOpt applies to Switch
-func (o FontFamilyOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Switch
-func (o FontSizeOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Switch
-func (o FontSizeAdjustOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Switch
-func (o FontStretchOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Switch
-func (o FontStyleOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Switch
-func (o FontVariantOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Switch
-func (o FontWeightOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Switch
-func (o GlyphOrientationHorizontalOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Switch
-func (o GlyphOrientationVerticalOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // ImageRenderingOpt applies to Switch
-func (o ImageRenderingOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Switch
-func (o KerningOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o KerningOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Switch
-func (o LetterSpacingOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Switch
-func (o LightingColorOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Switch
-func (o MarkerEndOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Switch
-func (o MarkerMidOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Switch
-func (o MarkerStartOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Switch
-func (o MaskOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o MaskOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // NavDownOpt applies to Switch
-func (o NavDownOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o NavDownOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.NavDown = o.v
 }
 
 // NavDownLeftOpt applies to Switch
-func (o NavDownLeftOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o NavDownLeftOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.NavDownLeft = o.v
 }
 
 // NavDownRightOpt applies to Switch
-func (o NavDownRightOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o NavDownRightOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.NavDownRight = o.v
 }
 
 // NavLeftOpt applies to Switch
-func (o NavLeftOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o NavLeftOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.NavLeft = o.v
 }
 
 // NavNextOpt applies to Switch
-func (o NavNextOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o NavNextOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.NavNext = o.v
 }
 
 // NavPrevOpt applies to Switch
-func (o NavPrevOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o NavPrevOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.NavPrev = o.v
 }
 
 // NavRightOpt applies to Switch
-func (o NavRightOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o NavRightOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.NavRight = o.v
 }
 
 // NavUpOpt applies to Switch
-func (o NavUpOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o NavUpOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.NavUp = o.v
 }
 
 // NavUpLeftOpt applies to Switch
-func (o NavUpLeftOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o NavUpLeftOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.NavUpLeft = o.v
 }
 
 // NavUpRightOpt applies to Switch
-func (o NavUpRightOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o NavUpRightOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.NavUpRight = o.v
 }
 
 // OpacityOpt applies to Switch
-func (o OpacityOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Switch
-func (o OverflowOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to Switch
-func (o PointerEventsOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // RequiredExtensionsOpt applies to Switch
-func (o RequiredExtensionsOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Switch
-func (o RequiredFeaturesOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Switch
-func (o RequiredFontsOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Switch
-func (o RequiredFormatsOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // ShapeRenderingOpt applies to Switch
-func (o ShapeRenderingOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Switch
-func (o StopColorOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Switch
-func (o StopOpacityOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Switch
-func (o StrokeOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Switch
-func (o StrokeDasharrayOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Switch
-func (o StrokeDashoffsetOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Switch
-func (o StrokeLinecapOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Switch
-func (o StrokeLinejoinOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Switch
-func (o StrokeMiterlimitOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Switch
-func (o StrokeOpacityOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Switch
-func (o StrokeWidthOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to Switch
-func (o SystemLanguageOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to Switch
-func (o TextAnchorOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Switch
-func (o TextDecorationOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Switch
-func (o TextRenderingOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TransformOpt applies to Switch
-func (o TransformOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o TransformOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Transform = o.v
 }
 
 // UnicodeBidiOpt applies to Switch
-func (o UnicodeBidiOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Switch
-func (o VisibilityOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to Switch
-func (o WordSpacingOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Switch
-func (o WritingModeOpt) applySwitch(a *SvgSwitchAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplySwitch(a *SvgSwitchAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 

@@ -96,7 +96,7 @@ type SvgUseAttrs struct {
 
 // SvgUseArg interface for use element arguments
 type SvgUseArg interface {
-	applyUse(*SvgUseAttrs, *[]Component)
+	ApplyUse(*SvgUseAttrs, *[]Component)
 }
 
 // defaultSvgUseAttrs creates default attributes for use
@@ -111,7 +111,7 @@ func SvgUse(args ...SvgUseArg) Node {
 	a := defaultSvgUseAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyUse(a, &kids)
+		ar.ApplyUse(a, &kids)
 	}
 	return Node{
 		Tag:   "use",
@@ -121,422 +121,422 @@ func SvgUse(args ...SvgUseArg) Node {
 }
 
 // Global applies global SVG attributes to use
-func (g Global) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (g Global) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Use
-func (o AlignmentBaselineOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Use
-func (o BaselineShiftOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Use
-func (o ClipOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Use
-func (o ClipPathOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Use
-func (o ClipRuleOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Use
-func (o ColorOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Use
-func (o ColorInterpolationOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Use
-func (o ColorInterpolationFiltersOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Use
-func (o ColorProfileOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Use
-func (o ColorRenderingOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Use
-func (o CursorOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Use
-func (o DirectionOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Use
-func (o DisplayOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Use
-func (o DominantBaselineOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Use
-func (o EnableBackgroundOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Use
-func (o ExternalResourcesRequiredOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Use
-func (o FillOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FillOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Use
-func (o FillOpacityOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Use
-func (o FillRuleOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Use
-func (o FilterOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Use
-func (o FloodColorOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Use
-func (o FloodOpacityOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FocusHighlightOpt applies to Use
-func (o FocusHighlightOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FocusHighlightOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.FocusHighlight = o.v
 }
 
 // FocusableOpt applies to Use
-func (o FocusableOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FocusableOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Focusable = o.v
 }
 
 // FontFamilyOpt applies to Use
-func (o FontFamilyOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Use
-func (o FontSizeOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Use
-func (o FontSizeAdjustOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Use
-func (o FontStretchOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Use
-func (o FontStyleOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Use
-func (o FontVariantOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Use
-func (o FontWeightOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Use
-func (o GlyphOrientationHorizontalOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Use
-func (o GlyphOrientationVerticalOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to Use
-func (o HeightOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // HrefOpt applies to Use
-func (o HrefOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o HrefOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // ImageRenderingOpt applies to Use
-func (o ImageRenderingOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Use
-func (o KerningOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Use
-func (o LetterSpacingOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Use
-func (o LightingColorOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Use
-func (o MarkerEndOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Use
-func (o MarkerMidOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Use
-func (o MarkerStartOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Use
-func (o MaskOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // NavDownOpt applies to Use
-func (o NavDownOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o NavDownOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.NavDown = o.v
 }
 
 // NavDownLeftOpt applies to Use
-func (o NavDownLeftOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o NavDownLeftOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.NavDownLeft = o.v
 }
 
 // NavDownRightOpt applies to Use
-func (o NavDownRightOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o NavDownRightOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.NavDownRight = o.v
 }
 
 // NavLeftOpt applies to Use
-func (o NavLeftOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o NavLeftOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.NavLeft = o.v
 }
 
 // NavNextOpt applies to Use
-func (o NavNextOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o NavNextOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.NavNext = o.v
 }
 
 // NavPrevOpt applies to Use
-func (o NavPrevOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o NavPrevOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.NavPrev = o.v
 }
 
 // NavRightOpt applies to Use
-func (o NavRightOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o NavRightOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.NavRight = o.v
 }
 
 // NavUpOpt applies to Use
-func (o NavUpOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o NavUpOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.NavUp = o.v
 }
 
 // NavUpLeftOpt applies to Use
-func (o NavUpLeftOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o NavUpLeftOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.NavUpLeft = o.v
 }
 
 // NavUpRightOpt applies to Use
-func (o NavUpRightOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o NavUpRightOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.NavUpRight = o.v
 }
 
 // OpacityOpt applies to Use
-func (o OpacityOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Use
-func (o OverflowOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to Use
-func (o PointerEventsOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // RequiredExtensionsOpt applies to Use
-func (o RequiredExtensionsOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Use
-func (o RequiredFeaturesOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Use
-func (o RequiredFontsOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Use
-func (o RequiredFormatsOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // ShapeRenderingOpt applies to Use
-func (o ShapeRenderingOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Use
-func (o StopColorOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Use
-func (o StopOpacityOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Use
-func (o StrokeOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Use
-func (o StrokeDasharrayOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Use
-func (o StrokeDashoffsetOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Use
-func (o StrokeLinecapOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Use
-func (o StrokeLinejoinOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Use
-func (o StrokeMiterlimitOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Use
-func (o StrokeOpacityOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Use
-func (o StrokeWidthOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to Use
-func (o SystemLanguageOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to Use
-func (o TextAnchorOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Use
-func (o TextDecorationOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Use
-func (o TextRenderingOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TransformOpt applies to Use
-func (o TransformOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o TransformOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Transform = o.v
 }
 
 // UnicodeBidiOpt applies to Use
-func (o UnicodeBidiOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Use
-func (o VisibilityOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to Use
-func (o WidthOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to Use
-func (o WordSpacingOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Use
-func (o WritingModeOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to Use
-func (o XOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o XOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Use
-func (o YOpt) applyUse(a *SvgUseAttrs, _ *[]Component) {
+func (o YOpt) ApplyUse(a *SvgUseAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

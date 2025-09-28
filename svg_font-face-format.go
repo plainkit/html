@@ -14,7 +14,7 @@ type SvgFontFaceFormatAttrs struct {
 
 // SvgFontFaceFormatArg interface for font-face-format element arguments
 type SvgFontFaceFormatArg interface {
-	applyFontFaceFormat(*SvgFontFaceFormatAttrs, *[]Component)
+	ApplyFontFaceFormat(*SvgFontFaceFormatAttrs, *[]Component)
 }
 
 // defaultSvgFontFaceFormatAttrs creates default attributes for font-face-format
@@ -29,7 +29,7 @@ func SvgFontFaceFormat(args ...SvgFontFaceFormatArg) Node {
 	a := defaultSvgFontFaceFormatAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFontFaceFormat(a, &kids)
+		ar.ApplyFontFaceFormat(a, &kids)
 	}
 	return Node{
 		Tag:   "font-face-format",
@@ -39,12 +39,12 @@ func SvgFontFaceFormat(args ...SvgFontFaceFormatArg) Node {
 }
 
 // Global applies global SVG attributes to font-face-format
-func (g Global) applyFontFaceFormat(a *SvgFontFaceFormatAttrs, _ *[]Component) {
+func (g Global) ApplyFontFaceFormat(a *SvgFontFaceFormatAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // StringOpt applies to FontFaceFormat
-func (o StringOpt) applyFontFaceFormat(a *SvgFontFaceFormatAttrs, _ *[]Component) {
+func (o StringOpt) ApplyFontFaceFormat(a *SvgFontFaceFormatAttrs, _ *[]Component) {
 	a.String = o.v
 }
 

@@ -81,7 +81,7 @@ type SvgMarkerAttrs struct {
 
 // SvgMarkerArg interface for marker element arguments
 type SvgMarkerArg interface {
-	applyMarker(*SvgMarkerAttrs, *[]Component)
+	ApplyMarker(*SvgMarkerAttrs, *[]Component)
 }
 
 // defaultSvgMarkerAttrs creates default attributes for marker
@@ -96,7 +96,7 @@ func SvgMarker(args ...SvgMarkerArg) Node {
 	a := defaultSvgMarkerAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyMarker(a, &kids)
+		ar.ApplyMarker(a, &kids)
 	}
 	return Node{
 		Tag:   "marker",
@@ -106,347 +106,347 @@ func SvgMarker(args ...SvgMarkerArg) Node {
 }
 
 // Global applies global SVG attributes to marker
-func (g Global) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (g Global) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Marker
-func (o AlignmentBaselineOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Marker
-func (o BaselineShiftOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Marker
-func (o ClipOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Marker
-func (o ClipPathOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Marker
-func (o ClipRuleOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Marker
-func (o ColorOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Marker
-func (o ColorInterpolationOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Marker
-func (o ColorInterpolationFiltersOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Marker
-func (o ColorProfileOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Marker
-func (o ColorRenderingOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Marker
-func (o CursorOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Marker
-func (o DirectionOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Marker
-func (o DisplayOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Marker
-func (o DominantBaselineOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Marker
-func (o EnableBackgroundOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Marker
-func (o ExternalResourcesRequiredOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Marker
-func (o FillOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o FillOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Marker
-func (o FillOpacityOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Marker
-func (o FillRuleOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Marker
-func (o FilterOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Marker
-func (o FloodColorOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Marker
-func (o FloodOpacityOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to Marker
-func (o FontFamilyOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Marker
-func (o FontSizeOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Marker
-func (o FontSizeAdjustOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Marker
-func (o FontStretchOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Marker
-func (o FontStyleOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Marker
-func (o FontVariantOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Marker
-func (o FontWeightOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Marker
-func (o GlyphOrientationHorizontalOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Marker
-func (o GlyphOrientationVerticalOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // ImageRenderingOpt applies to Marker
-func (o ImageRenderingOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Marker
-func (o KerningOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Marker
-func (o LetterSpacingOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Marker
-func (o LightingColorOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Marker
-func (o MarkerEndOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Marker
-func (o MarkerMidOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Marker
-func (o MarkerStartOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MarkerHeightOpt applies to Marker
-func (o MarkerHeightOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o MarkerHeightOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.MarkerHeight = o.v
 }
 
 // MarkerUnitsOpt applies to Marker
-func (o MarkerUnitsOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o MarkerUnitsOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.MarkerUnits = o.v
 }
 
 // MarkerWidthOpt applies to Marker
-func (o MarkerWidthOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o MarkerWidthOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.MarkerWidth = o.v
 }
 
 // MaskOpt applies to Marker
-func (o MaskOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to Marker
-func (o OpacityOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OrientOpt applies to Marker
-func (o OrientOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o OrientOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Orient = o.v
 }
 
 // OverflowOpt applies to Marker
-func (o OverflowOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to Marker
-func (o PointerEventsOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // PreserveAspectRatioOpt applies to Marker
-func (o PreserveAspectRatioOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o PreserveAspectRatioOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
 // RefXOpt applies to Marker
-func (o RefXOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o RefXOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.RefX = o.v
 }
 
 // RefYOpt applies to Marker
-func (o RefYOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o RefYOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.RefY = o.v
 }
 
 // ShapeRenderingOpt applies to Marker
-func (o ShapeRenderingOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Marker
-func (o StopColorOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Marker
-func (o StopOpacityOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Marker
-func (o StrokeOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Marker
-func (o StrokeDasharrayOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Marker
-func (o StrokeDashoffsetOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Marker
-func (o StrokeLinecapOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Marker
-func (o StrokeLinejoinOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Marker
-func (o StrokeMiterlimitOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Marker
-func (o StrokeOpacityOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Marker
-func (o StrokeWidthOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to Marker
-func (o TextAnchorOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Marker
-func (o TextDecorationOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Marker
-func (o TextRenderingOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to Marker
-func (o UnicodeBidiOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // ViewBoxOpt applies to Marker
-func (o ViewBoxOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o ViewBoxOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.ViewBox = o.v
 }
 
 // VisibilityOpt applies to Marker
-func (o VisibilityOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to Marker
-func (o WordSpacingOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Marker
-func (o WritingModeOpt) applyMarker(a *SvgMarkerAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyMarker(a *SvgMarkerAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 

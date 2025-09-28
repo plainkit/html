@@ -20,7 +20,7 @@ type SvgFeFuncAAttrs struct {
 
 // SvgFeFuncAArg interface for feFuncA element arguments
 type SvgFeFuncAArg interface {
-	applyFeFuncA(*SvgFeFuncAAttrs, *[]Component)
+	ApplyFeFuncA(*SvgFeFuncAAttrs, *[]Component)
 }
 
 // defaultSvgFeFuncAAttrs creates default attributes for feFuncA
@@ -35,7 +35,7 @@ func SvgFeFuncA(args ...SvgFeFuncAArg) Node {
 	a := defaultSvgFeFuncAAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeFuncA(a, &kids)
+		ar.ApplyFeFuncA(a, &kids)
 	}
 	return Node{
 		Tag:   "feFuncA",
@@ -45,42 +45,42 @@ func SvgFeFuncA(args ...SvgFeFuncAArg) Node {
 }
 
 // Global applies global SVG attributes to feFuncA
-func (g Global) applyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
+func (g Global) ApplyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AmplitudeOpt applies to FeFuncA
-func (o AmplitudeOpt) applyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
+func (o AmplitudeOpt) ApplyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
 	a.Amplitude = o.v
 }
 
 // ExponentOpt applies to FeFuncA
-func (o ExponentOpt) applyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
+func (o ExponentOpt) ApplyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
 	a.Exponent = o.v
 }
 
 // InterceptOpt applies to FeFuncA
-func (o InterceptOpt) applyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
+func (o InterceptOpt) ApplyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
 	a.Intercept = o.v
 }
 
 // OffsetOpt applies to FeFuncA
-func (o OffsetOpt) applyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
+func (o OffsetOpt) ApplyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
 	a.Offset = o.v
 }
 
 // SlopeOpt applies to FeFuncA
-func (o SlopeOpt) applyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
+func (o SlopeOpt) ApplyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
 	a.Slope = o.v
 }
 
 // TableValuesOpt applies to FeFuncA
-func (o TableValuesOpt) applyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
+func (o TableValuesOpt) ApplyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
 	a.TableValues = o.v
 }
 
 // TypeOpt applies to FeFuncA
-func (o TypeOpt) applyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
+func (o TypeOpt) ApplyFeFuncA(a *SvgFeFuncAAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 

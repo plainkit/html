@@ -13,7 +13,7 @@ type SvgAltGlyphDefAttrs struct {
 
 // SvgAltGlyphDefArg interface for altGlyphDef element arguments
 type SvgAltGlyphDefArg interface {
-	applyAltGlyphDef(*SvgAltGlyphDefAttrs, *[]Component)
+	ApplyAltGlyphDef(*SvgAltGlyphDefAttrs, *[]Component)
 }
 
 // defaultSvgAltGlyphDefAttrs creates default attributes for altGlyphDef
@@ -28,7 +28,7 @@ func SvgAltGlyphDef(args ...SvgAltGlyphDefArg) Node {
 	a := defaultSvgAltGlyphDefAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyAltGlyphDef(a, &kids)
+		ar.ApplyAltGlyphDef(a, &kids)
 	}
 	return Node{
 		Tag:   "altGlyphDef",
@@ -38,7 +38,7 @@ func SvgAltGlyphDef(args ...SvgAltGlyphDefArg) Node {
 }
 
 // Global applies global SVG attributes to altGlyphDef
-func (g Global) applyAltGlyphDef(a *SvgAltGlyphDefAttrs, _ *[]Component) {
+func (g Global) ApplyAltGlyphDef(a *SvgAltGlyphDefAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 

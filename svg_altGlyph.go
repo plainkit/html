@@ -83,7 +83,7 @@ type SvgAltGlyphAttrs struct {
 
 // SvgAltGlyphArg interface for altGlyph element arguments
 type SvgAltGlyphArg interface {
-	applyAltGlyph(*SvgAltGlyphAttrs, *[]Component)
+	ApplyAltGlyph(*SvgAltGlyphAttrs, *[]Component)
 }
 
 // defaultSvgAltGlyphAttrs creates default attributes for altGlyph
@@ -98,7 +98,7 @@ func SvgAltGlyph(args ...SvgAltGlyphArg) Node {
 	a := defaultSvgAltGlyphAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyAltGlyph(a, &kids)
+		ar.ApplyAltGlyph(a, &kids)
 	}
 	return Node{
 		Tag:   "altGlyph",
@@ -108,357 +108,357 @@ func SvgAltGlyph(args ...SvgAltGlyphArg) Node {
 }
 
 // Global applies global SVG attributes to altGlyph
-func (g Global) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (g Global) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to AltGlyph
-func (o AlignmentBaselineOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to AltGlyph
-func (o BaselineShiftOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to AltGlyph
-func (o ClipOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to AltGlyph
-func (o ClipPathOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to AltGlyph
-func (o ClipRuleOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to AltGlyph
-func (o ColorOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to AltGlyph
-func (o ColorInterpolationOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to AltGlyph
-func (o ColorInterpolationFiltersOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to AltGlyph
-func (o ColorProfileOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to AltGlyph
-func (o ColorRenderingOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to AltGlyph
-func (o CursorOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to AltGlyph
-func (o DirectionOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to AltGlyph
-func (o DisplayOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to AltGlyph
-func (o DominantBaselineOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // DxOpt applies to AltGlyph
-func (o DxOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o DxOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Dx = o.v
 }
 
 // DyOpt applies to AltGlyph
-func (o DyOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o DyOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Dy = o.v
 }
 
 // EnableBackgroundOpt applies to AltGlyph
-func (o EnableBackgroundOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to AltGlyph
-func (o ExternalResourcesRequiredOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to AltGlyph
-func (o FillOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FillOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to AltGlyph
-func (o FillOpacityOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to AltGlyph
-func (o FillRuleOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to AltGlyph
-func (o FilterOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to AltGlyph
-func (o FloodColorOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to AltGlyph
-func (o FloodOpacityOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to AltGlyph
-func (o FontFamilyOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to AltGlyph
-func (o FontSizeOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to AltGlyph
-func (o FontSizeAdjustOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to AltGlyph
-func (o FontStretchOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to AltGlyph
-func (o FontStyleOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to AltGlyph
-func (o FontVariantOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to AltGlyph
-func (o FontWeightOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // FormatOpt applies to AltGlyph
-func (o FormatOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o FormatOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Format = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to AltGlyph
-func (o GlyphOrientationHorizontalOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to AltGlyph
-func (o GlyphOrientationVerticalOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // GlyphRefOpt applies to AltGlyph
-func (o GlyphRefOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o GlyphRefOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.GlyphRef = o.v
 }
 
 // ImageRenderingOpt applies to AltGlyph
-func (o ImageRenderingOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to AltGlyph
-func (o KerningOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to AltGlyph
-func (o LetterSpacingOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to AltGlyph
-func (o LightingColorOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to AltGlyph
-func (o MarkerEndOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to AltGlyph
-func (o MarkerMidOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to AltGlyph
-func (o MarkerStartOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to AltGlyph
-func (o MaskOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to AltGlyph
-func (o OpacityOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to AltGlyph
-func (o OverflowOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to AltGlyph
-func (o PointerEventsOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // RequiredExtensionsOpt applies to AltGlyph
-func (o RequiredExtensionsOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to AltGlyph
-func (o RequiredFeaturesOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RotateOpt applies to AltGlyph
-func (o RotateOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o RotateOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Rotate = o.v
 }
 
 // ShapeRenderingOpt applies to AltGlyph
-func (o ShapeRenderingOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to AltGlyph
-func (o StopColorOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to AltGlyph
-func (o StopOpacityOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to AltGlyph
-func (o StrokeOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to AltGlyph
-func (o StrokeDasharrayOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to AltGlyph
-func (o StrokeDashoffsetOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to AltGlyph
-func (o StrokeLinecapOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to AltGlyph
-func (o StrokeLinejoinOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to AltGlyph
-func (o StrokeMiterlimitOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to AltGlyph
-func (o StrokeOpacityOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to AltGlyph
-func (o StrokeWidthOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to AltGlyph
-func (o SystemLanguageOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to AltGlyph
-func (o TextAnchorOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to AltGlyph
-func (o TextDecorationOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to AltGlyph
-func (o TextRenderingOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to AltGlyph
-func (o UnicodeBidiOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to AltGlyph
-func (o VisibilityOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to AltGlyph
-func (o WordSpacingOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to AltGlyph
-func (o WritingModeOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to AltGlyph
-func (o XOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o XOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to AltGlyph
-func (o YOpt) applyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
+func (o YOpt) ApplyAltGlyph(a *SvgAltGlyphAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

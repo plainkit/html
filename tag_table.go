@@ -7,7 +7,7 @@ type TableAttrs struct {
 }
 
 type TableArg interface {
-	applyTable(*TableAttrs, *[]Component)
+	ApplyTable(*TableAttrs, *[]Component)
 }
 
 func defaultTableAttrs() *TableAttrs {
@@ -25,12 +25,12 @@ func Table(args ...TableArg) Node {
 	a := defaultTableAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTable(a, &kids)
+		ar.ApplyTable(a, &kids)
 	}
 	return Node{Tag: "table", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyTable(a *TableAttrs, _ *[]Component) {
+func (g Global) ApplyTable(a *TableAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

@@ -78,7 +78,7 @@ type SvgFeComponentTransferAttrs struct {
 
 // SvgFeComponentTransferArg interface for feComponentTransfer element arguments
 type SvgFeComponentTransferArg interface {
-	applyFeComponentTransfer(*SvgFeComponentTransferAttrs, *[]Component)
+	ApplyFeComponentTransfer(*SvgFeComponentTransferAttrs, *[]Component)
 }
 
 // defaultSvgFeComponentTransferAttrs creates default attributes for feComponentTransfer
@@ -93,7 +93,7 @@ func SvgFeComponentTransfer(args ...SvgFeComponentTransferArg) Node {
 	a := defaultSvgFeComponentTransferAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeComponentTransfer(a, &kids)
+		ar.ApplyFeComponentTransfer(a, &kids)
 	}
 	return Node{
 		Tag:   "feComponentTransfer",
@@ -103,332 +103,332 @@ func SvgFeComponentTransfer(args ...SvgFeComponentTransferArg) Node {
 }
 
 // Global applies global SVG attributes to feComponentTransfer
-func (g Global) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (g Global) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to FeComponentTransfer
-func (o AlignmentBaselineOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to FeComponentTransfer
-func (o BaselineShiftOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to FeComponentTransfer
-func (o ClipOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to FeComponentTransfer
-func (o ClipPathOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to FeComponentTransfer
-func (o ClipRuleOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to FeComponentTransfer
-func (o ColorOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to FeComponentTransfer
-func (o ColorInterpolationOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to FeComponentTransfer
-func (o ColorInterpolationFiltersOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to FeComponentTransfer
-func (o ColorProfileOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to FeComponentTransfer
-func (o ColorRenderingOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to FeComponentTransfer
-func (o CursorOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to FeComponentTransfer
-func (o DirectionOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to FeComponentTransfer
-func (o DisplayOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to FeComponentTransfer
-func (o DominantBaselineOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to FeComponentTransfer
-func (o EnableBackgroundOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to FeComponentTransfer
-func (o FillOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to FeComponentTransfer
-func (o FillOpacityOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to FeComponentTransfer
-func (o FillRuleOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to FeComponentTransfer
-func (o FilterOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to FeComponentTransfer
-func (o FloodColorOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeComponentTransfer
-func (o FloodOpacityOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to FeComponentTransfer
-func (o FontFamilyOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FeComponentTransfer
-func (o FontSizeOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to FeComponentTransfer
-func (o FontSizeAdjustOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to FeComponentTransfer
-func (o FontStretchOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FeComponentTransfer
-func (o FontStyleOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FeComponentTransfer
-func (o FontVariantOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FeComponentTransfer
-func (o FontWeightOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to FeComponentTransfer
-func (o GlyphOrientationHorizontalOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to FeComponentTransfer
-func (o GlyphOrientationVerticalOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to FeComponentTransfer
-func (o HeightOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to FeComponentTransfer
-func (o ImageRenderingOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // InOpt applies to FeComponentTransfer
-func (o InOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o InOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // KerningOpt applies to FeComponentTransfer
-func (o KerningOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to FeComponentTransfer
-func (o LetterSpacingOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to FeComponentTransfer
-func (o LightingColorOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to FeComponentTransfer
-func (o MarkerEndOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to FeComponentTransfer
-func (o MarkerMidOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to FeComponentTransfer
-func (o MarkerStartOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to FeComponentTransfer
-func (o MaskOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to FeComponentTransfer
-func (o OpacityOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to FeComponentTransfer
-func (o OverflowOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to FeComponentTransfer
-func (o PointerEventsOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ResultOpt applies to FeComponentTransfer
-func (o ResultOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // ShapeRenderingOpt applies to FeComponentTransfer
-func (o ShapeRenderingOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to FeComponentTransfer
-func (o StopColorOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to FeComponentTransfer
-func (o StopOpacityOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to FeComponentTransfer
-func (o StrokeOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to FeComponentTransfer
-func (o StrokeDasharrayOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to FeComponentTransfer
-func (o StrokeDashoffsetOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to FeComponentTransfer
-func (o StrokeLinecapOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to FeComponentTransfer
-func (o StrokeLinejoinOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to FeComponentTransfer
-func (o StrokeMiterlimitOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to FeComponentTransfer
-func (o StrokeOpacityOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to FeComponentTransfer
-func (o StrokeWidthOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to FeComponentTransfer
-func (o TextAnchorOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to FeComponentTransfer
-func (o TextDecorationOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to FeComponentTransfer
-func (o TextRenderingOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to FeComponentTransfer
-func (o UnicodeBidiOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to FeComponentTransfer
-func (o VisibilityOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to FeComponentTransfer
-func (o WidthOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to FeComponentTransfer
-func (o WordSpacingOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to FeComponentTransfer
-func (o WritingModeOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to FeComponentTransfer
-func (o XOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeComponentTransfer
-func (o YOpt) applyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeComponentTransfer(a *SvgFeComponentTransferAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

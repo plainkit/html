@@ -7,7 +7,7 @@ type DfnAttrs struct {
 }
 
 type DfnArg interface {
-	applyDfn(*DfnAttrs, *[]Component)
+	ApplyDfn(*DfnAttrs, *[]Component)
 }
 
 func defaultDfnAttrs() *DfnAttrs {
@@ -25,12 +25,12 @@ func Dfn(args ...DfnArg) Node {
 	a := defaultDfnAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyDfn(a, &kids)
+		ar.ApplyDfn(a, &kids)
 	}
 	return Node{Tag: "dfn", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyDfn(a *DfnAttrs, _ *[]Component) {
+func (g Global) ApplyDfn(a *DfnAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

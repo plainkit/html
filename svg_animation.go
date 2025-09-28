@@ -50,7 +50,7 @@ type SvgAnimationAttrs struct {
 
 // SvgAnimationArg interface for animation element arguments
 type SvgAnimationArg interface {
-	applyAnimation(*SvgAnimationAttrs, *[]Component)
+	ApplyAnimation(*SvgAnimationAttrs, *[]Component)
 }
 
 // defaultSvgAnimationAttrs creates default attributes for animation
@@ -65,7 +65,7 @@ func SvgAnimation(args ...SvgAnimationArg) Node {
 	a := defaultSvgAnimationAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyAnimation(a, &kids)
+		ar.ApplyAnimation(a, &kids)
 	}
 	return Node{
 		Tag:   "animation",
@@ -75,192 +75,192 @@ func SvgAnimation(args ...SvgAnimationArg) Node {
 }
 
 // Global applies global SVG attributes to animation
-func (g Global) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (g Global) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // BeginOpt applies to Animation
-func (o BeginOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o BeginOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.Begin = o.v
 }
 
 // DurOpt applies to Animation
-func (o DurOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o DurOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.Dur = o.v
 }
 
 // EndOpt applies to Animation
-func (o EndOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o EndOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.End = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Animation
-func (o ExternalResourcesRequiredOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Animation
-func (o FillOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o FillOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FocusHighlightOpt applies to Animation
-func (o FocusHighlightOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o FocusHighlightOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.FocusHighlight = o.v
 }
 
 // FocusableOpt applies to Animation
-func (o FocusableOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o FocusableOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.Focusable = o.v
 }
 
 // HeightOpt applies to Animation
-func (o HeightOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // InitialVisibilityOpt applies to Animation
-func (o InitialVisibilityOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o InitialVisibilityOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.InitialVisibility = o.v
 }
 
 // MaxOpt applies to Animation
-func (o MaxOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o MaxOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.Max = o.v
 }
 
 // MinOpt applies to Animation
-func (o MinOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o MinOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.Min = o.v
 }
 
 // NavDownOpt applies to Animation
-func (o NavDownOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o NavDownOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.NavDown = o.v
 }
 
 // NavDownLeftOpt applies to Animation
-func (o NavDownLeftOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o NavDownLeftOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.NavDownLeft = o.v
 }
 
 // NavDownRightOpt applies to Animation
-func (o NavDownRightOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o NavDownRightOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.NavDownRight = o.v
 }
 
 // NavLeftOpt applies to Animation
-func (o NavLeftOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o NavLeftOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.NavLeft = o.v
 }
 
 // NavNextOpt applies to Animation
-func (o NavNextOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o NavNextOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.NavNext = o.v
 }
 
 // NavPrevOpt applies to Animation
-func (o NavPrevOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o NavPrevOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.NavPrev = o.v
 }
 
 // NavRightOpt applies to Animation
-func (o NavRightOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o NavRightOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.NavRight = o.v
 }
 
 // NavUpOpt applies to Animation
-func (o NavUpOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o NavUpOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.NavUp = o.v
 }
 
 // NavUpLeftOpt applies to Animation
-func (o NavUpLeftOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o NavUpLeftOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.NavUpLeft = o.v
 }
 
 // NavUpRightOpt applies to Animation
-func (o NavUpRightOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o NavUpRightOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.NavUpRight = o.v
 }
 
 // PreserveAspectRatioOpt applies to Animation
-func (o PreserveAspectRatioOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o PreserveAspectRatioOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
 // RepeatCountOpt applies to Animation
-func (o RepeatCountOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o RepeatCountOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.RepeatCount = o.v
 }
 
 // RepeatDurOpt applies to Animation
-func (o RepeatDurOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o RepeatDurOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.RepeatDur = o.v
 }
 
 // RequiredExtensionsOpt applies to Animation
-func (o RequiredExtensionsOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Animation
-func (o RequiredFeaturesOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Animation
-func (o RequiredFontsOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Animation
-func (o RequiredFormatsOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // RestartOpt applies to Animation
-func (o RestartOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o RestartOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.Restart = o.v
 }
 
 // SyncBehaviorOpt applies to Animation
-func (o SyncBehaviorOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o SyncBehaviorOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.SyncBehavior = o.v
 }
 
 // SyncMasterOpt applies to Animation
-func (o SyncMasterOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o SyncMasterOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.SyncMaster = o.v
 }
 
 // SyncToleranceOpt applies to Animation
-func (o SyncToleranceOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o SyncToleranceOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.SyncTolerance = o.v
 }
 
 // SystemLanguageOpt applies to Animation
-func (o SystemLanguageOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TransformOpt applies to Animation
-func (o TransformOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o TransformOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.Transform = o.v
 }
 
 // WidthOpt applies to Animation
-func (o WidthOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // XOpt applies to Animation
-func (o XOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o XOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Animation
-func (o YOpt) applyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
+func (o YOpt) ApplyAnimation(a *SvgAnimationAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

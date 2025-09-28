@@ -12,7 +12,7 @@ type TrackAttrs struct {
 }
 
 type TrackArg interface {
-	applyTrack(*TrackAttrs, *[]Component)
+	ApplyTrack(*TrackAttrs, *[]Component)
 }
 
 func defaultTrackAttrs() *TrackAttrs {
@@ -30,28 +30,28 @@ func Track(args ...TrackArg) Node {
 	a := defaultTrackAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTrack(a, &kids)
+		ar.ApplyTrack(a, &kids)
 	}
 	return Node{Tag: "track", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applyTrack(a *TrackAttrs, _ *[]Component) {
+func (g Global) ApplyTrack(a *TrackAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o DefaultOpt) applyTrack(a *TrackAttrs, _ *[]Component) {
+func (o DefaultOpt) ApplyTrack(a *TrackAttrs, _ *[]Component) {
 	a.Default = true
 }
-func (o KindOpt) applyTrack(a *TrackAttrs, _ *[]Component) {
+func (o KindOpt) ApplyTrack(a *TrackAttrs, _ *[]Component) {
 	a.Kind = o.v
 }
-func (o LabelOpt) applyTrack(a *TrackAttrs, _ *[]Component) {
+func (o LabelOpt) ApplyTrack(a *TrackAttrs, _ *[]Component) {
 	a.Label = o.v
 }
-func (o SrcOpt) applyTrack(a *TrackAttrs, _ *[]Component) {
+func (o SrcOpt) ApplyTrack(a *TrackAttrs, _ *[]Component) {
 	a.Src = o.v
 }
-func (o SrclangOpt) applyTrack(a *TrackAttrs, _ *[]Component) {
+func (o SrclangOpt) ApplyTrack(a *TrackAttrs, _ *[]Component) {
 	a.Srclang = o.v
 }
 

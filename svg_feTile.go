@@ -78,7 +78,7 @@ type SvgFeTileAttrs struct {
 
 // SvgFeTileArg interface for feTile element arguments
 type SvgFeTileArg interface {
-	applyFeTile(*SvgFeTileAttrs, *[]Component)
+	ApplyFeTile(*SvgFeTileAttrs, *[]Component)
 }
 
 // defaultSvgFeTileAttrs creates default attributes for feTile
@@ -93,7 +93,7 @@ func SvgFeTile(args ...SvgFeTileArg) Node {
 	a := defaultSvgFeTileAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeTile(a, &kids)
+		ar.ApplyFeTile(a, &kids)
 	}
 	return Node{
 		Tag:   "feTile",
@@ -103,332 +103,332 @@ func SvgFeTile(args ...SvgFeTileArg) Node {
 }
 
 // Global applies global SVG attributes to feTile
-func (g Global) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (g Global) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to FeTile
-func (o AlignmentBaselineOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to FeTile
-func (o BaselineShiftOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to FeTile
-func (o ClipOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to FeTile
-func (o ClipPathOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to FeTile
-func (o ClipRuleOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to FeTile
-func (o ColorOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to FeTile
-func (o ColorInterpolationOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to FeTile
-func (o ColorInterpolationFiltersOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to FeTile
-func (o ColorProfileOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to FeTile
-func (o ColorRenderingOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to FeTile
-func (o CursorOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to FeTile
-func (o DirectionOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to FeTile
-func (o DisplayOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to FeTile
-func (o DominantBaselineOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to FeTile
-func (o EnableBackgroundOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to FeTile
-func (o FillOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to FeTile
-func (o FillOpacityOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to FeTile
-func (o FillRuleOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to FeTile
-func (o FilterOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to FeTile
-func (o FloodColorOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeTile
-func (o FloodOpacityOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to FeTile
-func (o FontFamilyOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FeTile
-func (o FontSizeOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to FeTile
-func (o FontSizeAdjustOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to FeTile
-func (o FontStretchOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FeTile
-func (o FontStyleOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FeTile
-func (o FontVariantOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FeTile
-func (o FontWeightOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to FeTile
-func (o GlyphOrientationHorizontalOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to FeTile
-func (o GlyphOrientationVerticalOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to FeTile
-func (o HeightOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to FeTile
-func (o ImageRenderingOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // InOpt applies to FeTile
-func (o InOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o InOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // KerningOpt applies to FeTile
-func (o KerningOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to FeTile
-func (o LetterSpacingOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to FeTile
-func (o LightingColorOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to FeTile
-func (o MarkerEndOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to FeTile
-func (o MarkerMidOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to FeTile
-func (o MarkerStartOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to FeTile
-func (o MaskOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to FeTile
-func (o OpacityOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to FeTile
-func (o OverflowOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to FeTile
-func (o PointerEventsOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ResultOpt applies to FeTile
-func (o ResultOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // ShapeRenderingOpt applies to FeTile
-func (o ShapeRenderingOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to FeTile
-func (o StopColorOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to FeTile
-func (o StopOpacityOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to FeTile
-func (o StrokeOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to FeTile
-func (o StrokeDasharrayOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to FeTile
-func (o StrokeDashoffsetOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to FeTile
-func (o StrokeLinecapOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to FeTile
-func (o StrokeLinejoinOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to FeTile
-func (o StrokeMiterlimitOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to FeTile
-func (o StrokeOpacityOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to FeTile
-func (o StrokeWidthOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to FeTile
-func (o TextAnchorOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to FeTile
-func (o TextDecorationOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to FeTile
-func (o TextRenderingOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to FeTile
-func (o UnicodeBidiOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to FeTile
-func (o VisibilityOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to FeTile
-func (o WidthOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to FeTile
-func (o WordSpacingOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to FeTile
-func (o WritingModeOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to FeTile
-func (o XOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeTile
-func (o YOpt) applyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeTile(a *SvgFeTileAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

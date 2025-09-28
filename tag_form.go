@@ -16,7 +16,7 @@ type FormAttrs struct {
 }
 
 type FormArg interface {
-	applyForm(*FormAttrs, *[]Component)
+	ApplyForm(*FormAttrs, *[]Component)
 }
 
 func defaultFormAttrs() *FormAttrs {
@@ -34,44 +34,44 @@ func Form(args ...FormArg) Node {
 	a := defaultFormAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyForm(a, &kids)
+		ar.ApplyForm(a, &kids)
 	}
 	return Node{Tag: "form", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyForm(a *FormAttrs, _ *[]Component) {
+func (g Global) ApplyForm(a *FormAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AcceptCharsetOpt) applyForm(a *FormAttrs, _ *[]Component) {
+func (o AcceptCharsetOpt) ApplyForm(a *FormAttrs, _ *[]Component) {
 	a.AcceptCharset = o.v
 }
-func (o ActionOpt) applyForm(a *FormAttrs, _ *[]Component) {
+func (o ActionOpt) ApplyForm(a *FormAttrs, _ *[]Component) {
 	a.Action = o.v
 }
-func (o AutocompleteOpt) applyForm(a *FormAttrs, _ *[]Component) {
+func (o AutocompleteOpt) ApplyForm(a *FormAttrs, _ *[]Component) {
 	a.Autocomplete = o.v
 }
-func (o EnctypeOpt) applyForm(a *FormAttrs, _ *[]Component) {
+func (o EnctypeOpt) ApplyForm(a *FormAttrs, _ *[]Component) {
 	a.Enctype = o.v
 }
-func (o MethodOpt) applyForm(a *FormAttrs, _ *[]Component) {
+func (o MethodOpt) ApplyForm(a *FormAttrs, _ *[]Component) {
 	a.Method = o.v
 }
-func (o NameOpt) applyForm(a *FormAttrs, _ *[]Component) {
+func (o NameOpt) ApplyForm(a *FormAttrs, _ *[]Component) {
 	a.Name = o.v
 }
-func (o NovalidateOpt) applyForm(a *FormAttrs, _ *[]Component) {
+func (o NovalidateOpt) ApplyForm(a *FormAttrs, _ *[]Component) {
 	a.Novalidate = true
 }
-func (o RelOpt) applyForm(a *FormAttrs, _ *[]Component) {
+func (o RelOpt) ApplyForm(a *FormAttrs, _ *[]Component) {
 	if a.Rel == "" {
 		a.Rel = o.v
 	} else {
 		a.Rel += " " + o.v
 	}
 }
-func (o TargetOpt) applyForm(a *FormAttrs, _ *[]Component) {
+func (o TargetOpt) ApplyForm(a *FormAttrs, _ *[]Component) {
 	a.Target = o.v
 }
 

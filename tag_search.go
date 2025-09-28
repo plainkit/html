@@ -7,7 +7,7 @@ type SearchAttrs struct {
 }
 
 type SearchArg interface {
-	applySearch(*SearchAttrs, *[]Component)
+	ApplySearch(*SearchAttrs, *[]Component)
 }
 
 func defaultSearchAttrs() *SearchAttrs {
@@ -25,12 +25,12 @@ func Search(args ...SearchArg) Node {
 	a := defaultSearchAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySearch(a, &kids)
+		ar.ApplySearch(a, &kids)
 	}
 	return Node{Tag: "search", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySearch(a *SearchAttrs, _ *[]Component) {
+func (g Global) ApplySearch(a *SearchAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

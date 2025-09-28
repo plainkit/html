@@ -7,7 +7,7 @@ type SummaryAttrs struct {
 }
 
 type SummaryArg interface {
-	applySummary(*SummaryAttrs, *[]Component)
+	ApplySummary(*SummaryAttrs, *[]Component)
 }
 
 func defaultSummaryAttrs() *SummaryAttrs {
@@ -25,12 +25,12 @@ func Summary(args ...SummaryArg) Node {
 	a := defaultSummaryAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySummary(a, &kids)
+		ar.ApplySummary(a, &kids)
 	}
 	return Node{Tag: "summary", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySummary(a *SummaryAttrs, _ *[]Component) {
+func (g Global) ApplySummary(a *SummaryAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

@@ -7,7 +7,7 @@ type DtAttrs struct {
 }
 
 type DtArg interface {
-	applyDt(*DtAttrs, *[]Component)
+	ApplyDt(*DtAttrs, *[]Component)
 }
 
 func defaultDtAttrs() *DtAttrs {
@@ -25,12 +25,12 @@ func Dt(args ...DtArg) Node {
 	a := defaultDtAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyDt(a, &kids)
+		ar.ApplyDt(a, &kids)
 	}
 	return Node{Tag: "dt", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyDt(a *DtAttrs, _ *[]Component) {
+func (g Global) ApplyDt(a *DtAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

@@ -80,7 +80,7 @@ type SvgFilterAttrs struct {
 
 // SvgFilterArg interface for filter element arguments
 type SvgFilterArg interface {
-	applyFilter(*SvgFilterAttrs, *[]Component)
+	ApplyFilter(*SvgFilterAttrs, *[]Component)
 }
 
 // defaultSvgFilterAttrs creates default attributes for filter
@@ -95,7 +95,7 @@ func SvgFilter(args ...SvgFilterArg) Node {
 	a := defaultSvgFilterAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFilter(a, &kids)
+		ar.ApplyFilter(a, &kids)
 	}
 	return Node{
 		Tag:   "filter",
@@ -105,342 +105,342 @@ func SvgFilter(args ...SvgFilterArg) Node {
 }
 
 // Global applies global SVG attributes to filter
-func (g Global) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (g Global) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Filter
-func (o AlignmentBaselineOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Filter
-func (o BaselineShiftOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Filter
-func (o ClipOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Filter
-func (o ClipPathOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Filter
-func (o ClipRuleOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Filter
-func (o ColorOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Filter
-func (o ColorInterpolationOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Filter
-func (o ColorInterpolationFiltersOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Filter
-func (o ColorProfileOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Filter
-func (o ColorRenderingOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Filter
-func (o CursorOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Filter
-func (o DirectionOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Filter
-func (o DisplayOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Filter
-func (o DominantBaselineOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Filter
-func (o EnableBackgroundOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Filter
-func (o ExternalResourcesRequiredOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Filter
-func (o FillOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Filter
-func (o FillOpacityOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Filter
-func (o FillRuleOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Filter
-func (o FilterOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FilterResOpt applies to Filter
-func (o FilterResOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FilterResOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FilterRes = o.v
 }
 
 // FilterUnitsOpt applies to Filter
-func (o FilterUnitsOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FilterUnitsOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FilterUnits = o.v
 }
 
 // FloodColorOpt applies to Filter
-func (o FloodColorOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Filter
-func (o FloodOpacityOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to Filter
-func (o FontFamilyOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Filter
-func (o FontSizeOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Filter
-func (o FontSizeAdjustOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Filter
-func (o FontStretchOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Filter
-func (o FontStyleOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Filter
-func (o FontVariantOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Filter
-func (o FontWeightOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Filter
-func (o GlyphOrientationHorizontalOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Filter
-func (o GlyphOrientationVerticalOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to Filter
-func (o HeightOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to Filter
-func (o ImageRenderingOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Filter
-func (o KerningOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Filter
-func (o LetterSpacingOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Filter
-func (o LightingColorOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Filter
-func (o MarkerEndOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Filter
-func (o MarkerMidOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Filter
-func (o MarkerStartOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Filter
-func (o MaskOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to Filter
-func (o OpacityOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Filter
-func (o OverflowOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to Filter
-func (o PointerEventsOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // PrimitiveUnitsOpt applies to Filter
-func (o PrimitiveUnitsOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o PrimitiveUnitsOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.PrimitiveUnits = o.v
 }
 
 // ShapeRenderingOpt applies to Filter
-func (o ShapeRenderingOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Filter
-func (o StopColorOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Filter
-func (o StopOpacityOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Filter
-func (o StrokeOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Filter
-func (o StrokeDasharrayOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Filter
-func (o StrokeDashoffsetOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Filter
-func (o StrokeLinecapOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Filter
-func (o StrokeLinejoinOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Filter
-func (o StrokeMiterlimitOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Filter
-func (o StrokeOpacityOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Filter
-func (o StrokeWidthOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to Filter
-func (o TextAnchorOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Filter
-func (o TextDecorationOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Filter
-func (o TextRenderingOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to Filter
-func (o UnicodeBidiOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Filter
-func (o VisibilityOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to Filter
-func (o WidthOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to Filter
-func (o WordSpacingOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Filter
-func (o WritingModeOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to Filter
-func (o XOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o XOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Filter
-func (o YOpt) applyFilter(a *SvgFilterAttrs, _ *[]Component) {
+func (o YOpt) ApplyFilter(a *SvgFilterAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

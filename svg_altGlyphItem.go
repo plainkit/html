@@ -13,7 +13,7 @@ type SvgAltGlyphItemAttrs struct {
 
 // SvgAltGlyphItemArg interface for altGlyphItem element arguments
 type SvgAltGlyphItemArg interface {
-	applyAltGlyphItem(*SvgAltGlyphItemAttrs, *[]Component)
+	ApplyAltGlyphItem(*SvgAltGlyphItemAttrs, *[]Component)
 }
 
 // defaultSvgAltGlyphItemAttrs creates default attributes for altGlyphItem
@@ -28,7 +28,7 @@ func SvgAltGlyphItem(args ...SvgAltGlyphItemArg) Node {
 	a := defaultSvgAltGlyphItemAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyAltGlyphItem(a, &kids)
+		ar.ApplyAltGlyphItem(a, &kids)
 	}
 	return Node{
 		Tag:   "altGlyphItem",
@@ -38,7 +38,7 @@ func SvgAltGlyphItem(args ...SvgAltGlyphItemArg) Node {
 }
 
 // Global applies global SVG attributes to altGlyphItem
-func (g Global) applyAltGlyphItem(a *SvgAltGlyphItemAttrs, _ *[]Component) {
+func (g Global) ApplyAltGlyphItem(a *SvgAltGlyphItemAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 

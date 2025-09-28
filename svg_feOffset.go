@@ -80,7 +80,7 @@ type SvgFeOffsetAttrs struct {
 
 // SvgFeOffsetArg interface for feOffset element arguments
 type SvgFeOffsetArg interface {
-	applyFeOffset(*SvgFeOffsetAttrs, *[]Component)
+	ApplyFeOffset(*SvgFeOffsetAttrs, *[]Component)
 }
 
 // defaultSvgFeOffsetAttrs creates default attributes for feOffset
@@ -95,7 +95,7 @@ func SvgFeOffset(args ...SvgFeOffsetArg) Node {
 	a := defaultSvgFeOffsetAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeOffset(a, &kids)
+		ar.ApplyFeOffset(a, &kids)
 	}
 	return Node{
 		Tag:   "feOffset",
@@ -105,342 +105,342 @@ func SvgFeOffset(args ...SvgFeOffsetArg) Node {
 }
 
 // Global applies global SVG attributes to feOffset
-func (g Global) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (g Global) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to FeOffset
-func (o AlignmentBaselineOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to FeOffset
-func (o BaselineShiftOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to FeOffset
-func (o ClipOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to FeOffset
-func (o ClipPathOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to FeOffset
-func (o ClipRuleOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to FeOffset
-func (o ColorOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to FeOffset
-func (o ColorInterpolationOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to FeOffset
-func (o ColorInterpolationFiltersOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to FeOffset
-func (o ColorProfileOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to FeOffset
-func (o ColorRenderingOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to FeOffset
-func (o CursorOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to FeOffset
-func (o DirectionOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to FeOffset
-func (o DisplayOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to FeOffset
-func (o DominantBaselineOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // DxOpt applies to FeOffset
-func (o DxOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o DxOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Dx = o.v
 }
 
 // DyOpt applies to FeOffset
-func (o DyOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o DyOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Dy = o.v
 }
 
 // EnableBackgroundOpt applies to FeOffset
-func (o EnableBackgroundOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to FeOffset
-func (o FillOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to FeOffset
-func (o FillOpacityOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to FeOffset
-func (o FillRuleOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to FeOffset
-func (o FilterOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to FeOffset
-func (o FloodColorOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeOffset
-func (o FloodOpacityOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to FeOffset
-func (o FontFamilyOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FeOffset
-func (o FontSizeOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to FeOffset
-func (o FontSizeAdjustOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to FeOffset
-func (o FontStretchOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FeOffset
-func (o FontStyleOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FeOffset
-func (o FontVariantOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FeOffset
-func (o FontWeightOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to FeOffset
-func (o GlyphOrientationHorizontalOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to FeOffset
-func (o GlyphOrientationVerticalOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to FeOffset
-func (o HeightOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to FeOffset
-func (o ImageRenderingOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // InOpt applies to FeOffset
-func (o InOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o InOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // KerningOpt applies to FeOffset
-func (o KerningOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to FeOffset
-func (o LetterSpacingOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to FeOffset
-func (o LightingColorOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to FeOffset
-func (o MarkerEndOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to FeOffset
-func (o MarkerMidOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to FeOffset
-func (o MarkerStartOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to FeOffset
-func (o MaskOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to FeOffset
-func (o OpacityOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to FeOffset
-func (o OverflowOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to FeOffset
-func (o PointerEventsOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ResultOpt applies to FeOffset
-func (o ResultOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // ShapeRenderingOpt applies to FeOffset
-func (o ShapeRenderingOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to FeOffset
-func (o StopColorOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to FeOffset
-func (o StopOpacityOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to FeOffset
-func (o StrokeOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to FeOffset
-func (o StrokeDasharrayOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to FeOffset
-func (o StrokeDashoffsetOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to FeOffset
-func (o StrokeLinecapOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to FeOffset
-func (o StrokeLinejoinOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to FeOffset
-func (o StrokeMiterlimitOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to FeOffset
-func (o StrokeOpacityOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to FeOffset
-func (o StrokeWidthOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to FeOffset
-func (o TextAnchorOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to FeOffset
-func (o TextDecorationOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to FeOffset
-func (o TextRenderingOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to FeOffset
-func (o UnicodeBidiOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to FeOffset
-func (o VisibilityOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to FeOffset
-func (o WidthOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to FeOffset
-func (o WordSpacingOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to FeOffset
-func (o WritingModeOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to FeOffset
-func (o XOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeOffset
-func (o YOpt) applyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeOffset(a *SvgFeOffsetAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

@@ -94,14 +94,14 @@ func BoolAttr(sb *strings.Builder, k string) {
 	sb.WriteString(k)
 }
 
-{{range .TagNames}}func (n Node) apply{{.}}(_ *{{.}}Attrs, kids *[]Component) { *kids = append(*kids, n) }
+{{range .TagNames}}func (n Node) Apply{{.}}(_ *{{.}}Attrs, kids *[]Component) { *kids = append(*kids, n) }
 {{end}}
 
-{{range .TagNames}}func (o TxtOpt) apply{{.}}(_ *{{.}}Attrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
+{{range .TagNames}}func (o TxtOpt) Apply{{.}}(_ *{{.}}Attrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
 {{end}}
 
-{{range .TagNames}}func (o UnsafeTxtOpt) apply{{.}}(_ *{{.}}Attrs, kids *[]Component) { *kids = append(*kids, UnsafeTextNode(o.s)) }
+{{range .TagNames}}func (o UnsafeTxtOpt) Apply{{.}}(_ *{{.}}Attrs, kids *[]Component) { *kids = append(*kids, UnsafeTextNode(o.s)) }
 {{end}}
 
-{{range .TagNames}}func (o ChildOpt) apply{{.}}(_ *{{.}}Attrs, kids *[]Component) { *kids = append(*kids, o.c) }
+{{range .TagNames}}func (o ChildOpt) Apply{{.}}(_ *{{.}}Attrs, kids *[]Component) { *kids = append(*kids, o.c) }
 {{end}}`

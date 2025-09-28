@@ -8,7 +8,7 @@ type DataAttrs struct {
 }
 
 type DataArg interface {
-	applyData(*DataAttrs, *[]Component)
+	ApplyData(*DataAttrs, *[]Component)
 }
 
 func defaultDataAttrs() *DataAttrs {
@@ -26,16 +26,16 @@ func Data(args ...DataArg) Node {
 	a := defaultDataAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyData(a, &kids)
+		ar.ApplyData(a, &kids)
 	}
 	return Node{Tag: "data", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyData(a *DataAttrs, _ *[]Component) {
+func (g Global) ApplyData(a *DataAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o ValueOpt) applyData(a *DataAttrs, _ *[]Component) {
+func (o ValueOpt) ApplyData(a *DataAttrs, _ *[]Component) {
 	a.Value = o.v
 }
 

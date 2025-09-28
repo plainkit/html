@@ -80,7 +80,7 @@ type SvgFeGaussianBlurAttrs struct {
 
 // SvgFeGaussianBlurArg interface for feGaussianBlur element arguments
 type SvgFeGaussianBlurArg interface {
-	applyFeGaussianBlur(*SvgFeGaussianBlurAttrs, *[]Component)
+	ApplyFeGaussianBlur(*SvgFeGaussianBlurAttrs, *[]Component)
 }
 
 // defaultSvgFeGaussianBlurAttrs creates default attributes for feGaussianBlur
@@ -95,7 +95,7 @@ func SvgFeGaussianBlur(args ...SvgFeGaussianBlurArg) Node {
 	a := defaultSvgFeGaussianBlurAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeGaussianBlur(a, &kids)
+		ar.ApplyFeGaussianBlur(a, &kids)
 	}
 	return Node{
 		Tag:   "feGaussianBlur",
@@ -105,342 +105,342 @@ func SvgFeGaussianBlur(args ...SvgFeGaussianBlurArg) Node {
 }
 
 // Global applies global SVG attributes to feGaussianBlur
-func (g Global) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (g Global) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to FeGaussianBlur
-func (o AlignmentBaselineOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to FeGaussianBlur
-func (o BaselineShiftOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to FeGaussianBlur
-func (o ClipOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to FeGaussianBlur
-func (o ClipPathOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to FeGaussianBlur
-func (o ClipRuleOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to FeGaussianBlur
-func (o ColorOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to FeGaussianBlur
-func (o ColorInterpolationOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to FeGaussianBlur
-func (o ColorInterpolationFiltersOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to FeGaussianBlur
-func (o ColorProfileOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to FeGaussianBlur
-func (o ColorRenderingOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to FeGaussianBlur
-func (o CursorOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to FeGaussianBlur
-func (o DirectionOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to FeGaussianBlur
-func (o DisplayOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to FeGaussianBlur
-func (o DominantBaselineOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EdgeModeOpt applies to FeGaussianBlur
-func (o EdgeModeOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o EdgeModeOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.EdgeMode = o.v
 }
 
 // EnableBackgroundOpt applies to FeGaussianBlur
-func (o EnableBackgroundOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to FeGaussianBlur
-func (o FillOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to FeGaussianBlur
-func (o FillOpacityOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to FeGaussianBlur
-func (o FillRuleOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to FeGaussianBlur
-func (o FilterOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to FeGaussianBlur
-func (o FloodColorOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeGaussianBlur
-func (o FloodOpacityOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to FeGaussianBlur
-func (o FontFamilyOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FeGaussianBlur
-func (o FontSizeOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to FeGaussianBlur
-func (o FontSizeAdjustOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to FeGaussianBlur
-func (o FontStretchOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FeGaussianBlur
-func (o FontStyleOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FeGaussianBlur
-func (o FontVariantOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FeGaussianBlur
-func (o FontWeightOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to FeGaussianBlur
-func (o GlyphOrientationHorizontalOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to FeGaussianBlur
-func (o GlyphOrientationVerticalOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to FeGaussianBlur
-func (o HeightOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to FeGaussianBlur
-func (o ImageRenderingOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // InOpt applies to FeGaussianBlur
-func (o InOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o InOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // KerningOpt applies to FeGaussianBlur
-func (o KerningOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to FeGaussianBlur
-func (o LetterSpacingOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to FeGaussianBlur
-func (o LightingColorOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to FeGaussianBlur
-func (o MarkerEndOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to FeGaussianBlur
-func (o MarkerMidOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to FeGaussianBlur
-func (o MarkerStartOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to FeGaussianBlur
-func (o MaskOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to FeGaussianBlur
-func (o OpacityOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to FeGaussianBlur
-func (o OverflowOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to FeGaussianBlur
-func (o PointerEventsOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ResultOpt applies to FeGaussianBlur
-func (o ResultOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // ShapeRenderingOpt applies to FeGaussianBlur
-func (o ShapeRenderingOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StdDeviationOpt applies to FeGaussianBlur
-func (o StdDeviationOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o StdDeviationOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.StdDeviation = o.v
 }
 
 // StopColorOpt applies to FeGaussianBlur
-func (o StopColorOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to FeGaussianBlur
-func (o StopOpacityOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to FeGaussianBlur
-func (o StrokeOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to FeGaussianBlur
-func (o StrokeDasharrayOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to FeGaussianBlur
-func (o StrokeDashoffsetOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to FeGaussianBlur
-func (o StrokeLinecapOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to FeGaussianBlur
-func (o StrokeLinejoinOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to FeGaussianBlur
-func (o StrokeMiterlimitOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to FeGaussianBlur
-func (o StrokeOpacityOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to FeGaussianBlur
-func (o StrokeWidthOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to FeGaussianBlur
-func (o TextAnchorOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to FeGaussianBlur
-func (o TextDecorationOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to FeGaussianBlur
-func (o TextRenderingOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to FeGaussianBlur
-func (o UnicodeBidiOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to FeGaussianBlur
-func (o VisibilityOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to FeGaussianBlur
-func (o WidthOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to FeGaussianBlur
-func (o WordSpacingOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to FeGaussianBlur
-func (o WritingModeOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to FeGaussianBlur
-func (o XOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeGaussianBlur
-func (o YOpt) applyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeGaussianBlur(a *SvgFeGaussianBlurAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

@@ -15,7 +15,7 @@ type SvgUnknownAttrs struct {
 
 // SvgUnknownArg interface for unknown element arguments
 type SvgUnknownArg interface {
-	applyUnknown(*SvgUnknownAttrs, *[]Component)
+	ApplyUnknown(*SvgUnknownAttrs, *[]Component)
 }
 
 // defaultSvgUnknownAttrs creates default attributes for unknown
@@ -30,7 +30,7 @@ func SvgUnknown(args ...SvgUnknownArg) Node {
 	a := defaultSvgUnknownAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyUnknown(a, &kids)
+		ar.ApplyUnknown(a, &kids)
 	}
 	return Node{
 		Tag:   "unknown",
@@ -40,17 +40,17 @@ func SvgUnknown(args ...SvgUnknownArg) Node {
 }
 
 // Global applies global SVG attributes to unknown
-func (g Global) applyUnknown(a *SvgUnknownAttrs, _ *[]Component) {
+func (g Global) ApplyUnknown(a *SvgUnknownAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // RequiredExtensionsOpt applies to Unknown
-func (o RequiredExtensionsOpt) applyUnknown(a *SvgUnknownAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyUnknown(a *SvgUnknownAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // SystemLanguageOpt applies to Unknown
-func (o SystemLanguageOpt) applyUnknown(a *SvgUnknownAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyUnknown(a *SvgUnknownAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 

@@ -7,7 +7,7 @@ type CaptionAttrs struct {
 }
 
 type CaptionArg interface {
-	applyCaption(*CaptionAttrs, *[]Component)
+	ApplyCaption(*CaptionAttrs, *[]Component)
 }
 
 func defaultCaptionAttrs() *CaptionAttrs {
@@ -25,12 +25,12 @@ func Caption(args ...CaptionArg) Node {
 	a := defaultCaptionAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyCaption(a, &kids)
+		ar.ApplyCaption(a, &kids)
 	}
 	return Node{Tag: "caption", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyCaption(a *CaptionAttrs, _ *[]Component) {
+func (g Global) ApplyCaption(a *CaptionAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

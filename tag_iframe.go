@@ -17,7 +17,7 @@ type IframeAttrs struct {
 }
 
 type IframeArg interface {
-	applyIframe(*IframeAttrs, *[]Component)
+	ApplyIframe(*IframeAttrs, *[]Component)
 }
 
 func defaultIframeAttrs() *IframeAttrs {
@@ -35,43 +35,43 @@ func Iframe(args ...IframeArg) Node {
 	a := defaultIframeAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyIframe(a, &kids)
+		ar.ApplyIframe(a, &kids)
 	}
 	return Node{Tag: "iframe", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applyIframe(a *IframeAttrs, _ *[]Component) {
+func (g Global) ApplyIframe(a *IframeAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AllowOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
+func (o AllowOpt) ApplyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Allow = o.v
 }
-func (o AllowfullscreenOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
+func (o AllowfullscreenOpt) ApplyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Allowfullscreen = true
 }
-func (o HeightOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Height = o.v
 }
-func (o LoadingOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
+func (o LoadingOpt) ApplyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Loading = o.v
 }
-func (o NameOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
+func (o NameOpt) ApplyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Name = o.v
 }
-func (o ReferrerpolicyOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
+func (o ReferrerpolicyOpt) ApplyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Referrerpolicy = o.v
 }
-func (o SandboxOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
+func (o SandboxOpt) ApplyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Sandbox = o.v
 }
-func (o SrcOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
+func (o SrcOpt) ApplyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Src = o.v
 }
-func (o SrcdocOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
+func (o SrcdocOpt) ApplyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Srcdoc = o.v
 }
-func (o WidthOpt) applyIframe(a *IframeAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyIframe(a *IframeAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 

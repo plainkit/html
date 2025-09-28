@@ -18,7 +18,7 @@ type SvgHkernAttrs struct {
 
 // SvgHkernArg interface for hkern element arguments
 type SvgHkernArg interface {
-	applyHkern(*SvgHkernAttrs, *[]Component)
+	ApplyHkern(*SvgHkernAttrs, *[]Component)
 }
 
 // defaultSvgHkernAttrs creates default attributes for hkern
@@ -33,7 +33,7 @@ func SvgHkern(args ...SvgHkernArg) Node {
 	a := defaultSvgHkernAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyHkern(a, &kids)
+		ar.ApplyHkern(a, &kids)
 	}
 	return Node{
 		Tag:   "hkern",
@@ -43,32 +43,32 @@ func SvgHkern(args ...SvgHkernArg) Node {
 }
 
 // Global applies global SVG attributes to hkern
-func (g Global) applyHkern(a *SvgHkernAttrs, _ *[]Component) {
+func (g Global) ApplyHkern(a *SvgHkernAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // G1Opt applies to Hkern
-func (o G1Opt) applyHkern(a *SvgHkernAttrs, _ *[]Component) {
+func (o G1Opt) ApplyHkern(a *SvgHkernAttrs, _ *[]Component) {
 	a.G1 = o.v
 }
 
 // G2Opt applies to Hkern
-func (o G2Opt) applyHkern(a *SvgHkernAttrs, _ *[]Component) {
+func (o G2Opt) ApplyHkern(a *SvgHkernAttrs, _ *[]Component) {
 	a.G2 = o.v
 }
 
 // KOpt applies to Hkern
-func (o KOpt) applyHkern(a *SvgHkernAttrs, _ *[]Component) {
+func (o KOpt) ApplyHkern(a *SvgHkernAttrs, _ *[]Component) {
 	a.K = o.v
 }
 
 // U1Opt applies to Hkern
-func (o U1Opt) applyHkern(a *SvgHkernAttrs, _ *[]Component) {
+func (o U1Opt) ApplyHkern(a *SvgHkernAttrs, _ *[]Component) {
 	a.U1 = o.v
 }
 
 // U2Opt applies to Hkern
-func (o U2Opt) applyHkern(a *SvgHkernAttrs, _ *[]Component) {
+func (o U2Opt) ApplyHkern(a *SvgHkernAttrs, _ *[]Component) {
 	a.U2 = o.v
 }
 

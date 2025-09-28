@@ -7,7 +7,7 @@ type BdoAttrs struct {
 }
 
 type BdoArg interface {
-	applyBdo(*BdoAttrs, *[]Component)
+	ApplyBdo(*BdoAttrs, *[]Component)
 }
 
 func defaultBdoAttrs() *BdoAttrs {
@@ -25,12 +25,12 @@ func Bdo(args ...BdoArg) Node {
 	a := defaultBdoAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyBdo(a, &kids)
+		ar.ApplyBdo(a, &kids)
 	}
 	return Node{Tag: "bdo", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyBdo(a *BdoAttrs, _ *[]Component) {
+func (g Global) ApplyBdo(a *BdoAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

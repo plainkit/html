@@ -41,7 +41,7 @@ type SvgAnimateTransformAttrs struct {
 
 // SvgAnimateTransformArg interface for animateTransform element arguments
 type SvgAnimateTransformArg interface {
-	applyAnimateTransform(*SvgAnimateTransformAttrs, *[]Component)
+	ApplyAnimateTransform(*SvgAnimateTransformAttrs, *[]Component)
 }
 
 // defaultSvgAnimateTransformAttrs creates default attributes for animateTransform
@@ -56,7 +56,7 @@ func SvgAnimateTransform(args ...SvgAnimateTransformArg) Node {
 	a := defaultSvgAnimateTransformAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyAnimateTransform(a, &kids)
+		ar.ApplyAnimateTransform(a, &kids)
 	}
 	return Node{
 		Tag:   "animateTransform",
@@ -66,147 +66,147 @@ func SvgAnimateTransform(args ...SvgAnimateTransformArg) Node {
 }
 
 // Global applies global SVG attributes to animateTransform
-func (g Global) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (g Global) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AccumulateOpt applies to AnimateTransform
-func (o AccumulateOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o AccumulateOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Accumulate = o.v
 }
 
 // AdditiveOpt applies to AnimateTransform
-func (o AdditiveOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o AdditiveOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Additive = o.v
 }
 
 // AttributeNameOpt applies to AnimateTransform
-func (o AttributeNameOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o AttributeNameOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.AttributeName = o.v
 }
 
 // AttributeTypeOpt applies to AnimateTransform
-func (o AttributeTypeOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o AttributeTypeOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.AttributeType = o.v
 }
 
 // BeginOpt applies to AnimateTransform
-func (o BeginOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o BeginOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Begin = o.v
 }
 
 // ByOpt applies to AnimateTransform
-func (o ByOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o ByOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.By = o.v
 }
 
 // CalcModeOpt applies to AnimateTransform
-func (o CalcModeOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o CalcModeOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.CalcMode = o.v
 }
 
 // DurOpt applies to AnimateTransform
-func (o DurOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o DurOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Dur = o.v
 }
 
 // EndOpt applies to AnimateTransform
-func (o EndOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o EndOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.End = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to AnimateTransform
-func (o ExternalResourcesRequiredOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to AnimateTransform
-func (o FillOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o FillOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FromOpt applies to AnimateTransform
-func (o FromOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o FromOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.From = o.v
 }
 
 // HrefOpt applies to AnimateTransform
-func (o HrefOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o HrefOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // KeySplinesOpt applies to AnimateTransform
-func (o KeySplinesOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o KeySplinesOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.KeySplines = o.v
 }
 
 // KeyTimesOpt applies to AnimateTransform
-func (o KeyTimesOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o KeyTimesOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.KeyTimes = o.v
 }
 
 // MaxOpt applies to AnimateTransform
-func (o MaxOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o MaxOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Max = o.v
 }
 
 // MinOpt applies to AnimateTransform
-func (o MinOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o MinOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Min = o.v
 }
 
 // RepeatCountOpt applies to AnimateTransform
-func (o RepeatCountOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o RepeatCountOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.RepeatCount = o.v
 }
 
 // RepeatDurOpt applies to AnimateTransform
-func (o RepeatDurOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o RepeatDurOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.RepeatDur = o.v
 }
 
 // RequiredExtensionsOpt applies to AnimateTransform
-func (o RequiredExtensionsOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to AnimateTransform
-func (o RequiredFeaturesOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to AnimateTransform
-func (o RequiredFontsOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to AnimateTransform
-func (o RequiredFormatsOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // RestartOpt applies to AnimateTransform
-func (o RestartOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o RestartOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Restart = o.v
 }
 
 // SystemLanguageOpt applies to AnimateTransform
-func (o SystemLanguageOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // ToOpt applies to AnimateTransform
-func (o ToOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o ToOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.To = o.v
 }
 
 // TypeOpt applies to AnimateTransform
-func (o TypeOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o TypeOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 
 // ValuesOpt applies to AnimateTransform
-func (o ValuesOpt) applyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
+func (o ValuesOpt) ApplyAnimateTransform(a *SvgAnimateTransformAttrs, _ *[]Component) {
 	a.Values = o.v
 }
 

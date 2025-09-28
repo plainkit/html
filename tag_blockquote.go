@@ -8,7 +8,7 @@ type BlockquoteAttrs struct {
 }
 
 type BlockquoteArg interface {
-	applyBlockquote(*BlockquoteAttrs, *[]Component)
+	ApplyBlockquote(*BlockquoteAttrs, *[]Component)
 }
 
 func defaultBlockquoteAttrs() *BlockquoteAttrs {
@@ -26,16 +26,16 @@ func Blockquote(args ...BlockquoteArg) Node {
 	a := defaultBlockquoteAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyBlockquote(a, &kids)
+		ar.ApplyBlockquote(a, &kids)
 	}
 	return Node{Tag: "blockquote", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyBlockquote(a *BlockquoteAttrs, _ *[]Component) {
+func (g Global) ApplyBlockquote(a *BlockquoteAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o CiteOpt) applyBlockquote(a *BlockquoteAttrs, _ *[]Component) {
+func (o CiteOpt) ApplyBlockquote(a *BlockquoteAttrs, _ *[]Component) {
 	a.Cite = o.v
 }
 

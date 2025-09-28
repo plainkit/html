@@ -7,7 +7,7 @@ type NoscriptAttrs struct {
 }
 
 type NoscriptArg interface {
-	applyNoscript(*NoscriptAttrs, *[]Component)
+	ApplyNoscript(*NoscriptAttrs, *[]Component)
 }
 
 func defaultNoscriptAttrs() *NoscriptAttrs {
@@ -25,12 +25,12 @@ func Noscript(args ...NoscriptArg) Node {
 	a := defaultNoscriptAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyNoscript(a, &kids)
+		ar.ApplyNoscript(a, &kids)
 	}
 	return Node{Tag: "noscript", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyNoscript(a *NoscriptAttrs, _ *[]Component) {
+func (g Global) ApplyNoscript(a *NoscriptAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

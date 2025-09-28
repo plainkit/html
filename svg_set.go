@@ -32,7 +32,7 @@ type SvgSetAttrs struct {
 
 // SvgSetArg interface for set element arguments
 type SvgSetArg interface {
-	applySet(*SvgSetAttrs, *[]Component)
+	ApplySet(*SvgSetAttrs, *[]Component)
 }
 
 // defaultSvgSetAttrs creates default attributes for set
@@ -47,7 +47,7 @@ func SvgSet(args ...SvgSetArg) Node {
 	a := defaultSvgSetAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySet(a, &kids)
+		ar.ApplySet(a, &kids)
 	}
 	return Node{
 		Tag:   "set",
@@ -57,102 +57,102 @@ func SvgSet(args ...SvgSetArg) Node {
 }
 
 // Global applies global SVG attributes to set
-func (g Global) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (g Global) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AttributeNameOpt applies to Set
-func (o AttributeNameOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o AttributeNameOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.AttributeName = o.v
 }
 
 // AttributeTypeOpt applies to Set
-func (o AttributeTypeOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o AttributeTypeOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.AttributeType = o.v
 }
 
 // BeginOpt applies to Set
-func (o BeginOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o BeginOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Begin = o.v
 }
 
 // DurOpt applies to Set
-func (o DurOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o DurOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Dur = o.v
 }
 
 // EndOpt applies to Set
-func (o EndOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o EndOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.End = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Set
-func (o ExternalResourcesRequiredOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Set
-func (o FillOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o FillOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // HrefOpt applies to Set
-func (o HrefOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o HrefOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // MaxOpt applies to Set
-func (o MaxOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o MaxOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Max = o.v
 }
 
 // MinOpt applies to Set
-func (o MinOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o MinOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Min = o.v
 }
 
 // RepeatCountOpt applies to Set
-func (o RepeatCountOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o RepeatCountOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.RepeatCount = o.v
 }
 
 // RepeatDurOpt applies to Set
-func (o RepeatDurOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o RepeatDurOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.RepeatDur = o.v
 }
 
 // RequiredExtensionsOpt applies to Set
-func (o RequiredExtensionsOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Set
-func (o RequiredFeaturesOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Set
-func (o RequiredFontsOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Set
-func (o RequiredFormatsOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // RestartOpt applies to Set
-func (o RestartOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o RestartOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.Restart = o.v
 }
 
 // SystemLanguageOpt applies to Set
-func (o SystemLanguageOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // ToOpt applies to Set
-func (o ToOpt) applySet(a *SvgSetAttrs, _ *[]Component) {
+func (o ToOpt) ApplySet(a *SvgSetAttrs, _ *[]Component) {
 	a.To = o.v
 }
 

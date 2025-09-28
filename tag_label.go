@@ -8,7 +8,7 @@ type LabelAttrs struct {
 }
 
 type LabelArg interface {
-	applyLabel(*LabelAttrs, *[]Component)
+	ApplyLabel(*LabelAttrs, *[]Component)
 }
 
 func defaultLabelAttrs() *LabelAttrs {
@@ -26,16 +26,16 @@ func Label(args ...LabelArg) Node {
 	a := defaultLabelAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyLabel(a, &kids)
+		ar.ApplyLabel(a, &kids)
 	}
 	return Node{Tag: "label", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyLabel(a *LabelAttrs, _ *[]Component) {
+func (g Global) ApplyLabel(a *LabelAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o ForOpt) applyLabel(a *LabelAttrs, _ *[]Component) {
+func (o ForOpt) ApplyLabel(a *LabelAttrs, _ *[]Component) {
 	a.For = o.v
 }
 

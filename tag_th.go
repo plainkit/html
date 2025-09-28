@@ -12,7 +12,7 @@ type ThAttrs struct {
 }
 
 type ThArg interface {
-	applyTh(*ThAttrs, *[]Component)
+	ApplyTh(*ThAttrs, *[]Component)
 }
 
 func defaultThAttrs() *ThAttrs {
@@ -30,28 +30,28 @@ func Th(args ...ThArg) Node {
 	a := defaultThAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTh(a, &kids)
+		ar.ApplyTh(a, &kids)
 	}
 	return Node{Tag: "th", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyTh(a *ThAttrs, _ *[]Component) {
+func (g Global) ApplyTh(a *ThAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AbbrOpt) applyTh(a *ThAttrs, _ *[]Component) {
+func (o AbbrOpt) ApplyTh(a *ThAttrs, _ *[]Component) {
 	a.Abbr = o.v
 }
-func (o ColspanOpt) applyTh(a *ThAttrs, _ *[]Component) {
+func (o ColspanOpt) ApplyTh(a *ThAttrs, _ *[]Component) {
 	a.Colspan = o.v
 }
-func (o HeadersOpt) applyTh(a *ThAttrs, _ *[]Component) {
+func (o HeadersOpt) ApplyTh(a *ThAttrs, _ *[]Component) {
 	a.Headers = o.v
 }
-func (o RowspanOpt) applyTh(a *ThAttrs, _ *[]Component) {
+func (o RowspanOpt) ApplyTh(a *ThAttrs, _ *[]Component) {
 	a.Rowspan = o.v
 }
-func (o ScopeOpt) applyTh(a *ThAttrs, _ *[]Component) {
+func (o ScopeOpt) ApplyTh(a *ThAttrs, _ *[]Component) {
 	a.Scope = o.v
 }
 

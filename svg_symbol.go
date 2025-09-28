@@ -81,7 +81,7 @@ type SvgSymbolAttrs struct {
 
 // SvgSymbolArg interface for symbol element arguments
 type SvgSymbolArg interface {
-	applySymbol(*SvgSymbolAttrs, *[]Component)
+	ApplySymbol(*SvgSymbolAttrs, *[]Component)
 }
 
 // defaultSvgSymbolAttrs creates default attributes for symbol
@@ -96,7 +96,7 @@ func SvgSymbol(args ...SvgSymbolArg) Node {
 	a := defaultSvgSymbolAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySymbol(a, &kids)
+		ar.ApplySymbol(a, &kids)
 	}
 	return Node{
 		Tag:   "symbol",
@@ -106,347 +106,347 @@ func SvgSymbol(args ...SvgSymbolArg) Node {
 }
 
 // Global applies global SVG attributes to symbol
-func (g Global) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (g Global) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Symbol
-func (o AlignmentBaselineOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Symbol
-func (o BaselineShiftOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Symbol
-func (o ClipOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o ClipOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Symbol
-func (o ClipPathOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Symbol
-func (o ClipRuleOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Symbol
-func (o ColorOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o ColorOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Symbol
-func (o ColorInterpolationOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Symbol
-func (o ColorInterpolationFiltersOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Symbol
-func (o ColorProfileOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Symbol
-func (o ColorRenderingOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Symbol
-func (o CursorOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o CursorOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Symbol
-func (o DirectionOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Symbol
-func (o DisplayOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Symbol
-func (o DominantBaselineOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Symbol
-func (o EnableBackgroundOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Symbol
-func (o ExternalResourcesRequiredOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Symbol
-func (o FillOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o FillOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Symbol
-func (o FillOpacityOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Symbol
-func (o FillRuleOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Symbol
-func (o FilterOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o FilterOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Symbol
-func (o FloodColorOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Symbol
-func (o FloodOpacityOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to Symbol
-func (o FontFamilyOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Symbol
-func (o FontSizeOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Symbol
-func (o FontSizeAdjustOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Symbol
-func (o FontStretchOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Symbol
-func (o FontStyleOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Symbol
-func (o FontVariantOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Symbol
-func (o FontWeightOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Symbol
-func (o GlyphOrientationHorizontalOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Symbol
-func (o GlyphOrientationVerticalOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to Symbol
-func (o HeightOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o HeightOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to Symbol
-func (o ImageRenderingOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Symbol
-func (o KerningOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o KerningOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Symbol
-func (o LetterSpacingOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Symbol
-func (o LightingColorOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Symbol
-func (o MarkerEndOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Symbol
-func (o MarkerMidOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Symbol
-func (o MarkerStartOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Symbol
-func (o MaskOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o MaskOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to Symbol
-func (o OpacityOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Symbol
-func (o OverflowOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to Symbol
-func (o PointerEventsOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // PreserveAspectRatioOpt applies to Symbol
-func (o PreserveAspectRatioOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o PreserveAspectRatioOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
 // RefXOpt applies to Symbol
-func (o RefXOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o RefXOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.RefX = o.v
 }
 
 // RefYOpt applies to Symbol
-func (o RefYOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o RefYOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.RefY = o.v
 }
 
 // ShapeRenderingOpt applies to Symbol
-func (o ShapeRenderingOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Symbol
-func (o StopColorOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Symbol
-func (o StopOpacityOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Symbol
-func (o StrokeOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Symbol
-func (o StrokeDasharrayOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Symbol
-func (o StrokeDashoffsetOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Symbol
-func (o StrokeLinecapOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Symbol
-func (o StrokeLinejoinOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Symbol
-func (o StrokeMiterlimitOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Symbol
-func (o StrokeOpacityOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Symbol
-func (o StrokeWidthOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to Symbol
-func (o TextAnchorOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Symbol
-func (o TextDecorationOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Symbol
-func (o TextRenderingOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to Symbol
-func (o UnicodeBidiOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // ViewBoxOpt applies to Symbol
-func (o ViewBoxOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o ViewBoxOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.ViewBox = o.v
 }
 
 // VisibilityOpt applies to Symbol
-func (o VisibilityOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to Symbol
-func (o WidthOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o WidthOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to Symbol
-func (o WordSpacingOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Symbol
-func (o WritingModeOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to Symbol
-func (o XOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o XOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Symbol
-func (o YOpt) applySymbol(a *SvgSymbolAttrs, _ *[]Component) {
+func (o YOpt) ApplySymbol(a *SvgSymbolAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

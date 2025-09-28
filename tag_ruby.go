@@ -7,7 +7,7 @@ type RubyAttrs struct {
 }
 
 type RubyArg interface {
-	applyRuby(*RubyAttrs, *[]Component)
+	ApplyRuby(*RubyAttrs, *[]Component)
 }
 
 func defaultRubyAttrs() *RubyAttrs {
@@ -25,12 +25,12 @@ func Ruby(args ...RubyArg) Node {
 	a := defaultRubyAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyRuby(a, &kids)
+		ar.ApplyRuby(a, &kids)
 	}
 	return Node{Tag: "ruby", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyRuby(a *RubyAttrs, _ *[]Component) {
+func (g Global) ApplyRuby(a *RubyAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

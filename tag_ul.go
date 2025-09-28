@@ -7,7 +7,7 @@ type UlAttrs struct {
 }
 
 type UlArg interface {
-	applyUl(*UlAttrs, *[]Component)
+	ApplyUl(*UlAttrs, *[]Component)
 }
 
 func defaultUlAttrs() *UlAttrs {
@@ -25,12 +25,12 @@ func Ul(args ...UlArg) Node {
 	a := defaultUlAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyUl(a, &kids)
+		ar.ApplyUl(a, &kids)
 	}
 	return Node{Tag: "ul", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyUl(a *UlAttrs, _ *[]Component) {
+func (g Global) ApplyUl(a *UlAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

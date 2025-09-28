@@ -16,7 +16,7 @@ type SvgFePointLightAttrs struct {
 
 // SvgFePointLightArg interface for fePointLight element arguments
 type SvgFePointLightArg interface {
-	applyFePointLight(*SvgFePointLightAttrs, *[]Component)
+	ApplyFePointLight(*SvgFePointLightAttrs, *[]Component)
 }
 
 // defaultSvgFePointLightAttrs creates default attributes for fePointLight
@@ -31,7 +31,7 @@ func SvgFePointLight(args ...SvgFePointLightArg) Node {
 	a := defaultSvgFePointLightAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFePointLight(a, &kids)
+		ar.ApplyFePointLight(a, &kids)
 	}
 	return Node{
 		Tag:   "fePointLight",
@@ -41,22 +41,22 @@ func SvgFePointLight(args ...SvgFePointLightArg) Node {
 }
 
 // Global applies global SVG attributes to fePointLight
-func (g Global) applyFePointLight(a *SvgFePointLightAttrs, _ *[]Component) {
+func (g Global) ApplyFePointLight(a *SvgFePointLightAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // XOpt applies to FePointLight
-func (o XOpt) applyFePointLight(a *SvgFePointLightAttrs, _ *[]Component) {
+func (o XOpt) ApplyFePointLight(a *SvgFePointLightAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FePointLight
-func (o YOpt) applyFePointLight(a *SvgFePointLightAttrs, _ *[]Component) {
+func (o YOpt) ApplyFePointLight(a *SvgFePointLightAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // ZOpt applies to FePointLight
-func (o ZOpt) applyFePointLight(a *SvgFePointLightAttrs, _ *[]Component) {
+func (o ZOpt) ApplyFePointLight(a *SvgFePointLightAttrs, _ *[]Component) {
 	a.Z = o.v
 }
 

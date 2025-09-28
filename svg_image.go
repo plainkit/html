@@ -99,7 +99,7 @@ type SvgImageAttrs struct {
 
 // SvgImageArg interface for image element arguments
 type SvgImageArg interface {
-	applyImage(*SvgImageAttrs, *[]Component)
+	ApplyImage(*SvgImageAttrs, *[]Component)
 }
 
 // defaultSvgImageAttrs creates default attributes for image
@@ -114,7 +114,7 @@ func SvgImage(args ...SvgImageArg) Node {
 	a := defaultSvgImageAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyImage(a, &kids)
+		ar.ApplyImage(a, &kids)
 	}
 	return Node{
 		Tag:   "image",
@@ -124,437 +124,437 @@ func SvgImage(args ...SvgImageArg) Node {
 }
 
 // Global applies global SVG attributes to image
-func (g Global) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (g Global) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Image
-func (o AlignmentBaselineOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Image
-func (o BaselineShiftOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Image
-func (o ClipOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Image
-func (o ClipPathOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Image
-func (o ClipRuleOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Image
-func (o ColorOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Image
-func (o ColorInterpolationOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Image
-func (o ColorInterpolationFiltersOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Image
-func (o ColorProfileOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Image
-func (o ColorRenderingOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CrossoriginOpt applies to Image
-func (o CrossoriginOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o CrossoriginOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Crossorigin = o.v
 }
 
 // CursorOpt applies to Image
-func (o CursorOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Image
-func (o DirectionOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Image
-func (o DisplayOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Image
-func (o DominantBaselineOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Image
-func (o EnableBackgroundOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Image
-func (o ExternalResourcesRequiredOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Image
-func (o FillOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FillOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Image
-func (o FillOpacityOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Image
-func (o FillRuleOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Image
-func (o FilterOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Image
-func (o FloodColorOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Image
-func (o FloodOpacityOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FocusHighlightOpt applies to Image
-func (o FocusHighlightOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FocusHighlightOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.FocusHighlight = o.v
 }
 
 // FocusableOpt applies to Image
-func (o FocusableOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FocusableOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Focusable = o.v
 }
 
 // FontFamilyOpt applies to Image
-func (o FontFamilyOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Image
-func (o FontSizeOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Image
-func (o FontSizeAdjustOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Image
-func (o FontStretchOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Image
-func (o FontStyleOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Image
-func (o FontVariantOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Image
-func (o FontWeightOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Image
-func (o GlyphOrientationHorizontalOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Image
-func (o GlyphOrientationVerticalOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to Image
-func (o HeightOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // HrefOpt applies to Image
-func (o HrefOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o HrefOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // ImageRenderingOpt applies to Image
-func (o ImageRenderingOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Image
-func (o KerningOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Image
-func (o LetterSpacingOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Image
-func (o LightingColorOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Image
-func (o MarkerEndOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Image
-func (o MarkerMidOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Image
-func (o MarkerStartOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Image
-func (o MaskOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // NavDownOpt applies to Image
-func (o NavDownOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o NavDownOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.NavDown = o.v
 }
 
 // NavDownLeftOpt applies to Image
-func (o NavDownLeftOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o NavDownLeftOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.NavDownLeft = o.v
 }
 
 // NavDownRightOpt applies to Image
-func (o NavDownRightOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o NavDownRightOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.NavDownRight = o.v
 }
 
 // NavLeftOpt applies to Image
-func (o NavLeftOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o NavLeftOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.NavLeft = o.v
 }
 
 // NavNextOpt applies to Image
-func (o NavNextOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o NavNextOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.NavNext = o.v
 }
 
 // NavPrevOpt applies to Image
-func (o NavPrevOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o NavPrevOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.NavPrev = o.v
 }
 
 // NavRightOpt applies to Image
-func (o NavRightOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o NavRightOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.NavRight = o.v
 }
 
 // NavUpOpt applies to Image
-func (o NavUpOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o NavUpOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.NavUp = o.v
 }
 
 // NavUpLeftOpt applies to Image
-func (o NavUpLeftOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o NavUpLeftOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.NavUpLeft = o.v
 }
 
 // NavUpRightOpt applies to Image
-func (o NavUpRightOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o NavUpRightOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.NavUpRight = o.v
 }
 
 // OpacityOpt applies to Image
-func (o OpacityOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Image
-func (o OverflowOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to Image
-func (o PointerEventsOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // PreserveAspectRatioOpt applies to Image
-func (o PreserveAspectRatioOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o PreserveAspectRatioOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
 // RequiredExtensionsOpt applies to Image
-func (o RequiredExtensionsOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Image
-func (o RequiredFeaturesOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Image
-func (o RequiredFontsOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Image
-func (o RequiredFormatsOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // ShapeRenderingOpt applies to Image
-func (o ShapeRenderingOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Image
-func (o StopColorOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Image
-func (o StopOpacityOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Image
-func (o StrokeOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Image
-func (o StrokeDasharrayOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Image
-func (o StrokeDashoffsetOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Image
-func (o StrokeLinecapOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Image
-func (o StrokeLinejoinOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Image
-func (o StrokeMiterlimitOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Image
-func (o StrokeOpacityOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Image
-func (o StrokeWidthOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to Image
-func (o SystemLanguageOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to Image
-func (o TextAnchorOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Image
-func (o TextDecorationOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Image
-func (o TextRenderingOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TransformOpt applies to Image
-func (o TransformOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o TransformOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Transform = o.v
 }
 
 // TypeOpt applies to Image
-func (o TypeOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o TypeOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 
 // UnicodeBidiOpt applies to Image
-func (o UnicodeBidiOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Image
-func (o VisibilityOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to Image
-func (o WidthOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to Image
-func (o WordSpacingOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Image
-func (o WritingModeOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to Image
-func (o XOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o XOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Image
-func (o YOpt) applyImage(a *SvgImageAttrs, _ *[]Component) {
+func (o YOpt) ApplyImage(a *SvgImageAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

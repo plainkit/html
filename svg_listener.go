@@ -20,7 +20,7 @@ type SvgListenerAttrs struct {
 
 // SvgListenerArg interface for listener element arguments
 type SvgListenerArg interface {
-	applyListener(*SvgListenerAttrs, *[]Component)
+	ApplyListener(*SvgListenerAttrs, *[]Component)
 }
 
 // defaultSvgListenerAttrs creates default attributes for listener
@@ -35,7 +35,7 @@ func SvgListener(args ...SvgListenerArg) Node {
 	a := defaultSvgListenerAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyListener(a, &kids)
+		ar.ApplyListener(a, &kids)
 	}
 	return Node{
 		Tag:   "listener",
@@ -45,42 +45,42 @@ func SvgListener(args ...SvgListenerArg) Node {
 }
 
 // Global applies global SVG attributes to listener
-func (g Global) applyListener(a *SvgListenerAttrs, _ *[]Component) {
+func (g Global) ApplyListener(a *SvgListenerAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // DefaultActionOpt applies to Listener
-func (o DefaultActionOpt) applyListener(a *SvgListenerAttrs, _ *[]Component) {
+func (o DefaultActionOpt) ApplyListener(a *SvgListenerAttrs, _ *[]Component) {
 	a.DefaultAction = o.v
 }
 
 // EventOpt applies to Listener
-func (o EventOpt) applyListener(a *SvgListenerAttrs, _ *[]Component) {
+func (o EventOpt) ApplyListener(a *SvgListenerAttrs, _ *[]Component) {
 	a.Event = o.v
 }
 
 // HandlerOpt applies to Listener
-func (o HandlerOpt) applyListener(a *SvgListenerAttrs, _ *[]Component) {
+func (o HandlerOpt) ApplyListener(a *SvgListenerAttrs, _ *[]Component) {
 	a.Handler = o.v
 }
 
 // ObserverOpt applies to Listener
-func (o ObserverOpt) applyListener(a *SvgListenerAttrs, _ *[]Component) {
+func (o ObserverOpt) ApplyListener(a *SvgListenerAttrs, _ *[]Component) {
 	a.Observer = o.v
 }
 
 // PhaseOpt applies to Listener
-func (o PhaseOpt) applyListener(a *SvgListenerAttrs, _ *[]Component) {
+func (o PhaseOpt) ApplyListener(a *SvgListenerAttrs, _ *[]Component) {
 	a.Phase = o.v
 }
 
 // PropagateOpt applies to Listener
-func (o PropagateOpt) applyListener(a *SvgListenerAttrs, _ *[]Component) {
+func (o PropagateOpt) ApplyListener(a *SvgListenerAttrs, _ *[]Component) {
 	a.Propagate = o.v
 }
 
 // TargetOpt applies to Listener
-func (o TargetOpt) applyListener(a *SvgListenerAttrs, _ *[]Component) {
+func (o TargetOpt) ApplyListener(a *SvgListenerAttrs, _ *[]Component) {
 	a.Target = o.v
 }
 

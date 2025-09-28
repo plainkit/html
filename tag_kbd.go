@@ -7,7 +7,7 @@ type KbdAttrs struct {
 }
 
 type KbdArg interface {
-	applyKbd(*KbdAttrs, *[]Component)
+	ApplyKbd(*KbdAttrs, *[]Component)
 }
 
 func defaultKbdAttrs() *KbdAttrs {
@@ -25,12 +25,12 @@ func Kbd(args ...KbdArg) Node {
 	a := defaultKbdAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyKbd(a, &kids)
+		ar.ApplyKbd(a, &kids)
 	}
 	return Node{Tag: "kbd", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyKbd(a *KbdAttrs, _ *[]Component) {
+func (g Global) ApplyKbd(a *KbdAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

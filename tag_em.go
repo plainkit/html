@@ -7,7 +7,7 @@ type EmAttrs struct {
 }
 
 type EmArg interface {
-	applyEm(*EmAttrs, *[]Component)
+	ApplyEm(*EmAttrs, *[]Component)
 }
 
 func defaultEmAttrs() *EmAttrs {
@@ -25,12 +25,12 @@ func Em(args ...EmArg) Node {
 	a := defaultEmAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyEm(a, &kids)
+		ar.ApplyEm(a, &kids)
 	}
 	return Node{Tag: "em", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyEm(a *EmAttrs, _ *[]Component) {
+func (g Global) ApplyEm(a *EmAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

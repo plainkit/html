@@ -18,7 +18,7 @@ type SvgDescAttrs struct {
 
 // SvgDescArg interface for desc element arguments
 type SvgDescArg interface {
-	applyDesc(*SvgDescAttrs, *[]Component)
+	ApplyDesc(*SvgDescAttrs, *[]Component)
 }
 
 // defaultSvgDescAttrs creates default attributes for desc
@@ -33,7 +33,7 @@ func SvgDesc(args ...SvgDescArg) Node {
 	a := defaultSvgDescAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyDesc(a, &kids)
+		ar.ApplyDesc(a, &kids)
 	}
 	return Node{
 		Tag:   "desc",
@@ -43,32 +43,32 @@ func SvgDesc(args ...SvgDescArg) Node {
 }
 
 // Global applies global SVG attributes to desc
-func (g Global) applyDesc(a *SvgDescAttrs, _ *[]Component) {
+func (g Global) ApplyDesc(a *SvgDescAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // RequiredExtensionsOpt applies to Desc
-func (o RequiredExtensionsOpt) applyDesc(a *SvgDescAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyDesc(a *SvgDescAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Desc
-func (o RequiredFeaturesOpt) applyDesc(a *SvgDescAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyDesc(a *SvgDescAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Desc
-func (o RequiredFontsOpt) applyDesc(a *SvgDescAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyDesc(a *SvgDescAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Desc
-func (o RequiredFormatsOpt) applyDesc(a *SvgDescAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyDesc(a *SvgDescAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // SystemLanguageOpt applies to Desc
-func (o SystemLanguageOpt) applyDesc(a *SvgDescAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyDesc(a *SvgDescAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 

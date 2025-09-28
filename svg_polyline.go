@@ -93,7 +93,7 @@ type SvgPolylineAttrs struct {
 
 // SvgPolylineArg interface for polyline element arguments
 type SvgPolylineArg interface {
-	applyPolyline(*SvgPolylineAttrs, *[]Component)
+	ApplyPolyline(*SvgPolylineAttrs, *[]Component)
 }
 
 // defaultSvgPolylineAttrs creates default attributes for polyline
@@ -108,7 +108,7 @@ func SvgPolyline(args ...SvgPolylineArg) Node {
 	a := defaultSvgPolylineAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyPolyline(a, &kids)
+		ar.ApplyPolyline(a, &kids)
 	}
 	return Node{
 		Tag:   "polyline",
@@ -118,407 +118,407 @@ func SvgPolyline(args ...SvgPolylineArg) Node {
 }
 
 // Global applies global SVG attributes to polyline
-func (g Global) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (g Global) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Polyline
-func (o AlignmentBaselineOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Polyline
-func (o BaselineShiftOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Polyline
-func (o ClipOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Polyline
-func (o ClipPathOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Polyline
-func (o ClipRuleOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Polyline
-func (o ColorOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Polyline
-func (o ColorInterpolationOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Polyline
-func (o ColorInterpolationFiltersOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Polyline
-func (o ColorProfileOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Polyline
-func (o ColorRenderingOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Polyline
-func (o CursorOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Polyline
-func (o DirectionOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Polyline
-func (o DisplayOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Polyline
-func (o DominantBaselineOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Polyline
-func (o EnableBackgroundOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Polyline
-func (o ExternalResourcesRequiredOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Polyline
-func (o FillOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FillOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Polyline
-func (o FillOpacityOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Polyline
-func (o FillRuleOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Polyline
-func (o FilterOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Polyline
-func (o FloodColorOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Polyline
-func (o FloodOpacityOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FocusHighlightOpt applies to Polyline
-func (o FocusHighlightOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FocusHighlightOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.FocusHighlight = o.v
 }
 
 // FocusableOpt applies to Polyline
-func (o FocusableOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FocusableOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Focusable = o.v
 }
 
 // FontFamilyOpt applies to Polyline
-func (o FontFamilyOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Polyline
-func (o FontSizeOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Polyline
-func (o FontSizeAdjustOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Polyline
-func (o FontStretchOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Polyline
-func (o FontStyleOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Polyline
-func (o FontVariantOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Polyline
-func (o FontWeightOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Polyline
-func (o GlyphOrientationHorizontalOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Polyline
-func (o GlyphOrientationVerticalOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // ImageRenderingOpt applies to Polyline
-func (o ImageRenderingOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Polyline
-func (o KerningOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Polyline
-func (o LetterSpacingOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Polyline
-func (o LightingColorOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Polyline
-func (o MarkerEndOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Polyline
-func (o MarkerMidOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Polyline
-func (o MarkerStartOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Polyline
-func (o MaskOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // NavDownOpt applies to Polyline
-func (o NavDownOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o NavDownOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.NavDown = o.v
 }
 
 // NavDownLeftOpt applies to Polyline
-func (o NavDownLeftOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o NavDownLeftOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.NavDownLeft = o.v
 }
 
 // NavDownRightOpt applies to Polyline
-func (o NavDownRightOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o NavDownRightOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.NavDownRight = o.v
 }
 
 // NavLeftOpt applies to Polyline
-func (o NavLeftOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o NavLeftOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.NavLeft = o.v
 }
 
 // NavNextOpt applies to Polyline
-func (o NavNextOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o NavNextOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.NavNext = o.v
 }
 
 // NavPrevOpt applies to Polyline
-func (o NavPrevOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o NavPrevOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.NavPrev = o.v
 }
 
 // NavRightOpt applies to Polyline
-func (o NavRightOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o NavRightOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.NavRight = o.v
 }
 
 // NavUpOpt applies to Polyline
-func (o NavUpOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o NavUpOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.NavUp = o.v
 }
 
 // NavUpLeftOpt applies to Polyline
-func (o NavUpLeftOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o NavUpLeftOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.NavUpLeft = o.v
 }
 
 // NavUpRightOpt applies to Polyline
-func (o NavUpRightOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o NavUpRightOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.NavUpRight = o.v
 }
 
 // OpacityOpt applies to Polyline
-func (o OpacityOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Polyline
-func (o OverflowOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PathLengthOpt applies to Polyline
-func (o PathLengthOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o PathLengthOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.PathLength = o.v
 }
 
 // PointerEventsOpt applies to Polyline
-func (o PointerEventsOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // PointsOpt applies to Polyline
-func (o PointsOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o PointsOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Points = o.v
 }
 
 // RequiredExtensionsOpt applies to Polyline
-func (o RequiredExtensionsOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Polyline
-func (o RequiredFeaturesOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Polyline
-func (o RequiredFontsOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Polyline
-func (o RequiredFormatsOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // ShapeRenderingOpt applies to Polyline
-func (o ShapeRenderingOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Polyline
-func (o StopColorOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Polyline
-func (o StopOpacityOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Polyline
-func (o StrokeOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Polyline
-func (o StrokeDasharrayOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Polyline
-func (o StrokeDashoffsetOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Polyline
-func (o StrokeLinecapOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Polyline
-func (o StrokeLinejoinOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Polyline
-func (o StrokeMiterlimitOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Polyline
-func (o StrokeOpacityOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Polyline
-func (o StrokeWidthOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to Polyline
-func (o SystemLanguageOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to Polyline
-func (o TextAnchorOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Polyline
-func (o TextDecorationOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Polyline
-func (o TextRenderingOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TransformOpt applies to Polyline
-func (o TransformOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o TransformOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Transform = o.v
 }
 
 // UnicodeBidiOpt applies to Polyline
-func (o UnicodeBidiOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Polyline
-func (o VisibilityOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to Polyline
-func (o WordSpacingOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Polyline
-func (o WritingModeOpt) applyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyPolyline(a *SvgPolylineAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 

@@ -10,7 +10,7 @@ type OutputAttrs struct {
 }
 
 type OutputArg interface {
-	applyOutput(*OutputAttrs, *[]Component)
+	ApplyOutput(*OutputAttrs, *[]Component)
 }
 
 func defaultOutputAttrs() *OutputAttrs {
@@ -28,22 +28,22 @@ func Output(args ...OutputArg) Node {
 	a := defaultOutputAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyOutput(a, &kids)
+		ar.ApplyOutput(a, &kids)
 	}
 	return Node{Tag: "output", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyOutput(a *OutputAttrs, _ *[]Component) {
+func (g Global) ApplyOutput(a *OutputAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o ForOpt) applyOutput(a *OutputAttrs, _ *[]Component) {
+func (o ForOpt) ApplyOutput(a *OutputAttrs, _ *[]Component) {
 	a.For = o.v
 }
-func (o FormOpt) applyOutput(a *OutputAttrs, _ *[]Component) {
+func (o FormOpt) ApplyOutput(a *OutputAttrs, _ *[]Component) {
 	a.Form = o.v
 }
-func (o NameOpt) applyOutput(a *OutputAttrs, _ *[]Component) {
+func (o NameOpt) ApplyOutput(a *OutputAttrs, _ *[]Component) {
 	a.Name = o.v
 }
 

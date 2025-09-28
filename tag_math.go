@@ -7,7 +7,7 @@ type MathAttrs struct {
 }
 
 type MathArg interface {
-	applyMath(*MathAttrs, *[]Component)
+	ApplyMath(*MathAttrs, *[]Component)
 }
 
 func defaultMathAttrs() *MathAttrs {
@@ -25,12 +25,12 @@ func Math(args ...MathArg) Node {
 	a := defaultMathAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyMath(a, &kids)
+		ar.ApplyMath(a, &kids)
 	}
 	return Node{Tag: "math", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyMath(a *MathAttrs, _ *[]Component) {
+func (g Global) ApplyMath(a *MathAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

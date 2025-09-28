@@ -11,7 +11,7 @@ type OptionAttrs struct {
 }
 
 type OptionArg interface {
-	applyOption(*OptionAttrs, *[]Component)
+	ApplyOption(*OptionAttrs, *[]Component)
 }
 
 func defaultOptionAttrs() *OptionAttrs {
@@ -29,25 +29,25 @@ func Option(args ...OptionArg) Node {
 	a := defaultOptionAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyOption(a, &kids)
+		ar.ApplyOption(a, &kids)
 	}
 	return Node{Tag: "option", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyOption(a *OptionAttrs, _ *[]Component) {
+func (g Global) ApplyOption(a *OptionAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o DisabledOpt) applyOption(a *OptionAttrs, _ *[]Component) {
+func (o DisabledOpt) ApplyOption(a *OptionAttrs, _ *[]Component) {
 	a.Disabled = true
 }
-func (o LabelOpt) applyOption(a *OptionAttrs, _ *[]Component) {
+func (o LabelOpt) ApplyOption(a *OptionAttrs, _ *[]Component) {
 	a.Label = o.v
 }
-func (o SelectedOpt) applyOption(a *OptionAttrs, _ *[]Component) {
+func (o SelectedOpt) ApplyOption(a *OptionAttrs, _ *[]Component) {
 	a.Selected = true
 }
-func (o ValueOpt) applyOption(a *OptionAttrs, _ *[]Component) {
+func (o ValueOpt) ApplyOption(a *OptionAttrs, _ *[]Component) {
 	a.Value = o.v
 }
 

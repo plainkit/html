@@ -15,7 +15,7 @@ type SvgFeDistantLightAttrs struct {
 
 // SvgFeDistantLightArg interface for feDistantLight element arguments
 type SvgFeDistantLightArg interface {
-	applyFeDistantLight(*SvgFeDistantLightAttrs, *[]Component)
+	ApplyFeDistantLight(*SvgFeDistantLightAttrs, *[]Component)
 }
 
 // defaultSvgFeDistantLightAttrs creates default attributes for feDistantLight
@@ -30,7 +30,7 @@ func SvgFeDistantLight(args ...SvgFeDistantLightArg) Node {
 	a := defaultSvgFeDistantLightAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeDistantLight(a, &kids)
+		ar.ApplyFeDistantLight(a, &kids)
 	}
 	return Node{
 		Tag:   "feDistantLight",
@@ -40,17 +40,17 @@ func SvgFeDistantLight(args ...SvgFeDistantLightArg) Node {
 }
 
 // Global applies global SVG attributes to feDistantLight
-func (g Global) applyFeDistantLight(a *SvgFeDistantLightAttrs, _ *[]Component) {
+func (g Global) ApplyFeDistantLight(a *SvgFeDistantLightAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AzimuthOpt applies to FeDistantLight
-func (o AzimuthOpt) applyFeDistantLight(a *SvgFeDistantLightAttrs, _ *[]Component) {
+func (o AzimuthOpt) ApplyFeDistantLight(a *SvgFeDistantLightAttrs, _ *[]Component) {
 	a.Azimuth = o.v
 }
 
 // ElevationOpt applies to FeDistantLight
-func (o ElevationOpt) applyFeDistantLight(a *SvgFeDistantLightAttrs, _ *[]Component) {
+func (o ElevationOpt) ApplyFeDistantLight(a *SvgFeDistantLightAttrs, _ *[]Component) {
 	a.Elevation = o.v
 }
 

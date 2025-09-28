@@ -7,7 +7,7 @@ type AbbrAttrs struct {
 }
 
 type AbbrArg interface {
-	applyAbbr(*AbbrAttrs, *[]Component)
+	ApplyAbbr(*AbbrAttrs, *[]Component)
 }
 
 func defaultAbbrAttrs() *AbbrAttrs {
@@ -25,12 +25,12 @@ func Abbr(args ...AbbrArg) Node {
 	a := defaultAbbrAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyAbbr(a, &kids)
+		ar.ApplyAbbr(a, &kids)
 	}
 	return Node{Tag: "abbr", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyAbbr(a *AbbrAttrs, _ *[]Component) {
+func (g Global) ApplyAbbr(a *AbbrAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

@@ -15,7 +15,7 @@ type AAttrs struct {
 }
 
 type AArg interface {
-	applyA(*AAttrs, *[]Component)
+	ApplyA(*AAttrs, *[]Component)
 }
 
 func defaultAAttrs() *AAttrs {
@@ -33,41 +33,41 @@ func A(args ...AArg) Node {
 	a := defaultAAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyA(a, &kids)
+		ar.ApplyA(a, &kids)
 	}
 	return Node{Tag: "a", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyA(a *AAttrs, _ *[]Component) {
+func (g Global) ApplyA(a *AAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o DownloadOpt) applyA(a *AAttrs, _ *[]Component) {
+func (o DownloadOpt) ApplyA(a *AAttrs, _ *[]Component) {
 	a.Download = o.v
 }
-func (o HrefOpt) applyA(a *AAttrs, _ *[]Component) {
+func (o HrefOpt) ApplyA(a *AAttrs, _ *[]Component) {
 	a.Href = o.v
 }
-func (o HreflangOpt) applyA(a *AAttrs, _ *[]Component) {
+func (o HreflangOpt) ApplyA(a *AAttrs, _ *[]Component) {
 	a.Hreflang = o.v
 }
-func (o PingOpt) applyA(a *AAttrs, _ *[]Component) {
+func (o PingOpt) ApplyA(a *AAttrs, _ *[]Component) {
 	a.Ping = o.v
 }
-func (o ReferrerpolicyOpt) applyA(a *AAttrs, _ *[]Component) {
+func (o ReferrerpolicyOpt) ApplyA(a *AAttrs, _ *[]Component) {
 	a.Referrerpolicy = o.v
 }
-func (o RelOpt) applyA(a *AAttrs, _ *[]Component) {
+func (o RelOpt) ApplyA(a *AAttrs, _ *[]Component) {
 	if a.Rel == "" {
 		a.Rel = o.v
 	} else {
 		a.Rel += " " + o.v
 	}
 }
-func (o TargetOpt) applyA(a *AAttrs, _ *[]Component) {
+func (o TargetOpt) ApplyA(a *AAttrs, _ *[]Component) {
 	a.Target = o.v
 }
-func (o TypeOpt) applyA(a *AAttrs, _ *[]Component) {
+func (o TypeOpt) ApplyA(a *AAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 

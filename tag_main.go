@@ -7,7 +7,7 @@ type MainAttrs struct {
 }
 
 type MainArg interface {
-	applyMain(*MainAttrs, *[]Component)
+	ApplyMain(*MainAttrs, *[]Component)
 }
 
 func defaultMainAttrs() *MainAttrs {
@@ -25,12 +25,12 @@ func Main(args ...MainArg) Node {
 	a := defaultMainAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyMain(a, &kids)
+		ar.ApplyMain(a, &kids)
 	}
 	return Node{Tag: "main", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyMain(a *MainAttrs, _ *[]Component) {
+func (g Global) ApplyMain(a *MainAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

@@ -15,7 +15,7 @@ type SvgMpathAttrs struct {
 
 // SvgMpathArg interface for mpath element arguments
 type SvgMpathArg interface {
-	applyMpath(*SvgMpathAttrs, *[]Component)
+	ApplyMpath(*SvgMpathAttrs, *[]Component)
 }
 
 // defaultSvgMpathAttrs creates default attributes for mpath
@@ -30,7 +30,7 @@ func SvgMpath(args ...SvgMpathArg) Node {
 	a := defaultSvgMpathAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyMpath(a, &kids)
+		ar.ApplyMpath(a, &kids)
 	}
 	return Node{
 		Tag:   "mpath",
@@ -40,17 +40,17 @@ func SvgMpath(args ...SvgMpathArg) Node {
 }
 
 // Global applies global SVG attributes to mpath
-func (g Global) applyMpath(a *SvgMpathAttrs, _ *[]Component) {
+func (g Global) ApplyMpath(a *SvgMpathAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // ExternalResourcesRequiredOpt applies to Mpath
-func (o ExternalResourcesRequiredOpt) applyMpath(a *SvgMpathAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyMpath(a *SvgMpathAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // HrefOpt applies to Mpath
-func (o HrefOpt) applyMpath(a *SvgMpathAttrs, _ *[]Component) {
+func (o HrefOpt) ApplyMpath(a *SvgMpathAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 

@@ -23,7 +23,7 @@ type LinkAttrs struct {
 }
 
 type LinkArg interface {
-	applyLink(*LinkAttrs, *[]Component)
+	ApplyLink(*LinkAttrs, *[]Component)
 }
 
 func defaultLinkAttrs() *LinkAttrs {
@@ -41,65 +41,65 @@ func Link(args ...LinkArg) Node {
 	a := defaultLinkAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyLink(a, &kids)
+		ar.ApplyLink(a, &kids)
 	}
 	return Node{Tag: "link", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applyLink(a *LinkAttrs, _ *[]Component) {
+func (g Global) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AsOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o AsOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.As = o.v
 }
-func (o BlockingOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o BlockingOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Blocking = o.v
 }
-func (o ColorOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Color = o.v
 }
-func (o CrossoriginOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o CrossoriginOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Crossorigin = o.v
 }
-func (o DisabledOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o DisabledOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Disabled = true
 }
-func (o FetchpriorityOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o FetchpriorityOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Fetchpriority = o.v
 }
-func (o HrefOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o HrefOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Href = o.v
 }
-func (o HreflangOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o HreflangOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Hreflang = o.v
 }
-func (o ImagesizesOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o ImagesizesOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Imagesizes = o.v
 }
-func (o ImagesrcsetOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o ImagesrcsetOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Imagesrcset = o.v
 }
-func (o IntegrityOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o IntegrityOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Integrity = o.v
 }
-func (o MediaOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o MediaOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Media = o.v
 }
-func (o ReferrerpolicyOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o ReferrerpolicyOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Referrerpolicy = o.v
 }
-func (o RelOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o RelOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	if a.Rel == "" {
 		a.Rel = o.v
 	} else {
 		a.Rel += " " + o.v
 	}
 }
-func (o SizesOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o SizesOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Sizes = o.v
 }
-func (o TypeOpt) applyLink(a *LinkAttrs, _ *[]Component) {
+func (o TypeOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 

@@ -7,7 +7,7 @@ type SupAttrs struct {
 }
 
 type SupArg interface {
-	applySup(*SupAttrs, *[]Component)
+	ApplySup(*SupAttrs, *[]Component)
 }
 
 func defaultSupAttrs() *SupAttrs {
@@ -25,12 +25,12 @@ func Sup(args ...SupArg) Node {
 	a := defaultSupAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySup(a, &kids)
+		ar.ApplySup(a, &kids)
 	}
 	return Node{Tag: "sup", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySup(a *SupAttrs, _ *[]Component) {
+func (g Global) ApplySup(a *SupAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

@@ -8,7 +8,7 @@ type LiAttrs struct {
 }
 
 type LiArg interface {
-	applyLi(*LiAttrs, *[]Component)
+	ApplyLi(*LiAttrs, *[]Component)
 }
 
 func defaultLiAttrs() *LiAttrs {
@@ -26,16 +26,16 @@ func Li(args ...LiArg) Node {
 	a := defaultLiAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyLi(a, &kids)
+		ar.ApplyLi(a, &kids)
 	}
 	return Node{Tag: "li", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyLi(a *LiAttrs, _ *[]Component) {
+func (g Global) ApplyLi(a *LiAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o ValueOpt) applyLi(a *LiAttrs, _ *[]Component) {
+func (o ValueOpt) ApplyLi(a *LiAttrs, _ *[]Component) {
 	a.Value = o.v
 }
 

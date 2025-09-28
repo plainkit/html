@@ -16,7 +16,7 @@ type SvgColorProfileAttrs struct {
 
 // SvgColorProfileArg interface for color-profile element arguments
 type SvgColorProfileArg interface {
-	applyColorProfile(*SvgColorProfileAttrs, *[]Component)
+	ApplyColorProfile(*SvgColorProfileAttrs, *[]Component)
 }
 
 // defaultSvgColorProfileAttrs creates default attributes for color-profile
@@ -31,7 +31,7 @@ func SvgColorProfile(args ...SvgColorProfileArg) Node {
 	a := defaultSvgColorProfileAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyColorProfile(a, &kids)
+		ar.ApplyColorProfile(a, &kids)
 	}
 	return Node{
 		Tag:   "color-profile",
@@ -41,22 +41,22 @@ func SvgColorProfile(args ...SvgColorProfileArg) Node {
 }
 
 // Global applies global SVG attributes to color-profile
-func (g Global) applyColorProfile(a *SvgColorProfileAttrs, _ *[]Component) {
+func (g Global) ApplyColorProfile(a *SvgColorProfileAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // LocalOpt applies to ColorProfile
-func (o LocalOpt) applyColorProfile(a *SvgColorProfileAttrs, _ *[]Component) {
+func (o LocalOpt) ApplyColorProfile(a *SvgColorProfileAttrs, _ *[]Component) {
 	a.Local = o.v
 }
 
 // NameOpt applies to ColorProfile
-func (o NameOpt) applyColorProfile(a *SvgColorProfileAttrs, _ *[]Component) {
+func (o NameOpt) ApplyColorProfile(a *SvgColorProfileAttrs, _ *[]Component) {
 	a.Name = o.v
 }
 
 // RenderingIntentOpt applies to ColorProfile
-func (o RenderingIntentOpt) applyColorProfile(a *SvgColorProfileAttrs, _ *[]Component) {
+func (o RenderingIntentOpt) ApplyColorProfile(a *SvgColorProfileAttrs, _ *[]Component) {
 	a.RenderingIntent = o.v
 }
 

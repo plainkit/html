@@ -13,7 +13,7 @@ type MeterAttrs struct {
 }
 
 type MeterArg interface {
-	applyMeter(*MeterAttrs, *[]Component)
+	ApplyMeter(*MeterAttrs, *[]Component)
 }
 
 func defaultMeterAttrs() *MeterAttrs {
@@ -31,31 +31,31 @@ func Meter(args ...MeterArg) Node {
 	a := defaultMeterAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyMeter(a, &kids)
+		ar.ApplyMeter(a, &kids)
 	}
 	return Node{Tag: "meter", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyMeter(a *MeterAttrs, _ *[]Component) {
+func (g Global) ApplyMeter(a *MeterAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o HighOpt) applyMeter(a *MeterAttrs, _ *[]Component) {
+func (o HighOpt) ApplyMeter(a *MeterAttrs, _ *[]Component) {
 	a.High = o.v
 }
-func (o LowOpt) applyMeter(a *MeterAttrs, _ *[]Component) {
+func (o LowOpt) ApplyMeter(a *MeterAttrs, _ *[]Component) {
 	a.Low = o.v
 }
-func (o MaxOpt) applyMeter(a *MeterAttrs, _ *[]Component) {
+func (o MaxOpt) ApplyMeter(a *MeterAttrs, _ *[]Component) {
 	a.Max = o.v
 }
-func (o MinOpt) applyMeter(a *MeterAttrs, _ *[]Component) {
+func (o MinOpt) ApplyMeter(a *MeterAttrs, _ *[]Component) {
 	a.Min = o.v
 }
-func (o OptimumOpt) applyMeter(a *MeterAttrs, _ *[]Component) {
+func (o OptimumOpt) ApplyMeter(a *MeterAttrs, _ *[]Component) {
 	a.Optimum = o.v
 }
-func (o ValueOpt) applyMeter(a *MeterAttrs, _ *[]Component) {
+func (o ValueOpt) ApplyMeter(a *MeterAttrs, _ *[]Component) {
 	a.Value = o.v
 }
 

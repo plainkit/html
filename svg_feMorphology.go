@@ -80,7 +80,7 @@ type SvgFeMorphologyAttrs struct {
 
 // SvgFeMorphologyArg interface for feMorphology element arguments
 type SvgFeMorphologyArg interface {
-	applyFeMorphology(*SvgFeMorphologyAttrs, *[]Component)
+	ApplyFeMorphology(*SvgFeMorphologyAttrs, *[]Component)
 }
 
 // defaultSvgFeMorphologyAttrs creates default attributes for feMorphology
@@ -95,7 +95,7 @@ func SvgFeMorphology(args ...SvgFeMorphologyArg) Node {
 	a := defaultSvgFeMorphologyAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeMorphology(a, &kids)
+		ar.ApplyFeMorphology(a, &kids)
 	}
 	return Node{
 		Tag:   "feMorphology",
@@ -105,342 +105,342 @@ func SvgFeMorphology(args ...SvgFeMorphologyArg) Node {
 }
 
 // Global applies global SVG attributes to feMorphology
-func (g Global) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (g Global) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to FeMorphology
-func (o AlignmentBaselineOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to FeMorphology
-func (o BaselineShiftOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to FeMorphology
-func (o ClipOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to FeMorphology
-func (o ClipPathOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to FeMorphology
-func (o ClipRuleOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to FeMorphology
-func (o ColorOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to FeMorphology
-func (o ColorInterpolationOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to FeMorphology
-func (o ColorInterpolationFiltersOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to FeMorphology
-func (o ColorProfileOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to FeMorphology
-func (o ColorRenderingOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to FeMorphology
-func (o CursorOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to FeMorphology
-func (o DirectionOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to FeMorphology
-func (o DisplayOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to FeMorphology
-func (o DominantBaselineOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to FeMorphology
-func (o EnableBackgroundOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to FeMorphology
-func (o FillOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to FeMorphology
-func (o FillOpacityOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to FeMorphology
-func (o FillRuleOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to FeMorphology
-func (o FilterOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to FeMorphology
-func (o FloodColorOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeMorphology
-func (o FloodOpacityOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to FeMorphology
-func (o FontFamilyOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FeMorphology
-func (o FontSizeOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to FeMorphology
-func (o FontSizeAdjustOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to FeMorphology
-func (o FontStretchOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FeMorphology
-func (o FontStyleOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FeMorphology
-func (o FontVariantOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FeMorphology
-func (o FontWeightOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to FeMorphology
-func (o GlyphOrientationHorizontalOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to FeMorphology
-func (o GlyphOrientationVerticalOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to FeMorphology
-func (o HeightOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to FeMorphology
-func (o ImageRenderingOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // InOpt applies to FeMorphology
-func (o InOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o InOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // KerningOpt applies to FeMorphology
-func (o KerningOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to FeMorphology
-func (o LetterSpacingOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to FeMorphology
-func (o LightingColorOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to FeMorphology
-func (o MarkerEndOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to FeMorphology
-func (o MarkerMidOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to FeMorphology
-func (o MarkerStartOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to FeMorphology
-func (o MaskOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to FeMorphology
-func (o OpacityOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OperatorOpt applies to FeMorphology
-func (o OperatorOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o OperatorOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Operator = o.v
 }
 
 // OverflowOpt applies to FeMorphology
-func (o OverflowOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to FeMorphology
-func (o PointerEventsOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // RadiusOpt applies to FeMorphology
-func (o RadiusOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o RadiusOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Radius = o.v
 }
 
 // ResultOpt applies to FeMorphology
-func (o ResultOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // ShapeRenderingOpt applies to FeMorphology
-func (o ShapeRenderingOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to FeMorphology
-func (o StopColorOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to FeMorphology
-func (o StopOpacityOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to FeMorphology
-func (o StrokeOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to FeMorphology
-func (o StrokeDasharrayOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to FeMorphology
-func (o StrokeDashoffsetOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to FeMorphology
-func (o StrokeLinecapOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to FeMorphology
-func (o StrokeLinejoinOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to FeMorphology
-func (o StrokeMiterlimitOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to FeMorphology
-func (o StrokeOpacityOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to FeMorphology
-func (o StrokeWidthOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to FeMorphology
-func (o TextAnchorOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to FeMorphology
-func (o TextDecorationOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to FeMorphology
-func (o TextRenderingOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to FeMorphology
-func (o UnicodeBidiOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to FeMorphology
-func (o VisibilityOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to FeMorphology
-func (o WidthOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to FeMorphology
-func (o WordSpacingOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to FeMorphology
-func (o WritingModeOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to FeMorphology
-func (o XOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeMorphology
-func (o YOpt) applyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeMorphology(a *SvgFeMorphologyAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

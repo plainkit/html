@@ -14,7 +14,7 @@ type AudioAttrs struct {
 }
 
 type AudioArg interface {
-	applyAudio(*AudioAttrs, *[]Component)
+	ApplyAudio(*AudioAttrs, *[]Component)
 }
 
 func defaultAudioAttrs() *AudioAttrs {
@@ -32,34 +32,34 @@ func Audio(args ...AudioArg) Node {
 	a := defaultAudioAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyAudio(a, &kids)
+		ar.ApplyAudio(a, &kids)
 	}
 	return Node{Tag: "audio", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyAudio(a *AudioAttrs, _ *[]Component) {
+func (g Global) ApplyAudio(a *AudioAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AutoplayOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+func (o AutoplayOpt) ApplyAudio(a *AudioAttrs, _ *[]Component) {
 	a.Autoplay = true
 }
-func (o ControlsOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+func (o ControlsOpt) ApplyAudio(a *AudioAttrs, _ *[]Component) {
 	a.Controls = true
 }
-func (o CrossoriginOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+func (o CrossoriginOpt) ApplyAudio(a *AudioAttrs, _ *[]Component) {
 	a.Crossorigin = o.v
 }
-func (o LoopOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+func (o LoopOpt) ApplyAudio(a *AudioAttrs, _ *[]Component) {
 	a.Loop = true
 }
-func (o MutedOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+func (o MutedOpt) ApplyAudio(a *AudioAttrs, _ *[]Component) {
 	a.Muted = true
 }
-func (o PreloadOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+func (o PreloadOpt) ApplyAudio(a *AudioAttrs, _ *[]Component) {
 	a.Preload = o.v
 }
-func (o SrcOpt) applyAudio(a *AudioAttrs, _ *[]Component) {
+func (o SrcOpt) ApplyAudio(a *AudioAttrs, _ *[]Component) {
 	a.Src = o.v
 }
 

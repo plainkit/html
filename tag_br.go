@@ -7,7 +7,7 @@ type BrAttrs struct {
 }
 
 type BrArg interface {
-	applyBr(*BrAttrs, *[]Component)
+	ApplyBr(*BrAttrs, *[]Component)
 }
 
 func defaultBrAttrs() *BrAttrs {
@@ -25,12 +25,12 @@ func Br(args ...BrArg) Node {
 	a := defaultBrAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyBr(a, &kids)
+		ar.ApplyBr(a, &kids)
 	}
 	return Node{Tag: "br", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applyBr(a *BrAttrs, _ *[]Component) {
+func (g Global) ApplyBr(a *BrAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

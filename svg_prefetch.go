@@ -18,7 +18,7 @@ type SvgPrefetchAttrs struct {
 
 // SvgPrefetchArg interface for prefetch element arguments
 type SvgPrefetchArg interface {
-	applyPrefetch(*SvgPrefetchAttrs, *[]Component)
+	ApplyPrefetch(*SvgPrefetchAttrs, *[]Component)
 }
 
 // defaultSvgPrefetchAttrs creates default attributes for prefetch
@@ -33,7 +33,7 @@ func SvgPrefetch(args ...SvgPrefetchArg) Node {
 	a := defaultSvgPrefetchAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyPrefetch(a, &kids)
+		ar.ApplyPrefetch(a, &kids)
 	}
 	return Node{
 		Tag:   "prefetch",
@@ -43,32 +43,32 @@ func SvgPrefetch(args ...SvgPrefetchArg) Node {
 }
 
 // Global applies global SVG attributes to prefetch
-func (g Global) applyPrefetch(a *SvgPrefetchAttrs, _ *[]Component) {
+func (g Global) ApplyPrefetch(a *SvgPrefetchAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // BandwidthOpt applies to Prefetch
-func (o BandwidthOpt) applyPrefetch(a *SvgPrefetchAttrs, _ *[]Component) {
+func (o BandwidthOpt) ApplyPrefetch(a *SvgPrefetchAttrs, _ *[]Component) {
 	a.Bandwidth = o.v
 }
 
 // MediaCharacterEncodingOpt applies to Prefetch
-func (o MediaCharacterEncodingOpt) applyPrefetch(a *SvgPrefetchAttrs, _ *[]Component) {
+func (o MediaCharacterEncodingOpt) ApplyPrefetch(a *SvgPrefetchAttrs, _ *[]Component) {
 	a.MediaCharacterEncoding = o.v
 }
 
 // MediaContentEncodingsOpt applies to Prefetch
-func (o MediaContentEncodingsOpt) applyPrefetch(a *SvgPrefetchAttrs, _ *[]Component) {
+func (o MediaContentEncodingsOpt) ApplyPrefetch(a *SvgPrefetchAttrs, _ *[]Component) {
 	a.MediaContentEncodings = o.v
 }
 
 // MediaSizeOpt applies to Prefetch
-func (o MediaSizeOpt) applyPrefetch(a *SvgPrefetchAttrs, _ *[]Component) {
+func (o MediaSizeOpt) ApplyPrefetch(a *SvgPrefetchAttrs, _ *[]Component) {
 	a.MediaSize = o.v
 }
 
 // MediaTimeOpt applies to Prefetch
-func (o MediaTimeOpt) applyPrefetch(a *SvgPrefetchAttrs, _ *[]Component) {
+func (o MediaTimeOpt) ApplyPrefetch(a *SvgPrefetchAttrs, _ *[]Component) {
 	a.MediaTime = o.v
 }
 

@@ -11,7 +11,7 @@ type EmbedAttrs struct {
 }
 
 type EmbedArg interface {
-	applyEmbed(*EmbedAttrs, *[]Component)
+	ApplyEmbed(*EmbedAttrs, *[]Component)
 }
 
 func defaultEmbedAttrs() *EmbedAttrs {
@@ -29,25 +29,25 @@ func Embed(args ...EmbedArg) Node {
 	a := defaultEmbedAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyEmbed(a, &kids)
+		ar.ApplyEmbed(a, &kids)
 	}
 	return Node{Tag: "embed", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applyEmbed(a *EmbedAttrs, _ *[]Component) {
+func (g Global) ApplyEmbed(a *EmbedAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o HeightOpt) applyEmbed(a *EmbedAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyEmbed(a *EmbedAttrs, _ *[]Component) {
 	a.Height = o.v
 }
-func (o SrcOpt) applyEmbed(a *EmbedAttrs, _ *[]Component) {
+func (o SrcOpt) ApplyEmbed(a *EmbedAttrs, _ *[]Component) {
 	a.Src = o.v
 }
-func (o TypeOpt) applyEmbed(a *EmbedAttrs, _ *[]Component) {
+func (o TypeOpt) ApplyEmbed(a *EmbedAttrs, _ *[]Component) {
 	a.Type = o.v
 }
-func (o WidthOpt) applyEmbed(a *EmbedAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyEmbed(a *EmbedAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 

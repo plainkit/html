@@ -96,7 +96,7 @@ type SvgLineAttrs struct {
 
 // SvgLineArg interface for line element arguments
 type SvgLineArg interface {
-	applyLine(*SvgLineAttrs, *[]Component)
+	ApplyLine(*SvgLineAttrs, *[]Component)
 }
 
 // defaultSvgLineAttrs creates default attributes for line
@@ -111,7 +111,7 @@ func SvgLine(args ...SvgLineArg) Node {
 	a := defaultSvgLineAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyLine(a, &kids)
+		ar.ApplyLine(a, &kids)
 	}
 	return Node{
 		Tag:   "line",
@@ -121,422 +121,422 @@ func SvgLine(args ...SvgLineArg) Node {
 }
 
 // Global applies global SVG attributes to line
-func (g Global) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (g Global) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Line
-func (o AlignmentBaselineOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Line
-func (o BaselineShiftOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Line
-func (o ClipOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Line
-func (o ClipPathOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Line
-func (o ClipRuleOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Line
-func (o ColorOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Line
-func (o ColorInterpolationOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Line
-func (o ColorInterpolationFiltersOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Line
-func (o ColorProfileOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Line
-func (o ColorRenderingOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Line
-func (o CursorOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Line
-func (o DirectionOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Line
-func (o DisplayOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Line
-func (o DominantBaselineOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Line
-func (o EnableBackgroundOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Line
-func (o ExternalResourcesRequiredOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Line
-func (o FillOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FillOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Line
-func (o FillOpacityOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Line
-func (o FillRuleOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Line
-func (o FilterOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Line
-func (o FloodColorOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Line
-func (o FloodOpacityOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FocusHighlightOpt applies to Line
-func (o FocusHighlightOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FocusHighlightOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.FocusHighlight = o.v
 }
 
 // FocusableOpt applies to Line
-func (o FocusableOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FocusableOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Focusable = o.v
 }
 
 // FontFamilyOpt applies to Line
-func (o FontFamilyOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Line
-func (o FontSizeOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Line
-func (o FontSizeAdjustOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Line
-func (o FontStretchOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Line
-func (o FontStyleOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Line
-func (o FontVariantOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Line
-func (o FontWeightOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Line
-func (o GlyphOrientationHorizontalOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Line
-func (o GlyphOrientationVerticalOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // ImageRenderingOpt applies to Line
-func (o ImageRenderingOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Line
-func (o KerningOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Line
-func (o LetterSpacingOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Line
-func (o LightingColorOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Line
-func (o MarkerEndOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Line
-func (o MarkerMidOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Line
-func (o MarkerStartOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Line
-func (o MaskOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // NavDownOpt applies to Line
-func (o NavDownOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o NavDownOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.NavDown = o.v
 }
 
 // NavDownLeftOpt applies to Line
-func (o NavDownLeftOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o NavDownLeftOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.NavDownLeft = o.v
 }
 
 // NavDownRightOpt applies to Line
-func (o NavDownRightOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o NavDownRightOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.NavDownRight = o.v
 }
 
 // NavLeftOpt applies to Line
-func (o NavLeftOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o NavLeftOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.NavLeft = o.v
 }
 
 // NavNextOpt applies to Line
-func (o NavNextOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o NavNextOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.NavNext = o.v
 }
 
 // NavPrevOpt applies to Line
-func (o NavPrevOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o NavPrevOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.NavPrev = o.v
 }
 
 // NavRightOpt applies to Line
-func (o NavRightOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o NavRightOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.NavRight = o.v
 }
 
 // NavUpOpt applies to Line
-func (o NavUpOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o NavUpOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.NavUp = o.v
 }
 
 // NavUpLeftOpt applies to Line
-func (o NavUpLeftOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o NavUpLeftOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.NavUpLeft = o.v
 }
 
 // NavUpRightOpt applies to Line
-func (o NavUpRightOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o NavUpRightOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.NavUpRight = o.v
 }
 
 // OpacityOpt applies to Line
-func (o OpacityOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Line
-func (o OverflowOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PathLengthOpt applies to Line
-func (o PathLengthOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o PathLengthOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.PathLength = o.v
 }
 
 // PointerEventsOpt applies to Line
-func (o PointerEventsOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // RequiredExtensionsOpt applies to Line
-func (o RequiredExtensionsOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Line
-func (o RequiredFeaturesOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Line
-func (o RequiredFontsOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Line
-func (o RequiredFormatsOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // ShapeRenderingOpt applies to Line
-func (o ShapeRenderingOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Line
-func (o StopColorOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Line
-func (o StopOpacityOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Line
-func (o StrokeOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Line
-func (o StrokeDasharrayOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Line
-func (o StrokeDashoffsetOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Line
-func (o StrokeLinecapOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Line
-func (o StrokeLinejoinOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Line
-func (o StrokeMiterlimitOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Line
-func (o StrokeOpacityOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Line
-func (o StrokeWidthOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to Line
-func (o SystemLanguageOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to Line
-func (o TextAnchorOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Line
-func (o TextDecorationOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Line
-func (o TextRenderingOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TransformOpt applies to Line
-func (o TransformOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o TransformOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Transform = o.v
 }
 
 // UnicodeBidiOpt applies to Line
-func (o UnicodeBidiOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Line
-func (o VisibilityOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to Line
-func (o WordSpacingOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Line
-func (o WritingModeOpt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // X1Opt applies to Line
-func (o X1Opt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o X1Opt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.X1 = o.v
 }
 
 // X2Opt applies to Line
-func (o X2Opt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o X2Opt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.X2 = o.v
 }
 
 // Y1Opt applies to Line
-func (o Y1Opt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o Y1Opt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Y1 = o.v
 }
 
 // Y2Opt applies to Line
-func (o Y2Opt) applyLine(a *SvgLineAttrs, _ *[]Component) {
+func (o Y2Opt) ApplyLine(a *SvgLineAttrs, _ *[]Component) {
 	a.Y2 = o.v
 }
 

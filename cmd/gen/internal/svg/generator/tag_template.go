@@ -16,7 +16,7 @@ type Svg{{.StructName}} struct {
 
 // Svg{{.ArgInterface}} interface for {{.Name}} element arguments
 type Svg{{.ArgInterface}} interface {
-	apply{{.Title}}(*Svg{{.StructName}}, *[]Component)
+	Apply{{.Title}}(*Svg{{.StructName}}, *[]Component)
 }
 
 // defaultSvg{{.StructName}} creates default attributes for {{.Name}}
@@ -32,8 +32,8 @@ func Svg{{.Title}}(args ...Svg{{.ArgInterface}}) Node {
 	a := defaultSvg{{.StructName}}()
 	var kids []Component
 	for _, ar := range args {
-		ar.apply{{.Title}}(a, &kids)
-	}
+		ar.Apply{{.Title}}(a, &kids)
+}
 	return Node{
 		Tag:   "{{.Name}}",
 		Attrs: a,
@@ -46,8 +46,8 @@ func Svg{{.Title}}(args ...Svg{{.ArgInterface}}) Node {
 	a := defaultSvg{{.StructName}}()
 	var kids []Component
 	for _, ar := range args {
-		ar.apply{{.Title}}(a, &kids)
-	}
+		ar.Apply{{.Title}}(a, &kids)
+}
 	return Node{
 		Tag:   "{{.Name}}",
 		Attrs: a,
@@ -57,12 +57,12 @@ func Svg{{.Title}}(args ...Svg{{.ArgInterface}}) Node {
 {{end}}
 
 // Global applies global SVG attributes to {{.Name}}
-func (g Global) apply{{.Title}}(a *Svg{{.StructName}}, _ *[]Component) {
+func (g Global) Apply{{.Title}}(a *Svg{{.StructName}}, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 {{range .Attributes}}// {{.Field}}Opt applies to {{$.Title}}
-func (o {{.Field}}Opt) apply{{$.Title}}(a *Svg{{$.StructName}}, _ *[]Component) {
+func (o {{.Field}}Opt) Apply{{$.Title}}(a *Svg{{$.StructName}}, _ *[]Component) {
 	{{if eq .Type "bool"}}a.{{.Field}} = true{{else}}a.{{.Field}} = o.v{{end}}
 }
 

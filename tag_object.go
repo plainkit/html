@@ -13,7 +13,7 @@ type ObjectAttrs struct {
 }
 
 type ObjectArg interface {
-	applyObject(*ObjectAttrs, *[]Component)
+	ApplyObject(*ObjectAttrs, *[]Component)
 }
 
 func defaultObjectAttrs() *ObjectAttrs {
@@ -31,28 +31,28 @@ func Object(args ...ObjectArg) Node {
 	a := defaultObjectAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyObject(a, &kids)
+		ar.ApplyObject(a, &kids)
 	}
 	return Node{Tag: "object", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyObject(a *ObjectAttrs, _ *[]Component) {
+func (g Global) ApplyObject(a *ObjectAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o FormOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
+func (o FormOpt) ApplyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Form = o.v
 }
-func (o HeightOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Height = o.v
 }
-func (o NameOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
+func (o NameOpt) ApplyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Name = o.v
 }
-func (o TypeOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
+func (o TypeOpt) ApplyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Type = o.v
 }
-func (o WidthOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 

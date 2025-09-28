@@ -7,7 +7,7 @@ type RpAttrs struct {
 }
 
 type RpArg interface {
-	applyRp(*RpAttrs, *[]Component)
+	ApplyRp(*RpAttrs, *[]Component)
 }
 
 func defaultRpAttrs() *RpAttrs {
@@ -25,12 +25,12 @@ func Rp(args ...RpArg) Node {
 	a := defaultRpAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyRp(a, &kids)
+		ar.ApplyRp(a, &kids)
 	}
 	return Node{Tag: "rp", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyRp(a *RpAttrs, _ *[]Component) {
+func (g Global) ApplyRp(a *RpAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

@@ -7,7 +7,7 @@ type RtAttrs struct {
 }
 
 type RtArg interface {
-	applyRt(*RtAttrs, *[]Component)
+	ApplyRt(*RtAttrs, *[]Component)
 }
 
 func defaultRtAttrs() *RtAttrs {
@@ -25,12 +25,12 @@ func Rt(args ...RtArg) Node {
 	a := defaultRtAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyRt(a, &kids)
+		ar.ApplyRt(a, &kids)
 	}
 	return Node{Tag: "rt", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyRt(a *RtAttrs, _ *[]Component) {
+func (g Global) ApplyRt(a *RtAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

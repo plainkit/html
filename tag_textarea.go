@@ -20,7 +20,7 @@ type TextareaAttrs struct {
 }
 
 type TextareaArg interface {
-	applyTextarea(*TextareaAttrs, *[]Component)
+	ApplyTextarea(*TextareaAttrs, *[]Component)
 }
 
 func defaultTextareaAttrs() *TextareaAttrs {
@@ -38,52 +38,52 @@ func Textarea(args ...TextareaArg) Node {
 	a := defaultTextareaAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTextarea(a, &kids)
+		ar.ApplyTextarea(a, &kids)
 	}
 	return Node{Tag: "textarea", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (g Global) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AutocompleteOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (o AutocompleteOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Autocomplete = o.v
 }
-func (o ColsOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (o ColsOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Cols = o.v
 }
-func (o DirnameOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (o DirnameOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Dirname = o.v
 }
-func (o DisabledOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (o DisabledOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Disabled = true
 }
-func (o FormOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (o FormOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Form = o.v
 }
-func (o MaxlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (o MaxlengthOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Maxlength = o.v
 }
-func (o MinlengthOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (o MinlengthOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Minlength = o.v
 }
-func (o NameOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (o NameOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Name = o.v
 }
-func (o PlaceholderOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (o PlaceholderOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Placeholder = o.v
 }
-func (o ReadonlyOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (o ReadonlyOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Readonly = true
 }
-func (o RequiredOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (o RequiredOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Required = true
 }
-func (o RowsOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (o RowsOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Rows = o.v
 }
-func (o WrapOpt) applyTextarea(a *TextareaAttrs, _ *[]Component) {
+func (o WrapOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 	a.Wrap = o.v
 }
 

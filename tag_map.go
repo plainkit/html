@@ -8,7 +8,7 @@ type MapAttrs struct {
 }
 
 type MapArg interface {
-	applyMap(*MapAttrs, *[]Component)
+	ApplyMap(*MapAttrs, *[]Component)
 }
 
 func defaultMapAttrs() *MapAttrs {
@@ -26,16 +26,16 @@ func Map(args ...MapArg) Node {
 	a := defaultMapAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyMap(a, &kids)
+		ar.ApplyMap(a, &kids)
 	}
 	return Node{Tag: "map", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyMap(a *MapAttrs, _ *[]Component) {
+func (g Global) ApplyMap(a *MapAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o NameOpt) applyMap(a *MapAttrs, _ *[]Component) {
+func (o NameOpt) ApplyMap(a *MapAttrs, _ *[]Component) {
 	a.Name = o.v
 }
 

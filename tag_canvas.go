@@ -9,7 +9,7 @@ type CanvasAttrs struct {
 }
 
 type CanvasArg interface {
-	applyCanvas(*CanvasAttrs, *[]Component)
+	ApplyCanvas(*CanvasAttrs, *[]Component)
 }
 
 func defaultCanvasAttrs() *CanvasAttrs {
@@ -27,19 +27,19 @@ func Canvas(args ...CanvasArg) Node {
 	a := defaultCanvasAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyCanvas(a, &kids)
+		ar.ApplyCanvas(a, &kids)
 	}
 	return Node{Tag: "canvas", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyCanvas(a *CanvasAttrs, _ *[]Component) {
+func (g Global) ApplyCanvas(a *CanvasAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o HeightOpt) applyCanvas(a *CanvasAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyCanvas(a *CanvasAttrs, _ *[]Component) {
 	a.Height = o.v
 }
-func (o WidthOpt) applyCanvas(a *CanvasAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyCanvas(a *CanvasAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 

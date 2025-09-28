@@ -9,7 +9,7 @@ type PictureAttrs struct {
 }
 
 type PictureArg interface {
-	applyPicture(*PictureAttrs, *[]Component)
+	ApplyPicture(*PictureAttrs, *[]Component)
 }
 
 func defaultPictureAttrs() *PictureAttrs {
@@ -27,19 +27,19 @@ func Picture(args ...PictureArg) Node {
 	a := defaultPictureAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyPicture(a, &kids)
+		ar.ApplyPicture(a, &kids)
 	}
 	return Node{Tag: "picture", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyPicture(a *PictureAttrs, _ *[]Component) {
+func (g Global) ApplyPicture(a *PictureAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o HeightOpt) applyPicture(a *PictureAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyPicture(a *PictureAttrs, _ *[]Component) {
 	a.Height = o.v
 }
-func (o WidthOpt) applyPicture(a *PictureAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyPicture(a *PictureAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 

@@ -7,7 +7,7 @@ type MarkAttrs struct {
 }
 
 type MarkArg interface {
-	applyMark(*MarkAttrs, *[]Component)
+	ApplyMark(*MarkAttrs, *[]Component)
 }
 
 func defaultMarkAttrs() *MarkAttrs {
@@ -25,12 +25,12 @@ func Mark(args ...MarkArg) Node {
 	a := defaultMarkAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyMark(a, &kids)
+		ar.ApplyMark(a, &kids)
 	}
 	return Node{Tag: "mark", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyMark(a *MarkAttrs, _ *[]Component) {
+func (g Global) ApplyMark(a *MarkAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

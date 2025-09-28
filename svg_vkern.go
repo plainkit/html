@@ -18,7 +18,7 @@ type SvgVkernAttrs struct {
 
 // SvgVkernArg interface for vkern element arguments
 type SvgVkernArg interface {
-	applyVkern(*SvgVkernAttrs, *[]Component)
+	ApplyVkern(*SvgVkernAttrs, *[]Component)
 }
 
 // defaultSvgVkernAttrs creates default attributes for vkern
@@ -33,7 +33,7 @@ func SvgVkern(args ...SvgVkernArg) Node {
 	a := defaultSvgVkernAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyVkern(a, &kids)
+		ar.ApplyVkern(a, &kids)
 	}
 	return Node{
 		Tag:   "vkern",
@@ -43,32 +43,32 @@ func SvgVkern(args ...SvgVkernArg) Node {
 }
 
 // Global applies global SVG attributes to vkern
-func (g Global) applyVkern(a *SvgVkernAttrs, _ *[]Component) {
+func (g Global) ApplyVkern(a *SvgVkernAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // G1Opt applies to Vkern
-func (o G1Opt) applyVkern(a *SvgVkernAttrs, _ *[]Component) {
+func (o G1Opt) ApplyVkern(a *SvgVkernAttrs, _ *[]Component) {
 	a.G1 = o.v
 }
 
 // G2Opt applies to Vkern
-func (o G2Opt) applyVkern(a *SvgVkernAttrs, _ *[]Component) {
+func (o G2Opt) ApplyVkern(a *SvgVkernAttrs, _ *[]Component) {
 	a.G2 = o.v
 }
 
 // KOpt applies to Vkern
-func (o KOpt) applyVkern(a *SvgVkernAttrs, _ *[]Component) {
+func (o KOpt) ApplyVkern(a *SvgVkernAttrs, _ *[]Component) {
 	a.K = o.v
 }
 
 // U1Opt applies to Vkern
-func (o U1Opt) applyVkern(a *SvgVkernAttrs, _ *[]Component) {
+func (o U1Opt) ApplyVkern(a *SvgVkernAttrs, _ *[]Component) {
 	a.U1 = o.v
 }
 
 // U2Opt applies to Vkern
-func (o U2Opt) applyVkern(a *SvgVkernAttrs, _ *[]Component) {
+func (o U2Opt) ApplyVkern(a *SvgVkernAttrs, _ *[]Component) {
 	a.U2 = o.v
 }
 

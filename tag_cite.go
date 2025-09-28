@@ -7,7 +7,7 @@ type CiteAttrs struct {
 }
 
 type CiteArg interface {
-	applyCite(*CiteAttrs, *[]Component)
+	ApplyCite(*CiteAttrs, *[]Component)
 }
 
 func defaultCiteAttrs() *CiteAttrs {
@@ -25,12 +25,12 @@ func Cite(args ...CiteArg) Node {
 	a := defaultCiteAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyCite(a, &kids)
+		ar.ApplyCite(a, &kids)
 	}
 	return Node{Tag: "cite", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyCite(a *CiteAttrs, _ *[]Component) {
+func (g Global) ApplyCite(a *CiteAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

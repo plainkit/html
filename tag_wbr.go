@@ -7,7 +7,7 @@ type WbrAttrs struct {
 }
 
 type WbrArg interface {
-	applyWbr(*WbrAttrs, *[]Component)
+	ApplyWbr(*WbrAttrs, *[]Component)
 }
 
 func defaultWbrAttrs() *WbrAttrs {
@@ -25,12 +25,12 @@ func Wbr(args ...WbrArg) Node {
 	a := defaultWbrAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyWbr(a, &kids)
+		ar.ApplyWbr(a, &kids)
 	}
 	return Node{Tag: "wbr", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applyWbr(a *WbrAttrs, _ *[]Component) {
+func (g Global) ApplyWbr(a *WbrAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

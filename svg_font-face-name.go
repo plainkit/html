@@ -14,7 +14,7 @@ type SvgFontFaceNameAttrs struct {
 
 // SvgFontFaceNameArg interface for font-face-name element arguments
 type SvgFontFaceNameArg interface {
-	applyFontFaceName(*SvgFontFaceNameAttrs, *[]Component)
+	ApplyFontFaceName(*SvgFontFaceNameAttrs, *[]Component)
 }
 
 // defaultSvgFontFaceNameAttrs creates default attributes for font-face-name
@@ -29,7 +29,7 @@ func SvgFontFaceName(args ...SvgFontFaceNameArg) Node {
 	a := defaultSvgFontFaceNameAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFontFaceName(a, &kids)
+		ar.ApplyFontFaceName(a, &kids)
 	}
 	return Node{
 		Tag:   "font-face-name",
@@ -39,12 +39,12 @@ func SvgFontFaceName(args ...SvgFontFaceNameArg) Node {
 }
 
 // Global applies global SVG attributes to font-face-name
-func (g Global) applyFontFaceName(a *SvgFontFaceNameAttrs, _ *[]Component) {
+func (g Global) ApplyFontFaceName(a *SvgFontFaceNameAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // NameOpt applies to FontFaceName
-func (o NameOpt) applyFontFaceName(a *SvgFontFaceNameAttrs, _ *[]Component) {
+func (o NameOpt) ApplyFontFaceName(a *SvgFontFaceNameAttrs, _ *[]Component) {
 	a.Name = o.v
 }
 

@@ -13,7 +13,7 @@ type SvgFontFaceSrcAttrs struct {
 
 // SvgFontFaceSrcArg interface for font-face-src element arguments
 type SvgFontFaceSrcArg interface {
-	applyFontFaceSrc(*SvgFontFaceSrcAttrs, *[]Component)
+	ApplyFontFaceSrc(*SvgFontFaceSrcAttrs, *[]Component)
 }
 
 // defaultSvgFontFaceSrcAttrs creates default attributes for font-face-src
@@ -28,7 +28,7 @@ func SvgFontFaceSrc(args ...SvgFontFaceSrcArg) Node {
 	a := defaultSvgFontFaceSrcAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFontFaceSrc(a, &kids)
+		ar.ApplyFontFaceSrc(a, &kids)
 	}
 	return Node{
 		Tag:   "font-face-src",
@@ -38,7 +38,7 @@ func SvgFontFaceSrc(args ...SvgFontFaceSrcArg) Node {
 }
 
 // Global applies global SVG attributes to font-face-src
-func (g Global) applyFontFaceSrc(a *SvgFontFaceSrcAttrs, _ *[]Component) {
+func (g Global) ApplyFontFaceSrc(a *SvgFontFaceSrcAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 

@@ -9,7 +9,7 @@ type DetailsAttrs struct {
 }
 
 type DetailsArg interface {
-	applyDetails(*DetailsAttrs, *[]Component)
+	ApplyDetails(*DetailsAttrs, *[]Component)
 }
 
 func defaultDetailsAttrs() *DetailsAttrs {
@@ -27,19 +27,19 @@ func Details(args ...DetailsArg) Node {
 	a := defaultDetailsAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyDetails(a, &kids)
+		ar.ApplyDetails(a, &kids)
 	}
 	return Node{Tag: "details", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyDetails(a *DetailsAttrs, _ *[]Component) {
+func (g Global) ApplyDetails(a *DetailsAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o NameOpt) applyDetails(a *DetailsAttrs, _ *[]Component) {
+func (o NameOpt) ApplyDetails(a *DetailsAttrs, _ *[]Component) {
 	a.Name = o.v
 }
-func (o OpenOpt) applyDetails(a *DetailsAttrs, _ *[]Component) {
+func (o OpenOpt) ApplyDetails(a *DetailsAttrs, _ *[]Component) {
 	a.Open = true
 }
 

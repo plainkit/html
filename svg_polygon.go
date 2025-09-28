@@ -93,7 +93,7 @@ type SvgPolygonAttrs struct {
 
 // SvgPolygonArg interface for polygon element arguments
 type SvgPolygonArg interface {
-	applyPolygon(*SvgPolygonAttrs, *[]Component)
+	ApplyPolygon(*SvgPolygonAttrs, *[]Component)
 }
 
 // defaultSvgPolygonAttrs creates default attributes for polygon
@@ -108,7 +108,7 @@ func SvgPolygon(args ...SvgPolygonArg) Node {
 	a := defaultSvgPolygonAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyPolygon(a, &kids)
+		ar.ApplyPolygon(a, &kids)
 	}
 	return Node{
 		Tag:   "polygon",
@@ -118,407 +118,407 @@ func SvgPolygon(args ...SvgPolygonArg) Node {
 }
 
 // Global applies global SVG attributes to polygon
-func (g Global) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (g Global) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Polygon
-func (o AlignmentBaselineOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Polygon
-func (o BaselineShiftOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Polygon
-func (o ClipOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Polygon
-func (o ClipPathOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Polygon
-func (o ClipRuleOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Polygon
-func (o ColorOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Polygon
-func (o ColorInterpolationOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Polygon
-func (o ColorInterpolationFiltersOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Polygon
-func (o ColorProfileOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Polygon
-func (o ColorRenderingOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Polygon
-func (o CursorOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Polygon
-func (o DirectionOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Polygon
-func (o DisplayOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Polygon
-func (o DominantBaselineOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Polygon
-func (o EnableBackgroundOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Polygon
-func (o ExternalResourcesRequiredOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Polygon
-func (o FillOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FillOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Polygon
-func (o FillOpacityOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Polygon
-func (o FillRuleOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Polygon
-func (o FilterOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Polygon
-func (o FloodColorOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Polygon
-func (o FloodOpacityOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FocusHighlightOpt applies to Polygon
-func (o FocusHighlightOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FocusHighlightOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.FocusHighlight = o.v
 }
 
 // FocusableOpt applies to Polygon
-func (o FocusableOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FocusableOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Focusable = o.v
 }
 
 // FontFamilyOpt applies to Polygon
-func (o FontFamilyOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Polygon
-func (o FontSizeOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Polygon
-func (o FontSizeAdjustOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Polygon
-func (o FontStretchOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Polygon
-func (o FontStyleOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Polygon
-func (o FontVariantOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Polygon
-func (o FontWeightOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Polygon
-func (o GlyphOrientationHorizontalOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Polygon
-func (o GlyphOrientationVerticalOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // ImageRenderingOpt applies to Polygon
-func (o ImageRenderingOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Polygon
-func (o KerningOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Polygon
-func (o LetterSpacingOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Polygon
-func (o LightingColorOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Polygon
-func (o MarkerEndOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Polygon
-func (o MarkerMidOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Polygon
-func (o MarkerStartOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Polygon
-func (o MaskOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // NavDownOpt applies to Polygon
-func (o NavDownOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o NavDownOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.NavDown = o.v
 }
 
 // NavDownLeftOpt applies to Polygon
-func (o NavDownLeftOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o NavDownLeftOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.NavDownLeft = o.v
 }
 
 // NavDownRightOpt applies to Polygon
-func (o NavDownRightOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o NavDownRightOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.NavDownRight = o.v
 }
 
 // NavLeftOpt applies to Polygon
-func (o NavLeftOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o NavLeftOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.NavLeft = o.v
 }
 
 // NavNextOpt applies to Polygon
-func (o NavNextOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o NavNextOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.NavNext = o.v
 }
 
 // NavPrevOpt applies to Polygon
-func (o NavPrevOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o NavPrevOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.NavPrev = o.v
 }
 
 // NavRightOpt applies to Polygon
-func (o NavRightOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o NavRightOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.NavRight = o.v
 }
 
 // NavUpOpt applies to Polygon
-func (o NavUpOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o NavUpOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.NavUp = o.v
 }
 
 // NavUpLeftOpt applies to Polygon
-func (o NavUpLeftOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o NavUpLeftOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.NavUpLeft = o.v
 }
 
 // NavUpRightOpt applies to Polygon
-func (o NavUpRightOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o NavUpRightOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.NavUpRight = o.v
 }
 
 // OpacityOpt applies to Polygon
-func (o OpacityOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Polygon
-func (o OverflowOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PathLengthOpt applies to Polygon
-func (o PathLengthOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o PathLengthOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.PathLength = o.v
 }
 
 // PointerEventsOpt applies to Polygon
-func (o PointerEventsOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // PointsOpt applies to Polygon
-func (o PointsOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o PointsOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Points = o.v
 }
 
 // RequiredExtensionsOpt applies to Polygon
-func (o RequiredExtensionsOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Polygon
-func (o RequiredFeaturesOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Polygon
-func (o RequiredFontsOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Polygon
-func (o RequiredFormatsOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // ShapeRenderingOpt applies to Polygon
-func (o ShapeRenderingOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Polygon
-func (o StopColorOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Polygon
-func (o StopOpacityOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Polygon
-func (o StrokeOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Polygon
-func (o StrokeDasharrayOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Polygon
-func (o StrokeDashoffsetOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Polygon
-func (o StrokeLinecapOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Polygon
-func (o StrokeLinejoinOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Polygon
-func (o StrokeMiterlimitOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Polygon
-func (o StrokeOpacityOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Polygon
-func (o StrokeWidthOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to Polygon
-func (o SystemLanguageOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to Polygon
-func (o TextAnchorOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Polygon
-func (o TextDecorationOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Polygon
-func (o TextRenderingOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TransformOpt applies to Polygon
-func (o TransformOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o TransformOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Transform = o.v
 }
 
 // UnicodeBidiOpt applies to Polygon
-func (o UnicodeBidiOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Polygon
-func (o VisibilityOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to Polygon
-func (o WordSpacingOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Polygon
-func (o WritingModeOpt) applyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyPolygon(a *SvgPolygonAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 

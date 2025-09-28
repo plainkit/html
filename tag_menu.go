@@ -7,7 +7,7 @@ type MenuAttrs struct {
 }
 
 type MenuArg interface {
-	applyMenu(*MenuAttrs, *[]Component)
+	ApplyMenu(*MenuAttrs, *[]Component)
 }
 
 func defaultMenuAttrs() *MenuAttrs {
@@ -25,12 +25,12 @@ func Menu(args ...MenuArg) Node {
 	a := defaultMenuAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyMenu(a, &kids)
+		ar.ApplyMenu(a, &kids)
 	}
 	return Node{Tag: "menu", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyMenu(a *MenuAttrs, _ *[]Component) {
+func (g Global) ApplyMenu(a *MenuAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

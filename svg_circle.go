@@ -95,7 +95,7 @@ type SvgCircleAttrs struct {
 
 // SvgCircleArg interface for circle element arguments
 type SvgCircleArg interface {
-	applyCircle(*SvgCircleAttrs, *[]Component)
+	ApplyCircle(*SvgCircleAttrs, *[]Component)
 }
 
 // defaultSvgCircleAttrs creates default attributes for circle
@@ -110,7 +110,7 @@ func SvgCircle(args ...SvgCircleArg) Node {
 	a := defaultSvgCircleAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyCircle(a, &kids)
+		ar.ApplyCircle(a, &kids)
 	}
 	return Node{
 		Tag:   "circle",
@@ -120,417 +120,417 @@ func SvgCircle(args ...SvgCircleArg) Node {
 }
 
 // Global applies global SVG attributes to circle
-func (g Global) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (g Global) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Circle
-func (o AlignmentBaselineOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Circle
-func (o BaselineShiftOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Circle
-func (o ClipOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Circle
-func (o ClipPathOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Circle
-func (o ClipRuleOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Circle
-func (o ColorOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Circle
-func (o ColorInterpolationOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Circle
-func (o ColorInterpolationFiltersOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Circle
-func (o ColorProfileOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Circle
-func (o ColorRenderingOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Circle
-func (o CursorOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // CxOpt applies to Circle
-func (o CxOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o CxOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Cx = o.v
 }
 
 // CyOpt applies to Circle
-func (o CyOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o CyOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Cy = o.v
 }
 
 // DirectionOpt applies to Circle
-func (o DirectionOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Circle
-func (o DisplayOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Circle
-func (o DominantBaselineOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Circle
-func (o EnableBackgroundOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Circle
-func (o ExternalResourcesRequiredOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Circle
-func (o FillOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FillOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Circle
-func (o FillOpacityOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Circle
-func (o FillRuleOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Circle
-func (o FilterOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Circle
-func (o FloodColorOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Circle
-func (o FloodOpacityOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FocusHighlightOpt applies to Circle
-func (o FocusHighlightOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FocusHighlightOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.FocusHighlight = o.v
 }
 
 // FocusableOpt applies to Circle
-func (o FocusableOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FocusableOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Focusable = o.v
 }
 
 // FontFamilyOpt applies to Circle
-func (o FontFamilyOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Circle
-func (o FontSizeOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Circle
-func (o FontSizeAdjustOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Circle
-func (o FontStretchOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Circle
-func (o FontStyleOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Circle
-func (o FontVariantOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Circle
-func (o FontWeightOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Circle
-func (o GlyphOrientationHorizontalOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Circle
-func (o GlyphOrientationVerticalOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // ImageRenderingOpt applies to Circle
-func (o ImageRenderingOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Circle
-func (o KerningOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Circle
-func (o LetterSpacingOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Circle
-func (o LightingColorOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Circle
-func (o MarkerEndOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Circle
-func (o MarkerMidOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Circle
-func (o MarkerStartOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Circle
-func (o MaskOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // NavDownOpt applies to Circle
-func (o NavDownOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o NavDownOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.NavDown = o.v
 }
 
 // NavDownLeftOpt applies to Circle
-func (o NavDownLeftOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o NavDownLeftOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.NavDownLeft = o.v
 }
 
 // NavDownRightOpt applies to Circle
-func (o NavDownRightOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o NavDownRightOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.NavDownRight = o.v
 }
 
 // NavLeftOpt applies to Circle
-func (o NavLeftOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o NavLeftOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.NavLeft = o.v
 }
 
 // NavNextOpt applies to Circle
-func (o NavNextOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o NavNextOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.NavNext = o.v
 }
 
 // NavPrevOpt applies to Circle
-func (o NavPrevOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o NavPrevOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.NavPrev = o.v
 }
 
 // NavRightOpt applies to Circle
-func (o NavRightOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o NavRightOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.NavRight = o.v
 }
 
 // NavUpOpt applies to Circle
-func (o NavUpOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o NavUpOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.NavUp = o.v
 }
 
 // NavUpLeftOpt applies to Circle
-func (o NavUpLeftOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o NavUpLeftOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.NavUpLeft = o.v
 }
 
 // NavUpRightOpt applies to Circle
-func (o NavUpRightOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o NavUpRightOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.NavUpRight = o.v
 }
 
 // OpacityOpt applies to Circle
-func (o OpacityOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Circle
-func (o OverflowOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PathLengthOpt applies to Circle
-func (o PathLengthOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o PathLengthOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.PathLength = o.v
 }
 
 // PointerEventsOpt applies to Circle
-func (o PointerEventsOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ROpt applies to Circle
-func (o ROpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o ROpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.R = o.v
 }
 
 // RequiredExtensionsOpt applies to Circle
-func (o RequiredExtensionsOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Circle
-func (o RequiredFeaturesOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Circle
-func (o RequiredFontsOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Circle
-func (o RequiredFormatsOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // ShapeRenderingOpt applies to Circle
-func (o ShapeRenderingOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Circle
-func (o StopColorOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Circle
-func (o StopOpacityOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Circle
-func (o StrokeOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Circle
-func (o StrokeDasharrayOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Circle
-func (o StrokeDashoffsetOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Circle
-func (o StrokeLinecapOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Circle
-func (o StrokeLinejoinOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Circle
-func (o StrokeMiterlimitOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Circle
-func (o StrokeOpacityOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Circle
-func (o StrokeWidthOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to Circle
-func (o SystemLanguageOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to Circle
-func (o TextAnchorOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Circle
-func (o TextDecorationOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Circle
-func (o TextRenderingOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TransformOpt applies to Circle
-func (o TransformOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o TransformOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Transform = o.v
 }
 
 // UnicodeBidiOpt applies to Circle
-func (o UnicodeBidiOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Circle
-func (o VisibilityOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to Circle
-func (o WordSpacingOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Circle
-func (o WritingModeOpt) applyCircle(a *SvgCircleAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyCircle(a *SvgCircleAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 

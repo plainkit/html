@@ -97,7 +97,7 @@ type SvgAnimateColorAttrs struct {
 
 // SvgAnimateColorArg interface for animateColor element arguments
 type SvgAnimateColorArg interface {
-	applyAnimateColor(*SvgAnimateColorAttrs, *[]Component)
+	ApplyAnimateColor(*SvgAnimateColorAttrs, *[]Component)
 }
 
 // defaultSvgAnimateColorAttrs creates default attributes for animateColor
@@ -112,7 +112,7 @@ func SvgAnimateColor(args ...SvgAnimateColorArg) Node {
 	a := defaultSvgAnimateColorAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyAnimateColor(a, &kids)
+		ar.ApplyAnimateColor(a, &kids)
 	}
 	return Node{
 		Tag:   "animateColor",
@@ -122,427 +122,427 @@ func SvgAnimateColor(args ...SvgAnimateColorArg) Node {
 }
 
 // Global applies global SVG attributes to animateColor
-func (g Global) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (g Global) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AccumulateOpt applies to AnimateColor
-func (o AccumulateOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o AccumulateOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Accumulate = o.v
 }
 
 // AdditiveOpt applies to AnimateColor
-func (o AdditiveOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o AdditiveOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Additive = o.v
 }
 
 // AlignmentBaselineOpt applies to AnimateColor
-func (o AlignmentBaselineOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // AttributeNameOpt applies to AnimateColor
-func (o AttributeNameOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o AttributeNameOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.AttributeName = o.v
 }
 
 // AttributeTypeOpt applies to AnimateColor
-func (o AttributeTypeOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o AttributeTypeOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.AttributeType = o.v
 }
 
 // BaselineShiftOpt applies to AnimateColor
-func (o BaselineShiftOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // BeginOpt applies to AnimateColor
-func (o BeginOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o BeginOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Begin = o.v
 }
 
 // ByOpt applies to AnimateColor
-func (o ByOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ByOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.By = o.v
 }
 
 // CalcModeOpt applies to AnimateColor
-func (o CalcModeOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o CalcModeOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.CalcMode = o.v
 }
 
 // ClipOpt applies to AnimateColor
-func (o ClipOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to AnimateColor
-func (o ClipPathOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to AnimateColor
-func (o ClipRuleOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to AnimateColor
-func (o ColorOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to AnimateColor
-func (o ColorInterpolationOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to AnimateColor
-func (o ColorInterpolationFiltersOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to AnimateColor
-func (o ColorProfileOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to AnimateColor
-func (o ColorRenderingOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to AnimateColor
-func (o CursorOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to AnimateColor
-func (o DirectionOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to AnimateColor
-func (o DisplayOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to AnimateColor
-func (o DominantBaselineOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // DurOpt applies to AnimateColor
-func (o DurOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o DurOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Dur = o.v
 }
 
 // EnableBackgroundOpt applies to AnimateColor
-func (o EnableBackgroundOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // EndOpt applies to AnimateColor
-func (o EndOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o EndOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.End = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to AnimateColor
-func (o ExternalResourcesRequiredOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to AnimateColor
-func (o FillOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FillOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to AnimateColor
-func (o FillOpacityOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to AnimateColor
-func (o FillRuleOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to AnimateColor
-func (o FilterOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to AnimateColor
-func (o FloodColorOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to AnimateColor
-func (o FloodOpacityOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to AnimateColor
-func (o FontFamilyOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to AnimateColor
-func (o FontSizeOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to AnimateColor
-func (o FontSizeAdjustOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to AnimateColor
-func (o FontStretchOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to AnimateColor
-func (o FontStyleOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to AnimateColor
-func (o FontVariantOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to AnimateColor
-func (o FontWeightOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // FromOpt applies to AnimateColor
-func (o FromOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o FromOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.From = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to AnimateColor
-func (o GlyphOrientationHorizontalOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to AnimateColor
-func (o GlyphOrientationVerticalOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // ImageRenderingOpt applies to AnimateColor
-func (o ImageRenderingOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to AnimateColor
-func (o KerningOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // KeySplinesOpt applies to AnimateColor
-func (o KeySplinesOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o KeySplinesOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.KeySplines = o.v
 }
 
 // KeyTimesOpt applies to AnimateColor
-func (o KeyTimesOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o KeyTimesOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.KeyTimes = o.v
 }
 
 // LetterSpacingOpt applies to AnimateColor
-func (o LetterSpacingOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to AnimateColor
-func (o LightingColorOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to AnimateColor
-func (o MarkerEndOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to AnimateColor
-func (o MarkerMidOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to AnimateColor
-func (o MarkerStartOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to AnimateColor
-func (o MaskOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // MaxOpt applies to AnimateColor
-func (o MaxOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o MaxOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Max = o.v
 }
 
 // MinOpt applies to AnimateColor
-func (o MinOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o MinOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Min = o.v
 }
 
 // OpacityOpt applies to AnimateColor
-func (o OpacityOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to AnimateColor
-func (o OverflowOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to AnimateColor
-func (o PointerEventsOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // RepeatCountOpt applies to AnimateColor
-func (o RepeatCountOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o RepeatCountOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.RepeatCount = o.v
 }
 
 // RepeatDurOpt applies to AnimateColor
-func (o RepeatDurOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o RepeatDurOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.RepeatDur = o.v
 }
 
 // RequiredExtensionsOpt applies to AnimateColor
-func (o RequiredExtensionsOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to AnimateColor
-func (o RequiredFeaturesOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to AnimateColor
-func (o RequiredFontsOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to AnimateColor
-func (o RequiredFormatsOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // RestartOpt applies to AnimateColor
-func (o RestartOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o RestartOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Restart = o.v
 }
 
 // ShapeRenderingOpt applies to AnimateColor
-func (o ShapeRenderingOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to AnimateColor
-func (o StopColorOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to AnimateColor
-func (o StopOpacityOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to AnimateColor
-func (o StrokeOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to AnimateColor
-func (o StrokeDasharrayOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to AnimateColor
-func (o StrokeDashoffsetOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to AnimateColor
-func (o StrokeLinecapOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to AnimateColor
-func (o StrokeLinejoinOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to AnimateColor
-func (o StrokeMiterlimitOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to AnimateColor
-func (o StrokeOpacityOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to AnimateColor
-func (o StrokeWidthOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to AnimateColor
-func (o SystemLanguageOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to AnimateColor
-func (o TextAnchorOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to AnimateColor
-func (o TextDecorationOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to AnimateColor
-func (o TextRenderingOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // ToOpt applies to AnimateColor
-func (o ToOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ToOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.To = o.v
 }
 
 // UnicodeBidiOpt applies to AnimateColor
-func (o UnicodeBidiOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // ValuesOpt applies to AnimateColor
-func (o ValuesOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o ValuesOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Values = o.v
 }
 
 // VisibilityOpt applies to AnimateColor
-func (o VisibilityOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to AnimateColor
-func (o WordSpacingOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to AnimateColor
-func (o WritingModeOpt) applyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyAnimateColor(a *SvgAnimateColorAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 

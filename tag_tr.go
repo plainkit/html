@@ -7,7 +7,7 @@ type TrAttrs struct {
 }
 
 type TrArg interface {
-	applyTr(*TrAttrs, *[]Component)
+	ApplyTr(*TrAttrs, *[]Component)
 }
 
 func defaultTrAttrs() *TrAttrs {
@@ -25,12 +25,12 @@ func Tr(args ...TrArg) Node {
 	a := defaultTrAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTr(a, &kids)
+		ar.ApplyTr(a, &kids)
 	}
 	return Node{Tag: "tr", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyTr(a *TrAttrs, _ *[]Component) {
+func (g Global) ApplyTr(a *TrAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

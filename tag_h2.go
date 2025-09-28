@@ -7,7 +7,7 @@ type H2Attrs struct {
 }
 
 type H2Arg interface {
-	applyH2(*H2Attrs, *[]Component)
+	ApplyH2(*H2Attrs, *[]Component)
 }
 
 func defaultH2Attrs() *H2Attrs {
@@ -25,12 +25,12 @@ func H2(args ...H2Arg) Node {
 	a := defaultH2Attrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyH2(a, &kids)
+		ar.ApplyH2(a, &kids)
 	}
 	return Node{Tag: "h2", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyH2(a *H2Attrs, _ *[]Component) {
+func (g Global) ApplyH2(a *H2Attrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

@@ -7,7 +7,7 @@ type BodyAttrs struct {
 }
 
 type BodyArg interface {
-	applyBody(*BodyAttrs, *[]Component)
+	ApplyBody(*BodyAttrs, *[]Component)
 }
 
 func defaultBodyAttrs() *BodyAttrs {
@@ -25,12 +25,12 @@ func Body(args ...BodyArg) Node {
 	a := defaultBodyAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyBody(a, &kids)
+		ar.ApplyBody(a, &kids)
 	}
 	return Node{Tag: "body", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyBody(a *BodyAttrs, _ *[]Component) {
+func (g Global) ApplyBody(a *BodyAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

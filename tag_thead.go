@@ -7,7 +7,7 @@ type TheadAttrs struct {
 }
 
 type TheadArg interface {
-	applyThead(*TheadAttrs, *[]Component)
+	ApplyThead(*TheadAttrs, *[]Component)
 }
 
 func defaultTheadAttrs() *TheadAttrs {
@@ -25,12 +25,12 @@ func Thead(args ...TheadArg) Node {
 	a := defaultTheadAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyThead(a, &kids)
+		ar.ApplyThead(a, &kids)
 	}
 	return Node{Tag: "thead", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyThead(a *TheadAttrs, _ *[]Component) {
+func (g Global) ApplyThead(a *TheadAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

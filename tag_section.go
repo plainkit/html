@@ -7,7 +7,7 @@ type SectionAttrs struct {
 }
 
 type SectionArg interface {
-	applySection(*SectionAttrs, *[]Component)
+	ApplySection(*SectionAttrs, *[]Component)
 }
 
 func defaultSectionAttrs() *SectionAttrs {
@@ -25,12 +25,12 @@ func Section(args ...SectionArg) Node {
 	a := defaultSectionAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySection(a, &kids)
+		ar.ApplySection(a, &kids)
 	}
 	return Node{Tag: "section", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySection(a *SectionAttrs, _ *[]Component) {
+func (g Global) ApplySection(a *SectionAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

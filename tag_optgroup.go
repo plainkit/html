@@ -9,7 +9,7 @@ type OptgroupAttrs struct {
 }
 
 type OptgroupArg interface {
-	applyOptgroup(*OptgroupAttrs, *[]Component)
+	ApplyOptgroup(*OptgroupAttrs, *[]Component)
 }
 
 func defaultOptgroupAttrs() *OptgroupAttrs {
@@ -27,19 +27,19 @@ func Optgroup(args ...OptgroupArg) Node {
 	a := defaultOptgroupAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyOptgroup(a, &kids)
+		ar.ApplyOptgroup(a, &kids)
 	}
 	return Node{Tag: "optgroup", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyOptgroup(a *OptgroupAttrs, _ *[]Component) {
+func (g Global) ApplyOptgroup(a *OptgroupAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o DisabledOpt) applyOptgroup(a *OptgroupAttrs, _ *[]Component) {
+func (o DisabledOpt) ApplyOptgroup(a *OptgroupAttrs, _ *[]Component) {
 	a.Disabled = true
 }
-func (o LabelOpt) applyOptgroup(a *OptgroupAttrs, _ *[]Component) {
+func (o LabelOpt) ApplyOptgroup(a *OptgroupAttrs, _ *[]Component) {
 	a.Label = o.v
 }
 

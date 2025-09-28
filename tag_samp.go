@@ -7,7 +7,7 @@ type SampAttrs struct {
 }
 
 type SampArg interface {
-	applySamp(*SampAttrs, *[]Component)
+	ApplySamp(*SampAttrs, *[]Component)
 }
 
 func defaultSampAttrs() *SampAttrs {
@@ -25,12 +25,12 @@ func Samp(args ...SampArg) Node {
 	a := defaultSampAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySamp(a, &kids)
+		ar.ApplySamp(a, &kids)
 	}
 	return Node{Tag: "samp", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySamp(a *SampAttrs, _ *[]Component) {
+func (g Global) ApplySamp(a *SampAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

@@ -7,7 +7,7 @@ type PreAttrs struct {
 }
 
 type PreArg interface {
-	applyPre(*PreAttrs, *[]Component)
+	ApplyPre(*PreAttrs, *[]Component)
 }
 
 func defaultPreAttrs() *PreAttrs {
@@ -25,12 +25,12 @@ func Pre(args ...PreArg) Node {
 	a := defaultPreAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyPre(a, &kids)
+		ar.ApplyPre(a, &kids)
 	}
 	return Node{Tag: "pre", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyPre(a *PreAttrs, _ *[]Component) {
+func (g Global) ApplyPre(a *PreAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

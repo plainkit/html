@@ -20,7 +20,7 @@ type ImgAttrs struct {
 }
 
 type ImgArg interface {
-	applyImg(*ImgAttrs, *[]Component)
+	ApplyImg(*ImgAttrs, *[]Component)
 }
 
 func defaultImgAttrs() *ImgAttrs {
@@ -38,52 +38,52 @@ func Img(args ...ImgArg) Node {
 	a := defaultImgAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyImg(a, &kids)
+		ar.ApplyImg(a, &kids)
 	}
 	return Node{Tag: "img", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applyImg(a *ImgAttrs, _ *[]Component) {
+func (g Global) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AltOpt) applyImg(a *ImgAttrs, _ *[]Component) {
+func (o AltOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	a.Alt = o.v
 }
-func (o CrossoriginOpt) applyImg(a *ImgAttrs, _ *[]Component) {
+func (o CrossoriginOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	a.Crossorigin = o.v
 }
-func (o DecodingOpt) applyImg(a *ImgAttrs, _ *[]Component) {
+func (o DecodingOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	a.Decoding = o.v
 }
-func (o FetchpriorityOpt) applyImg(a *ImgAttrs, _ *[]Component) {
+func (o FetchpriorityOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	a.Fetchpriority = o.v
 }
-func (o HeightOpt) applyImg(a *ImgAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	a.Height = o.v
 }
-func (o IsmapOpt) applyImg(a *ImgAttrs, _ *[]Component) {
+func (o IsmapOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	a.Ismap = true
 }
-func (o LoadingOpt) applyImg(a *ImgAttrs, _ *[]Component) {
+func (o LoadingOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	a.Loading = o.v
 }
-func (o ReferrerpolicyOpt) applyImg(a *ImgAttrs, _ *[]Component) {
+func (o ReferrerpolicyOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	a.Referrerpolicy = o.v
 }
-func (o SizesOpt) applyImg(a *ImgAttrs, _ *[]Component) {
+func (o SizesOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	a.Sizes = o.v
 }
-func (o SrcOpt) applyImg(a *ImgAttrs, _ *[]Component) {
+func (o SrcOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	a.Src = o.v
 }
-func (o SrcsetOpt) applyImg(a *ImgAttrs, _ *[]Component) {
+func (o SrcsetOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	a.Srcset = o.v
 }
-func (o UsemapOpt) applyImg(a *ImgAttrs, _ *[]Component) {
+func (o UsemapOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	a.Usemap = o.v
 }
-func (o WidthOpt) applyImg(a *ImgAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 

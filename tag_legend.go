@@ -7,7 +7,7 @@ type LegendAttrs struct {
 }
 
 type LegendArg interface {
-	applyLegend(*LegendAttrs, *[]Component)
+	ApplyLegend(*LegendAttrs, *[]Component)
 }
 
 func defaultLegendAttrs() *LegendAttrs {
@@ -25,12 +25,12 @@ func Legend(args ...LegendArg) Node {
 	a := defaultLegendAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyLegend(a, &kids)
+		ar.ApplyLegend(a, &kids)
 	}
 	return Node{Tag: "legend", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyLegend(a *LegendAttrs, _ *[]Component) {
+func (g Global) ApplyLegend(a *LegendAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

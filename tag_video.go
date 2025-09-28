@@ -18,7 +18,7 @@ type VideoAttrs struct {
 }
 
 type VideoArg interface {
-	applyVideo(*VideoAttrs, *[]Component)
+	ApplyVideo(*VideoAttrs, *[]Component)
 }
 
 func defaultVideoAttrs() *VideoAttrs {
@@ -36,46 +36,46 @@ func Video(args ...VideoArg) Node {
 	a := defaultVideoAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyVideo(a, &kids)
+		ar.ApplyVideo(a, &kids)
 	}
 	return Node{Tag: "video", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyVideo(a *VideoAttrs, _ *[]Component) {
+func (g Global) ApplyVideo(a *VideoAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AutoplayOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+func (o AutoplayOpt) ApplyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Autoplay = true
 }
-func (o ControlsOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+func (o ControlsOpt) ApplyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Controls = true
 }
-func (o CrossoriginOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+func (o CrossoriginOpt) ApplyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Crossorigin = o.v
 }
-func (o HeightOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Height = o.v
 }
-func (o LoopOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+func (o LoopOpt) ApplyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Loop = true
 }
-func (o MutedOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+func (o MutedOpt) ApplyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Muted = true
 }
-func (o PlaysinlineOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+func (o PlaysinlineOpt) ApplyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Playsinline = true
 }
-func (o PosterOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+func (o PosterOpt) ApplyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Poster = o.v
 }
-func (o PreloadOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+func (o PreloadOpt) ApplyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Preload = o.v
 }
-func (o SrcOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+func (o SrcOpt) ApplyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Src = o.v
 }
-func (o WidthOpt) applyVideo(a *VideoAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyVideo(a *VideoAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 

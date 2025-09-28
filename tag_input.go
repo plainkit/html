@@ -41,7 +41,7 @@ type InputAttrs struct {
 }
 
 type InputArg interface {
-	applyInput(*InputAttrs, *[]Component)
+	ApplyInput(*InputAttrs, *[]Component)
 }
 
 func defaultInputAttrs() *InputAttrs {
@@ -59,115 +59,115 @@ func Input(args ...InputArg) Node {
 	a := defaultInputAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyInput(a, &kids)
+		ar.ApplyInput(a, &kids)
 	}
 	return Node{Tag: "input", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applyInput(a *InputAttrs, _ *[]Component) {
+func (g Global) ApplyInput(a *InputAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AcceptOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o AcceptOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Accept = o.v
 }
-func (o AlphaOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o AlphaOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Alpha = true
 }
-func (o AltOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o AltOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Alt = o.v
 }
-func (o AutocompleteOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o AutocompleteOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Autocomplete = o.v
 }
-func (o CheckedOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o CheckedOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Checked = true
 }
-func (o ColorspaceOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o ColorspaceOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Colorspace = o.v
 }
-func (o DirnameOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o DirnameOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Dirname = o.v
 }
-func (o DisabledOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o DisabledOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Disabled = true
 }
-func (o FormOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o FormOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Form = o.v
 }
-func (o FormactionOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o FormactionOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Formaction = o.v
 }
-func (o FormenctypeOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o FormenctypeOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Formenctype = o.v
 }
-func (o FormmethodOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o FormmethodOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Formmethod = o.v
 }
-func (o FormnovalidateOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o FormnovalidateOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Formnovalidate = true
 }
-func (o FormtargetOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o FormtargetOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Formtarget = o.v
 }
-func (o HeightOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Height = o.v
 }
-func (o ListOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o ListOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.List = o.v
 }
-func (o MaxOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o MaxOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Max = o.v
 }
-func (o MaxlengthOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o MaxlengthOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Maxlength = o.v
 }
-func (o MinOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o MinOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Min = o.v
 }
-func (o MinlengthOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o MinlengthOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Minlength = o.v
 }
-func (o MultipleOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o MultipleOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Multiple = true
 }
-func (o NameOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o NameOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Name = o.v
 }
-func (o PatternOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o PatternOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Pattern = o.v
 }
-func (o PlaceholderOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o PlaceholderOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Placeholder = o.v
 }
-func (o PopovertargetOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o PopovertargetOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Popovertarget = o.v
 }
-func (o PopovertargetactionOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o PopovertargetactionOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Popovertargetaction = o.v
 }
-func (o ReadonlyOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o ReadonlyOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Readonly = true
 }
-func (o RequiredOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o RequiredOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Required = true
 }
-func (o SizeOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o SizeOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Size = o.v
 }
-func (o SrcOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o SrcOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Src = o.v
 }
-func (o StepOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o StepOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Step = o.v
 }
-func (o TypeOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o TypeOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Type = o.v
 }
-func (o ValueOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o ValueOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Value = o.v
 }
-func (o WidthOpt) applyInput(a *InputAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 

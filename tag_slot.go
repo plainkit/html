@@ -8,7 +8,7 @@ type SlotAttrs struct {
 }
 
 type SlotArg interface {
-	applySlot(*SlotAttrs, *[]Component)
+	ApplySlot(*SlotAttrs, *[]Component)
 }
 
 func defaultSlotAttrs() *SlotAttrs {
@@ -26,16 +26,16 @@ func Slot(args ...SlotArg) Node {
 	a := defaultSlotAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySlot(a, &kids)
+		ar.ApplySlot(a, &kids)
 	}
 	return Node{Tag: "slot", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySlot(a *SlotAttrs, _ *[]Component) {
+func (g Global) ApplySlot(a *SlotAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o NameOpt) applySlot(a *SlotAttrs, _ *[]Component) {
+func (o NameOpt) ApplySlot(a *SlotAttrs, _ *[]Component) {
 	a.Name = o.v
 }
 

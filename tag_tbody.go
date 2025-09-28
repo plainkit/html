@@ -7,7 +7,7 @@ type TbodyAttrs struct {
 }
 
 type TbodyArg interface {
-	applyTbody(*TbodyAttrs, *[]Component)
+	ApplyTbody(*TbodyAttrs, *[]Component)
 }
 
 func defaultTbodyAttrs() *TbodyAttrs {
@@ -25,12 +25,12 @@ func Tbody(args ...TbodyArg) Node {
 	a := defaultTbodyAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTbody(a, &kids)
+		ar.ApplyTbody(a, &kids)
 	}
 	return Node{Tag: "tbody", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyTbody(a *TbodyAttrs, _ *[]Component) {
+func (g Global) ApplyTbody(a *TbodyAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

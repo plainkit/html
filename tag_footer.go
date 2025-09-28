@@ -7,7 +7,7 @@ type FooterAttrs struct {
 }
 
 type FooterArg interface {
-	applyFooter(*FooterAttrs, *[]Component)
+	ApplyFooter(*FooterAttrs, *[]Component)
 }
 
 func defaultFooterAttrs() *FooterAttrs {
@@ -25,12 +25,12 @@ func Footer(args ...FooterArg) Node {
 	a := defaultFooterAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFooter(a, &kids)
+		ar.ApplyFooter(a, &kids)
 	}
 	return Node{Tag: "footer", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyFooter(a *FooterAttrs, _ *[]Component) {
+func (g Global) ApplyFooter(a *FooterAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

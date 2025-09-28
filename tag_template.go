@@ -12,7 +12,7 @@ type TemplateAttrs struct {
 }
 
 type TemplateArg interface {
-	applyTemplate(*TemplateAttrs, *[]Component)
+	ApplyTemplate(*TemplateAttrs, *[]Component)
 }
 
 func defaultTemplateAttrs() *TemplateAttrs {
@@ -30,28 +30,28 @@ func Template(args ...TemplateArg) Node {
 	a := defaultTemplateAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTemplate(a, &kids)
+		ar.ApplyTemplate(a, &kids)
 	}
 	return Node{Tag: "template", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applyTemplate(a *TemplateAttrs, _ *[]Component) {
+func (g Global) ApplyTemplate(a *TemplateAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o ShadowrootclonableOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
+func (o ShadowrootclonableOpt) ApplyTemplate(a *TemplateAttrs, _ *[]Component) {
 	a.Shadowrootclonable = true
 }
-func (o ShadowrootcustomelementregistryOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
+func (o ShadowrootcustomelementregistryOpt) ApplyTemplate(a *TemplateAttrs, _ *[]Component) {
 	a.Shadowrootcustomelementregistry = true
 }
-func (o ShadowrootdelegatesfocusOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
+func (o ShadowrootdelegatesfocusOpt) ApplyTemplate(a *TemplateAttrs, _ *[]Component) {
 	a.Shadowrootdelegatesfocus = true
 }
-func (o ShadowrootmodeOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
+func (o ShadowrootmodeOpt) ApplyTemplate(a *TemplateAttrs, _ *[]Component) {
 	a.Shadowrootmode = o.v
 }
-func (o ShadowrootserializableOpt) applyTemplate(a *TemplateAttrs, _ *[]Component) {
+func (o ShadowrootserializableOpt) ApplyTemplate(a *TemplateAttrs, _ *[]Component) {
 	a.Shadowrootserializable = true
 }
 

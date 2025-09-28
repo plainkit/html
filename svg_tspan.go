@@ -97,7 +97,7 @@ type SvgTspanAttrs struct {
 
 // SvgTspanArg interface for tspan element arguments
 type SvgTspanArg interface {
-	applyTspan(*SvgTspanAttrs, *[]Component)
+	ApplyTspan(*SvgTspanAttrs, *[]Component)
 }
 
 // defaultSvgTspanAttrs creates default attributes for tspan
@@ -112,7 +112,7 @@ func SvgTspan(args ...SvgTspanArg) Node {
 	a := defaultSvgTspanAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTspan(a, &kids)
+		ar.ApplyTspan(a, &kids)
 	}
 	return Node{
 		Tag:   "tspan",
@@ -122,427 +122,427 @@ func SvgTspan(args ...SvgTspanArg) Node {
 }
 
 // Global applies global SVG attributes to tspan
-func (g Global) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (g Global) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Tspan
-func (o AlignmentBaselineOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Tspan
-func (o BaselineShiftOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Tspan
-func (o ClipOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Tspan
-func (o ClipPathOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Tspan
-func (o ClipRuleOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Tspan
-func (o ColorOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Tspan
-func (o ColorInterpolationOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Tspan
-func (o ColorInterpolationFiltersOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Tspan
-func (o ColorProfileOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Tspan
-func (o ColorRenderingOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Tspan
-func (o CursorOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Tspan
-func (o DirectionOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Tspan
-func (o DisplayOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Tspan
-func (o DominantBaselineOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // DxOpt applies to Tspan
-func (o DxOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o DxOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Dx = o.v
 }
 
 // DyOpt applies to Tspan
-func (o DyOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o DyOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Dy = o.v
 }
 
 // EnableBackgroundOpt applies to Tspan
-func (o EnableBackgroundOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Tspan
-func (o ExternalResourcesRequiredOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Tspan
-func (o FillOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FillOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Tspan
-func (o FillOpacityOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Tspan
-func (o FillRuleOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Tspan
-func (o FilterOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Tspan
-func (o FloodColorOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Tspan
-func (o FloodOpacityOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FocusHighlightOpt applies to Tspan
-func (o FocusHighlightOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FocusHighlightOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.FocusHighlight = o.v
 }
 
 // FocusableOpt applies to Tspan
-func (o FocusableOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FocusableOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Focusable = o.v
 }
 
 // FontFamilyOpt applies to Tspan
-func (o FontFamilyOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Tspan
-func (o FontSizeOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Tspan
-func (o FontSizeAdjustOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Tspan
-func (o FontStretchOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Tspan
-func (o FontStyleOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Tspan
-func (o FontVariantOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Tspan
-func (o FontWeightOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Tspan
-func (o GlyphOrientationHorizontalOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Tspan
-func (o GlyphOrientationVerticalOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // ImageRenderingOpt applies to Tspan
-func (o ImageRenderingOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Tspan
-func (o KerningOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LengthAdjustOpt applies to Tspan
-func (o LengthAdjustOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o LengthAdjustOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.LengthAdjust = o.v
 }
 
 // LetterSpacingOpt applies to Tspan
-func (o LetterSpacingOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Tspan
-func (o LightingColorOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Tspan
-func (o MarkerEndOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Tspan
-func (o MarkerMidOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Tspan
-func (o MarkerStartOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Tspan
-func (o MaskOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // NavDownOpt applies to Tspan
-func (o NavDownOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o NavDownOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.NavDown = o.v
 }
 
 // NavDownLeftOpt applies to Tspan
-func (o NavDownLeftOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o NavDownLeftOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.NavDownLeft = o.v
 }
 
 // NavDownRightOpt applies to Tspan
-func (o NavDownRightOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o NavDownRightOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.NavDownRight = o.v
 }
 
 // NavLeftOpt applies to Tspan
-func (o NavLeftOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o NavLeftOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.NavLeft = o.v
 }
 
 // NavNextOpt applies to Tspan
-func (o NavNextOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o NavNextOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.NavNext = o.v
 }
 
 // NavPrevOpt applies to Tspan
-func (o NavPrevOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o NavPrevOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.NavPrev = o.v
 }
 
 // NavRightOpt applies to Tspan
-func (o NavRightOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o NavRightOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.NavRight = o.v
 }
 
 // NavUpOpt applies to Tspan
-func (o NavUpOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o NavUpOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.NavUp = o.v
 }
 
 // NavUpLeftOpt applies to Tspan
-func (o NavUpLeftOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o NavUpLeftOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.NavUpLeft = o.v
 }
 
 // NavUpRightOpt applies to Tspan
-func (o NavUpRightOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o NavUpRightOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.NavUpRight = o.v
 }
 
 // OpacityOpt applies to Tspan
-func (o OpacityOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Tspan
-func (o OverflowOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to Tspan
-func (o PointerEventsOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // RequiredExtensionsOpt applies to Tspan
-func (o RequiredExtensionsOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Tspan
-func (o RequiredFeaturesOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Tspan
-func (o RequiredFontsOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Tspan
-func (o RequiredFormatsOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // RotateOpt applies to Tspan
-func (o RotateOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o RotateOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Rotate = o.v
 }
 
 // ShapeRenderingOpt applies to Tspan
-func (o ShapeRenderingOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Tspan
-func (o StopColorOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Tspan
-func (o StopOpacityOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Tspan
-func (o StrokeOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Tspan
-func (o StrokeDasharrayOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Tspan
-func (o StrokeDashoffsetOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Tspan
-func (o StrokeLinecapOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Tspan
-func (o StrokeLinejoinOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Tspan
-func (o StrokeMiterlimitOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Tspan
-func (o StrokeOpacityOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Tspan
-func (o StrokeWidthOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to Tspan
-func (o SystemLanguageOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to Tspan
-func (o TextAnchorOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Tspan
-func (o TextDecorationOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Tspan
-func (o TextRenderingOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TextLengthOpt applies to Tspan
-func (o TextLengthOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o TextLengthOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.TextLength = o.v
 }
 
 // UnicodeBidiOpt applies to Tspan
-func (o UnicodeBidiOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Tspan
-func (o VisibilityOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to Tspan
-func (o WordSpacingOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Tspan
-func (o WritingModeOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to Tspan
-func (o XOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o XOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Tspan
-func (o YOpt) applyTspan(a *SvgTspanAttrs, _ *[]Component) {
+func (o YOpt) ApplyTspan(a *SvgTspanAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

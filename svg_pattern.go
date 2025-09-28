@@ -86,7 +86,7 @@ type SvgPatternAttrs struct {
 
 // SvgPatternArg interface for pattern element arguments
 type SvgPatternArg interface {
-	applyPattern(*SvgPatternAttrs, *[]Component)
+	ApplyPattern(*SvgPatternAttrs, *[]Component)
 }
 
 // defaultSvgPatternAttrs creates default attributes for pattern
@@ -101,7 +101,7 @@ func SvgPattern(args ...SvgPatternArg) Node {
 	a := defaultSvgPatternAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyPattern(a, &kids)
+		ar.ApplyPattern(a, &kids)
 	}
 	return Node{
 		Tag:   "pattern",
@@ -111,372 +111,372 @@ func SvgPattern(args ...SvgPatternArg) Node {
 }
 
 // Global applies global SVG attributes to pattern
-func (g Global) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (g Global) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Pattern
-func (o AlignmentBaselineOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Pattern
-func (o BaselineShiftOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Pattern
-func (o ClipOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Pattern
-func (o ClipPathOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Pattern
-func (o ClipRuleOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Pattern
-func (o ColorOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Pattern
-func (o ColorInterpolationOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Pattern
-func (o ColorInterpolationFiltersOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Pattern
-func (o ColorProfileOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Pattern
-func (o ColorRenderingOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Pattern
-func (o CursorOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Pattern
-func (o DirectionOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Pattern
-func (o DisplayOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Pattern
-func (o DominantBaselineOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Pattern
-func (o EnableBackgroundOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Pattern
-func (o ExternalResourcesRequiredOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Pattern
-func (o FillOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o FillOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Pattern
-func (o FillOpacityOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Pattern
-func (o FillRuleOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Pattern
-func (o FilterOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Pattern
-func (o FloodColorOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Pattern
-func (o FloodOpacityOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to Pattern
-func (o FontFamilyOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Pattern
-func (o FontSizeOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Pattern
-func (o FontSizeAdjustOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Pattern
-func (o FontStretchOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Pattern
-func (o FontStyleOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Pattern
-func (o FontVariantOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Pattern
-func (o FontWeightOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Pattern
-func (o GlyphOrientationHorizontalOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Pattern
-func (o GlyphOrientationVerticalOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to Pattern
-func (o HeightOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // HrefOpt applies to Pattern
-func (o HrefOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o HrefOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // ImageRenderingOpt applies to Pattern
-func (o ImageRenderingOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Pattern
-func (o KerningOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Pattern
-func (o LetterSpacingOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Pattern
-func (o LightingColorOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Pattern
-func (o MarkerEndOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Pattern
-func (o MarkerMidOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Pattern
-func (o MarkerStartOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Pattern
-func (o MaskOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to Pattern
-func (o OpacityOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Pattern
-func (o OverflowOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PatternContentUnitsOpt applies to Pattern
-func (o PatternContentUnitsOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o PatternContentUnitsOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.PatternContentUnits = o.v
 }
 
 // PatternTransformOpt applies to Pattern
-func (o PatternTransformOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o PatternTransformOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.PatternTransform = o.v
 }
 
 // PatternUnitsOpt applies to Pattern
-func (o PatternUnitsOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o PatternUnitsOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.PatternUnits = o.v
 }
 
 // PointerEventsOpt applies to Pattern
-func (o PointerEventsOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // PreserveAspectRatioOpt applies to Pattern
-func (o PreserveAspectRatioOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o PreserveAspectRatioOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
 // RequiredExtensionsOpt applies to Pattern
-func (o RequiredExtensionsOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Pattern
-func (o RequiredFeaturesOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // ShapeRenderingOpt applies to Pattern
-func (o ShapeRenderingOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Pattern
-func (o StopColorOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Pattern
-func (o StopOpacityOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Pattern
-func (o StrokeOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Pattern
-func (o StrokeDasharrayOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Pattern
-func (o StrokeDashoffsetOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Pattern
-func (o StrokeLinecapOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Pattern
-func (o StrokeLinejoinOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Pattern
-func (o StrokeMiterlimitOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Pattern
-func (o StrokeOpacityOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Pattern
-func (o StrokeWidthOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to Pattern
-func (o SystemLanguageOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to Pattern
-func (o TextAnchorOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Pattern
-func (o TextDecorationOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Pattern
-func (o TextRenderingOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to Pattern
-func (o UnicodeBidiOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // ViewBoxOpt applies to Pattern
-func (o ViewBoxOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o ViewBoxOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.ViewBox = o.v
 }
 
 // VisibilityOpt applies to Pattern
-func (o VisibilityOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to Pattern
-func (o WidthOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to Pattern
-func (o WordSpacingOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Pattern
-func (o WritingModeOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to Pattern
-func (o XOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o XOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Pattern
-func (o YOpt) applyPattern(a *SvgPatternAttrs, _ *[]Component) {
+func (o YOpt) ApplyPattern(a *SvgPatternAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

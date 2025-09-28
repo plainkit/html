@@ -22,7 +22,7 @@ type SvgFeDropShadowAttrs struct {
 
 // SvgFeDropShadowArg interface for feDropShadow element arguments
 type SvgFeDropShadowArg interface {
-	applyFeDropShadow(*SvgFeDropShadowAttrs, *[]Component)
+	ApplyFeDropShadow(*SvgFeDropShadowAttrs, *[]Component)
 }
 
 // defaultSvgFeDropShadowAttrs creates default attributes for feDropShadow
@@ -37,7 +37,7 @@ func SvgFeDropShadow(args ...SvgFeDropShadowArg) Node {
 	a := defaultSvgFeDropShadowAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeDropShadow(a, &kids)
+		ar.ApplyFeDropShadow(a, &kids)
 	}
 	return Node{
 		Tag:   "feDropShadow",
@@ -47,52 +47,52 @@ func SvgFeDropShadow(args ...SvgFeDropShadowArg) Node {
 }
 
 // Global applies global SVG attributes to feDropShadow
-func (g Global) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+func (g Global) ApplyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // DxOpt applies to FeDropShadow
-func (o DxOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+func (o DxOpt) ApplyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.Dx = o.v
 }
 
 // DyOpt applies to FeDropShadow
-func (o DyOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+func (o DyOpt) ApplyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.Dy = o.v
 }
 
 // HeightOpt applies to FeDropShadow
-func (o HeightOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // InOpt applies to FeDropShadow
-func (o InOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+func (o InOpt) ApplyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // ResultOpt applies to FeDropShadow
-func (o ResultOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // StdDeviationOpt applies to FeDropShadow
-func (o StdDeviationOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+func (o StdDeviationOpt) ApplyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.StdDeviation = o.v
 }
 
 // WidthOpt applies to FeDropShadow
-func (o WidthOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // XOpt applies to FeDropShadow
-func (o XOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeDropShadow
-func (o YOpt) applyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeDropShadow(a *SvgFeDropShadowAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

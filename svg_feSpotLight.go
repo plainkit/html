@@ -21,7 +21,7 @@ type SvgFeSpotLightAttrs struct {
 
 // SvgFeSpotLightArg interface for feSpotLight element arguments
 type SvgFeSpotLightArg interface {
-	applyFeSpotLight(*SvgFeSpotLightAttrs, *[]Component)
+	ApplyFeSpotLight(*SvgFeSpotLightAttrs, *[]Component)
 }
 
 // defaultSvgFeSpotLightAttrs creates default attributes for feSpotLight
@@ -36,7 +36,7 @@ func SvgFeSpotLight(args ...SvgFeSpotLightArg) Node {
 	a := defaultSvgFeSpotLightAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeSpotLight(a, &kids)
+		ar.ApplyFeSpotLight(a, &kids)
 	}
 	return Node{
 		Tag:   "feSpotLight",
@@ -46,47 +46,47 @@ func SvgFeSpotLight(args ...SvgFeSpotLightArg) Node {
 }
 
 // Global applies global SVG attributes to feSpotLight
-func (g Global) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
+func (g Global) ApplyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // LimitingConeAngleOpt applies to FeSpotLight
-func (o LimitingConeAngleOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
+func (o LimitingConeAngleOpt) ApplyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.LimitingConeAngle = o.v
 }
 
 // PointsAtXOpt applies to FeSpotLight
-func (o PointsAtXOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
+func (o PointsAtXOpt) ApplyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.PointsAtX = o.v
 }
 
 // PointsAtYOpt applies to FeSpotLight
-func (o PointsAtYOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
+func (o PointsAtYOpt) ApplyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.PointsAtY = o.v
 }
 
 // PointsAtZOpt applies to FeSpotLight
-func (o PointsAtZOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
+func (o PointsAtZOpt) ApplyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.PointsAtZ = o.v
 }
 
 // SpecularExponentOpt applies to FeSpotLight
-func (o SpecularExponentOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
+func (o SpecularExponentOpt) ApplyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.SpecularExponent = o.v
 }
 
 // XOpt applies to FeSpotLight
-func (o XOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeSpotLight
-func (o YOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 
 // ZOpt applies to FeSpotLight
-func (o ZOpt) applyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
+func (o ZOpt) ApplyFeSpotLight(a *SvgFeSpotLightAttrs, _ *[]Component) {
 	a.Z = o.v
 }
 

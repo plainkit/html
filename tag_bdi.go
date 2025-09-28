@@ -7,7 +7,7 @@ type BdiAttrs struct {
 }
 
 type BdiArg interface {
-	applyBdi(*BdiAttrs, *[]Component)
+	ApplyBdi(*BdiAttrs, *[]Component)
 }
 
 func defaultBdiAttrs() *BdiAttrs {
@@ -25,12 +25,12 @@ func Bdi(args ...BdiArg) Node {
 	a := defaultBdiAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyBdi(a, &kids)
+		ar.ApplyBdi(a, &kids)
 	}
 	return Node{Tag: "bdi", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyBdi(a *BdiAttrs, _ *[]Component) {
+func (g Global) ApplyBdi(a *BdiAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

@@ -9,7 +9,7 @@ type StyleAttrs struct {
 }
 
 type StyleArg interface {
-	applyStyle(*StyleAttrs, *[]Component)
+	ApplyStyle(*StyleAttrs, *[]Component)
 }
 
 func defaultStyleAttrs() *StyleAttrs {
@@ -27,19 +27,19 @@ func Style(args ...StyleArg) Node {
 	a := defaultStyleAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyStyle(a, &kids)
+		ar.ApplyStyle(a, &kids)
 	}
 	return Node{Tag: "style", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyStyle(a *StyleAttrs, _ *[]Component) {
+func (g Global) ApplyStyle(a *StyleAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o BlockingOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
+func (o BlockingOpt) ApplyStyle(a *StyleAttrs, _ *[]Component) {
 	a.Blocking = o.v
 }
-func (o MediaOpt) applyStyle(a *StyleAttrs, _ *[]Component) {
+func (o MediaOpt) ApplyStyle(a *StyleAttrs, _ *[]Component) {
 	a.Media = o.v
 }
 

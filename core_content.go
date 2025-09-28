@@ -79,9 +79,9 @@ func (t TxtOpt) String() string { return t.s }
 // String returns the unsafe text content
 func (t UnsafeTxtOpt) String() string { return t.s }
 
-// SVG apply methods for content options
-func (o TxtOpt) apply(_ *SvgAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
-func (o UnsafeTxtOpt) apply(_ *SvgAttrs, kids *[]Component) {
+// SVG Apply methods for content options
+func (o TxtOpt) Apply(_ *SvgAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
+func (o UnsafeTxtOpt) Apply(_ *SvgAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
 }
-func (o ChildOpt) apply(_ *SvgAttrs, kids *[]Component) { *kids = append(*kids, o.c) }
+func (o ChildOpt) Apply(_ *SvgAttrs, kids *[]Component) { *kids = append(*kids, o.c) }

@@ -8,7 +8,7 @@ type QAttrs struct {
 }
 
 type QArg interface {
-	applyQ(*QAttrs, *[]Component)
+	ApplyQ(*QAttrs, *[]Component)
 }
 
 func defaultQAttrs() *QAttrs {
@@ -26,16 +26,16 @@ func Q(args ...QArg) Node {
 	a := defaultQAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyQ(a, &kids)
+		ar.ApplyQ(a, &kids)
 	}
 	return Node{Tag: "q", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyQ(a *QAttrs, _ *[]Component) {
+func (g Global) ApplyQ(a *QAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o CiteOpt) applyQ(a *QAttrs, _ *[]Component) {
+func (o CiteOpt) ApplyQ(a *QAttrs, _ *[]Component) {
 	a.Cite = o.v
 }
 

@@ -80,7 +80,7 @@ type SvgFeColorMatrixAttrs struct {
 
 // SvgFeColorMatrixArg interface for feColorMatrix element arguments
 type SvgFeColorMatrixArg interface {
-	applyFeColorMatrix(*SvgFeColorMatrixAttrs, *[]Component)
+	ApplyFeColorMatrix(*SvgFeColorMatrixAttrs, *[]Component)
 }
 
 // defaultSvgFeColorMatrixAttrs creates default attributes for feColorMatrix
@@ -95,7 +95,7 @@ func SvgFeColorMatrix(args ...SvgFeColorMatrixArg) Node {
 	a := defaultSvgFeColorMatrixAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeColorMatrix(a, &kids)
+		ar.ApplyFeColorMatrix(a, &kids)
 	}
 	return Node{
 		Tag:   "feColorMatrix",
@@ -105,342 +105,342 @@ func SvgFeColorMatrix(args ...SvgFeColorMatrixArg) Node {
 }
 
 // Global applies global SVG attributes to feColorMatrix
-func (g Global) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (g Global) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to FeColorMatrix
-func (o AlignmentBaselineOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to FeColorMatrix
-func (o BaselineShiftOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to FeColorMatrix
-func (o ClipOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to FeColorMatrix
-func (o ClipPathOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to FeColorMatrix
-func (o ClipRuleOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to FeColorMatrix
-func (o ColorOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to FeColorMatrix
-func (o ColorInterpolationOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to FeColorMatrix
-func (o ColorInterpolationFiltersOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to FeColorMatrix
-func (o ColorProfileOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to FeColorMatrix
-func (o ColorRenderingOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to FeColorMatrix
-func (o CursorOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to FeColorMatrix
-func (o DirectionOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to FeColorMatrix
-func (o DisplayOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to FeColorMatrix
-func (o DominantBaselineOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to FeColorMatrix
-func (o EnableBackgroundOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to FeColorMatrix
-func (o FillOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to FeColorMatrix
-func (o FillOpacityOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to FeColorMatrix
-func (o FillRuleOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to FeColorMatrix
-func (o FilterOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to FeColorMatrix
-func (o FloodColorOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeColorMatrix
-func (o FloodOpacityOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to FeColorMatrix
-func (o FontFamilyOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FeColorMatrix
-func (o FontSizeOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to FeColorMatrix
-func (o FontSizeAdjustOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to FeColorMatrix
-func (o FontStretchOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FeColorMatrix
-func (o FontStyleOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FeColorMatrix
-func (o FontVariantOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FeColorMatrix
-func (o FontWeightOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to FeColorMatrix
-func (o GlyphOrientationHorizontalOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to FeColorMatrix
-func (o GlyphOrientationVerticalOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to FeColorMatrix
-func (o HeightOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to FeColorMatrix
-func (o ImageRenderingOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // InOpt applies to FeColorMatrix
-func (o InOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o InOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // KerningOpt applies to FeColorMatrix
-func (o KerningOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to FeColorMatrix
-func (o LetterSpacingOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to FeColorMatrix
-func (o LightingColorOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to FeColorMatrix
-func (o MarkerEndOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to FeColorMatrix
-func (o MarkerMidOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to FeColorMatrix
-func (o MarkerStartOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to FeColorMatrix
-func (o MaskOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to FeColorMatrix
-func (o OpacityOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to FeColorMatrix
-func (o OverflowOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to FeColorMatrix
-func (o PointerEventsOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ResultOpt applies to FeColorMatrix
-func (o ResultOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // ShapeRenderingOpt applies to FeColorMatrix
-func (o ShapeRenderingOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to FeColorMatrix
-func (o StopColorOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to FeColorMatrix
-func (o StopOpacityOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to FeColorMatrix
-func (o StrokeOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to FeColorMatrix
-func (o StrokeDasharrayOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to FeColorMatrix
-func (o StrokeDashoffsetOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to FeColorMatrix
-func (o StrokeLinecapOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to FeColorMatrix
-func (o StrokeLinejoinOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to FeColorMatrix
-func (o StrokeMiterlimitOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to FeColorMatrix
-func (o StrokeOpacityOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to FeColorMatrix
-func (o StrokeWidthOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to FeColorMatrix
-func (o TextAnchorOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to FeColorMatrix
-func (o TextDecorationOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to FeColorMatrix
-func (o TextRenderingOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TypeOpt applies to FeColorMatrix
-func (o TypeOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o TypeOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 
 // UnicodeBidiOpt applies to FeColorMatrix
-func (o UnicodeBidiOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // ValuesOpt applies to FeColorMatrix
-func (o ValuesOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o ValuesOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Values = o.v
 }
 
 // VisibilityOpt applies to FeColorMatrix
-func (o VisibilityOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to FeColorMatrix
-func (o WidthOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to FeColorMatrix
-func (o WordSpacingOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to FeColorMatrix
-func (o WritingModeOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to FeColorMatrix
-func (o XOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeColorMatrix
-func (o YOpt) applyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeColorMatrix(a *SvgFeColorMatrixAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

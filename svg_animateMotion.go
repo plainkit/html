@@ -42,7 +42,7 @@ type SvgAnimateMotionAttrs struct {
 
 // SvgAnimateMotionArg interface for animateMotion element arguments
 type SvgAnimateMotionArg interface {
-	applyAnimateMotion(*SvgAnimateMotionAttrs, *[]Component)
+	ApplyAnimateMotion(*SvgAnimateMotionAttrs, *[]Component)
 }
 
 // defaultSvgAnimateMotionAttrs creates default attributes for animateMotion
@@ -57,7 +57,7 @@ func SvgAnimateMotion(args ...SvgAnimateMotionArg) Node {
 	a := defaultSvgAnimateMotionAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyAnimateMotion(a, &kids)
+		ar.ApplyAnimateMotion(a, &kids)
 	}
 	return Node{
 		Tag:   "animateMotion",
@@ -67,152 +67,152 @@ func SvgAnimateMotion(args ...SvgAnimateMotionArg) Node {
 }
 
 // Global applies global SVG attributes to animateMotion
-func (g Global) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (g Global) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AccumulateOpt applies to AnimateMotion
-func (o AccumulateOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o AccumulateOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.Accumulate = o.v
 }
 
 // AdditiveOpt applies to AnimateMotion
-func (o AdditiveOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o AdditiveOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.Additive = o.v
 }
 
 // BeginOpt applies to AnimateMotion
-func (o BeginOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o BeginOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.Begin = o.v
 }
 
 // ByOpt applies to AnimateMotion
-func (o ByOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o ByOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.By = o.v
 }
 
 // CalcModeOpt applies to AnimateMotion
-func (o CalcModeOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o CalcModeOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.CalcMode = o.v
 }
 
 // DurOpt applies to AnimateMotion
-func (o DurOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o DurOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.Dur = o.v
 }
 
 // EndOpt applies to AnimateMotion
-func (o EndOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o EndOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.End = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to AnimateMotion
-func (o ExternalResourcesRequiredOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to AnimateMotion
-func (o FillOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o FillOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FromOpt applies to AnimateMotion
-func (o FromOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o FromOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.From = o.v
 }
 
 // HrefOpt applies to AnimateMotion
-func (o HrefOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o HrefOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // KeyPointsOpt applies to AnimateMotion
-func (o KeyPointsOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o KeyPointsOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.KeyPoints = o.v
 }
 
 // KeySplinesOpt applies to AnimateMotion
-func (o KeySplinesOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o KeySplinesOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.KeySplines = o.v
 }
 
 // KeyTimesOpt applies to AnimateMotion
-func (o KeyTimesOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o KeyTimesOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.KeyTimes = o.v
 }
 
 // MaxOpt applies to AnimateMotion
-func (o MaxOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o MaxOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.Max = o.v
 }
 
 // MinOpt applies to AnimateMotion
-func (o MinOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o MinOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.Min = o.v
 }
 
 // OriginOpt applies to AnimateMotion
-func (o OriginOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o OriginOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.Origin = o.v
 }
 
 // PathOpt applies to AnimateMotion
-func (o PathOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o PathOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.Path = o.v
 }
 
 // RepeatCountOpt applies to AnimateMotion
-func (o RepeatCountOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o RepeatCountOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.RepeatCount = o.v
 }
 
 // RepeatDurOpt applies to AnimateMotion
-func (o RepeatDurOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o RepeatDurOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.RepeatDur = o.v
 }
 
 // RequiredExtensionsOpt applies to AnimateMotion
-func (o RequiredExtensionsOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to AnimateMotion
-func (o RequiredFeaturesOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to AnimateMotion
-func (o RequiredFontsOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to AnimateMotion
-func (o RequiredFormatsOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // RestartOpt applies to AnimateMotion
-func (o RestartOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o RestartOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.Restart = o.v
 }
 
 // RotateOpt applies to AnimateMotion
-func (o RotateOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o RotateOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.Rotate = o.v
 }
 
 // SystemLanguageOpt applies to AnimateMotion
-func (o SystemLanguageOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // ToOpt applies to AnimateMotion
-func (o ToOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o ToOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.To = o.v
 }
 
 // ValuesOpt applies to AnimateMotion
-func (o ValuesOpt) applyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
+func (o ValuesOpt) ApplyAnimateMotion(a *SvgAnimateMotionAttrs, _ *[]Component) {
 	a.Values = o.v
 }
 

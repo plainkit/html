@@ -7,7 +7,7 @@ type SubAttrs struct {
 }
 
 type SubArg interface {
-	applySub(*SubAttrs, *[]Component)
+	ApplySub(*SubAttrs, *[]Component)
 }
 
 func defaultSubAttrs() *SubAttrs {
@@ -25,12 +25,12 @@ func Sub(args ...SubArg) Node {
 	a := defaultSubAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySub(a, &kids)
+		ar.ApplySub(a, &kids)
 	}
 	return Node{Tag: "sub", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySub(a *SubAttrs, _ *[]Component) {
+func (g Global) ApplySub(a *SubAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

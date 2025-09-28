@@ -83,7 +83,7 @@ type SvgTrefAttrs struct {
 
 // SvgTrefArg interface for tref element arguments
 type SvgTrefArg interface {
-	applyTref(*SvgTrefAttrs, *[]Component)
+	ApplyTref(*SvgTrefAttrs, *[]Component)
 }
 
 // defaultSvgTrefAttrs creates default attributes for tref
@@ -98,7 +98,7 @@ func SvgTref(args ...SvgTrefArg) Node {
 	a := defaultSvgTrefAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTref(a, &kids)
+		ar.ApplyTref(a, &kids)
 	}
 	return Node{
 		Tag:   "tref",
@@ -108,357 +108,357 @@ func SvgTref(args ...SvgTrefArg) Node {
 }
 
 // Global applies global SVG attributes to tref
-func (g Global) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (g Global) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Tref
-func (o AlignmentBaselineOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Tref
-func (o BaselineShiftOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Tref
-func (o ClipOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Tref
-func (o ClipPathOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Tref
-func (o ClipRuleOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Tref
-func (o ColorOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Tref
-func (o ColorInterpolationOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Tref
-func (o ColorInterpolationFiltersOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Tref
-func (o ColorProfileOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Tref
-func (o ColorRenderingOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Tref
-func (o CursorOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Tref
-func (o DirectionOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Tref
-func (o DisplayOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Tref
-func (o DominantBaselineOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // DxOpt applies to Tref
-func (o DxOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o DxOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Dx = o.v
 }
 
 // DyOpt applies to Tref
-func (o DyOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o DyOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Dy = o.v
 }
 
 // EnableBackgroundOpt applies to Tref
-func (o EnableBackgroundOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Tref
-func (o ExternalResourcesRequiredOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Tref
-func (o FillOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o FillOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Tref
-func (o FillOpacityOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Tref
-func (o FillRuleOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Tref
-func (o FilterOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Tref
-func (o FloodColorOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Tref
-func (o FloodOpacityOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to Tref
-func (o FontFamilyOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Tref
-func (o FontSizeOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Tref
-func (o FontSizeAdjustOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Tref
-func (o FontStretchOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Tref
-func (o FontStyleOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Tref
-func (o FontVariantOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Tref
-func (o FontWeightOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Tref
-func (o GlyphOrientationHorizontalOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Tref
-func (o GlyphOrientationVerticalOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // ImageRenderingOpt applies to Tref
-func (o ImageRenderingOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Tref
-func (o KerningOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LengthAdjustOpt applies to Tref
-func (o LengthAdjustOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o LengthAdjustOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.LengthAdjust = o.v
 }
 
 // LetterSpacingOpt applies to Tref
-func (o LetterSpacingOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Tref
-func (o LightingColorOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Tref
-func (o MarkerEndOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Tref
-func (o MarkerMidOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Tref
-func (o MarkerStartOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Tref
-func (o MaskOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to Tref
-func (o OpacityOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Tref
-func (o OverflowOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to Tref
-func (o PointerEventsOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // RequiredExtensionsOpt applies to Tref
-func (o RequiredExtensionsOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Tref
-func (o RequiredFeaturesOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RotateOpt applies to Tref
-func (o RotateOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o RotateOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Rotate = o.v
 }
 
 // ShapeRenderingOpt applies to Tref
-func (o ShapeRenderingOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Tref
-func (o StopColorOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Tref
-func (o StopOpacityOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Tref
-func (o StrokeOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Tref
-func (o StrokeDasharrayOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Tref
-func (o StrokeDashoffsetOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Tref
-func (o StrokeLinecapOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Tref
-func (o StrokeLinejoinOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Tref
-func (o StrokeMiterlimitOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Tref
-func (o StrokeOpacityOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Tref
-func (o StrokeWidthOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to Tref
-func (o SystemLanguageOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to Tref
-func (o TextAnchorOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Tref
-func (o TextDecorationOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Tref
-func (o TextRenderingOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TextLengthOpt applies to Tref
-func (o TextLengthOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o TextLengthOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.TextLength = o.v
 }
 
 // UnicodeBidiOpt applies to Tref
-func (o UnicodeBidiOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Tref
-func (o VisibilityOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to Tref
-func (o WordSpacingOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Tref
-func (o WritingModeOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to Tref
-func (o XOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o XOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Tref
-func (o YOpt) applyTref(a *SvgTrefAttrs, _ *[]Component) {
+func (o YOpt) ApplyTref(a *SvgTrefAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

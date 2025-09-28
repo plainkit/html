@@ -8,7 +8,7 @@ type ColAttrs struct {
 }
 
 type ColArg interface {
-	applyCol(*ColAttrs, *[]Component)
+	ApplyCol(*ColAttrs, *[]Component)
 }
 
 func defaultColAttrs() *ColAttrs {
@@ -26,16 +26,16 @@ func Col(args ...ColArg) Node {
 	a := defaultColAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyCol(a, &kids)
+		ar.ApplyCol(a, &kids)
 	}
 	return Node{Tag: "col", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applyCol(a *ColAttrs, _ *[]Component) {
+func (g Global) ApplyCol(a *ColAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o SpanOpt) applyCol(a *ColAttrs, _ *[]Component) {
+func (o SpanOpt) ApplyCol(a *ColAttrs, _ *[]Component) {
 	a.Span = o.v
 }
 

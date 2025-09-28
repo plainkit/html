@@ -14,7 +14,7 @@ type SvgFeMergeNodeAttrs struct {
 
 // SvgFeMergeNodeArg interface for feMergeNode element arguments
 type SvgFeMergeNodeArg interface {
-	applyFeMergeNode(*SvgFeMergeNodeAttrs, *[]Component)
+	ApplyFeMergeNode(*SvgFeMergeNodeAttrs, *[]Component)
 }
 
 // defaultSvgFeMergeNodeAttrs creates default attributes for feMergeNode
@@ -29,7 +29,7 @@ func SvgFeMergeNode(args ...SvgFeMergeNodeArg) Node {
 	a := defaultSvgFeMergeNodeAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeMergeNode(a, &kids)
+		ar.ApplyFeMergeNode(a, &kids)
 	}
 	return Node{
 		Tag:   "feMergeNode",
@@ -39,12 +39,12 @@ func SvgFeMergeNode(args ...SvgFeMergeNodeArg) Node {
 }
 
 // Global applies global SVG attributes to feMergeNode
-func (g Global) applyFeMergeNode(a *SvgFeMergeNodeAttrs, _ *[]Component) {
+func (g Global) ApplyFeMergeNode(a *SvgFeMergeNodeAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // InOpt applies to FeMergeNode
-func (o InOpt) applyFeMergeNode(a *SvgFeMergeNodeAttrs, _ *[]Component) {
+func (o InOpt) ApplyFeMergeNode(a *SvgFeMergeNodeAttrs, _ *[]Component) {
 	a.In = o.v
 }
 

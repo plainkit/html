@@ -9,7 +9,7 @@ type InsAttrs struct {
 }
 
 type InsArg interface {
-	applyIns(*InsAttrs, *[]Component)
+	ApplyIns(*InsAttrs, *[]Component)
 }
 
 func defaultInsAttrs() *InsAttrs {
@@ -27,19 +27,19 @@ func Ins(args ...InsArg) Node {
 	a := defaultInsAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyIns(a, &kids)
+		ar.ApplyIns(a, &kids)
 	}
 	return Node{Tag: "ins", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyIns(a *InsAttrs, _ *[]Component) {
+func (g Global) ApplyIns(a *InsAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o CiteOpt) applyIns(a *InsAttrs, _ *[]Component) {
+func (o CiteOpt) ApplyIns(a *InsAttrs, _ *[]Component) {
 	a.Cite = o.v
 }
-func (o DatetimeOpt) applyIns(a *InsAttrs, _ *[]Component) {
+func (o DatetimeOpt) ApplyIns(a *InsAttrs, _ *[]Component) {
 	a.Datetime = o.v
 }
 

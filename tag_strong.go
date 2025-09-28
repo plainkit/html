@@ -7,7 +7,7 @@ type StrongAttrs struct {
 }
 
 type StrongArg interface {
-	applyStrong(*StrongAttrs, *[]Component)
+	ApplyStrong(*StrongAttrs, *[]Component)
 }
 
 func defaultStrongAttrs() *StrongAttrs {
@@ -25,12 +25,12 @@ func Strong(args ...StrongArg) Node {
 	a := defaultStrongAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyStrong(a, &kids)
+		ar.ApplyStrong(a, &kids)
 	}
 	return Node{Tag: "strong", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyStrong(a *StrongAttrs, _ *[]Component) {
+func (g Global) ApplyStrong(a *StrongAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

@@ -77,7 +77,7 @@ type SvgMissingGlyphAttrs struct {
 
 // SvgMissingGlyphArg interface for missing-glyph element arguments
 type SvgMissingGlyphArg interface {
-	applyMissingGlyph(*SvgMissingGlyphAttrs, *[]Component)
+	ApplyMissingGlyph(*SvgMissingGlyphAttrs, *[]Component)
 }
 
 // defaultSvgMissingGlyphAttrs creates default attributes for missing-glyph
@@ -92,7 +92,7 @@ func SvgMissingGlyph(args ...SvgMissingGlyphArg) Node {
 	a := defaultSvgMissingGlyphAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyMissingGlyph(a, &kids)
+		ar.ApplyMissingGlyph(a, &kids)
 	}
 	return Node{
 		Tag:   "missing-glyph",
@@ -102,327 +102,327 @@ func SvgMissingGlyph(args ...SvgMissingGlyphArg) Node {
 }
 
 // Global applies global SVG attributes to missing-glyph
-func (g Global) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (g Global) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to MissingGlyph
-func (o AlignmentBaselineOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to MissingGlyph
-func (o BaselineShiftOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to MissingGlyph
-func (o ClipOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to MissingGlyph
-func (o ClipPathOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to MissingGlyph
-func (o ClipRuleOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to MissingGlyph
-func (o ColorOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to MissingGlyph
-func (o ColorInterpolationOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to MissingGlyph
-func (o ColorInterpolationFiltersOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to MissingGlyph
-func (o ColorProfileOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to MissingGlyph
-func (o ColorRenderingOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to MissingGlyph
-func (o CursorOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DOpt applies to MissingGlyph
-func (o DOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o DOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.D = o.v
 }
 
 // DirectionOpt applies to MissingGlyph
-func (o DirectionOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to MissingGlyph
-func (o DisplayOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to MissingGlyph
-func (o DominantBaselineOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to MissingGlyph
-func (o EnableBackgroundOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to MissingGlyph
-func (o FillOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o FillOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to MissingGlyph
-func (o FillOpacityOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to MissingGlyph
-func (o FillRuleOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to MissingGlyph
-func (o FilterOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to MissingGlyph
-func (o FloodColorOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to MissingGlyph
-func (o FloodOpacityOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to MissingGlyph
-func (o FontFamilyOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to MissingGlyph
-func (o FontSizeOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to MissingGlyph
-func (o FontSizeAdjustOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to MissingGlyph
-func (o FontStretchOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to MissingGlyph
-func (o FontStyleOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to MissingGlyph
-func (o FontVariantOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to MissingGlyph
-func (o FontWeightOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to MissingGlyph
-func (o GlyphOrientationHorizontalOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to MissingGlyph
-func (o GlyphOrientationVerticalOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HorizAdvXOpt applies to MissingGlyph
-func (o HorizAdvXOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o HorizAdvXOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.HorizAdvX = o.v
 }
 
 // ImageRenderingOpt applies to MissingGlyph
-func (o ImageRenderingOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to MissingGlyph
-func (o KerningOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to MissingGlyph
-func (o LetterSpacingOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to MissingGlyph
-func (o LightingColorOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to MissingGlyph
-func (o MarkerEndOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to MissingGlyph
-func (o MarkerMidOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to MissingGlyph
-func (o MarkerStartOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to MissingGlyph
-func (o MaskOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to MissingGlyph
-func (o OpacityOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to MissingGlyph
-func (o OverflowOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to MissingGlyph
-func (o PointerEventsOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ShapeRenderingOpt applies to MissingGlyph
-func (o ShapeRenderingOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to MissingGlyph
-func (o StopColorOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to MissingGlyph
-func (o StopOpacityOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to MissingGlyph
-func (o StrokeOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to MissingGlyph
-func (o StrokeDasharrayOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to MissingGlyph
-func (o StrokeDashoffsetOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to MissingGlyph
-func (o StrokeLinecapOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to MissingGlyph
-func (o StrokeLinejoinOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to MissingGlyph
-func (o StrokeMiterlimitOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to MissingGlyph
-func (o StrokeOpacityOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to MissingGlyph
-func (o StrokeWidthOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to MissingGlyph
-func (o TextAnchorOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to MissingGlyph
-func (o TextDecorationOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to MissingGlyph
-func (o TextRenderingOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to MissingGlyph
-func (o UnicodeBidiOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VertAdvYOpt applies to MissingGlyph
-func (o VertAdvYOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o VertAdvYOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.VertAdvY = o.v
 }
 
 // VertOriginXOpt applies to MissingGlyph
-func (o VertOriginXOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o VertOriginXOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.VertOriginX = o.v
 }
 
 // VertOriginYOpt applies to MissingGlyph
-func (o VertOriginYOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o VertOriginYOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.VertOriginY = o.v
 }
 
 // VisibilityOpt applies to MissingGlyph
-func (o VisibilityOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to MissingGlyph
-func (o WordSpacingOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to MissingGlyph
-func (o WritingModeOpt) applyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyMissingGlyph(a *SvgMissingGlyphAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 

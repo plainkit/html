@@ -81,7 +81,7 @@ type SvgFeImageAttrs struct {
 
 // SvgFeImageArg interface for feImage element arguments
 type SvgFeImageArg interface {
-	applyFeImage(*SvgFeImageAttrs, *[]Component)
+	ApplyFeImage(*SvgFeImageAttrs, *[]Component)
 }
 
 // defaultSvgFeImageAttrs creates default attributes for feImage
@@ -96,7 +96,7 @@ func SvgFeImage(args ...SvgFeImageArg) Node {
 	a := defaultSvgFeImageAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeImage(a, &kids)
+		ar.ApplyFeImage(a, &kids)
 	}
 	return Node{
 		Tag:   "feImage",
@@ -106,347 +106,347 @@ func SvgFeImage(args ...SvgFeImageArg) Node {
 }
 
 // Global applies global SVG attributes to feImage
-func (g Global) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (g Global) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to FeImage
-func (o AlignmentBaselineOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to FeImage
-func (o BaselineShiftOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to FeImage
-func (o ClipOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to FeImage
-func (o ClipPathOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to FeImage
-func (o ClipRuleOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to FeImage
-func (o ColorOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to FeImage
-func (o ColorInterpolationOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to FeImage
-func (o ColorInterpolationFiltersOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to FeImage
-func (o ColorProfileOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to FeImage
-func (o ColorRenderingOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CrossoriginOpt applies to FeImage
-func (o CrossoriginOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o CrossoriginOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Crossorigin = o.v
 }
 
 // CursorOpt applies to FeImage
-func (o CursorOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to FeImage
-func (o DirectionOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to FeImage
-func (o DisplayOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to FeImage
-func (o DominantBaselineOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to FeImage
-func (o EnableBackgroundOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to FeImage
-func (o ExternalResourcesRequiredOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to FeImage
-func (o FillOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to FeImage
-func (o FillOpacityOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to FeImage
-func (o FillRuleOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to FeImage
-func (o FilterOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to FeImage
-func (o FloodColorOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeImage
-func (o FloodOpacityOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to FeImage
-func (o FontFamilyOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FeImage
-func (o FontSizeOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to FeImage
-func (o FontSizeAdjustOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to FeImage
-func (o FontStretchOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FeImage
-func (o FontStyleOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FeImage
-func (o FontVariantOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FeImage
-func (o FontWeightOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to FeImage
-func (o GlyphOrientationHorizontalOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to FeImage
-func (o GlyphOrientationVerticalOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to FeImage
-func (o HeightOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // HrefOpt applies to FeImage
-func (o HrefOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o HrefOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // ImageRenderingOpt applies to FeImage
-func (o ImageRenderingOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to FeImage
-func (o KerningOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to FeImage
-func (o LetterSpacingOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to FeImage
-func (o LightingColorOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to FeImage
-func (o MarkerEndOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to FeImage
-func (o MarkerMidOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to FeImage
-func (o MarkerStartOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to FeImage
-func (o MaskOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to FeImage
-func (o OpacityOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to FeImage
-func (o OverflowOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to FeImage
-func (o PointerEventsOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // PreserveAspectRatioOpt applies to FeImage
-func (o PreserveAspectRatioOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o PreserveAspectRatioOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
 // ResultOpt applies to FeImage
-func (o ResultOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // ShapeRenderingOpt applies to FeImage
-func (o ShapeRenderingOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to FeImage
-func (o StopColorOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to FeImage
-func (o StopOpacityOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to FeImage
-func (o StrokeOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to FeImage
-func (o StrokeDasharrayOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to FeImage
-func (o StrokeDashoffsetOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to FeImage
-func (o StrokeLinecapOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to FeImage
-func (o StrokeLinejoinOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to FeImage
-func (o StrokeMiterlimitOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to FeImage
-func (o StrokeOpacityOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to FeImage
-func (o StrokeWidthOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to FeImage
-func (o TextAnchorOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to FeImage
-func (o TextDecorationOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to FeImage
-func (o TextRenderingOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to FeImage
-func (o UnicodeBidiOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to FeImage
-func (o VisibilityOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to FeImage
-func (o WidthOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to FeImage
-func (o WordSpacingOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to FeImage
-func (o WritingModeOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to FeImage
-func (o XOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeImage
-func (o YOpt) applyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeImage(a *SvgFeImageAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

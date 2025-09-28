@@ -7,7 +7,7 @@ type ArticleAttrs struct {
 }
 
 type ArticleArg interface {
-	applyArticle(*ArticleAttrs, *[]Component)
+	ApplyArticle(*ArticleAttrs, *[]Component)
 }
 
 func defaultArticleAttrs() *ArticleAttrs {
@@ -25,12 +25,12 @@ func Article(args ...ArticleArg) Node {
 	a := defaultArticleAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyArticle(a, &kids)
+		ar.ApplyArticle(a, &kids)
 	}
 	return Node{Tag: "article", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyArticle(a *ArticleAttrs, _ *[]Component) {
+func (g Global) ApplyArticle(a *ArticleAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

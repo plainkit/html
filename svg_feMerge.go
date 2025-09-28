@@ -77,7 +77,7 @@ type SvgFeMergeAttrs struct {
 
 // SvgFeMergeArg interface for feMerge element arguments
 type SvgFeMergeArg interface {
-	applyFeMerge(*SvgFeMergeAttrs, *[]Component)
+	ApplyFeMerge(*SvgFeMergeAttrs, *[]Component)
 }
 
 // defaultSvgFeMergeAttrs creates default attributes for feMerge
@@ -92,7 +92,7 @@ func SvgFeMerge(args ...SvgFeMergeArg) Node {
 	a := defaultSvgFeMergeAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeMerge(a, &kids)
+		ar.ApplyFeMerge(a, &kids)
 	}
 	return Node{
 		Tag:   "feMerge",
@@ -102,327 +102,327 @@ func SvgFeMerge(args ...SvgFeMergeArg) Node {
 }
 
 // Global applies global SVG attributes to feMerge
-func (g Global) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (g Global) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to FeMerge
-func (o AlignmentBaselineOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to FeMerge
-func (o BaselineShiftOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to FeMerge
-func (o ClipOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to FeMerge
-func (o ClipPathOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to FeMerge
-func (o ClipRuleOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to FeMerge
-func (o ColorOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to FeMerge
-func (o ColorInterpolationOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to FeMerge
-func (o ColorInterpolationFiltersOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to FeMerge
-func (o ColorProfileOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to FeMerge
-func (o ColorRenderingOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to FeMerge
-func (o CursorOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to FeMerge
-func (o DirectionOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to FeMerge
-func (o DisplayOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to FeMerge
-func (o DominantBaselineOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to FeMerge
-func (o EnableBackgroundOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to FeMerge
-func (o FillOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to FeMerge
-func (o FillOpacityOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to FeMerge
-func (o FillRuleOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to FeMerge
-func (o FilterOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to FeMerge
-func (o FloodColorOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeMerge
-func (o FloodOpacityOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to FeMerge
-func (o FontFamilyOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FeMerge
-func (o FontSizeOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to FeMerge
-func (o FontSizeAdjustOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to FeMerge
-func (o FontStretchOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FeMerge
-func (o FontStyleOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FeMerge
-func (o FontVariantOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FeMerge
-func (o FontWeightOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to FeMerge
-func (o GlyphOrientationHorizontalOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to FeMerge
-func (o GlyphOrientationVerticalOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to FeMerge
-func (o HeightOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to FeMerge
-func (o ImageRenderingOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to FeMerge
-func (o KerningOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to FeMerge
-func (o LetterSpacingOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to FeMerge
-func (o LightingColorOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to FeMerge
-func (o MarkerEndOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to FeMerge
-func (o MarkerMidOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to FeMerge
-func (o MarkerStartOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to FeMerge
-func (o MaskOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to FeMerge
-func (o OpacityOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to FeMerge
-func (o OverflowOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to FeMerge
-func (o PointerEventsOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ResultOpt applies to FeMerge
-func (o ResultOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // ShapeRenderingOpt applies to FeMerge
-func (o ShapeRenderingOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to FeMerge
-func (o StopColorOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to FeMerge
-func (o StopOpacityOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to FeMerge
-func (o StrokeOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to FeMerge
-func (o StrokeDasharrayOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to FeMerge
-func (o StrokeDashoffsetOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to FeMerge
-func (o StrokeLinecapOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to FeMerge
-func (o StrokeLinejoinOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to FeMerge
-func (o StrokeMiterlimitOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to FeMerge
-func (o StrokeOpacityOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to FeMerge
-func (o StrokeWidthOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to FeMerge
-func (o TextAnchorOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to FeMerge
-func (o TextDecorationOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to FeMerge
-func (o TextRenderingOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to FeMerge
-func (o UnicodeBidiOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to FeMerge
-func (o VisibilityOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to FeMerge
-func (o WidthOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to FeMerge
-func (o WordSpacingOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to FeMerge
-func (o WritingModeOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to FeMerge
-func (o XOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeMerge
-func (o YOpt) applyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeMerge(a *SvgFeMergeAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

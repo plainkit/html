@@ -82,7 +82,7 @@ type SvgMaskAttrs struct {
 
 // SvgMaskArg interface for mask element arguments
 type SvgMaskArg interface {
-	applyMask(*SvgMaskAttrs, *[]Component)
+	ApplyMask(*SvgMaskAttrs, *[]Component)
 }
 
 // defaultSvgMaskAttrs creates default attributes for mask
@@ -97,7 +97,7 @@ func SvgMask(args ...SvgMaskArg) Node {
 	a := defaultSvgMaskAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyMask(a, &kids)
+		ar.ApplyMask(a, &kids)
 	}
 	return Node{
 		Tag:   "mask",
@@ -107,352 +107,352 @@ func SvgMask(args ...SvgMaskArg) Node {
 }
 
 // Global applies global SVG attributes to mask
-func (g Global) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (g Global) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Mask
-func (o AlignmentBaselineOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Mask
-func (o BaselineShiftOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Mask
-func (o ClipOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Mask
-func (o ClipPathOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Mask
-func (o ClipRuleOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Mask
-func (o ColorOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Mask
-func (o ColorInterpolationOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Mask
-func (o ColorInterpolationFiltersOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Mask
-func (o ColorProfileOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Mask
-func (o ColorRenderingOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Mask
-func (o CursorOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Mask
-func (o DirectionOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Mask
-func (o DisplayOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Mask
-func (o DominantBaselineOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Mask
-func (o EnableBackgroundOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Mask
-func (o ExternalResourcesRequiredOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Mask
-func (o FillOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o FillOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Mask
-func (o FillOpacityOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Mask
-func (o FillRuleOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Mask
-func (o FilterOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Mask
-func (o FloodColorOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Mask
-func (o FloodOpacityOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to Mask
-func (o FontFamilyOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Mask
-func (o FontSizeOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Mask
-func (o FontSizeAdjustOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Mask
-func (o FontStretchOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Mask
-func (o FontStyleOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Mask
-func (o FontVariantOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Mask
-func (o FontWeightOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Mask
-func (o GlyphOrientationHorizontalOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Mask
-func (o GlyphOrientationVerticalOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to Mask
-func (o HeightOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to Mask
-func (o ImageRenderingOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Mask
-func (o KerningOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Mask
-func (o LetterSpacingOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Mask
-func (o LightingColorOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Mask
-func (o MarkerEndOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Mask
-func (o MarkerMidOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Mask
-func (o MarkerStartOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Mask
-func (o MaskOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // MaskContentUnitsOpt applies to Mask
-func (o MaskContentUnitsOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o MaskContentUnitsOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.MaskContentUnits = o.v
 }
 
 // MaskUnitsOpt applies to Mask
-func (o MaskUnitsOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o MaskUnitsOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.MaskUnits = o.v
 }
 
 // OpacityOpt applies to Mask
-func (o OpacityOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Mask
-func (o OverflowOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to Mask
-func (o PointerEventsOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // RequiredExtensionsOpt applies to Mask
-func (o RequiredExtensionsOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Mask
-func (o RequiredFeaturesOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // ShapeRenderingOpt applies to Mask
-func (o ShapeRenderingOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Mask
-func (o StopColorOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Mask
-func (o StopOpacityOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Mask
-func (o StrokeOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Mask
-func (o StrokeDasharrayOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Mask
-func (o StrokeDashoffsetOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Mask
-func (o StrokeLinecapOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Mask
-func (o StrokeLinejoinOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Mask
-func (o StrokeMiterlimitOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Mask
-func (o StrokeOpacityOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Mask
-func (o StrokeWidthOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to Mask
-func (o SystemLanguageOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to Mask
-func (o TextAnchorOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Mask
-func (o TextDecorationOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Mask
-func (o TextRenderingOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to Mask
-func (o UnicodeBidiOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Mask
-func (o VisibilityOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to Mask
-func (o WidthOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to Mask
-func (o WordSpacingOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Mask
-func (o WritingModeOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to Mask
-func (o XOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o XOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Mask
-func (o YOpt) applyMask(a *SvgMaskAttrs, _ *[]Component) {
+func (o YOpt) ApplyMask(a *SvgMaskAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

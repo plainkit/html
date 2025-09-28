@@ -7,7 +7,7 @@ type AsideAttrs struct {
 }
 
 type AsideArg interface {
-	applyAside(*AsideAttrs, *[]Component)
+	ApplyAside(*AsideAttrs, *[]Component)
 }
 
 func defaultAsideAttrs() *AsideAttrs {
@@ -25,12 +25,12 @@ func Aside(args ...AsideArg) Node {
 	a := defaultAsideAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyAside(a, &kids)
+		ar.ApplyAside(a, &kids)
 	}
 	return Node{Tag: "aside", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyAside(a *AsideAttrs, _ *[]Component) {
+func (g Global) ApplyAside(a *AsideAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

@@ -19,7 +19,7 @@ type SvgCursorAttrs struct {
 
 // SvgCursorArg interface for cursor element arguments
 type SvgCursorArg interface {
-	applyCursor(*SvgCursorAttrs, *[]Component)
+	ApplyCursor(*SvgCursorAttrs, *[]Component)
 }
 
 // defaultSvgCursorAttrs creates default attributes for cursor
@@ -34,7 +34,7 @@ func SvgCursor(args ...SvgCursorArg) Node {
 	a := defaultSvgCursorAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyCursor(a, &kids)
+		ar.ApplyCursor(a, &kids)
 	}
 	return Node{
 		Tag:   "cursor",
@@ -44,37 +44,37 @@ func SvgCursor(args ...SvgCursorArg) Node {
 }
 
 // Global applies global SVG attributes to cursor
-func (g Global) applyCursor(a *SvgCursorAttrs, _ *[]Component) {
+func (g Global) ApplyCursor(a *SvgCursorAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // ExternalResourcesRequiredOpt applies to Cursor
-func (o ExternalResourcesRequiredOpt) applyCursor(a *SvgCursorAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyCursor(a *SvgCursorAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // RequiredExtensionsOpt applies to Cursor
-func (o RequiredExtensionsOpt) applyCursor(a *SvgCursorAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyCursor(a *SvgCursorAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Cursor
-func (o RequiredFeaturesOpt) applyCursor(a *SvgCursorAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyCursor(a *SvgCursorAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // SystemLanguageOpt applies to Cursor
-func (o SystemLanguageOpt) applyCursor(a *SvgCursorAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyCursor(a *SvgCursorAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // XOpt applies to Cursor
-func (o XOpt) applyCursor(a *SvgCursorAttrs, _ *[]Component) {
+func (o XOpt) ApplyCursor(a *SvgCursorAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Cursor
-func (o YOpt) applyCursor(a *SvgCursorAttrs, _ *[]Component) {
+func (o YOpt) ApplyCursor(a *SvgCursorAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

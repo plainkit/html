@@ -14,7 +14,7 @@ type SelectAttrs struct {
 }
 
 type SelectArg interface {
-	applySelect(*SelectAttrs, *[]Component)
+	ApplySelect(*SelectAttrs, *[]Component)
 }
 
 func defaultSelectAttrs() *SelectAttrs {
@@ -32,34 +32,34 @@ func Select(args ...SelectArg) Node {
 	a := defaultSelectAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySelect(a, &kids)
+		ar.ApplySelect(a, &kids)
 	}
 	return Node{Tag: "select", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySelect(a *SelectAttrs, _ *[]Component) {
+func (g Global) ApplySelect(a *SelectAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AutocompleteOpt) applySelect(a *SelectAttrs, _ *[]Component) {
+func (o AutocompleteOpt) ApplySelect(a *SelectAttrs, _ *[]Component) {
 	a.Autocomplete = o.v
 }
-func (o DisabledOpt) applySelect(a *SelectAttrs, _ *[]Component) {
+func (o DisabledOpt) ApplySelect(a *SelectAttrs, _ *[]Component) {
 	a.Disabled = true
 }
-func (o FormOpt) applySelect(a *SelectAttrs, _ *[]Component) {
+func (o FormOpt) ApplySelect(a *SelectAttrs, _ *[]Component) {
 	a.Form = o.v
 }
-func (o MultipleOpt) applySelect(a *SelectAttrs, _ *[]Component) {
+func (o MultipleOpt) ApplySelect(a *SelectAttrs, _ *[]Component) {
 	a.Multiple = true
 }
-func (o NameOpt) applySelect(a *SelectAttrs, _ *[]Component) {
+func (o NameOpt) ApplySelect(a *SelectAttrs, _ *[]Component) {
 	a.Name = o.v
 }
-func (o RequiredOpt) applySelect(a *SelectAttrs, _ *[]Component) {
+func (o RequiredOpt) ApplySelect(a *SelectAttrs, _ *[]Component) {
 	a.Required = true
 }
-func (o SizeOpt) applySelect(a *SelectAttrs, _ *[]Component) {
+func (o SizeOpt) ApplySelect(a *SelectAttrs, _ *[]Component) {
 	a.Size = o.v
 }
 

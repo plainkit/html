@@ -7,7 +7,7 @@ type HeadAttrs struct {
 }
 
 type HeadArg interface {
-	applyHead(*HeadAttrs, *[]Component)
+	ApplyHead(*HeadAttrs, *[]Component)
 }
 
 func defaultHeadAttrs() *HeadAttrs {
@@ -25,12 +25,12 @@ func Head(args ...HeadArg) Node {
 	a := defaultHeadAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyHead(a, &kids)
+		ar.ApplyHead(a, &kids)
 	}
 	return Node{Tag: "head", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyHead(a *HeadAttrs, _ *[]Component) {
+func (g Global) ApplyHead(a *HeadAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

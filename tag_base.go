@@ -9,7 +9,7 @@ type BaseAttrs struct {
 }
 
 type BaseArg interface {
-	applyBase(*BaseAttrs, *[]Component)
+	ApplyBase(*BaseAttrs, *[]Component)
 }
 
 func defaultBaseAttrs() *BaseAttrs {
@@ -27,19 +27,19 @@ func Base(args ...BaseArg) Node {
 	a := defaultBaseAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyBase(a, &kids)
+		ar.ApplyBase(a, &kids)
 	}
 	return Node{Tag: "base", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applyBase(a *BaseAttrs, _ *[]Component) {
+func (g Global) ApplyBase(a *BaseAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o HrefOpt) applyBase(a *BaseAttrs, _ *[]Component) {
+func (o HrefOpt) ApplyBase(a *BaseAttrs, _ *[]Component) {
 	a.Href = o.v
 }
-func (o TargetOpt) applyBase(a *BaseAttrs, _ *[]Component) {
+func (o TargetOpt) ApplyBase(a *BaseAttrs, _ *[]Component) {
 	a.Target = o.v
 }
 

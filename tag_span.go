@@ -7,7 +7,7 @@ type SpanAttrs struct {
 }
 
 type SpanArg interface {
-	applySpan(*SpanAttrs, *[]Component)
+	ApplySpan(*SpanAttrs, *[]Component)
 }
 
 func defaultSpanAttrs() *SpanAttrs {
@@ -25,12 +25,12 @@ func Span(args ...SpanArg) Node {
 	a := defaultSpanAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySpan(a, &kids)
+		ar.ApplySpan(a, &kids)
 	}
 	return Node{Tag: "span", Attrs: a, Kids: kids}
 }
 
-func (g Global) applySpan(a *SpanAttrs, _ *[]Component) {
+func (g Global) ApplySpan(a *SpanAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

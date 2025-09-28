@@ -7,7 +7,7 @@ type PAttrs struct {
 }
 
 type PArg interface {
-	applyP(*PAttrs, *[]Component)
+	ApplyP(*PAttrs, *[]Component)
 }
 
 func defaultPAttrs() *PAttrs {
@@ -25,12 +25,12 @@ func P(args ...PArg) Node {
 	a := defaultPAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyP(a, &kids)
+		ar.ApplyP(a, &kids)
 	}
 	return Node{Tag: "p", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyP(a *PAttrs, _ *[]Component) {
+func (g Global) ApplyP(a *PAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

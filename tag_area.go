@@ -16,7 +16,7 @@ type AreaAttrs struct {
 }
 
 type AreaArg interface {
-	applyArea(*AreaAttrs, *[]Component)
+	ApplyArea(*AreaAttrs, *[]Component)
 }
 
 func defaultAreaAttrs() *AreaAttrs {
@@ -34,44 +34,44 @@ func Area(args ...AreaArg) Node {
 	a := defaultAreaAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyArea(a, &kids)
+		ar.ApplyArea(a, &kids)
 	}
 	return Node{Tag: "area", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applyArea(a *AreaAttrs, _ *[]Component) {
+func (g Global) ApplyArea(a *AreaAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AltOpt) applyArea(a *AreaAttrs, _ *[]Component) {
+func (o AltOpt) ApplyArea(a *AreaAttrs, _ *[]Component) {
 	a.Alt = o.v
 }
-func (o CoordsOpt) applyArea(a *AreaAttrs, _ *[]Component) {
+func (o CoordsOpt) ApplyArea(a *AreaAttrs, _ *[]Component) {
 	a.Coords = o.v
 }
-func (o DownloadOpt) applyArea(a *AreaAttrs, _ *[]Component) {
+func (o DownloadOpt) ApplyArea(a *AreaAttrs, _ *[]Component) {
 	a.Download = o.v
 }
-func (o HrefOpt) applyArea(a *AreaAttrs, _ *[]Component) {
+func (o HrefOpt) ApplyArea(a *AreaAttrs, _ *[]Component) {
 	a.Href = o.v
 }
-func (o PingOpt) applyArea(a *AreaAttrs, _ *[]Component) {
+func (o PingOpt) ApplyArea(a *AreaAttrs, _ *[]Component) {
 	a.Ping = o.v
 }
-func (o ReferrerpolicyOpt) applyArea(a *AreaAttrs, _ *[]Component) {
+func (o ReferrerpolicyOpt) ApplyArea(a *AreaAttrs, _ *[]Component) {
 	a.Referrerpolicy = o.v
 }
-func (o RelOpt) applyArea(a *AreaAttrs, _ *[]Component) {
+func (o RelOpt) ApplyArea(a *AreaAttrs, _ *[]Component) {
 	if a.Rel == "" {
 		a.Rel = o.v
 	} else {
 		a.Rel += " " + o.v
 	}
 }
-func (o ShapeOpt) applyArea(a *AreaAttrs, _ *[]Component) {
+func (o ShapeOpt) ApplyArea(a *AreaAttrs, _ *[]Component) {
 	a.Shape = o.v
 }
-func (o TargetOpt) applyArea(a *AreaAttrs, _ *[]Component) {
+func (o TargetOpt) ApplyArea(a *AreaAttrs, _ *[]Component) {
 	a.Target = o.v
 }
 

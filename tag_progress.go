@@ -9,7 +9,7 @@ type ProgressAttrs struct {
 }
 
 type ProgressArg interface {
-	applyProgress(*ProgressAttrs, *[]Component)
+	ApplyProgress(*ProgressAttrs, *[]Component)
 }
 
 func defaultProgressAttrs() *ProgressAttrs {
@@ -27,19 +27,19 @@ func Progress(args ...ProgressArg) Node {
 	a := defaultProgressAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyProgress(a, &kids)
+		ar.ApplyProgress(a, &kids)
 	}
 	return Node{Tag: "progress", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyProgress(a *ProgressAttrs, _ *[]Component) {
+func (g Global) ApplyProgress(a *ProgressAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o MaxOpt) applyProgress(a *ProgressAttrs, _ *[]Component) {
+func (o MaxOpt) ApplyProgress(a *ProgressAttrs, _ *[]Component) {
 	a.Max = o.v
 }
-func (o ValueOpt) applyProgress(a *ProgressAttrs, _ *[]Component) {
+func (o ValueOpt) ApplyProgress(a *ProgressAttrs, _ *[]Component) {
 	a.Value = o.v
 }
 

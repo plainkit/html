@@ -95,7 +95,7 @@ type SvgForeignObjectAttrs struct {
 
 // SvgForeignObjectArg interface for foreignObject element arguments
 type SvgForeignObjectArg interface {
-	applyForeignObject(*SvgForeignObjectAttrs, *[]Component)
+	ApplyForeignObject(*SvgForeignObjectAttrs, *[]Component)
 }
 
 // defaultSvgForeignObjectAttrs creates default attributes for foreignObject
@@ -110,7 +110,7 @@ func SvgForeignObject(args ...SvgForeignObjectArg) Node {
 	a := defaultSvgForeignObjectAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyForeignObject(a, &kids)
+		ar.ApplyForeignObject(a, &kids)
 	}
 	return Node{
 		Tag:   "foreignObject",
@@ -120,417 +120,417 @@ func SvgForeignObject(args ...SvgForeignObjectArg) Node {
 }
 
 // Global applies global SVG attributes to foreignObject
-func (g Global) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (g Global) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to ForeignObject
-func (o AlignmentBaselineOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to ForeignObject
-func (o BaselineShiftOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to ForeignObject
-func (o ClipOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to ForeignObject
-func (o ClipPathOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to ForeignObject
-func (o ClipRuleOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to ForeignObject
-func (o ColorOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to ForeignObject
-func (o ColorInterpolationOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to ForeignObject
-func (o ColorInterpolationFiltersOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to ForeignObject
-func (o ColorProfileOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to ForeignObject
-func (o ColorRenderingOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to ForeignObject
-func (o CursorOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to ForeignObject
-func (o DirectionOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to ForeignObject
-func (o DisplayOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to ForeignObject
-func (o DominantBaselineOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to ForeignObject
-func (o EnableBackgroundOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to ForeignObject
-func (o ExternalResourcesRequiredOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to ForeignObject
-func (o FillOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FillOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to ForeignObject
-func (o FillOpacityOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to ForeignObject
-func (o FillRuleOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to ForeignObject
-func (o FilterOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to ForeignObject
-func (o FloodColorOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to ForeignObject
-func (o FloodOpacityOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FocusHighlightOpt applies to ForeignObject
-func (o FocusHighlightOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FocusHighlightOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.FocusHighlight = o.v
 }
 
 // FocusableOpt applies to ForeignObject
-func (o FocusableOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FocusableOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Focusable = o.v
 }
 
 // FontFamilyOpt applies to ForeignObject
-func (o FontFamilyOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to ForeignObject
-func (o FontSizeOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to ForeignObject
-func (o FontSizeAdjustOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to ForeignObject
-func (o FontStretchOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to ForeignObject
-func (o FontStyleOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to ForeignObject
-func (o FontVariantOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to ForeignObject
-func (o FontWeightOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to ForeignObject
-func (o GlyphOrientationHorizontalOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to ForeignObject
-func (o GlyphOrientationVerticalOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to ForeignObject
-func (o HeightOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to ForeignObject
-func (o ImageRenderingOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to ForeignObject
-func (o KerningOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to ForeignObject
-func (o LetterSpacingOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to ForeignObject
-func (o LightingColorOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to ForeignObject
-func (o MarkerEndOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to ForeignObject
-func (o MarkerMidOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to ForeignObject
-func (o MarkerStartOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to ForeignObject
-func (o MaskOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // NavDownOpt applies to ForeignObject
-func (o NavDownOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o NavDownOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.NavDown = o.v
 }
 
 // NavDownLeftOpt applies to ForeignObject
-func (o NavDownLeftOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o NavDownLeftOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.NavDownLeft = o.v
 }
 
 // NavDownRightOpt applies to ForeignObject
-func (o NavDownRightOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o NavDownRightOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.NavDownRight = o.v
 }
 
 // NavLeftOpt applies to ForeignObject
-func (o NavLeftOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o NavLeftOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.NavLeft = o.v
 }
 
 // NavNextOpt applies to ForeignObject
-func (o NavNextOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o NavNextOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.NavNext = o.v
 }
 
 // NavPrevOpt applies to ForeignObject
-func (o NavPrevOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o NavPrevOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.NavPrev = o.v
 }
 
 // NavRightOpt applies to ForeignObject
-func (o NavRightOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o NavRightOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.NavRight = o.v
 }
 
 // NavUpOpt applies to ForeignObject
-func (o NavUpOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o NavUpOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.NavUp = o.v
 }
 
 // NavUpLeftOpt applies to ForeignObject
-func (o NavUpLeftOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o NavUpLeftOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.NavUpLeft = o.v
 }
 
 // NavUpRightOpt applies to ForeignObject
-func (o NavUpRightOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o NavUpRightOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.NavUpRight = o.v
 }
 
 // OpacityOpt applies to ForeignObject
-func (o OpacityOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to ForeignObject
-func (o OverflowOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to ForeignObject
-func (o PointerEventsOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // RequiredExtensionsOpt applies to ForeignObject
-func (o RequiredExtensionsOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to ForeignObject
-func (o RequiredFeaturesOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to ForeignObject
-func (o RequiredFontsOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to ForeignObject
-func (o RequiredFormatsOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // ShapeRenderingOpt applies to ForeignObject
-func (o ShapeRenderingOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to ForeignObject
-func (o StopColorOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to ForeignObject
-func (o StopOpacityOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to ForeignObject
-func (o StrokeOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to ForeignObject
-func (o StrokeDasharrayOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to ForeignObject
-func (o StrokeDashoffsetOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to ForeignObject
-func (o StrokeLinecapOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to ForeignObject
-func (o StrokeLinejoinOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to ForeignObject
-func (o StrokeMiterlimitOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to ForeignObject
-func (o StrokeOpacityOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to ForeignObject
-func (o StrokeWidthOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to ForeignObject
-func (o SystemLanguageOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to ForeignObject
-func (o TextAnchorOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to ForeignObject
-func (o TextDecorationOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to ForeignObject
-func (o TextRenderingOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TransformOpt applies to ForeignObject
-func (o TransformOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o TransformOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Transform = o.v
 }
 
 // UnicodeBidiOpt applies to ForeignObject
-func (o UnicodeBidiOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to ForeignObject
-func (o VisibilityOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to ForeignObject
-func (o WidthOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to ForeignObject
-func (o WordSpacingOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to ForeignObject
-func (o WritingModeOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to ForeignObject
-func (o XOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o XOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to ForeignObject
-func (o YOpt) applyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
+func (o YOpt) ApplyForeignObject(a *SvgForeignObjectAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

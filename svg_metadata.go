@@ -18,7 +18,7 @@ type SvgMetadataAttrs struct {
 
 // SvgMetadataArg interface for metadata element arguments
 type SvgMetadataArg interface {
-	applyMetadata(*SvgMetadataAttrs, *[]Component)
+	ApplyMetadata(*SvgMetadataAttrs, *[]Component)
 }
 
 // defaultSvgMetadataAttrs creates default attributes for metadata
@@ -33,7 +33,7 @@ func SvgMetadata(args ...SvgMetadataArg) Node {
 	a := defaultSvgMetadataAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyMetadata(a, &kids)
+		ar.ApplyMetadata(a, &kids)
 	}
 	return Node{
 		Tag:   "metadata",
@@ -43,32 +43,32 @@ func SvgMetadata(args ...SvgMetadataArg) Node {
 }
 
 // Global applies global SVG attributes to metadata
-func (g Global) applyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
+func (g Global) ApplyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // RequiredExtensionsOpt applies to Metadata
-func (o RequiredExtensionsOpt) applyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Metadata
-func (o RequiredFeaturesOpt) applyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Metadata
-func (o RequiredFontsOpt) applyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Metadata
-func (o RequiredFormatsOpt) applyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // SystemLanguageOpt applies to Metadata
-func (o SystemLanguageOpt) applyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyMetadata(a *SvgMetadataAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 

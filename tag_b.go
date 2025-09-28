@@ -7,7 +7,7 @@ type BAttrs struct {
 }
 
 type BArg interface {
-	applyB(*BAttrs, *[]Component)
+	ApplyB(*BAttrs, *[]Component)
 }
 
 func defaultBAttrs() *BAttrs {
@@ -25,12 +25,12 @@ func B(args ...BArg) Node {
 	a := defaultBAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyB(a, &kids)
+		ar.ApplyB(a, &kids)
 	}
 	return Node{Tag: "b", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyB(a *BAttrs, _ *[]Component) {
+func (g Global) ApplyB(a *BAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

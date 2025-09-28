@@ -17,7 +17,7 @@ type ScriptAttrs struct {
 }
 
 type ScriptArg interface {
-	applyScript(*ScriptAttrs, *[]Component)
+	ApplyScript(*ScriptAttrs, *[]Component)
 }
 
 func defaultScriptAttrs() *ScriptAttrs {
@@ -35,43 +35,43 @@ func Script(args ...ScriptArg) Node {
 	a := defaultScriptAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyScript(a, &kids)
+		ar.ApplyScript(a, &kids)
 	}
 	return Node{Tag: "script", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyScript(a *ScriptAttrs, _ *[]Component) {
+func (g Global) ApplyScript(a *ScriptAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o AsyncOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
+func (o AsyncOpt) ApplyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Async = true
 }
-func (o BlockingOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
+func (o BlockingOpt) ApplyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Blocking = o.v
 }
-func (o CrossoriginOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
+func (o CrossoriginOpt) ApplyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Crossorigin = o.v
 }
-func (o DeferOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
+func (o DeferOpt) ApplyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Defer = true
 }
-func (o FetchpriorityOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
+func (o FetchpriorityOpt) ApplyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Fetchpriority = o.v
 }
-func (o IntegrityOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
+func (o IntegrityOpt) ApplyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Integrity = o.v
 }
-func (o NomoduleOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
+func (o NomoduleOpt) ApplyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Nomodule = true
 }
-func (o ReferrerpolicyOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
+func (o ReferrerpolicyOpt) ApplyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Referrerpolicy = o.v
 }
-func (o SrcOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
+func (o SrcOpt) ApplyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Src = o.v
 }
-func (o TypeOpt) applyScript(a *ScriptAttrs, _ *[]Component) {
+func (o TypeOpt) ApplyScript(a *ScriptAttrs, _ *[]Component) {
 	a.Type = o.v
 }
 

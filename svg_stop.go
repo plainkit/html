@@ -73,7 +73,7 @@ type SvgStopAttrs struct {
 
 // SvgStopArg interface for stop element arguments
 type SvgStopArg interface {
-	applyStop(*SvgStopAttrs, *[]Component)
+	ApplyStop(*SvgStopAttrs, *[]Component)
 }
 
 // defaultSvgStopAttrs creates default attributes for stop
@@ -88,7 +88,7 @@ func SvgStop(args ...SvgStopArg) Node {
 	a := defaultSvgStopAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyStop(a, &kids)
+		ar.ApplyStop(a, &kids)
 	}
 	return Node{
 		Tag:   "stop",
@@ -98,307 +98,307 @@ func SvgStop(args ...SvgStopArg) Node {
 }
 
 // Global applies global SVG attributes to stop
-func (g Global) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (g Global) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Stop
-func (o AlignmentBaselineOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Stop
-func (o BaselineShiftOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Stop
-func (o ClipOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Stop
-func (o ClipPathOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Stop
-func (o ClipRuleOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Stop
-func (o ColorOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Stop
-func (o ColorInterpolationOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Stop
-func (o ColorInterpolationFiltersOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Stop
-func (o ColorProfileOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Stop
-func (o ColorRenderingOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Stop
-func (o CursorOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Stop
-func (o DirectionOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Stop
-func (o DisplayOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Stop
-func (o DominantBaselineOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Stop
-func (o EnableBackgroundOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to Stop
-func (o FillOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o FillOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Stop
-func (o FillOpacityOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Stop
-func (o FillRuleOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Stop
-func (o FilterOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Stop
-func (o FloodColorOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Stop
-func (o FloodOpacityOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to Stop
-func (o FontFamilyOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Stop
-func (o FontSizeOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Stop
-func (o FontSizeAdjustOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Stop
-func (o FontStretchOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Stop
-func (o FontStyleOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Stop
-func (o FontVariantOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Stop
-func (o FontWeightOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Stop
-func (o GlyphOrientationHorizontalOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Stop
-func (o GlyphOrientationVerticalOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // ImageRenderingOpt applies to Stop
-func (o ImageRenderingOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Stop
-func (o KerningOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Stop
-func (o LetterSpacingOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Stop
-func (o LightingColorOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Stop
-func (o MarkerEndOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Stop
-func (o MarkerMidOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Stop
-func (o MarkerStartOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Stop
-func (o MaskOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OffsetOpt applies to Stop
-func (o OffsetOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o OffsetOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Offset = o.v
 }
 
 // OpacityOpt applies to Stop
-func (o OpacityOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Stop
-func (o OverflowOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to Stop
-func (o PointerEventsOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ShapeRenderingOpt applies to Stop
-func (o ShapeRenderingOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Stop
-func (o StopColorOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Stop
-func (o StopOpacityOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Stop
-func (o StrokeOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Stop
-func (o StrokeDasharrayOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Stop
-func (o StrokeDashoffsetOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Stop
-func (o StrokeLinecapOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Stop
-func (o StrokeLinejoinOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Stop
-func (o StrokeMiterlimitOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Stop
-func (o StrokeOpacityOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Stop
-func (o StrokeWidthOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to Stop
-func (o TextAnchorOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Stop
-func (o TextDecorationOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Stop
-func (o TextRenderingOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to Stop
-func (o UnicodeBidiOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Stop
-func (o VisibilityOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to Stop
-func (o WordSpacingOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Stop
-func (o WritingModeOpt) applyStop(a *SvgStopAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyStop(a *SvgStopAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 

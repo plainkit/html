@@ -96,7 +96,7 @@ type SvgEllipseAttrs struct {
 
 // SvgEllipseArg interface for ellipse element arguments
 type SvgEllipseArg interface {
-	applyEllipse(*SvgEllipseAttrs, *[]Component)
+	ApplyEllipse(*SvgEllipseAttrs, *[]Component)
 }
 
 // defaultSvgEllipseAttrs creates default attributes for ellipse
@@ -111,7 +111,7 @@ func SvgEllipse(args ...SvgEllipseArg) Node {
 	a := defaultSvgEllipseAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyEllipse(a, &kids)
+		ar.ApplyEllipse(a, &kids)
 	}
 	return Node{
 		Tag:   "ellipse",
@@ -121,422 +121,422 @@ func SvgEllipse(args ...SvgEllipseArg) Node {
 }
 
 // Global applies global SVG attributes to ellipse
-func (g Global) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (g Global) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Ellipse
-func (o AlignmentBaselineOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Ellipse
-func (o BaselineShiftOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Ellipse
-func (o ClipOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Ellipse
-func (o ClipPathOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Ellipse
-func (o ClipRuleOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Ellipse
-func (o ColorOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Ellipse
-func (o ColorInterpolationOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Ellipse
-func (o ColorInterpolationFiltersOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Ellipse
-func (o ColorProfileOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Ellipse
-func (o ColorRenderingOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Ellipse
-func (o CursorOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // CxOpt applies to Ellipse
-func (o CxOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o CxOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Cx = o.v
 }
 
 // CyOpt applies to Ellipse
-func (o CyOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o CyOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Cy = o.v
 }
 
 // DirectionOpt applies to Ellipse
-func (o DirectionOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Ellipse
-func (o DisplayOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Ellipse
-func (o DominantBaselineOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Ellipse
-func (o EnableBackgroundOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Ellipse
-func (o ExternalResourcesRequiredOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Ellipse
-func (o FillOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FillOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Ellipse
-func (o FillOpacityOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Ellipse
-func (o FillRuleOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Ellipse
-func (o FilterOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Ellipse
-func (o FloodColorOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Ellipse
-func (o FloodOpacityOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FocusHighlightOpt applies to Ellipse
-func (o FocusHighlightOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FocusHighlightOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.FocusHighlight = o.v
 }
 
 // FocusableOpt applies to Ellipse
-func (o FocusableOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FocusableOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Focusable = o.v
 }
 
 // FontFamilyOpt applies to Ellipse
-func (o FontFamilyOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Ellipse
-func (o FontSizeOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Ellipse
-func (o FontSizeAdjustOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Ellipse
-func (o FontStretchOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Ellipse
-func (o FontStyleOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Ellipse
-func (o FontVariantOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Ellipse
-func (o FontWeightOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Ellipse
-func (o GlyphOrientationHorizontalOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Ellipse
-func (o GlyphOrientationVerticalOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // ImageRenderingOpt applies to Ellipse
-func (o ImageRenderingOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Ellipse
-func (o KerningOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Ellipse
-func (o LetterSpacingOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Ellipse
-func (o LightingColorOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Ellipse
-func (o MarkerEndOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Ellipse
-func (o MarkerMidOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Ellipse
-func (o MarkerStartOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Ellipse
-func (o MaskOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // NavDownOpt applies to Ellipse
-func (o NavDownOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o NavDownOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.NavDown = o.v
 }
 
 // NavDownLeftOpt applies to Ellipse
-func (o NavDownLeftOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o NavDownLeftOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.NavDownLeft = o.v
 }
 
 // NavDownRightOpt applies to Ellipse
-func (o NavDownRightOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o NavDownRightOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.NavDownRight = o.v
 }
 
 // NavLeftOpt applies to Ellipse
-func (o NavLeftOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o NavLeftOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.NavLeft = o.v
 }
 
 // NavNextOpt applies to Ellipse
-func (o NavNextOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o NavNextOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.NavNext = o.v
 }
 
 // NavPrevOpt applies to Ellipse
-func (o NavPrevOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o NavPrevOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.NavPrev = o.v
 }
 
 // NavRightOpt applies to Ellipse
-func (o NavRightOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o NavRightOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.NavRight = o.v
 }
 
 // NavUpOpt applies to Ellipse
-func (o NavUpOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o NavUpOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.NavUp = o.v
 }
 
 // NavUpLeftOpt applies to Ellipse
-func (o NavUpLeftOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o NavUpLeftOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.NavUpLeft = o.v
 }
 
 // NavUpRightOpt applies to Ellipse
-func (o NavUpRightOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o NavUpRightOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.NavUpRight = o.v
 }
 
 // OpacityOpt applies to Ellipse
-func (o OpacityOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Ellipse
-func (o OverflowOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PathLengthOpt applies to Ellipse
-func (o PathLengthOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o PathLengthOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.PathLength = o.v
 }
 
 // PointerEventsOpt applies to Ellipse
-func (o PointerEventsOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // RequiredExtensionsOpt applies to Ellipse
-func (o RequiredExtensionsOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Ellipse
-func (o RequiredFeaturesOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Ellipse
-func (o RequiredFontsOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Ellipse
-func (o RequiredFormatsOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // RxOpt applies to Ellipse
-func (o RxOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o RxOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Rx = o.v
 }
 
 // RyOpt applies to Ellipse
-func (o RyOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o RyOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Ry = o.v
 }
 
 // ShapeRenderingOpt applies to Ellipse
-func (o ShapeRenderingOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Ellipse
-func (o StopColorOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Ellipse
-func (o StopOpacityOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Ellipse
-func (o StrokeOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Ellipse
-func (o StrokeDasharrayOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Ellipse
-func (o StrokeDashoffsetOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Ellipse
-func (o StrokeLinecapOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Ellipse
-func (o StrokeLinejoinOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Ellipse
-func (o StrokeMiterlimitOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Ellipse
-func (o StrokeOpacityOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Ellipse
-func (o StrokeWidthOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to Ellipse
-func (o SystemLanguageOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to Ellipse
-func (o TextAnchorOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Ellipse
-func (o TextDecorationOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Ellipse
-func (o TextRenderingOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TransformOpt applies to Ellipse
-func (o TransformOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o TransformOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Transform = o.v
 }
 
 // UnicodeBidiOpt applies to Ellipse
-func (o UnicodeBidiOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Ellipse
-func (o VisibilityOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to Ellipse
-func (o WordSpacingOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Ellipse
-func (o WritingModeOpt) applyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyEllipse(a *SvgEllipseAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 

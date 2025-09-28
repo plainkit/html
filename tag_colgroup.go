@@ -8,7 +8,7 @@ type ColgroupAttrs struct {
 }
 
 type ColgroupArg interface {
-	applyColgroup(*ColgroupAttrs, *[]Component)
+	ApplyColgroup(*ColgroupAttrs, *[]Component)
 }
 
 func defaultColgroupAttrs() *ColgroupAttrs {
@@ -26,16 +26,16 @@ func Colgroup(args ...ColgroupArg) Node {
 	a := defaultColgroupAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyColgroup(a, &kids)
+		ar.ApplyColgroup(a, &kids)
 	}
 	return Node{Tag: "colgroup", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyColgroup(a *ColgroupAttrs, _ *[]Component) {
+func (g Global) ApplyColgroup(a *ColgroupAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o SpanOpt) applyColgroup(a *ColgroupAttrs, _ *[]Component) {
+func (o SpanOpt) ApplyColgroup(a *ColgroupAttrs, _ *[]Component) {
 	a.Span = o.v
 }
 

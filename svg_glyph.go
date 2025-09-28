@@ -81,7 +81,7 @@ type SvgGlyphAttrs struct {
 
 // SvgGlyphArg interface for glyph element arguments
 type SvgGlyphArg interface {
-	applyGlyph(*SvgGlyphAttrs, *[]Component)
+	ApplyGlyph(*SvgGlyphAttrs, *[]Component)
 }
 
 // defaultSvgGlyphAttrs creates default attributes for glyph
@@ -96,7 +96,7 @@ func SvgGlyph(args ...SvgGlyphArg) Node {
 	a := defaultSvgGlyphAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyGlyph(a, &kids)
+		ar.ApplyGlyph(a, &kids)
 	}
 	return Node{
 		Tag:   "glyph",
@@ -106,347 +106,347 @@ func SvgGlyph(args ...SvgGlyphArg) Node {
 }
 
 // Global applies global SVG attributes to glyph
-func (g Global) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (g Global) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Glyph
-func (o AlignmentBaselineOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // ArabicFormOpt applies to Glyph
-func (o ArabicFormOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o ArabicFormOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.ArabicForm = o.v
 }
 
 // BaselineShiftOpt applies to Glyph
-func (o BaselineShiftOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Glyph
-func (o ClipOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Glyph
-func (o ClipPathOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Glyph
-func (o ClipRuleOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Glyph
-func (o ColorOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Glyph
-func (o ColorInterpolationOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Glyph
-func (o ColorInterpolationFiltersOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Glyph
-func (o ColorProfileOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Glyph
-func (o ColorRenderingOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Glyph
-func (o CursorOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DOpt applies to Glyph
-func (o DOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o DOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.D = o.v
 }
 
 // DirectionOpt applies to Glyph
-func (o DirectionOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Glyph
-func (o DisplayOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Glyph
-func (o DominantBaselineOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Glyph
-func (o EnableBackgroundOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to Glyph
-func (o FillOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o FillOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Glyph
-func (o FillOpacityOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Glyph
-func (o FillRuleOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Glyph
-func (o FilterOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Glyph
-func (o FloodColorOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Glyph
-func (o FloodOpacityOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to Glyph
-func (o FontFamilyOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Glyph
-func (o FontSizeOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Glyph
-func (o FontSizeAdjustOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Glyph
-func (o FontStretchOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Glyph
-func (o FontStyleOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Glyph
-func (o FontVariantOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Glyph
-func (o FontWeightOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphNameOpt applies to Glyph
-func (o GlyphNameOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o GlyphNameOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.GlyphName = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Glyph
-func (o GlyphOrientationHorizontalOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Glyph
-func (o GlyphOrientationVerticalOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HorizAdvXOpt applies to Glyph
-func (o HorizAdvXOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o HorizAdvXOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.HorizAdvX = o.v
 }
 
 // ImageRenderingOpt applies to Glyph
-func (o ImageRenderingOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Glyph
-func (o KerningOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Glyph
-func (o LetterSpacingOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Glyph
-func (o LightingColorOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Glyph
-func (o MarkerEndOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Glyph
-func (o MarkerMidOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Glyph
-func (o MarkerStartOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Glyph
-func (o MaskOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to Glyph
-func (o OpacityOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OrientationOpt applies to Glyph
-func (o OrientationOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o OrientationOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Orientation = o.v
 }
 
 // OverflowOpt applies to Glyph
-func (o OverflowOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to Glyph
-func (o PointerEventsOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ShapeRenderingOpt applies to Glyph
-func (o ShapeRenderingOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Glyph
-func (o StopColorOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Glyph
-func (o StopOpacityOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Glyph
-func (o StrokeOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Glyph
-func (o StrokeDasharrayOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Glyph
-func (o StrokeDashoffsetOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Glyph
-func (o StrokeLinecapOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Glyph
-func (o StrokeLinejoinOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Glyph
-func (o StrokeMiterlimitOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Glyph
-func (o StrokeOpacityOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Glyph
-func (o StrokeWidthOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to Glyph
-func (o TextAnchorOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Glyph
-func (o TextDecorationOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Glyph
-func (o TextRenderingOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeOpt applies to Glyph
-func (o UnicodeOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o UnicodeOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Unicode = o.v
 }
 
 // UnicodeBidiOpt applies to Glyph
-func (o UnicodeBidiOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VertAdvYOpt applies to Glyph
-func (o VertAdvYOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o VertAdvYOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.VertAdvY = o.v
 }
 
 // VertOriginXOpt applies to Glyph
-func (o VertOriginXOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o VertOriginXOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.VertOriginX = o.v
 }
 
 // VertOriginYOpt applies to Glyph
-func (o VertOriginYOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o VertOriginYOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.VertOriginY = o.v
 }
 
 // VisibilityOpt applies to Glyph
-func (o VisibilityOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to Glyph
-func (o WordSpacingOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Glyph
-func (o WritingModeOpt) applyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyGlyph(a *SvgGlyphAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 

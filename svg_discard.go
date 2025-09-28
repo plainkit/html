@@ -20,7 +20,7 @@ type SvgDiscardAttrs struct {
 
 // SvgDiscardArg interface for discard element arguments
 type SvgDiscardArg interface {
-	applyDiscard(*SvgDiscardAttrs, *[]Component)
+	ApplyDiscard(*SvgDiscardAttrs, *[]Component)
 }
 
 // defaultSvgDiscardAttrs creates default attributes for discard
@@ -35,7 +35,7 @@ func SvgDiscard(args ...SvgDiscardArg) Node {
 	a := defaultSvgDiscardAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyDiscard(a, &kids)
+		ar.ApplyDiscard(a, &kids)
 	}
 	return Node{
 		Tag:   "discard",
@@ -45,42 +45,42 @@ func SvgDiscard(args ...SvgDiscardArg) Node {
 }
 
 // Global applies global SVG attributes to discard
-func (g Global) applyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
+func (g Global) ApplyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // BeginOpt applies to Discard
-func (o BeginOpt) applyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
+func (o BeginOpt) ApplyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
 	a.Begin = o.v
 }
 
 // HrefOpt applies to Discard
-func (o HrefOpt) applyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
+func (o HrefOpt) ApplyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
 	a.Href = o.v
 }
 
 // RequiredExtensionsOpt applies to Discard
-func (o RequiredExtensionsOpt) applyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Discard
-func (o RequiredFeaturesOpt) applyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Discard
-func (o RequiredFontsOpt) applyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Discard
-func (o RequiredFormatsOpt) applyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // SystemLanguageOpt applies to Discard
-func (o SystemLanguageOpt) applyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyDiscard(a *SvgDiscardAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 

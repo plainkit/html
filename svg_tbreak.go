@@ -18,7 +18,7 @@ type SvgTbreakAttrs struct {
 
 // SvgTbreakArg interface for tbreak element arguments
 type SvgTbreakArg interface {
-	applyTbreak(*SvgTbreakAttrs, *[]Component)
+	ApplyTbreak(*SvgTbreakAttrs, *[]Component)
 }
 
 // defaultSvgTbreakAttrs creates default attributes for tbreak
@@ -33,7 +33,7 @@ func SvgTbreak(args ...SvgTbreakArg) Node {
 	a := defaultSvgTbreakAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTbreak(a, &kids)
+		ar.ApplyTbreak(a, &kids)
 	}
 	return Node{
 		Tag:   "tbreak",
@@ -43,32 +43,32 @@ func SvgTbreak(args ...SvgTbreakArg) Node {
 }
 
 // Global applies global SVG attributes to tbreak
-func (g Global) applyTbreak(a *SvgTbreakAttrs, _ *[]Component) {
+func (g Global) ApplyTbreak(a *SvgTbreakAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // RequiredExtensionsOpt applies to Tbreak
-func (o RequiredExtensionsOpt) applyTbreak(a *SvgTbreakAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyTbreak(a *SvgTbreakAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Tbreak
-func (o RequiredFeaturesOpt) applyTbreak(a *SvgTbreakAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyTbreak(a *SvgTbreakAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Tbreak
-func (o RequiredFontsOpt) applyTbreak(a *SvgTbreakAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyTbreak(a *SvgTbreakAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Tbreak
-func (o RequiredFormatsOpt) applyTbreak(a *SvgTbreakAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyTbreak(a *SvgTbreakAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // SystemLanguageOpt applies to Tbreak
-func (o SystemLanguageOpt) applyTbreak(a *SvgTbreakAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyTbreak(a *SvgTbreakAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 

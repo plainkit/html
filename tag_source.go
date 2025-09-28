@@ -14,7 +14,7 @@ type SourceAttrs struct {
 }
 
 type SourceArg interface {
-	applySource(*SourceAttrs, *[]Component)
+	ApplySource(*SourceAttrs, *[]Component)
 }
 
 func defaultSourceAttrs() *SourceAttrs {
@@ -32,34 +32,34 @@ func Source(args ...SourceArg) Node {
 	a := defaultSourceAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applySource(a, &kids)
+		ar.ApplySource(a, &kids)
 	}
 	return Node{Tag: "source", Attrs: a, Kids: kids, Void: true}
 }
 
-func (g Global) applySource(a *SourceAttrs, _ *[]Component) {
+func (g Global) ApplySource(a *SourceAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o HeightOpt) applySource(a *SourceAttrs, _ *[]Component) {
+func (o HeightOpt) ApplySource(a *SourceAttrs, _ *[]Component) {
 	a.Height = o.v
 }
-func (o MediaOpt) applySource(a *SourceAttrs, _ *[]Component) {
+func (o MediaOpt) ApplySource(a *SourceAttrs, _ *[]Component) {
 	a.Media = o.v
 }
-func (o SizesOpt) applySource(a *SourceAttrs, _ *[]Component) {
+func (o SizesOpt) ApplySource(a *SourceAttrs, _ *[]Component) {
 	a.Sizes = o.v
 }
-func (o SrcOpt) applySource(a *SourceAttrs, _ *[]Component) {
+func (o SrcOpt) ApplySource(a *SourceAttrs, _ *[]Component) {
 	a.Src = o.v
 }
-func (o SrcsetOpt) applySource(a *SourceAttrs, _ *[]Component) {
+func (o SrcsetOpt) ApplySource(a *SourceAttrs, _ *[]Component) {
 	a.Srcset = o.v
 }
-func (o TypeOpt) applySource(a *SourceAttrs, _ *[]Component) {
+func (o TypeOpt) ApplySource(a *SourceAttrs, _ *[]Component) {
 	a.Type = o.v
 }
-func (o WidthOpt) applySource(a *SourceAttrs, _ *[]Component) {
+func (o WidthOpt) ApplySource(a *SourceAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 

@@ -7,7 +7,7 @@ type DatalistAttrs struct {
 }
 
 type DatalistArg interface {
-	applyDatalist(*DatalistAttrs, *[]Component)
+	ApplyDatalist(*DatalistAttrs, *[]Component)
 }
 
 func defaultDatalistAttrs() *DatalistAttrs {
@@ -25,12 +25,12 @@ func Datalist(args ...DatalistArg) Node {
 	a := defaultDatalistAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyDatalist(a, &kids)
+		ar.ApplyDatalist(a, &kids)
 	}
 	return Node{Tag: "datalist", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyDatalist(a *DatalistAttrs, _ *[]Component) {
+func (g Global) ApplyDatalist(a *DatalistAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

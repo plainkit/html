@@ -78,7 +78,7 @@ type SvgClipPathAttrs struct {
 
 // SvgClipPathArg interface for clipPath element arguments
 type SvgClipPathArg interface {
-	applyClipPath(*SvgClipPathAttrs, *[]Component)
+	ApplyClipPath(*SvgClipPathAttrs, *[]Component)
 }
 
 // defaultSvgClipPathAttrs creates default attributes for clipPath
@@ -93,7 +93,7 @@ func SvgClipPath(args ...SvgClipPathArg) Node {
 	a := defaultSvgClipPathAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyClipPath(a, &kids)
+		ar.ApplyClipPath(a, &kids)
 	}
 	return Node{
 		Tag:   "clipPath",
@@ -103,332 +103,332 @@ func SvgClipPath(args ...SvgClipPathArg) Node {
 }
 
 // Global applies global SVG attributes to clipPath
-func (g Global) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (g Global) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to ClipPath
-func (o AlignmentBaselineOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to ClipPath
-func (o BaselineShiftOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to ClipPath
-func (o ClipOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to ClipPath
-func (o ClipPathOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to ClipPath
-func (o ClipRuleOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ClipPathUnitsOpt applies to ClipPath
-func (o ClipPathUnitsOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o ClipPathUnitsOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.ClipPathUnits = o.v
 }
 
 // ColorOpt applies to ClipPath
-func (o ColorOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to ClipPath
-func (o ColorInterpolationOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to ClipPath
-func (o ColorInterpolationFiltersOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to ClipPath
-func (o ColorProfileOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to ClipPath
-func (o ColorRenderingOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to ClipPath
-func (o CursorOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to ClipPath
-func (o DirectionOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to ClipPath
-func (o DisplayOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to ClipPath
-func (o DominantBaselineOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to ClipPath
-func (o EnableBackgroundOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to ClipPath
-func (o ExternalResourcesRequiredOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to ClipPath
-func (o FillOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o FillOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to ClipPath
-func (o FillOpacityOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to ClipPath
-func (o FillRuleOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to ClipPath
-func (o FilterOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to ClipPath
-func (o FloodColorOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to ClipPath
-func (o FloodOpacityOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to ClipPath
-func (o FontFamilyOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to ClipPath
-func (o FontSizeOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to ClipPath
-func (o FontSizeAdjustOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to ClipPath
-func (o FontStretchOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to ClipPath
-func (o FontStyleOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to ClipPath
-func (o FontVariantOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to ClipPath
-func (o FontWeightOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to ClipPath
-func (o GlyphOrientationHorizontalOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to ClipPath
-func (o GlyphOrientationVerticalOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // ImageRenderingOpt applies to ClipPath
-func (o ImageRenderingOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to ClipPath
-func (o KerningOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to ClipPath
-func (o LetterSpacingOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to ClipPath
-func (o LightingColorOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to ClipPath
-func (o MarkerEndOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to ClipPath
-func (o MarkerMidOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to ClipPath
-func (o MarkerStartOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to ClipPath
-func (o MaskOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to ClipPath
-func (o OpacityOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to ClipPath
-func (o OverflowOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to ClipPath
-func (o PointerEventsOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // RequiredExtensionsOpt applies to ClipPath
-func (o RequiredExtensionsOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to ClipPath
-func (o RequiredFeaturesOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // ShapeRenderingOpt applies to ClipPath
-func (o ShapeRenderingOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to ClipPath
-func (o StopColorOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to ClipPath
-func (o StopOpacityOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to ClipPath
-func (o StrokeOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to ClipPath
-func (o StrokeDasharrayOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to ClipPath
-func (o StrokeDashoffsetOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to ClipPath
-func (o StrokeLinecapOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to ClipPath
-func (o StrokeLinejoinOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to ClipPath
-func (o StrokeMiterlimitOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to ClipPath
-func (o StrokeOpacityOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to ClipPath
-func (o StrokeWidthOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to ClipPath
-func (o SystemLanguageOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to ClipPath
-func (o TextAnchorOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to ClipPath
-func (o TextDecorationOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to ClipPath
-func (o TextRenderingOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TransformOpt applies to ClipPath
-func (o TransformOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o TransformOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Transform = o.v
 }
 
 // UnicodeBidiOpt applies to ClipPath
-func (o UnicodeBidiOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to ClipPath
-func (o VisibilityOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WordSpacingOpt applies to ClipPath
-func (o WordSpacingOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to ClipPath
-func (o WritingModeOpt) applyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyClipPath(a *SvgClipPathAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 

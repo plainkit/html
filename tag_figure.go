@@ -7,7 +7,7 @@ type FigureAttrs struct {
 }
 
 type FigureArg interface {
-	applyFigure(*FigureAttrs, *[]Component)
+	ApplyFigure(*FigureAttrs, *[]Component)
 }
 
 func defaultFigureAttrs() *FigureAttrs {
@@ -25,12 +25,12 @@ func Figure(args ...FigureArg) Node {
 	a := defaultFigureAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFigure(a, &kids)
+		ar.ApplyFigure(a, &kids)
 	}
 	return Node{Tag: "figure", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyFigure(a *FigureAttrs, _ *[]Component) {
+func (g Global) ApplyFigure(a *FigureAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

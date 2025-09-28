@@ -98,7 +98,7 @@ type SvgRectAttrs struct {
 
 // SvgRectArg interface for rect element arguments
 type SvgRectArg interface {
-	applyRect(*SvgRectAttrs, *[]Component)
+	ApplyRect(*SvgRectAttrs, *[]Component)
 }
 
 // defaultSvgRectAttrs creates default attributes for rect
@@ -113,7 +113,7 @@ func SvgRect(args ...SvgRectArg) Node {
 	a := defaultSvgRectAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyRect(a, &kids)
+		ar.ApplyRect(a, &kids)
 	}
 	return Node{
 		Tag:   "rect",
@@ -123,432 +123,432 @@ func SvgRect(args ...SvgRectArg) Node {
 }
 
 // Global applies global SVG attributes to rect
-func (g Global) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (g Global) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to Rect
-func (o AlignmentBaselineOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to Rect
-func (o BaselineShiftOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to Rect
-func (o ClipOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to Rect
-func (o ClipPathOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to Rect
-func (o ClipRuleOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to Rect
-func (o ColorOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to Rect
-func (o ColorInterpolationOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to Rect
-func (o ColorInterpolationFiltersOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to Rect
-func (o ColorProfileOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to Rect
-func (o ColorRenderingOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to Rect
-func (o CursorOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to Rect
-func (o DirectionOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to Rect
-func (o DisplayOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to Rect
-func (o DominantBaselineOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to Rect
-func (o EnableBackgroundOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to Rect
-func (o ExternalResourcesRequiredOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FillOpt applies to Rect
-func (o FillOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FillOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to Rect
-func (o FillOpacityOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to Rect
-func (o FillRuleOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to Rect
-func (o FilterOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to Rect
-func (o FloodColorOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to Rect
-func (o FloodOpacityOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FocusHighlightOpt applies to Rect
-func (o FocusHighlightOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FocusHighlightOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.FocusHighlight = o.v
 }
 
 // FocusableOpt applies to Rect
-func (o FocusableOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FocusableOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Focusable = o.v
 }
 
 // FontFamilyOpt applies to Rect
-func (o FontFamilyOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to Rect
-func (o FontSizeOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to Rect
-func (o FontSizeAdjustOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to Rect
-func (o FontStretchOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to Rect
-func (o FontStyleOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to Rect
-func (o FontVariantOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to Rect
-func (o FontWeightOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to Rect
-func (o GlyphOrientationHorizontalOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to Rect
-func (o GlyphOrientationVerticalOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to Rect
-func (o HeightOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to Rect
-func (o ImageRenderingOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to Rect
-func (o KerningOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to Rect
-func (o LetterSpacingOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to Rect
-func (o LightingColorOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to Rect
-func (o MarkerEndOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to Rect
-func (o MarkerMidOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to Rect
-func (o MarkerStartOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to Rect
-func (o MaskOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // NavDownOpt applies to Rect
-func (o NavDownOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o NavDownOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.NavDown = o.v
 }
 
 // NavDownLeftOpt applies to Rect
-func (o NavDownLeftOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o NavDownLeftOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.NavDownLeft = o.v
 }
 
 // NavDownRightOpt applies to Rect
-func (o NavDownRightOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o NavDownRightOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.NavDownRight = o.v
 }
 
 // NavLeftOpt applies to Rect
-func (o NavLeftOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o NavLeftOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.NavLeft = o.v
 }
 
 // NavNextOpt applies to Rect
-func (o NavNextOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o NavNextOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.NavNext = o.v
 }
 
 // NavPrevOpt applies to Rect
-func (o NavPrevOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o NavPrevOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.NavPrev = o.v
 }
 
 // NavRightOpt applies to Rect
-func (o NavRightOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o NavRightOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.NavRight = o.v
 }
 
 // NavUpOpt applies to Rect
-func (o NavUpOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o NavUpOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.NavUp = o.v
 }
 
 // NavUpLeftOpt applies to Rect
-func (o NavUpLeftOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o NavUpLeftOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.NavUpLeft = o.v
 }
 
 // NavUpRightOpt applies to Rect
-func (o NavUpRightOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o NavUpRightOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.NavUpRight = o.v
 }
 
 // OpacityOpt applies to Rect
-func (o OpacityOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to Rect
-func (o OverflowOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PathLengthOpt applies to Rect
-func (o PathLengthOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o PathLengthOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.PathLength = o.v
 }
 
 // PointerEventsOpt applies to Rect
-func (o PointerEventsOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // RequiredExtensionsOpt applies to Rect
-func (o RequiredExtensionsOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o RequiredExtensionsOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.RequiredExtensions = o.v
 }
 
 // RequiredFeaturesOpt applies to Rect
-func (o RequiredFeaturesOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o RequiredFeaturesOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.RequiredFeatures = o.v
 }
 
 // RequiredFontsOpt applies to Rect
-func (o RequiredFontsOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o RequiredFontsOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.RequiredFonts = o.v
 }
 
 // RequiredFormatsOpt applies to Rect
-func (o RequiredFormatsOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o RequiredFormatsOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.RequiredFormats = o.v
 }
 
 // RxOpt applies to Rect
-func (o RxOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o RxOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Rx = o.v
 }
 
 // RyOpt applies to Rect
-func (o RyOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o RyOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Ry = o.v
 }
 
 // ShapeRenderingOpt applies to Rect
-func (o ShapeRenderingOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to Rect
-func (o StopColorOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to Rect
-func (o StopOpacityOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to Rect
-func (o StrokeOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to Rect
-func (o StrokeDasharrayOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to Rect
-func (o StrokeDashoffsetOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to Rect
-func (o StrokeLinecapOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to Rect
-func (o StrokeLinejoinOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to Rect
-func (o StrokeMiterlimitOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to Rect
-func (o StrokeOpacityOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to Rect
-func (o StrokeWidthOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SystemLanguageOpt applies to Rect
-func (o SystemLanguageOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o SystemLanguageOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.SystemLanguage = o.v
 }
 
 // TextAnchorOpt applies to Rect
-func (o TextAnchorOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to Rect
-func (o TextDecorationOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to Rect
-func (o TextRenderingOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // TransformOpt applies to Rect
-func (o TransformOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o TransformOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Transform = o.v
 }
 
 // UnicodeBidiOpt applies to Rect
-func (o UnicodeBidiOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to Rect
-func (o VisibilityOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to Rect
-func (o WidthOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to Rect
-func (o WordSpacingOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to Rect
-func (o WritingModeOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to Rect
-func (o XOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o XOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to Rect
-func (o YOpt) applyRect(a *SvgRectAttrs, _ *[]Component) {
+func (o YOpt) ApplyRect(a *SvgRectAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

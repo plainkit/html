@@ -14,7 +14,7 @@ type SvgFontFaceUriAttrs struct {
 
 // SvgFontFaceUriArg interface for font-face-uri element arguments
 type SvgFontFaceUriArg interface {
-	applyFontFaceUri(*SvgFontFaceUriAttrs, *[]Component)
+	ApplyFontFaceUri(*SvgFontFaceUriAttrs, *[]Component)
 }
 
 // defaultSvgFontFaceUriAttrs creates default attributes for font-face-uri
@@ -29,7 +29,7 @@ func SvgFontFaceUri(args ...SvgFontFaceUriArg) Node {
 	a := defaultSvgFontFaceUriAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFontFaceUri(a, &kids)
+		ar.ApplyFontFaceUri(a, &kids)
 	}
 	return Node{
 		Tag:   "font-face-uri",
@@ -39,12 +39,12 @@ func SvgFontFaceUri(args ...SvgFontFaceUriArg) Node {
 }
 
 // Global applies global SVG attributes to font-face-uri
-func (g Global) applyFontFaceUri(a *SvgFontFaceUriAttrs, _ *[]Component) {
+func (g Global) ApplyFontFaceUri(a *SvgFontFaceUriAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // ExternalResourcesRequiredOpt applies to FontFaceUri
-func (o ExternalResourcesRequiredOpt) applyFontFaceUri(a *SvgFontFaceUriAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyFontFaceUri(a *SvgFontFaceUriAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 

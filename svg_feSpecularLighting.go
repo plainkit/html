@@ -82,7 +82,7 @@ type SvgFeSpecularLightingAttrs struct {
 
 // SvgFeSpecularLightingArg interface for feSpecularLighting element arguments
 type SvgFeSpecularLightingArg interface {
-	applyFeSpecularLighting(*SvgFeSpecularLightingAttrs, *[]Component)
+	ApplyFeSpecularLighting(*SvgFeSpecularLightingAttrs, *[]Component)
 }
 
 // defaultSvgFeSpecularLightingAttrs creates default attributes for feSpecularLighting
@@ -97,7 +97,7 @@ func SvgFeSpecularLighting(args ...SvgFeSpecularLightingArg) Node {
 	a := defaultSvgFeSpecularLightingAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeSpecularLighting(a, &kids)
+		ar.ApplyFeSpecularLighting(a, &kids)
 	}
 	return Node{
 		Tag:   "feSpecularLighting",
@@ -107,352 +107,352 @@ func SvgFeSpecularLighting(args ...SvgFeSpecularLightingArg) Node {
 }
 
 // Global applies global SVG attributes to feSpecularLighting
-func (g Global) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (g Global) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to FeSpecularLighting
-func (o AlignmentBaselineOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to FeSpecularLighting
-func (o BaselineShiftOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to FeSpecularLighting
-func (o ClipOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to FeSpecularLighting
-func (o ClipPathOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to FeSpecularLighting
-func (o ClipRuleOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to FeSpecularLighting
-func (o ColorOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to FeSpecularLighting
-func (o ColorInterpolationOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to FeSpecularLighting
-func (o ColorInterpolationFiltersOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to FeSpecularLighting
-func (o ColorProfileOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to FeSpecularLighting
-func (o ColorRenderingOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to FeSpecularLighting
-func (o CursorOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to FeSpecularLighting
-func (o DirectionOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to FeSpecularLighting
-func (o DisplayOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to FeSpecularLighting
-func (o DominantBaselineOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to FeSpecularLighting
-func (o EnableBackgroundOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to FeSpecularLighting
-func (o FillOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to FeSpecularLighting
-func (o FillOpacityOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to FeSpecularLighting
-func (o FillRuleOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to FeSpecularLighting
-func (o FilterOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to FeSpecularLighting
-func (o FloodColorOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeSpecularLighting
-func (o FloodOpacityOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to FeSpecularLighting
-func (o FontFamilyOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FeSpecularLighting
-func (o FontSizeOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to FeSpecularLighting
-func (o FontSizeAdjustOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to FeSpecularLighting
-func (o FontStretchOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FeSpecularLighting
-func (o FontStyleOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FeSpecularLighting
-func (o FontVariantOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FeSpecularLighting
-func (o FontWeightOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to FeSpecularLighting
-func (o GlyphOrientationHorizontalOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to FeSpecularLighting
-func (o GlyphOrientationVerticalOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to FeSpecularLighting
-func (o HeightOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to FeSpecularLighting
-func (o ImageRenderingOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // InOpt applies to FeSpecularLighting
-func (o InOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o InOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // KernelUnitLengthOpt applies to FeSpecularLighting
-func (o KernelUnitLengthOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o KernelUnitLengthOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.KernelUnitLength = o.v
 }
 
 // KerningOpt applies to FeSpecularLighting
-func (o KerningOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to FeSpecularLighting
-func (o LetterSpacingOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to FeSpecularLighting
-func (o LightingColorOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to FeSpecularLighting
-func (o MarkerEndOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to FeSpecularLighting
-func (o MarkerMidOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to FeSpecularLighting
-func (o MarkerStartOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to FeSpecularLighting
-func (o MaskOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to FeSpecularLighting
-func (o OpacityOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to FeSpecularLighting
-func (o OverflowOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to FeSpecularLighting
-func (o PointerEventsOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ResultOpt applies to FeSpecularLighting
-func (o ResultOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // ShapeRenderingOpt applies to FeSpecularLighting
-func (o ShapeRenderingOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // SpecularConstantOpt applies to FeSpecularLighting
-func (o SpecularConstantOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o SpecularConstantOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.SpecularConstant = o.v
 }
 
 // SpecularExponentOpt applies to FeSpecularLighting
-func (o SpecularExponentOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o SpecularExponentOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.SpecularExponent = o.v
 }
 
 // StopColorOpt applies to FeSpecularLighting
-func (o StopColorOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to FeSpecularLighting
-func (o StopOpacityOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to FeSpecularLighting
-func (o StrokeOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to FeSpecularLighting
-func (o StrokeDasharrayOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to FeSpecularLighting
-func (o StrokeDashoffsetOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to FeSpecularLighting
-func (o StrokeLinecapOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to FeSpecularLighting
-func (o StrokeLinejoinOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to FeSpecularLighting
-func (o StrokeMiterlimitOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to FeSpecularLighting
-func (o StrokeOpacityOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to FeSpecularLighting
-func (o StrokeWidthOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // SurfaceScaleOpt applies to FeSpecularLighting
-func (o SurfaceScaleOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o SurfaceScaleOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.SurfaceScale = o.v
 }
 
 // TextAnchorOpt applies to FeSpecularLighting
-func (o TextAnchorOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to FeSpecularLighting
-func (o TextDecorationOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to FeSpecularLighting
-func (o TextRenderingOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to FeSpecularLighting
-func (o UnicodeBidiOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to FeSpecularLighting
-func (o VisibilityOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to FeSpecularLighting
-func (o WidthOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to FeSpecularLighting
-func (o WordSpacingOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to FeSpecularLighting
-func (o WritingModeOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to FeSpecularLighting
-func (o XOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeSpecularLighting
-func (o YOpt) applyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeSpecularLighting(a *SvgFeSpecularLightingAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

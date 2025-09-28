@@ -7,7 +7,7 @@ type FigcaptionAttrs struct {
 }
 
 type FigcaptionArg interface {
-	applyFigcaption(*FigcaptionAttrs, *[]Component)
+	ApplyFigcaption(*FigcaptionAttrs, *[]Component)
 }
 
 func defaultFigcaptionAttrs() *FigcaptionAttrs {
@@ -25,12 +25,12 @@ func Figcaption(args ...FigcaptionArg) Node {
 	a := defaultFigcaptionAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFigcaption(a, &kids)
+		ar.ApplyFigcaption(a, &kids)
 	}
 	return Node{Tag: "figcaption", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyFigcaption(a *FigcaptionAttrs, _ *[]Component) {
+func (g Global) ApplyFigcaption(a *FigcaptionAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

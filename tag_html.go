@@ -7,7 +7,7 @@ type HtmlAttrs struct {
 }
 
 type HtmlArg interface {
-	applyHtml(*HtmlAttrs, *[]Component)
+	ApplyHtml(*HtmlAttrs, *[]Component)
 }
 
 func defaultHtmlAttrs() *HtmlAttrs {
@@ -25,12 +25,12 @@ func Html(args ...HtmlArg) Node {
 	a := defaultHtmlAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyHtml(a, &kids)
+		ar.ApplyHtml(a, &kids)
 	}
 	return Node{Tag: "html", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyHtml(a *HtmlAttrs, _ *[]Component) {
+func (g Global) ApplyHtml(a *HtmlAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

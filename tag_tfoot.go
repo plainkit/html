@@ -7,7 +7,7 @@ type TfootAttrs struct {
 }
 
 type TfootArg interface {
-	applyTfoot(*TfootAttrs, *[]Component)
+	ApplyTfoot(*TfootAttrs, *[]Component)
 }
 
 func defaultTfootAttrs() *TfootAttrs {
@@ -25,12 +25,12 @@ func Tfoot(args ...TfootArg) Node {
 	a := defaultTfootAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTfoot(a, &kids)
+		ar.ApplyTfoot(a, &kids)
 	}
 	return Node{Tag: "tfoot", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyTfoot(a *TfootAttrs, _ *[]Component) {
+func (g Global) ApplyTfoot(a *TfootAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

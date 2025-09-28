@@ -7,7 +7,7 @@ type TitleAttrs struct {
 }
 
 type TitleArg interface {
-	applyTitle(*TitleAttrs, *[]Component)
+	ApplyTitle(*TitleAttrs, *[]Component)
 }
 
 func defaultTitleAttrs() *TitleAttrs {
@@ -25,12 +25,12 @@ func Title(args ...TitleArg) Node {
 	a := defaultTitleAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyTitle(a, &kids)
+		ar.ApplyTitle(a, &kids)
 	}
 	return Node{Tag: "title", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyTitle(a *TitleAttrs, _ *[]Component) {
+func (g Global) ApplyTitle(a *TitleAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

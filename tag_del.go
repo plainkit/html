@@ -9,7 +9,7 @@ type DelAttrs struct {
 }
 
 type DelArg interface {
-	applyDel(*DelAttrs, *[]Component)
+	ApplyDel(*DelAttrs, *[]Component)
 }
 
 func defaultDelAttrs() *DelAttrs {
@@ -27,19 +27,19 @@ func Del(args ...DelArg) Node {
 	a := defaultDelAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyDel(a, &kids)
+		ar.ApplyDel(a, &kids)
 	}
 	return Node{Tag: "del", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyDel(a *DelAttrs, _ *[]Component) {
+func (g Global) ApplyDel(a *DelAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o CiteOpt) applyDel(a *DelAttrs, _ *[]Component) {
+func (o CiteOpt) ApplyDel(a *DelAttrs, _ *[]Component) {
 	a.Cite = o.v
 }
-func (o DatetimeOpt) applyDel(a *DelAttrs, _ *[]Component) {
+func (o DatetimeOpt) ApplyDel(a *DelAttrs, _ *[]Component) {
 	a.Datetime = o.v
 }
 

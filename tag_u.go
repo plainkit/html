@@ -7,7 +7,7 @@ type UAttrs struct {
 }
 
 type UArg interface {
-	applyU(*UAttrs, *[]Component)
+	ApplyU(*UAttrs, *[]Component)
 }
 
 func defaultUAttrs() *UAttrs {
@@ -25,12 +25,12 @@ func U(args ...UArg) Node {
 	a := defaultUAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyU(a, &kids)
+		ar.ApplyU(a, &kids)
 	}
 	return Node{Tag: "u", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyU(a *UAttrs, _ *[]Component) {
+func (g Global) ApplyU(a *UAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

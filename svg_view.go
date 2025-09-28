@@ -18,7 +18,7 @@ type SvgViewAttrs struct {
 
 // SvgViewArg interface for view element arguments
 type SvgViewArg interface {
-	applyView(*SvgViewAttrs, *[]Component)
+	ApplyView(*SvgViewAttrs, *[]Component)
 }
 
 // defaultSvgViewAttrs creates default attributes for view
@@ -33,7 +33,7 @@ func SvgView(args ...SvgViewArg) Node {
 	a := defaultSvgViewAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyView(a, &kids)
+		ar.ApplyView(a, &kids)
 	}
 	return Node{
 		Tag:   "view",
@@ -43,32 +43,32 @@ func SvgView(args ...SvgViewArg) Node {
 }
 
 // Global applies global SVG attributes to view
-func (g Global) applyView(a *SvgViewAttrs, _ *[]Component) {
+func (g Global) ApplyView(a *SvgViewAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // ExternalResourcesRequiredOpt applies to View
-func (o ExternalResourcesRequiredOpt) applyView(a *SvgViewAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyView(a *SvgViewAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // PreserveAspectRatioOpt applies to View
-func (o PreserveAspectRatioOpt) applyView(a *SvgViewAttrs, _ *[]Component) {
+func (o PreserveAspectRatioOpt) ApplyView(a *SvgViewAttrs, _ *[]Component) {
 	a.PreserveAspectRatio = o.v
 }
 
 // ViewBoxOpt applies to View
-func (o ViewBoxOpt) applyView(a *SvgViewAttrs, _ *[]Component) {
+func (o ViewBoxOpt) ApplyView(a *SvgViewAttrs, _ *[]Component) {
 	a.ViewBox = o.v
 }
 
 // ViewTargetOpt applies to View
-func (o ViewTargetOpt) applyView(a *SvgViewAttrs, _ *[]Component) {
+func (o ViewTargetOpt) ApplyView(a *SvgViewAttrs, _ *[]Component) {
 	a.ViewTarget = o.v
 }
 
 // ZoomAndPanOpt applies to View
-func (o ZoomAndPanOpt) applyView(a *SvgViewAttrs, _ *[]Component) {
+func (o ZoomAndPanOpt) ApplyView(a *SvgViewAttrs, _ *[]Component) {
 	a.ZoomAndPan = o.v
 }
 

@@ -10,7 +10,7 @@ type {{.StructName}} struct {
 }
 
 type {{.ArgInterface}} interface {
-	apply{{.Title}}(*{{.StructName}}, *[]Component)
+	Apply{{.Title}}(*{{.StructName}}, *[]Component)
 }
 
 func default{{.StructName}}() *{{.StructName}} {
@@ -28,16 +28,16 @@ func {{.Title}}(args ...{{.ArgInterface}}) Node {
 	a := default{{.StructName}}()
 	var kids []Component
 	for _, ar := range args {
-		ar.apply{{.Title}}(a, &kids)
-	}
+		ar.Apply{{.Title}}(a, &kids)
+}
 	{{if .Void}}return Node{Tag: "{{.Name}}", Attrs: a, Kids: kids, Void: true}{{else}}return Node{Tag: "{{.Name}}", Attrs: a, Kids: kids}{{end}}
 }
 
-func (g Global) apply{{.Title}}(a *{{.StructName}}, _ *[]Component) {
+func (g Global) Apply{{.Title}}(a *{{.StructName}}, _ *[]Component) {
 	g.Do(&a.Global)
 }
 {{range .Attributes}}{{if ne .Attr "data"}}
-func (o {{.Field}}Opt) apply{{$.Title}}(a *{{$.StructName}}, _ *[]Component) {
+func (o {{.Field}}Opt) Apply{{$.Title}}(a *{{$.StructName}}, _ *[]Component) {
 	{{if eq .Type "bool"}}a.{{.Field}} = true{{else if eq .Attr "rel"}}if a.{{.Field}} == "" {
 		a.{{.Field}} = o.v
 	} else {

@@ -77,7 +77,7 @@ type SvgFeFloodAttrs struct {
 
 // SvgFeFloodArg interface for feFlood element arguments
 type SvgFeFloodArg interface {
-	applyFeFlood(*SvgFeFloodAttrs, *[]Component)
+	ApplyFeFlood(*SvgFeFloodAttrs, *[]Component)
 }
 
 // defaultSvgFeFloodAttrs creates default attributes for feFlood
@@ -92,7 +92,7 @@ func SvgFeFlood(args ...SvgFeFloodArg) Node {
 	a := defaultSvgFeFloodAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeFlood(a, &kids)
+		ar.ApplyFeFlood(a, &kids)
 	}
 	return Node{
 		Tag:   "feFlood",
@@ -102,327 +102,327 @@ func SvgFeFlood(args ...SvgFeFloodArg) Node {
 }
 
 // Global applies global SVG attributes to feFlood
-func (g Global) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (g Global) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to FeFlood
-func (o AlignmentBaselineOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to FeFlood
-func (o BaselineShiftOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to FeFlood
-func (o ClipOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to FeFlood
-func (o ClipPathOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to FeFlood
-func (o ClipRuleOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to FeFlood
-func (o ColorOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to FeFlood
-func (o ColorInterpolationOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to FeFlood
-func (o ColorInterpolationFiltersOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to FeFlood
-func (o ColorProfileOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to FeFlood
-func (o ColorRenderingOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to FeFlood
-func (o CursorOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to FeFlood
-func (o DirectionOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to FeFlood
-func (o DisplayOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to FeFlood
-func (o DominantBaselineOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to FeFlood
-func (o EnableBackgroundOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to FeFlood
-func (o FillOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to FeFlood
-func (o FillOpacityOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to FeFlood
-func (o FillRuleOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to FeFlood
-func (o FilterOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to FeFlood
-func (o FloodColorOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeFlood
-func (o FloodOpacityOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to FeFlood
-func (o FontFamilyOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FeFlood
-func (o FontSizeOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to FeFlood
-func (o FontSizeAdjustOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to FeFlood
-func (o FontStretchOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FeFlood
-func (o FontStyleOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FeFlood
-func (o FontVariantOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FeFlood
-func (o FontWeightOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to FeFlood
-func (o GlyphOrientationHorizontalOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to FeFlood
-func (o GlyphOrientationVerticalOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to FeFlood
-func (o HeightOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to FeFlood
-func (o ImageRenderingOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // KerningOpt applies to FeFlood
-func (o KerningOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to FeFlood
-func (o LetterSpacingOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to FeFlood
-func (o LightingColorOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to FeFlood
-func (o MarkerEndOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to FeFlood
-func (o MarkerMidOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to FeFlood
-func (o MarkerStartOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to FeFlood
-func (o MaskOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // OpacityOpt applies to FeFlood
-func (o OpacityOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to FeFlood
-func (o OverflowOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to FeFlood
-func (o PointerEventsOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ResultOpt applies to FeFlood
-func (o ResultOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // ShapeRenderingOpt applies to FeFlood
-func (o ShapeRenderingOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to FeFlood
-func (o StopColorOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to FeFlood
-func (o StopOpacityOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to FeFlood
-func (o StrokeOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to FeFlood
-func (o StrokeDasharrayOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to FeFlood
-func (o StrokeDashoffsetOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to FeFlood
-func (o StrokeLinecapOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to FeFlood
-func (o StrokeLinejoinOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to FeFlood
-func (o StrokeMiterlimitOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to FeFlood
-func (o StrokeOpacityOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to FeFlood
-func (o StrokeWidthOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to FeFlood
-func (o TextAnchorOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to FeFlood
-func (o TextDecorationOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to FeFlood
-func (o TextRenderingOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to FeFlood
-func (o UnicodeBidiOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to FeFlood
-func (o VisibilityOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to FeFlood
-func (o WidthOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to FeFlood
-func (o WordSpacingOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to FeFlood
-func (o WritingModeOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to FeFlood
-func (o XOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeFlood
-func (o YOpt) applyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeFlood(a *SvgFeFloodAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

@@ -9,7 +9,7 @@ type DialogAttrs struct {
 }
 
 type DialogArg interface {
-	applyDialog(*DialogAttrs, *[]Component)
+	ApplyDialog(*DialogAttrs, *[]Component)
 }
 
 func defaultDialogAttrs() *DialogAttrs {
@@ -27,19 +27,19 @@ func Dialog(args ...DialogArg) Node {
 	a := defaultDialogAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyDialog(a, &kids)
+		ar.ApplyDialog(a, &kids)
 	}
 	return Node{Tag: "dialog", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyDialog(a *DialogAttrs, _ *[]Component) {
+func (g Global) ApplyDialog(a *DialogAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
-func (o ClosedbyOpt) applyDialog(a *DialogAttrs, _ *[]Component) {
+func (o ClosedbyOpt) ApplyDialog(a *DialogAttrs, _ *[]Component) {
 	a.Closedby = o.v
 }
-func (o OpenOpt) applyDialog(a *DialogAttrs, _ *[]Component) {
+func (o OpenOpt) ApplyDialog(a *DialogAttrs, _ *[]Component) {
 	a.Open = true
 }
 

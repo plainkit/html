@@ -7,7 +7,7 @@ type H6Attrs struct {
 }
 
 type H6Arg interface {
-	applyH6(*H6Attrs, *[]Component)
+	ApplyH6(*H6Attrs, *[]Component)
 }
 
 func defaultH6Attrs() *H6Attrs {
@@ -25,12 +25,12 @@ func H6(args ...H6Arg) Node {
 	a := defaultH6Attrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyH6(a, &kids)
+		ar.ApplyH6(a, &kids)
 	}
 	return Node{Tag: "h6", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyH6(a *H6Attrs, _ *[]Component) {
+func (g Global) ApplyH6(a *H6Attrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

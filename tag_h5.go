@@ -7,7 +7,7 @@ type H5Attrs struct {
 }
 
 type H5Arg interface {
-	applyH5(*H5Attrs, *[]Component)
+	ApplyH5(*H5Attrs, *[]Component)
 }
 
 func defaultH5Attrs() *H5Attrs {
@@ -25,12 +25,12 @@ func H5(args ...H5Arg) Node {
 	a := defaultH5Attrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyH5(a, &kids)
+		ar.ApplyH5(a, &kids)
 	}
 	return Node{Tag: "h5", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyH5(a *H5Attrs, _ *[]Component) {
+func (g Global) ApplyH5(a *H5Attrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

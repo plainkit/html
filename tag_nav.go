@@ -7,7 +7,7 @@ type NavAttrs struct {
 }
 
 type NavArg interface {
-	applyNav(*NavAttrs, *[]Component)
+	ApplyNav(*NavAttrs, *[]Component)
 }
 
 func defaultNavAttrs() *NavAttrs {
@@ -25,12 +25,12 @@ func Nav(args ...NavArg) Node {
 	a := defaultNavAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyNav(a, &kids)
+		ar.ApplyNav(a, &kids)
 	}
 	return Node{Tag: "nav", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyNav(a *NavAttrs, _ *[]Component) {
+func (g Global) ApplyNav(a *NavAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 

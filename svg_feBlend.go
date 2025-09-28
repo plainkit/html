@@ -80,7 +80,7 @@ type SvgFeBlendAttrs struct {
 
 // SvgFeBlendArg interface for feBlend element arguments
 type SvgFeBlendArg interface {
-	applyFeBlend(*SvgFeBlendAttrs, *[]Component)
+	ApplyFeBlend(*SvgFeBlendAttrs, *[]Component)
 }
 
 // defaultSvgFeBlendAttrs creates default attributes for feBlend
@@ -95,7 +95,7 @@ func SvgFeBlend(args ...SvgFeBlendArg) Node {
 	a := defaultSvgFeBlendAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFeBlend(a, &kids)
+		ar.ApplyFeBlend(a, &kids)
 	}
 	return Node{
 		Tag:   "feBlend",
@@ -105,342 +105,342 @@ func SvgFeBlend(args ...SvgFeBlendArg) Node {
 }
 
 // Global applies global SVG attributes to feBlend
-func (g Global) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (g Global) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AlignmentBaselineOpt applies to FeBlend
-func (o AlignmentBaselineOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o AlignmentBaselineOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.AlignmentBaseline = o.v
 }
 
 // BaselineShiftOpt applies to FeBlend
-func (o BaselineShiftOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o BaselineShiftOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.BaselineShift = o.v
 }
 
 // ClipOpt applies to FeBlend
-func (o ClipOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o ClipOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Clip = o.v
 }
 
 // ClipPathOpt applies to FeBlend
-func (o ClipPathOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o ClipPathOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.ClipPath = o.v
 }
 
 // ClipRuleOpt applies to FeBlend
-func (o ClipRuleOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o ClipRuleOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.ClipRule = o.v
 }
 
 // ColorOpt applies to FeBlend
-func (o ColorOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o ColorOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Color = o.v
 }
 
 // ColorInterpolationOpt applies to FeBlend
-func (o ColorInterpolationOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o ColorInterpolationOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.ColorInterpolation = o.v
 }
 
 // ColorInterpolationFiltersOpt applies to FeBlend
-func (o ColorInterpolationFiltersOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o ColorInterpolationFiltersOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.ColorInterpolationFilters = o.v
 }
 
 // ColorProfileOpt applies to FeBlend
-func (o ColorProfileOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o ColorProfileOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.ColorProfile = o.v
 }
 
 // ColorRenderingOpt applies to FeBlend
-func (o ColorRenderingOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o ColorRenderingOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.ColorRendering = o.v
 }
 
 // CursorOpt applies to FeBlend
-func (o CursorOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o CursorOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Cursor = o.v
 }
 
 // DirectionOpt applies to FeBlend
-func (o DirectionOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o DirectionOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Direction = o.v
 }
 
 // DisplayOpt applies to FeBlend
-func (o DisplayOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o DisplayOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Display = o.v
 }
 
 // DominantBaselineOpt applies to FeBlend
-func (o DominantBaselineOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o DominantBaselineOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.DominantBaseline = o.v
 }
 
 // EnableBackgroundOpt applies to FeBlend
-func (o EnableBackgroundOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o EnableBackgroundOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.EnableBackground = o.v
 }
 
 // FillOpt applies to FeBlend
-func (o FillOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o FillOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Fill = o.v
 }
 
 // FillOpacityOpt applies to FeBlend
-func (o FillOpacityOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o FillOpacityOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.FillOpacity = o.v
 }
 
 // FillRuleOpt applies to FeBlend
-func (o FillRuleOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o FillRuleOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.FillRule = o.v
 }
 
 // FilterOpt applies to FeBlend
-func (o FilterOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o FilterOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Filter = o.v
 }
 
 // FloodColorOpt applies to FeBlend
-func (o FloodColorOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o FloodColorOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.FloodColor = o.v
 }
 
 // FloodOpacityOpt applies to FeBlend
-func (o FloodOpacityOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o FloodOpacityOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.FloodOpacity = o.v
 }
 
 // FontFamilyOpt applies to FeBlend
-func (o FontFamilyOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FeBlend
-func (o FontSizeOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontSizeAdjustOpt applies to FeBlend
-func (o FontSizeAdjustOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o FontSizeAdjustOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.FontSizeAdjust = o.v
 }
 
 // FontStretchOpt applies to FeBlend
-func (o FontStretchOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FeBlend
-func (o FontStyleOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FeBlend
-func (o FontVariantOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FeBlend
-func (o FontWeightOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // GlyphOrientationHorizontalOpt applies to FeBlend
-func (o GlyphOrientationHorizontalOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o GlyphOrientationHorizontalOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.GlyphOrientationHorizontal = o.v
 }
 
 // GlyphOrientationVerticalOpt applies to FeBlend
-func (o GlyphOrientationVerticalOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o GlyphOrientationVerticalOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.GlyphOrientationVertical = o.v
 }
 
 // HeightOpt applies to FeBlend
-func (o HeightOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o HeightOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Height = o.v
 }
 
 // ImageRenderingOpt applies to FeBlend
-func (o ImageRenderingOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o ImageRenderingOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.ImageRendering = o.v
 }
 
 // InOpt applies to FeBlend
-func (o InOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o InOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.In = o.v
 }
 
 // In2Opt applies to FeBlend
-func (o In2Opt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o In2Opt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.In2 = o.v
 }
 
 // KerningOpt applies to FeBlend
-func (o KerningOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o KerningOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Kerning = o.v
 }
 
 // LetterSpacingOpt applies to FeBlend
-func (o LetterSpacingOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o LetterSpacingOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.LetterSpacing = o.v
 }
 
 // LightingColorOpt applies to FeBlend
-func (o LightingColorOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o LightingColorOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.LightingColor = o.v
 }
 
 // MarkerEndOpt applies to FeBlend
-func (o MarkerEndOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o MarkerEndOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.MarkerEnd = o.v
 }
 
 // MarkerMidOpt applies to FeBlend
-func (o MarkerMidOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o MarkerMidOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.MarkerMid = o.v
 }
 
 // MarkerStartOpt applies to FeBlend
-func (o MarkerStartOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o MarkerStartOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.MarkerStart = o.v
 }
 
 // MaskOpt applies to FeBlend
-func (o MaskOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o MaskOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Mask = o.v
 }
 
 // ModeOpt applies to FeBlend
-func (o ModeOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o ModeOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Mode = o.v
 }
 
 // OpacityOpt applies to FeBlend
-func (o OpacityOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o OpacityOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Opacity = o.v
 }
 
 // OverflowOpt applies to FeBlend
-func (o OverflowOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o OverflowOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Overflow = o.v
 }
 
 // PointerEventsOpt applies to FeBlend
-func (o PointerEventsOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o PointerEventsOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.PointerEvents = o.v
 }
 
 // ResultOpt applies to FeBlend
-func (o ResultOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o ResultOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Result = o.v
 }
 
 // ShapeRenderingOpt applies to FeBlend
-func (o ShapeRenderingOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o ShapeRenderingOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.ShapeRendering = o.v
 }
 
 // StopColorOpt applies to FeBlend
-func (o StopColorOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o StopColorOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.StopColor = o.v
 }
 
 // StopOpacityOpt applies to FeBlend
-func (o StopOpacityOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o StopOpacityOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.StopOpacity = o.v
 }
 
 // StrokeOpt applies to FeBlend
-func (o StrokeOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o StrokeOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Stroke = o.v
 }
 
 // StrokeDasharrayOpt applies to FeBlend
-func (o StrokeDasharrayOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o StrokeDasharrayOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.StrokeDasharray = o.v
 }
 
 // StrokeDashoffsetOpt applies to FeBlend
-func (o StrokeDashoffsetOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o StrokeDashoffsetOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.StrokeDashoffset = o.v
 }
 
 // StrokeLinecapOpt applies to FeBlend
-func (o StrokeLinecapOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o StrokeLinecapOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.StrokeLinecap = o.v
 }
 
 // StrokeLinejoinOpt applies to FeBlend
-func (o StrokeLinejoinOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o StrokeLinejoinOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.StrokeLinejoin = o.v
 }
 
 // StrokeMiterlimitOpt applies to FeBlend
-func (o StrokeMiterlimitOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o StrokeMiterlimitOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.StrokeMiterlimit = o.v
 }
 
 // StrokeOpacityOpt applies to FeBlend
-func (o StrokeOpacityOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o StrokeOpacityOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.StrokeOpacity = o.v
 }
 
 // StrokeWidthOpt applies to FeBlend
-func (o StrokeWidthOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o StrokeWidthOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.StrokeWidth = o.v
 }
 
 // TextAnchorOpt applies to FeBlend
-func (o TextAnchorOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o TextAnchorOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.TextAnchor = o.v
 }
 
 // TextDecorationOpt applies to FeBlend
-func (o TextDecorationOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o TextDecorationOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.TextDecoration = o.v
 }
 
 // TextRenderingOpt applies to FeBlend
-func (o TextRenderingOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o TextRenderingOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.TextRendering = o.v
 }
 
 // UnicodeBidiOpt applies to FeBlend
-func (o UnicodeBidiOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o UnicodeBidiOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.UnicodeBidi = o.v
 }
 
 // VisibilityOpt applies to FeBlend
-func (o VisibilityOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o VisibilityOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Visibility = o.v
 }
 
 // WidthOpt applies to FeBlend
-func (o WidthOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o WidthOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Width = o.v
 }
 
 // WordSpacingOpt applies to FeBlend
-func (o WordSpacingOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o WordSpacingOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.WordSpacing = o.v
 }
 
 // WritingModeOpt applies to FeBlend
-func (o WritingModeOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o WritingModeOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.WritingMode = o.v
 }
 
 // XOpt applies to FeBlend
-func (o XOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o XOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.X = o.v
 }
 
 // YOpt applies to FeBlend
-func (o YOpt) applyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
+func (o YOpt) ApplyFeBlend(a *SvgFeBlendAttrs, _ *[]Component) {
 	a.Y = o.v
 }
 

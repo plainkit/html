@@ -47,7 +47,7 @@ type SvgFontFaceAttrs struct {
 
 // SvgFontFaceArg interface for font-face element arguments
 type SvgFontFaceArg interface {
-	applyFontFace(*SvgFontFaceAttrs, *[]Component)
+	ApplyFontFace(*SvgFontFaceAttrs, *[]Component)
 }
 
 // defaultSvgFontFaceAttrs creates default attributes for font-face
@@ -62,7 +62,7 @@ func SvgFontFace(args ...SvgFontFaceArg) Node {
 	a := defaultSvgFontFaceAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyFontFace(a, &kids)
+		ar.ApplyFontFace(a, &kids)
 	}
 	return Node{
 		Tag:   "font-face",
@@ -72,177 +72,177 @@ func SvgFontFace(args ...SvgFontFaceArg) Node {
 }
 
 // Global applies global SVG attributes to font-face
-func (g Global) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (g Global) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	g.Do(&a.GlobalAttrs)
 }
 
 // AccentHeightOpt applies to FontFace
-func (o AccentHeightOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o AccentHeightOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.AccentHeight = o.v
 }
 
 // AlphabeticOpt applies to FontFace
-func (o AlphabeticOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o AlphabeticOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.Alphabetic = o.v
 }
 
 // AscentOpt applies to FontFace
-func (o AscentOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o AscentOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.Ascent = o.v
 }
 
 // BboxOpt applies to FontFace
-func (o BboxOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o BboxOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.Bbox = o.v
 }
 
 // CapHeightOpt applies to FontFace
-func (o CapHeightOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o CapHeightOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.CapHeight = o.v
 }
 
 // DescentOpt applies to FontFace
-func (o DescentOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o DescentOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.Descent = o.v
 }
 
 // ExternalResourcesRequiredOpt applies to FontFace
-func (o ExternalResourcesRequiredOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o ExternalResourcesRequiredOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.ExternalResourcesRequired = o.v
 }
 
 // FontFamilyOpt applies to FontFace
-func (o FontFamilyOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o FontFamilyOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.FontFamily = o.v
 }
 
 // FontSizeOpt applies to FontFace
-func (o FontSizeOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o FontSizeOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.FontSize = o.v
 }
 
 // FontStretchOpt applies to FontFace
-func (o FontStretchOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o FontStretchOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.FontStretch = o.v
 }
 
 // FontStyleOpt applies to FontFace
-func (o FontStyleOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o FontStyleOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.FontStyle = o.v
 }
 
 // FontVariantOpt applies to FontFace
-func (o FontVariantOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o FontVariantOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.FontVariant = o.v
 }
 
 // FontWeightOpt applies to FontFace
-func (o FontWeightOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o FontWeightOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.FontWeight = o.v
 }
 
 // HangingOpt applies to FontFace
-func (o HangingOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o HangingOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.Hanging = o.v
 }
 
 // IdeographicOpt applies to FontFace
-func (o IdeographicOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o IdeographicOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.Ideographic = o.v
 }
 
 // MathematicalOpt applies to FontFace
-func (o MathematicalOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o MathematicalOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.Mathematical = o.v
 }
 
 // OverlinePositionOpt applies to FontFace
-func (o OverlinePositionOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o OverlinePositionOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.OverlinePosition = o.v
 }
 
 // OverlineThicknessOpt applies to FontFace
-func (o OverlineThicknessOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o OverlineThicknessOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.OverlineThickness = o.v
 }
 
 // Panose1Opt applies to FontFace
-func (o Panose1Opt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o Panose1Opt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.Panose1 = o.v
 }
 
 // SlopeOpt applies to FontFace
-func (o SlopeOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o SlopeOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.Slope = o.v
 }
 
 // StemhOpt applies to FontFace
-func (o StemhOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o StemhOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.Stemh = o.v
 }
 
 // StemvOpt applies to FontFace
-func (o StemvOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o StemvOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.Stemv = o.v
 }
 
 // StrikethroughPositionOpt applies to FontFace
-func (o StrikethroughPositionOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o StrikethroughPositionOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.StrikethroughPosition = o.v
 }
 
 // StrikethroughThicknessOpt applies to FontFace
-func (o StrikethroughThicknessOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o StrikethroughThicknessOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.StrikethroughThickness = o.v
 }
 
 // UnderlinePositionOpt applies to FontFace
-func (o UnderlinePositionOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o UnderlinePositionOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.UnderlinePosition = o.v
 }
 
 // UnderlineThicknessOpt applies to FontFace
-func (o UnderlineThicknessOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o UnderlineThicknessOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.UnderlineThickness = o.v
 }
 
 // UnicodeRangeOpt applies to FontFace
-func (o UnicodeRangeOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o UnicodeRangeOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.UnicodeRange = o.v
 }
 
 // UnitsPerEmOpt applies to FontFace
-func (o UnitsPerEmOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o UnitsPerEmOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.UnitsPerEm = o.v
 }
 
 // VAlphabeticOpt applies to FontFace
-func (o VAlphabeticOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o VAlphabeticOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.VAlphabetic = o.v
 }
 
 // VHangingOpt applies to FontFace
-func (o VHangingOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o VHangingOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.VHanging = o.v
 }
 
 // VIdeographicOpt applies to FontFace
-func (o VIdeographicOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o VIdeographicOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.VIdeographic = o.v
 }
 
 // VMathematicalOpt applies to FontFace
-func (o VMathematicalOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o VMathematicalOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.VMathematical = o.v
 }
 
 // WidthsOpt applies to FontFace
-func (o WidthsOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o WidthsOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.Widths = o.v
 }
 
 // XHeightOpt applies to FontFace
-func (o XHeightOpt) applyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
+func (o XHeightOpt) ApplyFontFace(a *SvgFontFaceAttrs, _ *[]Component) {
 	a.XHeight = o.v
 }
 

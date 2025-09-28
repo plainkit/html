@@ -7,7 +7,7 @@ type CodeAttrs struct {
 }
 
 type CodeArg interface {
-	applyCode(*CodeAttrs, *[]Component)
+	ApplyCode(*CodeAttrs, *[]Component)
 }
 
 func defaultCodeAttrs() *CodeAttrs {
@@ -25,12 +25,12 @@ func Code(args ...CodeArg) Node {
 	a := defaultCodeAttrs()
 	var kids []Component
 	for _, ar := range args {
-		ar.applyCode(a, &kids)
+		ar.ApplyCode(a, &kids)
 	}
 	return Node{Tag: "code", Attrs: a, Kids: kids}
 }
 
-func (g Global) applyCode(a *CodeAttrs, _ *[]Component) {
+func (g Global) ApplyCode(a *CodeAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
