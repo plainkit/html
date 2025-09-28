@@ -5,7 +5,10 @@ import "strings"
 type SelectAttrs struct {
 	Global       GlobalAttrs
 	Autocomplete string
+	Disabled     bool
+	Form         string
 	Multiple     bool
+	Name         string
 	Required     bool
 	Size         string
 }
@@ -41,8 +44,17 @@ func (g Global) applySelect(a *SelectAttrs, _ *[]Component) {
 func (o AutocompleteOpt) applySelect(a *SelectAttrs, _ *[]Component) {
 	a.Autocomplete = o.v
 }
+func (o DisabledOpt) applySelect(a *SelectAttrs, _ *[]Component) {
+	a.Disabled = true
+}
+func (o FormOpt) applySelect(a *SelectAttrs, _ *[]Component) {
+	a.Form = o.v
+}
 func (o MultipleOpt) applySelect(a *SelectAttrs, _ *[]Component) {
 	a.Multiple = true
+}
+func (o NameOpt) applySelect(a *SelectAttrs, _ *[]Component) {
+	a.Name = o.v
 }
 func (o RequiredOpt) applySelect(a *SelectAttrs, _ *[]Component) {
 	a.Required = true
@@ -56,8 +68,17 @@ func (a *SelectAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Autocomplete != "" {
 		Attr(sb, "autocomplete", a.Autocomplete)
 	}
+	if a.Disabled {
+		BoolAttr(sb, "disabled")
+	}
+	if a.Form != "" {
+		Attr(sb, "form", a.Form)
+	}
 	if a.Multiple {
 		BoolAttr(sb, "multiple")
+	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
 	}
 	if a.Required {
 		BoolAttr(sb, "required")

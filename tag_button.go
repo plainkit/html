@@ -6,11 +6,14 @@ type ButtonAttrs struct {
 	Global              GlobalAttrs
 	Command             string
 	Commandfor          string
+	Disabled            bool
+	Form                string
 	Formaction          string
 	Formenctype         string
 	Formmethod          string
 	Formnovalidate      bool
 	Formtarget          string
+	Name                string
 	Popovertarget       string
 	Popovertargetaction string
 	Type                string
@@ -51,6 +54,12 @@ func (o CommandOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 func (o CommandforOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 	a.Commandfor = o.v
 }
+func (o DisabledOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Disabled = true
+}
+func (o FormOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Form = o.v
+}
 func (o FormactionOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 	a.Formaction = o.v
 }
@@ -65,6 +74,9 @@ func (o FormnovalidateOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 }
 func (o FormtargetOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 	a.Formtarget = o.v
+}
+func (o NameOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
+	a.Name = o.v
 }
 func (o PopovertargetOpt) applyButton(a *ButtonAttrs, _ *[]Component) {
 	a.Popovertarget = o.v
@@ -87,6 +99,12 @@ func (a *ButtonAttrs) WriteAttrs(sb *strings.Builder) {
 	if a.Commandfor != "" {
 		Attr(sb, "commandfor", a.Commandfor)
 	}
+	if a.Disabled {
+		BoolAttr(sb, "disabled")
+	}
+	if a.Form != "" {
+		Attr(sb, "form", a.Form)
+	}
 	if a.Formaction != "" {
 		Attr(sb, "formaction", a.Formaction)
 	}
@@ -101,6 +119,9 @@ func (a *ButtonAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Formtarget != "" {
 		Attr(sb, "formtarget", a.Formtarget)
+	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
 	}
 	if a.Popovertarget != "" {
 		Attr(sb, "popovertarget", a.Popovertarget)

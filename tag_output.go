@@ -5,6 +5,8 @@ import "strings"
 type OutputAttrs struct {
 	Global GlobalAttrs
 	For    string
+	Form   string
+	Name   string
 }
 
 type OutputArg interface {
@@ -38,10 +40,22 @@ func (g Global) applyOutput(a *OutputAttrs, _ *[]Component) {
 func (o ForOpt) applyOutput(a *OutputAttrs, _ *[]Component) {
 	a.For = o.v
 }
+func (o FormOpt) applyOutput(a *OutputAttrs, _ *[]Component) {
+	a.Form = o.v
+}
+func (o NameOpt) applyOutput(a *OutputAttrs, _ *[]Component) {
+	a.Name = o.v
+}
 
 func (a *OutputAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
 	if a.For != "" {
 		Attr(sb, "for", a.For)
+	}
+	if a.Form != "" {
+		Attr(sb, "form", a.Form)
+	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
 	}
 }

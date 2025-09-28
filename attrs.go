@@ -278,6 +278,14 @@ func AFor(v string) ForOpt {
 	return ForOpt{v}
 }
 
+type FormOpt struct {
+	v string
+}
+
+func AForm(v string) FormOpt {
+	return FormOpt{v}
+}
+
 type FormactionOpt struct {
 	v string
 }

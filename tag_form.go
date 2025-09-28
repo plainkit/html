@@ -11,6 +11,7 @@ type FormAttrs struct {
 	Method        string
 	Name          string
 	Novalidate    bool
+	Rel           string
 	Target        string
 }
 
@@ -63,6 +64,13 @@ func (o NameOpt) applyForm(a *FormAttrs, _ *[]Component) {
 func (o NovalidateOpt) applyForm(a *FormAttrs, _ *[]Component) {
 	a.Novalidate = true
 }
+func (o RelOpt) applyForm(a *FormAttrs, _ *[]Component) {
+	if a.Rel == "" {
+		a.Rel = o.v
+	} else {
+		a.Rel += " " + o.v
+	}
+}
 func (o TargetOpt) applyForm(a *FormAttrs, _ *[]Component) {
 	a.Target = o.v
 }
@@ -89,6 +97,9 @@ func (a *FormAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Novalidate {
 		BoolAttr(sb, "novalidate")
+	}
+	if a.Rel != "" {
+		Attr(sb, "rel", a.Rel)
 	}
 	if a.Target != "" {
 		Attr(sb, "target", a.Target)

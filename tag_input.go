@@ -11,6 +11,8 @@ type InputAttrs struct {
 	Checked             bool
 	Colorspace          string
 	Dirname             string
+	Disabled            bool
+	Form                string
 	Formaction          string
 	Formenctype         string
 	Formmethod          string
@@ -86,6 +88,12 @@ func (o ColorspaceOpt) applyInput(a *InputAttrs, _ *[]Component) {
 }
 func (o DirnameOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Dirname = o.v
+}
+func (o DisabledOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Disabled = true
+}
+func (o FormOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Form = o.v
 }
 func (o FormactionOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Formaction = o.v
@@ -185,6 +193,12 @@ func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Dirname != "" {
 		Attr(sb, "dirname", a.Dirname)
+	}
+	if a.Disabled {
+		BoolAttr(sb, "disabled")
+	}
+	if a.Form != "" {
+		Attr(sb, "form", a.Form)
 	}
 	if a.Formaction != "" {
 		Attr(sb, "formaction", a.Formaction)

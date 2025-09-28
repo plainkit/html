@@ -5,6 +5,7 @@ import "strings"
 type ObjectAttrs struct {
 	Global GlobalAttrs
 	Data   string
+	Form   string
 	Height string
 	Name   string
 	Type   string
@@ -39,6 +40,9 @@ func (g Global) applyObject(a *ObjectAttrs, _ *[]Component) {
 	g.Do(&a.Global)
 }
 
+func (o FormOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
+	a.Form = o.v
+}
 func (o HeightOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
 	a.Height = o.v
 }
@@ -54,6 +58,9 @@ func (o WidthOpt) applyObject(a *ObjectAttrs, _ *[]Component) {
 
 func (a *ObjectAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+	if a.Form != "" {
+		Attr(sb, "form", a.Form)
+	}
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
