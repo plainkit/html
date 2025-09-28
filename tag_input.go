@@ -23,6 +23,7 @@ type InputAttrs struct {
 	Min                 string
 	Minlength           string
 	Multiple            bool
+	Name                string
 	Pattern             string
 	Placeholder         string
 	Popovertarget       string
@@ -122,6 +123,9 @@ func (o MinlengthOpt) applyInput(a *InputAttrs, _ *[]Component) {
 func (o MultipleOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Multiple = true
 }
+func (o NameOpt) applyInput(a *InputAttrs, _ *[]Component) {
+	a.Name = o.v
+}
 func (o PatternOpt) applyInput(a *InputAttrs, _ *[]Component) {
 	a.Pattern = o.v
 }
@@ -217,6 +221,9 @@ func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	}
 	if a.Multiple {
 		BoolAttr(sb, "multiple")
+	}
+	if a.Name != "" {
+		Attr(sb, "name", a.Name)
 	}
 	if a.Pattern != "" {
 		Attr(sb, "pattern", a.Pattern)

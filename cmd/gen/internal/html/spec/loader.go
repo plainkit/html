@@ -39,6 +39,7 @@ func (l *Loader) LoadAllTagSpecs() ([]TagSpec, error) {
 		}
 
 		tagAttrs := collectAttributes(element.Attributes, globalSet)
+		applyTagOverrides(name, &tagAttrs)
 		specs = append(specs, TagSpec{
 			Name:       name,
 			Void:       element.Empty,
@@ -138,6 +139,30 @@ func collectAttributes(attrRefs []tags.AttributeRef, globalSet map[string]struct
 	})
 
 	return attrs
+}
+
+func applyTagOverrides(name string, attrs *[]Attribute) {
+	if attrs == nil {
+		return
+	}
+
+	ensureAttribute := func(field, attrType, attrName string) {
+		for _, existing := range *attrs {
+			if existing.Attr == attrName {
+				return
+			}
+		}
+		*attrs = append(*attrs, Attribute{Field: field, Type: attrType, Attr: attrName})
+	}
+
+	switch name {
+	case "input":
+		ensureAttribute("Name", "string", "name")
+	}
+
+	sort.Slice(*attrs, func(i, j int) bool {
+		return (*attrs)[i].Attr < (*attrs)[j].Attr
+	})
 }
 
 func attributeTypeFromRef(ref tags.AttributeRef) string {
