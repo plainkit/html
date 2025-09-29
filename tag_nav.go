@@ -23,10 +23,12 @@ func defaultNavAttrs() *NavAttrs {
 
 func Nav(args ...NavArg) Node {
 	a := defaultNavAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyNav(a, &kids)
 	}
+
 	return Node{Tag: "nav", Attrs: a, Kids: kids}
 }
 

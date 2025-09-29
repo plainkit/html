@@ -23,10 +23,12 @@ func defaultHrAttrs() *HrAttrs {
 
 func Hr(args ...HrArg) Node {
 	a := defaultHrAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyHr(a, &kids)
 	}
+
 	return Node{Tag: "hr", Attrs: a, Kids: kids, Void: true}
 }
 

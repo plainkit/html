@@ -23,10 +23,12 @@ func defaultLegendAttrs() *LegendAttrs {
 
 func Legend(args ...LegendArg) Node {
 	a := defaultLegendAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyLegend(a, &kids)
 	}
+
 	return Node{Tag: "legend", Attrs: a, Kids: kids}
 }
 

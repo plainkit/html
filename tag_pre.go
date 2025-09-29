@@ -23,10 +23,12 @@ func defaultPreAttrs() *PreAttrs {
 
 func Pre(args ...PreArg) Node {
 	a := defaultPreAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyPre(a, &kids)
 	}
+
 	return Node{Tag: "pre", Attrs: a, Kids: kids}
 }
 

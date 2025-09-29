@@ -23,10 +23,12 @@ func defaultRubyAttrs() *RubyAttrs {
 
 func Ruby(args ...RubyArg) Node {
 	a := defaultRubyAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyRuby(a, &kids)
 	}
+
 	return Node{Tag: "ruby", Attrs: a, Kids: kids}
 }
 

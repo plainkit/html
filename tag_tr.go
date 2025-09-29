@@ -23,10 +23,12 @@ func defaultTrAttrs() *TrAttrs {
 
 func Tr(args ...TrArg) Node {
 	a := defaultTrAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyTr(a, &kids)
 	}
+
 	return Node{Tag: "tr", Attrs: a, Kids: kids}
 }
 

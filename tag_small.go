@@ -23,10 +23,12 @@ func defaultSmallAttrs() *SmallAttrs {
 
 func Small(args ...SmallArg) Node {
 	a := defaultSmallAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplySmall(a, &kids)
 	}
+
 	return Node{Tag: "small", Attrs: a, Kids: kids}
 }
 

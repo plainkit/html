@@ -29,11 +29,13 @@ func Generate(outDir string) error {
 	}
 
 	fmt.Println("Generating SVG attributes file (excluding HTML ones)...")
+
 	if err := generateAttributes(manager, specLoader, attributesGenerator, allSpecs); err != nil {
 		return fmt.Errorf("generate SVG attributes: %w", err)
 	}
 
 	fmt.Println("Generating SVG tag files...")
+
 	for _, tagSpec := range allSpecs {
 		fileName := fmt.Sprintf("svg_%s.go", tagSpec.Name)
 		source := tagGenerator.GenerateSource(tagSpec)
@@ -44,6 +46,7 @@ func Generate(outDir string) error {
 	}
 
 	fmt.Printf("✅ SVG generation done (%d tags)\n", len(allSpecs))
+
 	return nil
 }
 
@@ -56,5 +59,6 @@ func generateAttributes(manager files.Manager, specLoader *spec.Loader, attrGen 
 	fmt.Printf("Collected %d unique SVG attributes from all specs\n", len(allAttributes))
 
 	source := attrGen.GenerateSource(allAttributes)
+
 	return manager.WriteGoFile("svg_attrs.go", source)
 }

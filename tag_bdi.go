@@ -23,10 +23,12 @@ func defaultBdiAttrs() *BdiAttrs {
 
 func Bdi(args ...BdiArg) Node {
 	a := defaultBdiAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyBdi(a, &kids)
 	}
+
 	return Node{Tag: "bdi", Attrs: a, Kids: kids}
 }
 

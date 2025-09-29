@@ -30,10 +30,12 @@ func defaultAudioAttrs() *AudioAttrs {
 
 func Audio(args ...AudioArg) Node {
 	a := defaultAudioAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyAudio(a, &kids)
 	}
+
 	return Node{Tag: "audio", Attrs: a, Kids: kids}
 }
 
@@ -65,24 +67,31 @@ func (o SrcOpt) ApplyAudio(a *AudioAttrs, _ *[]Component) {
 
 func (a *AudioAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Autoplay {
 		BoolAttr(sb, "autoplay")
 	}
+
 	if a.Controls {
 		BoolAttr(sb, "controls")
 	}
+
 	if a.Crossorigin != "" {
 		Attr(sb, "crossorigin", a.Crossorigin)
 	}
+
 	if a.Loop {
 		BoolAttr(sb, "loop")
 	}
+
 	if a.Muted {
 		BoolAttr(sb, "muted")
 	}
+
 	if a.Preload != "" {
 		Attr(sb, "preload", a.Preload)
 	}
+
 	if a.Src != "" {
 		Attr(sb, "src", a.Src)
 	}

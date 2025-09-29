@@ -56,6 +56,7 @@ func (l *Loader) LoadAllTagSpecs() ([]TagSpec, error) {
 				Type:  "string",
 			})
 		}
+
 		specs = append(specs, TagSpec{
 			Name:       trimmed,
 			Attributes: attrs,
@@ -67,6 +68,7 @@ func (l *Loader) LoadAllTagSpecs() ([]TagSpec, error) {
 	})
 
 	fmt.Printf("Loaded %d SVG element definitions\n", len(specs))
+
 	return specs, nil
 }
 
@@ -83,6 +85,7 @@ func (l *Loader) LoadGlobalAttributes() ([]Attribute, error) {
 		if trimmed == "" {
 			continue
 		}
+
 		lower := strings.ToLower(trimmed)
 		if _, ok := htmlGlobals[lower]; ok {
 			continue
@@ -111,14 +114,17 @@ func (l *Loader) CollectAllAttributes(specs []TagSpec) map[string]Attribute {
 			if key == "" {
 				continue
 			}
+
 			if existing, ok := all[key]; ok {
 				if strings.Contains(attr.Attr, "-") && !strings.Contains(existing.Attr, "-") {
 					all[key] = attr
 				} else if existing.Type == "bool" && attr.Type == "string" {
 					all[key] = attr
 				}
+
 				continue
 			}
+
 			all[key] = attr
 		}
 	}
@@ -177,9 +183,11 @@ func collectAttributes(attrNames []string, globalSet map[string]struct{}) []Attr
 		if _, ok := globalSet[lower]; ok {
 			continue
 		}
+
 		if _, ok := seen[lower]; ok {
 			continue
 		}
+
 		seen[lower] = struct{}{}
 
 		attrs = append(attrs, Attribute{

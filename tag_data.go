@@ -24,10 +24,12 @@ func defaultDataAttrs() *DataAttrs {
 
 func Data(args ...DataArg) Node {
 	a := defaultDataAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyData(a, &kids)
 	}
+
 	return Node{Tag: "data", Attrs: a, Kids: kids}
 }
 
@@ -41,6 +43,7 @@ func (o ValueOpt) ApplyData(a *DataAttrs, _ *[]Component) {
 
 func (a *DataAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)
 	}

@@ -28,10 +28,12 @@ func defaultMetaAttrs() *MetaAttrs {
 
 func Meta(args ...MetaArg) Node {
 	a := defaultMetaAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyMeta(a, &kids)
 	}
+
 	return Node{Tag: "meta", Attrs: a, Kids: kids, Void: true}
 }
 
@@ -57,18 +59,23 @@ func (o NameOpt) ApplyMeta(a *MetaAttrs, _ *[]Component) {
 
 func (a *MetaAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Charset != "" {
 		Attr(sb, "charset", a.Charset)
 	}
+
 	if a.Content != "" {
 		Attr(sb, "content", a.Content)
 	}
+
 	if a.HttpEquiv != "" {
 		Attr(sb, "http-equiv", a.HttpEquiv)
 	}
+
 	if a.Media != "" {
 		Attr(sb, "media", a.Media)
 	}
+
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
 	}

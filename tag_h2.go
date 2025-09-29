@@ -23,10 +23,12 @@ func defaultH2Attrs() *H2Attrs {
 
 func H2(args ...H2Arg) Node {
 	a := defaultH2Attrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyH2(a, &kids)
 	}
+
 	return Node{Tag: "h2", Attrs: a, Kids: kids}
 }
 

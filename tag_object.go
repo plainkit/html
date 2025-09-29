@@ -29,10 +29,12 @@ func defaultObjectAttrs() *ObjectAttrs {
 
 func Object(args ...ObjectArg) Node {
 	a := defaultObjectAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyObject(a, &kids)
 	}
+
 	return Node{Tag: "object", Attrs: a, Kids: kids}
 }
 
@@ -58,18 +60,23 @@ func (o WidthOpt) ApplyObject(a *ObjectAttrs, _ *[]Component) {
 
 func (a *ObjectAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Form != "" {
 		Attr(sb, "form", a.Form)
 	}
+
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
+
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
 	}
+
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)
 	}
+
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)
 	}

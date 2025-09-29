@@ -36,10 +36,12 @@ func defaultTextareaAttrs() *TextareaAttrs {
 
 func Textarea(args ...TextareaArg) Node {
 	a := defaultTextareaAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyTextarea(a, &kids)
 	}
+
 	return Node{Tag: "textarea", Attrs: a, Kids: kids}
 }
 
@@ -89,42 +91,55 @@ func (o WrapOpt) ApplyTextarea(a *TextareaAttrs, _ *[]Component) {
 
 func (a *TextareaAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Autocomplete != "" {
 		Attr(sb, "autocomplete", a.Autocomplete)
 	}
+
 	if a.Cols != "" {
 		Attr(sb, "cols", a.Cols)
 	}
+
 	if a.Dirname != "" {
 		Attr(sb, "dirname", a.Dirname)
 	}
+
 	if a.Disabled {
 		BoolAttr(sb, "disabled")
 	}
+
 	if a.Form != "" {
 		Attr(sb, "form", a.Form)
 	}
+
 	if a.Maxlength != "" {
 		Attr(sb, "maxlength", a.Maxlength)
 	}
+
 	if a.Minlength != "" {
 		Attr(sb, "minlength", a.Minlength)
 	}
+
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
 	}
+
 	if a.Placeholder != "" {
 		Attr(sb, "placeholder", a.Placeholder)
 	}
+
 	if a.Readonly {
 		BoolAttr(sb, "readonly")
 	}
+
 	if a.Required {
 		BoolAttr(sb, "required")
 	}
+
 	if a.Rows != "" {
 		Attr(sb, "rows", a.Rows)
 	}
+
 	if a.Wrap != "" {
 		Attr(sb, "wrap", a.Wrap)
 	}

@@ -23,10 +23,12 @@ func defaultAbbrAttrs() *AbbrAttrs {
 
 func Abbr(args ...AbbrArg) Node {
 	a := defaultAbbrAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyAbbr(a, &kids)
 	}
+
 	return Node{Tag: "abbr", Attrs: a, Kids: kids}
 }
 

@@ -23,10 +23,12 @@ func defaultSearchAttrs() *SearchAttrs {
 
 func Search(args ...SearchArg) Node {
 	a := defaultSearchAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplySearch(a, &kids)
 	}
+
 	return Node{Tag: "search", Attrs: a, Kids: kids}
 }
 

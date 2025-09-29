@@ -23,10 +23,12 @@ func defaultUAttrs() *UAttrs {
 
 func U(args ...UArg) Node {
 	a := defaultUAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyU(a, &kids)
 	}
+
 	return Node{Tag: "u", Attrs: a, Kids: kids}
 }
 

@@ -23,10 +23,12 @@ func defaultTbodyAttrs() *TbodyAttrs {
 
 func Tbody(args ...TbodyArg) Node {
 	a := defaultTbodyAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyTbody(a, &kids)
 	}
+
 	return Node{Tag: "tbody", Attrs: a, Kids: kids}
 }
 

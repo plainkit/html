@@ -23,10 +23,12 @@ func defaultH5Attrs() *H5Attrs {
 
 func H5(args ...H5Arg) Node {
 	a := defaultH5Attrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyH5(a, &kids)
 	}
+
 	return Node{Tag: "h5", Attrs: a, Kids: kids}
 }
 

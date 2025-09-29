@@ -25,10 +25,12 @@ func defaultStyleAttrs() *StyleAttrs {
 
 func Style(args ...StyleArg) Node {
 	a := defaultStyleAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyStyle(a, &kids)
 	}
+
 	return Node{Tag: "style", Attrs: a, Kids: kids}
 }
 
@@ -45,9 +47,11 @@ func (o MediaOpt) ApplyStyle(a *StyleAttrs, _ *[]Component) {
 
 func (a *StyleAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Blocking != "" {
 		Attr(sb, "blocking", a.Blocking)
 	}
+
 	if a.Media != "" {
 		Attr(sb, "media", a.Media)
 	}

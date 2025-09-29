@@ -93,8 +93,10 @@ func (g *GlobalGenerator) generateGlobalAttrsStruct(sb *strings.Builder, globalA
 
 	sb.WriteString("\t// Pointers for tri-state values\n")
 
-	var pointerIntFields []string
-	var pointerStringFields []string
+	var (
+		pointerIntFields    []string
+		pointerStringFields []string
+	)
 
 	for _, attr := range globalAttrs {
 		attrName := attr.Attr
@@ -114,9 +116,11 @@ func (g *GlobalGenerator) generateGlobalAttrsStruct(sb *strings.Builder, globalA
 	for _, field := range pointerStringFields {
 		fmt.Fprintf(sb, "\t%s\n", field)
 	}
+
 	sb.WriteString("\n")
 
 	sb.WriteString("\t// Booleans\n")
+
 	for i, field := range boolAttrs {
 		if i == 0 {
 			fmt.Fprintf(sb, "\t%s", field)
@@ -124,6 +128,7 @@ func (g *GlobalGenerator) generateGlobalAttrsStruct(sb *strings.Builder, globalA
 			fmt.Fprintf(sb, ", %s", field)
 		}
 	}
+
 	if len(boolAttrs) > 0 {
 		sb.WriteString(" bool\n")
 	}
@@ -385,5 +390,6 @@ func (g *GlobalGenerator) contains(slice []string, item string) bool {
 			return true
 		}
 	}
+
 	return false
 }

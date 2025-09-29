@@ -57,10 +57,12 @@ func defaultInputAttrs() *InputAttrs {
 
 func Input(args ...InputArg) Node {
 	a := defaultInputAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyInput(a, &kids)
 	}
+
 	return Node{Tag: "input", Attrs: a, Kids: kids, Void: true}
 }
 
@@ -173,105 +175,139 @@ func (o WidthOpt) ApplyInput(a *InputAttrs, _ *[]Component) {
 
 func (a *InputAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Accept != "" {
 		Attr(sb, "accept", a.Accept)
 	}
+
 	if a.Alpha {
 		BoolAttr(sb, "alpha")
 	}
+
 	if a.Alt != "" {
 		Attr(sb, "alt", a.Alt)
 	}
+
 	if a.Autocomplete != "" {
 		Attr(sb, "autocomplete", a.Autocomplete)
 	}
+
 	if a.Checked {
 		BoolAttr(sb, "checked")
 	}
+
 	if a.Colorspace != "" {
 		Attr(sb, "colorspace", a.Colorspace)
 	}
+
 	if a.Dirname != "" {
 		Attr(sb, "dirname", a.Dirname)
 	}
+
 	if a.Disabled {
 		BoolAttr(sb, "disabled")
 	}
+
 	if a.Form != "" {
 		Attr(sb, "form", a.Form)
 	}
+
 	if a.Formaction != "" {
 		Attr(sb, "formaction", a.Formaction)
 	}
+
 	if a.Formenctype != "" {
 		Attr(sb, "formenctype", a.Formenctype)
 	}
+
 	if a.Formmethod != "" {
 		Attr(sb, "formmethod", a.Formmethod)
 	}
+
 	if a.Formnovalidate {
 		BoolAttr(sb, "formnovalidate")
 	}
+
 	if a.Formtarget != "" {
 		Attr(sb, "formtarget", a.Formtarget)
 	}
+
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
+
 	if a.List != "" {
 		Attr(sb, "list", a.List)
 	}
+
 	if a.Max != "" {
 		Attr(sb, "max", a.Max)
 	}
+
 	if a.Maxlength != "" {
 		Attr(sb, "maxlength", a.Maxlength)
 	}
+
 	if a.Min != "" {
 		Attr(sb, "min", a.Min)
 	}
+
 	if a.Minlength != "" {
 		Attr(sb, "minlength", a.Minlength)
 	}
+
 	if a.Multiple {
 		BoolAttr(sb, "multiple")
 	}
+
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
 	}
+
 	if a.Pattern != "" {
 		Attr(sb, "pattern", a.Pattern)
 	}
+
 	if a.Placeholder != "" {
 		Attr(sb, "placeholder", a.Placeholder)
 	}
+
 	if a.Popovertarget != "" {
 		Attr(sb, "popovertarget", a.Popovertarget)
 	}
+
 	if a.Popovertargetaction != "" {
 		Attr(sb, "popovertargetaction", a.Popovertargetaction)
 	}
+
 	if a.Readonly {
 		BoolAttr(sb, "readonly")
 	}
+
 	if a.Required {
 		BoolAttr(sb, "required")
 	}
+
 	if a.Size != "" {
 		Attr(sb, "size", a.Size)
 	}
+
 	if a.Src != "" {
 		Attr(sb, "src", a.Src)
 	}
+
 	if a.Step != "" {
 		Attr(sb, "step", a.Step)
 	}
+
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)
 	}
+
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)
 	}
+
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)
 	}

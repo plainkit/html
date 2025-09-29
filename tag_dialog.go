@@ -25,10 +25,12 @@ func defaultDialogAttrs() *DialogAttrs {
 
 func Dialog(args ...DialogArg) Node {
 	a := defaultDialogAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyDialog(a, &kids)
 	}
+
 	return Node{Tag: "dialog", Attrs: a, Kids: kids}
 }
 
@@ -45,9 +47,11 @@ func (o OpenOpt) ApplyDialog(a *DialogAttrs, _ *[]Component) {
 
 func (a *DialogAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Closedby != "" {
 		Attr(sb, "closedby", a.Closedby)
 	}
+
 	if a.Open {
 		BoolAttr(sb, "open")
 	}

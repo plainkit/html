@@ -23,10 +23,12 @@ func defaultSubAttrs() *SubAttrs {
 
 func Sub(args ...SubArg) Node {
 	a := defaultSubAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplySub(a, &kids)
 	}
+
 	return Node{Tag: "sub", Attrs: a, Kids: kids}
 }
 

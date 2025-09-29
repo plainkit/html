@@ -23,10 +23,12 @@ func defaultAsideAttrs() *AsideAttrs {
 
 func Aside(args ...AsideArg) Node {
 	a := defaultAsideAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyAside(a, &kids)
 	}
+
 	return Node{Tag: "aside", Attrs: a, Kids: kids}
 }
 

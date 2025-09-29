@@ -24,10 +24,12 @@ func defaultSlotAttrs() *SlotAttrs {
 
 func Slot(args ...SlotArg) Node {
 	a := defaultSlotAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplySlot(a, &kids)
 	}
+
 	return Node{Tag: "slot", Attrs: a, Kids: kids}
 }
 
@@ -41,6 +43,7 @@ func (o NameOpt) ApplySlot(a *SlotAttrs, _ *[]Component) {
 
 func (a *SlotAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
 	}

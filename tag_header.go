@@ -23,10 +23,12 @@ func defaultHeaderAttrs() *HeaderAttrs {
 
 func Header(args ...HeaderArg) Node {
 	a := defaultHeaderAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyHeader(a, &kids)
 	}
+
 	return Node{Tag: "header", Attrs: a, Kids: kids}
 }
 

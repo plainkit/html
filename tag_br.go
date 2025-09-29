@@ -23,10 +23,12 @@ func defaultBrAttrs() *BrAttrs {
 
 func Br(args ...BrArg) Node {
 	a := defaultBrAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyBr(a, &kids)
 	}
+
 	return Node{Tag: "br", Attrs: a, Kids: kids, Void: true}
 }
 

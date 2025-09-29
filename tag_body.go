@@ -23,10 +23,12 @@ func defaultBodyAttrs() *BodyAttrs {
 
 func Body(args ...BodyArg) Node {
 	a := defaultBodyAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyBody(a, &kids)
 	}
+
 	return Node{Tag: "body", Attrs: a, Kids: kids}
 }
 

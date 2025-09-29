@@ -25,6 +25,7 @@ func (m Manager) Clean(shouldRemove func(name string) bool) error {
 		if os.IsNotExist(err) {
 			return nil
 		}
+
 		return fmt.Errorf("read output directory: %w", err)
 	}
 
@@ -47,6 +48,7 @@ func (m Manager) WriteGoFile(name, source string) error {
 	if err != nil {
 		debugPath := filepath.Join(m.Dir, name+".unformatted")
 		_ = os.WriteFile(debugPath, []byte(source), 0o644)
+
 		return fmt.Errorf("format %s source: %w", name, err)
 	}
 
@@ -54,15 +56,18 @@ func (m Manager) WriteGoFile(name, source string) error {
 	if err := os.WriteFile(path, formatted, 0o644); err != nil {
 		return fmt.Errorf("write %s: %w", name, err)
 	}
+
 	return nil
 }
 
 func (m Manager) ReadFile(name string) (string, error) {
 	path := filepath.Join(m.Dir, name)
+
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return "", fmt.Errorf("read %s: %w", name, err)
 	}
+
 	return string(data), nil
 }
 

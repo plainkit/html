@@ -21,15 +21,18 @@ func main() {
 
 func run(outDir string) error {
 	fmt.Println("Generating HTML...")
+
 	if err := html.Generate(outDir); err != nil {
 		return fmt.Errorf("html generation: %w", err)
 	}
 
 	fmt.Println("Generating SVG...")
+
 	if err := svg.Generate(outDir); err != nil {
 		return fmt.Errorf("svg generation: %w", err)
 	}
 
 	fmt.Println("✅ Generation complete")
+
 	return nil
 }

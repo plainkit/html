@@ -23,10 +23,12 @@ func defaultUlAttrs() *UlAttrs {
 
 func Ul(args ...UlArg) Node {
 	a := defaultUlAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyUl(a, &kids)
 	}
+
 	return Node{Tag: "ul", Attrs: a, Kids: kids}
 }
 

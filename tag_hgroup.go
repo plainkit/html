@@ -23,10 +23,12 @@ func defaultHgroupAttrs() *HgroupAttrs {
 
 func Hgroup(args ...HgroupArg) Node {
 	a := defaultHgroupAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyHgroup(a, &kids)
 	}
+
 	return Node{Tag: "hgroup", Attrs: a, Kids: kids}
 }
 

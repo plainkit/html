@@ -23,10 +23,12 @@ func defaultVarAttrs() *VarAttrs {
 
 func Var(args ...VarArg) Node {
 	a := defaultVarAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyVar(a, &kids)
 	}
+
 	return Node{Tag: "var", Attrs: a, Kids: kids}
 }
 

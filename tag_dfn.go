@@ -23,10 +23,12 @@ func defaultDfnAttrs() *DfnAttrs {
 
 func Dfn(args ...DfnArg) Node {
 	a := defaultDfnAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyDfn(a, &kids)
 	}
+
 	return Node{Tag: "dfn", Attrs: a, Kids: kids}
 }
 

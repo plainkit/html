@@ -23,10 +23,12 @@ func defaultSummaryAttrs() *SummaryAttrs {
 
 func Summary(args ...SummaryArg) Node {
 	a := defaultSummaryAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplySummary(a, &kids)
 	}
+
 	return Node{Tag: "summary", Attrs: a, Kids: kids}
 }
 

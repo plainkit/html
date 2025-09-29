@@ -32,10 +32,12 @@ func defaultAreaAttrs() *AreaAttrs {
 
 func Area(args ...AreaArg) Node {
 	a := defaultAreaAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyArea(a, &kids)
 	}
+
 	return Node{Tag: "area", Attrs: a, Kids: kids, Void: true}
 }
 
@@ -77,30 +79,39 @@ func (o TargetOpt) ApplyArea(a *AreaAttrs, _ *[]Component) {
 
 func (a *AreaAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Alt != "" {
 		Attr(sb, "alt", a.Alt)
 	}
+
 	if a.Coords != "" {
 		Attr(sb, "coords", a.Coords)
 	}
+
 	if a.Download != "" {
 		Attr(sb, "download", a.Download)
 	}
+
 	if a.Href != "" {
 		Attr(sb, "href", a.Href)
 	}
+
 	if a.Ping != "" {
 		Attr(sb, "ping", a.Ping)
 	}
+
 	if a.Referrerpolicy != "" {
 		Attr(sb, "referrerpolicy", a.Referrerpolicy)
 	}
+
 	if a.Rel != "" {
 		Attr(sb, "rel", a.Rel)
 	}
+
 	if a.Shape != "" {
 		Attr(sb, "shape", a.Shape)
 	}
+
 	if a.Target != "" {
 		Attr(sb, "target", a.Target)
 	}

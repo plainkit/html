@@ -23,10 +23,12 @@ func defaultDivAttrs() *DivAttrs {
 
 func Div(args ...DivArg) Node {
 	a := defaultDivAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyDiv(a, &kids)
 	}
+
 	return Node{Tag: "div", Attrs: a, Kids: kids}
 }
 

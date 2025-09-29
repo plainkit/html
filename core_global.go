@@ -58,6 +58,7 @@ func (g *GlobalAttrs) addClass(v string) {
 	if v == "" {
 		return
 	}
+
 	if g.Class == "" {
 		g.Class = v
 	} else {
@@ -69,6 +70,7 @@ func (g *GlobalAttrs) setAria(k, v string) {
 	if g.Aria == nil {
 		g.Aria = map[string]string{}
 	}
+
 	g.Aria[k] = v
 }
 
@@ -76,6 +78,7 @@ func (g *GlobalAttrs) setData(k, v string) {
 	if g.Data == nil {
 		g.Data = map[string]string{}
 	}
+
 	g.Data[k] = v
 }
 
@@ -83,6 +86,7 @@ func (g *GlobalAttrs) setEvent(ev, handler string) {
 	if g.Events == nil {
 		g.Events = map[string]string{}
 	}
+
 	g.Events["on"+ev] = handler
 }
 
@@ -90,6 +94,7 @@ func (g *GlobalAttrs) setCustom(k, v string) {
 	if g.Custom == nil {
 		g.Custom = map[string]string{}
 	}
+
 	g.Custom[k] = v
 }
 
@@ -98,90 +103,119 @@ func WriteGlobal(sb *strings.Builder, g *GlobalAttrs) {
 	if g.Class != "" {
 		Attr(sb, "class", g.Class)
 	}
+
 	if g.Accesskey != "" {
 		Attr(sb, "accesskey", g.Accesskey)
 	}
+
 	if g.Autocapitalize != "" {
 		Attr(sb, "autocapitalize", g.Autocapitalize)
 	}
+
 	if g.Autocorrect != "" {
 		Attr(sb, "autocorrect", g.Autocorrect)
 	}
+
 	if g.Autofocus {
 		BoolAttr(sb, "autofocus")
 	}
+
 	if g.Class != "" {
 		Attr(sb, "class", g.Class)
 	}
+
 	if g.Contenteditable != "" {
 		Attr(sb, "contenteditable", g.Contenteditable)
 	}
+
 	if g.Dir != "" {
 		Attr(sb, "dir", g.Dir)
 	}
+
 	if g.Draggable != nil {
 		Attr(sb, "draggable", *g.Draggable)
 	}
+
 	if g.Enterkeyhint != "" {
 		Attr(sb, "enterkeyhint", g.Enterkeyhint)
 	}
+
 	if g.Hidden != "" {
 		Attr(sb, "hidden", g.Hidden)
 	}
+
 	if g.Id != "" {
 		Attr(sb, "id", g.Id)
 	}
+
 	if g.Inert {
 		BoolAttr(sb, "inert")
 	}
+
 	if g.Inputmode != "" {
 		Attr(sb, "inputmode", g.Inputmode)
 	}
+
 	if g.Is != "" {
 		Attr(sb, "is", g.Is)
 	}
+
 	if g.Itemid != "" {
 		Attr(sb, "itemid", g.Itemid)
 	}
+
 	if g.Itemprop != "" {
 		Attr(sb, "itemprop", g.Itemprop)
 	}
+
 	if g.Itemref != "" {
 		Attr(sb, "itemref", g.Itemref)
 	}
+
 	if g.Itemscope {
 		BoolAttr(sb, "itemscope")
 	}
+
 	if g.Itemtype != "" {
 		Attr(sb, "itemtype", g.Itemtype)
 	}
+
 	if g.Lang != "" {
 		Attr(sb, "lang", g.Lang)
 	}
+
 	if g.Nonce != "" {
 		Attr(sb, "nonce", g.Nonce)
 	}
+
 	if g.Popover != "" {
 		Attr(sb, "popover", g.Popover)
 	}
+
 	if g.Slot != "" {
 		Attr(sb, "slot", g.Slot)
 	}
+
 	if g.Spellcheck != nil {
 		Attr(sb, "spellcheck", *g.Spellcheck)
 	}
+
 	if g.Style != "" {
 		Attr(sb, "style", g.Style)
 	}
+
 	if g.Tabindex != nil {
 		Attr(sb, "tabindex", strconv.Itoa(*g.Tabindex))
 	}
+
 	if g.Title != "" {
 		Attr(sb, "title", g.Title)
 	}
+
 	if g.Translate != nil {
 		Attr(sb, "translate", *g.Translate)
 	}
+
 	if g.Writingsuggestions != nil {
 		Attr(sb, "writingsuggestions", *g.Writingsuggestions)
 	}
@@ -215,13 +249,16 @@ func sortedKeys(m map[string]string) []string {
 	if len(m) == 0 {
 		return nil
 	}
+
 	keys := make([]string, 0, len(m))
 	for k := range m {
 		if k != "" {
 			keys = append(keys, k)
 		}
 	}
+
 	sort.Strings(keys)
+
 	return keys
 }
 
@@ -272,6 +309,7 @@ func ADraggable(b bool) Global {
 	if b {
 		val = "true"
 	}
+
 	return Global{func(g *GlobalAttrs) { g.Draggable = &val }}
 }
 
@@ -340,6 +378,7 @@ func ASpellcheck(b bool) Global {
 	if b {
 		val = "true"
 	}
+
 	return Global{func(g *GlobalAttrs) { g.Spellcheck = &val }}
 }
 
@@ -360,6 +399,7 @@ func ATranslate(b bool) Global {
 	if b {
 		val = "yes"
 	}
+
 	return Global{func(g *GlobalAttrs) { g.Translate = &val }}
 }
 
@@ -368,6 +408,7 @@ func AWritingsuggestions(b bool) Global {
 	if b {
 		val = "true"
 	}
+
 	return Global{func(g *GlobalAttrs) { g.Writingsuggestions = &val }}
 }
 

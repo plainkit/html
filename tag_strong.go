@@ -23,10 +23,12 @@ func defaultStrongAttrs() *StrongAttrs {
 
 func Strong(args ...StrongArg) Node {
 	a := defaultStrongAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyStrong(a, &kids)
 	}
+
 	return Node{Tag: "strong", Attrs: a, Kids: kids}
 }
 

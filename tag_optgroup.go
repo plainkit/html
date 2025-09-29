@@ -25,10 +25,12 @@ func defaultOptgroupAttrs() *OptgroupAttrs {
 
 func Optgroup(args ...OptgroupArg) Node {
 	a := defaultOptgroupAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyOptgroup(a, &kids)
 	}
+
 	return Node{Tag: "optgroup", Attrs: a, Kids: kids}
 }
 
@@ -45,9 +47,11 @@ func (o LabelOpt) ApplyOptgroup(a *OptgroupAttrs, _ *[]Component) {
 
 func (a *OptgroupAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Disabled {
 		BoolAttr(sb, "disabled")
 	}
+
 	if a.Label != "" {
 		Attr(sb, "label", a.Label)
 	}

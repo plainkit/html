@@ -23,10 +23,12 @@ func defaultMathAttrs() *MathAttrs {
 
 func Math(args ...MathArg) Node {
 	a := defaultMathAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyMath(a, &kids)
 	}
+
 	return Node{Tag: "math", Attrs: a, Kids: kids}
 }
 

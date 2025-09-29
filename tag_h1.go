@@ -23,10 +23,12 @@ func defaultH1Attrs() *H1Attrs {
 
 func H1(args ...H1Arg) Node {
 	a := defaultH1Attrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyH1(a, &kids)
 	}
+
 	return Node{Tag: "h1", Attrs: a, Kids: kids}
 }
 

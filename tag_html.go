@@ -23,10 +23,12 @@ func defaultHtmlAttrs() *HtmlAttrs {
 
 func Html(args ...HtmlArg) Node {
 	a := defaultHtmlAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyHtml(a, &kids)
 	}
+
 	return Node{Tag: "html", Attrs: a, Kids: kids}
 }
 

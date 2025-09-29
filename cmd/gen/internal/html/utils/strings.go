@@ -14,5 +14,6 @@ func GoType(t string) string {
 	if t == "bool" {
 		return "bool"
 	}
+
 	return "string"
 }

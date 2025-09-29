@@ -25,10 +25,12 @@ func defaultPictureAttrs() *PictureAttrs {
 
 func Picture(args ...PictureArg) Node {
 	a := defaultPictureAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyPicture(a, &kids)
 	}
+
 	return Node{Tag: "picture", Attrs: a, Kids: kids}
 }
 
@@ -45,9 +47,11 @@ func (o WidthOpt) ApplyPicture(a *PictureAttrs, _ *[]Component) {
 
 func (a *PictureAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
+
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)
 	}

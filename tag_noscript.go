@@ -23,10 +23,12 @@ func defaultNoscriptAttrs() *NoscriptAttrs {
 
 func Noscript(args ...NoscriptArg) Node {
 	a := defaultNoscriptAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyNoscript(a, &kids)
 	}
+
 	return Node{Tag: "noscript", Attrs: a, Kids: kids}
 }
 

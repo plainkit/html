@@ -24,10 +24,12 @@ func defaultColAttrs() *ColAttrs {
 
 func Col(args ...ColArg) Node {
 	a := defaultColAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyCol(a, &kids)
 	}
+
 	return Node{Tag: "col", Attrs: a, Kids: kids, Void: true}
 }
 
@@ -41,6 +43,7 @@ func (o SpanOpt) ApplyCol(a *ColAttrs, _ *[]Component) {
 
 func (a *ColAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Span != "" {
 		Attr(sb, "span", a.Span)
 	}

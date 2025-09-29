@@ -26,10 +26,12 @@ func defaultOlAttrs() *OlAttrs {
 
 func Ol(args ...OlArg) Node {
 	a := defaultOlAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyOl(a, &kids)
 	}
+
 	return Node{Tag: "ol", Attrs: a, Kids: kids}
 }
 
@@ -49,12 +51,15 @@ func (o TypeOpt) ApplyOl(a *OlAttrs, _ *[]Component) {
 
 func (a *OlAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Reversed {
 		BoolAttr(sb, "reversed")
 	}
+
 	if a.Start != "" {
 		Attr(sb, "start", a.Start)
 	}
+
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)
 	}

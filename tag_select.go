@@ -30,10 +30,12 @@ func defaultSelectAttrs() *SelectAttrs {
 
 func Select(args ...SelectArg) Node {
 	a := defaultSelectAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplySelect(a, &kids)
 	}
+
 	return Node{Tag: "select", Attrs: a, Kids: kids}
 }
 
@@ -65,24 +67,31 @@ func (o SizeOpt) ApplySelect(a *SelectAttrs, _ *[]Component) {
 
 func (a *SelectAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Autocomplete != "" {
 		Attr(sb, "autocomplete", a.Autocomplete)
 	}
+
 	if a.Disabled {
 		BoolAttr(sb, "disabled")
 	}
+
 	if a.Form != "" {
 		Attr(sb, "form", a.Form)
 	}
+
 	if a.Multiple {
 		BoolAttr(sb, "multiple")
 	}
+
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
 	}
+
 	if a.Required {
 		BoolAttr(sb, "required")
 	}
+
 	if a.Size != "" {
 		Attr(sb, "size", a.Size)
 	}

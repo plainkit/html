@@ -26,10 +26,12 @@ func defaultTdAttrs() *TdAttrs {
 
 func Td(args ...TdArg) Node {
 	a := defaultTdAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyTd(a, &kids)
 	}
+
 	return Node{Tag: "td", Attrs: a, Kids: kids}
 }
 
@@ -49,12 +51,15 @@ func (o RowspanOpt) ApplyTd(a *TdAttrs, _ *[]Component) {
 
 func (a *TdAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Colspan != "" {
 		Attr(sb, "colspan", a.Colspan)
 	}
+
 	if a.Headers != "" {
 		Attr(sb, "headers", a.Headers)
 	}
+
 	if a.Rowspan != "" {
 		Attr(sb, "rowspan", a.Rowspan)
 	}

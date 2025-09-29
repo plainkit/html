@@ -23,10 +23,12 @@ func defaultDatalistAttrs() *DatalistAttrs {
 
 func Datalist(args ...DatalistArg) Node {
 	a := defaultDatalistAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyDatalist(a, &kids)
 	}
+
 	return Node{Tag: "datalist", Attrs: a, Kids: kids}
 }
 

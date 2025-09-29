@@ -24,10 +24,12 @@ func defaultBlockquoteAttrs() *BlockquoteAttrs {
 
 func Blockquote(args ...BlockquoteArg) Node {
 	a := defaultBlockquoteAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyBlockquote(a, &kids)
 	}
+
 	return Node{Tag: "blockquote", Attrs: a, Kids: kids}
 }
 
@@ -41,6 +43,7 @@ func (o CiteOpt) ApplyBlockquote(a *BlockquoteAttrs, _ *[]Component) {
 
 func (a *BlockquoteAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Cite != "" {
 		Attr(sb, "cite", a.Cite)
 	}

@@ -23,10 +23,12 @@ func defaultSampAttrs() *SampAttrs {
 
 func Samp(args ...SampArg) Node {
 	a := defaultSampAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplySamp(a, &kids)
 	}
+
 	return Node{Tag: "samp", Attrs: a, Kids: kids}
 }
 

@@ -24,10 +24,12 @@ func defaultLabelAttrs() *LabelAttrs {
 
 func Label(args ...LabelArg) Node {
 	a := defaultLabelAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyLabel(a, &kids)
 	}
+
 	return Node{Tag: "label", Attrs: a, Kids: kids}
 }
 
@@ -41,6 +43,7 @@ func (o ForOpt) ApplyLabel(a *LabelAttrs, _ *[]Component) {
 
 func (a *LabelAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.For != "" {
 		Attr(sb, "for", a.For)
 	}

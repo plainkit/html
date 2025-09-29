@@ -23,10 +23,12 @@ func defaultEmAttrs() *EmAttrs {
 
 func Em(args ...EmArg) Node {
 	a := defaultEmAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyEm(a, &kids)
 	}
+
 	return Node{Tag: "em", Attrs: a, Kids: kids}
 }
 

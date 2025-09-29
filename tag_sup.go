@@ -23,10 +23,12 @@ func defaultSupAttrs() *SupAttrs {
 
 func Sup(args ...SupArg) Node {
 	a := defaultSupAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplySup(a, &kids)
 	}
+
 	return Node{Tag: "sup", Attrs: a, Kids: kids}
 }
 

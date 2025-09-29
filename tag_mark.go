@@ -23,10 +23,12 @@ func defaultMarkAttrs() *MarkAttrs {
 
 func Mark(args ...MarkArg) Node {
 	a := defaultMarkAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyMark(a, &kids)
 	}
+
 	return Node{Tag: "mark", Attrs: a, Kids: kids}
 }
 

@@ -23,10 +23,12 @@ func defaultTfootAttrs() *TfootAttrs {
 
 func Tfoot(args ...TfootArg) Node {
 	a := defaultTfootAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyTfoot(a, &kids)
 	}
+
 	return Node{Tag: "tfoot", Attrs: a, Kids: kids}
 }
 

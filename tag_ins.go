@@ -25,10 +25,12 @@ func defaultInsAttrs() *InsAttrs {
 
 func Ins(args ...InsArg) Node {
 	a := defaultInsAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyIns(a, &kids)
 	}
+
 	return Node{Tag: "ins", Attrs: a, Kids: kids}
 }
 
@@ -45,9 +47,11 @@ func (o DatetimeOpt) ApplyIns(a *InsAttrs, _ *[]Component) {
 
 func (a *InsAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Cite != "" {
 		Attr(sb, "cite", a.Cite)
 	}
+
 	if a.Datetime != "" {
 		Attr(sb, "datetime", a.Datetime)
 	}

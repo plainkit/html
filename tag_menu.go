@@ -23,10 +23,12 @@ func defaultMenuAttrs() *MenuAttrs {
 
 func Menu(args ...MenuArg) Node {
 	a := defaultMenuAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyMenu(a, &kids)
 	}
+
 	return Node{Tag: "menu", Attrs: a, Kids: kids}
 }
 

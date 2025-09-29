@@ -24,10 +24,12 @@ func defaultLiAttrs() *LiAttrs {
 
 func Li(args ...LiArg) Node {
 	a := defaultLiAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyLi(a, &kids)
 	}
+
 	return Node{Tag: "li", Attrs: a, Kids: kids}
 }
 
@@ -41,6 +43,7 @@ func (o ValueOpt) ApplyLi(a *LiAttrs, _ *[]Component) {
 
 func (a *LiAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)
 	}

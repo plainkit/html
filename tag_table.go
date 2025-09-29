@@ -23,10 +23,12 @@ func defaultTableAttrs() *TableAttrs {
 
 func Table(args ...TableArg) Node {
 	a := defaultTableAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyTable(a, &kids)
 	}
+
 	return Node{Tag: "table", Attrs: a, Kids: kids}
 }
 

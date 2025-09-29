@@ -23,10 +23,12 @@ func defaultTheadAttrs() *TheadAttrs {
 
 func Thead(args ...TheadArg) Node {
 	a := defaultTheadAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyThead(a, &kids)
 	}
+
 	return Node{Tag: "thead", Attrs: a, Kids: kids}
 }
 

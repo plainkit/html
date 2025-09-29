@@ -32,10 +32,12 @@ func defaultFormAttrs() *FormAttrs {
 
 func Form(args ...FormArg) Node {
 	a := defaultFormAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyForm(a, &kids)
 	}
+
 	return Node{Tag: "form", Attrs: a, Kids: kids}
 }
 
@@ -77,30 +79,39 @@ func (o TargetOpt) ApplyForm(a *FormAttrs, _ *[]Component) {
 
 func (a *FormAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.AcceptCharset != "" {
 		Attr(sb, "accept-charset", a.AcceptCharset)
 	}
+
 	if a.Action != "" {
 		Attr(sb, "action", a.Action)
 	}
+
 	if a.Autocomplete != "" {
 		Attr(sb, "autocomplete", a.Autocomplete)
 	}
+
 	if a.Enctype != "" {
 		Attr(sb, "enctype", a.Enctype)
 	}
+
 	if a.Method != "" {
 		Attr(sb, "method", a.Method)
 	}
+
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
 	}
+
 	if a.Novalidate {
 		BoolAttr(sb, "novalidate")
 	}
+
 	if a.Rel != "" {
 		Attr(sb, "rel", a.Rel)
 	}
+
 	if a.Target != "" {
 		Attr(sb, "target", a.Target)
 	}

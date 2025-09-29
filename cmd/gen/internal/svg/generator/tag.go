@@ -41,6 +41,7 @@ func (g *TagGenerator) GenerateSource(tagSpec spec.TagSpec) string {
 	if tagSpec.Name == "svg" {
 		title = ""
 	}
+
 	structName := title + "Attrs"
 
 	// Convert attributes to template data

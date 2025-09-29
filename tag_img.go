@@ -36,10 +36,12 @@ func defaultImgAttrs() *ImgAttrs {
 
 func Img(args ...ImgArg) Node {
 	a := defaultImgAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyImg(a, &kids)
 	}
+
 	return Node{Tag: "img", Attrs: a, Kids: kids, Void: true}
 }
 
@@ -89,42 +91,55 @@ func (o WidthOpt) ApplyImg(a *ImgAttrs, _ *[]Component) {
 
 func (a *ImgAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Alt != "" {
 		Attr(sb, "alt", a.Alt)
 	}
+
 	if a.Crossorigin != "" {
 		Attr(sb, "crossorigin", a.Crossorigin)
 	}
+
 	if a.Decoding != "" {
 		Attr(sb, "decoding", a.Decoding)
 	}
+
 	if a.Fetchpriority != "" {
 		Attr(sb, "fetchpriority", a.Fetchpriority)
 	}
+
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
+
 	if a.Ismap {
 		BoolAttr(sb, "ismap")
 	}
+
 	if a.Loading != "" {
 		Attr(sb, "loading", a.Loading)
 	}
+
 	if a.Referrerpolicy != "" {
 		Attr(sb, "referrerpolicy", a.Referrerpolicy)
 	}
+
 	if a.Sizes != "" {
 		Attr(sb, "sizes", a.Sizes)
 	}
+
 	if a.Src != "" {
 		Attr(sb, "src", a.Src)
 	}
+
 	if a.Srcset != "" {
 		Attr(sb, "srcset", a.Srcset)
 	}
+
 	if a.Usemap != "" {
 		Attr(sb, "usemap", a.Usemap)
 	}
+
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)
 	}

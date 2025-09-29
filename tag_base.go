@@ -25,10 +25,12 @@ func defaultBaseAttrs() *BaseAttrs {
 
 func Base(args ...BaseArg) Node {
 	a := defaultBaseAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyBase(a, &kids)
 	}
+
 	return Node{Tag: "base", Attrs: a, Kids: kids, Void: true}
 }
 
@@ -45,9 +47,11 @@ func (o TargetOpt) ApplyBase(a *BaseAttrs, _ *[]Component) {
 
 func (a *BaseAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Href != "" {
 		Attr(sb, "href", a.Href)
 	}
+
 	if a.Target != "" {
 		Attr(sb, "target", a.Target)
 	}

@@ -36,9 +36,11 @@ func (g *AttributesGenerator) GenerateSource(attributes map[string]spec.Attribut
 	for key := range attributes {
 		keys = append(keys, key)
 	}
+
 	sort.Strings(keys)
 
 	var templateAttrs []AttributeData
+
 	for _, key := range keys {
 		attr := attributes[key]
 

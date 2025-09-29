@@ -88,8 +88,10 @@ func (l *Loader) CollectAllAttributes(specs []TagSpec) map[string]Attribute {
 				if existing.Type == "bool" && attr.Type == "string" {
 					all[key] = attr
 				}
+
 				continue
 			}
+
 			all[key] = attr
 		}
 	}
@@ -117,14 +119,17 @@ func collectAttributes(attrRefs []tags.AttributeRef, globalSet map[string]struct
 		if key == "" {
 			continue
 		}
+
 		if globalSet != nil {
 			if _, ok := globalSet[key]; ok {
 				continue
 			}
 		}
+
 		if _, ok := seen[key]; ok {
 			continue
 		}
+
 		seen[key] = struct{}{}
 
 		attrs = append(attrs, Attribute{
@@ -152,6 +157,7 @@ func applyTagOverrides(name string, attrs *[]Attribute) {
 				return
 			}
 		}
+
 		*attrs = append(*attrs, Attribute{Field: field, Type: attrType, Attr: attrName})
 	}
 
@@ -169,5 +175,6 @@ func attributeTypeFromRef(ref tags.AttributeRef) string {
 	if ref.Boolean {
 		return "bool"
 	}
+
 	return "string"
 }

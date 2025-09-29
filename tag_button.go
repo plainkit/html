@@ -37,10 +37,12 @@ func defaultButtonAttrs() *ButtonAttrs {
 
 func Button(args ...ButtonArg) Node {
 	a := defaultButtonAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyButton(a, &kids)
 	}
+
 	return Node{Tag: "button", Attrs: a, Kids: kids}
 }
 
@@ -93,45 +95,59 @@ func (o ValueOpt) ApplyButton(a *ButtonAttrs, _ *[]Component) {
 
 func (a *ButtonAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Command != "" {
 		Attr(sb, "command", a.Command)
 	}
+
 	if a.Commandfor != "" {
 		Attr(sb, "commandfor", a.Commandfor)
 	}
+
 	if a.Disabled {
 		BoolAttr(sb, "disabled")
 	}
+
 	if a.Form != "" {
 		Attr(sb, "form", a.Form)
 	}
+
 	if a.Formaction != "" {
 		Attr(sb, "formaction", a.Formaction)
 	}
+
 	if a.Formenctype != "" {
 		Attr(sb, "formenctype", a.Formenctype)
 	}
+
 	if a.Formmethod != "" {
 		Attr(sb, "formmethod", a.Formmethod)
 	}
+
 	if a.Formnovalidate {
 		BoolAttr(sb, "formnovalidate")
 	}
+
 	if a.Formtarget != "" {
 		Attr(sb, "formtarget", a.Formtarget)
 	}
+
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
 	}
+
 	if a.Popovertarget != "" {
 		Attr(sb, "popovertarget", a.Popovertarget)
 	}
+
 	if a.Popovertargetaction != "" {
 		Attr(sb, "popovertargetaction", a.Popovertargetaction)
 	}
+
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)
 	}
+
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)
 	}

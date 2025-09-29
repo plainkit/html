@@ -29,10 +29,12 @@ func defaultMeterAttrs() *MeterAttrs {
 
 func Meter(args ...MeterArg) Node {
 	a := defaultMeterAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyMeter(a, &kids)
 	}
+
 	return Node{Tag: "meter", Attrs: a, Kids: kids}
 }
 
@@ -61,21 +63,27 @@ func (o ValueOpt) ApplyMeter(a *MeterAttrs, _ *[]Component) {
 
 func (a *MeterAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.High != "" {
 		Attr(sb, "high", a.High)
 	}
+
 	if a.Low != "" {
 		Attr(sb, "low", a.Low)
 	}
+
 	if a.Max != "" {
 		Attr(sb, "max", a.Max)
 	}
+
 	if a.Min != "" {
 		Attr(sb, "min", a.Min)
 	}
+
 	if a.Optimum != "" {
 		Attr(sb, "optimum", a.Optimum)
 	}
+
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)
 	}

@@ -28,10 +28,12 @@ func defaultTemplateAttrs() *TemplateAttrs {
 
 func Template(args ...TemplateArg) Node {
 	a := defaultTemplateAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyTemplate(a, &kids)
 	}
+
 	return Node{Tag: "template", Attrs: a, Kids: kids, Void: true}
 }
 
@@ -57,18 +59,23 @@ func (o ShadowrootserializableOpt) ApplyTemplate(a *TemplateAttrs, _ *[]Componen
 
 func (a *TemplateAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Shadowrootclonable {
 		BoolAttr(sb, "shadowrootclonable")
 	}
+
 	if a.Shadowrootcustomelementregistry {
 		BoolAttr(sb, "shadowrootcustomelementregistry")
 	}
+
 	if a.Shadowrootdelegatesfocus {
 		BoolAttr(sb, "shadowrootdelegatesfocus")
 	}
+
 	if a.Shadowrootmode != "" {
 		Attr(sb, "shadowrootmode", a.Shadowrootmode)
 	}
+
 	if a.Shadowrootserializable {
 		BoolAttr(sb, "shadowrootserializable")
 	}

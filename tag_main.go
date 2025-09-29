@@ -23,10 +23,12 @@ func defaultMainAttrs() *MainAttrs {
 
 func Main(args ...MainArg) Node {
 	a := defaultMainAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyMain(a, &kids)
 	}
+
 	return Node{Tag: "main", Attrs: a, Kids: kids}
 }
 

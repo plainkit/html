@@ -34,5 +34,6 @@ func GoType(attrType string) string {
 	if attrType == "bool" {
 		return "bool"
 	}
+
 	return "string"
 }

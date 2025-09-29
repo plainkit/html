@@ -23,10 +23,12 @@ func defaultWbrAttrs() *WbrAttrs {
 
 func Wbr(args ...WbrArg) Node {
 	a := defaultWbrAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyWbr(a, &kids)
 	}
+
 	return Node{Tag: "wbr", Attrs: a, Kids: kids, Void: true}
 }
 

@@ -23,10 +23,12 @@ func defaultTitleAttrs() *TitleAttrs {
 
 func Title(args ...TitleArg) Node {
 	a := defaultTitleAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyTitle(a, &kids)
 	}
+
 	return Node{Tag: "title", Attrs: a, Kids: kids}
 }
 

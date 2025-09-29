@@ -7,4 +7,6 @@ generate:
 	goimports -w .
 	@echo "Running gofmt..."
 	gofmt -w .
+	@echo "Running golangci-lint..."
+	golangci-lint run ./... --fix
 	@echo "Done!"

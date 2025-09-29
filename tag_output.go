@@ -26,10 +26,12 @@ func defaultOutputAttrs() *OutputAttrs {
 
 func Output(args ...OutputArg) Node {
 	a := defaultOutputAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyOutput(a, &kids)
 	}
+
 	return Node{Tag: "output", Attrs: a, Kids: kids}
 }
 
@@ -49,12 +51,15 @@ func (o NameOpt) ApplyOutput(a *OutputAttrs, _ *[]Component) {
 
 func (a *OutputAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.For != "" {
 		Attr(sb, "for", a.For)
 	}
+
 	if a.Form != "" {
 		Attr(sb, "form", a.Form)
 	}
+
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
 	}

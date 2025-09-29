@@ -23,10 +23,12 @@ func defaultKbdAttrs() *KbdAttrs {
 
 func Kbd(args ...KbdArg) Node {
 	a := defaultKbdAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyKbd(a, &kids)
 	}
+
 	return Node{Tag: "kbd", Attrs: a, Kids: kids}
 }
 

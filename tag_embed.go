@@ -27,10 +27,12 @@ func defaultEmbedAttrs() *EmbedAttrs {
 
 func Embed(args ...EmbedArg) Node {
 	a := defaultEmbedAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyEmbed(a, &kids)
 	}
+
 	return Node{Tag: "embed", Attrs: a, Kids: kids, Void: true}
 }
 
@@ -53,15 +55,19 @@ func (o WidthOpt) ApplyEmbed(a *EmbedAttrs, _ *[]Component) {
 
 func (a *EmbedAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
+
 	if a.Src != "" {
 		Attr(sb, "src", a.Src)
 	}
+
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)
 	}
+
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)
 	}

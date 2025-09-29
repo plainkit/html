@@ -25,10 +25,12 @@ func defaultDetailsAttrs() *DetailsAttrs {
 
 func Details(args ...DetailsArg) Node {
 	a := defaultDetailsAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyDetails(a, &kids)
 	}
+
 	return Node{Tag: "details", Attrs: a, Kids: kids}
 }
 
@@ -45,9 +47,11 @@ func (o OpenOpt) ApplyDetails(a *DetailsAttrs, _ *[]Component) {
 
 func (a *DetailsAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
 	}
+
 	if a.Open {
 		BoolAttr(sb, "open")
 	}

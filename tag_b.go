@@ -23,10 +23,12 @@ func defaultBAttrs() *BAttrs {
 
 func B(args ...BArg) Node {
 	a := defaultBAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyB(a, &kids)
 	}
+
 	return Node{Tag: "b", Attrs: a, Kids: kids}
 }
 

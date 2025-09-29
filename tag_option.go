@@ -27,10 +27,12 @@ func defaultOptionAttrs() *OptionAttrs {
 
 func Option(args ...OptionArg) Node {
 	a := defaultOptionAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyOption(a, &kids)
 	}
+
 	return Node{Tag: "option", Attrs: a, Kids: kids}
 }
 
@@ -53,15 +55,19 @@ func (o ValueOpt) ApplyOption(a *OptionAttrs, _ *[]Component) {
 
 func (a *OptionAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Disabled {
 		BoolAttr(sb, "disabled")
 	}
+
 	if a.Label != "" {
 		Attr(sb, "label", a.Label)
 	}
+
 	if a.Selected {
 		BoolAttr(sb, "selected")
 	}
+
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)
 	}

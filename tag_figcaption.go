@@ -23,10 +23,12 @@ func defaultFigcaptionAttrs() *FigcaptionAttrs {
 
 func Figcaption(args ...FigcaptionArg) Node {
 	a := defaultFigcaptionAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyFigcaption(a, &kids)
 	}
+
 	return Node{Tag: "figcaption", Attrs: a, Kids: kids}
 }
 

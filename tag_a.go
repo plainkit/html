@@ -31,10 +31,12 @@ func defaultAAttrs() *AAttrs {
 
 func A(args ...AArg) Node {
 	a := defaultAAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyA(a, &kids)
 	}
+
 	return Node{Tag: "a", Attrs: a, Kids: kids}
 }
 
@@ -73,27 +75,35 @@ func (o TypeOpt) ApplyA(a *AAttrs, _ *[]Component) {
 
 func (a *AAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Download != "" {
 		Attr(sb, "download", a.Download)
 	}
+
 	if a.Href != "" {
 		Attr(sb, "href", a.Href)
 	}
+
 	if a.Hreflang != "" {
 		Attr(sb, "hreflang", a.Hreflang)
 	}
+
 	if a.Ping != "" {
 		Attr(sb, "ping", a.Ping)
 	}
+
 	if a.Referrerpolicy != "" {
 		Attr(sb, "referrerpolicy", a.Referrerpolicy)
 	}
+
 	if a.Rel != "" {
 		Attr(sb, "rel", a.Rel)
 	}
+
 	if a.Target != "" {
 		Attr(sb, "target", a.Target)
 	}
+
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)
 	}

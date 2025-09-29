@@ -23,10 +23,12 @@ func defaultCiteAttrs() *CiteAttrs {
 
 func Cite(args ...CiteArg) Node {
 	a := defaultCiteAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyCite(a, &kids)
 	}
+
 	return Node{Tag: "cite", Attrs: a, Kids: kids}
 }
 

@@ -23,10 +23,12 @@ func defaultSelectedcontentAttrs() *SelectedcontentAttrs {
 
 func Selectedcontent(args ...SelectedcontentArg) Node {
 	a := defaultSelectedcontentAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplySelectedcontent(a, &kids)
 	}
+
 	return Node{Tag: "selectedcontent", Attrs: a, Kids: kids, Void: true}
 }
 

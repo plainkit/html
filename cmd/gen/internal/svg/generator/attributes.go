@@ -38,16 +38,20 @@ func (g *AttributesGenerator) GenerateSource(attributes map[string]spec.Attribut
 	htmlAttrs := g.getHTMLAttributes()
 
 	var keys []string
+
 	for key := range attributes {
 		// Skip HTML attributes to avoid conflicts
 		if _, isHTMLAttr := htmlAttrs[key]; isHTMLAttr {
 			continue
 		}
+
 		keys = append(keys, key)
 	}
+
 	sort.Strings(keys)
 
 	var templateAttrs []AttributeData
+
 	for _, key := range keys {
 		attr := attributes[key]
 

@@ -23,10 +23,12 @@ func defaultSpanAttrs() *SpanAttrs {
 
 func Span(args ...SpanArg) Node {
 	a := defaultSpanAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplySpan(a, &kids)
 	}
+
 	return Node{Tag: "span", Attrs: a, Kids: kids}
 }
 

@@ -28,10 +28,12 @@ func defaultTrackAttrs() *TrackAttrs {
 
 func Track(args ...TrackArg) Node {
 	a := defaultTrackAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyTrack(a, &kids)
 	}
+
 	return Node{Tag: "track", Attrs: a, Kids: kids, Void: true}
 }
 
@@ -57,18 +59,23 @@ func (o SrclangOpt) ApplyTrack(a *TrackAttrs, _ *[]Component) {
 
 func (a *TrackAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Default {
 		BoolAttr(sb, "default")
 	}
+
 	if a.Kind != "" {
 		Attr(sb, "kind", a.Kind)
 	}
+
 	if a.Label != "" {
 		Attr(sb, "label", a.Label)
 	}
+
 	if a.Src != "" {
 		Attr(sb, "src", a.Src)
 	}
+
 	if a.Srclang != "" {
 		Attr(sb, "srclang", a.Srclang)
 	}

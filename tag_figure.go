@@ -23,10 +23,12 @@ func defaultFigureAttrs() *FigureAttrs {
 
 func Figure(args ...FigureArg) Node {
 	a := defaultFigureAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyFigure(a, &kids)
 	}
+
 	return Node{Tag: "figure", Attrs: a, Kids: kids}
 }
 

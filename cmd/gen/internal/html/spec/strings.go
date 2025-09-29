@@ -16,6 +16,7 @@ func CamelCase(name string) string {
 		if part == "" {
 			continue
 		}
+
 		parts[i] = strings.ToUpper(part[:1]) + part[1:]
 	}
 

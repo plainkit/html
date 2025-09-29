@@ -22,34 +22,41 @@ func Generate(outDir string) error {
 	specLoader := spec.NewLoader()
 
 	fmt.Println("Loading HTML element definitions from github.com/plainkit/tags...")
+
 	allSpecs, err := specLoader.LoadAllTagSpecs()
 	if err != nil {
 		return fmt.Errorf("load tag specs: %w", err)
 	}
+
 	fmt.Printf("Loaded %d tag specifications\n", len(allSpecs))
 
 	fmt.Println("Generating centralized attributes file...")
+
 	allAttributes, err := generateAttributesFile(manager, allSpecs, specLoader)
 	if err != nil {
 		return fmt.Errorf("generate attributes file: %w", err)
 	}
 
 	fmt.Println("Generating core_global.go...")
+
 	if err := generateCoreGlobal(manager, allAttributes, specLoader); err != nil {
 		return fmt.Errorf("generate core global: %w", err)
 	}
 
 	fmt.Println("Generating tag files...")
+
 	if err := generateTagFiles(manager, allSpecs); err != nil {
 		return fmt.Errorf("generate tag files: %w", err)
 	}
 
 	fmt.Println("Generating core_node.go with all Node apply methods...")
+
 	if err := generateCoreNodeFile(manager, allSpecs); err != nil {
 		return fmt.Errorf("generate core node file: %w", err)
 	}
 
 	fmt.Printf("✅ HTML generation done (%d tags)\n", len(allSpecs))
+
 	return nil
 }
 
@@ -71,6 +78,7 @@ func generateCoreGlobal(manager files.Manager, centralizedAttrs map[string]spec.
 	}
 
 	source := generator.NewGlobalGenerator().GenerateSource(filtered)
+
 	return manager.WriteGoFile("core_global.go", source)
 }
 
@@ -94,9 +102,11 @@ func generateTagFiles(manager files.Manager, allSpecs []spec.TagSpec) error {
 		if tagSpec.Name == "svg" {
 			continue
 		}
+
 		if manager.FileExists(fmt.Sprintf("svg_%s.go", tagSpec.Name)) {
 			continue
 		}
+
 		source := tagGen.GenerateSource(tagSpec)
 
 		if err := manager.WriteGoFile(fileName, source); err != nil {
@@ -113,9 +123,11 @@ func generateCoreNodeFile(manager files.Manager, allSpecs []spec.TagSpec) error 
 		if spec.Name == "svg" {
 			continue
 		}
+
 		if manager.FileExists(fmt.Sprintf("svg_%s.go", spec.Name)) {
 			continue
 		}
+
 		filtered = append(filtered, spec)
 	}
 

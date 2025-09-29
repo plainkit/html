@@ -25,10 +25,12 @@ func defaultDelAttrs() *DelAttrs {
 
 func Del(args ...DelArg) Node {
 	a := defaultDelAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyDel(a, &kids)
 	}
+
 	return Node{Tag: "del", Attrs: a, Kids: kids}
 }
 
@@ -45,9 +47,11 @@ func (o DatetimeOpt) ApplyDel(a *DelAttrs, _ *[]Component) {
 
 func (a *DelAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Cite != "" {
 		Attr(sb, "cite", a.Cite)
 	}
+
 	if a.Datetime != "" {
 		Attr(sb, "datetime", a.Datetime)
 	}

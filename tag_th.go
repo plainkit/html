@@ -28,10 +28,12 @@ func defaultThAttrs() *ThAttrs {
 
 func Th(args ...ThArg) Node {
 	a := defaultThAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyTh(a, &kids)
 	}
+
 	return Node{Tag: "th", Attrs: a, Kids: kids}
 }
 
@@ -57,18 +59,23 @@ func (o ScopeOpt) ApplyTh(a *ThAttrs, _ *[]Component) {
 
 func (a *ThAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Abbr != "" {
 		Attr(sb, "abbr", a.Abbr)
 	}
+
 	if a.Colspan != "" {
 		Attr(sb, "colspan", a.Colspan)
 	}
+
 	if a.Headers != "" {
 		Attr(sb, "headers", a.Headers)
 	}
+
 	if a.Rowspan != "" {
 		Attr(sb, "rowspan", a.Rowspan)
 	}
+
 	if a.Scope != "" {
 		Attr(sb, "scope", a.Scope)
 	}

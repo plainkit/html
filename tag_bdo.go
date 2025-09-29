@@ -23,10 +23,12 @@ func defaultBdoAttrs() *BdoAttrs {
 
 func Bdo(args ...BdoArg) Node {
 	a := defaultBdoAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyBdo(a, &kids)
 	}
+
 	return Node{Tag: "bdo", Attrs: a, Kids: kids}
 }
 

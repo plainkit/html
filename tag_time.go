@@ -24,10 +24,12 @@ func defaultTimeAttrs() *TimeAttrs {
 
 func Time(args ...TimeArg) Node {
 	a := defaultTimeAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyTime(a, &kids)
 	}
+
 	return Node{Tag: "time", Attrs: a, Kids: kids}
 }
 
@@ -41,6 +43,7 @@ func (o DatetimeOpt) ApplyTime(a *TimeAttrs, _ *[]Component) {
 
 func (a *TimeAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Datetime != "" {
 		Attr(sb, "datetime", a.Datetime)
 	}

@@ -39,10 +39,12 @@ func defaultLinkAttrs() *LinkAttrs {
 
 func Link(args ...LinkArg) Node {
 	a := defaultLinkAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyLink(a, &kids)
 	}
+
 	return Node{Tag: "link", Attrs: a, Kids: kids, Void: true}
 }
 
@@ -105,51 +107,67 @@ func (o TypeOpt) ApplyLink(a *LinkAttrs, _ *[]Component) {
 
 func (a *LinkAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.As != "" {
 		Attr(sb, "as", a.As)
 	}
+
 	if a.Blocking != "" {
 		Attr(sb, "blocking", a.Blocking)
 	}
+
 	if a.Color != "" {
 		Attr(sb, "color", a.Color)
 	}
+
 	if a.Crossorigin != "" {
 		Attr(sb, "crossorigin", a.Crossorigin)
 	}
+
 	if a.Disabled {
 		BoolAttr(sb, "disabled")
 	}
+
 	if a.Fetchpriority != "" {
 		Attr(sb, "fetchpriority", a.Fetchpriority)
 	}
+
 	if a.Href != "" {
 		Attr(sb, "href", a.Href)
 	}
+
 	if a.Hreflang != "" {
 		Attr(sb, "hreflang", a.Hreflang)
 	}
+
 	if a.Imagesizes != "" {
 		Attr(sb, "imagesizes", a.Imagesizes)
 	}
+
 	if a.Imagesrcset != "" {
 		Attr(sb, "imagesrcset", a.Imagesrcset)
 	}
+
 	if a.Integrity != "" {
 		Attr(sb, "integrity", a.Integrity)
 	}
+
 	if a.Media != "" {
 		Attr(sb, "media", a.Media)
 	}
+
 	if a.Referrerpolicy != "" {
 		Attr(sb, "referrerpolicy", a.Referrerpolicy)
 	}
+
 	if a.Rel != "" {
 		Attr(sb, "rel", a.Rel)
 	}
+
 	if a.Sizes != "" {
 		Attr(sb, "sizes", a.Sizes)
 	}
+
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)
 	}

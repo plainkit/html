@@ -38,16 +38,20 @@ type Node struct {
 func (n Node) render(sb *strings.Builder) {
 	sb.WriteString("<")
 	sb.WriteString(n.Tag)
+
 	if aw, ok := n.Attrs.(AttrWriter); ok {
 		aw.WriteAttrs(sb)
 	}
+
 	if n.Void {
 		sb.WriteString("/>")
 	} else {
 		sb.WriteString(">")
+
 		for _, k := range n.Kids {
 			k.render(sb)
 		}
+
 		sb.WriteString("</")
 		sb.WriteString(n.Tag)
 		sb.WriteString(">")
@@ -75,6 +79,7 @@ func (n Node) WithAssets(css, js, name string) Node {
 func Render(c Component) string {
 	var sb strings.Builder
 	c.render(&sb)
+
 	return sb.String()
 }
 

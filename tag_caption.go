@@ -23,10 +23,12 @@ func defaultCaptionAttrs() *CaptionAttrs {
 
 func Caption(args ...CaptionArg) Node {
 	a := defaultCaptionAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyCaption(a, &kids)
 	}
+
 	return Node{Tag: "caption", Attrs: a, Kids: kids}
 }
 

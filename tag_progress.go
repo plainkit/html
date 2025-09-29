@@ -25,10 +25,12 @@ func defaultProgressAttrs() *ProgressAttrs {
 
 func Progress(args ...ProgressArg) Node {
 	a := defaultProgressAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyProgress(a, &kids)
 	}
+
 	return Node{Tag: "progress", Attrs: a, Kids: kids}
 }
 
@@ -45,9 +47,11 @@ func (o ValueOpt) ApplyProgress(a *ProgressAttrs, _ *[]Component) {
 
 func (a *ProgressAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Max != "" {
 		Attr(sb, "max", a.Max)
 	}
+
 	if a.Value != "" {
 		Attr(sb, "value", a.Value)
 	}

@@ -23,10 +23,12 @@ func defaultArticleAttrs() *ArticleAttrs {
 
 func Article(args ...ArticleArg) Node {
 	a := defaultArticleAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyArticle(a, &kids)
 	}
+
 	return Node{Tag: "article", Attrs: a, Kids: kids}
 }
 

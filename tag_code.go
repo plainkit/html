@@ -23,10 +23,12 @@ func defaultCodeAttrs() *CodeAttrs {
 
 func Code(args ...CodeArg) Node {
 	a := defaultCodeAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyCode(a, &kids)
 	}
+
 	return Node{Tag: "code", Attrs: a, Kids: kids}
 }
 

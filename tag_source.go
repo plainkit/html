@@ -30,10 +30,12 @@ func defaultSourceAttrs() *SourceAttrs {
 
 func Source(args ...SourceArg) Node {
 	a := defaultSourceAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplySource(a, &kids)
 	}
+
 	return Node{Tag: "source", Attrs: a, Kids: kids, Void: true}
 }
 
@@ -65,24 +67,31 @@ func (o WidthOpt) ApplySource(a *SourceAttrs, _ *[]Component) {
 
 func (a *SourceAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
+
 	if a.Media != "" {
 		Attr(sb, "media", a.Media)
 	}
+
 	if a.Sizes != "" {
 		Attr(sb, "sizes", a.Sizes)
 	}
+
 	if a.Src != "" {
 		Attr(sb, "src", a.Src)
 	}
+
 	if a.Srcset != "" {
 		Attr(sb, "srcset", a.Srcset)
 	}
+
 	if a.Type != "" {
 		Attr(sb, "type", a.Type)
 	}
+
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)
 	}

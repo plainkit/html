@@ -23,10 +23,12 @@ func defaultSectionAttrs() *SectionAttrs {
 
 func Section(args ...SectionArg) Node {
 	a := defaultSectionAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplySection(a, &kids)
 	}
+
 	return Node{Tag: "section", Attrs: a, Kids: kids}
 }
 

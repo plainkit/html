@@ -25,10 +25,12 @@ func defaultCanvasAttrs() *CanvasAttrs {
 
 func Canvas(args ...CanvasArg) Node {
 	a := defaultCanvasAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyCanvas(a, &kids)
 	}
+
 	return Node{Tag: "canvas", Attrs: a, Kids: kids}
 }
 
@@ -45,9 +47,11 @@ func (o WidthOpt) ApplyCanvas(a *CanvasAttrs, _ *[]Component) {
 
 func (a *CanvasAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
+
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)
 	}

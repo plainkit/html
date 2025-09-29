@@ -33,10 +33,12 @@ func defaultIframeAttrs() *IframeAttrs {
 
 func Iframe(args ...IframeArg) Node {
 	a := defaultIframeAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyIframe(a, &kids)
 	}
+
 	return Node{Tag: "iframe", Attrs: a, Kids: kids, Void: true}
 }
 
@@ -77,33 +79,43 @@ func (o WidthOpt) ApplyIframe(a *IframeAttrs, _ *[]Component) {
 
 func (a *IframeAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Allow != "" {
 		Attr(sb, "allow", a.Allow)
 	}
+
 	if a.Allowfullscreen {
 		BoolAttr(sb, "allowfullscreen")
 	}
+
 	if a.Height != "" {
 		Attr(sb, "height", a.Height)
 	}
+
 	if a.Loading != "" {
 		Attr(sb, "loading", a.Loading)
 	}
+
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
 	}
+
 	if a.Referrerpolicy != "" {
 		Attr(sb, "referrerpolicy", a.Referrerpolicy)
 	}
+
 	if a.Sandbox != "" {
 		Attr(sb, "sandbox", a.Sandbox)
 	}
+
 	if a.Src != "" {
 		Attr(sb, "src", a.Src)
 	}
+
 	if a.Srcdoc != "" {
 		Attr(sb, "srcdoc", a.Srcdoc)
 	}
+
 	if a.Width != "" {
 		Attr(sb, "width", a.Width)
 	}

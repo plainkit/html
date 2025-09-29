@@ -23,10 +23,12 @@ func defaultDlAttrs() *DlAttrs {
 
 func Dl(args ...DlArg) Node {
 	a := defaultDlAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyDl(a, &kids)
 	}
+
 	return Node{Tag: "dl", Attrs: a, Kids: kids}
 }
 

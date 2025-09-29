@@ -23,10 +23,12 @@ func defaultRtAttrs() *RtAttrs {
 
 func Rt(args ...RtArg) Node {
 	a := defaultRtAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyRt(a, &kids)
 	}
+
 	return Node{Tag: "rt", Attrs: a, Kids: kids}
 }
 

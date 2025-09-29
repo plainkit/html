@@ -24,10 +24,12 @@ func defaultMapAttrs() *MapAttrs {
 
 func Map(args ...MapArg) Node {
 	a := defaultMapAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyMap(a, &kids)
 	}
+
 	return Node{Tag: "map", Attrs: a, Kids: kids}
 }
 
@@ -41,6 +43,7 @@ func (o NameOpt) ApplyMap(a *MapAttrs, _ *[]Component) {
 
 func (a *MapAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Name != "" {
 		Attr(sb, "name", a.Name)
 	}

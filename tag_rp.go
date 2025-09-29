@@ -23,10 +23,12 @@ func defaultRpAttrs() *RpAttrs {
 
 func Rp(args ...RpArg) Node {
 	a := defaultRpAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyRp(a, &kids)
 	}
+
 	return Node{Tag: "rp", Attrs: a, Kids: kids}
 }
 

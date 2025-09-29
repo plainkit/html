@@ -23,10 +23,12 @@ func defaultAddressAttrs() *AddressAttrs {
 
 func Address(args ...AddressArg) Node {
 	a := defaultAddressAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyAddress(a, &kids)
 	}
+
 	return Node{Tag: "address", Attrs: a, Kids: kids}
 }
 

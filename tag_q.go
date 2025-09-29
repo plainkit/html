@@ -24,10 +24,12 @@ func defaultQAttrs() *QAttrs {
 
 func Q(args ...QArg) Node {
 	a := defaultQAttrs()
+
 	var kids []Component
 	for _, ar := range args {
 		ar.ApplyQ(a, &kids)
 	}
+
 	return Node{Tag: "q", Attrs: a, Kids: kids}
 }
 
@@ -41,6 +43,7 @@ func (o CiteOpt) ApplyQ(a *QAttrs, _ *[]Component) {
 
 func (a *QAttrs) WriteAttrs(sb *strings.Builder) {
 	WriteGlobal(sb, &a.Global)
+
 	if a.Cite != "" {
 		Attr(sb, "cite", a.Cite)
 	}
