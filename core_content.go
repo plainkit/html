@@ -80,6 +80,8 @@ func (t TxtOpt) String() string { return t.s }
 func (t UnsafeTxtOpt) String() string { return t.s }
 
 // SVG Apply methods for content options
+
+func (n Node) Apply(_ *SvgAttrs, kids *[]Component)   { *kids = append(*kids, n) }
 func (o TxtOpt) Apply(_ *SvgAttrs, kids *[]Component) { *kids = append(*kids, TextNode(o.s)) }
 func (o UnsafeTxtOpt) Apply(_ *SvgAttrs, kids *[]Component) {
 	*kids = append(*kids, UnsafeTextNode(o.s))
