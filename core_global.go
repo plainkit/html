@@ -30,6 +30,7 @@ type GlobalAttrs struct {
 	Lang            string
 	Nonce           string
 	Popover         string
+	Role            string
 	Slot            string
 	Title           string
 
@@ -190,6 +191,10 @@ func WriteGlobal(sb *strings.Builder, g *GlobalAttrs) {
 
 	if g.Popover != "" {
 		Attr(sb, "popover", g.Popover)
+	}
+
+	if g.Role != "" {
+		Attr(sb, "role", g.Role)
 	}
 
 	if g.Slot != "" {
@@ -367,6 +372,10 @@ func ANonce(v string) Global {
 
 func APopover(v string) Global {
 	return Global{func(g *GlobalAttrs) { g.Popover = v }}
+}
+
+func ARole(v string) Global {
+	return Global{func(g *GlobalAttrs) { g.Role = v }}
 }
 
 func ASlot(v string) Global {

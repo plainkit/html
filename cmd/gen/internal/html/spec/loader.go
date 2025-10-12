@@ -60,13 +60,27 @@ func (l *Loader) LoadGlobalAttributes() ([]Attribute, error) {
 		return nil, err
 	}
 
-	attrs := make([]Attribute, 0, len(l.index.Globals))
+	attrs := make([]Attribute, 0, len(l.index.Globals)+1)
+	hasRole := false
+
 	for _, attr := range l.index.Globals {
 		key := strings.ToLower(attr.Name)
+
 		attrs = append(attrs, Attribute{
 			Field: CamelCase(key),
 			Attr:  key,
 			Type:  attributeTypeFromRef(attr),
+		})
+		if key == "role" {
+			hasRole = true
+		}
+	}
+
+	if !hasRole {
+		attrs = append(attrs, Attribute{
+			Field: CamelCase("role"),
+			Attr:  "role",
+			Type:  "string",
 		})
 	}
 
