@@ -52,12 +52,12 @@ type FragmentNode struct {
 //	)
 //
 // This renders as three sibling elements with no containing wrapper.
-func Fragment(children ...Component) ChildOpt {
-	return C(FragmentNode{children: children})
+func Fragment(children ...Node) ChildOpt {
+	return C(FragmentNode{children: ToComponents(children...)})
 }
 
 // F is an alias for Fragment to reduce verbosity
-func F(children ...Component) ChildOpt { return Fragment(children...) }
+func F(children ...Node) ChildOpt { return Fragment(children...) }
 
 // render implements Component interface by rendering each child component
 // in sequence without any wrapper element.
@@ -71,6 +71,16 @@ func (f FragmentNode) render(sb *strings.Builder) {
 // the component tree (e.g., asset collection).
 func (f FragmentNode) Children() []Component {
 	return f.children
+}
+
+// ToComponents converts ...Node to []Component
+func ToComponents(nodes ...Node) []Component {
+	components := make([]Component, len(nodes))
+	for i, node := range nodes {
+		components[i] = node
+	}
+
+	return components
 }
 
 // String returns the text content
